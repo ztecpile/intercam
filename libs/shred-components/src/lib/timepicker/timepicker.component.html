@@ -1,0 +1,24 @@
+<div id="timepicker" class="timepicker">
+    <div class="title">{{hour | number:'2.0-0'}}:{{minute | number:'2.0-0'}} {{ampm}}</div>
+    <div class="tpContainer">
+        <div class="wheeltpHours">
+            <div class="tpHour" *ngFor="let hour of hoursArr;let i=index" [ngClass]="{'tpSelected': i==3}">{{hour | number:'2.0-0'}}</div>
+        </div>
+        <div class="wheelMinutes">
+            <div class="tpMinute" *ngFor="let minute of minutesArr;let i=index" [ngClass]="{'tpSelected': i==3}">{{minute | number:'2.0-0'}}</div>
+        </div>
+        <div class="wheelAmPm">
+            <div class="tpAmPm" *ngFor="let ap of ampmArr;let i=index" [ngClass]="{'tpSelected': i==3}" [innerHTML]="ap"></div>
+        </div>
+    </div>
+    <div class="centrar_btn quita_margenes">
+        <button class="button_caja button1 margin_right16" (click)="refuse()">
+			{{'strRechazar' | transloco}}
+			<div class="fa_rechazar" id="open"></div>
+		</button>
+        <button class="button_caja button1" id="cerrar" type="button" (click)="acept()">
+			{{'strAceptar' | transloco}}
+			<div class="fa_aceptar" id="open"></div>
+		</button>
+    </div>
+</div>

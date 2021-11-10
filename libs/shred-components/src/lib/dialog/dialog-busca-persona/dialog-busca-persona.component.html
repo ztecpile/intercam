@@ -1,0 +1,150 @@
+<div>
+    <div mat-dialog-title class="titulo"> Busqueda Persona </div>
+</div>
+<div mat-dialog-content class="title-model">
+    <div class="container">
+        <form [formGroup]="funcForm" class="formulario" autocomplete="off" idbForm>
+            <div class="row">
+                <div id="divoptIdContrato" class="col-sm-2">
+                    <input class="radio" type="radio" id="optIdContrato" [control]="getCtr('optIdContrato')" (change)="changeRadioOptIdContrato($event)" [checked]="selectOptIdContrato" formControlName="optIdContrato" idbInput>
+                    <label class="lbl_datos" for="optIdContrato">{{ 'Contrato' | transloco}}</label>
+                </div>
+
+                <div id="divnumContrato" class="col-sm-2">
+                    <input type="text" class="lbl_valor" [control]="getCtr('numContrato')" (ngModelChange)="textIdContratoInput($event)" (keyup.enter)="enterSubmit($event)" formControlName="numContrato" idbInput>
+                </div>
+
+                <div id="divcboTipoContratoIni" class="col-sm-2">
+                    <div class="caja-select">
+                        <select formControlName="cboTipoContratoIni" [control]="getCtr('cboTipoContratoIni')" idbInput>
+                            <option *ngFor="let tipCtro of arrTipoContratoIni" [ngValue]="tipCtro.tconId">
+                                {{tipCtro.tconDescripcion}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="divoptNombreRazon" class="col-sm-2">
+                    <input class="radio" type="radio" id="optNombreRazon" [control]="getCtr('optNombreRazon')" (change)="changeRadioOptNombreRazon($event)" [checked]="selectOptNombreRazon" formControlName="optNombreRazon" idbInput>
+                    <label class="lbl_datos" for="optNombreRazon">{{ 'Nombre' | transloco}}</label>
+                </div>
+
+                <div id="divnombreRazon" class="col-sm-4">
+                    <input type="text" class="lbl_valor" [control]="getCtr('nombreRazon')" (ngModelChange)="textNombreRazonInput($event)" (keyup.enter)="enterSubmit($event)" formControlName="nombreRazon" idbInput>
+                </div>
+            </div>
+
+            <div class="row">
+                <div id="divoptRfc" class="col-sm-2">
+                    <input class="radio" type="radio" id="optRfc" [control]="getCtr('optRfc')" (change)="changeRadioOptRfc($event)" [checked]="selectOptRfc" formControlName="optRfc" idbInput>
+                    <label class="lbl_datos" for="optRfc">{{ 'Rfc' | transloco}}</label>
+                </div>
+
+                <div id="divrfc" class="col-sm-4">
+                    <input type="text" class="lbl_valor" [control]="getCtr('rfc')" (ngModelChange)="textRfcInput($event)" (keyup.enter)="enterSubmit($event)" formControlName="rfc" idbInput>
+                </div>
+
+                <div id="divoptIdCliente" class="col-sm-2">
+                    <input class="radio" type="radio" id="optIdCliente" [control]="getCtr('optIdCliente')" (change)="changeRadioOptIdCliente($event)" [checked]="selectOptIdCliente" formControlName="optIdCliente" idbInput>
+                    <label class="lbl_datos" for="optIdCliente">{{ '#Cli Id' | transloco}}</label>
+                </div>
+
+                <div id="dividCliente" class="col-sm-2">
+                    <input type="text" class="lbl_valor" [control]="getCtr('idCliente')" (ngModelChange)="textIdClienteInput($event)" (keyup.enter)="enterSubmit($event)" formControlName="idCliente" idbInput>
+                </div>
+            </div>
+        </form>
+
+        <div class="table-container-coincidencias">
+            <table mat-table [dataSource]="dataSourceConcidencia" class="table table-striped table-hover">
+                <ng-container matColumnDef="contratoId">
+                    <th mat-header-cell *matHeaderCellDef>Con Id</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element.contratoId }}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="tmpCveLegada">
+                    <th mat-header-cell *matHeaderCellDef>Legada</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element.tmpCveLegada }}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="perId">
+                    <th mat-header-cell *matHeaderCellDef>Cli Id</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element.perId }}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="nombreCorto">
+                    <th mat-header-cell *matHeaderCellDef>Nombre</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element.nombreCorto }}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="descripcionTipocontrato">
+                    <th mat-header-cell *matHeaderCellDef>Tipo Contrato</th>
+                    <td mat-cell *matCellDef="let element" [style]="{'color': colorByTipo(element.tipoContratoId)}">
+                        {{ element.descripcionTipocontrato }}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="desEjecutivo">
+                    <th mat-header-cell *matHeaderCellDef>Ejecutivo</th>
+                    <td mat-cell *matCellDef="let element" [style]="{'color': usuarioVO.idPersona != element.ejecutivoId ? '#990000 !important' : '#000000 !important'}">
+                        {{ element.desEjecutivo }}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="statusContratoDescripcion">
+                    <th mat-header-cell *matHeaderCellDef>Estatus</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element.statusContratoDescripcion }}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="tpeClave">
+                    <th mat-header-cell *matHeaderCellDef>Tipo</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element.tpeClave }}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="tipoCuenta">
+                    <th mat-header-cell *matHeaderCellDef>Tipo Cuenta</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ getDescripcionUnica(element) }}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="tipoPerfil">
+                    <th mat-header-cell *matHeaderCellDef>Perfil</th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ tipoPerfil(element) }}
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsPer"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsPer" (dblclick)="dblclickItem(row)" (click)="selectedItem(row)">
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div mat-dialog-actions>
+    <div class="row">
+        <button mat-button class="btn-img buscar-btn" type="submit" (click)="clkBuscaPersona()">
+            <span class="tooltip">Buscar</span>
+        </button>
+        <button mat-button class="btn-img accept-button" type="submit" (click)="envia()">
+            <span class="tooltip">Selecciona</span>
+        </button>
+        <button mat-button class="btn-img cerrar-button" type="submit" (click)="close()">
+            <span class="tooltip">Cerrar</span>
+        </button>
+    </div>
+
+</div>

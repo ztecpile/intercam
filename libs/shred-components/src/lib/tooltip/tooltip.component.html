@@ -1,0 +1,7 @@
+
+<ngcontainer [ngSwitch]="placement">
+	<div
+		class="tooltip {{placement_class}} {{alignment_class}}"
+		[innerHTML]="text | transloco"
+	></div>
+</ngcontainer>

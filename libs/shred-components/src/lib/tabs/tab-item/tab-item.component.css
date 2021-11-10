@@ -1,0 +1,30 @@
+button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 34px 18px 11px;
+    font-size: 17px;
+    text-transform: uppercase;
+    font-family: "Museo Sans 300";
+    color: #717271;
+    /* background-image: url(../../assets/img/up-arrow.svg); */
+    background-repeat: no-repeat;
+    background-position: right 16px;
+    background-size: 11%;
+    margin-right: 36px;
+}
+
+button:hover {
+    color: #658d3d;
+}
+
+button.active {
+    color: #658d3d;
+    font-family: "Museo Sans 700";
+    /* background-image: url(../../assets/img/down-arrow.svg); */
+    background-repeat: no-repeat;
+    background-position: right 16px;
+    background-size: 11%;
+}

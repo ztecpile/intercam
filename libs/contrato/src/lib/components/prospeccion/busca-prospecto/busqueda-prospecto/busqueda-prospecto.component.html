@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<div class="container">
+    <form [formGroup]="form" class="formulario" idbForm>
+        <div class="row">
+            <div id="divtipoPersona" class="col-sm-3">
+                <div class="caja">
+                    <select formControlName="tipoPersona" [control]="getCtr('tipoPersona')" (ngModelChange)="changeTipoPer($event)" idbInput>
+                        <option *ngFor="let tipo of arrTipoPer " [ngValue]="tipo.tpeClave" > {{tipo.tpeDescripcion}}</option>
+                    </select>
+                </div>
+                <label appearance="fill" class="formulario__label">Tipo Persona</label>
+            </div>
+
+            <div id="divejecutivosAsiste" class="col-sm-3" *ngIf="listaEjeAsistente != null && listaEjeAsistente.length > 0">
+                <div class="caja">
+                    <select formControlName="ejecutivosAsiste" [control]="getCtr('ejecutivosAsiste')" (ngModelChange)="changeEjeAsiste($event)" idbInput>
+                        <option *ngFor="let eje of listaEjeAsistente" [value]="eje.ejecutivoId">{{eje.nombreEjecutivo}}</option>
+                    </select>
+                </div>
+                <label appearence="fill" class="formulario__label">Ejecutivo que asiste:</label>
+            </div>
+
+            <div id="divcboPais" class="col-sm-3">
+                <div class="caja">
+                    <select formControlName="cboPais" [control]="getCtr('cboPais')" (ngModelChange)="changeNacionalidad($event)" idbInput>
+                        <option value="">Seleccione</option>
+                        <option *ngFor="let pai of arrPais " [ngValue]="pai.paiClave">{{pai.paiNacionalidad}}</option>
+                    </select>
+                </div>
+                <label appearance="fill" class="formulario__label">Nacionalidad</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="divperNom" [ngClass]="{'col-sm-3': showPF,'col-sm-6': showPM}">
+                <input type="text" class="formulario__input && transformacion" [control]="getCtr('perNom')" formControlName="perNom" idbInput>
+                <label class="formulario__label">{{lblNombRzSocial}}</label>
+            </div>
+
+            <div id="divapePaterno" class="col-sm-3" *ngIf="showPF">
+                <input type="text" class="formulario__input && transformacion" [control]="getCtr('apePaterno')" formControlName="apePaterno" idbInput>
+
+                <label class="formulario__label">Apellido Paterno</label>
+            </div>
+
+            <div id="divapeMaterno" class="col-sm-3" *ngIf="showPF">
+                <input type="text" class="formulario__input && transformacion" [control]="getCtr('apeMaterno')" formControlName="apeMaterno" idbInput>
+
+                <label class="formulario__label">Apellido Materno</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="divfNac" class="col-sm-3" *ngIf="showPF">
+                <idb-calendario etiqueta="Fec. Nacimiento" lenguaje="es" [fecha]="currentDate" [control]="getCtr('fNac')" (fechaSeleccionada)="fechaSeleccionada($event)" max="0-0-0" idbInput>
+                </idb-calendario>
+            </div>
+
+            <div id="divRFC" class="col-sm-3">
+                <input type="text" class="formulario__input && transformacion" [control]="getCtr('RFC')" formControlName="RFC" (ngModelChange)="textInputRFC($event)" idbInput>
+                <label class="formulario__label">RFC</label>
+            </div>
+
+            <div id="divNSS" class="col-sm-3" *ngIf="showNSS">
+                <input type="text" class="formulario__input && transformacion" [control]="getCtr('NSS')" formControlName="NSS" (ngModelChange)="textNSS($event)" idbInput>
+                <label class="formulario__label">SSN</label>
+            </div>
+
+            <div id="divFM3" class="col-sm-3" *ngIf="showFM3">
+                <input type="text" class="formulario__input && transformacion" [control]="getCtr('FM3')" formControlName="FM3" (ngModelChange)="textFM3($event)" idbInput>
+                <label class="formulario__label">FM3</label>
+            </div>
+
+            <div id="divID" class="col-sm-3" *ngIf="showPM">
+                <input type="text" class="formulario__input && transformacion" [control]="getCtr('ID')" formControlName="ID" idbInput>
+                <label class="formulario__label">ID</label>
+            </div>
+        </div>
+
+        <div>
+            <button class="btn-img buscar-btn " type="submit" (click)="onSubmit()" matTooltip="Buscar"> </button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,25 @@
+.instrucciones {
+    display: block;
+    width: inherit;
+    height: 18px;
+    animation-duration: 7s;
+    animation-name: slidein;
+    font-size: 12px;
+    font-family: 'Museo Sans 100';
+    word-wrap: break-word;
+    margin: auto;
+    line-height: 18px;
+    color: red;
+    BACKGROUND-image: url(images/warning.svg);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
+    height: max-content;
+    margin-bottom: 20px;
+}
+
+.intructxt_uno {
+    font-family: 'Museo Sans 300';
+    text-align: left;
+    padding-left: 0px;
+}

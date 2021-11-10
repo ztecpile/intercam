@@ -1,0 +1,15 @@
+<div class="pop_alerts" [ngClass]="data['style']" #element [ngStyle]="{top: _top}">
+    <div class="header_pop_alerts" [ngClass]="data['style_header']" (click)="expand();">
+        <div [ngClass]="data['style_icon']"></div>
+    </div>
+    <div>
+        <div [ngClass]="data['style_title']" *ngIf="data['title']">{{data['title_label'] | transloco }}</div>
+        <div [ngClass]="data['style_subtitle']" *ngIf="data['subtitle']">
+            <div [ngClass]="data['style_icon_subtitle']" *ngIf="data['subtitle_icon']"></div>
+            <label id="{{data['style']}}Registro">{{registro}}</label>&nbsp;<span [ngClass]="data['style_subtitle_light']">{{data['subtitle_light_label'] | transloco }}</span>
+        </div>
+        <div class="centrar_btn_alert_blanco" *ngIf="button">
+            <button class="button_alert_blanco" (click)="execute()">{{data['button_label'] | transloco }}</button>
+          </div>
+    </div>
+</div>

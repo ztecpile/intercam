@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<idb-titulo [titulo1]='accion' [titulo2]='accion' [subtitulo]='accion'></idb-titulo>
+<div class="container">
+    <form [formGroup]="funcForm" class="formulario" (ngSubmit)="onSubmit()" autocomplete="off" idbForm>
+
+        <div class="row">
+            <div id="divcboTipo" class="col-sm-3">
+                <div class="caja">
+                    <select formControlName="cboTipo" [control]="getCtr('cboTipo')" (ngModelChange)="changeTipo($event)" idbInput>
+                        <option value="">Seleccione</option>
+                        <option *ngFor="let tipo of arrTipo " [value]="tipo.id">{{tipo.data}}</option>
+                    </select>
+                </div>
+                <label appearance="fill" class="formulario__label">Tipo Funcionario</label>
+            </div>
+            <div id="divcboCargo" class="col-sm-3">
+                <div class="caja">
+                    <select formControlName="cboCargo" [control]="getCtr('cboCargo')" idbInput>
+                        <option value="">Seleccione</option>
+                        <option *ngFor="let car of arrCargos " [value]="car.cfuId">{{car.cfuDescripcion}}</option>
+                    </select>
+                </div>
+                <label appearance="fill" class="formulario__label">Cargo</label>
+            </div>
+            <div id="divcboTipoPersona" class="col-sm-3">
+                <div class="caja">
+                    <select formControlName="cboTipoPersona" [control]="getCtr('cboTipoPersona')" (ngModelChange)="changeTipoPer($event.tpeClave)" idbInput>
+                        <option value="">Seleccione</option>
+                        <option *ngFor="let tipoPer of arrTipoPer " [ngValue]="tipoPer">{{tipoPer.tpeDescripcion}}
+                        </option>
+                    </select>
+                </div>
+                <label appearance="fill" class="formulario__label">Tipo Persona</label>
+            </div>
+            <div id="divcboCatPer" class="col-sm-3">
+                <div class="caja">
+                    <select formControlName="cboCatPer" [control]="getCtr('cboCatPer')" idbInput>
+                        <option value="">Seleccione</option>
+                        <option *ngFor="let cate of arrCategoria " [value]="cate.cpeId">{{cate.cpeDescripcion}}</option>
+                    </select>
+                </div>
+                <label appearance="fill" class="formulario__label">Categoria</label>
+            </div>
+            <div id="divcboPais" class="col-sm-3">
+                <div class="caja">
+                    <select formControlName="cboPais" [control]="getCtr('cboPais')" idbInput>
+                        <option value="">Seleccione</option>
+                        <option *ngFor="let pai of arrPais " [value]="pai.paiClave">{{pai.paiNacionalidad}}</option>
+                    </select>
+                </div>
+                <label appearance="fill" class="formulario__label">Nacionalidad</label>
+            </div>
+        </div>
+        <br>
+        <div *ngIf="tpeSelected == 'F'" formGroupName="perFForm">
+            <div class="row">
+                <div id="divperNom" class="col-sm-3">
+                    <input type="text" class="formulario__input" [control]="getCtr('perNom','perFForm')" formControlName="perNom" idbInput>
+                    <label class="formulario__label">{{'Nombre(s)' | transloco}}</label>
+                </div>
+                <div id="divapePaterno" class="col-sm-3">
+                    <input type="text" class="formulario__input" [control]="getCtr('apePaterno', 'perFForm')" formControlName="apePaterno" idbInput>
+                    <label class="formulario__label">{{'Apellido Paterno' | transloco}}</label>
+                </div>
+                <div id="divapeMaterno" class="col-sm-3">
+                    <input type="text" class="formulario__input" [control]="getCtr('apeMaterno', 'perFForm')" formControlName="apeMaterno" idbInput>
+                    <label class="formulario__label">{{'Apellido Materno' | transloco}}</label>
+                </div>
+                <div id="divfNac" class="col-sm-3">
+                    <idb-calendario min='0-0-0' max='0-1-0' [control]="getCtr('fNac', 'perFForm')" etiqueta="Feha Nacimiento" [fecha]="fechaActual" idbInput></idb-calendario>
+                </div>
+                <div id="divcurp" class="col-sm-3">
+                    <input type="text" class="formulario__input" [control]="getCtr('curp', 'perFForm')" formControlName="curp" idbInput>
+                    <label class="formulario__label">{{'Curp' | transloco}}</label>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="tpeSelected == 'M'" formGroupName="perMForm">
+            <div class="row">
+                <div id="divperRazonSocial" class="col-sm-3">
+                    <input type="text" class="formulario__input" [control]="getCtr('perRazonSocial', 'perMForm')" formControlName="perRazonSocial" idbInput>
+                    <label class="formulario__label">Denominación o Razón Social</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="divperRfc" class="col-sm-3">
+                <input type="text" class="formulario__input" [control]="getCtr('perRfc')" formControlName="perRfc" idbInput>
+                <label class="formulario__label">{{'RFC' | transloco}}</label>
+            </div>
+        </div>
+        <!-- <div>
+        <input type="number" min="1" max="100" />
+    </div> -->
+
+        <div class="row">
+            <label class="conCheck col-12">¿Tiene control de las Asambleas generales de accionistas?
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+            <label class="conCheck col-12">¿Tienen derecho a nombrar a la mayor\u00EDa del consejo de Administración?
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+
+            <label class="conCheck col-12">Es PEP
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+
+
+        <div class="centrar_btn">
+            <button class="btn-img save-button" type="submit"><span class="tooltip">Guardar</span></button>
+            <button class="btn-img save-button-des" type="submit"><span class="tooltip">asdsadadasdsdasdasdasdasdasdasdsadasdasdasdasdasdasdsasdasdasdsadsa</span></button>
+            <button class="btn-img save-button" [disabled]="funcForm.invalid" type="submit"><span class="tooltip">Guardar</span></button>
+        </div>
+
+    </form>
+</div>

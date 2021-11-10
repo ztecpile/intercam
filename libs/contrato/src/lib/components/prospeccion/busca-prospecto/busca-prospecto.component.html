@@ -1,0 +1,13 @@
+<div class="container">
+    <intercam-tabs-dynamic>
+        <intercam-tab-dynamic [tabTitle]="'Busqueda'">
+            <intercam-busqueda-prospecto (MOSTRAR_RESULTADO_BUSQUEDA)="mostrarResultadoBusqueda($event)" (MOSTRAR_ALTA_PROSPECTO)="mostrarAltaProspecto($event)">
+            </intercam-busqueda-prospecto>
+        </intercam-tab-dynamic>
+    </intercam-tabs-dynamic>
+
+    <ng-template let-objeto="objeto" #resultadoBusqueda class="tabcontainer">
+        <intercam-resultado-prospecto [resultBusquedaEvent]="objeto" (MOSTRAR_BUSQUEDA)="regresarBusquedaProspecto()" (MOSTRAR_ALTA_PROSPECTO)="mostrarAltaProspecto($event)">
+        </intercam-resultado-prospecto>
+    </ng-template>
+</div>

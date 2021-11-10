@@ -1,0 +1,561 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+form {
+    max-width: 100%;
+}
+
+.formulario__titulo {
+    text-align: center;
+    margin-top: 0;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.formulario__input,
+.formulario__label,
+.formulario__submit {
+    display: block;
+    width: 100%;
+    font-size: 12px;
+    font-family: 'Museo Sans 500';
+}
+
+.formulario__input {
+    padding: 28px 12px 8px 16px;
+    background: rgba(236, 236, 236, 0.2);
+    border: none;
+    margin-bottom: 13px;
+    border-bottom: 1px solid #658d3d;
+    font-family: 'Museo Sans 500';
+}
+
+.formulario__input:focus {
+    outline: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.formulario__input:focus+.formulario__label {
+    margin-top: -58px;
+}
+
+.formulario__label {
+    padding-left: 15px;
+    position: absolute;
+    margin-top: -51px;
+    z-index: -20;
+    color: #000;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    font-family: 'Museo Sans 700';
+}
+
+.formulario__submit {
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    font-family: 'Museo Sans 500';
+}
+
+.fijar,
+.input {
+    margin-top: -58px;
+    color: #000000;
+    font-size: 12px;
+    font-family: 'Museo Sans 700';
+}
+
+.button {
+    background-color: #f1f1f1;
+    padding: 11px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-family: 'Museo Sans 700';
+    border: 2px solid #658d3d;
+    color: #658d3d;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.button1 a {
+    font-size: 12px;
+    background-color: #f1f1f1;
+    padding: 11px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-family: 'Museo Sans 700';
+    border: 2px solid #658d3d;
+    color: #658d3d;
+    text-transform: uppercase;
+}
+
+.button:disabled {
+    cursor: not-allowed !important;
+    font-size: 11px;
+    background-color: #f1f1f1;
+    padding: 11px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-family: 'Museo Sans 700';
+    border: 2px solid #658d3d;
+    color: #658d3d;
+    text-transform: uppercase;
+    opacity: 0.5;
+}
+
+.button1:hover {
+    font-size: 12px;
+    background-color: #f1f1f1;
+    padding: 11px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-family: 'Museo Sans 700';
+    border: 2px solid #658d3d;
+    color: #658d3d;
+    text-transform: uppercase;
+    opacity: 0.5;
+}
+
+.centrar_btn {
+    content: '';
+    margin: auto;
+    text-align: center;
+    margin-top: 36px;
+}
+
+.caja {
+    margin: 10px auto 2px auto;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    padding: 20px 6px 5px 15px;
+    background-color: rgba(236, 236, 236, 0.2);
+    border: none;
+    border-bottom: 1px solid #658d3d;
+    font-family: 'Museo Sans 500';
+    border-top: solid 1px #e6e6e6;
+    border-left: solid 1px #e6e6e6;
+    border-right: solid 1px #e6e6e6;
+}
+
+.texto {
+    margin: 10px auto 2px auto;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    padding: 20px 6px 5px 15px;
+    background-color: rgba(236, 236, 236, 0.2);
+    border: none;
+    border-bottom: 1px solid #658d3d;
+    font-family: 'Museo Sans 500';
+    border-top: solid 1px #e6e6e6;
+    border-left: solid 1px #e6e6e6;
+    border-right: solid 1px #e6e6e6;
+}
+
+select {
+    background: transparent;
+    border: none;
+    font-size: 12px;
+    height: 22px;
+    padding: 2px;
+    width: 100%;
+    font-family: 'Museo Sans 500';
+    color: #000;
+    text-transform: uppercase;
+}
+
+select:focus {
+    outline: none;
+}
+
+.caja::after {
+    content: '';
+    background-image: url(../img/down-arrow_dos.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 43%;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    padding-top: 22px;
+    text-align: center;
+    width: 20px;
+    height: 0px;
+    position: absolute;
+    top: 22px;
+    right: 2px;
+    pointer-events: none;
+    background-color: #b8c7a8;
+}
+
+.subtit_cajas_bold {
+    font-size: 17px;
+    width: 100%;
+    font-family: 'Museo Sans 900';
+    color: #000;
+    text-transform: uppercase;
+}
+
+.subtit_cajas_light {
+    padding-left: 4px;
+    font-size: 17px;
+    width: 100%;
+    font-family: 'Museo Sans 100' !important;
+    color: #000;
+    text-transform: uppercase;
+}
+
+.subtit_mini_bold {
+    font-size: 14px;
+    width: 100%;
+    font-family: 'Museo Sans 900';
+    color: #000;
+    text-transform: uppercase;
+}
+
+textarea {
+    padding: 6px 6px 5px 10px;
+    background-color: rgba(236, 236, 236, 0.2);
+    border: 1px solid #658d3d;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    font-family: 'Museo Sans 300' !important;
+}
+
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    font-family: 'Museo Sans 300';
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.radio-item {
+    display: inline-block;
+    position: relative;
+    padding: 0 6px;
+    margin-left: 31px;
+    margin-bottom: 15px;
+}
+
+.radio-item input[type='radio'] {
+    display: none;
+}
+
+.radio-item label {
+    color: #000;
+    font-weight: normal;
+    font-family: 'Museo Sans 300';
+    font-size: 12px;
+}
+
+.radio-item label:before {
+    content: ' ';
+    display: inline-block;
+    position: relative;
+    top: 5px;
+    margin: 0 5px 0 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 20px;
+    border: 2px solid #000000;
+    background-color: transparent;
+    right: 0px;
+    font-family: 'Museo Sans 300';
+}
+
+.radio-item input[type='radio']:checked+label:after {
+    border-radius: 11px;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 10px;
+    left: 11px;
+    content: ' ';
+    display: block;
+    background: #000000;
+    font-family: 'Museo Sans 300';
+}
+
+.conCheck {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-family: 'Museo Sans 300';
+    float: left;
+}
+
+.conCheck input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 22px;
+    width: 22px;
+    border: solid 2px #658d3d;
+}
+
+.conCheck:hover input~.checkmark {
+    background-color: transparent;
+}
+
+.conCheck input:checked~.checkmark {
+    background-color: transparent;
+}
+
+.checkmark:after {
+    content: '';
+    position: absolute;
+    display: none;
+}
+
+.conCheck input:checked~.checkmark:after {
+    display: block;
+}
+
+.conCheck .checkmark:after {
+    left: 7px;
+    top: 3px;
+    width: 6px;
+    height: 11px;
+    border: solid #658d3d;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.file-custom:before {
+    position: absolute;
+    top: -0.032rem;
+    right: -0.075rem;
+    bottom: -0.074rem;
+    z-index: 6;
+    display: block;
+    content: 'BUSCAR';
+    height: 25px;
+    padding: 6px 14px 6px 14px;
+    line-height: 27px;
+    color: #658d3d;
+    background-color: #f1f1f1;
+    border-left: 2px solid #658d3d;
+    border-right: 2px solid #658d3d;
+    border-bottom: 2px solid #658d3d;
+    border-top: 2px solid #658d3d;
+    font-family: 'Museo sans 700';
+    font-size: 12px;
+}
+
+.file-custom {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 5;
+    height: 41px;
+    padding: 0.5rem 1rem;
+    line-height: 26px;
+    color: #000;
+    background-color: rgb(236, 236, 236);
+    border-bottom: 0.075rem solid #658d3d;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-size: 12px;
+    font-family: 'Museo sans 500';
+    text-transform: uppercase;
+    text-align: center;
+    border-top: solid 1px #e6e6e6;
+    border-left: solid 1px #e6e6e6;
+    border-right: solid 1px #e6e6e6;
+}
+
+.file {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    height: 30px;
+    width: 320px;
+}
+
+.color_rojo,
+input {
+    border-bottom: 1px solid red;
+}
+
+.color_verde,
+input {
+    border-bottom: 1px solid #658d3d;
+}
+
+strong {
+    font-size: 11px;
+    font-family: 'Museo Sans 700';
+}
+
+.ico_paloma {
+    background-image: url(../img/paloma_verde.svg);
+    background-repeat: no-repeat;
+    background-position: left 3px;
+    background-size: 4%;
+}
+
+.fijar_error,
+.input {
+    margin-top: -90px;
+    color: #658d3d;
+    font-size: 12px;
+    font-family: 'Museo Sans 700';
+}
+
+.fa_search {
+    font-size: 11px;
+    font-weight: 700;
+    background-image: url(../img/magnifying-glass.svg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    position: absolute;
+    height: 30px;
+    width: 20px;
+    font-family: 'Museo Sans 500';
+    position: relative;
+    float: right;
+    margin-top: -51px;
+    margin-right: 20px;
+}
+
+.fa_paloma {
+    background-image: url(../img/paloma_verde.svg);
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 100%;
+}
+
+.fa_tache {
+    background-image: url(../img/incorrecto.svg);
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 83% !important;
+}
+
+.i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 7px;
+}
+
+
+/* Ventana Modal */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 5000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    line-height: 115%;
+}
+
+.modal-content {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+    margin: auto;
+    padding: 20px;
+    width: 60%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    overflow: hidden;
+    border-radius: 9px;
+}
+
+.tit_modal {
+    display: block;
+    font-size: 17px;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Museo sans 900';
+}
+
+.tit_modal_light {
+    font-size: 17px;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Museo sans 100';
+    padding-left: 10px;
+}
+
+.leyenda_modal {
+    display: block;
+    font-size: 13px;
+    margin-block-start: 0px;
+    margin-block-end: 7px;
+    font-weight: bold;
+    font-family: 'Museo sans 100';
+}
+
+.close {
+    color: #aaaaaa;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}

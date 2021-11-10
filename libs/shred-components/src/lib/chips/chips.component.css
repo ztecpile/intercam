@@ -1,0 +1,80 @@
+
+.txtBlack {
+    color: black;
+    font-family: 'Museo Sans 900';
+    font-size: 13px;
+    text-transform: initial !important;
+}
+
+.txtEmpresa {
+    font-family: 'Museo Sans 300';
+    font-size: 14px;
+    text-transform: initial !important;
+}
+
+.txtCuenta {
+    color: #658D3D;
+    font-family: 'Museo Sans 700';
+    font-size: 14px;
+    text-transform: initial !important;
+}
+
+.chip_item {
+    width: 100%;
+}
+
+.list_item {
+    border-bottom: 1px solid #bcbcbc;
+    padding-bottom: 9px;
+    width: 100%;
+}
+
+.formulario__label {
+    margin-top: unset;
+    position: unset;
+    width: unset;
+}
+
+mat-list {
+    max-height: 200px;
+    overflow: auto;
+}
+
+mat-label {
+    display: block;
+}
+
+::ng-deep .mat-chip.mat-standard-chip {
+    background-color: rgba(101, 141, 61, 0.1);
+}
+
+::ng-deep .mat-standard-chip .mat-chip-remove, ::ng-deep  .mat-standard-chip .mat-chip-trailing-icon {
+    width: 24px !important;
+    height: 24px !important;
+    cursor: pointer !important;
+}
+
+::ng-deep .mat-list-base .mat-list-item .mat-list-item-content, ::ng-deep .mat-list-base .mat-list-option .mat-list-item-content {
+    cursor: pointer !important;
+    padding: 12px !important;
+}
+
+::ng-deep .mat-chip-list-wrapper input.mat-input-element, ::ng-deep .mat-chip-list-wrapper .mat-standard-chip {
+    margin: 6px 12px 6px 0px !important;
+}
+
+::ng-deep .mat-chip.mat-standard-chip .mat-chip-remove {
+    opacity: 1;
+}
+
+::ng-deep .mat-standard-chip {
+    padding: 22px 18px !important;
+    border-radius: 26px !important;
+    min-height: 46px !important;
+}
+
+::ng-deep mat-chip-list > div {
+    border-bottom: 1px solid #658D3D;
+    margin: 0 12px !important;
+    padding-bottom: 15px;
+}

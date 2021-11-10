@@ -1,0 +1,30 @@
+a {
+  color: #7b7b7b;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 2px solid transparent;
+}
+
+a.active {
+  color: #658d3d;
+  border-radius: 2px;
+  border: 2px solid #658d3d;
+  background-color: #f1f1f1;
+}
+
+a:hover:not(.active) {
+  border: 2px solid rgba(101, 141, 61, 0.3);
+  border-radius: 2px;
+}
+
+a.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+a.disabled {
+  color: currentColor;
+  display: inline-block; /* For IE11/ MS Edge bug */
+  pointer-events: none;
+  text-decoration: none;
+}

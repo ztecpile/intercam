@@ -1,0 +1,77 @@
+<div id="card_flota2" class="card_flota2" style="display: block;">
+    <form [formGroup]="form">
+
+        <div class="triangle2-up"></div>
+        <div id="difFechasHinabiles" class="caja_Izq">
+            <p class="caja_preguntas margin_bottom15">{{'tituloFechasInhabiles' | transloco}}</p>
+            <div class="radio-item margin_right100">
+                <input type="radio" id="ritema" name="operaFechaInhabil" value=1 [checked]="operaFechaInhabil == 1 ? true : false" (click)="onFechasChange(true)" formControlName="operaFechaInhabil">
+                <label for="ritema">{{'strSi' | transloco}}</label>
+            </div>
+            <div class="radio-item">
+                <input type="radio" id="ritemb" name="operaFechaInhabil" value=0 [checked]="operaFechaInhabil == 0 ? true : false" (click)="onFechasChange(false)" formControlName="operaFechaInhabil">
+                <label for="ritemb">{{'strNo' | transloco}}</label>
+            </div>
+        </div>
+
+        <div id="difRestringeHoras" class="caja_Izq">
+            <p class="caja_preguntas margin_bottom15 margin_top15">{{'tituloRestringeHoras' | transloco}}</p>
+            <div class="radio-item margin_right100">
+                <input type="radio" id="ritemc" name="restringeHorario" value=1 [checked]="restringeHorario == 1 ? true : false" (click)="onHorariosChange(true)" formControlName="restringeHorario">
+                <label for="ritemc">{{'strSi' | transloco}}</label>
+            </div>
+            <div class="radio-item">
+                <input type="radio" id="ritemd" name="restringeHorario" value=0 [checked]="restringeHorario == 0 ? true : false" (click)="onHorariosChange(false)" formControlName="restringeHorario">
+                <label for="ritemd">{{'strNo' | transloco}}</label>
+            </div>
+        </div>
+
+        <div id="horarios" class="caja_Izq caja_centrar_formulario margin_top15" style="display: none;">
+
+            <div>
+                <div class="caja_Izq ancho_caja_160 time_input margin_right27">
+                    <label class="formulario2__label" for="input">{{'strHoraInicio' | transloco}}</label>
+                    <ngx-timepicker-field (timeChanged)="tpHoraInicial($event)" [defaultTime]="form.value.horaInicial" [format]=24 [toggleIcon]="timeIcon"></ngx-timepicker-field>
+                    <!--
+                    <input type="time" id="time_start" class="formulario2__input" formControlName="horaInicial" mdbInput (focus)="onHorasChange()" >
+                    <div class="fa_hora" idbTimepicker [hora]="form.value.horaInicial" (horaNueva)="tpHoraInicial($event)"></div>
+-->
+                </div>
+
+                <div class="caja_Izq ancho_caja_160 time_input">
+                    <label class="formulario2__label" for="input">{{'strHoraFin' | transloco}}</label>
+                    <ngx-timepicker-field (timeChanged)="tpHoraFInal($event)" [defaultTime]="form.value.horaFinal" [format]=24 [toggleIcon]="timeIcon"></ngx-timepicker-field>
+                    <!--
+                    <input type="time" id="time_end" class="formulario2__input" formControlName="horaFinal" mdbInput (focus)="onHorasChange()" >
+                    <div class="fa_hora" idbTimepicker [hora]="form.value.horaFinal" (horaNueva)="tpHoraFInal($event)"></div>
+-->
+                </div>
+            </div>
+
+            <div class="caja_Izq alert-time" *ngIf="timeError != ''">
+                <p class="formulario2__label">{{'timeError' | transloco}}</p>
+            </div>
+
+        </div>
+        <div class="centrar_btn quita_margenes">
+            <button class="button_caja button1 margin_right16" (click)="refuse()">
+				{{'strRechazar' | transloco}}
+				<div class="fa_rechazar" id="open"></div>
+			</button>
+            <button class="button_caja button button2" id="cerrar" type="button" (click)="acept()">
+				{{'strAceptar' | transloco}}
+				<div class="fa_aceptar" id="open"></div>
+			</button>
+        </div>
+
+        <ng-template #timeIcon>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                <path fill="#6B971D" d="M8 0C3.589 0 0 3.589 0 8s3.589 8 8 8 8-3.589 8-8-3.589-8-8-8zm3.805 12.138c-.13.13-.301.195-.472.195-.17 0-.341-.065-.47-.195L7.528 8.805c-.126-.125-.196-.294-.196-.472V4c0-.369.299-.667.667-.667.368 0 .667.298.667.667v4.057l3.138 3.138c.26.261.26.682 0 .943z"/>
+            </svg>
+        </ng-template>
+
+        <!--
+<pre>{{form.value | json}}</pre>
+-->
+    </form>
+</div>

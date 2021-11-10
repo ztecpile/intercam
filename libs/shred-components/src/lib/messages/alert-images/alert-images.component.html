@@ -1,0 +1,19 @@
+<div class="centrarAlert" style="display: none;" #component>
+    <div [ngClass]="classAlert" #alert>
+        <div [ngClass]="iconAlert" #icon></div>
+        <div class="alert-txt">{{ _message | transloco : _params }}
+        </div>
+        <div class="image-content medianil-images" style="width: 140px;">
+          <div *ngFor="let img of images;let i=index">
+            <div class="caja_Izq medianil" *ngIf="i==0">
+              <img src='{{img.ruta}}'>
+              <div class="title_image">{{img.nombre}}</div>
+            </div>
+            <div class="caja_der medianil" *ngIf="i!=0">
+              <img src='{{img.ruta}}'>
+              <div class="title_image">{{img.nombre}}</div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>

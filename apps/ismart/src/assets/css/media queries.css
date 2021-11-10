@@ -1,0 +1,37 @@
+@charset "UTF-8";
+/* CSS Document */
+
+@media screen and (max-width: 600px) {
+	.ancho_caja_400 {
+    width: 100%;
+	
+}
+.ancho_caja_300 {
+    width: 100%;
+}
+
+.medianil {
+    margin-right: 0px;
+}
+	
+	.centrar_formulario {
+    margin: auto;
+    content: "";
+    display: block;
+    justify-content: center;
+}
+	
+.formulario__input, .formulario__label, .formulario__submit {
+    display: block;
+    width: 100%;
+    font-size: 15px;
+    font-family: 'Museo Sans 500';
+}
+.fecha {
+	float: none;
+    font-size: 12px;
+    font-family: "Museo Sans 300";
+	margin-bottom: 10px;
+}
+	}
+	

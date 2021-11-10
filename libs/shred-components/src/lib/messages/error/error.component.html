@@ -1,0 +1,28 @@
+<h2>Error 404</h2>
+<hr class="blue"/>
+
+  <!-- componente -->
+	<div class="centrar">
+		<div class="bdcontent2">
+			<div class="saludo_content centrar">
+			<div class="imagen_404" [style.background-image]="'url(' + imageErrorUrl + ')'"></div>
+			<div class="txt_saludo_alinear">
+				<div class="txt_uno">{{ title | transloco }} </div>
+				<div class="txt_dos">{{ subtitle | transloco }}</div>
+				<div class="txt_tres">
+					{{ errorpossible | transloco }}
+					<div class="lista">
+						<p>{{ errormsg1 | transloco }}</p>
+						<p>{{ errormsg2 | transloco }}</p>
+						<p>{{ errormsg3 | transloco }}</p>
+					</div>
+				</div>
+				<div class="centrar_btn">
+					<form>
+						<button class="button button1">{{ returnErr | transloco }}</button>
+					</form>
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>

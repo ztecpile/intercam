@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="31" height="29" viewBox="0 0 31 29">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g fill="#8A6D3B" fill-rule="nonzero">
+                        <path d="M30.436 22.224l-.003-.006L19.48 2.38c-1.725-3.173-6.236-3.173-7.96 0L.567 22.218l-.004.006C-1.09 25.274 1.095 29 4.546 29h21.908c3.446 0 5.638-3.722 3.982-6.776z" transform="translate(-461 -283) translate(418 264) translate(43 19)"/>
+                    </g>
+                    <text fill="#FFF" font-family="MuseoSans-900, Museo Sans" font-size="19" font-weight="bold" transform="translate(-461 -283) translate(418 264) translate(43 19) translate(13 2)">
+                        <tspan x="0" y="18">¡</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

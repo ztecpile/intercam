@@ -1,0 +1,129 @@
+.alert-success {
+	color: #658D3D;
+	background-color: rgba(101, 141, 61, 0.1);
+	border-color: #d6e9c6;
+	font-family: 'Museo Sans 300';
+}
+.alert {
+	width: 600px;
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	overflow: hidden;
+	display: flex;
+}
+.alert-info {
+	color: #000;
+	background-color: rgba(23, 135, 223, 0.3);
+	border-color: #bce8f1;
+	font-family: 'Museo Sans 300';
+}
+.alert-warning {
+	color: #8a6d3b;
+	background-color: #fcf8e3;
+	border-color: #faebcc;
+	font-family: 'Museo Sans 300';
+}
+.alert-danger {
+	color: #a94442;
+	background-color: #f2dede;
+	border-color: #ebccd1;
+	font-family: 'Museo Sans 300';
+}
+strong {
+	font-family: 'Museo Sans 700';
+}
+.ico_info {
+	width: 34px;
+	height: 34px;
+	display: block;
+	float: left;
+	background-image: url(images/sobre.svg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-position: 0px 0px;
+	margin-right: 14px;
+}
+.ico_success {
+	width: 33px;
+	height: 44px;
+	display: block;
+	float: left;
+	background-image: url(images/check.svg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	margin-right: 14px;
+	margin-top: -6px;
+}
+.ico_warning {
+	width: 34px;
+	height: 40px;
+	display: block;
+	float: left;
+	background-image: url(images/high-voltage.svg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	margin-right: 14px;
+	margin-top: -5px;
+}
+.ico_danger {
+	width: 34px;
+	height: 40px;
+	display: block;
+	float: left;
+	background-image: url(images/warning.svg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	margin-right: 14px;
+	margin-top: -5px;
+}
+
+.centrarAlert {
+    width: 600px;
+	height: auto;
+	white-space: pre-wrap;
+} 
+
+.alert-txt {
+	width: 450px;
+	font-size: 15px;
+	font-family: "Museo Sans 500";
+}
+.image {
+	margin-left: 23px;
+}
+.first_image {
+	margin-left: 14px;
+}
+.last_image {
+	margin-left: 23px;
+	margin-right: 40px;
+}
+.title_image {
+	font-family: "Museo Sans 900";
+	font-size: 11px;
+	align-content: center;
+	color: #717271;
+}
+.image-content {
+	text-align: center;
+	display: flex;
+	margin-top: -5px;
+}
+.medianil-images {
+	margin-right:14px;
+}
+.medianil {
+	margin-right:23px;
+}
+.caja_Izq {
+	overflow:hidden;
+	float:left;
+	min-height: min-content;
+}
+.caja_der {
+	overflow:hidden;
+	float:left;
+	min-height: min-content;
+}

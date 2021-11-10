@@ -1,0 +1,116 @@
+table.mat-table {
+    border-collapse: collapse;
+    border-collapse: separate;
+    box-sizing: border-box;
+    border-spacing: 0;
+    background-color: #ffffff00 !important;
+    box-shadow: none !important;
+    display: table;
+    font-family: 'Museo Sans 300';
+    width: 100%;
+}
+
+.mat-table-sticky {
+    background: #f1f1f1 !important;
+    opacity: 1;
+}
+
+table.mat-table th,
+table.mat-table td {
+    color: black !important;
+    padding: 12px 0px 12px 12px;
+}
+
+table.mat-table td {
+    font-size: 12px;
+}
+
+table.mat-table th {
+    font-size: 11px;
+    font-weight: bold;
+    font-family: 'Museo Sans 900';
+    text-transform: uppercase;
+}
+
+table.mat-table tbody {
+    color: black !important;
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+table.mat-table thead td,
+table.mat-table tbody td {
+    border-bottom: 1px solid #bcbcbc!important;
+}
+
+th.mat-header-cell,
+td.mat-footer-cell {
+    border-bottom-width: 0px !important;
+}
+
+table.mat-table .tbl-left {
+    text-align: left;
+}
+
+table.mat-table .tbl-center {
+    text-align: center;
+}
+
+table.mat-table .tbl-right {
+    text-align: right;
+}
+
+table.mat-table .tbl-bold {
+    font-family: 'Museo Sans 900' !important;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+table.mat-table tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+    height: 42px;
+}
+
+table.mat-table .razon_social {
+    display: block;
+    font-family: 'Museo Sans 300' !important;
+    font-size: 13px;
+    padding: 6px 0px 0px 0px;
+}
+
+table.mat-table .deposits {
+    font-family: 'Museo Sans 500' !important;
+    font-size: 15px;
+    color: #658d3d !important;
+}
+
+table.mat-table .payments {
+    font-family: 'Museo Sans 500' !important;
+    font-size: 15px;
+    color: RED !important;
+}
+
+table.mat-table .arrowUp {
+    background-image: url('/assets/img/sub.svg');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 5%;
+    padding-right: 20px;
+}
+
+table.mat-table .arrowDown {
+    background-image: url('/assets/img/infe.svg');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 6%;
+    padding-right: 20px;
+}
+
+.pointer {
+    cursor: pointer;
+    color: blue;
+}

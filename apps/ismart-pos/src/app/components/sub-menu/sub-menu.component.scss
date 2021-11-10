@@ -1,0 +1,48 @@
+.img-sub-menu {
+    height: 30px;
+    width: 30px;
+}
+
+.wrapper {
+    position: fixed;
+    top: 35%;
+    left: auto;
+    transform: translate(-50%, -50%);
+}
+
+ul {
+    list-style: none;
+}
+
+ul li {
+    width: 35px;
+    height: 35px;
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    align-items: center;
+}
+
+ul li .fa {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    color: rgb(0, 0, 0);
+}
+
+ul li.cliente {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+}
+
+ul li.precios {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+}
+
+ul li.logout {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+}

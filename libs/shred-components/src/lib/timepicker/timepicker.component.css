@@ -1,0 +1,51 @@
+:host {
+  display: block;
+}
+
+.timepicker {
+  color: white;
+  border-radius: 6px;
+  background-color: #393939;
+  border: 3px solid #6b971d;
+  font-family: "Museo Sans 500";
+  font-size: 14px;
+  min-height: 100px;
+  padding: 0;
+  position: absolute;
+  right: -180px;
+  width: 360px;
+  text-align: center;
+  z-index: 9;
+}
+
+.timepicker .title {
+  background-color: #779954;
+  font-size: 24px;
+  padding: 8px;
+}
+
+.tpContainer {
+  margin: 0 auto;
+  width: 150px;
+}
+
+.tpContainer > div {
+  cursor: pointer;
+  float: left;
+  font-family: "Museo Sans 500";
+  font-size: 16px;
+  margin: 0;
+  padding: 10px 0;
+  width: 50px;
+}
+
+.tpContainer > div:hover {
+  background-color: #bdc8b2;
+}
+
+.tpSelected {
+  background-color: #dce6d2;
+  color: #779954;
+  font-size: 22px;
+  margin: 0 3px;
+}

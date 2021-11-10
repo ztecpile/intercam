@@ -1,0 +1,396 @@
+
+
+/*
+*/
+.width100 {
+    width:100%;
+    max-width: 920px;
+}
+
+.centrar_formulario {
+	margin: auto;
+	content: "";
+	display: flex;
+	justify-content: center;
+}
+
+.operaFechaInhabil {
+    cursor: pointer;
+	height: 20px;
+	position: absolute;
+    right: 12px;
+	top: 12px;
+	width: 20px;
+}
+
+.drag {
+	position: relative
+}
+
+.drag:hover, .drag.select {
+	background-color: #bdbdbd;
+	background-color: rgba(101,141,61,.48);
+}
+
+
+
+
+
+
+
+/*
+drag
+*/
+
+.sale_caja {
+	width: 400px;
+	height: 236px;
+	font-size: 14px;
+	overflow: auto;
+	padding: 8px 8px 0  8px;
+}
+
+.cae_caja {
+	width: 400px;
+	height: 238px;
+	padding: 8px;
+	padding: 8px 8px 0  8px;
+	position: relative;
+	border: solid 1px rgba(101, 141, 61, 0.27);
+	background-color: rgba(155, 155, 155, 0.08);
+	font-size: 14px;
+	overflow: auto;
+}
+
+.drag {
+	width: 100%;
+	border-radius: 8px;
+	border: solid 1px rgba(101, 141, 61, 0.48);
+	background-color: rgba(236, 236, 236, 0.08);
+	padding: 15px;
+	box-sizing: border-box;
+	margin-bottom: 8px;
+	font-size: 14px;
+	font-family: 'Museo Sans 500';
+	cursor: pointer;
+}
+
+.drag_cuentas {
+    width: 100%;
+    border-radius: 8px;
+    border: solid 1px rgba(101, 141, 61, 0.48);
+    background-color: rgba(236, 236, 236, 0.08);
+    padding: 8px 14px 8px 14px;
+    box-sizing: border-box;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.drag_img_pop {
+    background-image: url("./images/calendar.svg");
+    background-repeat: no-repeat;
+	background-size: 16px;
+	background-position: center;
+}
+
+.txt_cuenta{
+	font-size: 14px;
+    font-family: 'Museo Sans 700';
+}
+
+.txt_razon_soacial{
+	font-size: 12px;
+    font-family: 'Museo Sans 100';
+}
+
+.caja_flechas {
+	width:74px;
+	padding-top: 9%;
+}
+
+.caja_flechas_4botones {
+    width: 74px;
+    margin-top: 75px;
+}
+
+.fa_flechaderecha {
+	background-image: url("./images/fle_der.svg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	height: 26px;
+	width: 14px;
+	cursor: pointer;
+	margin: auto;
+}
+
+.fa_flechaizquierda {
+	background-image: url("./images/fle_izq.svg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	height: 24px;
+	width: 14px;
+	cursor: pointer;
+	margin: auto;
+}
+
+.fa_flecha_doble_derecha {
+    background-image: url("./images/asignar.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 20px;
+    width: 21px;
+    cursor: pointer;
+    margin: auto;
+}
+
+.fa_flecha_doble_izquierda {
+    background-image: url("./images/desasignar.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 20px;
+    width: 21px;
+    cursor: pointer;
+    margin: auto;
+}
+
+
+@media screen and (max-width: 1024px) {
+	.sale_caja {
+		width: 100%;
+	}
+
+	.cae_caja {
+		width: 100%;
+		overflow: scroll;
+	}
+
+	.drag {
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.drag {
+		width: 100%;
+	}
+
+	.caja_flechas {
+		padding-top: 22%;
+	}
+}
+
+
+/*
+Formularios.css
+*/
+
+.subtitpeque_cajas_bold {
+	font-size: 12px;
+	width: 100%;
+	font-family: 'Museo Sans 900';
+	color: #000;
+	text-transform: uppercase;
+	padding-bottom: 8px;
+	padding-left: 16px;
+	border-bottom: 1px solid #aeaeae;
+	margin-block-start: 0px;
+}
+
+.subtitpeque_cajas_light {
+	font-size: 12px;
+	width: 100%;
+	font-family: 'Museo Sans 100';
+	color: #000;
+	text-transform: uppercase;
+	padding-bottom: 8px;
+	margin-block-start: 0px;
+}
+
+
+/*
+centrar_formulario_margenes.css
+*/
+
+.margin_bottom15 {
+	margin-bottom:15px !important;
+}
+
+.margin_bottom24 {
+    margin-bottom: 24px !important;
+}
+
+.margin_bottom44 {
+	margin-bottom:44px;
+}
+
+.margin_top48 {
+    margin-top: 48px !important;
+}
+
+.caja_Izq {
+	overflow:hidden;
+	float:left;
+}
+
+.caja_der {
+	overflow:hidden;
+	float:left;
+}
+
+.ancho_caja_400 {
+    width: 400px;
+}
+
+.ancho_caja_874 {
+    width: 874px;
+}
+
+.flota_izq {
+	float:left;
+}
+
+.flota_right {
+	float:right;
+}
+
+
+
+/*
+Tooltip
+*/
+
+.tooltip {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.tooltip3 {
+	position: relative;
+	cursor: pointer;
+}
+
+.tooltip3 .tooltiptext3 {
+	visibility: hidden;
+	width: 120px;
+	background-color:rgba(0, 93, 166, 0.9);
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 8px 8px;
+	position: absolute;
+	z-index: 1;
+	top: -13px;
+	left: 80%;
+	font-family: 'Museo Sans 300';
+	font-size: 14px;
+}
+
+.tooltip3 .tooltiptext3::after {
+   content: "";
+   position: absolute;
+   top: 50%;
+   right: 100%;
+   margin-top: -5px;
+   border-width: 5px;
+   border-style: solid;
+   border-color: transparent rgba(0, 93, 166, 0.9) transparent transparent;
+}
+
+.tooltip3:hover .tooltiptext3 {
+	visibility: visible;
+}
+
+.tooltip4 {
+	position: relative;
+	cursor: pointer;
+}
+
+.tooltip3 .tooltiptext3::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent rgba(0, 93, 166, 0.9) transparent transparent;
+}
+
+.tooltip4 .tooltiptext4 {
+	visibility: hidden;
+	width: 120px;
+	background-color:rgba(0, 93, 166, 0.9);
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 8px 8px;
+	position: absolute;
+	z-index: 1;
+	top: -23px;
+	right: 82%;
+	font-family: 'Museo Sans 300';
+	font-size: 14px;
+}
+
+.tooltip4 .tooltiptext4::after {
+   content: "";
+   position: absolute;
+   top: 50%;
+   left: 100%;
+   margin-top: -5px;
+   border-width: 5px;
+   border-style: solid;
+   border-color: transparent transparent transparent rgba(0, 93, 166, 0.9);
+}
+
+.tooltip4:hover .tooltiptext4 {
+	visibility: visible;
+}
+
+#errordropListData label {
+    font-family: Museo Sans\ 300;
+    padding-left: 0;
+    text-align: left;
+}
+
+.instrucciones {
+    display: block;
+    width: 100%;
+    padding: 0;
+    height: 200px;
+    animation-duration: 7s;
+	animation-name: slidein;
+    font-size: 14px;
+    font-family: 'Museo Sans 100';
+    word-wrap: break-word;
+    margin: auto auto 20px;
+    line-height: 4;
+    color: red;
+    background-image: url(/assets/images/warning.svg);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 3.5%;
+    height: max-content;
+    text-align: left;
+
+    -webkit-animation-duration: 7s;
+    -webkit-animation-name: slidein;
+    word-wrap: break-word;
+}
+
+.isValidDropListData {
+	border-bottom: 1px solid red;
+}
+
+
+
+
+/*
+Material
+*/
+
+.mat-body, .mat-body-1, .mat-typography {
+    font: inherit;
+}
+

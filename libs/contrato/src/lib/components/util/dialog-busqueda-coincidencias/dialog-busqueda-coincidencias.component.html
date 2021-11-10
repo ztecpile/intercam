@@ -1,0 +1,153 @@
+<div class="header-ayuda">
+    <div mat-dialog-title class="titulo"> Busqueda Coincidencias </div>
+    <img class="btn ayuda-button" matTooltip="{{coincidencia}}" matTooltipClass="matTooltip" matTooltipPosition="right">
+</div>
+
+<div mat-dialog-content class="title-model">
+    <div class="container">
+        <div class="table-container-coincidencias">
+            <table mat-table [dataSource]="dataSourceConcidencia" class="table table-striped table-hover">
+                <ng-container matColumnDef="perId">
+                    <th mat-header-cell *matHeaderCellDef>Cliente</th>
+                    <td mat-cell *matCellDef="let element" [style]="{'color': chooseColor(element)}">
+                        {{ element.perId }}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="perNomCorto">
+                    <th mat-header-cell *matHeaderCellDef>Nombre</th>
+                    <td mat-cell *matCellDef="let element" [style]="{'color': chooseColor(element)}">
+                        {{ element.perNomCorto }}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="pefFNacimientoStr">
+                    <th mat-header-cell *matHeaderCellDef>Fec. Nacimiento</th>
+                    <td mat-cell *matCellDef="let element" [style]="{'color': chooseColor(element)}">
+                        {{ element.pefFNacimientoStr }}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="perRfc">
+                    <th mat-header-cell *matHeaderCellDef>{{configurarEtiqueta()}}</th>
+                    <td mat-cell *matCellDef="let element" [style]="{'color': chooseColor(element)}">
+                        {{ campoValor(element) }}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="perEstatus">
+                    <th mat-header-cell *matHeaderCellDef>Estatus</th>
+                    <td mat-cell *matCellDef="let element" [style]="{'color': chooseColor(element)}">
+                        {{ labelEstatus(element) }}
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsPer"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsPer" (click)="setValue(row)" (dblclick)="enviarResultadoItem(row)">
+                </tr>
+            </table>
+        </div>
+
+        <label class="no_concidencia_label">No. de Coincidencias {{arrCoincidencias != null && arrCoincidencias.length > 0 ? arrCoincidencias.length: ''}}</label>
+    </div>
+
+    <br>
+
+    <div class="container-fluid">
+        <label class="subtitulo_label" *ngIf="arrContratos != null && arrContratos.length > 0">Este cliente tiene los siguientes contratos</label>
+        <label class="subtitulo_label" *ngIf="arrContratos != null && arrContratos.length == 0">Este cliente todavía no tiene contratos</label>
+        <div class="row" *ngIf="arrContratos != null && arrContratos.length > 0">
+            <div class="col-sm-2 table-container-contratos">
+                <table mat-table [dataSource]="dataSourceContratos" class="table table-contratos table-striped table-hover">
+                    <ng-container matColumnDef="contrato">
+                        <th mat-header-cell *matHeaderCellDef>Cliente</th>
+                        <td mat-cell *matCellDef="let element">
+                            {{element.contrato.conId}}
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumnsCtros"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumnsCtros;" (click)="selectUsuContrato(row)"></tr>
+                </table>
+            </div>
+
+            <div *ngIf="contratoSel" class="col-sm-10">
+                <div id="divipoCtro" class="col-sm-10">
+                    <label class="ctro_label">Tipo Contrato</label>
+                    <label class="ctro_result_label">{{contratoSel.contrato.tipoContratoVO.tconDescripcion}}</label>
+                </div>
+
+                <div class="row">
+                    <div id="divcveLegada" class="col-sm-10">
+                        <label class="ctro_label">Contrato Legado</label>
+                        <label class="ctro_result_label">{{contratoSel.contrato.tmpCveLegada}}</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div id="divestatus" class="col-sm-10">
+                        <label class="ctro_label">Estatus</label>
+                        <label class="ctro_result_label">{{contratoSel.contrato.contratoEstatusVO.cesDescripcion}}</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div id="divperfil" class="col-sm-10">
+                        <label class="ctro_label">Perfil</label>
+                        <label class="ctro_result_label">{{contratoSel.perfil.perfDescripcion}}</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div id="divtipoDireccion" class="col-sm-10">
+                        <label class="ctro_label">Direccion</label>
+                        <label class="ctro_result_label">{{contratoSel.direccionContrato.tipoDireccionVO.tdiDescripcion}}</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div id="divcalle" class="col-sm-10">
+                        <label class="ctro_label">Calle</label>
+                        <label class="ctro_result_label">{{contratoSel.direccionContrato.dirCalle}} {{contratoSel.direccionContrato.dirNumeroExt}}</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div id="divcolonia" class="col-sm-10">
+                        <label class="ctro_label">Colonia</label>
+                        <label class="ctro_result_label">{{contratoSel.direccionContrato.dirColonia}}</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div id="divcp" class="col-sm-10">
+                        <label class="ctro_label">C.P.</label>
+                        <label class="ctro_result_label">{{contratoSel.direccionContrato.dirCodigoPostal}}</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div id="divejecutivo" class="col-sm-10">
+                        <label class="ctro_label">Ejecutivo</label>
+                        <label class="ctro_result_label">{{contratoSel.promotor.idVO.perIdVO.perNomCorto}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div mat-dialog-actions>
+    <button mat-button class="btn-img cerrar-button" [mat-dialog-close]="false">
+        <span class="tooltip">Cerrar</span>
+    </button>
+
+
+    <button *ngIf="!estatusBntAlta" mat-button class="btn-img alta-button-des">
+        <span class="tooltip">Alta de cliente</span>
+    </button>
+
+    <button *ngIf="estatusBntAlta" mat-button mat-dialog-close class="btn-img alta-button" (click)="enviarResultado(false)">
+        <span class="tooltip">Alta de cliente</span>
+    </button>
+</div>

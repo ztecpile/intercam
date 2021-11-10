@@ -1,0 +1,5 @@
+CREATE libs/contrato/src/lib/components/contratos/funcionarios/funcionario-abc/funcionario-abc.component.html
+CREATE libs/contrato/src/lib/components/contratos/funcionarios/funcionario-abc/funcionario-abc.component.spec.ts
+CREATE libs/contrato/src/lib/components/contratos/funcionarios/funcionario-abc/funcionario-abc.component.ts
+CREATE libs/contrato/src/lib/components/contratos/funcionarios/funcionario-abc/funcionario-abc.component.scss
+UPDATE libs/contrato/src/lib/components/contratos/alta.contratos.module.ts

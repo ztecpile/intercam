@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<div class="container">
+    <form [formGroup]="funcForm" class="formulario" autocomplete="off" idbForm>
+        <div class="row">
+            <div id="divcboTipoPersona" class="col-sm-3">
+                <div class="caja">
+                    <select formControlName="cboTipoPersona" [control]="getCtr('cboTipoPersona')" (ngModelChange)="changeTipoPer($event)" idbInput>
+                        <option value="">Seleccione</option>
+                        <option *ngFor="let tipoPer of arrTipoPer" [ngValue]="tipoPer.tpeClave">{{tipoPer.tpeDescripcion}}</option>
+                    </select>
+                </div>
+                <label appearance="fill" class="formulario__label">{{'Tipo Persona' | transloco}}</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="divcboTipoNegocio" class="col-sm-3">
+                <div class="caja">
+                    <select formControlName="cboTipoNegocio" [control]="getCtr('cboTipoNegocio')" (ngModelChange)="changeTipoNeg($event)" idbInput>
+                        <option value="">Seleccione</option>
+                        <option *ngFor="let tipoNeg of arrTipoContrato" [ngValue]="tipoNeg.tconId">{{tipoNeg.tconDescripcion}}</option>
+                    </select>
+                </div>
+                <label appearance="fill" class="formulario__label">{{'Tipo de Negocio' | transloco}}</label>
+            </div>
+        </div>
+
+        <div *ngIf="showTipoBanco" formGroupName="permFormBanco">
+            <div class="row">
+                <div id="divcboOpBanco" class="col-sm-3">
+                    <div class="caja">
+                        <select formControlName="cboOpBanco" [control]="getCtr('cboOpBanco','permFormBanco')" idbInput>
+                            <option value="">Seleccione</option>
+                            <option *ngFor="let tipo of arrOpcionBanco" [ngValue]="tipo.id">
+                                {{tipo.data}}
+                            </option>
+                        </select>
+                    </div>
+                    <label appearance="fill" class="formulario__label">{{'Tipo' | transloco}}</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- DATOS DE LA PERSONA -->
+        <div class="row">
+            <div id="divperNomOrRazonSocial" class="col-sm-3">
+                <input type="text" class="formulario__input toUpperCase" [control]="getCtr('perNomOrRazonSocial')" formControlName="perNomOrRazonSocial" idbInput>
+                <label class="formulario__label">{{lblNomRSocial | transloco}}</label>
+            </div>
+        </div>
+        <!-- DATO ESPECIFICO DE LA PERSONA MORAL -->
+        <div class="row" *ngIf="showPM">
+            <div id="divperNombreComercial" class="col-sm-3">
+                <input type="text" class="formulario__input toUpperCase" [control]="getCtr('perNombreComercial')" formControlName="perNombreComercial" idbInput>
+                <label class="formulario__label">{{'Nombre Comercial' | transloco}}</label>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="showPM">
+            <div id="divcboTipoSociedad" class="col-sm-3">
+                <div class="caja">
+                    <select formControlName="cboTipoSociedad" [control]="getCtr('cboTipoSociedad')" idbInput>
+                        <option value="" disabled>Seleccione</option>
+                        <option *ngFor="let tSoc of arrTSociedad" [value]="tSoc.tisNumero">{{tSoc.tisAbrevi}}</option>
+                    </select>
+                </div>
+                <label appearance="fill" class="formulario__label">{{'Tipo de Sociedad' | transloco}}</label>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="_isExtran">
+            <div id="divextr" class="col-sm-3">
+                <input type="text" class="formulario__input toUpperCase" [control]="getCtr('extr')" formControlName="extr" (ngModelChange)="textExtrInput($event)" idbInput>
+                <label class="formulario__label">{{textExtr | transloco}}</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="divperRfc" class="col-sm-3">
+                <input type="text" restrict="a-zA-Z0-9" class="formulario__input toUpperCase" [control]="getCtr('perRfc')" formControlName="perRfc" (ngModelChange)="txtInputChangeHandlerRFC($event)" idbInput>
+                <label class="formulario__label">{{lblRfcId | transloco}}</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="divcboPaisPersona" class="col-sm-3">
+                <div class="caja">
+                    <select formControlName="cboPaisPersona" [control]="getCtr('cboPaisPersona')" (ngModelChange)="changeNacionalidad($event)" idbInput>
+                        <option value="">Seleccione</option>
+                        <option *ngFor="let pai of arrPais" [value]="pai.paiClave">
+                            {{ getNacionalidad(pai) }}
+                        </option>
+                    </select>
+                </div>
+                <label appearance="fill" class="formulario__label">{{lblPiasPersona | transloco}}</label>
+            </div>
+        </div>
+        <!-- DATO ESPECIFICO DE LA PERSONA MORAL -->
+        <div class="row" *ngIf="showPM">
+            <div id="divcboPaisOr" class="col-sm-3">
+                <div class="caja">
+                    <select formControlName="cboPaisOr" [control]="getCtr('cboPaisOr')" idbInput>
+                        <option value="">Seleccione</option>
+                        <option *ngFor="let pai of arrPais" [value]="pai.paiClave">
+                            {{ getNacionalidad(pai) }}
+                        </option>
+                    </select>
+                </div>
+                <label appearance="fill" class="formulario__label">{{'País de Origen' | transloco}}</label>
+            </div>
+
+            <div id="divbtnAyuda" class="col-sm-3">
+                <img class="btn ayuda-button" matTooltip="{{toolTipAyuda}}" matTooltipClass="matTooltip" matTooltipPosition="right">
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row" *ngIf="showPF">
+            <div id="divcheckActEmpresarial" class="form-check">
+                <input class="form-check-input" type="checkbox" id="checkActEmpresarial" formControlName="checkActEmpresarial" [control]="getCtr('checkActEmpresarial')" (ngModelChange)="changeCheckActEmpresarial($event)" idbInput>
+                <label class="formulario_check_label" for="checkActEmpresarial">
+                    {{'Actividad Empresarial' | transloco}}
+                </label>
+            </div>
+        </div>
+
+        <div *ngIf="showFideicomiso" formGroupName="permFormFideicomiso">
+            <div class="row">
+                <div id="divfideicomiso" class="col-sm-3">
+                    <input type="text" class="formulario__input toUpperCase" [control]="getCtr('fideicomiso','permFormFideicomiso')" formControlName="fideicomiso" idbInput>
+                    <label class="formulario__label">{{'Nombre o Referencia del Fideicomiso' | transloco}}</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <hr>
+        </div>
+
+        <!-------- DATOS DIRECCION -------->
+        <div class="row">
+            <div id="divcboTipoDireccion" class="col-sm-3">
+                <div class="caja">
+                    <select [control]="getCtr('cboTipoDireccion')" formControlName="cboTipoDireccion" readonly idbInput>
+                        <option value="">Seleccione</option>
+                        <option *ngFor="let tipo of arrTiposDir; let i = index" [value]="tipo.tdiId" [selected]="i==indexTipoDir">{{tipo.tdiDescripcion}}</option>
+                    </select>
+                </div>
+                <label appearance="fill" class="formulario__label">{{'Tipo de Dirección' | transloco}}</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="divcalle" class="col-sm-3">
+                <input type="text" class="formulario__input toUpperCase" [control]="getCtr('calle')" formControlName="calle" idbInput>
+                <label class="formulario__label">{{'Calle' | transloco}}</label>
+            </div>
+
+            <div id="divnumExt" class="col-sm-3">
+                <input type="text" class="formulario__input toUpperCase" [control]="getCtr('numExt')" formControlName="numExt" idbInput>
+                <label class="formulario__label">{{'Num. Ext.' | transloco}}</label>
+            </div>
+
+            <div id="divnumInt" class="col-sm-3">
+                <input type="text" class="formulario__input toUpperCase" [control]="getCtr('numInt')" formControlName="numInt" idbInput>
+                <label class="formulario__label">{{'Num. Int.' | transloco}}</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="divcboPaisDireccion" class="col-sm-3">
+                <div class="caja">
+                    <select formControlName="cboPaisDireccion" [control]="getCtr('cboPaisDireccion')" (ngModelChange)="changePiasDireccion($event)" idbInput>
+                        <option value="">Seleccione</option>
+                        <option *ngFor="let pai of arrPais" [value]="pai.paiClave">{{pai.paiDescripcion}}</option>
+                    </select>
+                </div>
+                <label appearance="fill" class="formulario__label">{{'País' | transloco}}</label>
+            </div>
+
+            <div id="divcp" class="col-sm-3">
+                <input type="text" class="formulario__input" [control]="getCtr('cp')" (input)="buscarCP($event)" formControlName="cp" pattern="^\d*[0-9]\d*$" idbInput>
+                <label class="formulario__label">{{'C.P.' | transloco}}</label>
+            </div>
+
+            <div class="element-btn" *ngIf="showBtnBuscaCP" id="divBtnBuscarCP" class="col-sm-3">
+                <button class="btn-img buscar-btn" type="button" (click)="btnBuscarCP($event)"><span class="tooltip">Buscar</span></button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div *ngIf="showDirMX" id="divcboColonia" class="col-sm-3">
+                <div class="caja">
+                    <select formControlName="cboColonia" [control]="getCtr('cboColonia')" (ngModelChange)="changeColonia($event)" idbInput>
+                        <!--option value="">Seleccione</option>-->
+                        <option *ngFor="let colonia of arrColonia" [value]="colonia.colClave">{{colonia.colDescrip}}</option>
+                    </select>
+                </div>
+                <label appearance="fill" class="formulario__label">{{'Colinía' | transloco}}</label>
+            </div>
+
+            <div *ngIf="showDirMX" id="divciudad" class="col-sm-3">
+                <input type="text" class="formulario__input" [control]="getCtr('ciudad')" formControlName="ciudad" idbInput>
+                <label class="formulario__label">{{'Ciudad' | transloco}}</label>
+            </div>
+
+            <div *ngIf="showDirExt" id="divcolonia" class="col-sm-3">
+                <input type="text" class="formulario__input toUpperCase" [control]="getCtr('colonia')" formControlName="colonia" idbInput>
+                <label class="formulario__label">{{'Colonia' | transloco}}</label>
+            </div>
+
+            <div *ngIf="showDirExt" id="divcboCiudad" class="col-sm-3">
+                <div class="caja">
+                    <select formControlName="cboCiudad" [control]="getCtr('cboCiudad')" idbInput>
+                        <option value="">Seleccione</option>
+                        <option *ngFor="let ciudad of arrCuidad" [value]="ciudad.entClave">{{ciudad.entDescripcion}}</option>
+                    </select>
+                </div>
+                <label appearance="fill" class="formulario__label">{{'Ciudad' | transloco}}</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div *ngIf="showDirMX" id="divalcMun" class="col-sm-3">
+                <input type="text" class="formulario__input" [control]="getCtr('alcMun')" formControlName="alcMun" idbInput>
+                <label class="formulario__label">{{'Alc/Mun' | transloco}}</label>
+            </div>
+
+            <div id="diventidad" class="col-sm-3">
+                <input type="text" class="formulario__input" [control]="getCtr('entidad')" formControlName="entidad" idbInput>
+                <label class="formulario__label">{{'Entidad' | transloco}}</label>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <hr>
+        </div>
+        <!-------- DATOS ADICIONALES -------->
+        <div class="row">
+            <div id="divtelefono" class="col-sm-3">
+                <input type="tel" class="formulario__input" [control]="getCtr('telefono')" formControlName="telefono" idbInput>
+                <label class="formulario__label">{{'Teléfono' | transloco}}</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="divpaginaWeb" class="col-sm-3">
+                <input type="text" class="formulario__input" [control]="getCtr('paginaWeb')" formControlName="paginaWeb" idbInput>
+                <label class="formulario__label">{{'Página Web' | transloco}}</label>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <hr>
+        </div>
+        <!-------- DATOS EXCEPCIONES -------->
+        <h3>{{subProspecto}}</h3>
+        <div class="row">
+            <div id="divcboTpContratoNopros" class="col-sm-3">
+                <div class="caja">
+                    <select formControlName="cboTpContratoNopros" [control]="getCtr('cboTpContratoNopros')" (ngModelChange)="changeCboTpContratoNopros()" idbInput>
+                        <option value="">Seleccione</option>
+                        <option *ngFor="let tipoNeg of arrTipoContratoNoPsp" [ngValue]="tipoNeg.tconId">{{tipoNeg.tconDescripcion}}</option>
+                    </select>
+                </div>
+                <label appearance="fill" class="formulario__label">{{'Tipo de Negocio' | transloco}}</label>
+            </div>
+
+            <div id="divcboMotivo" class="col-sm-3">
+                <div class="caja">
+                    <select formControlName="cboMotivo" [control]="getCtr('cboMotivo')" (ngModelChange)="motivoNoProspectar($event)" idbInput>
+                        <option value="">Seleccione</option>
+                        <option *ngFor="let excep of arrExcepcionProspeccionAux" [ngValue]="excep.expId">{{excep.expNombre}}</option>
+                    </select>
+                </div>
+                <label appearance="fill" class="formulario__label">{{'Motivo' | transloco}}</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="divdescripcionNopros" class="col-sm-3">
+                <textarea class="formulario__input" formControlName="descripcionNopros" [control]="getCtr('descripcionNopros')" idbInput cols="30" rows="3"></textarea>
+                <label class="formulario__label">{{'Resumen' | transloco}}</label>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <hr>
+        </div>
+        <!-------- DATOS CONTACTO -------->
+        <div class="row">
+            <div id="divcontacto" class="col-sm-3">
+                <input type="text" class="formulario__input toUpperCase" [control]="getCtr('contacto')" formControlName="contacto" idbInput>
+                <label class="formulario__label">{{'Contacto' | transloco}}</label>
+            </div>
+
+            <div id="divcorreo" class="col-sm-3">
+                <input type="email" class="formulario__input" [control]="getCtr('correo')" formControlName="correo" idbInput>
+                <label class="formulario__label">{{'Correo' | transloco}}</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="divcomentarios" class="col-sm-3">
+                <textarea class="formulario__input" formControlName="comentarios" [control]="getCtr('comentarios')" idbInput cols="30" rows="4"></textarea>
+                <label class="formulario__label">{{'Comentarios' | transloco}}</label>
+            </div>
+        </div>
+
+        <div class="centrar_btn">
+            <button class="btn-img funcionarios-button" type="button" (click)="solicitudRevision()" *ngIf="isVisibleBtn"><span class="tooltip">Solicitud de Revisión</span></button>
+            <button class="btn-img save-button" type="submit" (click)="onSubmit()" *ngIf="btnGuardarProspecto"><span class="tooltip">Guardar</span></button>
+            <label *ngIf="stsProspectoVisible">{{stsProspecto}}</label>
+        </div>
+    </form>
+</div>

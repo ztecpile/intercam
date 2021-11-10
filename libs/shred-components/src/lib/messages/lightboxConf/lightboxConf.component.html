@@ -1,0 +1,31 @@
+<div id="lightboxConf" class="lightboxConf modal">
+    <div id="myPreloader" class="modal">
+        <div class="modal-content">
+            <div class="logo_preloader"></div>
+
+            <div *ngIf="etiquetaAMostrar == ''; then thenBlock else elseBlock"></div>
+                <ng-template #thenBlock>
+                    <div class="tit_modal_bold margin_bottom_precarga "><span class="tit_modal_light"> 
+                    ¿Seguro que quieres cancelar el proceso de Agregar Usuario?
+                    </span></div>
+                </ng-template>
+                <ng-template #elseBlock>
+                    <div class="tit_modal_bold margin_bottom_precarga "><span class="tit_modal_light"> 
+                        {{etiquetaAMostrar}}</span></div>
+                </ng-template>
+            
+            
+            
+                <div class="tit_modal_light_cesion margin_bottom_precarga margin_top_precarga">
+                No se guardarán los datos que hayas capturado.</div>
+            <div class="centrar_btn">
+                <button class="button  margin_right16" (click)="refuse()">NO
+				<div class="fa_rechazar" id="open"></div>
+				</button>
+                <button class="button " (click)="acept()">SI
+				<div class="fa_aceptar" id="open"></div>
+				</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+.intruccuones {
+    display: block;
+    width: 300px;
+    height: 270px;
+    animation-duration: 27s;
+    animation-name: slidein;
+    font-size: 14px;
+    font-family: 'Museo Sans 300';
+    word-wrap: break-word;
+    margin: auto;
+    line-height: 16px;
+}
+
+.intructxt_uno {
+    font-family: 'Museo Sans 700';
+    text-align: center;
+}
+
+strong {
+    font-size: 14px;
+    font-family: 'Museo Sans 700';
+}
+
+.step {
+    padding-left: 27px;
+}
+
+.ico_paloma {
+    background-image: url(images/paloma_verde.svg);
+    background-repeat: no-repeat;
+    background-position: left 3px;
+    background-size: 4%;
+}

@@ -1,0 +1,38 @@
+<div class="idb_chips">
+
+<!--
+-->
+    <mat-chip-list aria-label="Cuentas">
+        <div>
+            <mat-label class="formulario__label" [ngClass]="{fijar: cuentasRetiroAlta.length>0}">{{'beneficiarios.nacionales.selectAccounts' | transloco}}</mat-label>
+            <mat-chip *ngFor="let cuentaRetiroAlta of sortChips;" [removable]="true"
+                (removed)="delete(cuentaRetiroAlta.cuenta)">
+                <div class="chip_item">
+                    <div><span class="txtBlack">{{'beneficiarios.nacionales.company' | transloco}}</span>
+                        : <span class="txtEmpresa">{{cuentaRetiroAlta.nombre}}</span></div>
+                    <div><span class="txtBlack">{{'beneficiarios.nacionales.account' | transloco}}</span>
+                        : <span class="txtCuenta">{{cuentaRetiroAlta.cuenta}}</span></div>
+                </div>
+                <div class="fa_cerrar_chip" matChipRemove></div>
+            </mat-chip>
+        </div>
+    </mat-chip-list>
+
+    <mat-list>
+        <mat-list-item *ngFor="let cuentaRetiro of sortList;let indexOfelement=index;">
+            <div class="list_item border_bottom1" (click)="add(cuentaRetiro.cuenta)">
+                <div><span class="txtBlack">{{'beneficiarios.nacionales.company' | transloco}}</span>: <span class="txtEmpresa">{{cuentaRetiro.nombre}}</span></div>
+                <div><span class="txtBlack">{{'beneficiarios.nacionales.account' | transloco}}</span>: <span class="txtCuenta">{{cuentaRetiro.cuenta}}</span></div>
+            </div>
+        </mat-list-item>
+    </mat-list>
+
+<!--
+    <md-list>
+        <md-list-item *ngFor="let cuenta of cuentas;let indexOfelement=index;">
+            <div>{{cuenta.nombre}}</div>
+            <div>{{cuenta.cuenta}}</div>
+        </md-list-item>
+    </md-list>
+-->
+</div>

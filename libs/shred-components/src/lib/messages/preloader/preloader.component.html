@@ -1,0 +1,13 @@
+<div id="myPreloader" class="modal" *ngIf="loading"> 
+    <div class="modal-content">
+        <div class="logo_preloader"></div>
+        <div class="tit_modal_bold margin_bottom_precarga">{{ 'preloader.title-strong' | transloco}} <span class="tit_modal_light">{{ 'preloader.title' | transloco}}</span></div>
+        <div class="centrar_preloader">
+            <div class="precarga">
+                <div class="cargar" [ngStyle]="{width: preloadWidth}">
+                    <div class="txt_cargar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

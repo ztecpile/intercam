@@ -1,0 +1,28 @@
+ul.breadcrumb {
+  padding: 10px 16px;
+  list-style: none;
+  font-family: "Museo Sans 700";
+  text-transform: uppercase;
+}
+
+ul.breadcrumb li {
+  display: inline;
+  font-size: 12px;
+}
+
+ul.breadcrumb li + li:before {
+  padding: 8px;
+  color: #a8a8a8;
+  content: "/\00a0";
+}
+
+ul.breadcrumb li a {
+  color: #658d3d;
+  text-decoration: none;
+}
+
+ul.breadcrumb li a:hover {
+  color: #658d3d;
+  opacity: 0.5;
+  text-decoration: underline;
+}

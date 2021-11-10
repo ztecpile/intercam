@@ -1,0 +1,60 @@
+<button mat-button [matMenuTriggerFor]="menu" class="btn-menu logo-button-menu"></button>
+
+<mat-menu class="mat-menu-panel" #menu="matMenu">
+    <ng-container *ngFor="let menuItem of menuArray">
+        <span *ngIf="menuItem.children && menuItem.children.length > 0">
+                <button mat-menu-item [matMenuTriggerFor]="sub_menu">
+                    <img class="img-menu" [src]="getUrlButton(menuItem.prcIcono)"/>
+                    {{ menuItem.label }}
+                </button>
+                <mat-menu #sub_menu="matMenu">
+                    <span *ngFor="let submenuItem of menuItem.children">
+                        <span *ngIf="submenuItem.children && submenuItem.children.length > 0">
+                            <button mat-menu-item [matMenuTriggerFor]="sub_menu_2">
+                                <img class="img-menu" [src]="getUrlButton(submenuItem.prcIcono)"/>
+                                {{ submenuItem.label }}
+                            </button>
+                            <mat-menu #sub_menu_2="matMenu">
+                                <span *ngFor="let submenuItem2 of submenuItem.children">
+                                    <span *ngIf="submenuItem2.children && submenuItem2.children.length > 0">
+                                        <button mat-menu-item [matMenuTriggerFor]="sub_menu_3">
+                                            <img class="img-menu" [src]="getUrlButton(submenuItem2.prcIcono)"/>
+                                            {{ submenuItem2.label }}
+                                        </button>
+                                        <mat-menu #sub_menu_3="matMenu">
+                                            <button mat-menu-item *ngFor="let submenuItem3 of submenuItem2.children" (click)="routerLink(submenuItem3,$event)">
+                                                <img class="img-menu" [src]="getUrlButton(submenuItem3.prcIcono)"/>
+                                                {{ submenuItem3.label }}
+                                            </button>
+                                        </mat-menu>
+                                    </span>
+        <span *ngIf="!submenuItem2.children || submenuItem2.children.length == 0">
+                                        <button mat-menu-item (click)="routerLink(submenuItem2,$event)">
+                                            <img class="img-menu" [src]="getUrlButton(submenuItem2.prcIcono)"/>
+                                            {{ submenuItem2.label }}
+                                        </button>
+                                    </span>
+        </span>
+</mat-menu>
+</span>
+<span *ngIf="!submenuItem.children || submenuItem.children.length == 0">
+                            <button mat-menu-item (click)="routerLink(submenuItem,$event)">
+                                <img class="img-menu" [src]="getUrlButton(submenuItem.prcIcono)"/>
+                                {{ submenuItem.label }}
+                                </button>
+                        </span>
+</span>
+</mat-menu>
+</span>
+<span *ngIf="!menuItem.children || menuItem.children.length == 0">
+                <button mat-menu-item (click)="routerLink(menuItem,$event)">
+                    <img class="img-menu" [src]="getUrlButton(menuItem.prcIcono)"/>
+                    {{ menuItem.label }}
+                </button>
+            </span>
+</ng-container>
+</mat-menu>
+
+<div [ngClass]="{'usuario': !isPromotror,'usuario-activo': isPromotror}">{{usuario}}&nbsp;&nbsp;&nbsp;</div>
+<div *ngIf="cliente != null && cliente != ''" [ngClass]="{'cliente': !isCliente,'cliente-activo': isCliente}">/&nbsp;&nbsp;&nbsp;{{cliente}} <button class="btn-img cerrar-button" type="button" (click)="closeCliente()"></button></div>
+<div class="nombre_eje" *ngIf="usuarioVO != null">{{usuarioVO.perNomCorto}}</div>

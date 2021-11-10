@@ -1,0 +1,52 @@
+:host pre {
+  border-radius: 4px;
+  padding: 1rem;
+  border-color: gray;
+  border: 1px solid;
+  position: relative;
+  vertical-align: middle;
+  overflow-x: auto;
+}
+
+:host button {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  z-index: 2;
+  cursor: pointer;
+  border: 1px solid transparent;
+  padding: 5px;
+  color: #fff;
+  background-color: transparent;
+  transition: all 0.25s ease-out;
+  font-size: 12px;
+}
+
+:host code {
+  font-size: 13px;
+  color: #f1f1f1;
+}
+
+.html-tag {
+  color: #0069e0;
+}
+
+.with-quotes {
+  color: #78bd65;
+}
+
+.with-brackets {
+  color: #ffeb38;
+}
+
+.with-parentheses {
+  color: #ffa137;
+}
+
+.between-parentheses {
+  color: #61cdff;
+}
+
+.equal {
+  color: #61c0ff;
+}

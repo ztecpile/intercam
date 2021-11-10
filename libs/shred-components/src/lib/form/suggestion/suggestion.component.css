@@ -1,0 +1,30 @@
+.element_search {
+    font-family: "Museo Sans 500";
+    font-size: 15px;
+    color: #7b7b7b;
+    height: 38px;
+    display: flex;
+    align-items: center;
+}
+
+.element_search:hover {
+    background-color: #f7fdf1;
+    cursor: pointer;
+}
+
+.close_search {
+    text-align: right;
+    margin-right: 20px;
+    margin-top: -35px;
+    margin-bottom: 20px;
+    font-family: "Museo Sans 500";
+    font-size: 15px;
+    color: #7b7b7b;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.content_search{
+    background-color: #ffffff;
+    border: solid 1px #cccccc;
+}

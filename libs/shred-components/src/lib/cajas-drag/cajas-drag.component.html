@@ -1,0 +1,80 @@
+<div cdkDropListGroup class="ancho_caja_874 display_flex">
+
+  <div class="caja_Izq ancho_caja_400">
+    <div class="subtitpeque_cajas_bold margin_bottom15">{{data.txtTitleAvailable | transloco}}
+      <span class="subtitpeque_cajas_light"> {{data.txtTitleAvailableLight | transloco}}</span>
+    </div>
+    <div
+      cdkDropList
+      [cdkDropListData]="disponibles"
+      class="sale_caja"
+      (cdkDropListDropped)="drop($event)">
+      <div [ngClass]="{ 'drag' : !item.Descripcion, 'drag_cuentas' : item.Descripcion, 'select' : item.select}" *ngFor="let item of disponibles;let indexOfelement=index;"
+        (click)='clickSelect(indexOfelement, $event, "disponibles")'
+        (dblclick)='dblclickMove(indexOfelement, "disponibles", "agregados")'
+        cdkDrag>
+        <div class="txt_cuenta">{{item.Nombre | transloco}}</div>
+        <div *ngIf="item.Descripcion" class="txt_razon_soacial">{{item.Descripcion | transloco}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="caja_flechas_4botones flota_izq">
+    <div *ngIf="data.txtAssignAll; else elseBlock" class="margin-tool">
+      <div class="fa_flecha_doble_derecha margin_bottom24"
+        (click)="assignAll()"
+        [idbTooltip]="data.txtAssignAll" [placement]="'right'">
+      </div>
+    </div>
+    <ng-template #elseBlock><div class="margin_bottom44"></div></ng-template>
+    <div *ngIf="data.txtAssignCount" class="tooltip3 margin-tool">
+      <div class="fa_flechaderecha margin_bottom24"
+        (click)="assignSelected()"
+        [idbTooltip]="data.txtAssignCount" [placement]="'right'">
+      </div>
+    </div>
+    <div *ngIf="data.txtUnassignCount" class="tooltip4 margin-tool">
+      <div class="fa_flechaizquierda margin_bottom24"
+        (click)="unassignSelected()"
+        [idbTooltip]="data.txtUnassignCount" [placement]="'left'">
+      </div>
+    </div>
+    <div *ngIf="data.txtUnassignAll" class="tooltip4 margin-tool">
+      <div class="fa_flecha_doble_izquierda"
+        (click)="unassignAll()"
+        [idbTooltip]="data.txtUnassignAll" [placement]="'left'">
+      </div>
+    </div>
+  </div>
+  
+  <div id="dropListData" class="caja_Izq ancho_caja_400">
+    <div class="subtitpeque_cajas_bold margin_bottom15">{{data.txtTitleAssigned | transloco}}
+      <span class="subtitpeque_cajas_light"> {{data.txtTitleAssignedLight | transloco}}</span>
+    </div>
+    <div [ngClass]="{'isValidDropListData': !isValid}"
+      cdkDropList
+      [cdkDropListData]="agregados"
+      class="cae_caja"
+      (cdkDropListDropped)="drop($event)">
+      <div [ngClass]="{ 'drag' : !item.Descripcion, 'drag_cuentas' : item.Descripcion, 'select' : item.select}" *ngFor="let item of agregados;let indexOfelement=index;"
+        (click)='clickSelect(indexOfelement, $event, "agregados")'
+        (dblclick)='dblclickMove(indexOfelement, "agregados", "disponibles")'
+        cdkDrag>
+        <div>
+          <div class="txt_cuenta">{{item.Nombre | transloco}}</div>
+          <div *ngIf="item.Descripcion" class="txt_razon_soacial">{{item.Descripcion | transloco}}</div>
+          <div *ngIf="restringe_fechas_horas" class="drag_img_pop operaFechaInhabil" (click)="restringeHoras(indexOfelement)"
+            idbRestringeFechaHora [data]="item.dataRestricciones" [titulos]="titulosRestricciones">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="errordropListData" *ngIf="!isValid">
+      <div _ngcontent-rcp-c58="" class="instrucciones">
+        <label _ngcontent-rcp-c58="" class="intructxt_uno">{{data.isValid | transloco}}</label>
+      </div>
+    </div>
+  </div>
+
+</div>
+  

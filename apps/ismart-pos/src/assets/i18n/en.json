@@ -1,0 +1,81 @@
+{
+    "Language": {
+        "English": "English",
+        "Spanish": "Spanish",
+        "Label": "Language"
+    },
+    "Menu": {
+        "Users": "Users"
+    },
+    "Form": {
+        "Names": "Names",
+        "Mail": "Mail",
+        "Phone": "Phone",
+        "Message": "Message",
+        "Option1": "Option 1",
+        "Option2": "Option 2",
+        "Date": "Date",
+        "Search": "Search",
+        "Password": "Password"
+    },
+    "Button": {
+        "Active": "Active",
+        "Inactive": "Inactive",
+        "Change": "Change",
+        "Show": "Show"
+    },
+    "Alert": {
+        "Success": "¡Success!",
+        "Info": "¡Info!",
+        "Warning": "¡Warning!",
+        "Danger": "¡Danger!",
+        "Hello": "Hello {{ name }}"
+    },
+    "LightBox": {
+        "Accept": "Accept",
+        "Refuse": "Refuse"
+    },
+    "Validation": {
+        "Required": "The field is required",
+        "Email": "The email is incorrect",
+        "Pattern": "The field is incorrect",
+        "CustomValidator": "The field only can be 9"
+    },
+    "password_instructions": {
+        "Title": "Your new password requires",
+        "Step1": "Minimum 8 characters",
+        "Step2": "Alphanumeric key uppercase, lowercase and numbers ",
+        "Step2_strong": "(at least a number and a letter)",
+        "Step3": "Must not contain 3 consecutive or equal characters ",
+        "Step3_strong": "ABC, 123, 111",
+        "Step4": "Must contain at least one special character ",
+        "Step4_strong": "´*/@#%!&",
+        "Step5": "No debe contener teclas contiguas ",
+        "Step5_strong": "(on the keyboard Ej. AS, FG, OP, etc.)"
+    },
+    "Cierre": {
+        "tittle": "Your password was changed.",
+        "message": "Enviaremos la confimación de tu contraseña al correo electrónico:",
+        "actionSuccess": "Back to home"
+    },
+    "Tables": {
+        "CountName": "ACCOUNT / BUSINESS NAME",
+        "Balance": "END OF DAY BALANCE",
+        "Deposits": "AMOUNT",
+        "Payments": "PAYMENTS"
+    },
+    "Error": {
+        "Error401": "ERROR 401",
+        "Error403": "ERROR 403",
+        "Error404": "ERROR 404",
+        "Subtitle": "Sorry, the page you are looking for does not exist",
+        "ErrorPossible": "Possible mistakes:",
+        "ErrorMsg1": "Problems in your internet connection",
+        "ErrorMsg2": "Page not exist",
+        "ErrorMsg3": "The page does not exist",
+        "Return": "Back to home"
+    },
+    "Preload": {
+        "Title": " The load is in "
+    }
+}

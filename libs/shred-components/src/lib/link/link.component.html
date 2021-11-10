@@ -1,0 +1,17 @@
+<a
+  class="txt-link"
+  [style.font-size]="fontSize"
+  *ngIf="!native"
+  [routerLink]="[url]"
+>
+  {{ text | transloco }}
+</a>
+<a
+  class="txt-link"
+  [style.font-size]="fontSize"
+  *ngIf="native"
+  href="{{ url }}"
+  target="_blank"
+>
+  {{ text | transloco }}
+</a>

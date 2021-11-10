@@ -1,0 +1,139 @@
+table {
+    border-collapse: collapse;
+    border-collapse: separate;
+    box-sizing: border-box;
+    border-spacing: 0;
+    border: rgb(172, 167, 167) 1px solid;
+    background-color: #ffffff00 !important;
+    box-shadow: none !important;
+    display: table;
+    font-family: 'Museo Sans 300';
+    width: 100%;
+}
+
+.table-in {
+    border: 0px;
+    padding: 8px 8px 10px 0px;
+}
+
+.td-in {
+    border: rgb(172, 167, 167) 1px solid !important;
+    border-spacing: 0;
+}
+
+table td,
+table th {
+    color: black;
+    padding: 12px 0px 12px 12px;
+    text-align: center;
+    vertical-align: text-top;
+}
+
+table td {
+    font-size: 12px;
+}
+
+table th {
+    font-size: 11px;
+    font-weight: bold;
+    font-family: 'Museo Sans 900';
+    text-transform: uppercase;
+}
+
+table tr {
+    border-bottom-width: 0px !important;
+}
+
+table tbody {
+    color: black !important;
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+.hedaer-prospeccion {
+    background-color: rgb(75, 65, 172);
+    color: rgb(252, 252, 252) !important;
+    width: 25%;
+}
+
+.hedaer-pros {
+    background-color: rgb(75, 65, 172);
+    color: rgb(252, 252, 252) !important;
+    width: 25%;
+    border: 1px solid black;
+}
+
+.hedaer-prospecciones {
+    background-color: rgb(245, 138, 16);
+    color: rgb(252, 252, 252) !important;
+    width: 25%;
+    border: 1px solid black;
+}
+
+.hedaer-neg {
+    background-color: rgb(126, 38, 38);
+    color: rgb(252, 252, 252) !important;
+    width: 50%;
+}
+
+.hedaer-ngc {
+    background-color: rgb(126, 38, 38);
+    color: rgb(252, 252, 252) !important;
+    width: 50%;
+    border: 1px solid black;
+}
+
+.hedaer-cierre {
+    background-color: rgb(62, 106, 49);
+    color: rgb(252, 252, 252) !important;
+    width: 25%;
+}
+
+.hedaer-crr {
+    background-color: rgb(62, 106, 49);
+    color: rgb(252, 252, 252) !important;
+    width: 25%;
+    border: 1px solid black;
+}
+
+.sub-h-cont {
+    background-color: rgb(223, 221, 241);
+    width: 25%;
+}
+
+.sub-h-vis {
+    background-color: rgb(197, 164, 164);
+    width: 25%;
+}
+
+.sub-h-alta {
+    background-color: rgb(177, 121, 121);
+    width: 25%;
+}
+
+.sub-h-cierre {
+    background-color: rgb(174, 204, 165);
+    width: 25%;
+}
+
+.sub-h-row {
+    background-color: rgb(255, 255, 255);
+    width: 20%;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+}
+
+.flex-cont {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.border {
+    background-color: rgb(255, 255, 255);
+    width: 25%;
+    border: 1px solid black;
+}

@@ -1,0 +1,49 @@
+.clock {
+    display: grid;
+    grid-gap: 3px 6px;
+    /* grid-template-columns: auto auto auto; */
+    justify-content: right;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+    width: 100%;
+}
+
+.clock p {
+    color: #666;
+    font-size: 2rem;
+}
+
+.hours {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.horas {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: baseline;
+}
+
+span {
+    color: #777777;
+}
+
+.mishoras {
+    font-weight: bold;
+    font-size: 5rem;
+}
+
+.ampm {
+    font-size: 1.2rem;
+    font-weight: 100;
+}
+
+.segundos {
+    width: 100%;
+    text-align: right;
+    font-size: 2.6rem;
+    font-size: 100;
+}

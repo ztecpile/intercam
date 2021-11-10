@@ -1,0 +1,931 @@
+.btn-img {
+    padding: 17px 17px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px ridge #a4ca7e;
+    color: #658d3d;
+    margin: 4px 2px;
+    position: relative;
+    display: inline-block;
+}
+
+.btn-img:hover {
+    background-color: #f1f1f1;
+    padding: 16px 16px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border: 2px solid #658d3d;
+    color: #658d3d;
+    opacity: 0.8;
+}
+
+.btn-img:disabled {
+    cursor: not-allowed !important;
+    background-color: #f1f1f1;
+    padding: 17px 17px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-family: 'Museo Sans 700';
+    border: 2px solid #658d3d;
+    color: #658d3d;
+    text-transform: uppercase;
+    opacity: 0.5;
+}
+
+
+/* Tooltip text */
+
+.btn-img .tooltip {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgb(0, 0, 0);
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+
+/* Tooltip arrow */
+
+.btn-img .tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgb(73, 73, 73) transparent transparent transparent;
+}
+
+
+/* Show the tooltip text when you mouse over the tooltip container */
+
+.btn-img:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/* *************************************************** Imagenes ****************************************************** */
+
+.save-button {
+    background-image: url(../img/buttons/salvar.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.save-button-des {
+    background-image: url(../img/buttons/salvarDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.proceso-button {
+    background-image: url(../img/buttons/procesar.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.proceso-button-des {
+    background-image: url(../img/buttons/procesarDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.notifica-button {
+    background-image: url(../img/buttons/documentos.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.notifica-button-des {
+    background-image: url(../img/buttons/documentosDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.buscar-btn {
+    background-image: url(../img/buttons/buscar.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.buscar-btn-des {
+    background-image: url(../img/buttons/buscarDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.actualiza-button {
+    background-image: url(../img/buttons/actualizar.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.abrir-btn {
+    background-image: url(../img/buttons/abrir.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.regresar-btn {
+    background-image: url(../img/buttons/regresar.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.continuar-btn {
+    background-image: url(../img/buttons/continuar.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.actualiza-button-deds {
+    background-image: url(../img/buttons/actualizarDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.update-button {
+    background-image: url(../img/buttons/actualizar.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.update-button-des {
+    background-image: url(../img/buttons/actualizarDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.find-button {
+    background-image: url(../img/buttons/busca.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.find-button-des {
+    background-image: url(../img/buttons/buscaDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.stop-button {
+    background-image: url(../img/buttons/suspender.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.stop-button-des {
+    background-image: url(../img/buttons/suspenderDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.traspaso-button {
+    background-image: url(../img/buttons/traspaso.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.traspaso-button-des {
+    background-image: url(../img/buttons/traspasoDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.canceloper-button {
+    background-image: url(../img/buttons/cancelaroperacion.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.canceloper-button-des {
+    background-image: url(../img/buttons/cancelaroperacionDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.accept-button {
+    background-image: url(../img/buttons/aceptar.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.accept-button-des {
+    background-image: url(../img/buttons/aceptarDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.closeop-button {
+    background-image: url(../img/buttons/CERRAROPERACION.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.closeop-button-des {
+    background-image: url(../img/buttons/CERRAROPERACIONDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.refresh-button {
+    background-image: url(../img/buttons/actualizar.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.refresh-button-des {
+    background-image: url(../img/Buttons/actualizarDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.reenvio-correo-button {
+    background-image: url(../img/reenvio_correo.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.btn-cierre-rapida {
+    background-image: url(../img/buttons/diskette.png);
+    background-repeat: no-repeat;
+    background-position: left;
+    height: 40px;
+    width: 193px;
+    background-position: left;
+    background-color: rgb(5, 48, 179);
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px ridge #a4ca7e;
+}
+
+.cancel-op-button {
+    background-image: url(../img/buttons/cancelar.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.addcotiza-op-button {
+    background-image: url(../img/buttons/addcotiza.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.contrato-button {
+    background-image: url(../img/contrato.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.contrato-button-des {
+    background-image: url(../img/contratoDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.enviar-correo-button {
+    background-image: url(../img/buttons/sendEmail.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.enviar-correo-button-des {
+    background-image: url(../img/buttons/sendEmailDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.alta-button {
+    background-image: url(../img/buttons/alta.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.alta-button-des {
+    background-image: url(../img/buttons/altaDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.eliminar-button {
+    background-image: url(../img/buttons/eliminar.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.eliminar-button-des {
+    background-image: url(../img/buttons/eliminarDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.deshacer-button {
+    background-image: url(../img/buttons/deshacer.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.deshacer-button-des {
+    background-image: url(../img/buttons/deshacerDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.contrato-button {
+    background-image: url(../img/buttons/contrato.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.contrato-button-des {
+    background-image: url(../img/buttons/contratoDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.canjes-button {
+    background-image: url(../img/buttons/canjes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.canjes-button-des {
+    background-image: url(../img/buttons/canjesDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.preautorizar-button {
+    background-image: url(../img/buttons/preautorizar.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.preautorizar-button-des {
+    background-image: url(../img/buttons/preautorizarDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.editar-button {
+    background-image: url(../img/buttons/editar.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.editar-button-des {
+    background-image: url(../img/buttons/editarDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.cumplimiento-button {
+    background-image: url(../img/buttons/cumplimiento.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.cumplimiento-button-des {
+    background-image: url(../img/buttons/cumplimientoDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.enmienda-button {
+    background-image: url(../img/buttons/enmienda.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.enmienda-button-des {
+    background-image: url(../img/buttons/enmiendaDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.excel-button {
+    background-image: url(../img/buttons/descargarExcel.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.excel-button-des {
+    background-image: url(../img/buttons/descargarExcelDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.relacion-button {
+    background-image: url(../img/buttons/relacion.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.btn-pagos {
+    background-image: url(../img/buttons/pagos.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.btn-pagos-des {
+    background-image: url(../img/buttons/pagosDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+
+/* *************************************************** Imagenes ****************************************************** */
+
+.enviar-correo-button-des {
+    background-image: url(../img/buttons/sendEmailDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.cerrar-button {
+    background-image: url(../img/buttons/cerrar.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.deshacer-button {
+    background-image: url(../img/buttons/deshacer.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.lista-tareas-button {
+    background-image: url(../img/buttons/listarcontreasig.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.lista-tareas-button-des {
+    background-image: url(../img/buttons/listarcontreasigDes.png);
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.enviar-correo-button-des {
+    background-image: url(../img/buttons/sendEmailDes.png);
+    background-repeat: no-repeat;
+    height: 20px;
+    width: 16px;
+    background-position: center;
+}
+
+.cerrar-button {
+    background-image: url(../img/buttons/cerrar.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.ayuda-button {
+    background-image: url(../img/buttons/ayuda_a.png);
+    background-repeat: no-repeat;
+    height: 20px;
+    width: 16px;
+    background-position: center;
+}
+
+.funcionarios-button {
+    background-image: url(../img/buttons/funcionarios.png);
+    background-repeat: no-repeat;
+    height: 20px;
+    width: 16px;
+    background-position: center;
+}
+
+.observaciones-button {
+    background-image: url(../img/buttons/observaciones.png);
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.cerrar-button {
+    background-image: url(../img/buttons/cerrar.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.funcionarios-button-des {
+    background-image: url(../img/buttons/funcionariosDes.png);
+    background-repeat: no-repeat;
+    height: 20px;
+    width: 16px;
+    background-position: center;
+}
+
+.observaciones-button-des {
+    background-image: url(../img/buttons/observacionesDes.png);
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.deshacer-button {
+    background-image: url(../img/buttons/deshacer.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.doc-red-button {
+    background-image: url(../img/buttons/doc_red.png);
+    background-repeat: no-repeat;
+    height: 20px;
+    width: 16px;
+    background-position: center;
+}
+
+.recibe-doc-button {
+    background-image: url(../img/buttons/recdoc.png);
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.alta-btn {
+    background-image: url(../img/buttons/alta.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center
+}
+
+.eliminar-btn {
+    background-image: url(../img/buttons/eliminar.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center
+}
+
+.retomar-btn {
+    background-image: url(../img/buttons/retomar.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center
+}
+
+.pagos-btn {
+    background-image: url(../img/buttons/pagos.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center
+}
+
+.deshacer-button-des {
+    background-image: url(../img/buttons/deshacerDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.doc-gris-button {
+    background-image: url(../img/buttons/doc_gris.png);
+    background-repeat: no-repeat;
+    height: 20px;
+    width: 16px;
+    background-position: center;
+}
+
+.recibe-doc-button-des {
+    background-image: url(../img/buttons/recdocDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.deshacer-button-des {
+    background-image: url(../img/buttons/deshacerDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+
+/* *************************************************** Imagenes ****************************************************** */
+
+.pdf-button {
+    background-image: url(../img/buttons/pdf.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.excel-button {
+    background-image: url(../img/buttons/descargarExcel.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.imagenGris {
+    overflow: hidden;
+    background-image: url(../img/gris.png);
+    width: 10px;
+    height: 10px;
+    background-position: center;
+}
+
+.imagenVerde {
+    overflow: hidden;
+    background-image: url(../img/verde.png);
+    width: 10px;
+    height: 10px;
+    background-position: center;
+}
+
+.imagenVerdeClaro {
+    overflow: hidden;
+    background-image: url(../img/verde_claro.png);
+    width: 10px;
+    height: 10px;
+    background-position: center;
+}
+
+.imagenAzul {
+    overflow: hidden;
+    background-image: url(../img/azul.png);
+    width: 10px;
+    height: 10px;
+    background-position: center;
+}
+
+.imagenRojo {
+    overflow: hidden;
+    background-image: url(../img/rojo.png);
+    width: 10px;
+    height: 10px;
+    background-position: center;
+}
+
+.imagenNaranja {
+    overflow: hidden;
+    background-image: url(../img/naranja.png);
+    width: 10px;
+    height: 10px;
+    background-position: center;
+}
+
+.imagenAmarillo {
+    overflow: hidden;
+    background-image: url(../img/amarillo.png);
+    width: 10px;
+    height: 10px;
+    background-position: center;
+}
+
+.imagenMorado {
+    overflow: hidden;
+    background-image: url(../img/morado.png);
+    width: 10px;
+    height: 10px;
+    background-position: center;
+}
+
+.compra-button {
+    background-image: url(../img/buttons/compra.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.compra-button-des {
+    background-image: url(../img/buttons/compraDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.remesa-button {
+    background-image: url(../img/buttons/remesa.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.remesa-button-des {
+    background-image: url(../img/buttons/remesaDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.observa-button {
+    background-image: url(../img/buttons/observaciones.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.observa-button-des {
+    background-image: url(../img/buttons/observacionesDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.buscarPkl-button {
+    background-image: url(../img/buttons/buscarPkl.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.rechazar-button {
+  background-image: url(../img/buttons/rechazar.png);
+  background-repeat: no-repeat;
+  height: 16px;
+  width: 16px;
+  background-position: center;
+}
+.compra-btn {
+    background-image: url(../img/buttons/compra.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.editar-btn {
+    background-image: url(../img/buttons/editar.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.pagos-btn {
+    background-image: url(../img/buttons/pagos.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}

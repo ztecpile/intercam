@@ -1,0 +1,127 @@
+<div mat-dialog-title class="titulo"> Solicitud de Revisión </div>
+
+<div mat-dialog-content class="title-model">
+    <div class="container">
+        <form [formGroup]="funcForm" class="formulario" autocomplete="off" idbForm>
+            <div id="divcontrato" class="row" *ngIf="conId > 0">
+                <label class="lbl_datos">Contrato</label>
+                <input type="text" class="lbl_valor" [control]="getCtr('contrato')" formControlName="contrato" idbInput>
+            </div>
+
+            <div id="divnombre" class="row">
+                <label class="lbl_datos">Nombre del Titular</label>
+                <input type="text" class="lbl_valor" [control]="getCtr('nombre')" formControlName="nombre" idbInput>
+            </div>
+
+            <div id="divduenio" class="row">
+                <label class="lbl_datos">Dueño</label>
+                <input type="text" class="lbl_valor" [control]="getCtr('duenio')" formControlName="duenio" idbInput>
+            </div>
+            <br>
+            <label class="lbl_criterio">Favor de seleccionar el motivo por el cual envia al cliente a análisis de área de Cumplimiento</label>
+            <hr>
+
+            <div class="row">
+                <div id="divcmbListaPB" class="col-sm-11">
+                    <input type="text" class="lbl_criterio" for="cmbListaPB" [control]="getCtr('listaPerBloq')" formControlName="listaPerBloq" idbInput>
+                    <div class="caja-select">
+                        <select formControlName="cmbListaPB" [control]="getCtr('cmbListaPB')" (ngModelChange)="cmbListaPB_changeHandler($event)" idbInput>
+                            <option value="">Seleccione</option>
+                            <option *ngFor="let crit1 of lstCatCriterio1" [ngValue]="crit1.craId">
+                                {{crit1.craDescripcionCorta}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="divbtnAyuda" class="col-sm-1 header-ayuda">
+                    <img class="btn ayuda-button" data-toggle="tooltip" data-placement="top" title="{{craDescripcion1}}">
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+                <div id="divcmbDocsS" class="col-sm-11">
+                    <input type="text" class="lbl_criterio" for="cmbDocsS" [control]="getCtr('DocsSospechoso')" formControlName="DocsSospechoso" idbInput>
+                    <div class="caja-select">
+                        <select formControlName="cmbDocsS" [control]="getCtr('cmbDocsS')" (ngModelChange)="cmbDocsS_changeHandler($event)" idbInput>
+                            <option value="">Seleccione</option>
+                            <option *ngFor="let crit2 of lstCatCriterio2" [value]="crit2.craId">
+                                {{crit2.craDescripcionCorta}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="divbtnAyuda" class="col-sm-1 header-ayuda">
+                    <img class="btn ayuda-button" data-toggle="tooltip" data-placement="top" title="{{craDescripcion2}}">
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+                <div id="divcmbInfoIPerS" class="col-sm-11">
+                    <input type="text" class="lbl_criterio" for="cmbInfoIPerS" [control]="getCtr('InfoPersSospechoso')" formControlName="InfoPersSospechoso" idbInput>
+                    <div class="caja-select">
+                        <select formControlName="cmbInfoIPerS" [control]="getCtr('cmbInfoIPerS')" (ngModelChange)="cmbInfoIPerS_changeHandler($event)" idbInput>
+                            <option value="">Seleccione</option>
+                            <option *ngFor="let crit3 of lstCatCriterio3" [value]="crit3.craId">
+                                {{crit3.craDescripcionCorta}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="divbtnAyuda" class="col-sm-1 header-ayuda">
+                    <img class="btn ayuda-button" data-toggle="tooltip" data-placement="top" title="{{craDescripcion3}}">
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+                <div id="divcmbAlertaRiesgoAper" class="col-sm-11">
+                    <input type="text" class="lbl_criterio" for="cmbAlertaRiesgoAper" [control]="getCtr('AlertaRiesgoAperCuenta')" formControlName="AlertaRiesgoAperCuenta" idbInput>
+                    <div class="caja-select">
+                        <select formControlName="cmbAlertaRiesgoAper" [control]="getCtr('cmbAlertaRiesgoAper')" (ngModelChange)="cmbAlertaRiesgoAper_changeHandler($event)" idbInput>
+                            <option value="">Seleccione</option>
+                            <option *ngFor="let crit4 of lstCatCriterio4" [value]="crit4.craId">
+                                {{crit4.craDescripcionCorta}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="divbtnAyuda" class="col-sm-1 header-ayuda">
+                    <img class="btn ayuda-button" data-toggle="tooltip" data-placement="top" title="{{craDescripcion4}}">
+                </div>
+            </div>
+
+            <hr>
+
+            <label class="lbl_comentario">A continuación describir los factores relevantes que aporten mayor información a los criterios seleccionados</label>
+            <div id="divcomentario" class="col-sm-11">
+                <textarea class="comentario_input" [control]="getCtr('comentario')" formControlName="comentario" (ngModelChange)="txtComentario_changeHandler($event)" cols="50" idbInput></textarea>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div mat-dialog-actions>
+    <div class="row">
+        <button *ngIf="!readOnly" mat-button class="btn-img accept-button" type="submit" [disabled]="estatusBtnDisabled" (click)="onSubmit()">
+            <span class="tooltip">Aceptar</span>
+        </button>
+
+        <button *ngIf="!readOnly" mat-button class="btn-img cerrar-button" type="button" (click)="cancelar()">
+            <span class="tooltip">Cancelar</span>
+        </button>
+    </div>
+
+    <div class="row">
+        <button mat-button class="btn-img doc-red-button" (click)="verDetalles()">
+            <span class="tooltip">Ver detalles</span>
+        </button>
+    </div>
+</div>

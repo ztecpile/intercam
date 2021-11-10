@@ -1,0 +1,25 @@
+.btn-regreso {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.mat-header-cell {
+    text-align: center;
+}
+
+.mat-nav-list {
+    text-align: center;
+}
+
+.mat-nav-list:hover {
+    cursor: pointer;
+    color: #000000f5;
+    font-weight: bold;
+}
+
+::ng-deep .matTooltip {
+    white-space: pre-line !important;
+    max-width: max-content !important;
+}

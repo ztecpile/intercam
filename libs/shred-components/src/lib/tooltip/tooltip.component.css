@@ -1,0 +1,74 @@
+:host {
+  display: block;
+}
+
+.tooltip {
+  color: #fff;
+  border-radius: 6px;
+  background-color: rgba(0, 93, 166, 0.9);
+  font-family: "Museo Sans 500";
+  font-size: 14px;
+  width: auto;
+  padding: 14px;
+  z-index: 1;
+  line-height: 30px;
+  text-align: center;
+  width: 400px;
+  word-break: break-all;
+}
+
+.tooltip-top::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: rgba(0, 93, 166, 0.9) transparent transparent transparent;
+}
+
+.tooltip-bottom::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent rgba(0, 93, 166, 0.9);
+}
+
+.tooltip-left::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent rgba(0, 93, 166, 0.9);
+}
+
+.tooltip-right::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent rgba(0, 93, 166, 0.9) transparent transparent;
+}
+
+.tooltip.alignment_left {
+  text-align: left;
+}
+
+.tooltip.alignment_center {
+  text-align: center;
+}
+
+.tooltip.alignment_right {
+  text-align: right;
+}

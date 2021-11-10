@@ -1,0 +1,48 @@
+.img-menu {
+    height: 25px;
+    width: 25px;
+}
+
+.logo-button-menu {
+    background-image: url(../../../assets/img/appicon_white.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 32px;
+    background-position: center;
+    vertical-align: middle;
+}
+
+::ng-deep .btn-menu {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+}
+
+::ng-deep .btn-menu:hover {
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+::ng-deep .mat-menu-panel {
+    min-width: 35px;
+    max-width: 280px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    max-height: calc(100vh - 48px);
+    border-radius: 2px;
+    outline: 0;
+    background: rgb(182, 180, 180);
+    padding-left: 10px !important;
+}
+
+::ng-deep .btn-img {
+    vertical-align: middle;
+}
+
+.btnBusca {
+    width: 35px;
+    height: 35px;
+}

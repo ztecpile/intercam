@@ -1,0 +1,46 @@
+{
+    "implicitDependencies": {
+        "package.json": {
+            "dependencies": "*",
+            "devDependencies": "*"
+        },
+        ".eslintrc.json": "*"
+    },
+    "affected": {
+        "defaultBase": "master"
+    },
+    "npmScope": "intercam",
+    "tasksRunnerOptions": {
+        "default": {
+            "runner": "@nrwl/workspace/tasks-runners/default",
+            "options": {
+                "cacheableOperations": ["build", "lint", "test", "e2e"]
+            }
+        }
+    },
+    "projects": {
+        "ismart": {
+            "tags": []
+        },
+        "ismart-e2e": {
+            "tags": [],
+            "implicitDependencies": ["ismart"]
+        },
+        "ismart-pos": {
+            "tags": []
+        },
+        "ismart-pos-e2e": {
+            "tags": [],
+            "implicitDependencies": ["ismart-pos"]
+        },
+        "contrato": {
+            "tags": []
+        },
+        "shred-components": {
+            "tags": []
+        },
+        "model": {
+            "tags": []
+        }
+    }
+}

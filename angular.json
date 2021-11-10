@@ -1,0 +1,416 @@
+{
+    "version": 1,
+    "cli": {
+        "analytics": false,
+        "defaultCollection": "@nrwl/angular"
+    },
+    "defaultProject": "ismart-pos",
+    "schematics": {
+        "@nrwl/angular": {
+            "application": {
+                "linter": "eslint"
+            },
+            "library": {
+                "linter": "eslint"
+            },
+            "storybook-configuration": {
+                "linter": "eslint"
+            }
+        },
+        "@nrwl/angular:application": {
+            "style": "scss",
+            "linter": "eslint",
+            "unitTestRunner": "jest",
+            "e2eTestRunner": "cypress"
+        },
+        "@nrwl/angular:library": {
+            "style": "scss",
+            "linter": "eslint",
+            "unitTestRunner": "jest"
+        },
+        "@nrwl/angular:component": {
+            "style": "scss"
+        }
+    },
+    "projects": {
+        "ismart": {
+            "projectType": "application",
+            "root": "apps/ismart",
+            "sourceRoot": "apps/ismart/src",
+            "prefix": "intercam",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "dist/apps/ismart",
+                        "index": "apps/ismart/src/index.html",
+                        "main": "apps/ismart/src/main.ts",
+                        "polyfills": "apps/ismart/src/polyfills.ts",
+                        "tsConfig": "apps/ismart/tsconfig.app.json",
+                        "inlineStyleLanguage": "scss",
+                        "assets": [
+                            "apps/ismart/src/favicon.ico",
+                            "apps/ismart/src/assets"
+                        ],
+                        "styles": [
+                            "apps/ismart/src/styles.scss",
+                            "./node_modules/bootstrap/dist/css/bootstrap.css",
+                            "apps/ismart/src/assets/css/base.css",
+                            "apps/ismart/src/assets/css/menu.css",
+                            "apps/ismart/src/assets/css/fonts.css",
+                            "apps/ismart/src/assets/css/titulos.css",
+                            "apps/ismart/src/assets/css/caja_pasos_flujo.css",
+                            "apps/ismart/src/assets/css/centrar_formulario_margenes.css",
+                            "apps/ismart/src/assets/css/queries_para_base.css",
+                            "apps/ismart/src/assets/css/formularios.css"
+                        ],
+                        "scripts": [
+                            "./node_modules/jquery/dist/jquery.slim.min.js",
+                            "./node_modules/popper.js/dist/umd/popper.min.js",
+                            "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+                        ]
+                    },
+                    "configurations": {
+                        "production": {
+                            "budgets": [{
+                                    "type": "initial",
+                                    "maximumWarning": "1mb",
+                                    "maximumError": "8mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "4kb",
+                                    "maximumError": "10kb"
+                                }
+                            ],
+                            "fileReplacements": [{
+                                "replace": "apps/ismart/src/environments/environment.ts",
+                                "with": "apps/ismart/src/environments/environment.prod.ts"
+                            }],
+                            "outputHashing": "all"
+                        },
+                        "development": {
+                            "buildOptimizer": false,
+                            "optimization": false,
+                            "vendorChunk": true,
+                            "extractLicenses": false,
+                            "sourceMap": true,
+                            "namedChunks": true
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "ismart:build:production"
+                        },
+                        "development": {
+                            "browserTarget": "ismart:build:development"
+                        }
+                    },
+                    "defaultConfiguration": "development"
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "ismart:build"
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "apps/ismart/src/**/*.ts",
+                            "apps/ismart/src/**/*.html"
+                        ]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": [
+                        "coverage/apps/ismart"
+                    ],
+                    "options": {
+                        "jestConfig": "apps/ismart/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                }
+            }
+        },
+        "ismart-e2e": {
+            "root": "apps/ismart-e2e",
+            "sourceRoot": "apps/ismart-e2e/src",
+            "projectType": "application",
+            "architect": {
+                "e2e": {
+                    "builder": "@nrwl/cypress:cypress",
+                    "options": {
+                        "cypressConfig": "apps/ismart-e2e/cypress.json",
+                        "tsConfig": "apps/ismart-e2e/tsconfig.e2e.json",
+                        "devServerTarget": "ismart:serve:development"
+                    },
+                    "configurations": {
+                        "production": {
+                            "devServerTarget": "ismart:serve:production"
+                        }
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "apps/ismart-e2e/**/*.{js,ts}"
+                        ]
+                    }
+                }
+            }
+        },
+        "ismart-pos": {
+            "projectType": "application",
+            "root": "apps/ismart-pos",
+            "sourceRoot": "apps/ismart-pos/src",
+            "prefix": "intercam",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "dist/apps/ismart-pos",
+                        "index": "apps/ismart-pos/src/index.html",
+                        "main": "apps/ismart-pos/src/main.ts",
+                        "polyfills": "apps/ismart-pos/src/polyfills.ts",
+                        "tsConfig": "apps/ismart-pos/tsconfig.app.json",
+                        "inlineStyleLanguage": "scss",
+                        "assets": [
+                            "apps/ismart-pos/src/favicon.ico",
+                            "apps/ismart-pos/src/assets"
+                        ],
+                        "styles": [
+                            "apps/ismart-pos/src/styles.scss",
+                            "./node_modules/bootstrap/dist/css/bootstrap.css",
+                            "apps/ismart-pos/src/assets/css/base.css",
+                            "apps/ismart-pos/src/assets/css/menu.css",
+                            "apps/ismart-pos/src/assets/css/fonts.css",
+                            "apps/ismart-pos/src/assets/css/titulos.css",
+                            "apps/ismart-pos/src/assets/css/caja_pasos_flujo.css",
+                            "apps/ismart-pos/src/assets/css/centrar_formulario_margenes.css",
+                            "apps/ismart-pos/src/assets/css/queries_para_base.css",
+                            "apps/ismart-pos/src/assets/css/formularios.css",
+                            "apps/ismart-pos/src/assets/css/table.css",
+                            "apps/ismart-pos/src/assets/css/buttons.css",
+                            "apps/ismart-pos/src/assets/css/sim.css"
+                        ],
+                        "scripts": [
+                            "./node_modules/jquery/dist/jquery.slim.min.js",
+                            "./node_modules/popper.js/dist/umd/popper.min.js",
+                            "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+                            "apps/ismart-pos/src/assets/js/init.js"
+                        ],
+                        "allowedCommonJsDependencies": [
+                            "sockjs-client",
+                            "stompjs",
+                            "xlsx"
+                        ]
+                    },
+                    "configurations": {
+                        "production": {
+                            "budgets": [{
+                                    "type": "initial",
+                                    "maximumWarning": "1mb",
+                                    "maximumError": "8mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "5kb",
+                                    "maximumError": "10kb"
+                                }
+                            ],
+                            "fileReplacements": [{
+                                "replace": "apps/ismart-pos/src/environments/environment.ts",
+                                "with": "apps/ismart-pos/src/environments/environment.prod.ts"
+                            }],
+                            "outputHashing": "all"
+                        },
+                        "development": {
+                            "buildOptimizer": false,
+                            "optimization": false,
+                            "vendorChunk": true,
+                            "extractLicenses": false,
+                            "sourceMap": true,
+                            "namedChunks": true
+                        },
+                        "qa": {
+                            "budgets": [{
+                                    "type": "initial",
+                                    "maximumWarning": "1mb",
+                                    "maximumError": "8mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "5kb",
+                                    "maximumError": "10kb"
+                                }
+                            ],
+                            "fileReplacements": [{
+                                "replace": "apps/ismart-pos/src/environments/environment.ts",
+                                "with": "apps/ismart-pos/src/environments/environment.qa.ts"
+                            }],
+                            "outputHashing": "all"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "ismart-pos:build:production"
+                        },
+                        "development": {
+                            "browserTarget": "ismart-pos:build:development"
+                        },
+                        "qa": {
+                            "browserTarget": "ismart-pos:build:qa"
+                        }
+                    },
+                    "defaultConfiguration": "development"
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "ismart-pos:build"
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "apps/ismart-pos/src/**/*.ts",
+                            "apps/ismart-pos/src/**/*.html"
+                        ]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": [
+                        "coverage/apps/ismart-pos"
+                    ],
+                    "options": {
+                        "jestConfig": "apps/ismart-pos/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                }
+            }
+        },
+        "ismart-pos-e2e": {
+            "root": "apps/ismart-pos-e2e",
+            "sourceRoot": "apps/ismart-pos-e2e/src",
+            "projectType": "application",
+            "architect": {
+                "e2e": {
+                    "builder": "@nrwl/cypress:cypress",
+                    "options": {
+                        "cypressConfig": "apps/ismart-pos-e2e/cypress.json",
+                        "tsConfig": "apps/ismart-pos-e2e/tsconfig.e2e.json",
+                        "devServerTarget": "ismart-pos:serve:development"
+                    },
+                    "configurations": {
+                        "production": {
+                            "devServerTarget": "ismart-pos:serve:production"
+                        }
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "apps/ismart-pos-e2e/**/*.{js,ts}"
+                        ]
+                    }
+                }
+            }
+        },
+        "contrato": {
+            "projectType": "library",
+            "root": "libs/contrato",
+            "sourceRoot": "libs/contrato/src",
+            "prefix": "intercam",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": [
+                        "coverage/libs/contrato"
+                    ],
+                    "options": {
+                        "jestConfig": "libs/contrato/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/contrato/src/**/*.ts",
+                            "libs/contrato/src/**/*.html"
+                        ]
+                    }
+                }
+            }
+        },
+        "shred-components": {
+            "projectType": "library",
+            "root": "libs/shred-components",
+            "sourceRoot": "libs/shred-components/src",
+            "prefix": "intercam",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": [
+                        "coverage/libs/shred-components"
+                    ],
+                    "options": {
+                        "jestConfig": "libs/shred-components/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/shred-components/src/**/*.ts",
+                            "libs/shred-components/src/**/*.html"
+                        ]
+                    }
+                }
+            }
+        },
+        "model": {
+            "projectType": "library",
+            "root": "libs/model",
+            "sourceRoot": "libs/model/src",
+            "prefix": "intercam",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": [
+                        "coverage/libs/model"
+                    ],
+                    "options": {
+                        "jestConfig": "libs/model/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/model/src/**/*.ts",
+                            "libs/model/src/**/*.html"
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

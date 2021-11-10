@@ -1,0 +1,14 @@
+<mat-form-field class="highlight" appearance="fill">
+    <mat-label>{{etiqueta}}</mat-label>
+    <input #in matInput [matDatepicker]="dp" [formControl]="control" [max]="maxDate" [min]="minDate" (dateChange)="seleccion( $event); in.dispatchEvent(generateKeyUpEvent(' '))">
+    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+    <mat-datepicker #dp color="accent"></mat-datepicker>
+    <!-- <mat-error *ngIf="date.hasError('matDatepickerParse')">
+        "{{date.getError('matDatepickerParse').text}}" {{perr}}
+    </mat-error>
+    <mat-error *ngIf="date.hasError('matDatepickerMin')">
+        {{ierr}} {{maxDate | date }}</mat-error>
+    <mat-error *ngIf="date.hasError('matDatepickerMax')">
+        {{xerr}} {{maxDate | date }}
+    </mat-error> -->
+</mat-form-field>

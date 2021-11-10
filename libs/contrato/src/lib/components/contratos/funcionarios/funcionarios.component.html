@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<hr class="red" />
+<h2>Funcionarios y Accionistas</h2>
+<hr class="red" />
+
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource ">
+        <ng-container matColumnDef="PerId">
+            <th mat-header-cell *matHeaderCellDef>Id</th>
+            <td mat-cell *matCellDef="let element "><a href="contrato/contratos/funcionarios?perId=5"> {{element.pfuId}} </a></td>
+        </ng-container>
+
+        <ng-container matColumnDef="Nombre">
+            <th mat-header-cell *matHeaderCellDef>Nombre</th>
+            <td mat-cell *matCellDef="let element ">{{element.pfuNombre}}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="ApPaterno">
+            <th mat-header-cell *matHeaderCellDef>Ap. Paterno</th>
+            <td mat-cell *matCellDef="let element "> {{element.pfuPaterno}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="ApMaterno">
+            <th mat-header-cell *matHeaderCellDef>Ap. Materno</th>
+            <td mat-cell *matCellDef="let element "> {{element.pfuMaterno}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="RSocial">
+            <th mat-header-cell *matHeaderCellDef>Razon Social</th>
+            <td mat-cell *matCellDef="let element "> {{element.pfuRazonSocial}}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns "></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns; "></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
+</div>
+
+<hr class="red" />
+
+<!--table>
+    <tr>
+        <td>
+            <h2>Dirección</h2>
+        </td>
+    </tr>
+</table>
+
+<div class="">
+    <form action="" class="formulario">
+        <div class="row row-cols-12">
+            <div id="divCalle" class="col-sm-3">
+                <input type="text" class="formulario__input" idbInput>
+                <label for="divCalle" class="formulario__label">Calle</label>
+            </div>
+            <div id="numExt" class="col-sm-3">
+                <input type="text" class="formulario__input" idbInput>
+                <label for="numExt" class="formulario__label">Num. Ext.</label>
+            </div>       
+            <div id="numInt" class="col-sm-3">
+                <input type="text" class="formulario__input" idbInput>
+                <label for="numInt" class="formulario__label">Num. Int.</label>
+            </div>                      
+        </div>
+    </form>
+</div-->

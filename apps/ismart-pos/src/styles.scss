@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+body {
+    height: 100vh;
+    margin: 0;
+}
+
+.container-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+}
+
+.card-login {
+    max-width: 50%;
+    background: linear-gradient(180deg, rgba(244, 244, 244, 1) 0%, rgba(231, 230, 230, 1) 52%, rgba(203, 203, 203, 1) 100%);
+}
+
+.title-login {
+    text-align: center;
+    width: 100%;
+}
+
+.card-content {
+    justify-content: center;
+}
+
+.card-actions {
+    text-align: center;
+}
+
+.form-field {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.form-warnig {
+    color: red !important;
+}

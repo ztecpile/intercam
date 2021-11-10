@@ -1,0 +1,224 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.logo {
+    background-image: url(../img/logo_blanco.svg);
+    background-position: center;
+    height: 54px;
+    width: 220px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin-left: 36px;
+    vertical-align: middle !important;
+    display: inline-block !important;
+    margin-top: -34px;
+}
+.posicion {
+    position: fixed;
+    z-index: 10000;
+    height: 80px;
+    top: 63px;
+    color: #fff;
+    width: 100%;
+}
+.navbar {
+    overflow: hidden;
+    font-family: 'Museo Sans 500';
+    width: 1024px;
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+.navbar a {
+	float: left;
+	font-size: 13px;
+	color: #bcbcbc;
+	text-align: center;
+	padding: 14px 13px;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-family: 'Museo Sans 500';
+}
+.navbar last-child {
+ display: flex;
+ justify-content: flex-end;
+}
+
+.navbar a:hover {
+	color:#669933;
+}
+.dropdown {
+	float: left;
+	overflow: hidden;
+	font-family:'Museo Sans 500';
+	font-size: 13px;
+	color: #bcbcbc;
+}
+.dropdown .dropbtn {
+	font-size: 13px;
+	border: none;
+	outline: none;
+	color: #bcbcbc;
+	padding: 5px 20px 6px;
+	background-color: inherit;
+	font: inherit;
+	margin: 0;
+	font-family:'Museo Sans 500';
+	cursor:pointer;
+}
+.dropdown:hover .dropbtn {
+	color:#669933;
+	border-bottom:4px solid #669933;
+	font-family:'Museo Sans 700';
+	font-size: 13px;
+}
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: rgba(0, 0, 0, 0.8);
+	width: 100%;
+	left: 0;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+	margin-top: -1px;
+}
+.centrar {
+	margin: auto;
+	width:1000px;
+}
+.dropdown-content .header_dos {
+	background: red;
+	padding: 13px;
+	color: white;
+}
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+.dropdown_dos:hover {
+	color:#669933;
+	padding:5px 13px 5px;
+	margin-top:4px;
+	border-bottom:4px solid #669933;
+	font-family:'Museo Sans 700';
+	font-size: 13px;
+}
+.dropdown_tres:hover {
+	color:#669933;
+	padding:5px -3px 10px;
+	border-bottom:4px solid #669933;
+	font-family:'Museo Sans 700';
+	font-size: 13px;
+}
+.column {
+	float: left;
+	width: 25%;
+	overflow:hidden;
+	font-family: 'Museo Sans 500';
+}
+.column a {
+	float: none;
+	color: #ffffff;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+	font-size:15px;
+	text-transform:none;
+	font-family: 'Museo Sans 500';
+}
+.column a:hover {
+	font-family: 'Museo Sans 500';
+	color:#669933;
+	font-weight:300px;
+}
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+.margen-left55px{
+margin-left: 55px;
+}
+
+.icono_seguridad{
+    background-image: url(../img/seguridad.svg);
+    background-position: center;
+    height: 19px;
+    width: 16px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    vertical-align: middle !important;
+    display: inline-block !important;
+    margin-top: -5px;
+    margin-right: 8px;
+}
+
+.icono_seguridad:hover {
+    background-image: url(../img/seguridad_verde.svg);
+    background-position: center;
+    height: 19px;
+    width: 16px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    vertical-align: middle !important;
+    display: inline-block !important;
+    margin-top: -5px;
+    margin-right: 8px;
+}
+.line{
+	height:17px;
+	width:1px;
+	background-color:#bcbcbc;
+	}
+.izquierda{
+	clear: right;
+    position: absolute;
+    left: 361px;
+	}
+.derecha20{
+	position:absolute;
+	right: 285px;
+	}
+.derecha15 {
+    position: absolute;
+    right: 278px;
+    top: 14px;
+}
+.derecha10{
+	position:absolute;
+	right: 166px;
+	}
+ @media screen and (max-width: 900px) {
+ .column {
+ width: 100%;
+ height: auto;
+}
+.navbar {
+    overflow: hidden;
+    font-family: 'Museo Sans 500';
+    width: 100%;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    background: linear-gradient(rgba(0,0,0, 0.8),rgba(0,0,0, 0.8));
+    text-align: center;
+}
+.posicion {
+    position: fixed;
+    z-index: 10000;
+    /* height: 80px; */
+    top: 102px;
+    color: #fff;
+    width: 100%;
+    display: block;
+}
+.margen-left55px {
+    margin-left: 0px;
+}
+.line {
+	display:none;
+}
+.dropdown {
+    padding: 10px;
+}
+}

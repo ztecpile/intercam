@@ -1,0 +1,8 @@
+<ng-container *transloco="let t">
+  <div class="image" [style.background-image]="'url(' + imageUrl + ')'"></div>
+  <div class="inline-greeting">
+    <div class="greeting">{{ t(message) }}</div>
+    <div class="name">{{ name }}</div>
+    <hr class="blue-bar" />
+  </div>
+</ng-container>

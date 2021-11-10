@@ -1,0 +1,105 @@
+{
+    "Language": {
+        "English": "Ingles",
+        "Spanish": "Español",
+        "Label": "Idioma"
+    },
+    "Menu": {
+        "Users": "Usuarios"
+    },
+    "Form": {
+        "Names": "Nombres",
+        "Mail": "Correo",
+        "Phone": "Telefono",
+        "Message": "Mensaje",
+        "Option1": "Opcion 1",
+        "Option2": "Opcion 2",
+        "Date": "Fecha",
+        "Search": "Busqueda",
+        "Password": "Contraseña"
+    },
+    "Button": {
+        "Active": "Activo",
+        "Inactive": "Inactivo",
+        "Change": "Cambiar",
+        "Show": "Mostrar",
+        "Guardar": "Guardar",
+        "Cancelar": "Cancelar"
+    },
+    "Alert": {
+        "Success": "¡Éxito!",
+        "Info": "¡Informacion!",
+        "Warning": "¡Advertencia!",
+        "Danger": "¡Peligro!",
+        "Hello": "Hola {{ name }}"
+    },
+    "LightBox": {
+        "Accept": "Aceptar",
+        "Refuse": "Rechazar"
+    },
+    "Validation": {
+        "required": "El campo es obligatorio",
+        "email": "El email es incorrecto",
+        "pattern": "El campo es incorrecto",
+        "CustomValidator": "El campo solo puede ser 9",
+        "matDatepickerMax": "La fecha máxima es invalida",
+        "matDatepickerMin": "La fecha mínima es invalida",
+        "telNoValidoMin": "El número debe ser mínimo de 10 dígitos",
+        "telNoValidoMax": "El número debe ser máximo de 13 dígitos",
+        "longMinRFC": "La longitud mínima debe ser de 10 caracteres.",
+        "longMinRFCPM": "La longitud mínima debe ser de 12 caracteres.",
+        "longMaxRFC": "La longitud máxima debe ser de 13 caracteres.",
+        "rfcFormato": "El formato del RFC es invalido (LLLLNNNNNNHHH)",
+        "rfcFormatoMoral": "El formato del RFC es invalido (LLLNNNNNNHHH)",
+        "longMaxSSN": "La longitud máxima debe de ser de 9 caracteres.",
+        "requiereMinimoTresNumeros": "Mínimo tres números",
+        "requiereMinimoTresLetras": "Mínimo tres letras",
+        "soloNumeros": "Solo números"
+    },
+    "password_instructions": {
+        "Title": "Tu nueva contraseña requiere:",
+        "Step1": "Minimo 8 caracteres",
+        "Step2": "Clave alfanumérica mayúsculas, minúsculas  y números ",
+        "Step2_strong": "(al menos un número y una letra)",
+        "Step3": "No debe contener 3 caracteres consecutivos o iguales ",
+        "Step3_strong": "ABC, 123, 111",
+        "Step4": "Debe de contener al menos un caracter especial ",
+        "Step4_strong": "´*/@#%!&",
+        "Step5": "No debe contener teclas contiguas ",
+        "Step5_strong": "(en el teclado Ej. AS, FG, OP, etc.)"
+    },
+    "Cierre": {
+        "tittle": "Tu contraseña fue cambiada.",
+        "message": "Enviaremos la confimación de tu contraseña al correo electrónico:",
+        "actionSuccess": "Regreso a home "
+    },
+    "Tables": {
+        "CountName": "CUENTA / RAZÓN SOCIAL",
+        "Balance": "SALDO DE FIN DE DÍA",
+        "Deposits": "DEPOSITOS",
+        "Payments": "RETIROS"
+    },
+    "Error": {
+        "Error401": "ERROR 401",
+        "Error403": "ERROR 403",
+        "Error404": "ERROR 404",
+        "Subtitle": "Lo sentimos, la página que busca no existe",
+        "ErrorPossible": "Posibles errores:",
+        "ErrorMsg1": "Problemas en tu conección a internet",
+        "ErrorMsg2": "La página no existe",
+        "ErrorMsg3": "El servidor dejo de funcionar",
+        "Return": "Regreso a Inicio"
+    },
+    "Preload": {
+        "Title": " La carga se encuentra al "
+    },
+
+    "Seguridad": {
+        "Usuario": {
+            "Title": "Alta de Usuario",
+            "User": "Usuario",
+            "Password": "Contraseña",
+            "Observaciones": "Observaciones"
+        }
+    }
+}

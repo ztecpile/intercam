@@ -1,0 +1,188 @@
+.recorrer {
+    right: -290px !important;
+}
+.pop_alerts {
+    position: fixed;
+    z-index: 1000;
+    right: 0px;
+    border-radius: 8px;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+    width: 320px;
+    display: block;
+    padding: 10px 10px 10px 40px;
+    overflow: hidden;
+	transition: all 1s ease-in-out;
+}
+.header_pop_alerts {
+    position: absolute;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+	display: block;
+    padding: 4px;
+    overflow: hidden;
+    height: 100%;
+    width: 30px;
+    left: 0px;
+    top: 0px;
+	cursor:pointer;
+}
+.centrar_btn_alert_blanco {
+    content: "";
+    margin: auto;
+    text-align: center;
+}
+.button_alert_blanco {
+	background-color: transparent;
+	padding: 8px 16px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	margin: 4px 2px;
+	cursor: pointer;
+	font-family: "Museo Sans 700";
+	border: 2px solid #fff;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 12px;
+}
+.button_alert_blanco  a {
+	background-color: transparent;
+	padding: 8px 16px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	margin: 4px 2px;
+	cursor: pointer;
+	font-family: "Museo Sans 700";
+	border: 2px solid #fff;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 12px;
+}
+.button_alert_blanco:hover {
+	background-color: transparent;
+	padding: 8px 16px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	margin: 4px 2px;
+	cursor: pointer;
+	font-family: "Museo Sans 700";
+	border: 2px solid #fff;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 12px;
+	opacity:0.5;
+}
+.excel_load {
+    background-color: rgba(0, 0, 0, 0.88);
+}
+.excel_load_header {
+    background-color: #658D3D;
+    border-bottom-left-radius:4px;
+    border-top-left-radius: 4px;
+}
+.excel_load_title{
+	font-family: 'Museo Sans 500';
+	font-size:15px;
+	color:#fff;
+	margin-bottom:10px;
+}
+.excel_load_icon {
+	background-image: url(images/excel_pop_alert.svg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 20px;
+    width: 20px;
+	top: 50%;
+    transform: translateY(-50%);
+    position:absolute;
+}
+.txt_cargador_popverde{
+	font-family: 'Museo Sans 700';
+	font-size:24px;
+	color:#6B971D;
+	text-align:center;
+}
+.txt_cargador_popverde_light{
+	font-family: 'Museo Sans 700';
+	font-size:15px;
+	color:#6B971D;
+}
+.excel_finish {
+    background-color: rgba(0, 93, 166, 0.88);
+}
+.excel_finish_header {
+    border-radius: 4px;
+    background-color: #005DA6;
+}
+.excel_finish_icon {
+	background-image: url(images/excel_pop_alert.svg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 20px;
+    width: 20px;
+	top: 50%;
+    transform: translateY(-50%);
+    position:absolute;
+}
+.excel_finish_title {
+    font-family: 'Museo Sans 700';
+	font-size:24px;
+	color:#fff;
+	text-align:center;
+}
+.payment_sent {
+    background-color: rgba(217, 62, 62, 0.88);
+}
+.payment_sent_header {
+    background-color: #E02020;
+    border-radius: 4px;
+}
+.bell_icon {
+	background-image: url(images/campana.svg);
+    background-repeat: no-repeat;
+    background-size: 92%;
+    height: 24px;
+    width: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+}
+.authorize_title{
+	font-family: 'Museo Sans 500';
+	font-size:15px;
+	color:#fff;
+	margin-bottom:10px;
+}
+.txt_cargador_popazul{
+	font-family: 'Museo Sans 700';
+	font-size:24px;
+	color:#fff;
+	text-align:center;
+}
+.margin_bottom10_btnalert{
+	margin-bottom:10px;
+}
+.txt_cargador_popazul_light{
+	font-family: 'Museo Sans 700';
+	font-size:15px;
+	color:#fff;
+}
+.ico_pop_alerts_cierre {
+	background-image: url(images/cierre_elert_pop.svg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 28px;
+    width: 28px;
+    top:10px;
+    position: absolute;
+}
+.authorize {
+    background-color:rgba(238, 174, 10, 1);
+}
+.authorize_header {
+    background-color: rgba(247, 181, 0, 0.9);
+    border-radius: 4px;
+}

@@ -1,0 +1,69 @@
+
+
+.imagen_404 {
+    width: 80px;
+    height: 80px;
+    display: block;
+    float: left;
+    border-radius: 50%;
+    background-color: #0C3;
+    margin-right: 20px;
+    top: 86px;
+    background-image: url(/assets/img/error2.svg);
+    background-repeat: no-repeat;
+    background-size: 98%;
+    background-position: center;
+    background-color: rgba(23, 135, 223, 0.3);
+    position: relative;
+}
+
+.txt_saludo_alinear {
+    display: inline-block;
+    text-align: center;
+}
+
+.txt_uno {
+    display: block;
+    font-size: 24px;
+    margin-block-start: 30px;
+    margin-block-end: 0px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Museo Sans 900';
+    margin-bottom: 50px;
+}
+
+.txt_dos {
+    margin: 0px;
+    font-size: 24px;
+    font-family: 'Museo Sans 300';
+    margin-bottom: 16px;
+}
+
+.txt_tres {
+    font-family: 'Museo Sans 700';
+    font-weight: 200;
+    font-size: 20px;
+    color: #111111;
+}
+
+.lista {
+    padding-left: 146px;
+    text-align: left !important;
+    font-family: "Museo Sans 300";
+    font-size: 15px;
+    line-height: 16px;
+}
+
+.lista p {
+    margin: 10px;
+}
+
+
+.centrar_btn {
+    content: "";
+    margin: auto;
+	margin-top: auto;
+    text-align: center;
+    margin-top: 36px;
+}

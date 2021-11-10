@@ -1,0 +1,28 @@
+.alert_danger {
+	color: #eedbdb;
+	background-color: rgba(218, 14, 14, 0.3);
+	border-color: #ebccd1;
+	font-family: 'Museo Sans 300';
+	margin-bottom: 12px;
+    margin-top: 15px;
+}
+.alert {
+	font-size:15px;
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	overflow: hidden;
+	font-family: 'Museo Sans 500';
+}
+.ico_danger {
+	width: 34px;
+	height: 40px;
+	display: block;
+	float: left;
+	background-image: url(images/warning.svg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	margin-right: 14px;
+	margin-top: -5px;
+}

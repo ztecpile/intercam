@@ -1,0 +1,197 @@
+.formulario2__label {
+    color: #6b971d;
+    padding-left: 15px;
+    position: absolute;
+    margin-top: 10px;
+    z-index: -20;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    font-family: 'Museo Sans 700';
+}
+
+.formulario2__input {
+    padding: 28px 12px 6px 16px;
+    background-color: rgba(255, 254, 254, 0.12);
+    border: none;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #658D3D;
+    font-family: 'Museo Sans 500';
+    width: 100%;
+}
+
+
+/*CAJA RESTRICCIONES*/
+
+#card_flota2 {
+    position: absolute;
+    z-index: 9;
+    background-color: rgba(0, 0, 0, 0.88);
+    border: 1px solid #d3d3d3;
+    border-radius: 8px;
+    width: 400px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: block;
+    margin-top: 22px;
+    right: -22px;
+}
+
+.caja_preguntas {
+    display: block;
+    font-family: 'Museo Sans 700';
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    color: #ffffff;
+    font-size: 15px;
+}
+
+#card_flotaheader {
+    padding: 10px;
+    cursor: move;
+    z-index: 10;
+    color: #fff;
+    text-align: right;
+}
+
+.caja_centrar_formulario {
+    margin: auto;
+    content: "";
+    display: flex;
+    justify-content: center;
+}
+
+.triangle2-up {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid rgba(0, 0, 0, 0.88);
+    position: absolute;
+    top: -10px;
+    right: 5.5%;
+}
+
+.fa_calendar {
+    background-image: url("../cajas-drag/images/calendar.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 16px;
+    width: 16px;
+    float: right;
+    margin-top: -51px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.fa_calendar a {
+    background-image: url("../cajas-drag/images/calendar.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 16px;
+    width: 16px;
+    float: right;
+    margin-top: -51px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.fa_calendar:hover {
+    background-image: url("../cajas-drag/images/calendar.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 16px;
+    width: 16px;
+    float: right;
+    margin-top: -51px;
+    margin-right: 20px;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.radio-item {
+    margin-left: 0px;
+}
+
+.alert-time {
+    height: 30px;
+    min-height: 30px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.alert-time p {
+    color: red;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    text-transform: none;
+    width: 87%;
+}
+
+.fa_hora,
+.fa_hora:hover {
+    margin-top: -50px;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+    background: none;
+    display: none;
+}
+
+.time_input {
+    background-color: rgba(255, 254, 254, .12);
+    border-bottom: 1px solid #658d3d;
+}
+
+#horarios ::ng-deep .ngx-timepicker-control__arrow {
+    color: white !important;
+}
+
+#horarios ::ng-deep .ngx-timepicker-control__input {
+    background-color: rgba(0, 0, 0, 0);
+    color: white !important;
+}
+
+.formulario2__label {
+    width: 120px;
+}
+
+#horarios ::ng-deep ngx-timepicker-field {
+    display: block;
+    padding: 22px 0 0;
+}
+
+#horarios ::ng-deep .ngx-timepicker-control--active:after {
+    background-color: #658D3D !important;
+}
+
+::ng-deep .timepicker-overlay {
+    z-index: 1199 !important;
+}
+
+#horarios ::ng-deep .ngx-timepicker-control {
+    width: 55px !important;
+}
+
+#horarios ::ng-deep .ngx-timepicker__time-colon {
+    margin-left: 1px !important;
+}
+
+::ng-deep ngx-material-timepicker-content {
+    --body-background-color: #fff;
+    --primary-font-family: 'Museo Sans 500';
+    --button-color: #658D3D !important;
+    --dial-active-color: #fff;
+    --dial-inactive-color: rgba(255, 255, 255, .5);
+    --dial-background-color: #658D3D !important;
+    --dial-editable-active-color: #658D3D !important;
+    --dial-editable-background-color: #fff;
+    --clock-face-time-active-color: #fff;
+    --clock-face-time-inactive-color: #6c6c6c;
+    --clock-face-inner-time-inactive-color: #929292;
+    --clock-face-time-disabled-color: #c5c5c5;
+    --clock-face-background-color: #f0f0f0;
+    --clock-hand-color: #658D3D !important;
+}

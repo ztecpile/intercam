@@ -1,0 +1,12 @@
+<ul class="breadcrumb">
+  <li *ngFor="let item of items">
+    <idb-link
+      *ngIf="!item.active; else elseBlock"
+      [text]="item.text"
+      [url]="item.linkUrl"
+      fontSize="12px"
+    >
+    </idb-link>
+    <ng-template #elseBlock>{{ item.text }}</ng-template>
+  </li>
+</ul>

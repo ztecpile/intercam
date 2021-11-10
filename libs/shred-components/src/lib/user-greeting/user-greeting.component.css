@@ -1,0 +1,58 @@
+* {
+  font-family: "Museo Sans 300";
+}
+
+.greeting {
+  font-family: "Museo Sans 900";
+  display: block;
+  font-size: 24px;
+  margin-block-end: 0px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.image {
+  width: 65px;
+  height: 65px;
+  display: block;
+  float: left;
+  border-radius: 50%;
+  margin-right: 20px;
+  margin-top: 1px;
+  border: 3px solid #005da3;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: -1px 0px;
+}
+
+.inline-greeting {
+  display: inline-block;
+}
+
+.box a,
+hr.blue-bar:before {
+  display: block;
+}
+
+.box.inverted:before,
+hr.blue-bar:before {
+  content: " ";
+}
+
+hr.blue-bar {
+  margin: 7px 0 15px;
+  border: none;
+}
+
+hr.blue-bar:before {
+  width: 35px;
+  height: 5px;
+  background-color: #005da6;
+  position: absolute;
+}
+
+.name {
+  margin: 0px;
+  font-size: 22px;
+  font-family: "Museo Sans 100";
+}

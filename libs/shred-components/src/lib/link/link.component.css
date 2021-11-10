@@ -1,0 +1,14 @@
+.txt-link {
+  color: #658d3d;
+  text-decoration: underline;
+  font-family: "Museo sans 700";
+}
+.txt-link:a {
+  color: #669933;
+  text-decoration: underline;
+}
+.txt-link:hover {
+  color: #669933;
+  text-decoration: underline;
+  opacity: 0.5;
+}

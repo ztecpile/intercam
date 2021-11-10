@@ -1,0 +1,9 @@
+<div class="intruccuones" [ngStyle]="{'height': heigth, 'width' : width, 'margin-left' : marginLeft}">
+    <p class="intructxt_uno">{{ title | transloco}}</p>
+    <div *ngFor="let step of steps">
+        <p [ngClass]="step.style" class="step">
+            {{ step.numberStep | transloco }} 
+            <strong *ngIf="step.hasStepStrong">{{step.numberStepStrong | transloco}}</strong>
+        </p>
+    </div>
+</div>

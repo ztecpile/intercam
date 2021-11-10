@@ -1,0 +1,10 @@
+<div class="centrarAlert" style="display: none;" #component>
+  <div [ngClass]="classAlert" #alert>
+    <div [ngClass]="iconAlert" #icon></div>
+    <div class="alertText">
+<!--      <strong>{{ typeAlert | transloco}}</strong> -->
+      <span *ngFor="let me of _message"
+       [innerHTML]="me | transloco : _params"></span>
+    </div>
+  </div>
+</div>

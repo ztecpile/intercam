@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<idb-titulo [titulo1]='titulo'></idb-titulo>
+
+<div class="row">
+    <div id="divusuUsuario" class="col-sm-3">
+        <input type="text" class="formulario__input" (keyup)="filtrar($event)">
+        <label for="" class="formulario__label">Contrato</label>
+        <div class="fa_search"></div>
+    </div>
+    <div class="col-sm-7"></div>
+    <div class="col-2">
+        <button class="btn-img actualiza-button" (click)="refresh()"><span class="tooltip">Actualizar</span></button>
+        <!-- <button class="button button1 " >Actualizar</button> -->
+    </div>
+</div>
+
+
+<div class="mat-elevation-z8">
+
+    <table mat-table [dataSource]="dataSource ">
+
+        <ng-container matColumnDef="Hora">
+            <th mat-header-cell *matHeaderCellDef>Hora</th>
+            <td mat-cell *matCellDef="let element ">{{element.fechaLogStr}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="Contrato">
+            <th mat-header-cell *matHeaderCellDef>Contrato</th>
+            <td mat-cell *matCellDef="let element "> <span class="pointer" (click)="rowSelected(element)">
+                {{element.conId}}
+              
+            
+                </span>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="Usuario">
+            <th mat-header-cell *matHeaderCellDef>Usuario</th>
+            <td mat-cell *matCellDef="let element ">{{element.usuario}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="Error">
+            <th mat-header-cell *matHeaderCellDef>Error</th>
+            <td mat-cell *matCellDef="let element ">{{element.error}}
+            </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="Mensaje">
+            <th mat-header-cell *matHeaderCellDef>Mensaje</th>
+            <td mat-cell *matCellDef="let element ">{{element.mensaje}}
+            </td>
+        </ng-container>
+
+        <tr soporte:filterPost></tr>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns "></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns; "></tr>
+
+
+    </table>
+
+    <mat-paginator pageSize="5"></mat-paginator>
+
+    <br>
+    <br>
+    <div class="code" *ngIf="logi != ''">
+        <div [innerHtml]="logi"></div>
+        <!-- <p> {{logi}} </p> -->
+    </div>
+
+
+</div>
+
+
+
+<hr class="red" />

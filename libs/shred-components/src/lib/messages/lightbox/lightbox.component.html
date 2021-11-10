@@ -1,0 +1,23 @@
+<!-- componente -->
+<div id="myModal" class="modal" #lightbox > 
+    <!-- Modal content -->
+        <div class="modal-content">
+            <div class="tit_modal">{{title}}</div>
+            <hr class="blue">
+            <div class="leyenda_modal" *ngFor="let line of body">{{ line }}</div>
+            <div class="store-order-price store-order-price-total">
+                <div class="store-order-price-label" *ngIf="isAmountSumary" style="margin-bottom: 5px;">{{sumaryTitle}}</div>
+                <div class="store-order-price-value" *ngIf="isAmountSumary"><span class="store-value-money-single">{{ _sumary | currency }} {{currency}}</span> </div>
+                <div class="store-order-price-value" *ngIf="!isAmountSumary"><span class="store-value-money-single">{{ sumary }}</span> </div>
+            </div>
+            <div class="centrar_btn">
+                <button id="myBtn" class="button" (click)="actionRefuseModal()">{{ 'LightBox.Refuse' | transloco}}
+                    <div class="i fa_tache"></div>
+                </button>
+                <button id="myBtn" class="button close"(click)="actionSuccessModal()">{{ 'LightBox.Accept' | transloco}}
+                    <div class="i fa_paloma"></div>
+                </button>
+            </div>
+        </div>
+</div>
+    <!-- componente -->

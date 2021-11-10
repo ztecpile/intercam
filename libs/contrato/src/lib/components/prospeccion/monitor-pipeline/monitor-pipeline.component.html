@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<idb-titulo titulo1='PIPELINE' subtitulo='Monitor'></idb-titulo>
+<div class="container-fluid">
+    <form [formGroup]="findForm" class="formulario" (ngSubmit)="onSubmit()" idbForm>
+        <div class='row'>
+            <div class='col-sm-9'>
+                <div class='row'>
+                    <div id="divejecutivosAsiste" class="col-sm-3">
+                        <div class="caja">
+                            <select formControlName="ejecutivosAsiste" class="" [control]="getCntr('ejecutivosAsiste')" idbInput>
+                                    <option *ngFor="let eje of listaEjeAsistente " [value]="eje.ejecutivoId">{{eje.nombreEjecutivo}}
+                                    </option>
+                                </select>
+                        </div>
+                        <label class="formulario__label">Ejecutivos que Asiste</label>
+                    </div>
+                </div>
+
+                <div class='row'>
+                    <div id="divoficina" class="col-sm-3">
+                        <div class="caja">
+                            <select formControlName="oficina" [control]="getCntr('oficina')" (ngModelChange)="changeoficina($event)" idbInput>
+                                    <option value="">Seleccione</option>
+                                    <option *ngFor="let item of arrOficinas " [ngValue]="item.sucClave">{{item.sucDescripcion}}
+                                    </option>
+                                </select>
+                        </div>
+                        <label class="formulario__label">Oficinas</label>
+                    </div>
+                    <div id="divdrNegocio" class="col-sm-3">
+                        <div class="caja">
+                            <select formControlName="drNegocio" [control]="getCntr('drNegocio')" (ngModelChange)="changedrNegocio($event)" idbInput>
+                                    <option value="">Seleccione</option>
+                                    <option *ngFor="let item of arrdrNegocio " [ngValue]="item.areaClave">{{item.areDescripcion}}
+                                    </option>
+                                </select>
+                        </div>
+                        <label class="formulario__label">DR. Negocios</label>
+                    </div>
+                </div>
+
+
+                <div class='row'>
+                    <div id="divdradjunto" class="col-sm-3">
+                        <div class="caja">
+                            <select formControlName="dradjunto" [control]="getCntr('dradjunto')" (ngModelChange)="changedradjunto($event)" idbInput>
+                                    <option value="">Seleccione</option>
+                                    <option *ngFor="let item of arrdrAnjunto " [ngValue]="item.sarClave">{{item.sarDescripcion}}
+                                    </option>
+                                </select>
+                        </div>
+                        <label class="formulario__label">Dr. Adjunto</label>
+                    </div>
+
+                    <div id="divejecutivos" class="col-sm-3">
+                        <div class="caja">
+                            <select formControlName="ejecutivos" [control]="getCntr('ejecutivos')" (ngModelChange)="changeejecutivos($event)" idbInput>
+                                    <option value="">Seleccione</option>
+                                    <option *ngFor="let item of arrEjecutivos " [ngValue]="item.idPersona">{{item.perNomCorto}}
+                                    </option>
+                                </select>
+                        </div>
+                        <label class="formulario__label">Ejecutivos</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div id="divnegocio" class="col-sm-3">
+                        <div class="caja">
+                            <select formControlName="negocio" [control]="getCntr('negocio')" (ngModelChange)="changenegocio($event)" idbInput>
+                                <option value="-1">Seleccionar</option>
+                                <option value="0">-- Todos --</option>
+                                <option *ngFor="let item of arrNegocio " [value]="item.tconId">{{item.tconDescripcion}}
+                                </option>
+                            </select>
+                        </div>
+                        <label class="formulario__label">Negocio</label>
+                    </div>
+                </div>
+
+                <div class='row col-sm-6 flex-container'>
+                    <button class="btn-img buscar-btn" [disabled]='btnBusqueda' type="button"><span class="tooltip">Buscar</span></button>
+                    <button class="btn-img eliminar-button" type="button"><span class="tooltip">Eliminar</span></button>
+                    <button class="btn-img funcionarios-button" type="button"><span class="tooltip">Funcionarios</span></button>
+                </div>
+            </div>
+            <div class='col-sm-3'>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="hedaer-prospecciones">Pipeline</th>
+                            <th class="hedaer-prospecciones">Prospectos (PM)</th>
+                        </tr>
+
+                        <tr>
+                            <th class="border">{{consulta!= undefined && consulta.numProspectos != undefined ? consulta.numProspectos:0}}</th>
+                            <th class="border">{{consulta!= undefined && consulta.numProspectosPM != undefined ? consulta.numProspectosPM:0}}</th>
+                        </tr>
+                    </thead>
+                </table>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="hedaer-pros">Prospección</th>
+                            <th class="hedaer-ngc">Negociación</th>
+                            <th class="hedaer-crr">Cierre</th>
+                        </tr>
+                        <tr>
+                            <th class="border">{{consulta!= undefined && consulta.numProspectos != undefined ? consulta.numProspectos:0}}</th>
+                            <th class="border">{{consulta!= undefined && consulta.numNegocios != undefined ? consulta.numNegocios:0}}</th>
+                            <th class="border">{{consulta!= undefined && consulta.numClientes != undefined ? consulta.numClientes:0}}</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<div id="divusuUsuario" class="col-sm-3">
+    <input type="text" class="formulario__input" (keyup)="filtrar($event)">
+    <label for="" class="formulario__label">Busqueda rápida</label>
+    <div class="fa_search"></div>
+</div>
+
+
+
+
+
+<br class="blue">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-9">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan=1 class="hedaer-prospeccion">Prospección</th>
+                        <th colspan=2 class="hedaer-neg">Negociación</th>
+                        <th colspan=1 class="hedaer-cierre">Cierre</th>
+                    </tr>
+                    <tr>
+                        <th class="sub-h-cont">Contacto ({{consulta !=undefined && consulta.listaProspecto != undefined && consulta.listaProspecto.length ? consulta.listaProspecto.length:0 }})</th>
+                        <th class="sub-h-vis">Visiatado ({{consulta !=undefined && consulta.listaVisitado != undefined && consulta.listaVisitado.length}})</th>
+                        <th class="sub-h-alta">Alta ({{consulta !=undefined && consulta.listaAlta != undefined && consulta.listaAlta.length}})</th>
+                        <th class="sub-h-cierre">Cerro Operación ({{consulta !=undefined && consulta.listaCerro != undefined && consulta.listaCerro.length}})</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <!-- contacto -->
+                        <td class="td-in">
+                            <table class="table-in">
+                                <tr *ngFor="let item of consulta?.listaProspecto">
+                                    <td (click)="selectPipeList(item)">{{item.nombreCorto}}</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <!-- Visitado -->
+                        <td class="td-in">
+                            <table class="table-in">
+                                <tr *ngFor="let item of consulta?.listaVisitado">
+                                    <td (click)="selectPipeList(item)">{{item.nombreCorto}}</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <!-- Alta -->
+                        <td class="td-in">
+                            <table class="table-in">
+                                <tr *ngFor="let item of consulta?.listaAlta">
+                                    <td (click)="selectPipeList(item)">{{item.nombreCorto}}</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <!-- Cerro Operacion -->
+                        <td class="td-in">
+                            <table class="table-in">
+                                <tr *ngFor="let item of consulta?.listaCerro">
+                                    <td (click)="selectPipeList(item)">{{item.nombreCorto}}</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div *ngIf="pipelineVoSelected" class="col-sm-3">
+            <div class="row">
+                <div id="divperNom" class="col-sm-6">
+                    <input type="text" readonly class="formulario__input" value="{{ejecutivo}}">
+                    <label class="formulario__label">Ejecutivo </label>
+                </div>
+                <div id="divperNom" class="col-sm-6">
+                    <input type="text" readonly class="formulario__input" value="{{negocio}}">
+                    <label class="formulario__label">Negocio</label>
+                </div>
+            </div>
+            <div class="row">
+                <div id="divperNom" class="col-sm-6">
+                    <input type="text" readonly class="formulario__input" value="{{contrato}}">
+                    <label class="formulario__label">Contrato</label>
+                </div>
+                <div id="divperNom" class="col-sm-6">
+                    <input type="text" readonly class="formulario__input" value="{{tipo}}">
+                    <label class="formulario__label">Tipo</label>
+                </div>
+            </div>
+            <div class="row">
+                <div id="divperNom" class="col-sm-6">
+                    <input type="text" readonly class="formulario__input" value="{{fechaProsp}}">
+                    <label class="formulario__label">Fecha Prosp</label>
+                </div>
+                <div id="divperNom" class="col-sm-6">
+                    <input type="text" readonly class="formulario__input" value="{{diasPros1}}">
+                    <label class="formulario__label">Dias Prosp</label>
+                </div>
+            </div>
+            <div class="row">
+                <div id="divperNom" class="col-sm-6">
+                    <input type="text" readonly class="formulario__input" value="{{fechaCambiosFase}}">
+                    <label class="formulario__label">Fecha Cambio Fase</label>
+                </div>
+                <div id="divperNom" class="col-sm-6">
+                    <input type="text" readonly class="formulario__input" value="{{diasPros1}}">
+                    <label class="formulario__label">Días Fase</label>
+                </div>
+            </div>
+            <button class="btn-img save-button"><span class="tooltip">Bitacora</span></button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,6 @@
+<idb-paginator-page-item
+  *ngFor="let currentPage of pages"
+  [page]="currentPage"
+  (pageChange)="onPageChange($event)"
+  [active]="currentPage === page"
+></idb-paginator-page-item>

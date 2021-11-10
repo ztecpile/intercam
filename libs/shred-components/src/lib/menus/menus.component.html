@@ -1,0 +1,39 @@
+<div class="idb_menu">
+
+  <ng-container *ngFor="let menuItem of menusList">
+  
+    <ng-container *ngIf="!menuItem.children">
+      <div class="nav-link idb_menu_lbl {{menuItem.estilo}}" [ngClass]="{'left_40' : menuItem.icono}">
+        <div>
+          <img class="img_no_hover"  *ngIf="menuItem.icono" src='{{menuItem.icono}}.png' />
+          <img class="img_hover" *ngIf="menuItem.icono" src='{{menuItem.icono}}_hover.png' />
+          <a (click)="load_url(menuItem, $event, 1)" class="nav-link">{{ menuItem.label | transloco }}</a>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="menuItem.line_right">
+      <div class="idb_menu_lbl menu_right"><div class="line_right"></div></div>
+    </ng-container>
+
+    <ng-container *ngIf="menuItem.children">
+      <ng-container *ngIf="menuItem.children.length > 0">
+      <div class="idb_menu_lbl idb_menu_btn {{menuItem.estilo}}" [ngClass]="{'left_40' : menuItem.icono}">
+        <div>
+          <img class="img_no_hover"  *ngIf="menuItem.icono" src='{{menuItem.icono}}.png' />
+          <img class="img_hover" *ngIf="menuItem.icono" src='{{menuItem.icono}}_hover.png' />
+          <span>{{ menuItem.label | transloco }}</span>
+          <div class="idb_submenu only-show-on-hover">
+            <div class="centrar">
+              <ng-container *ngFor="let submenuItem of menuItem.children">
+                <a (click)="load_url(submenuItem, $event, 2)" class="nav-link idb_menu_lbl">{{ submenuItem.label | transloco }}</a>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+      </ng-container>
+    </ng-container>
+  
+  </ng-container>
+</div>

@@ -1,0 +1,60 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+@media screen and (max-width: 1000px) {
+.fecha {
+    float: none;
+    font-size: 12px;
+    font-family: "Museo Sans 300";
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+h2  {
+   margin-top: -28px !important;
+}
+.fecha {
+    margin-top:24px !important;;
+}
+.flujo {
+    top: 177px;
+}
+.tit_instruccion {
+    margin-top: 59px;
+}
+.navbar {
+ display:none!important;
+}
+.centrar_formulario{
+	padding-top:24px;
+	}
+	}
+	
+
+@media screen and (max-width: 800px) {
+.fecha {
+    float: none;
+    font-size: 12px;
+    font-family: "Museo Sans 300";
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+h2 {
+    margin-top: 0px !important;
+}
+.fecha {
+    margin-top:24px !important;
+}
+.flujo {
+   top: 230px;
+}
+.tit_instruccion {
+    margin-top: 95px;
+}
+.navbar {
+ display:none!important;
+}
+.centrar_formulario{
+	padding-top:60px;
+	}
+	}
