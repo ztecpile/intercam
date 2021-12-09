@@ -1,0 +1,35 @@
+<div  class="table">
+    <table>
+        <thead>
+            <tr>
+                <th *ngFor="let table of tables">{{table.cabezera}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of data">
+                <td>{{data.nombre}}</td>
+                <td>{{data.status}}</td>
+                <td>{{data.job}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="botton">
+    <div class="btn">
+        <!-- <app-botton-actualizar></app-botton-actualizar> -->
+    </div>
+    <div class="btn">
+        <!-- <app-botton-play></app-botton-play> -->
+    </div>
+    <div class="btn">
+        <!-- <app-botton-pausar></app-botton-pausar> -->
+    </div>
+</div>
+<!-- <app-botton-carpeta></app-botton-carpeta>
+<app-botton-guardar></app-botton-guardar>
+<app-botton-retroceder></app-botton-retroceder>
+<app-botton-check></app-botton-check>
+<app-botton-eliminar></app-botton-eliminar>
+<app-arrow-der></app-arrow-der>
+<app-arrow-izq></app-arrow-izq>
+<app-botton-salir></app-botton-salir> -->

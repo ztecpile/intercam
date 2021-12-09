@@ -1,0 +1,41 @@
+<div class="principal">
+    <div class="titulo">
+        <p>Habilitar operador para cierre forward con excepcion</p>
+    </div>
+    <div class="conteiner">
+        <div  class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th *ngFor="let table of tables">{{table.cabezera}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of data">
+                        <td>{{data.nombre}}</td>
+                        <td>{{data.status}}</td>
+                        <td>{{data.job}}</td>
+                        <td>{{data.cierre}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+        <div class="tipo">
+            <p>Busqueda Rapida</p>
+            <input type="text" name="" id="">
+        </div>
+        <div class="tipo">
+            <p>Nombre del Promotor</p>
+            <input type="text" name="" id="">
+        </div>
+        <div class="radio">
+            <p class="estatus">Estatus</p>
+            <div class="opcion">
+                <input type="radio">
+                <p>Si</p>
+                <input type="radio">
+                <p>No</p>
+            </div>
+        </div>
+</div>

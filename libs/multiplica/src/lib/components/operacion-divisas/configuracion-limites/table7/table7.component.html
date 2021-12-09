@@ -1,0 +1,50 @@
+<div  class="table">
+    <table>
+        <thead>
+            <tr>
+                <th *ngFor="let table of tables">{{table.cabezera}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of data">
+                <td>{{data.mesa}}</td>
+                <td>{{data.maximo}}</td>
+                <td>{{data.horario}}</td>
+                <td>{{data.estatus}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="conteiner">
+    <div class="tipo">
+        <p>Mesa</p>
+        <select name="" id=""></select>
+    </div>
+    <div class="tipo">
+        <p>Estatus</p>
+        <select name="" id=""></select>
+    </div>
+    <div class="tipo">
+        <p>Monto Maximo</p>
+        <input type="text">
+    </div>
+    <div class="horario">
+        <p>Horario</p>
+        <input type="number">
+        <input type="number">
+    </div>
+    <div class="botton">
+    <div class="btn">
+        <app-botton-carpeta></app-botton-carpeta>
+    </div>
+    <div class="btn">
+        <app-botton-guardar></app-botton-guardar>
+    </div>
+    <div class="btn">
+        <app-botton-eliminar></app-botton-eliminar>
+    </div>
+    <div class="btn">
+        <app-botton-retroceder></app-botton-retroceder>
+    </div>
+    </div>
+</div>

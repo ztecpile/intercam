@@ -14,6 +14,7 @@ export class SubMenuComponent implements OnInit {
   
   @Output() buscar_cliente = new EventEmitter<any>();
   @Output() mostrar_precios = new EventEmitter<any>();
+  @Output() buscar_documento = new EventEmitter<any>();
   @Output() logout = new EventEmitter<any>();
   
   constructor() { }

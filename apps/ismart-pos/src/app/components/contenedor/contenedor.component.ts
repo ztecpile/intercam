@@ -23,6 +23,9 @@ export class ContenedorComponent implements OnInit {
     
     //this._authService.getUsuarioSession();
   }
+  buscarDocumento(e:any){
+  this.menu.showGetPerson();
+}
 
   buscarCliente(e:any){
     this.menu.showGetPerson();

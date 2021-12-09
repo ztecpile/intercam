@@ -27,7 +27,8 @@
       "@intercam/tesoreria": ["libs/tesoreria/src/index.ts"],
       "@intercam/operacion": ["libs/operacion/src/index.ts"],
       "@intercam/banco": ["libs/banco/src/index.ts"],
-      "@intercam/fondos": ["libs/fondos/src/index.ts"]
+      "@intercam/fondos": ["libs/fondos/src/index.ts"],
+      "@intercam/multiplica":["libs/multiplica/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

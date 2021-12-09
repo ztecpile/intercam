@@ -6,6 +6,7 @@ import { DialogBuscaPersonaComponent } from 'libs/shred-components/src/lib/dialo
 import { AuthService } from '../../core/services/auth.service';
 import { UsuarioService } from '../../core/services/usuario.service';
 import { DialogPreciosComponent } from '../dialog-precios/dialog-precios.component';
+// import { ContratacionDocumentoComponent } from '../../../../../../libs/contrato/src/lib/components/documentos/contratacion-documento/contratacion-documento.component'
 
 @Component({
   selector: 'intercam-menu',
@@ -28,6 +29,7 @@ export class MenuComponent implements OnInit {
 
   usuario:String;
   cliente:String;
+  documento:String;
   isCliente:boolean = false;
   isPromotror:boolean = true;
 
@@ -127,12 +129,29 @@ export class MenuComponent implements OnInit {
       data: { usuarioVO: this.usuarioVO, tconId: 0}
     });
 
+
     dialogRef.afterClosed().subscribe((result) => {
       if(result !== undefined) {
         this.buscarPersonaHandler(result['data']);
       }
     });
   }
+
+  // showGetDocument(){
+  //   const dialogRef = this.dialog.open(ContratacionDocumentoComponent,{
+  //     width: '990px',
+  //     disableClose:true,
+  //     autoFocus:true,
+  //     data: { usuarioVO: this.usuarioVO, tconId: 0}
+  //   });
+    
+
+  //   dialogRef.afterClosed().subscribe((result) => {
+  //     if(result !== undefined) {
+  //       this.buscarPersonaHandler(result['data']);
+  //     }
+  //   });
+  // }
 
   buscarPersonaHandler(result:PersonaContratoVO){
     let personaTemp: PersonaContratoVO = result;

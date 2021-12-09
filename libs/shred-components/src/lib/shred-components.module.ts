@@ -21,6 +21,7 @@ import { TituloModule } from './titulo/titulo.module';
 import { TooltipModule } from './tooltip/tooltip.module';
 import { UserGreetingModule } from './user-greeting/user-greeting.module';
 import { DialogModule } from './dialog/dialog.module';
+import { TableModule } from './table/table/table.module';
 
 @NgModule({
   imports: [
@@ -31,41 +32,44 @@ import { DialogModule } from './dialog/dialog.module';
     CalendarioModule,
     ChipsModule,
     // CodeSnippetModule,
-     FormModule,
+    FormModule,
     LinkModule,
     MenusModule,
     MessagesModule,
     PaginatorModule,
     PreloadModule,
     RestringeFechaHoraModule,
-     StepperModule,
-     TabsModule,
+    StepperModule,
+    TabsModule,
     TimepickerModule,
-     TituloModule,
-     TooltipModule,
-     UserGreetingModule
+    TituloModule,
+    TooltipModule,
+    UserGreetingModule,
+    TableModule,
   ],
-  exports:[
-     DateModule,
+  exports: [
+    DateModule,
     BreadcrumbModule,
     CajasDragModule,
     CalendarioModule,
     ChipsModule,
     // CodeSnippetModule,
-     FormModule,
+    FormModule,
     LinkModule,
     MenusModule,
     MessagesModule,
     PaginatorModule,
     PreloadModule,
     RestringeFechaHoraModule,
-     StepperModule,
-     TabsModule,
+    StepperModule,
+    TabsModule,
     TimepickerModule,
-     TituloModule,
-     TooltipModule,
-     UserGreetingModule,
-     DialogModule
-  ]
+    TituloModule,
+    TooltipModule,
+    UserGreetingModule,
+    DialogModule,
+    TableModule,
+  ],
+  declarations: [],
 })
 export class ShredComponentsModule {}

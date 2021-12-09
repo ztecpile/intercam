@@ -1,0 +1,32 @@
+<!-- <div class="prospect-list__table">
+  <div class="table__loading" *ngIf="isLoadingData">
+      <div class="loading"></div>
+  </div>
+  <div class="table__not-found" *ngIf="!isVisibleTable">
+      <img src="{{ messageIcon }}" alt="logo" width="159" height="100" />
+      <h6 class="bold">{{ messageTitle }}</h6>
+      <h6>{{ messageSubtitle }}</h6>
+  </div>
+  <div class="table__found" *ngIf="isVisibleTable && !isLoadingData">
+      <table>
+          <thead>
+              <tr *ngFor="let headerTitle of headersTitles ">
+                  <th><{{ headerTitle }}/th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let prospect of dataSource">
+                  <td data-label="Estatus"></td>
+                  <td data-label="Folio">
+                      {{ prospect.proceso_venta.id_proceso_venta }} / {{ prospect.proceso_venta.id_status_esquema }}
+                  </td>
+                  <td data-label="Correo">{{ prospect.correo_electronico }}</td>
+                  <td data-label="telefono">{{ prospect.numero_telefono }}</td>
+                  <td data-label="Nombre">
+                      {{ prospect.primer_nombre + ' ' + (prospect.segundo_nombre ? prospect.segundo_nombre : '') + ' ' + prospect.primer_apellido + ' ' + (prospect.segundo_apellido ? prospect.segundo_apellido : '') }}
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div> -->

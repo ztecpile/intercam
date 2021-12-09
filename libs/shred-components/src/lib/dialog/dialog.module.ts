@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormModule } from '../form/form.module';
@@ -29,6 +29,7 @@ import { DialogCierreRapidaComponent } from './dialog-cierre-rapida/dialog-cierr
   exports:[
     DialogBuscaPersonaComponent,
     DialogCierreRapidaComponent
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class DialogModule { }

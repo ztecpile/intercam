@@ -1,0 +1,95 @@
+.table {
+    display: grid;
+    justify-items: center;
+  //   min-height: 19rem;
+  
+    text-align: center;
+}
+
+table, td, th {
+  border: 1px solid #ddd;
+}
+
+table {
+    display: table;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+
+  //   border: 1px solid #ddd;
+
+ 
+  }
+
+  table tr {
+  //   border-bottom: 1px solid #ddd;
+    padding: 5px;
+  //   border: 1px solid #ddd;
+
+  }
+
+  table td,
+  table th {
+    padding: 10px;
+    display: table-cell;
+    text-align: left;
+  //   border: 1px solid #ddd;
+
+  }
+
+  table th {
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: var(--steel-100);
+    background-color: #F0F0F0;
+    font-weight: 400;
+    
+  }
+
+  table td {
+    color: var(--almost-black);
+    font-size: 16px;
+    line-height: 24px;
+    }
+
+  tr:nth-child(odd){
+      background:#CCCCCB;
+      
+  }
+
+  .head{
+    background: #EDEDED;
+    width: 100%;
+    height: 40px;
+    padding-top: 1px;
+    padding-bottom: 18px;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  .bold{
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+  }
+
+  .mail{
+      font-size: 18px;
+      margin-top: 20px;
+      margin-left: 700px;
+      display: flex;
+  }
+
+  .inter{
+    margin-left: 15px;
+    margin-top: 12px;
+    width: 250px;
+    height: 25px;
+    font-size: 15px;
+  }
+
+  .btn{
+    margin-left: 20px;
+  }

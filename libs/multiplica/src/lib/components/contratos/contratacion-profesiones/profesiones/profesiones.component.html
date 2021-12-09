@@ -1,0 +1,53 @@
+<div class="principal">
+    <div class="titulo">
+        <p>Profesion</p>
+    </div>
+    <div class="padre">
+        <div class="conteiner">
+            <div class="tabla1">
+                <div class="table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th *ngFor="let table of tables">{{table.cabezera}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let data of dataDocuments" (click)="selectDocument(data)">
+                                <td>{{data.docNombre}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <form [formGroup]="formProfession">
+        <div class="ciudad">
+            <p>Observaciones</p>
+            <input type="text" formControlName="observaciones">
+        </div>
+        <div class="nivel">
+            <p>Nivel de riesgo</p>
+            <input type="text" formControlName="riesgo">
+        </div>
+    </form>
+        <div class="btn">
+            <div class="carpeta">
+                <button [disabled]="!formProfession.valid"><img src="https://w7.pngwing.com/pngs/91/229/png-transparent-school-library-document-school-librarian-others-angle-material-file-folders.png" alt=""></button>
+            </div>
+            <div class="carpeta">
+                <button><img src="https://w7.pngwing.com/pngs/91/229/png-transparent-school-library-document-school-librarian-others-angle-material-file-folders.png" alt=""></button>
+            </div>
+        <div class="eliminar">
+            <button [disabled]="disabledButtons" (click)="deleteDocument()"><img src="https://img.lovepik.com/element/45004/4709.png_860.png"></button>
+        </div>
+        <div class="guardar">
+            <button [disabled]="disabledButtons" (click)="updateDocument()"><img src="https://w7.pngwing.com/pngs/16/264/png-transparent-computer-icons-windows-metafile-save-angle-text-rectangle.png" alt=""></button>
+        </div>
+        <div class="retroceder">
+            <button (click)="revertSelection()"><img src="https://c0.klipartz.com/pngpicture/206/741/sticker-png-curve-computer-icons-arrow-arrow-angle-wikimedia-commons-shape-thumbnail-symbol.png" alt=""></button>
+        </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,241 @@
+.disableDiv {
+  pointer-events: none;
+}
+
+.prospect-list__page {
+  display: grid;
+  grid-template-columns: 5rem 1fr;
+  grid-template-rows: max-content;
+  background-color: rgba(218, 218, 218, 0.1);
+  height: 100%;
+  width: 100%;
+}
+
+.message-search {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+
+  h6 {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    color: var(--almost-black);
+  }
+
+  div {
+    app-pagination {
+      float: right;
+    }
+  }
+}
+
+.prospect-list {
+  &__container {
+    width: 100%;
+    padding: 2.5rem 2rem;
+  }
+
+  &__header {
+    display: grid;
+    grid-template-columns: 75% 25%;
+    align-items: space-between;
+
+    h3 {
+      color: var(--mexican-pink);
+      line-height: 32px;
+    }
+
+    g-button {
+      width: 100%;
+
+      img {
+        margin-left: 10px;
+      }
+    }
+  }
+
+  &__search {
+    background-color: var(--whity);
+    box-shadow: 3px 6px 6px 0px rgba(var(--purple-rgb), 0.1);
+
+    & .search__title {
+      color: var(--steel-60);
+    }
+
+    & .search__container {
+      &-items {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+        grid-auto-rows: auto;
+        grid-auto-flow: dense;
+        padding: 1.25rem 5rem 1.25rem 1rem;
+
+        & .button-container {
+          margin: 0 auto;
+        }
+
+        & .button-link {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          color: var(--just-blue);
+          cursor: pointer;
+          text-align: center;
+        }
+
+        & g-button {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  &__table {
+    display: grid;
+    justify-items: center;
+    min-height: 19rem;
+    text-align: center;
+
+    & .table__not-found,
+    .table__loading {
+      margin: auto;
+
+      & h6 {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+      }
+
+      & .bold {
+        font-weight: 700;
+        color: var(--almost-black);
+      }
+    }
+
+    & .table__found {
+      width: 100%;
+      margin-top: 2rem;
+
+      table {
+        display: table;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+
+      table tr {
+        border-bottom: 1px solid #ddd;
+        padding: 5px;
+      }
+
+      table td,
+      table th {
+        padding: 10px;
+        display: table-cell;
+        text-align: left;
+      }
+
+      table th {
+        font-size: 14px;
+        letter-spacing: 1px;
+        color: var(--steel-100);
+        font-weight: 400;
+      }
+
+      table td {
+        color: var(--almost-black);
+        font-size: 16px;
+        line-height: 24px;
+
+        & a {
+          color: var(--just-blue);
+          display: flex;
+          flex-direction: row;
+
+          & app-arrow-forward {
+            --fillColor: var(--just-blue);
+            margin-left: 0.5rem;
+          }
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        table {
+          border: 0;
+          width: 100%;
+        }
+
+        table tr {
+          margin-bottom: 10px;
+          display: block;
+          border-bottom: 2px solid #ddd;
+        }
+
+        table td {
+          display: block;
+          text-align: right;
+          font-size: 16px;
+          line-height: 24px;
+        }
+
+        table td:last-child {
+          border-bottom: 0;
+        }
+
+        table td:before {
+          content: attr(data-label);
+          float: left;
+          text-transform: uppercase;
+          font-weight: 600;
+        }
+
+        table thead {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.loading {
+  width: 70px;
+  height: 70px;
+  border: 10px solid rgba(177, 0, 92, 0.3);
+  border-top: 10px solid var(--luv);
+  border-radius: 50%;
+  animation-name: girar;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes girar {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .prospect-list {
+    &__search {
+      .search__container {
+        &-items {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+    }
+  }
+}

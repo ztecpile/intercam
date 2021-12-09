@@ -6,10 +6,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
 import { translocoLoader } from './transloco.loader';
 import { TranslocoModule, TRANSLOCO_CONFIG, TranslocoConfig } from '@ngneat/transloco';
-import { ProspeccionComponent } from './components/prospeccion/prospeccion/prospeccion.component';
+// import { ProspeccionComponent } from './components/prospeccion/prospeccion/prospeccion.component';
+
 
 @NgModule({
-  declarations: [AppComponent, ProspeccionComponent],
+  declarations: [AppComponent],
   imports: [BrowserModule, BrowserAnimationsModule, TranslocoModule],
   providers: [{
       provide: TRANSLOCO_CONFIG,

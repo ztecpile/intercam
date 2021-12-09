@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthorizatedGuard } from './core/guards/authorizated.guard';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { AssumptionsComponent } from './pages/assumptions/assumptions.component'
 
 const routes: Routes = [
   {
@@ -10,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: '', component: HomeComponent, 
-    canActivate: [AuthorizatedGuard],
+    // canActivate: [AuthorizatedGuard],
     children: [
       {
         path: 'contrato',
@@ -19,6 +20,9 @@ const routes: Routes = [
       },
     ]
   },
+  {
+    path: 'assumptions', component: AssumptionsComponent
+  }
 ];
 
 @NgModule({

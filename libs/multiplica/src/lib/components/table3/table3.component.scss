@@ -1,0 +1,142 @@
+.table {
+    display: grid;
+    justify-items: center;
+  //   min-height: 19rem;
+  
+    text-align: center;
+}
+
+.contrato,.fecha,.contra{
+  display: flex;
+}
+
+.contra{
+  margin-left: 30px;
+}
+
+input,select{
+  margin-top: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 150px;
+  height: 20px;
+}
+
+select{
+  border-radius: 10%;
+  height: 25px;
+  background: #D9E5B1;
+}
+
+.centro{
+  text-align: center;
+  font-weight: bold;
+}
+
+table, td, th {
+  border: 1px solid #ddd;
+}
+
+table {
+    display: table;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+
+  //   border: 1px solid #ddd;
+
+ 
+  }
+
+  table tr {
+  //   border-bottom: 1px solid #ddd;
+    padding: 5px;
+  //   border: 1px solid #ddd;
+
+  }
+
+  table td,
+  table th {
+    padding: 15px;
+    display: table-cell;
+    text-align: left;
+  //   border: 1px solid #ddd;
+
+  }
+
+  table th {
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: var(--steel-100);
+    background-color: #F0F0F0;
+    font-weight: 400;
+    
+  }
+
+  table td {
+    color: var(--almost-black);
+    font-size: 16px;
+    line-height: 24px;
+    }
+
+  tr:nth-child(odd){
+      background:#CCCCCB;
+      
+  }
+
+  .container{
+    margin-top: 30px;
+    margin-left: 60px;
+    display: flex;
+    width: 90%;
+    // height: 500px;
+    border: 0.2px solid #C4C4C4;
+  }
+
+  .check,.tipo{
+    display: flex;
+    margin-left: 30px;
+  }
+
+  .contrato, .selec{
+    margin-left: 150px;
+  }
+.check{
+  width: 10%;
+}
+
+.separado{
+  width: 100px;
+}
+
+  .p{
+    position: absolute;
+    left: 150px;
+  }
+
+  .izq{
+    // background-color: yellow;
+    width: 50%;
+  }
+
+  .social{
+    width: 200px;
+    height: 20px;
+  }
+  .der{
+    width: 50%;
+    // background-color: red;
+  }
+
+  .botton{
+    justify-content: flex-start;
+    margin-top: 20px;
+    display: flex;
+    margin-left: 80px;
+
+   & .btn{
+     margin: 10px;
+   }
+  }

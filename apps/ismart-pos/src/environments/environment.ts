@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  URLService: 'http://weblogicflex:7001/POSServiceWeb/',
+  // URLService: 'http://weblogicflex:7001/POSServiceWeb/',
+  URLService: 'http://localhost:7006/POSServiceWeb/',
   URLServicePrice: 'http://10.9.1.216:7401/PreciosEngine/'
 };
 

@@ -1,0 +1,44 @@
+<div class="centro">
+    <p>CONSULTA DE OPERACION</p>
+</div>
+<div class="contrato">
+    <p>Contrato pos</p>
+    <select name="" id=""></select>
+    <p>Contrato legado</p>
+    <input type="text" placeholder="">
+</div>
+<div class="">
+    <p>FECHA DE OPERACION</p>
+</div>
+<div class="fecha">
+    <p>Fecha inicial</p>
+    <input type="date">
+    <p>Fecha final</p>
+    <input type="date">
+    <div class="botton">
+        <app-botton-carpeta></app-botton-carpeta>
+    </div>
+</div>
+<div  class="table">
+    <table>
+        <thead>
+            <tr>
+                <th *ngFor="let table of tables">{{table.cabezera}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of data">
+                <td>{{data.tipo}}</td>
+                <td>{{data.fecha}}</td>
+                <td>{{data.orden}}</td>
+                <td>{{data.fondo}}</td>
+                <td>{{data.titulos}}</td>
+                <td>{{data.precios}}</td>
+                <td>{{data.operacion}}</td>
+                <td>{{data.liquidacion}}</td>
+                <td>{{data.dolares}}</td>
+                <td>{{data.estatus}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

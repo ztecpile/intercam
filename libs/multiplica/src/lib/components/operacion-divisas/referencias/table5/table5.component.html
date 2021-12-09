@@ -1,0 +1,55 @@
+<div class="head">
+    <p>Referencia Bancaria</p>
+</div>
+<div class="bold">
+    <p>Contrato</p>
+</div>
+<div  class="table">
+    <table>
+        <thead>
+            <tr>
+                <th *ngFor="let table of tables">{{table.cabezera}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of data">
+                <td>{{data.no}}</td>
+                <td>{{data.nombre}}</td>
+                <td>{{data.perfil}}</td>
+                <td>{{data.contrato}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="mail">
+    <p>Mail</p>
+    <input type="text" placeholder="legarcia@intercam.com.mx" class="inter">
+    <div class="btn">
+        <app-botton-salir></app-botton-salir>
+    </div>
+    <div class="btn">
+        <app-botton-check></app-botton-check>
+    </div>
+</div>
+<hr>
+<div class="bold">
+    <p>Referencias</p>
+</div>
+<div  class="table">
+    <table>
+        <thead>
+            <tr>
+                <th *ngFor="let table of tabla">{{table.cabezera}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of date">
+                <td>{{data.divisas}}</td>
+                <td>{{data.banco}}</td>
+                <td>{{data.conveniol}}</td>
+                <td>{{data.cuenta}}</td>
+                <td>{{data.referencia}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

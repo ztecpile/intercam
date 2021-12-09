@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import {MatTableModule} from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
-
 import { MisClientesComponent } from './mis-clientes/mis-clientes.component';
 
 const routes: Routes = [
@@ -23,7 +22,7 @@ const routes: Routes = [
     MisClientesComponent
   ],
   imports: [
-    CommonModule,
+  CommonModule,
     RouterModule.forChild(routes),
     MatTableModule,
     HttpClientModule

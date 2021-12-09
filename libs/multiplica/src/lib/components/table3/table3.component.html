@@ -1,0 +1,92 @@
+<div class="centro">
+    <p>CONSULTA DE OPERACION</p>
+</div>
+<div class="contra">
+    <p>Contrato POS</p>
+    <select name="" id=""></select>
+    <p>Contrato legado</p>
+    <input type="text" placeholder="">
+</div>
+<div  class="table">
+    <table>
+        <thead>
+            <tr>
+                <th *ngFor="let table of tables">{{table.cabezera}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of data">
+                <td>{{data.nombre}}</td>
+                <td>{{data.cuenta}}</td>
+                <td>{{data.fecha}}</td>
+                <td>{{data.usuario}}</td>
+                <td>{{data.estatus}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <div class="izq">
+        <div class="check">
+            <input type="checkbox">
+            <p class="p">ES Intercam</p>
+        </div>
+        <div class="tipo contrato">
+            <p>Tipo Contrato</p>
+            <select name="" id=""></select>
+        </div>
+        <hr>
+        <div class="tipo">
+            <p>Tipo Persona</p>
+            <select name="" id=""></select>
+        </div>
+        <div class="tipo">
+            <p>Razon Social</p>
+            <input type="text" class="social">
+        </div>
+    </div>
+    <div class="der">
+        <div class="tipo selec">
+            <p>Banco</p>
+            <select name="" id=""></select>
+        </div>
+        <div class="tipo selec">
+            <p>Divisa</p>
+            <select name="" id=""></select>
+        </div>
+      <div class="tipo selec">
+        <p>Cuenta</p>
+        <select name="" id=""></select>
+      </div>
+      <div class="tipo">
+          <p class="separado">Cuenta</p>
+          <input type="text">
+      </div>
+      <div class="tipo">
+          <P class="separado">CLABE</P>
+          <input type="text">
+        </div>
+        <div class="tipo">
+            <p class="separado">Sucursal</p>
+            <input type="text">
+        </div>
+        <div class="tipo">
+            <p class="separado">Plaza</p>
+            <input type="text">
+        </div>
+    </div>
+</div>
+<div class="botton">
+    <div class="btn">
+        <!-- <app-botton-carpeta></app-botton-carpeta> -->
+    </div>
+    <div class="btn">
+        <!-- <app-botton-guardar></app-botton-guardar> -->
+    </div>
+    <div class="btn">
+        <!-- <app-botton-retroceder></app-botton-retroceder> -->
+    </div>
+    <div class="btn">
+        <!-- <app-botton-actualizar></app-botton-actualizar> -->
+    </div>
+</div>

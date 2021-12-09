@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './menus.component.html',
   styleUrls: ['./menus.component.css']
 })
-export class MenusComponent implements OnInit {
+export class MenusComponent {
   @Input() menusList: Array<any>;
 
   url: any;
@@ -17,9 +17,6 @@ export class MenusComponent implements OnInit {
     private router: Router,
     private render: Renderer2,
     ) {
-  }
-
-  ngOnInit(): void {
   }
 
   load_url ( menuItem: any, e: any, niv: any ) {
@@ -56,5 +53,5 @@ export class MenusComponent implements OnInit {
       return error.status;
     }
   }
-  
+
 }

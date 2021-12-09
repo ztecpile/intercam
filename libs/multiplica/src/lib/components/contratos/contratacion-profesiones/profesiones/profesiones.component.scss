@@ -1,0 +1,109 @@
+.table {
+    display: grid;
+    justify-items: center;
+    overflow:scroll;
+  height:400px;
+  //   min-height: 19rem;
+  
+    text-align: center;
+}
+
+table, td, th {
+  border: 1px solid #ddd;
+}
+
+table {
+    display: table;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+
+  //   border: 1px solid #ddd;
+
+ 
+  }
+
+  table tr {
+  //   border-bottom: 1px solid #ddd;
+    padding: 5px;
+  //   border: 1px solid #ddd;
+
+  }
+
+  table td,
+  table th {
+    padding: 10px;
+    display: table-cell;
+    text-align: left;
+  //   border: 1px solid #ddd;
+
+  }
+
+  table th {
+      text-align: center;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: var(--steel-100);
+    background-color: #F0F0F0;
+    font-weight: 400;
+    
+  }
+
+  table td {
+    color: var(--almost-black);
+    font-size: 16px;
+    line-height: 24px;
+    }
+
+  tr:nth-child(odd){
+      background:#CCCCCB;
+      
+  }
+  .titulo{
+    font-weight: bold;
+}
+.principal{
+    background: gainsboro;
+}
+.padre{
+    background: #ffff;
+    margin: 5px;
+}
+.nivel,.ciudad{
+    margin-left: 15px;
+    display: flex;
+}
+.nivel p, .ciudad p{
+    width: 140px;
+}
+.nivel input{
+    margin-left: 10px;
+    margin-top: 13px;
+    width: 80px;
+    height: 20px;
+}
+.ciudad input{
+    margin-left: 10px;
+    margin-top: 13px;
+    width: 180px;
+    height: 20px;
+}
+
+.eliminar, .guardar , .retroceder, .carpeta{
+  width: 40px;
+  height: 40px;
+  margin-left: 15px;
+& img{
+   width: 30px;
+   height: 30px;
+   padding-top: 2px;
+}   
+}
+
+.btn{
+  margin-left: 130px;
+margin-top: 25px;
+display: flex;
+}

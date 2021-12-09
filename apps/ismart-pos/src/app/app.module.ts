@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app.routing';
 import { ModelModule } from '@intercam/model';
 import { ShredComponentsModule } from '@intercam/shred-components';
 import { ContratoModule } from '@intercam/contrato';
+import { MultiplicaModule } from '../../../../libs/multiplica/src/lib/multiplica.module';
 
 import { CustomHttpInterceptor } from './Interceptor/CustomHttpInterceptor';
 import { TranslocoRootModule } from './transloco/transloco-root.module';
@@ -34,6 +35,7 @@ import { CoreModule } from './core/core.module';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { FilterMenuPipe } from './filter/filter-menu.pipe';
+import { AssumptionsComponent } from './pages/assumptions/assumptions.component';
 export function playerFactory() {
   return player;
 }
@@ -48,10 +50,11 @@ export function playerFactory() {
     DialogPreciosComponent,
     LoginComponent,
     HomeComponent,
-    FilterMenuPipe
+    FilterMenuPipe,
+    AssumptionsComponent
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
     MatTabsModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -65,7 +68,8 @@ export function playerFactory() {
     ReactiveFormsModule,
     TranslocoRootModule,
     LottieModule.forRoot({ player: playerFactory }),
-    ProspeccionModule
+    ProspeccionModule,
+    MultiplicaModule
   ],
   providers: [
     {

@@ -1,0 +1,47 @@
+<div class="principal">
+    <div class="cabezera">
+        <p>Bitacoras Tipos</p>
+    </div>
+    <div class="conteiner">
+        <div class="tipos">
+            <p>Mesa</p>
+            <select name="" id=""></select>
+            <p>Divisa</p>
+            <select name="" id=""></select>
+            <p>Fecha</p>
+            <input type="date">
+            <p>Hora</p>
+            <input type="text">
+            <div class="btn">
+                <app-arrow-izq></app-arrow-izq>
+            </div>
+            <div class="btn">
+                <app-arrow-der></app-arrow-der>
+            </div>
+        </div>
+        <div  class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th *ngFor="let table of tables">{{table.cabezera}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of data">
+                        <td>{{data.intrumento}}</td>
+                        <td>{{data.compra}}</td>
+                        <td>{{data.venta}}</td>
+                        <td>{{data.compra}}</td>
+                        <td>{{data.venta}}</td>
+                        <td>{{data.compra}}</td>
+                        <td>{{data.venta}}</td>
+                        <td>{{data.compra}}</td>
+                        <td>{{data.venta}}</td>
+                        <td>{{data.compra}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+</div>

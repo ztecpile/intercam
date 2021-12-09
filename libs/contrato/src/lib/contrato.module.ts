@@ -13,7 +13,6 @@ import { ShredComponentsModule } from '@intercam/shred-components';
 import { DialogBusquedaCoincidenciasComponent } from './components/util/dialog-busqueda-coincidencias/dialog-busqueda-coincidencias.component';
 import { DialogReporte24hrsComponent } from './components/util/dialog-reporte24hrs/dialog-reporte24hrs.component';
 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -27,11 +26,11 @@ import { DialogReporte24hrsComponent } from './components/util/dialog-reporte24h
     ReactiveFormsModule,
     MatTableModule,
     MatTooltipModule,
-    ShredComponentsModule
+    ShredComponentsModule,
   ],
   declarations: [
     DialogBusquedaCoincidenciasComponent,
-    DialogReporte24hrsComponent
+    DialogReporte24hrsComponent,
   ]
 })
 export class ContratoModule {
