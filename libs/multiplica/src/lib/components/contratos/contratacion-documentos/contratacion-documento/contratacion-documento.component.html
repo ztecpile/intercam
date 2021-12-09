@@ -19,8 +19,8 @@
                         <th *ngFor="let headerTitle of headersTitles ">{{ headerTitle }}</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr *ngFor="let dataDocument of dataDocuments; let i = index" [attr.data-index]="i">
+                <tbody >
+                    <tr *ngFor="let dataDocument of dataDocuments; let i = index" [attr.data-index]="i" (click)="selectDocument(dataDocument)">
                         <td data-label="Documento">{{dataDocument.docNombre}}</td>
                         <td data-label="Observaciones">{{dataDocument.docDescrip}}</td>
                         <td data-label="Caduca Documento">{{dataDocument.docCaduca}}</td>

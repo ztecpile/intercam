@@ -39,7 +39,8 @@ export class FacturasService {
 
   getTypeDocuments(): Observable<any[]> {
     const urlStr = 'tipo-documento/fill';
-    return this.http.post<any[]>(urlStr, '');
+    const body = ['sinRelaciones'];
+    return this.http.post<any[]>(urlStr, body);
   }
 
   saveTypeDocument(body: TypeDocument): Observable<any[]> {

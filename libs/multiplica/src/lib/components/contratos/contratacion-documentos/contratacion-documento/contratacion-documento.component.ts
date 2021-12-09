@@ -194,6 +194,7 @@ export class ContratacionDocumentoComponent implements OnInit {
   // }
 
   selectDocument(data) {
+    console.log(data);
     this.disabledButtons = false;
     this.selectedDocument = data;
     this.formDocument.controls.documento.setValue(

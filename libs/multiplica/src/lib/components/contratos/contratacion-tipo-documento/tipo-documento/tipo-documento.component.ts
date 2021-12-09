@@ -41,15 +41,24 @@ export class TipoDocumentoComponent implements OnInit {
     this.isLoadingData = true;
     this.facturasService.getTypeDocuments().subscribe((res) => {
       this.dataDocuments = res;
+      this.isLoadingData = false;
+      this.isVisibleTable = this.dataDocuments.length > 0;
     });
   }
 
   saveTypeDocument() {
     const body = {
-      typeDocNombre: this.formTypeDocument.controls.tipoDocumento.value,
-      tmpCvelegSiff: this.formTypeDocument.controls.claveSiff.value,
-      caducidadPorMes: this.formTypeDocument.controls.caducidadPorMes.value,
-      caducidadPorOperacion: this.formTypeDocument.controls.caducidadPorOperacion.value,
+      tconId: this.selectedTypeDocument.tconId,
+      tdoCaduca: this.formTypeDocument.controls.caducidadPorMes.value,
+      tdoDescripcion:  this.formTypeDocument.controls.tipoDocumento.value,
+      tdoId:  this.selectedTypeDocument.tdoId,
+      tdoPorOper:  this.formTypeDocument.controls.caducidadPorOperacion.value,
+      tmpCvelegSiff:  this.formTypeDocument.controls.claveSiff.value,
+      // docId: this.selectedTypeDocument.tconId,
+      // typeDocNombre: this.formTypeDocument.controls.tipoDocumento.value,
+      // tmpCvelegSiff: this.formTypeDocument.controls.claveSiff.value,
+      // caducidadPorMes: this.formTypeDocument.controls.caducidadPorMes.value,
+      // caducidadPorOperacion: this.formTypeDocument.controls.caducidadPorOperacion.value,
     };
 
     this.facturasService.saveTypeDocument(body).subscribe({
@@ -81,11 +90,17 @@ export class TipoDocumentoComponent implements OnInit {
 
   updateTypeDocument() {
     const body = {
-      docId: this.selectedTypeDocument.docId,
-      typeDocNombre: this.formTypeDocument.controls.tipoDocumento.value,
-      tmpCvelegSiff: this.formTypeDocument.controls.claveSiff.value,
-      caducidadPorMes: this.formTypeDocument.controls.caducidadPorMes.value,
-      caducidadPorOperacion: this.formTypeDocument.controls.caducidadPorOperacion.value,
+      tconId: this.selectedTypeDocument.tconId,
+      tdoCaduca: this.formTypeDocument.controls.caducidadPorMes.value,
+      tdoDescripcion:  this.formTypeDocument.controls.tipoDocumento.value,
+      tdoId:  this.selectedTypeDocument.tdoId,
+      tdoPorOper:  this.formTypeDocument.controls.caducidadPorOperacion.value,
+      tmpCvelegSiff:  this.formTypeDocument.controls.claveSiff.value,
+      // docId: this.selectedTypeDocument.tconId,
+      // typeDocNombre: this.formTypeDocument.controls.tipoDocumento.value,
+      // tmpCvelegSiff: this.formTypeDocument.controls.claveSiff.value,
+      // caducidadPorMes: this.formTypeDocument.controls.caducidadPorMes.value,
+      // caducidadPorOperacion: this.formTypeDocument.controls.caducidadPorOperacion.value,
     };
 
     this.facturasService.updateTypeDocument(body).subscribe({
@@ -117,11 +132,17 @@ export class TipoDocumentoComponent implements OnInit {
 
   deleteTypeDocument() {
     const body = {
-      docId: this.selectedTypeDocument.docId,
-      typeDocNombre: this.formTypeDocument.controls.tipoDocumento.value,
-      tmpCvelegSiff: this.formTypeDocument.controls.claveSiff.value,
-      caducidadPorMes: this.formTypeDocument.controls.caducidadPorMes.value,
-      caducidadPorOperacion: this.formTypeDocument.controls.caducidadPorOperacion.value,
+      tconId: this.selectedTypeDocument.tconId,
+      tdoCaduca: this.formTypeDocument.controls.caducidadPorMes.value,
+      tdoDescripcion:  this.formTypeDocument.controls.tipoDocumento.value,
+      tdoId:  this.selectedTypeDocument.tdoId,
+      tdoPorOper:  this.formTypeDocument.controls.caducidadPorOperacion.value,
+      tmpCvelegSiff:  this.formTypeDocument.controls.claveSiff.value,
+      // docId: this.selectedTypeDocument.tconId,
+      // typeDocNombre: this.formTypeDocument.controls.tipoDocumento.value,
+      // tmpCvelegSiff: this.formTypeDocument.controls.claveSiff.value,
+      // caducidadPorMes: this.formTypeDocument.controls.caducidadPorMes.value,
+      // caducidadPorOperacion: this.formTypeDocument.controls.caducidadPorOperacion.value,
     };
 
     this.facturasService.deleteTypeDocument(body).subscribe({
@@ -158,10 +179,10 @@ export class TipoDocumentoComponent implements OnInit {
   selectDocument(data) {
     this.disabledButtons = false;
     this.selectedTypeDocument = data;
-    this.formTypeDocument.controls.tipoDocumento.setValue(this.selectedTypeDocument.typeDocNombre);
+    this.formTypeDocument.controls.tipoDocumento.setValue(this.selectedTypeDocument.tdoDescripcion);
     this.formTypeDocument.controls.claveSiff.setValue(this.selectedTypeDocument.tmpCvelegSiff);
-    this.formTypeDocument.controls.caducidadPorMes.setValue(this.selectedTypeDocument.caducidadPorMes);
-    this.formTypeDocument.controls.caducidadPorOperacion.setValue(this.selectedTypeDocument.caducidadPorOperacion);
+    this.formTypeDocument.controls.caducidadPorMes.setValue(this.selectedTypeDocument.tdoCaduca);
+    this.formTypeDocument.controls.caducidadPorOperacion.setValue(this.selectedTypeDocument.tdoPorOper);
   }
 
   close() {

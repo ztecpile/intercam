@@ -11,9 +11,11 @@ export interface Document {
 }
 
 export interface TypeDocument {
-  docId?: number;
-  typeDocNombre: string;
+  tconId: number;
+  tdoCaduca: number;
+  tdoDescripcion: string;
+  tdoId: number;
+  tdoPorOper: boolean;
   tmpCvelegSiff: number;
-  caducidadPorMes: number;
-  caducidadPorOperacion: boolean;
+  
 }
