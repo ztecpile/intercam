@@ -9,6 +9,7 @@ import { FacturasModule } from './components/operacion-divisas/facturas/facturas
 import { MatTableModule } from '@angular/material/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { RelacionDocumentoModule } from './components/contratos/contratacion-relacion-documentos/relacion-documento.module'
 
 @NgModule({
   imports: [
@@ -22,9 +23,12 @@ import { SharedModule } from '../shared/shared.module';
     MatTableModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    RelacionDocumentoModule
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+  declarations: [
+  ]
 })
 export class MultiplicaModule {
 }

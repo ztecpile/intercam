@@ -1,4 +1,4 @@
-<div class="principal">
+<!-- <div class="principal">
     <div class="titulo">
         <p>Profesion</p>
     </div>
@@ -50,4 +50,67 @@
         </div>
     </div>
 </div>
-
+ -->
+ <div class="types-documents__container">
+    <div class="types-documents__title">
+        <p>Profesion</p>
+    </div>
+    <div class="types-documents__table">
+        <div class="types-documents__loading" *ngIf="isLoadingData">
+            <div class="loading"></div>
+          </div>
+        <!-- <intercam-loading *ngIf="isLoadingData"></intercam-loading> -->
+        <div class="table__not-found" *ngIf="!isVisibleTable">
+            <img src="../../../../../shared/assets/img/logo-intercam.png" alt="logo" width="159" height="100" />
+            <h6 class="bold">{{ messageTitle }}</h6>
+            <h6>{{ messageSubtitle }}</h6>
+        </div>
+        <div class="table__found" *ngIf="isVisibleTable && !isLoadingData">
+            <table>
+                <thead>
+                    <tr>
+                        <th *ngFor="let headerTitle of headersTitles ">{{ headerTitle }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let dataDocument of dataDocuments; let i = index" [attr.data-index]="i" (click)="selectDocument(dataDocument)">
+                        <td data-label="Documento">{{dataDocument.docNombre}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+      </div>
+      <div class="types-documents__form">
+        <form [formGroup]="formProfession">
+            <div class="row">
+                <div class="col">
+                    <p>Observaciones</p>
+            <input type="text" formControlName="observaciones">
+                </div>
+                <div class="col">
+                    <p>Nivel de riesgo</p>
+            <input type="text" formControlName="riesgo">
+                </div>
+            </div>
+        </form>
+      </div>
+      <div mat-dialog-actions class="types-documents__actions">
+        <div class="row">
+            <button mat-button class="btn-img buscar-btn" type="submit" (click)="getDocuments()">
+                <span class="tooltip">Listar</span>
+            </button>
+            <button [disabled]="!formProfession.valid" mat-button class="btn-img save-button" type="submit" (click)="saveDocument()">
+                <span class="tooltip">Grabar</span>
+            </button>
+            <button [disabled]="disabledButtons" mat-button class="btn-img update-button" type="submit" (click)="updateDocument()">
+                <span class="tooltip">Actualizar</span>
+            </button>
+            <button [disabled]="disabledButtons" mat-button class="btn-img eliminar-button" type="submit" (click)="deleteDocument()">
+                <span class="tooltip">Eliminar</span>
+            </button>
+            <button mat-button class="btn-img cerrar-button" type="submit" (click)="close()">
+                <span class="tooltip">Cerrar</span>
+            </button>
+        </div>
+    </div>
+</div>

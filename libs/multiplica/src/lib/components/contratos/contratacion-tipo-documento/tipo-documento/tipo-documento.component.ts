@@ -54,11 +54,6 @@ export class TipoDocumentoComponent implements OnInit {
       tdoId:  this.selectedTypeDocument.tdoId,
       tdoPorOper:  this.formTypeDocument.controls.caducidadPorOperacion.value,
       tmpCvelegSiff:  this.formTypeDocument.controls.claveSiff.value,
-      // docId: this.selectedTypeDocument.tconId,
-      // typeDocNombre: this.formTypeDocument.controls.tipoDocumento.value,
-      // tmpCvelegSiff: this.formTypeDocument.controls.claveSiff.value,
-      // caducidadPorMes: this.formTypeDocument.controls.caducidadPorMes.value,
-      // caducidadPorOperacion: this.formTypeDocument.controls.caducidadPorOperacion.value,
     };
 
     this.facturasService.saveTypeDocument(body).subscribe({
@@ -96,11 +91,6 @@ export class TipoDocumentoComponent implements OnInit {
       tdoId:  this.selectedTypeDocument.tdoId,
       tdoPorOper:  this.formTypeDocument.controls.caducidadPorOperacion.value,
       tmpCvelegSiff:  this.formTypeDocument.controls.claveSiff.value,
-      // docId: this.selectedTypeDocument.tconId,
-      // typeDocNombre: this.formTypeDocument.controls.tipoDocumento.value,
-      // tmpCvelegSiff: this.formTypeDocument.controls.claveSiff.value,
-      // caducidadPorMes: this.formTypeDocument.controls.caducidadPorMes.value,
-      // caducidadPorOperacion: this.formTypeDocument.controls.caducidadPorOperacion.value,
     };
 
     this.facturasService.updateTypeDocument(body).subscribe({
@@ -138,11 +128,6 @@ export class TipoDocumentoComponent implements OnInit {
       tdoId:  this.selectedTypeDocument.tdoId,
       tdoPorOper:  this.formTypeDocument.controls.caducidadPorOperacion.value,
       tmpCvelegSiff:  this.formTypeDocument.controls.claveSiff.value,
-      // docId: this.selectedTypeDocument.tconId,
-      // typeDocNombre: this.formTypeDocument.controls.tipoDocumento.value,
-      // tmpCvelegSiff: this.formTypeDocument.controls.claveSiff.value,
-      // caducidadPorMes: this.formTypeDocument.controls.caducidadPorMes.value,
-      // caducidadPorOperacion: this.formTypeDocument.controls.caducidadPorOperacion.value,
     };
 
     this.facturasService.deleteTypeDocument(body).subscribe({
