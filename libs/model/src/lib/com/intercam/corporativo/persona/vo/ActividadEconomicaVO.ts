@@ -4,22 +4,22 @@ import { GrupoActividadEconomicaVO } from "./GrupoActividadEconomicaVO";
 	{
 		public  actId : number;
 	    public  grupoActividadEconomicaVO : GrupoActividadEconomicaVO;
-		public  actDescripcion : String;
-		public  actClvCnbv : String;
-		public  actAltoRiesgo : Number;
-		public  actRiesgo : Number;
-		public  actRelev : String;
-		public  actVulne : String;
+		public  actDescripcion : string;
+		public  actClvCnbv : string;
+		public  actAltoRiesgo : number;
+		public  actRiesgo : number;
+		public  actRelev : string;
+		public  actVulne : string;
 
 		/**
 		 * Indica si la actividad es para usuarios
 		 */
-		public  actFiltroUsu : Boolean;
+		public  actFiltroUsu : boolean;
 
 		/**
 		 * Clave de la actividad economica sibamex 
 		 */
-		public  tmpActNumeroClActiv : String;
+		public  tmpActNumeroClActiv : string;
 		/**
 	    * Constructor de la clase.
 	    */
