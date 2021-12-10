@@ -1,41 +1,37 @@
-/**
- * Derechos Reservados de Copia (c) - INTERCAM SERVICIOS FINANCIEROS - 2021.
- */
-
 import { DocumentoVO } from "./DocumentoVO";
 
-export interface ExpedienteVO {
-
-    // ***************************************************** //
-    //                 P R O P I E D A D E S                 //
-    // ***************************************************** //
-    expId: number;
-    expFRecepcionStr: string;
-    expCaduca: string;
-    expFCaducidadStr: string;
-    expUbicacion: string;
-    docId: number;
-    docReferencia: string;
-    perId: number;
-    expFAltaStr: string;
-    docDescripcion: string;
-    paiClave: number;         //pai_clave: Pais que emite el documento
-    expEstado: string;         //exp_estado: Estado, provincia o subdivisión que emite el documento
-    expFexpedicionStr: string;     //exp_fexpedicion: Fecha de expedición del documento
-    expObservaciones: string; //exp_observaciones: Observaciones o comentarios al documento
-    documentoVO: DocumentoVO;   // Propiedad para el mapeo de la relación con la tabla i00Documento
+export class ExpedienteVO {
+    public  expId: number;
+    public  expFRecepcion: Date;
+    public  expCaduca: boolean;
+    public  expFCaducidad: Date;
+    public  expUbicacion: string;
+    public  docId: number;
+    public  docReferencia: string;
+    public  perId: number;
+    public  expFAlta: Date;
+    public  docDescripcion: string;
+    public  paiClave: number;        //pai_clave: Pais que emite el document: numbero
+    public  expEstado;        //exp_estado: Estado, provincia o subdivisión que emite el documento
+    public  expFexpedicion: Date;     //exp_fexpedicion: Fecha de expedición del documento
+    public  expObservaciones: string; //exp_observaciones: Observaciones o comentarios al documento
+    public  documentoVO : DocumentoVO;   // Propiedad para el mapeo de la relación con la tabla i00Documento
+    
     /**
-    * Contiene la clave del contrato
-    */
-    conId: number;
+     * Contiene el id del contrato
+     */
+    public  conId: number;
     /**
-    * Contiene el estatus del expediente
-    */
-    staId: number;
-
+     * Contiene el estatus del expediente
+     */
+    public  staId: number;
+    
     /**
-    * Determina si el documento ya se encuentra digitalizado
-    */
-    docDigitalizado: Boolean;
+     * Determina si el documento ya se encuentra digitalizado
+     */
+    public docDigitalizado: boolean;
 
+    constructor() {
+        
+    }
 }

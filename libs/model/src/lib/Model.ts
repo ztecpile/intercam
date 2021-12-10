@@ -431,6 +431,8 @@ export * from './com/intercam/corporativo/derivados/vo/ContraparteVO';
 // Documentos
 export * from './com/intercam/corporativo/documentos/vo/DocumentoVO';
 export * from './com/intercam/corporativo/documentos/vo/ExpedienteVO';
+export * from './com/intercam/corporativo/documentos/vo/TipoDocumentoVO';
+export * from './com/intercam/corporativo/documentos/vo/DocRequeridoVO';
 
 // prospeccion
 export * from './com/intercam/corporativo/prospeccion/vo/NegociosClienteProspectoVO';

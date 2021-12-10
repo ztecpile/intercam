@@ -1,12 +1,5 @@
-/**
- * Derechos Reservados de Copia (c) - INTERCAM SERVICIOS FINANCIEROS - 2021.
- */
+export class DocumentoVO {
 
-export interface DocumentoVO {
-
-    // ***************************************************** //
-    //                 P R O P I E D A D E S                 //
-    // ***************************************************** //
     docId: number;
     docNombre: string;
     docDescrip: string;
@@ -25,4 +18,8 @@ export interface DocumentoVO {
      */
     tmpCvelegBanco: string;
 
+    public DocumentoVO() {
+        this.tmpCvelegSabi = 0;
+        this.tmpCvelegSiff = 0;
+    }
 }
