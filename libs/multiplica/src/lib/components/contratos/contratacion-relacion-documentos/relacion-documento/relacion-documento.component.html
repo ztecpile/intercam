@@ -1,70 +1,19 @@
-<!-- <div class="principal">
-    <div class="titulo">
-        <p>Tipo de Documento</p>
-    </div>
-    <div class="padre">
-        <select name="" id=""></select>
-        <div class="conteiner">
-            <div class="tabla1">
-                <div class="table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th *ngFor="let table of tables">{{table.cabezera}}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let data of dataDocuments" (click)="selectDocument(data)">
-                                <td>{{data.docNombre}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="tabla2">
-                <div class="table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th *ngFor="let table of table">{{table.cabezera}}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let data of dataDocuments" (click)="selectDocument(data)">
-                                <td>{{data.docNombre}}</td>
-                                <td>{{data.docDescrip}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="btn">
-            <div class="guardar">
-                <button [disabled]="disabledButtons" (click)="updateDocument()"><img src="https://w7.pngwing.com/pngs/16/264/png-transparent-computer-icons-windows-metafile-save-angle-text-rectangle.png" alt=""></button>
-            </div>
-            <div class="retroceder">
-                <button (click)="revertSelection()"><img src="https://c0.klipartz.com/pngpicture/206/741/sticker-png-curve-computer-icons-arrow-arrow-angle-wikimedia-commons-shape-thumbnail-symbol.png" alt=""></button>
-            </div>
-        </div>
-    </div>
-</div> -->
 <div class="hiring-documents__container">
     <div class="hiring-documents__title">
         <p>Tipo de Documento</p>
     </div>
     <div class="col-sm-3">
-    <div class="hiring-documents__select">
-        <select >
-            <option value="">Seleccione</option>
-            <option ></option>
-        </select>
+        <div class="hiring-documents__select">
+            <select>
+                <option value="">Seleccione</option>
+                <option [value]="dataTypeDocument. tconId"*ngFor="let dataTypeDocument of dataTypesDocuments">{{dataTypeDocument.tdoDescripcion}}</option>
+            </select>
+        </div>
     </div>
-</div>
     <div class="hiring-documents__table">
         <div class="hiring-documents__loading" *ngIf="isLoadingData">
             <div class="loading"></div>
-          </div>
+        </div>
         <!-- <intercam-loading *ngIf="isLoadingData"></intercam-loading> -->
         <div class="table__not-found" *ngIf="!isVisibleTable">
             <img src="../../../../../shared/assets/img/logo-intercam.png" alt="logo" width="159" height="100" />
@@ -72,23 +21,22 @@
             <h6>{{ messageSubtitle }}</h6>
         </div>
         <div class="documents">
-        <div class="table__found " *ngIf="isVisibleTable && !isLoadingData">
-            <table>
-                <thead>
-                    <tr>
-                        <th >{{ headersTitles[0]}}</th>
-                    </tr>
-                </thead>
-                <tbody >
-                    <tr *ngFor="let dataDocument of dataDocuments; let i = index" [attr.data-index]="i" (click)="selectDocument(dataDocument)">
-                        <td data-label="Documento">{{dataDocument.docNombre}}</td>
-                        <!-- <td data-label="Observaciones">{{dataDocument.docDescrip}}</td>
-                        <td data-label="Caduca Documento">{{dataDocument.docCaduca}}</td> -->
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table__found " *ngIf="isVisibleTable && !isLoadingData">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>{{ headersTitles[0]}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let dataTypeDocument of dataTypesDocuments; let i = index" [attr.data-index]="i"
+                            (click)="selectDocument(dataTypeDocument)">
+                            <td data-label="Documento">{{dataTypeDocument.tdoDescripcion}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
         <div class="table__found documentscomplete" *ngIf="isVisibleTable && !isLoadingData">
             <table>
                 <thead>
@@ -96,24 +44,26 @@
                         <th *ngFor="let headerTitle of headersTitles ">{{ headerTitle }}</th>
                     </tr>
                 </thead>
-                <tbody >
-                    <tr *ngFor="let dataDocument of dataDocuments; let i = index" [attr.data-index]="i" (click)="selectDocument(dataDocument)">
+                <tbody>
+                    <tr *ngFor="let dataDocument of dataDocuments; let i = index" [attr.data-index]="i"
+                        (click)="selectDocument(dataDocument)">
                         <td data-label="Documento">{{dataDocument.docNombre}}</td>
                         <td data-label="Observaciones">{{dataDocument.docDescrip}}</td>
-                        <!-- <td data-label="Caduca Documento">{{dataDocument.docCaduca}}</td> -->
                     </tr>
                 </tbody>
             </table>
         </div>
-      </div>
-      <div mat-dialog-actions class="hiring-documents__actions">
+    </div>
+    <div mat-dialog-actions class="hiring-documents__actions">
         <div class="row">
-          
-            <button [disabled]="!formDocument.valid" mat-button class="btn-img save-button" type="submit" (click)="saveDocuments()">
-                <span class="tooltip">Grabar</span>
-            </button>
-            <button [disabled]="disabledButtons" mat-button class="btn-img update-button" type="submit" (click)="updateDocument()">
+
+            <button [disabled]="!formDocument.valid" mat-button class="btn-img save-button" type="submit"
+                (click)="updateTypeDocument()">
                 <span class="tooltip">Actualizar</span>
+            </button>
+            <button [disabled]="disabledButtons" mat-button class="btn-img update-button" type="submit"
+                (click)="close()">
+                <span class="tooltip">Cerrar</span>
             </button>
         </div>
     </div>

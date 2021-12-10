@@ -17,5 +17,5 @@ export interface TypeDocument {
   tdoId: number;
   tdoPorOper: boolean;
   tmpCvelegSiff: number;
-  
+  documentosVO: Document[];
 }

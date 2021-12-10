@@ -54,6 +54,7 @@ export class TipoDocumentoComponent implements OnInit {
       tdoId:  this.selectedTypeDocument.tdoId,
       tdoPorOper:  this.formTypeDocument.controls.caducidadPorOperacion.value,
       tmpCvelegSiff:  this.formTypeDocument.controls.claveSiff.value,
+      documentosVO: this.selectedTypeDocument.documentosVO
     };
 
     this.facturasService.saveTypeDocument(body).subscribe({
@@ -91,6 +92,7 @@ export class TipoDocumentoComponent implements OnInit {
       tdoId:  this.selectedTypeDocument.tdoId,
       tdoPorOper:  this.formTypeDocument.controls.caducidadPorOperacion.value,
       tmpCvelegSiff:  this.formTypeDocument.controls.claveSiff.value,
+      documentosVO: this.selectedTypeDocument.documentosVO
     };
 
     this.facturasService.updateTypeDocument(body).subscribe({
@@ -128,6 +130,7 @@ export class TipoDocumentoComponent implements OnInit {
       tdoId:  this.selectedTypeDocument.tdoId,
       tdoPorOper:  this.formTypeDocument.controls.caducidadPorOperacion.value,
       tmpCvelegSiff:  this.formTypeDocument.controls.claveSiff.value,
+      documentosVO: this.selectedTypeDocument.documentosVO
     };
 
     this.facturasService.deleteTypeDocument(body).subscribe({

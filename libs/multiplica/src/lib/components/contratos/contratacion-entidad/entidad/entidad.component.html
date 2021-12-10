@@ -1,0 +1,95 @@
+<div class="hiring-documents__container">
+    <div class="hiring-documents__title">
+        <p>Entidad</p>
+    </div>
+    <div class="col-sm-3">
+        <div class="hiring-documents__select">
+            <div class="hiring-documents__subtitle">
+                <p>Pais:</p>
+            </div>
+            <select >
+                <option value="">Seleccione</option>
+                <option ></option>
+            </select>
+        </div>
+    </div>
+    <div class="hiring-documents__table">
+        <div class="hiring-documents__loading" *ngIf="isLoadingData">
+            <div class="loading"></div>
+          </div>
+        <!-- <intercam-loading *ngIf="isLoadingData"></intercam-loading> -->
+        <div class="table__not-found" *ngIf="!isVisibleTable">
+            <img src="../../../../../shared/assets/img/logo-intercam.png" alt="logo" width="159" height="100" />
+            <h6 class="bold">{{ messageTitle }}</h6>
+            <h6>{{ messageSubtitle }}</h6>
+        </div>
+        <div class="table__found" *ngIf="isVisibleTable && !isLoadingData">
+            <table>
+                <thead>
+                    <tr>
+                        <th *ngFor="let headerTitle of headersTitles ">{{ headerTitle }}</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <tr *ngFor="let dataDocument of dataDocuments; let i = index" [attr.data-index]="i" (click)="selectDocument(dataDocument)">
+                        <td data-label="Entidad">{{dataDocument.docNombre}}</td>
+                        <td data-label="Clave">{{dataDocument.docDescrip}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+      </div>
+      <div class="hiring-documents__form">
+        <form [formGroup]="formDocument">
+            <div class="row">
+                <div class="col titlefrom">
+                    <p>Entidad</p>
+                    <input type="text" formControlName="entidad">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col subfrom">
+                    <p>Abreviatura</p>
+                    <input type="text" formControlName="abreviatura">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col subfrom">
+                    <p>Clave CNBV</p>
+                    <input type="text" formControlName="clave">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col subfrom">
+                    <p>Codigo Broxel</p>
+                    <input type="text" formControlName="broxel">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col subfrom">
+                    <p>Nivel de riesgo</p>
+                    <input type="text" formControlName="riesgo">
+                </div>
+            </div>
+        </form>
+      </div>
+      <div mat-dialog-actions class="hiring-documents__actions">
+        <div class="row">
+            <button mat-button class="btn-img buscar-btn" type="submit" (click)="getDocuments()">
+                <span class="tooltip">Listar</span>
+            </button>
+            <button [disabled]="!formDocument.valid" mat-button class="btn-img save-button" type="submit" (click)="saveDocuments()">
+                <span class="tooltip">Grabar</span>
+            </button>
+            <button [disabled]="disabledButtons" mat-button class="btn-img update-button" type="submit" (click)="updateDocument()">
+                <span class="tooltip">Actualizar</span>
+            </button>
+            <button [disabled]="disabledButtons" mat-button class="btn-img eliminar-button" type="submit" (click)="deleteDocument()">
+                <span class="tooltip">Eliminar</span>
+            </button>
+            <button mat-button class="btn-img cerrar-button" type="submit" (click)="close()">
+                <span class="tooltip">Cerrar</span>
+            </button>
+        </div>
+    </div>
+</div>

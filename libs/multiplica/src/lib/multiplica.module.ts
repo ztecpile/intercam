@@ -10,6 +10,8 @@ import { MatTableModule } from '@angular/material/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { RelacionDocumentoModule } from './components/contratos/contratacion-relacion-documentos/relacion-documento.module'
+import { ContratacionEntidadModule } from './components/contratos/contratacion-entidad/contratacion-entidad.module'
+import { ColoniasModule } from './components/contratos/contratacion-colonias/colonias.module'
 
 @NgModule({
   imports: [
@@ -24,7 +26,9 @@ import { RelacionDocumentoModule } from './components/contratos/contratacion-rel
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    RelacionDocumentoModule
+    RelacionDocumentoModule,
+    ContratacionEntidadModule,
+    ColoniasModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
   declarations: [
