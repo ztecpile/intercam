@@ -11,6 +11,11 @@ export class PersonaService {
 
   constructor(public http: HttpClient) { }
 
+  findPerfiles(): Observable<Object> {
+    const urlStr = 'persona/findPerfiles';
+    return this.http.get<Object>(urlStr, {});
+  }
+  
   findTipoPersona(): Observable<TipoPersonaVO[]> {
     const urlStr = 'catalogo/persona/tipo-persona';
     return this.http.get<TipoPersonaVO[]>(urlStr, {});
