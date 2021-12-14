@@ -1,0 +1,112 @@
+<div class="hiring-documents__container">
+    <div class="hiring-documents__selects"> 
+    <div class="col-sm-3 select" >
+        <p>Tipo Contrato</p>
+        <div class="hiring-documents__select">
+            <select>
+                <option value="">Seleccione</option>
+                <option [value]="dataTypeDocument. tconId"*ngFor="let dataTypeDocument of dataTypesDocuments">{{dataTypeDocument.tdoDescripcion}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-sm-3 select">
+        <p>Tipo Persona</p>
+        <div class="hiring-documents__select">
+            <select>
+                <option value="">Seleccione</option>
+                <option [value]="dataTypeDocument. tconId"*ngFor="let dataTypeDocument of dataTypesDocuments">{{dataTypeDocument.tdoDescripcion}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-sm-3 select">
+        <p>Perfil</p>
+        <div class="hiring-documents__select">
+            <select>
+                <option value="">Seleccione</option>
+                <option [value]="dataTypeDocument. tconId"*ngFor="let dataTypeDocument of dataTypesDocuments">{{dataTypeDocument.tdoDescripcion}}</option>
+            </select>
+        </div>
+    </div>
+</div>
+    <div class="hiring-documents__table">
+        <div class="hiring-documents__loading" *ngIf="isLoadingData">
+            <div class="loading"></div>
+        </div>
+        <!-- <intercam-loading *ngIf="isLoadingData"></intercam-loading> -->
+        <div class="table__not-found" *ngIf="!isVisibleTable">
+            <img src="../../../../../shared/assets/img/logo-intercam.png" alt="logo" width="159" height="100" />
+            <h6 class="bold">{{ messageTitle }}</h6>
+            <h6>{{ messageSubtitle }}</h6>
+        </div>
+        <div class="documents">
+            <div class="table__found " *ngIf="isVisibleTable && !isLoadingData">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>{{ headersTitles[0]}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let dataTypeDocument of dataTypesDocuments; let i = index" [attr.data-index]="i"
+                            (click)="selectDocument(dataTypeDocument)">
+                            <td data-label="Documento">{{dataTypeDocument.tdoDescripcion}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="table__found documentscomplete" *ngIf="isVisibleTable && !isLoadingData">
+            <table>
+                <thead>
+                    <tr>
+                        <th *ngFor="let headerTitle of headersTitles ">{{ headerTitle }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let dataDocument of dataDocuments; let i = index" [attr.data-index]="i"
+                        (click)="selectDocument(dataDocument)">
+                        <td data-label="Documento">{{dataDocument.docNombre}}</td>
+                        <td data-label="Observaciones">{{dataDocument.docDescrip}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div mat-dialog-actions class="hiring-documents__actions">
+        <div class="row">
+
+            <button [disabled]="!formDocument.valid" mat-button class="btn-img save-button" type="submit"
+                (click)="updateTypeDocument()">
+                <span class="tooltip">Actualizar</span>
+            </button>
+            <button [disabled]="disabledButtons" mat-button class="btn-img update-button" type="submit"
+                (click)="close()">
+                <span class="tooltip">Cerrar</span>
+            </button>
+        </div>
+    </div>
+    <div class="">
+        <p>Documentos Validos</p>
+    </div>
+    <div class="hiring-documents__table">
+        <div class="hiring-documents__loading" *ngIf="isLoadingData">
+            <div class="loading"></div>
+        </div>
+    <div class="table__found documentscomplete" *ngIf="isVisibleTable && !isLoadingData">
+        <table>
+            <thead>
+                <tr>
+                    <th *ngFor="let headerTitle of headersTitles ">{{ headerTitle }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let dataDocument of dataDocuments; let i = index" [attr.data-index]="i"
+                    (click)="selectDocument(dataDocument)">
+                    <td data-label="Documento">{{dataDocument.docNombre}}</td>
+                    <td data-label="Observaciones">{{dataDocument.docDescrip}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>  
+</div>

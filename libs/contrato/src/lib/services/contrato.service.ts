@@ -25,6 +25,7 @@ export class ContratoService {
     const urlStr ='logBPM/find-log';
     return this.http.get<LogBpmVO[]>(urlStr, {});
   }
+  
   findPersonasContratoByperId(perId: number, perfil:string):Observable<ContratoPersonaVO[]> {
     const urlStr = 'contrato/findPersonasContratoByperId/' + perId + '/' + perfil;
     return this.http.get<ContratoPersonaVO[]>(urlStr, {});

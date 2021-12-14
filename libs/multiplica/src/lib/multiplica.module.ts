@@ -11,7 +11,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { RelacionDocumentoModule } from './components/contratos/contratacion-relacion-documentos/relacion-documento.module'
 import { ContratacionEntidadModule } from './components/contratos/contratacion-entidad/contratacion-entidad.module'
-import { ColoniasModule } from './components/contratos/contratacion-colonias/colonias.module'
+import { ColoniasModule } from './components/contratos/contratacion-colonias/colonias.module';
+import { RequirimientoModule } from './components/contratos/contratacion-requrimiento-documento/requirimiento.module'
 
 @NgModule({
   imports: [
@@ -28,10 +29,12 @@ import { ColoniasModule } from './components/contratos/contratacion-colonias/col
     SharedModule,
     RelacionDocumentoModule,
     ContratacionEntidadModule,
-    ColoniasModule
+    ColoniasModule,
+    RequirimientoModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
   declarations: [
+  
   ]
 })
 export class MultiplicaModule {
