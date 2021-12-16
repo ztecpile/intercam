@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RelacionDocumentoComponent } from './relacion-documento/relacion-documento.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+
 // import { MatTableModule } from '@angular/material/table';
 const routes: Routes = [
   {
@@ -28,6 +30,7 @@ const routes: Routes = [
     // MatTableModule,
     // MatSnackBarModule,
     ReactiveFormsModule,
+    DragDropModule,
   ]
 })
 export class RelacionDocumentoModule { }

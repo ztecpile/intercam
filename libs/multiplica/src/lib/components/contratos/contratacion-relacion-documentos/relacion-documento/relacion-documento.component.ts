@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Document, TypeDocument } from '../../../../models/facturas.interface';
-import { FacturasService } from '../../../../services/facturas.service';
+import { Document, TypeDocument } from '../../../../models/documents.interface';
+import { DocumentsService } from '../../../../services/documents.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'intercam-relacion-documento',
@@ -11,7 +13,7 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 })
 export class RelacionDocumentoComponent implements OnInit {
   dataTypesDocuments: TypeDocument[] = [];
-  dataDocuments: Document[] = [];
+  dataDocumentsFiltered: Document[] = [];
   disabledButtons: Boolean = true;
   selectedTypeDocument: Document;
   formDocument: FormGroup;
@@ -20,9 +22,10 @@ export class RelacionDocumentoComponent implements OnInit {
   messageSubtitle: string = 'Revisa o cambia tu búsqueda';
   isLoadingData: boolean = false;
   headersTitles: string[] = ['Documento', 'Observaciones'];
+  // apiResponse: any = [];
 
   constructor(
-    private facturasService: FacturasService,
+    private documentsService: DocumentsService,
     private formBuilder: FormBuilder,
     public snackbar: MatSnackBar
   ) {}
@@ -41,28 +44,28 @@ export class RelacionDocumentoComponent implements OnInit {
   ngOnInit(): void {
     this.initForm();
     this.getTypeDocuments();
-    this.getDocuments();
+    // this.getDocuments();
   }
 
   getTypeDocuments() {
     this.isLoadingData = true;
-    this.facturasService.getTypeDocuments().subscribe((res) => {
+    this.documentsService.getTypeDocuments().subscribe((res) => {
+      // this.apiResponse = res;
       this.dataTypesDocuments = res;
       this.isLoadingData = false;
       this.isVisibleTable = this.dataTypesDocuments.length > 0;
     });
 
-    console.log("mierda", this.dataTypesDocuments);
   }
 
-  getDocuments() {
-    this.isLoadingData = true;
-    this.facturasService.getDocuments().subscribe((res) => {
-      this.dataDocuments = res;
-      this.isLoadingData = false;
-      this.isVisibleTable = this.dataDocuments.length > 0;
-    });
-  }
+  // getDocuments() {
+  //   this.isLoadingData = true;
+  //   this.documentsService.getDocuments().subscribe((res) => {
+  //     this.dataDocuments = res;
+  //     this.isLoadingData = false;
+  //     this.isVisibleTable = this.dataDocuments.length > 0;
+  //   });
+  // }
 
   updateTypeDocument() {
     // const body = {
@@ -109,5 +112,28 @@ export class RelacionDocumentoComponent implements OnInit {
 
   close(): void {
 
+  }
+
+  onTypeDocumentChange(event:any){
+    const idTypeDocument = event.target.value;
+    // console.log(this.dataTypesDocuments, idTypeDocument);
+    this.dataDocumentsFiltered = this.dataTypesDocuments.filter((item) => item.tdoId === Number(idTypeDocument))[0].documentosVO;
+   
+    // let filterData = _.filter(this.dataTypesDocuments,(item) =>{
+    //   return item.gender.toLowerCase() == event.value.toLowerCase();
+    // })
+    // this.dataTypesDocuments = new MatTableDataSource(filterData);
+  }
+
+  onDrop(event: CdkDragDrop<any[]>) {
+    if (event.previousContainer !== event.container) {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex, event.currentIndex);
+      } else {
+      moveItemInArray(event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
   }
 }

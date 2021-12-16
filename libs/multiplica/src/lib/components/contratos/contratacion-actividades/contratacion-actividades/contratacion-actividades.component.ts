@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Document } from '../../../../models/facturas.interface'
-import { FacturasService } from '../../../../services/facturas.service';
+import { Document } from '../../../../models/documents.interface'
+import { DocumentsService } from '../../../../services/documents.service';
 
 @Component({
   selector: 'intercam-contratacion-actividades',
@@ -10,10 +10,10 @@ import { FacturasService } from '../../../../services/facturas.service';
 export class ContratacionActividadesComponent implements OnInit {
   dataDocuments:Document[] = [];
 
-  constructor(private FacturasService: FacturasService) {}
+  constructor(private documentsService: DocumentsService) {}
 
   ngOnInit(): void {
-    this.FacturasService.getDocuments().subscribe((res) => {
+    this.documentsService.getDocuments().subscribe((res) => {
       this.dataDocuments = res;
     });
   }

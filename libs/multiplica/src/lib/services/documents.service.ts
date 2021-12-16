@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Document, TypeDocument } from '../models/facturas.interface';
+import { Document, TypeDocument } from '../models/documents.interface';
 
 @Injectable({
   providedIn: 'root',
 })
-export class FacturasService {
+export class DocumentsService {
   constructor(private http: HttpClient) {}
 
   getDocuments(): Observable<any[]> {

@@ -4,13 +4,13 @@
     </div>
     <div class="col-sm-3">
         <div class="hiring-documents__select">
-            <select>
+            <select (change)="onTypeDocumentChange($event)">
                 <option value="">Seleccione</option>
-                <option [value]="dataTypeDocument. tconId"*ngFor="let dataTypeDocument of dataTypesDocuments">{{dataTypeDocument.tdoDescripcion}}</option>
+                <option [value]="dataTypeDocument.tdoId "*ngFor="let dataTypeDocument of dataTypesDocuments">{{dataTypeDocument.tdoDescripcion}}</option>
             </select>
         </div>
     </div>
-    <div class="hiring-documents__table">
+    <div cdkDropListGroup class="hiring-documents__table">
         <div class="hiring-documents__loading" *ngIf="isLoadingData">
             <div class="loading"></div>
         </div>
@@ -28,8 +28,11 @@
                             <th>{{ headersTitles[0]}}</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr *ngFor="let dataTypeDocument of dataTypesDocuments; let i = index" [attr.data-index]="i"
+                    <tbody
+                    cdkDropList
+                    [cdkDropListData]="dataTypesDocuments"
+                    (cdkDropListDropped)="onDrop($event)">
+                        <tr cdkDrag *ngFor="let dataTypeDocument of dataTypesDocuments; let i = index" [attr.data-index]="i"
                             (click)="selectDocument(dataTypeDocument)">
                             <td data-label="Documento">{{dataTypeDocument.tdoDescripcion}}</td>
                         </tr>
@@ -37,16 +40,18 @@
                 </table>
             </div>
         </div>
-        <div class="table__found documentscomplete" *ngIf="isVisibleTable && !isLoadingData">
+        <div  class="table__found documentscomplete" *ngIf="isVisibleTable && !isLoadingData">
             <table>
                 <thead>
                     <tr>
                         <th *ngFor="let headerTitle of headersTitles ">{{ headerTitle }}</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr *ngFor="let dataDocument of dataDocuments; let i = index" [attr.data-index]="i"
-                        (click)="selectDocument(dataDocument)">
+                <tbody cdkDropList
+                [cdkDropListData]="dataDocumentsFiltered"
+                (cdkDropListDropped)="onDrop($event)">
+                    <tr cdkDrag *ngFor="let dataDocument of dataDocumentsFiltered; let i = index" [attr.data-index]="i"
+                        (click)="selectDocument(dataDocument)" >
                         <td data-label="Documento">{{dataDocument.docNombre}}</td>
                         <td data-label="Observaciones">{{dataDocument.docDescrip}}</td>
                     </tr>

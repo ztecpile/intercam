@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TypeDocument } from '../../../../models/facturas.interface';
-import { FacturasService } from '../../../../services/facturas.service';
+import { TypeDocument } from '../../../../models/documents.interface';
+import { DocumentsService } from '../../../../services/documents.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 
@@ -20,7 +20,7 @@ export class TipoDocumentoComponent implements OnInit {
   messageSubtitle: string = 'Revisa o cambia tu búsqueda';
   headersTitles: string[] = ['Tipo de Documento', 'Clave SIFF', 'Caducidad por Mes', 'Caducidad por operación'];
 
-  constructor(private facturasService: FacturasService,
+  constructor(private documentsService: DocumentsService,
     private formBuilder: FormBuilder,
     public snackbar: MatSnackBar) {}
 
@@ -39,7 +39,7 @@ export class TipoDocumentoComponent implements OnInit {
 
   getTypeDocuments() {
     this.isLoadingData = true;
-    this.facturasService.getTypeDocuments().subscribe((res) => {
+    this.documentsService.getTypeDocuments().subscribe((res) => {
       this.dataDocuments = res;
       this.isLoadingData = false;
       this.isVisibleTable = this.dataDocuments.length > 0;
@@ -54,10 +54,11 @@ export class TipoDocumentoComponent implements OnInit {
       tdoId:  this.selectedTypeDocument.tdoId,
       tdoPorOper:  this.formTypeDocument.controls.caducidadPorOperacion.value,
       tmpCvelegSiff:  this.formTypeDocument.controls.claveSiff.value,
-      documentosVO: this.selectedTypeDocument.documentosVO
+      documentosVO: this.selectedTypeDocument.documentosVO,
+      docSelected: this.selectedTypeDocument.docSelected
     };
 
-    this.facturasService.saveTypeDocument(body).subscribe({
+    this.documentsService.saveTypeDocument(body).subscribe({
       next: (v) => this.onSuccessSave(v),
       error: (e) => this.onErrorSave(e),
       complete: () => console.info('complete'),
@@ -92,10 +93,11 @@ export class TipoDocumentoComponent implements OnInit {
       tdoId:  this.selectedTypeDocument.tdoId,
       tdoPorOper:  this.formTypeDocument.controls.caducidadPorOperacion.value,
       tmpCvelegSiff:  this.formTypeDocument.controls.claveSiff.value,
-      documentosVO: this.selectedTypeDocument.documentosVO
+      documentosVO: this.selectedTypeDocument.documentosVO,
+      docSelected: this.selectedTypeDocument.docSelected
     };
 
-    this.facturasService.updateTypeDocument(body).subscribe({
+    this.documentsService.updateTypeDocument(body).subscribe({
       next: (v) => this.onSuccessUpdate(v),
       error: (e) => this.onErrorUpdate(e),
       complete: () => console.info('complete'),
@@ -130,10 +132,11 @@ export class TipoDocumentoComponent implements OnInit {
       tdoId:  this.selectedTypeDocument.tdoId,
       tdoPorOper:  this.formTypeDocument.controls.caducidadPorOperacion.value,
       tmpCvelegSiff:  this.formTypeDocument.controls.claveSiff.value,
-      documentosVO: this.selectedTypeDocument.documentosVO
+      documentosVO: this.selectedTypeDocument.documentosVO,
+      docSelected: this.selectedTypeDocument.docSelected
     };
 
-    this.facturasService.deleteTypeDocument(body).subscribe({
+    this.documentsService.deleteTypeDocument(body).subscribe({
       next: (v) => this.onSuccessDelete(v),
       error: (e) => this.onErrorDelete(e),
       complete: () => console.info('complete'),

@@ -3,25 +3,25 @@
     <div class="col-sm-3 select" >
         <p>Tipo Contrato</p>
         <div class="hiring-documents__select">
-            <select>
+            <select (change)="onContractType($event)">
                 <option value="">Seleccione</option>
-                <option [value]="dataTypeDocument. tconId"*ngFor="let dataTypeDocument of dataTypesDocuments">{{dataTypeDocument.tdoDescripcion}}</option>
+                <option [value]="dataTypeContrato.tconId"*ngFor="let dataTypeContrato of dataTypeContrato">{{dataTypeContrato.tconDescripcion}}</option>
             </select>
         </div>
     </div>
     <div class="col-sm-3 select">
         <p>Tipo Persona</p>
         <div class="hiring-documents__select">
-            <select>
+            <select (change)="onTypePerson($event)">
                 <option value="">Seleccione</option>
-                <option [value]="dataTypeDocument. tconId"*ngFor="let dataTypeDocument of dataTypesDocuments">{{dataTypeDocument.tdoDescripcion}}</option>
+                <option [value]="dataPerson.cpeId"*ngFor="let dataPerson of dataPerson">{{dataPerson.cpeDescripcion}}</option>
             </select>
         </div>
     </div>
     <div class="col-sm-3 select">
         <p>Perfil</p>
         <div class="hiring-documents__select">
-            <select>
+            <select (change)="onPerfil($event)">
                 <option value="">Seleccione</option>
                 <option [value]="dataTypeDocument. tconId"*ngFor="let dataTypeDocument of dataTypesDocuments">{{dataTypeDocument.tdoDescripcion}}</option>
             </select>
@@ -49,7 +49,7 @@
                     <tbody>
                         <tr *ngFor="let dataTypeDocument of dataTypesDocuments; let i = index" [attr.data-index]="i"
                             (click)="selectDocument(dataTypeDocument)">
-                            <td data-label="Documento">{{dataTypeDocument.tdoDescripcion}}</td>
+                            <td data-label="Descripcion">{{dataTypeDocument.tdoDescripcion}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -59,14 +59,15 @@
             <table>
                 <thead>
                     <tr>
-                        <th *ngFor="let headerTitle of headersTitles ">{{ headerTitle }}</th>
+                        <th *ngFor="let headerTitle of headersTitles">{{ headerTitle}}</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let dataDocument of dataDocuments; let i = index" [attr.data-index]="i"
-                        (click)="selectDocument(dataDocument)">
-                        <td data-label="Documento">{{dataDocument.docNombre}}</td>
-                        <td data-label="Observaciones">{{dataDocument.docDescrip}}</td>
+                    <tr *ngFor="let dataTypeDocument of dataTypesDocuments; let i = index" [attr.data-index]="i"
+                        (click)="selectDocument(dataTypeDocument)">
+                        <td data-label="Descripcion">{{dataTypeDocument.tdoDescripcion}}</td>
+                        <td data-label="Caducidad por Mes">{{dataTypeDocument. tdoCaduca}}</td>
+                        <td data-label="Caducidad por operacion">{{dataTypeDocument. tdoPorOper}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -92,17 +93,17 @@
         <div class="hiring-documents__loading" *ngIf="isLoadingData">
             <div class="loading"></div>
         </div>
-    <div class="table__found documentscomplete" *ngIf="isVisibleTable && !isLoadingData">
+    <div class="table__found documentscomplete" *ngIf="isVisibleTable && !isLoadingData" >
         <table>
             <thead>
                 <tr>
-                    <th *ngFor="let headerTitle of headersTitles ">{{ headerTitle }}</th>
+                    <th *ngFor="let headerTitle of  headersTiTlestwo">{{ headerTitle}}</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let dataDocument of dataDocuments; let i = index" [attr.data-index]="i"
                     (click)="selectDocument(dataDocument)">
-                    <td data-label="Documento">{{dataDocument.docNombre}}</td>
+                    <td data-label="Tipo Documento">{{dataDocument.docNombre}}</td>
                     <td data-label="Observaciones">{{dataDocument.docDescrip}}</td>
                 </tr>
             </tbody>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Document } from '../../../../models/facturas.interface';
-import { FacturasService } from '../../../../services/facturas.service';
+import { Document } from '../../../../models/documents.interface';
+import { DocumentsService } from '../../../../services/documents.service';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -19,7 +19,7 @@ export class EntidadComponent implements OnInit {
   messageTitle: string = 'No encontramos resultados';
   messageSubtitle: string = 'Revisa o cambia tu búsqueda';
   headersTitles: string[] = ['Entidad', 'Clave'];
-  constructor(  private facturasService: FacturasService,
+  constructor(  private documentsService: DocumentsService,
     private formBuilder: FormBuilder,
     public snackbar: MatSnackBar) { }
 
@@ -55,7 +55,7 @@ export class EntidadComponent implements OnInit {
   
     getDocuments() {
       this.isLoadingData = true;
-      this.facturasService.getDocuments().subscribe((res) => {
+      this.documentsService.getDocuments().subscribe((res) => {
         this.dataDocuments = res;
         this.isLoadingData = false;
         this.isVisibleTable = this.dataDocuments.length > 0;
@@ -74,7 +74,7 @@ export class EntidadComponent implements OnInit {
         tmpCvelegBanco: this.selectedDocument.tmpCvelegBanco,
       };
   
-      this.facturasService.saveDocument(body).subscribe({
+      this.documentsService.saveDocument(body).subscribe({
         next: (v) => this.onSuccessSave(v),
         error: (e) => this.onErrorSave(e),
         complete: () => console.info('complete'),
@@ -94,7 +94,7 @@ export class EntidadComponent implements OnInit {
         tmpCvelegBanco: this.selectedDocument.tmpCvelegBanco,
       };
   
-      this.facturasService.deleteDocument(body).subscribe({
+      this.documentsService.deleteDocument(body).subscribe({
         next: (v) => this.onSuccessDelete(v),
         error: (e) => this.onErrorDelete(e),
         complete: () => console.info('complete'),
@@ -114,7 +114,7 @@ export class EntidadComponent implements OnInit {
         tmpCvelegBanco: this.selectedDocument.tmpCvelegBanco,
       };
   
-      this.facturasService.updateDocument(body).subscribe({
+      this.documentsService.updateDocument(body).subscribe({
         next: (v) => this.onSuccessUpdate(v),
         error: (e) => this.onErrorUpdate(e),
         complete: () => console.info('complete'),

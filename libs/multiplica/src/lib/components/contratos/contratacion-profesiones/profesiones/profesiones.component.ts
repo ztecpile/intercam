@@ -1,5 +1,5 @@
-import { Document } from '../../../../models/facturas.interface';
-import { FacturasService } from '../../../../services/facturas.service';
+import { Document } from '../../../../models/documents.interface';
+import { DocumentsService } from '../../../../services/documents.service';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -24,7 +24,7 @@ export class ProfesionesComponent implements OnInit {
   
 
   constructor(
-    private facturasService: FacturasService,
+    private documentsService: DocumentsService,
     private formBuilder: FormBuilder,
     public snackbar: MatSnackBar
   ) {}
@@ -61,7 +61,7 @@ export class ProfesionesComponent implements OnInit {
       docContrato: this.selectedDocument.docContrato,
       tmpCvelegBanco: this.formProfession.controls.riesgo.value,
     };
-    this.facturasService.saveDocument(body).subscribe({
+    this.documentsService.saveDocument(body).subscribe({
       next: (v) => this.onSuccessSave(v),
       error: (e) => this.onErrorSave(e),
       complete: () => console.info('complete'),
@@ -101,7 +101,7 @@ export class ProfesionesComponent implements OnInit {
       tmpCvelegBanco: this.formProfession.controls.riesgo.value,
     };
 
-    this.facturasService.deleteDocument(body).subscribe({
+    this.documentsService.deleteDocument(body).subscribe({
       next: (v) => this.onSuccessDelete(v),
       error: (e) => this.onErrorDelete(e),
       complete: () => console.info('complete'),
@@ -141,7 +141,7 @@ export class ProfesionesComponent implements OnInit {
       docContrato: this.selectedDocument.docContrato,
       tmpCvelegBanco: this.formProfession.controls.riesgo.value,
     };
-    this.facturasService.updateDocument(body).subscribe({
+    this.documentsService.updateDocument(body).subscribe({
       next: (v) => this.onSuccessUpdate(v),
       error: (e) => this.onErrorUpdate(e),
       complete: () => console.info('complete'),
@@ -172,7 +172,7 @@ export class ProfesionesComponent implements OnInit {
   
   getDocuments() {
     this.isLoadingData = true;
-    this.facturasService.getDocuments().subscribe((res) => {
+    this.documentsService.getDocuments().subscribe((res) => {
       this.dataDocuments = res;
       this.isLoadingData = false;
       this.isVisibleTable = this.dataDocuments.length > 0;

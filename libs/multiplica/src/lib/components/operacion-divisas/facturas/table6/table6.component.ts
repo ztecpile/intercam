@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Document } from '../../../../models/facturas.interface';
-import { FacturasService } from 'libs/multiplica/src/lib/services/facturas.service';
+import { Document } from '../../../../models/documents.interface';
+import { DocumentsService } from 'libs/multiplica/src/lib/services/documents.service';
 
 export interface PeriodicElement {
   name: string;
@@ -31,11 +31,11 @@ export class Table6Component implements OnInit {
   dataDocuments: Document[] = [];
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
-  constructor(private FacturasService: FacturasService) { }
+  constructor(private documentsService: DocumentsService) { }
 
   ngOnInit(): void {
     // this.initForm();
-    this.FacturasService.getDocuments().subscribe((res) => {
+    this.documentsService.getDocuments().subscribe((res) => {
       this.dataDocuments = res;
     });
   }
