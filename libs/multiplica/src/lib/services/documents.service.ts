@@ -30,7 +30,7 @@ export class DocumentsService {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       }),
-      body: body
+      body: body,
     };
     return this.http.delete<any[]>(urlStr, options);
   }
@@ -59,16 +59,15 @@ export class DocumentsService {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       }),
-      body: body
+      body: body,
     };
     return this.http.delete<any[]>(urlStr, options);
   }
   /* ========================================================= */
 
-  getRequiredDocuments(): Observable<any[]> {
+  getRequiredDocuments(categPersonald, tconId, perfilId): Observable<any[]> {
     const urlStr = 'doc-requerido-conf/fill';
-    const body = ["5","4","31"];
+    const body = [categPersonald, tconId, perfilId];
     return this.http.post<any[]>(urlStr, body);
   }
-
 }

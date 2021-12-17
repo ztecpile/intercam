@@ -9,9 +9,10 @@ import { CatalogoService } from '../../../../services/catalogo.service';
 import { TypePerson } from '../../../../models/catalogo.interface';
 import { TipoContratoVO } from '@intercam/model';
 import { Profile } from '../../../../models/catalogo.interface';
-import { RequiredDocuments } from '../../../../models/requerimiento.interface'
+import { RequiredDocuments } from '../../../../models/requerimiento.interface';
 import { from } from 'rxjs';
-
+import { DocRequeridoVO } from '../../../../../../../model/src/lib/com/intercam/corporativo/documentos/vo/DocRequeridoVO';
+                
 @Component({
   selector: 'intercam-requerimiento',
   templateUrl: './requerimiento.component.html',
@@ -24,10 +25,10 @@ export class RequerimientoComponent implements OnInit {
   dataTiposContratos: TipoContratoVO[] = [];
   dataTiposPersonas: TypePerson[] = [];
   dataPefiles: Profile[] = [];
-  dataTipoRequeridoDcumento: RequiredDocuments[] = [];
+  dataTipoRequeridoDcumento: DocRequeridoVO[] = [];
   // dataPerson: TypePerson[] = [];
   disabledButtons: Boolean = true;
-  selectedTypeDocument: Document;
+  selectedTypeDocument: DocRequeridoVO[];
   formDocument: FormGroup;
   isVisibleTable: boolean = true;
   messageTitle: string = 'No encontramos resultados';
@@ -40,8 +41,11 @@ export class RequerimientoComponent implements OnInit {
   ];
   headersTiTlestwo: string[] = ['Tipo Documento', 'Observaciones'];
   idContractTypeSelection: string = '';
-  idTypePerson: string = '';
-  idPerfil: string = '';
+  tpeClavePersonSelection: string = '';
+  idTypePersonSelection: string = '';
+  idPerfilSelection: string = '';
+  idTypeRequeredSelection: string = '';
+
 
   constructor(
     private documentsService: DocumentsService,
@@ -67,7 +71,7 @@ export class RequerimientoComponent implements OnInit {
     this.getTypeDocuments();
     this.getDocuments();
     this.getPersonDocuments();
-    this.getRequiredDocuments();
+    // this.getRequiredDocuments();
     this.getContratoDocuments();
   }
 
@@ -92,7 +96,7 @@ export class RequerimientoComponent implements OnInit {
 
   getPerfilDocuments() {
     this.catalogoService
-      .getTypePerfil(this.idContractTypeSelection, this.idTypePerson)
+      .getTypePerfil(this.idContractTypeSelection, this.tpeClavePersonSelection)
       .subscribe((res) => {
         // console.log(res);
         this.dataPefiles = res;
@@ -103,7 +107,7 @@ export class RequerimientoComponent implements OnInit {
 
   getRequiredDocuments() {
     this.isLoadingData = true;
-    this.documentsService.getRequiredDocuments().subscribe((res) => {
+    this.documentsService.getRequiredDocuments(this.idTypePersonSelection,this.idContractTypeSelection,this.idPerfilSelection).subscribe((res) => {
       this.dataTipoRequeridoDcumento = res;
       this.isLoadingData = false;
       this.isVisibleTable = this.dataTipoRequeridoDcumento.length > 0;
@@ -113,24 +117,26 @@ export class RequerimientoComponent implements OnInit {
 
   onContractType(event: any) {
     this.idContractTypeSelection = event.target.value;
-    if (this.idContractTypeSelection !== '' && this.idTypePerson) {
-      this.getPerfilDocuments();
+    if (this.idContractTypeSelection !== '' && this.tpeClavePersonSelection !== '') {
+    this.getPerfilDocuments();
     }
   }
 
   onTypePerson(event: any) {
-    this.idTypePerson = event.target.value;
-    if (this.idContractTypeSelection !== '' && this.idTypePerson) {
+    this.tpeClavePersonSelection = event.target.value;
+    this.idTypePersonSelection = this.dataTiposPersonas.filter((item)=> item.tipoPersonaVO.tpeClave === this.tpeClavePersonSelection)[0].cpeId.toString();
+    if (this.idContractTypeSelection !== '' && this.tpeClavePersonSelection !== '') {
       this.getPerfilDocuments();
     }
   }
 
   onPerfil(event: any) {
-    this.idPerfil = event.target.value;
+    this.idPerfilSelection = event.target.value;
     // const idTypeDocument = event.target.value;
     // this.typesDocumentsFiltered = this.dataTypesDocuments.filter(
     //   (item) => item.tdoId === Number()
     // );
+    this.getRequiredDocuments();
   }
 
   getContratoDocuments() {
@@ -188,9 +194,11 @@ export class RequerimientoComponent implements OnInit {
     });
   }
 
-  selectDocument(data) {
+  selectDocument(data: DocRequeridoVO) {
     this.disabledButtons = false;
-    this.selectedTypeDocument = data;
+    // this.selectedTypeDocument = data;
+    this.selectedTypeDocument = this.dataTipoRequeridoDcumento.filter((item)=> item.dreId === data.dreId);
+        
   }
 
   close(): void {}

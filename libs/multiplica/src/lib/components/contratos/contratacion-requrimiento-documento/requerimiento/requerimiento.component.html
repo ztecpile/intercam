@@ -23,7 +23,7 @@
         <div class="hiring-documents__select">
             <select (change)="onPerfil($event)">
                 <option value="">Seleccione</option>
-                <option [value]="dataPefil. tconId"*ngFor="let dataPefil of dataPefiles">{{dataPefil.perfDescripcion}}</option>
+                <option [value]="dataPefil.perfId"*ngFor="let dataPefil of dataPefiles">{{dataPefil.perfDescripcion}}</option>
             </select>
         </div>
     </div>
@@ -47,8 +47,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let dataTypeDocument of dataTypesDocuments; let i = index" [attr.data-index]="i"
-                            (click)="selectDocument(dataTypeDocument)">
+                        <tr *ngFor="let dataTypeDocument of dataTypesDocuments; let i = index" [attr.data-index]="i">
                             <td data-label="Descripcion">{{dataTypeDocument.tdoDescripcion}}</td>
                         </tr>
                     </tbody>
@@ -101,10 +100,10 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let dataDocument of dataDocuments; let i = index" [attr.data-index]="i"
-                    (click)="selectDocument(dataDocument)">
-                    <td data-label="Tipo Documento">{{dataDocument.docNombre}}</td>
-                    <td data-label="Observaciones">{{dataDocument.docDescrip}}</td>
+                <tr *ngFor="let aaa of selectedTypeDocument; let i = index" [attr.data-index]="i">
+                    <!-- {{dataRequeridoTypeDocument}} -->
+                    <td data-label="Tipo Documento">{{aaa.tipoDocumentoVO.documentosVO[0].docNombre}}</td>
+                    <td data-label="Observaciones">{{aaa.tipoDocumentoVO.documentosVO[0].docDescrip}}</td>
                 </tr>
             </tbody>
         </table>
