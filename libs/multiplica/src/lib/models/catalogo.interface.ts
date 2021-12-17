@@ -12,25 +12,39 @@ export interface TypeContrato {
 }
 
 export interface TypePerson {
-  cpeDescripcion: string;
-  cpeEsContraparte: boolean;
   cpeId: number;
-  cpeRegSimpli: boolean;
-  cpeRiesgo: number;
-  personasVO: Size;
-  sectoresVO: Size;
-  tipoPersonaVO: TyPersonVO[];
+  cpeDescripcion: string;
   tmpCvelegSabi: string;
+  tipoPersonaVO: TyPersonVO;
+  personasVO: Size;
   tmpCvelegSica: string;
-  tmpCvelegSide: number;
   tmpCvelegSiff: number;
+  tmpCvelegSide: number;
+  cpeEsContraparte: boolean;
+  cpeRiesgo: number;
+  sectoresVO: Size;
+  cpeRegSimpli: boolean;
 }
+
 export interface Size {
   length: number;
 }
+
 export interface TyPersonVO {
   tpeClave: string;
   tpeDescripcion: string;
   tmpCveLegSabi: any;
   tmpCveLegSiff: number;
 }
+
+export interface Profile {
+  perfId: number;
+  perfDescripcion: string;
+  perfEstatus: string;
+  tmpCvelegSiif: number;
+  tconId: number;
+  tmpCvelegSabi: string;
+  tpeClave: string;
+  perfTpeClave: any;
+}
+

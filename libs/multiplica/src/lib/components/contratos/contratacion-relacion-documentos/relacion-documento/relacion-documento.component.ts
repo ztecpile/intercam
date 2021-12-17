@@ -4,7 +4,11 @@ import { DocumentsService } from '../../../../services/documents.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'intercam-relacion-documento',
@@ -55,7 +59,6 @@ export class RelacionDocumentoComponent implements OnInit {
       this.isLoadingData = false;
       this.isVisibleTable = this.dataTypesDocuments.length > 0;
     });
-
   }
 
   // getDocuments() {
@@ -79,7 +82,6 @@ export class RelacionDocumentoComponent implements OnInit {
     //   docContrato: this.formDocument.controls.contrato.value,
     //   tmpCvelegBanco: this.selectedTypeDocument.tmpCvelegBanco,
     // };
-
     // this.facturasService.updateDocument(body).subscribe({
     //   next: (v) => this.onSuccessUpdate(v),
     //   error: (e) => this.onErrorUpdate(e),
@@ -110,15 +112,15 @@ export class RelacionDocumentoComponent implements OnInit {
     this.selectedTypeDocument = data;
   }
 
-  close(): void {
+  close(): void {}
 
-  }
-
-  onTypeDocumentChange(event:any){
+  onTypeDocumentChange(event: any) {
     const idTypeDocument = event.target.value;
     // console.log(this.dataTypesDocuments, idTypeDocument);
-    this.dataDocumentsFiltered = this.dataTypesDocuments.filter((item) => item.tdoId === Number(idTypeDocument))[0].documentosVO;
-   
+    this.dataDocumentsFiltered = this.dataTypesDocuments.filter(
+      (item) => item.tdoId === Number(idTypeDocument)
+    )[0].documentosVO;
+
     // let filterData = _.filter(this.dataTypesDocuments,(item) =>{
     //   return item.gender.toLowerCase() == event.value.toLowerCase();
     // })
@@ -127,13 +129,18 @@ export class RelacionDocumentoComponent implements OnInit {
 
   onDrop(event: CdkDragDrop<any[]>) {
     if (event.previousContainer !== event.container) {
-      transferArrayItem(event.previousContainer.data,
+      transferArrayItem(
+        event.previousContainer.data,
         event.container.data,
-        event.previousIndex, event.currentIndex);
-      } else {
-      moveItemInArray(event.container.data,
         event.previousIndex,
-        event.currentIndex);
+        event.currentIndex
+      );
+    } else {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
     }
   }
 }

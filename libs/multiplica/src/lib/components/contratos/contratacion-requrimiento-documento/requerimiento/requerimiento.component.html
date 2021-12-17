@@ -5,7 +5,7 @@
         <div class="hiring-documents__select">
             <select (change)="onContractType($event)">
                 <option value="">Seleccione</option>
-                <option [value]="dataTypeContrato.tconId"*ngFor="let dataTypeContrato of dataTypeContrato">{{dataTypeContrato.tconDescripcion}}</option>
+                <option [value]="dataTypeContrato.tconId"*ngFor="let dataTypeContrato of dataTiposContratos">{{dataTypeContrato.tconDescripcion}}</option>
             </select>
         </div>
     </div>
@@ -14,7 +14,7 @@
         <div class="hiring-documents__select">
             <select (change)="onTypePerson($event)">
                 <option value="">Seleccione</option>
-                <option [value]="dataPerson.cpeId"*ngFor="let dataPerson of dataPerson">{{dataPerson.cpeDescripcion}}</option>
+                <option [value]="tipoPersona.tipoPersonaVO.tpeClave"*ngFor="let tipoPersona of dataTiposPersonas">{{tipoPersona.cpeDescripcion}}</option>
             </select>
         </div>
     </div>
@@ -23,7 +23,7 @@
         <div class="hiring-documents__select">
             <select (change)="onPerfil($event)">
                 <option value="">Seleccione</option>
-                <option [value]="dataTypeDocument. tconId"*ngFor="let dataTypeDocument of dataTypesDocuments">{{dataTypeDocument.tdoDescripcion}}</option>
+                <option [value]="dataPefil. tconId"*ngFor="let dataPefil of dataPefiles">{{dataPefil.perfDescripcion}}</option>
             </select>
         </div>
     </div>
@@ -63,11 +63,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let dataTypeDocument of dataTypesDocuments; let i = index" [attr.data-index]="i"
-                        (click)="selectDocument(dataTypeDocument)">
-                        <td data-label="Descripcion">{{dataTypeDocument.tdoDescripcion}}</td>
-                        <td data-label="Caducidad por Mes">{{dataTypeDocument. tdoCaduca}}</td>
-                        <td data-label="Caducidad por operacion">{{dataTypeDocument. tdoPorOper}}</td>
+                    <tr *ngFor="let dataRequeridoDocument of dataTipoRequeridoDcumento; let i = index" [attr.data-index]="i"
+                        (click)="selectDocument(dataRequeridoDocument)">
+                        <td data-label="Descripcion">{{dataRequeridoDocument.tipoDocumentoVO.tdoDescripcion}}</td>
+                        <td data-label="Caducidad por Mes">{{dataRequeridoDocument.tipoDocumentoVO.tdoCaduca}}</td>
+                        <td data-label="Caducidad por operacion">{{getBoolenToString(dataRequeridoDocument.tipoDocumentoVO.tdoPorOper)}}</td>
                     </tr>
                 </tbody>
             </table>

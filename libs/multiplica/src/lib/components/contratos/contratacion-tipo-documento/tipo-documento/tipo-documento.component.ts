@@ -180,4 +180,9 @@ export class TipoDocumentoComponent implements OnInit {
 
   }
 
+  getBoolenToString(data) {
+    if (data === '') return '';
+
+    return data === false ? 'No' : 'Sí';
+  }
 }

@@ -4,22 +4,28 @@ import { DocumentsService } from '../../../../services/documents.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 // import { PersonaService } from '../../../../../../../contrato/src/lib/services/persona.service'
-import { CatContratoService } from '../../../../../../../contrato/src/lib/services/cat-contrato.service'
-import { CatalogoService } from '../../../../services/catalogo.service'
-import { TypeContrato,TypePerson } from '../../../../models/catalogo.interface'
-import { from } from 'rxjs';
+import { CatContratoService } from '../../../../../../../contrato/src/lib/services/cat-contrato.service';
+import { CatalogoService } from '../../../../services/catalogo.service';
+import { TypePerson } from '../../../../models/catalogo.interface';
 import { TipoContratoVO } from '@intercam/model';
+import { Profile } from '../../../../models/catalogo.interface';
+import { RequiredDocuments } from '../../../../models/requerimiento.interface'
+import { from } from 'rxjs';
 
 @Component({
   selector: 'intercam-requerimiento',
   templateUrl: './requerimiento.component.html',
-  styleUrls: ['./requerimiento.component.scss']
+  styleUrls: ['./requerimiento.component.scss'],
 })
 export class RequerimientoComponent implements OnInit {
   dataTypesDocuments: TypeDocument[] = [];
   dataDocuments: Document[] = [];
-  dataTypeContrato: TipoContratoVO[] = [];
-  dataPerson: TypePerson[] = [];
+  typesDocumentsFiltered: TypeDocument[] = [];
+  dataTiposContratos: TipoContratoVO[] = [];
+  dataTiposPersonas: TypePerson[] = [];
+  dataPefiles: Profile[] = [];
+  dataTipoRequeridoDcumento: RequiredDocuments[] = [];
+  // dataPerson: TypePerson[] = [];
   disabledButtons: Boolean = true;
   selectedTypeDocument: Document;
   formDocument: FormGroup;
@@ -27,19 +33,22 @@ export class RequerimientoComponent implements OnInit {
   messageTitle: string = 'No encontramos resultados';
   messageSubtitle: string = 'Revisa o cambia tu búsqueda';
   isLoadingData: boolean = false;
-  headersTitles: string[] = ['Descripcion', 'Caducidad por mes' , "Caducidad por operacion"];
-  headersTiTlestwo: string[] = ["Tipo Documento" , "Observaciones"];
-  idContractTypeSelection: string = "";
-  idTypePerson: string = "";
-  idPerfil:string;
-
+  headersTitles: string[] = [
+    'Descripcion',
+    'Caducidad por mes',
+    'Caducidad por operacion',
+  ];
+  headersTiTlestwo: string[] = ['Tipo Documento', 'Observaciones'];
+  idContractTypeSelection: string = '';
+  idTypePerson: string = '';
+  idPerfil: string = '';
 
   constructor(
     private documentsService: DocumentsService,
     private formBuilder: FormBuilder,
     public snackbar: MatSnackBar,
     private catalogoService: CatalogoService,
-    private catContratoService: CatContratoService,
+    private catContratoService: CatContratoService
   ) {}
 
   initForm() {
@@ -58,8 +67,8 @@ export class RequerimientoComponent implements OnInit {
     this.getTypeDocuments();
     this.getDocuments();
     this.getPersonDocuments();
-    
-    this.getContratoDocuments() ;
+    this.getRequiredDocuments();
+    this.getContratoDocuments();
   }
 
   getTypeDocuments() {
@@ -69,54 +78,68 @@ export class RequerimientoComponent implements OnInit {
       this.isLoadingData = false;
       this.isVisibleTable = this.dataTypesDocuments.length > 0;
     });
-
   }
-  
+
   getPersonDocuments() {
     this.isLoadingData = true;
     this.catalogoService.getTypePerson().subscribe((res) => {
-      this.dataPerson = res;
+      this.dataTiposPersonas = res;
       this.isLoadingData = false;
-      this.isVisibleTable = this.dataPerson.length > 0;
+      this.isVisibleTable = this.dataTiposPersonas.length > 0;
       // console.log(res);
     });
-
   }
 
   getPerfilDocuments() {
-    this.catalogoService.getTypePerfil(this.idContractTypeSelection,this.idTypePerson).subscribe((res) => {
+    this.catalogoService
+      .getTypePerfil(this.idContractTypeSelection, this.idTypePerson)
+      .subscribe((res) => {
+        // console.log(res);
+        this.dataPefiles = res;
+        this.isLoadingData = false;
+        this.isVisibleTable = this.dataPefiles.length > 0;
+      });
+  }
+
+  getRequiredDocuments() {
+    this.isLoadingData = true;
+    this.documentsService.getRequiredDocuments().subscribe((res) => {
+      this.dataTipoRequeridoDcumento = res;
+      this.isLoadingData = false;
+      this.isVisibleTable = this.dataTipoRequeridoDcumento.length > 0;
       console.log(res);
     });
-
   }
 
-  onContractType(event:any) {
-     this.idContractTypeSelection = event.target.value;
-     if(this.idContractTypeSelection !== "" && this.idTypePerson){
-       this.getPerfilDocuments();
-     }
-  }
-
-  onTypePerson(event:any) {
-    this.idTypePerson = event.target.value;
-    if(this.idContractTypeSelection !== "" && this.idTypePerson){
+  onContractType(event: any) {
+    this.idContractTypeSelection = event.target.value;
+    if (this.idContractTypeSelection !== '' && this.idTypePerson) {
       this.getPerfilDocuments();
     }
   }
 
-  onPerfil(event:any) {
-    this.idPerfil = event.target.value;
+  onTypePerson(event: any) {
+    this.idTypePerson = event.target.value;
+    if (this.idContractTypeSelection !== '' && this.idTypePerson) {
+      this.getPerfilDocuments();
+    }
   }
 
-
+  onPerfil(event: any) {
+    this.idPerfil = event.target.value;
+    // const idTypeDocument = event.target.value;
+    // this.typesDocumentsFiltered = this.dataTypesDocuments.filter(
+    //   (item) => item.tdoId === Number()
+    // );
+  }
 
   getContratoDocuments() {
     this.catContratoService.findTipoContrato().subscribe((res) => {
-      this.dataTypeContrato = res;
+      this.dataTiposContratos = res;
       this.isLoadingData = false;
-      this.isVisibleTable = this.dataTypeContrato.length > 0;
+      this.isVisibleTable = this.dataTiposContratos.length > 0;
+      // console.log(res);
     });
-
   }
 
   getDocuments() {
@@ -140,7 +163,6 @@ export class RequerimientoComponent implements OnInit {
     //   docContrato: this.formDocument.controls.contrato.value,
     //   tmpCvelegBanco: this.selectedTypeDocument.tmpCvelegBanco,
     // };
-
     // this.facturasService.updateDocument(body).subscribe({
     //   next: (v) => this.onSuccessUpdate(v),
     //   error: (e) => this.onErrorUpdate(e),
@@ -171,7 +193,12 @@ export class RequerimientoComponent implements OnInit {
     this.selectedTypeDocument = data;
   }
 
-  close(): void {
+  close(): void {}
 
+  
+  getBoolenToString(data) {
+    if (data === '') return '';
+
+    return data === false ? 'No' : 'Sí';
   }
 }

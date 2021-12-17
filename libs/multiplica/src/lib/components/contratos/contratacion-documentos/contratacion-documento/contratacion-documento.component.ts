@@ -218,4 +218,10 @@ export class ContratacionDocumentoComponent implements OnInit {
   close(){
     // this.dialogRef.close();
   }
+
+  getBoolenToString(data) {
+    if (data === '') return '';
+
+    return data === false ? 'No' : 'Sí';
+  }
 }

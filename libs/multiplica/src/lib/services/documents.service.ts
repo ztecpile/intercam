@@ -63,4 +63,12 @@ export class DocumentsService {
     };
     return this.http.delete<any[]>(urlStr, options);
   }
+  /* ========================================================= */
+
+  getRequiredDocuments(): Observable<any[]> {
+    const urlStr = 'doc-requerido-conf/fill';
+    const body = ["5","4","31"];
+    return this.http.post<any[]>(urlStr, body);
+  }
+
 }
