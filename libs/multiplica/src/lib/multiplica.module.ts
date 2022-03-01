@@ -13,6 +13,12 @@ import { RelacionDocumentoModule } from './components/contratos/contratacion-rel
 import { ContratacionEntidadModule } from './components/contratos/contratacion-entidad/contratacion-entidad.module'
 import { ColoniasModule } from './components/contratos/contratacion-colonias/colonias.module';
 import { RequirimientoModule } from './components/contratos/contratacion-requrimiento-documento/requirimiento.module'
+import { AdministracionExcepcionModule } from './components/operacion-divisas/administracion-excepcion/administracion-excepcion.module';
+import { BitacaPrecioModule } from './components/operacion-divisas/bitacora-precio/bitaca-precio.module';
+import { ConfiguracionLimitesModule } from './components/operacion-divisas/configuracion-limites/configuracion-limites.module';
+import { ConsultaOperacionesModule } from './components/operacion-divisas/consulta-operaciones/consulta-operaciones.module';
+import { DocumentoModule } from './components/operacion-divisas/documento/documento.module';
+import { ReferenciasModule } from './components/operacion-divisas/referencias/referencias.module';
 
 @NgModule({
   imports: [
@@ -30,7 +36,13 @@ import { RequirimientoModule } from './components/contratos/contratacion-requrim
     RelacionDocumentoModule,
     ContratacionEntidadModule,
     ColoniasModule,
-    RequirimientoModule
+    RequirimientoModule,
+    AdministracionExcepcionModule,
+    BitacaPrecioModule,
+    ConfiguracionLimitesModule,
+    ConsultaOperacionesModule,
+    DocumentoModule,
+    ReferenciasModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
   declarations: [

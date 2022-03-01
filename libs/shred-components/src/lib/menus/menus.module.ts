@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MenusComponent } from './Menus.component';
+import { MenusComponent } from './menus.component';
 
 import { MatMenuModule } from '@angular/material/menu';
 

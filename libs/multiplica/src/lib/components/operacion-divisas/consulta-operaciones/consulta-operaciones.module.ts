@@ -1,12 +1,27 @@
-import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import {
+  CUSTOM_ELEMENTS_SCHEMA,
+  NgModule,
+  NO_ERRORS_SCHEMA,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Tabla2Component } from './tabla2/tabla2.component';
 
-
+const routes: Routes = [
+  {
+    path: '',
+    children: [
+      {
+        path: 'mis-tabla-2',
+        component: Tabla2Component,
+      },
+    ],
+  },
+];
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
+  declarations: [Tabla2Component],
+  imports: [CommonModule, RouterModule.forChild(routes)],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
-export class ConsultaOperacionesModule { }
+export class ConsultaOperacionesModule {}

@@ -4,7 +4,7 @@
 > npm install
 
 ### iniciar servidor desarrollo
-> nx run ismart-pos:serve
+> nx run ismart-pos:serve --base-href=/ismart-pos/
 
 ### compilar proyecto qa
 > nx run ismart-pos:build --configuration=qa --base-href=/ismart-pos/
