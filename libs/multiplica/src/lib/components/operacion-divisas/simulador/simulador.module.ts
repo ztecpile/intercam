@@ -9,6 +9,7 @@ import { MatTableModule } from '@angular/material/table';
 import { SimuladorContainnerComponent } from './simulador-containner/simulador-containner.component';
 import { FondosInversionComponent } from './fondos-inversion/fondos-inversion.component';
 import {CierreBancoInversionesComponent} from './cierre-banco-inversiones/cierre-banco-inversiones.component'
+import { CasaBolsaComponent } from './casa-bolsa/casa-bolsa.component';
 
 const routes: Routes = [
   {
@@ -23,7 +24,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [SimuladorContainnerComponent, FondosInversionComponent, CierreBancoInversionesComponent],
+  declarations: [SimuladorContainnerComponent, FondosInversionComponent, CierreBancoInversionesComponent, CasaBolsaComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

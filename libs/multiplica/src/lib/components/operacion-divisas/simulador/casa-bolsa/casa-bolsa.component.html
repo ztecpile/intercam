@@ -1,0 +1,42 @@
+<div class="main">
+    <div class="main-head">
+        <label>Tasas (expresadas en %)</label>
+    </div>
+    <button class="btn-img actualiza-button"><span class="tooltip">Actualizar</span></button>
+    <div class="table">
+        <table>
+            <thead>
+                <tr>
+                    <th rowspan="2">Papel</th>
+                    <th rowspan="2">Plazo</th>
+                    <th>999,9999.99</th>
+                    <th>9,999,999.99</th>
+                    <th>49,999,999.99</th>
+                    <th>99,999,999.99</th>
+                    <th>499,999,999.99</th>
+                    <th>Limitado</th>
+                </tr>
+                <tr>
+                    <th>Efectiva</th>
+                    <th>Efectiva</th>
+                    <th>Efectiva</th>
+                    <th>Efectiva</th>
+                    <th>Efectiva</th>
+                    <th>Efectiva</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of tbody">
+                    <td>{{item.papel}}</td>
+                    <td>{{item.plazo}}</td>
+                    <td>{{item.efect0}}</td>
+                    <td>{{item.efect1}}</td>
+                    <td>{{item.efect2}}</td>
+                    <td>{{item.efect3}}</td>
+                    <td>{{item.efect4}}</td>
+                    <td>{{item.efect5}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

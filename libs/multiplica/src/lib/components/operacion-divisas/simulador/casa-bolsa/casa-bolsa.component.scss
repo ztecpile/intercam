@@ -1,0 +1,62 @@
+:host {
+    .main {
+        display: grid;
+        grid-template: 1fr;
+        row-gap: 5px;
+        padding: 0 1rem 0 1rem;
+        &-head {
+            padding: 1rem 0 1rem 0;
+            label {
+                font-weight: bold;
+            }
+        }
+    }
+    .table {
+        display: grid;
+        text-align: center;
+    }
+
+    table, td, th {
+        border: 1px solid #ddd;
+    }
+
+    table {
+        display: table;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border-collapse: collapse;
+        border-spacing: 2px;
+       
+    }
+
+    table tr {
+        padding: 5px;
+    }
+
+    table td,
+    table th {
+        padding: 10px;
+        display: table-cell;
+        text-align: left;
+    }
+
+    table th {
+        text-align: center;
+        font-size: 14px;
+        letter-spacing: 1px;
+        color: var(--steel-100);
+        background-color: #F0F0f0;
+        font-weight: 400;
+    }
+
+    table td {
+        color: var(--almost-black);
+        font-size: 16px;
+        line-height: 24px;
+    }
+    
+    tr:nth-child(odd) {
+        background: #CCCCCB;
+    }
+}
