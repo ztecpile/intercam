@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { SimuladorContainnerComponent } from './simulador-containner/simulador-containner.component';
 import { FondosInversionComponent } from './fondos-inversion/fondos-inversion.component';
+import { CasaBolsaComponent } from './casa-bolsa/casa-bolsa.component';
 
 const routes: Routes = [
   {
@@ -22,7 +23,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [SimuladorContainnerComponent, FondosInversionComponent],
+  declarations: [SimuladorContainnerComponent, FondosInversionComponent, CasaBolsaComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
