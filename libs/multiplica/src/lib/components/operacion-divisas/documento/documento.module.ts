@@ -14,7 +14,7 @@ const routes: Routes = [
     path: '',
     children: [
       {
-        path: 'mis-tabla-0',
+        path: 'mis-cron',
         component: TableComponent,
       },
     ],

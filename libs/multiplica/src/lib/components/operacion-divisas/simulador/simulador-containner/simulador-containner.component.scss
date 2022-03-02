@@ -1,0 +1,131 @@
+.table {
+    display: grid;
+    // justify-items: center;
+  //   min-height: 19rem;
+    text-align: center;
+    width: 60%;
+}
+
+table, td, th {
+  border: 1px solid #ddd;
+}
+
+table {
+    display: table;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+
+  //   border: 1px solid #ddd;
+
+ 
+  }
+
+  table tr {
+  //   border-bottom: 1px solid #ddd;
+    padding: 5px;
+  //   border: 1px solid #ddd;
+
+  }
+
+  table td,
+  table th {
+    padding: 10px;
+    display: table-cell;
+    text-align: left;
+  //   border: 1px solid #ddd;
+
+  }
+
+  table th {
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: var(--steel-100);
+    background-color: #F0F0F0;
+    font-weight: 400;
+    
+  }
+
+  table td {
+    color: var(--almost-black);
+    font-size: 16px;
+    line-height: 24px;
+    }
+
+  tr:nth-child(odd){
+      background:#CCCCCB;
+      
+  }
+
+  .principal{
+      background: gainsboro;
+  }
+
+  .container{
+      padding: 20px;
+      margin-left: 10px;
+      width: 95%;
+      background: #ffff;
+  }
+
+  .cliente, .radio, .fecha, .deal{
+      display: flex;
+  }
+
+  .radio input{
+    margin-top: 18px;
+    margin-right: 10px;
+ }
+ .radio p{
+     margin-right: 10px;
+ }
+
+ .cliente input{
+    width: 600px;
+    height: 20px;
+    margin-top: 13px;
+    margin-left: 15px;
+ }
+
+ .fecha input{
+     height: 20px;
+     margin-top: 13px;
+     margin-left: 15px;
+     margin-right: 15px;
+ }
+
+ .deal input{
+     width: 650px;
+     height: 20px;
+     margin-top: 13px;
+     margin-left: 15px;
+ }
+
+ .bold{
+     font-weight: bold;
+ }
+
+ .tablas{
+     margin-top: 20px;
+     display: flex;
+ }
+
+ .Stable{
+     margin-left: 15px;
+    width: 50%;
+ }
+
+
+
+.btn{
+  margin: 10px 0px 0px 10px;
+}
+
+.botton{
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 20px 0px 0px;
+}

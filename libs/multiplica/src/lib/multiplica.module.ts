@@ -19,6 +19,7 @@ import { ConfiguracionLimitesModule } from './components/operacion-divisas/confi
 import { ConsultaOperacionesModule } from './components/operacion-divisas/consulta-operaciones/consulta-operaciones.module';
 import { DocumentoModule } from './components/operacion-divisas/documento/documento.module';
 import { ReferenciasModule } from './components/operacion-divisas/referencias/referencias.module';
+import { SimuladorModule } from './components/operacion-divisas/simulador/simulador.module';
 
 @NgModule({
   imports: [
@@ -42,7 +43,8 @@ import { ReferenciasModule } from './components/operacion-divisas/referencias/re
     ConfiguracionLimitesModule,
     ConsultaOperacionesModule,
     DocumentoModule,
-    ReferenciasModule
+    ReferenciasModule,
+    SimuladorModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
   declarations: [

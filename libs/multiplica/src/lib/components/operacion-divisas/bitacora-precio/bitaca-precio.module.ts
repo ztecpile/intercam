@@ -8,7 +8,7 @@ const routes: Routes = [
       path: '', 
       children: [
           {
-          path: 'mis-tabla-10',
+          path: 'mis-bitacora-precio',
           component:Table10Component
           }
       ]

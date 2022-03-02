@@ -11,7 +11,7 @@ const routes: Routes = [
       path: '', 
       children: [
           {
-          path: 'mis-tabla',
+          path: 'mis-facturas',
           component:Table6Component
           }
       ]

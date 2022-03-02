@@ -12,7 +12,7 @@ const routes: Routes = [
     path: '',
     children: [
       {
-        path: 'mis-tabla-12',
+        path: 'mis-admin-excepcion',
         component: Table12Component,
       },
     ],

@@ -8,7 +8,7 @@ const routes: Routes = [
       path: '', 
       children: [
           {
-          path: 'mis-tabla-7',
+          path: 'mis-configuracion-limites',
           component:Table7Component
           }
       ]

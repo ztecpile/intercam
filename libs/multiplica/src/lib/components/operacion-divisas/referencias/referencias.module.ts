@@ -13,7 +13,7 @@ const routes: Routes = [
     path: '',
     children: [
       {
-        path: 'mis-tabla-5',
+        path: 'mis-referencias',
         component: Table5Component,
       },
     ],

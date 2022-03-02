@@ -12,7 +12,7 @@ const routes: Routes = [
     path: '',
     children: [
       {
-        path: 'mis-tabla-2',
+        path: 'mis-consulta-operaciones',
         component: Tabla2Component,
       },
     ],
