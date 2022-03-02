@@ -20,6 +20,7 @@ import { ConsultaOperacionesModule } from './components/operacion-divisas/consul
 import { DocumentoModule } from './components/operacion-divisas/documento/documento.module';
 import { ReferenciasModule } from './components/operacion-divisas/referencias/referencias.module';
 import { SimuladorModule } from './components/operacion-divisas/simulador/simulador.module';
+import { AdminPerfilesModule } from './components/perfiles/admin-perfiles/admin-perfiles.module';
 
 @NgModule({
   imports: [
@@ -44,7 +45,8 @@ import { SimuladorModule } from './components/operacion-divisas/simulador/simula
     ConsultaOperacionesModule,
     DocumentoModule,
     ReferenciasModule,
-    SimuladorModule
+    SimuladorModule,
+    AdminPerfilesModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
   declarations: [
