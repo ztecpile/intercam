@@ -1,0 +1,112 @@
+<div class="contra">
+    <p>Contrato POS</p>
+    <select name="" id="contrato">
+        <option>437316</option>
+    </select>
+    <p>Contrato legado</p>
+    <input type="text" placeholder="" value="1661">
+</div>
+<div  class="table">
+    <table>
+        <thead>
+            <tr>
+                <th *ngFor="let table of tables">{{table.cabezera}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of data">
+                <td>{{data.nombre}}</td>
+                <td>{{data.cuenta}}</td>
+                <td>{{data.fecha}}</td>
+                <td>{{data.usuario}}</td>
+                <td>{{data.estatus}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <div class="izq">
+        <div class="check">
+            <input type="checkbox">
+            <p class="p">Es Intercam</p>
+        </div>
+        <div class="tipo contrato">
+            <p class="rojo">*</p>&nbsp;
+            <p>Tipo Contrato</p>
+            <select class="align-center" name="" id="tipo_contrato">
+                <option>DIVISA</option>
+            </select>
+        </div>
+        <hr>
+        <div class="tipo">
+            <p class="rojo">*</p>&nbsp;
+            <p>Tipo Persona</p>
+            <select name="" id="" disabled>
+                <option>MORAL</option>
+            </select>
+        </div>
+        <div class="tipo">
+            <p class="rojo">*</p>&nbsp;
+            <p>Razon Social</p>
+            <input type="text" class="social" value="INTERCAM BANCO S.A INSTITUCION">
+        </div>
+    </div>
+    <div class="der">
+        <div class="tipo selec">
+            <p class="rojo">*</p>&nbsp;
+            <p>Banco</p>
+            <select name="" id="banco">
+                <option>BBVA</option>
+            </select>
+        </div>
+        <div class="tipo selec">
+            <p class="rojo">*</p>&nbsp;
+            <p>Divisa</p>
+            <select name="" id="moneda">
+                <option>MONEDA NACIONAL</option>
+            </select>
+        </div>
+      <div class="tipo selec">
+        <p class="rojo">*</p>&nbsp;
+        <p>Cuenta</p>
+        <select name="" id="cuenta">
+            <option>1254359</option>
+        </select>
+      </div>
+      <div class="tipo">
+          <p class="separado">Cuenta</p>
+          <input type="text" value="0184765133">
+      </div>
+      <div class="tipo">
+          <P class="separado">CLABE</P>
+          <input type="text" value="012180001847651338">
+        </div>
+        <div class="tipo">
+            <p class="separado">Sucursal</p>
+            <input type="text" value="0">
+        </div>
+        <div class="tipo">
+            <p class="separado">Plaza</p>
+            <input type="text">
+        </div>
+    </div>
+</div>
+
+
+
+<div mat-dialog-actions class="hiring-documents__actions">
+    <div class="row">
+        <button mat-button class="btn-img buscar-btn-des" type="submit" >
+            <span class="tooltip">Listar</span>
+        </button>
+        <button mat-button class="btn-img save-button" type="submit">
+            <span class="tooltip">Grabar</span>
+        </button>
+        <button mat-button class="btn-img deshacer-button" type="submit">
+            <span class="tooltip">Grabar</span>
+        </button>
+        <button  mat-button class="btn-img update-button-des" type="submit" >
+            <span class="tooltip">Actualizar</span>
+        </button>
+    </div>
+</div>

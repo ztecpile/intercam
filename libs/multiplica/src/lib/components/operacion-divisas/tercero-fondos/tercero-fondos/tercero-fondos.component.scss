@@ -1,0 +1,191 @@
+.table {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    width: 95%;
+    height: 245px;
+    margin-left: 2.5%;
+    overflow: auto;
+}
+
+.contrato,.fecha,.contra{
+  display: flex;
+}
+
+.contra{
+  margin-left: 50px;
+  text-align: center;
+  p{
+    margin-top: 15px;
+  }
+}
+
+input,select{
+  margin-top: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 150px;
+  height: 20px;
+}
+
+select{
+  border-radius: 10%;
+  height: 25px;
+  background: #D9E5B1;
+}
+
+#contrato, #tipo_contrato, #banco, #moneda, #cuenta{
+  font-weight: bold;
+}
+
+.centro{
+  text-align: center;
+  font-weight: bold;
+}
+
+table, td, th {
+  border: 1px solid #ddd;
+}
+
+table {
+    display: table;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-radius: 10px;
+    border-collapse: separate;
+    // border: 1px solid #ddd;
+
+ 
+  }
+
+  table tr {
+  //   border-bottom: 1px solid #ddd;
+    padding: 5px;
+  //   border: 1px solid #ddd;
+
+  }
+
+  table td,
+  table th {
+    width: 20%;
+    padding: 5px;
+    display: table-cell;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  //   border: 1px solid #ddd;
+
+  }
+
+  table th {
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #5e6a71;
+    background-color: #F0F0F0;
+    font-weight: 400;
+    
+  }
+
+  table td {
+    color: var(--almost-black);
+    font-size: 16px;
+    line-height: 24px;
+    }
+
+  tr:nth-child(odd){
+      background:#fff;
+      
+  }
+
+  .container{
+    margin-top: 30px;
+    margin-left: 45px;
+    display: flex;
+    width: 100%;
+    // height: 500px;
+    border: 0.2px solid #C4C4C4;
+  }
+
+  .check,.tipo{
+    display: flex;
+    margin-left: 30px;
+  }
+
+  .tipo{
+    p{
+      margin-top: 15px;
+    }
+  }
+
+  .contrato{
+    margin-top: 10px;
+  }
+
+  .rojo{
+    color: red;
+  }
+
+  .align-center{
+    margin-top: 15px;
+  }
+
+  .contrato, .selec{
+    margin-left: 150px;
+  }
+.check{
+  width: 10%;
+
+  p{
+    margin-top: 15px;
+  }
+}
+
+.der{
+  p{
+    margin-top: 15px;
+  }
+}
+
+.separado{
+  width: 100px;
+  margin-left: 22px;
+}
+
+  .p{
+    position: absolute;
+    left: 150px;
+  }
+
+  .izq{
+    // background-color: yellow;
+    width: 50%;
+  }
+
+  .social{
+    width: 200px;
+    height: 20px;
+    font-size: 13px;
+  }
+  .der{
+    width: 50%;
+    // background-color: red;
+  }
+
+  .botton{
+    justify-content: flex-start;
+    margin-top: 20px;
+    display: flex;
+    margin-left: 80px;
+
+   & .btn{
+     margin: 10px;
+   }
+  }
+
+  .hiring-documents {
+    &__actions {
+      width: 100%;
+      margin-left: 70px;
+      margin-top: 15px;
+    }
+  }

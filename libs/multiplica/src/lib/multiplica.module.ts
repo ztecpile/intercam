@@ -6,6 +6,7 @@ import { TipoDocumentoModule } from './components/contratos/contratacion-tipo-do
 import { ContratacionActividadesModule } from './components/contratos/contratacion-actividades/contratacion-actividades.module'
 import { PorfesionesModule } from './components/contratos/contratacion-profesiones/porfesiones.module'
 import { FacturasModule } from './components/operacion-divisas/facturas/facturas.module'
+import { TerceroFondosModule } from './components/operacion-divisas/tercero-fondos/tercero-fondos.module'
 import { MatTableModule } from '@angular/material/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
@@ -30,7 +31,8 @@ import { RequirimientoModule } from './components/contratos/contratacion-requrim
     RelacionDocumentoModule,
     ContratacionEntidadModule,
     ColoniasModule,
-    RequirimientoModule
+    RequirimientoModule,
+    TerceroFondosModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
   declarations: [
