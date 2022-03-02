@@ -1,43 +1,74 @@
 <div class="principal">
   <div class="principal">
     <div class="titulo">
-        <p>Simulador</p>
+      <p>Simulador</p>
     </div>
+    <p>Busqueda</p>
     <div class="padre">
+      <div class="fila">
         <div class="fila">
-            <div class="fila">
-                <p>Pais</p>
-                <select name="" id=""></select>
-            </div>
-            <div class="fila">
-                <p>Refinar Busqueda</p>
-                <input type="text">
-            </div>
-        </div>
-        <div class="conteiner">
-            <div class="tabla1">
-                <div class="table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th >table.cabezera</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr >
-                                <td>data.docNombre</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+          <p>Monto</p>
+          <input type="number"
+            placeholder="0.0">
         </div>
         <div class="fila">
-            <p>Cuidad</p>
-            <input type="text">
+          <p>Tipo Persona</p>
+          <select name=""
+            id=""></select>
         </div>
+        <div class="fila">
+          <p>Periodo a simular</p>
+          <select name=""
+            id=""></select>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 
+  <div class="table_containner">
+    <div class="table">
+      <table>
+        <thead>
+          <tr>
+            <th *ngFor="let table of tables">{{table.cabezera}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of data">
+            <td>{{data.fondo}}</td>
+            <td>{{data.plazo}}</td>
+            <td>{{data.en_anio}}</td>
+            <td>{{data.en_mes}}</td>
+            <td>{{data.dias_7}}</td>
+            <td>{{data.dias_28}}</td>
+            <td>{{data.meses}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table_detail">
+      <table>
+        <thead>
+          <tr>
+            <th *ngFor="let table of table_detalle">{{table.cabezera}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of data_detalle">
+            <td>{{data.fondo}}</td>
+            <td>{{data.tipo}}</td>
+            <td>{{data.porcentaje}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div>
+        <p>
+          <label>Total: {{total}} %</label>
+        </p>
+        <button>Calcular</button>
+      </div>
+    </div>
+  </div>
 
 </div>
