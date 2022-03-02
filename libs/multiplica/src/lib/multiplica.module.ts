@@ -13,6 +13,7 @@ import { RelacionDocumentoModule } from './components/contratos/contratacion-rel
 import { ContratacionEntidadModule } from './components/contratos/contratacion-entidad/contratacion-entidad.module'
 import { ColoniasModule } from './components/contratos/contratacion-colonias/colonias.module';
 import { RequirimientoModule } from './components/contratos/contratacion-requrimiento-documento/requirimiento.module'
+import { AdminPerfilesModule } from './components/perfiles/admin-perfiles/admin-perfiles.module';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { RequirimientoModule } from './components/contratos/contratacion-requrim
     RelacionDocumentoModule,
     ContratacionEntidadModule,
     ColoniasModule,
-    RequirimientoModule
+    RequirimientoModule,
+    AdminPerfilesModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
   declarations: [
