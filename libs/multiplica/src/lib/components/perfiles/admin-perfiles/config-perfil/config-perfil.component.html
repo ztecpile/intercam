@@ -15,7 +15,7 @@
         <div class="contenedor">
             <div>
                 <label>Seleccione una divisa</label>
-                <div class="table">
+                <div class="table-large">
                     <table>
                         <thead>
                             <tr>
@@ -27,43 +27,52 @@
                         <tbody>
                             <tr *ngFor="let item of divisas">
                                 <td>{{item.name}}</td>
-                                <td>
-                                    <input class="form-check-input" type="checkbox" />
+                                <td class="checkCenter">
+                                    <div>
+                                        <input class="form-check-input" type="checkbox" />
+                                    </div>
                                 </td>
                                 <td>
-                                    <input class="form-check-input" type="checkbox" />
+                                    <div class="checkCenter">
+                                        <input class="form-check-input" type="checkbox" />
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-                    <ng-container matColumnDef="position">
-                        <th mat-header-cell *matHeaderCellDef>No.</th>
-                        <td mat-cell *matCellDef="let element">{{element.position}}</td>
-                    </ng-container>
-                    <ng-container matColumnDef="name">
-                        <th mat-header-cell *matHeaderCellDef> Name </th>
-                        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-                      </ng-container>
-                      
-                      <ng-container matColumnDef="weight">
-                        <th mat-header-cell *matHeaderCellDef> Weight </th>
-                        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-                      </ng-container>
-                    
-                      <ng-container matColumnDef="symbol">
-                        <th mat-header-cell *matHeaderCellDef> Symbol </th>
-                        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-                      </ng-container>
-                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                </table> -->                  
             </div>
             <div>
                 <label>Seleccione la seccion</label>
+                <div class="table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Sección</th>
+                                <th>Permitir</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of seleccion">
+                                <td>{{item.name}}</td>
+                                <td class="checkCenter">
+                                    <div>
+                                        <input *ngIf="item.name !==''" class="form-check-input" type="checkbox" />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="checkCenter">
+                                        <input *ngIf="item.name !==''" class="form-check-input" type="checkbox" />
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <label>Divisas</label>&nbsp;&nbsp;&nbsp;<label>3</label><br>
+                <label>Secciones</label>&nbsp;&nbsp;&nbsp;<label>2</label>
             </div>
         </div>
-        
     </div>
+    <button class="btn-img save-button"><span class="tooltip">Guardar</span></button>
 </div>
