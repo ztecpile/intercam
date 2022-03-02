@@ -1,0 +1,254 @@
+.titulo {
+  font-weight: bold;
+}
+
+.principal {
+  background: gainsboro;
+}
+
+.tasa-inversion{
+  border-radius: 11px;
+  border: 1px solid #fff;
+  width: 33%;
+  padding-top: 5px;
+  padding-left: 10px;
+  margin-left: 55px;
+  margin-top: 20px;
+  background-color: #f8f9fa;
+  height: 34px;
+}
+
+.padre {
+  background: #ffff;
+  margin: 5px;
+}
+
+
+input,
+select {
+  margin-top: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 150px;
+  height: 20px;
+}
+
+select {
+  border-radius: 10%;
+  height: 25px;
+  background: #d9e5b1;
+}
+
+select {
+  margin-top: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 180px;
+  border-radius: 10%;
+  height: 25px;
+  background: #d9e5b1;
+}
+
+.fila {
+  display: flex;
+  margin-left: 60px;
+}
+
+#tipo_persona, #tipo_inversion, #moneda{
+  font-weight: bold;
+}
+
+.fila input {
+  margin-left: 10px;
+  margin-top: 13px;
+  width: 280px;
+  height: 20px;
+}
+
+.fila b{
+  margin-top: 15px;
+  width: 125px;
+}
+
+.fila label{
+  margin-top: 15px;
+  width: 125px;
+}
+
+.fila p{
+  margin-top: 15px;
+}
+
+.derecha{
+  margin-left: 300px;
+
+  input{
+    margin-left: 10px;
+  margin-top: 13px;
+  width: 280px;
+  height: 20px;
+  }
+
+  b{
+    margin-top: 15px;
+    width: 125px;
+  }
+
+  p{
+    margin-top: 15px;
+  }
+}
+.derecha_campos_ex{
+  margin-left: 225px;
+}
+.derecha_campos_exd{
+  margin-left: 656px;
+}
+.derecha_campos_btn{
+  margin-left: 845px;
+
+  button{
+    border-radius: 10px;
+  }
+}
+.alinear-derecha{
+  text-align: right;
+}
+.button-size{
+  width: 50px;
+}
+
+.selectores{
+  margin-left: inherit;
+}
+
+.contrato,
+.fecha,
+.contra {
+  display: flex;
+}
+
+.contra {
+  margin-left: 50px;
+  text-align: center;
+  p {
+    margin-top: 15px;
+  }
+}
+.boton-lis{
+  margin-left: 25px;
+}
+
+.botones{
+  button{
+    width: 50px;
+    height: 45px;
+  }
+}
+
+
+#contrato,
+#tipo_contrato,
+#banco,
+#moneda,
+#cuenta {
+  font-weight: bold;
+}
+
+.centro {
+  text-align: center;
+  font-weight: bold;
+}
+
+
+
+
+.container {
+  margin-top: 30px;
+  margin-left: 45px;
+  display: flex;
+  width: 100%;
+  // height: 500px;
+  border: 0.2px solid #c4c4c4;
+}
+
+.check,
+.tipo {
+  display: flex;
+  margin-left: 30px;
+}
+
+.tipo {
+  p {
+    margin-top: 15px;
+  }
+}
+
+.contrato {
+  margin-top: 10px;
+}
+
+.rojo {
+  color: red;
+}
+
+.align-center {
+  margin-top: 15px;
+}
+
+.contrato,
+.selec {
+  margin-left: 150px;
+}
+.check {
+  width: 10%;
+
+  p {
+    margin-top: 15px;
+  }
+}
+
+.der {
+  p {
+    margin-top: 15px;
+  }
+}
+
+.separado {
+  width: 100px;
+  margin-left: 22px;
+}
+
+.izq {
+  // background-color: yellow;
+  width: 50%;
+}
+
+.social {
+  width: 200px;
+  height: 20px;
+  font-size: 13px;
+}
+.der {
+  width: 50%;
+  // background-color: red;
+}
+
+.botton {
+  justify-content: flex-start;
+  margin-top: 20px;
+  display: flex;
+  margin-left: 80px;
+
+  & .btn {
+    margin: 10px;
+  }
+}
+
+.hiring-documents {
+  &__actions {
+    width: 100%;
+    margin-left: 70px;
+    margin-top: 15px;
+  }
+}

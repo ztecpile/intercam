@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { SimuladorContainnerComponent } from './simulador-containner/simulador-containner.component';
 import { FondosInversionComponent } from './fondos-inversion/fondos-inversion.component';
+import {CierreBancoInversionesComponent} from './cierre-banco-inversiones/cierre-banco-inversiones.component'
 
 const routes: Routes = [
   {
@@ -22,7 +23,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [SimuladorContainnerComponent, FondosInversionComponent],
+  declarations: [SimuladorContainnerComponent, FondosInversionComponent, CierreBancoInversionesComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
