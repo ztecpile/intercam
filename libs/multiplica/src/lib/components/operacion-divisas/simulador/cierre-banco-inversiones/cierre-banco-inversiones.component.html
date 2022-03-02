@@ -1,0 +1,101 @@
+<div class="principal">
+  <div class="principal">
+    <div class="titulo">
+      <mat-tab-group>
+        <mat-tab label="Prlvs"></mat-tab>
+        <mat-tab label="Cedes"></mat-tab>
+      </mat-tab-group>
+    </div>
+    <div class="tasa-inversion">
+      Tasas de inversión
+    </div>
+        <div class="fila">
+          <p class="rojo">*</p>&nbsp;
+          <b>Tipo Persona</b>
+          <div class="selectores">
+            <select name="" id="tipo_persona">
+              <option>MORAL</option>
+            </select>
+          </div>
+
+          <div class="fila derecha">
+            <p class="rojo">*</p>&nbsp;
+            <b>Monto</b>
+            <div class="selectores_derecha">
+              <input class="alinear-derecha" type="text" placeholder="" value="0.00">
+            </div>
+          </div>
+
+        </div>
+        <div class="fila">
+          <p class="rojo">*</p>&nbsp;
+          <b>Moneda</b>
+          <div class="selectores">
+            <select name="" id="moneda">
+              <option>PESOS</option>
+            </select>
+          </div>
+          <div class="fila derecha">
+            <p class="rojo">*</p>&nbsp;
+            <b>Días</b>
+            <div class="selectores_derecha">
+              <input class="alinear-derecha" type="text" placeholder="" value="0">
+            </div>
+          </div>
+        </div>
+        <div class="fila">
+          <p class="rojo">*</p>&nbsp;
+          <b>Tipo de Inversión</b>
+          <div class="selectores">
+            <select name="" id="tipo_inversion">
+              <option>DSA</option>
+            </select>
+          </div>
+          <div class="fila derecha">
+            <p class="rojo">*</p>&nbsp;
+            <b>Cliente</b>
+            <div class="selectores_derecha">
+              <input type="text" placeholder="" value="001940030028">
+            </div>
+            <div class="boton-lis">
+              <button mat-button class="btn-img buscar-btn" type="submit" >
+                <span class="tooltip">Listar</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="fila">
+          <b>Fecha</b>
+          <div class="selectores">
+            <input type="text" placeholder="" value="29/06/2021">
+          </div>
+
+          <div class="fila derecha derecha_campos_ex">
+            <b>Nombre:</b>
+            <div class="selectores_derecha" style="margin-left: 7px;">
+              <label> GABO FWD A.C</label>
+            </div>
+          </div>
+
+        </div>
+        <div class="fila">
+          <div class="botones">
+          <button mat-button class="btn-img update-button" type="submit" >
+            <span class="tooltip">Actualizar</span>
+          </button>
+        </div>
+          <div class="fila derecha derecha_campos_exd">
+            <b>Saldo Inicial:</b>
+            <div class="selectores_derecha">
+              <input class="alinear-derecha" type="text" placeholder="" disabled value="0.00">
+            </div>
+          </div>
+        </div>
+        <div class="fila">
+          <div class="fila derecha derecha_campos_btn">
+            <button>PRLVS</button>
+          </div>
+        </div>
+  </div>
+
+</div>
