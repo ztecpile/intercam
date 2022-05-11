@@ -252,6 +252,9 @@ import { PerCuentaBancoVO } from "./PerCuentaBancoVO";
             this.perNomCorto = null;
             this.cueTipo = null;
             this.cueDescMotPago = null; 
+            this.cueAlias = null;
+            this.cueEmail = null;
+            this.cueRFC = null;
         }
         
         public  toString():string {

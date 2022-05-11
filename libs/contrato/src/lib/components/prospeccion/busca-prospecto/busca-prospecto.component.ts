@@ -5,7 +5,7 @@ import { _MatTableDataSource } from '@angular/material/table';
 
 import { UsuarioVO } from '@intercam/model';
 
-import { TabsDynamicComponent } from '../../util/tabs/tabs-dynamic.component';
+import { TabsDynamicComponent } from 'libs/shred-components/src/lib/tabs/tabs-dynamic/tabs-dynamic.component';
 import { BusquedaProspectoComponent } from './busqueda-prospecto/busqueda-prospecto.component';
 
 @Component({

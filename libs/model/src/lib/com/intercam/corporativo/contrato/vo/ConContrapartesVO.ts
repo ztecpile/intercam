@@ -1,23 +1,23 @@
 
     export class ConContrapartesVO
     {
-        public  conEmail:String;
+        public  conEmail:string;
 
-        public  perId: Number;
+        public  perId: number;
         
-        public  nomCorto:String;
+        public  nomCorto:string;
 
-        public  tpeClave:String;
+        public  tpeClave:string;
         
-        public  perfDescripcion:String;
+        public  perfDescripcion:string;
 
-        public  pefEmail:String;
+        public  pefEmail:string;
         
-        public  pefPuesto:String;
+        public  pefPuesto:string;
         
-        public  dirId: Number;
+        public  dirId: number;
 
-        public  cveTel: String;
+        public  cveTel: string;
         
         public constructor()
         {

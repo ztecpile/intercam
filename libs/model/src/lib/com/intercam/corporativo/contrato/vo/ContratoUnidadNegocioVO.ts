@@ -4,13 +4,13 @@ import { UnidadNegocioVO } from "./UnidadNegocioVO";
     export class ContratoUnidadNegocioVO
     {
 		public  idVO:ContratoUnidadNegocioIdVO;
-		public  uncEstatus:String;
-		public  usuUsuario:String;
-		public  uncFaltaStr:String;
+		public  uncEstatus:string;
+		public  usuUsuario:string;
+		public  uncFaltaStr:string;
 		public  unidadNegocioVO:UnidadNegocioVO;
-		public  ctaBanco:String;
-		public  traHabilitaPortal:String;
-		public  uncCargoTotal:Boolean;
+		public  ctaBanco:string;
+		public  traHabilitaPortal:string;
+		public  uncCargoTotal:boolean;
 		
 		public constructor() {
 		

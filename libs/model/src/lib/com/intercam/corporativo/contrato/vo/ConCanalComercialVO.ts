@@ -9,23 +9,23 @@ import { ConCanalComercialIdVO } from "./ConCanalComercialIdVO";
 		/**
 		 * Descripcion Canal Comercial
 		 * */
-		public  descripcionCanal : String;
+		public  descripcionCanal : string;
 		/**
 		 * Codigo Canal Comercial
 		 */
-		public  ccaCanalComercial : String;
+		public  ccaCanalComercial : string;
 		/**
 		 * Status de Activo o Suspendido
 		 * */
-		public  ccaEstatus : String;
+		public  ccaEstatus : string;
 		/**
 		 * Indicador de seleccion
 		 * */
-		public  isSelected : Boolean;
+		public  isSelected : boolean;
 		/**
 		 * Indicador de si es para consulta nada mas
 		 * */
-		public  readOnly : Boolean;
+		public  readOnly : boolean;
 		
 		public constructor()
 		{

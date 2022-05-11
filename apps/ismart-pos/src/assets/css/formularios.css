@@ -518,6 +518,19 @@ strong {
     border-radius: 9px;
 }
 
+.modal-content2 {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+    margin: auto;
+    padding: 20px;
+    width: 60%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    overflow: hidden;
+}
+
 .tit_modal {
     display: block;
     font-size: 17px;

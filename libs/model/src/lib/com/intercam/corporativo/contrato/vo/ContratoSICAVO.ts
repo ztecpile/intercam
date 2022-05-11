@@ -4,48 +4,48 @@ import { ContratoVO } from "./ContratoVO";
     export class ContratoSICAVO extends ContratoVO
     {
 
-        public  csiNoOpMes:Number;
-        public  csiMontoOpMes:Number;
-        public  csiRecurrente:Boolean;
-        public  csiRepretel:String;
-        public  csiFacElec:String;
-		public  csiCorresponsal:String;
+        public  csiNoOpMes:number;
+        public  csiMontoOpMes:number;
+        public  csiRecurrente:boolean;
+        public  csiRepretel:string;
+        public  csiFacElec:string;
+		public  csiCorresponsal:string;
         /**
         * Indica si es usuario o cliente
         */
-        public  csiUsuario:String;
+        public  csiUsuario:string;
         /**
          * Clave de la ventanilla
          */
-        public  csiCveVenta:String;
+        public  csiCveVenta:string;
         /**
          * Clave del caja
          */
-        public  csiCjvCaja:String;
+        public  csiCjvCaja:string;
         /**
          * Clave del promotor
          */
-        public  csiClvPro:String;
+        public  csiClvPro:string;
         /**
          * Bandera para determinar si se envia de forma automática o no el comprobante de la FED.
          */
-        public  csiFedAuto:Boolean;
+        public  csiFedAuto:boolean;
 
 		/**
 		 * indica el estatus de la solicitud para operar reuters.
 		 */
-		public  csiSolOperaet:String;
+		public  csiSolOperaet:string;
 
         /**
          * indica si el contrato opera REUTERS
          */
-        public  csiOperaEt:Boolean;
+        public  csiOperaEt:boolean;
 
-		public  csiCausabajaET:Number;
+		public  csiCausabajaET:number;
 		
 		public  contratoCorresponsalVO:ContratoCorresponsalVO;
 		
-		public  csiOperaiCambios : String;
+		public  csiOperaiCambios : string;
 		
 		
         /**

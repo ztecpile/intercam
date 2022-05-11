@@ -1,17 +1,17 @@
 
     export class ContratoDireccionIdVO
     {
-         public  dirId:Number;
-         public  conId:Number;
-         public  perId:Number;
-         public  cpeConsecLegado : Number;
+         public  dirId:number;
+         public  conId:number;
+         public  perId:number;
+         public  cpeConsecLegado : number;
         /**
         * Indica la direccion del contrato
         */
-        public  tenId:Number;
+        public  tenId:number;
 
         
-        public  tenDesccripcion:String;
+        public  tenDesccripcion:string;
         
         /**
         * Constructor de la clase.

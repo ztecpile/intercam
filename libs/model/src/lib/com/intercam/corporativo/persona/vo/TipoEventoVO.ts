@@ -1,8 +1,8 @@
 
 	export class TipoEventoVO
 	{
-		public  tevId : Number;
-		public  tevDescripcion : String;
+		public  tevId : number;
+		public  tevDescripcion : string;
 		
 		public  TipoEventoVO()
 		{

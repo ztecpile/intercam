@@ -1,7 +1,8 @@
-import {Component, OnInit} from "@angular/core";
-import {Validators, FormGroup, FormBuilder} from "@angular/forms";
-import { LoginObject } from "../../core/models/login-object.model";
+import { Component, OnInit } from "@angular/core";
+import { Validators, FormGroup, FormBuilder } from "@angular/forms";
+import { LoginUsuario } from "../../core/models/login-usuario";
 import { AuthService } from "../../core/services/auth.service";
+import { TokenService } from "../../core/services/token.service";
 
 @Component({
   selector: 'login',
@@ -11,10 +12,11 @@ import { AuthService } from "../../core/services/auth.service";
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
   public submitted: Boolean = false;
-  public error: {code: number, message: string} = null;
+  public errMsj: string = null;
 
   constructor(private formBuilder: FormBuilder,
-              private authService: AuthService) {}
+              private authService: AuthService,
+              private tokenService: TokenService) {}
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -25,20 +27,24 @@ export class LoginComponent implements OnInit {
   
   public submitLogin(): void {
     this.submitted = true;
-    this.error = null;
+    this.errMsj = null;
     if(this.loginForm.valid){
-      this.authService.login(new LoginObject(this.loginForm.value).username,new LoginObject(this.loginForm.value).password)
-      .subscribe(result => {
-        if (result.toString() === 'true') {
-          console.log('Cargando session...');
-          sessionStorage.setItem('usuUsuario', new LoginObject(this.loginForm.value).username);
-          this.authService.getUsuarioSession();
-        } else {
-          this.error = {code: 1, message: 'Usuario o password son incorrectos'};
-        }
-      },
-        error => console.error('Error al iniciar sesion', error)
-      );
+      let loginUsuario = new LoginUsuario(this.loginForm.value);
+      this.authService.login(loginUsuario).subscribe(
+        then => {
+          if(then != null){
+            console.log('Cargando session...');
+            this.tokenService.setToken(then.token);
+            this.tokenService.setUsuUsuario(then.usuarioVO.usuClave);
+            this.tokenService.setUsuarioVO(then.usuarioVO);
+            this.authService.correctLogin();
+          } else {
+            this.errMsj = 'Usuario o password son incorrectos';
+          }
+        },
+        error => {
+          console.error('Error al iniciar sesion',error);
+      });
     }
   }
 

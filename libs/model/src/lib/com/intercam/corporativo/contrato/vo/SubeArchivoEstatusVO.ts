@@ -3,12 +3,12 @@ import { CalificacionRiesgoVO } from "./CalificacionRiesgoVO";
 	export class SubeArchivoEstatusVO
 	{
 		
-		public  total : Number;
-		public  inserto : Number;
-		public  actualizo : Number;
-		public  borro : Number;
-		public  conRelacion : Number;
-        public  sinRelacion : Number;
+		public  total : number;
+		public  inserto : number;
+		public  actualizo : number;
+		public  borro : number;
+		public  conRelacion : number;
+        public  sinRelacion : number;
 		//List<CalificacionRiesgoVO>
 		public  listaRelacionar : CalificacionRiesgoVO; 
 		//List<CalificacionRiesgoVO>

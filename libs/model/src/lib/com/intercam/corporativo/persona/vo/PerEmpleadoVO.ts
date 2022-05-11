@@ -7,12 +7,12 @@ import { AsociadoVO } from "./AsociadoVO";
 	     */
         public  PerEmpleadoVO(){}
 
-        public  cveTra : String;
-        public  cvePue : String;
-        public  cveare : String;
-        public  cvedep : String;
-        public  cvetno : String;
+        public  cveTra : string;
+        public  cvePue : string;
+        public  cveare : string;
+        public  cvedep : string;
+        public  cvetno : string;
         public  clvLegadas : string [];
         public  tipNego : number;
-		public  tmpClvPro : String;
+		public  tmpClvPro : string;
 	}

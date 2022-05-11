@@ -4,15 +4,15 @@
 		public  ClTipSocVO()
 		{
 		}
-		public  tisNumero : String
-		public  tisAbrevi : String
-		public  tisDescri : String
-		public  tisOrdCon : String
-		public  numTransac : String
-		public  transaccio : String
-		public  usuario : String
+		public  tisNumero : string
+		public  tisAbrevi : string
+		public  tisDescri : string
+		public  tisOrdCon : string
+		public  numTransac : string
+		public  transaccio : string
+		public  usuario : string
 		public  fechaSis : Date
-		public  sucOrigen : String
-		public  sucDestino : String
+		public  sucOrigen : string
+		public  sucDestino : string
 		
 	}

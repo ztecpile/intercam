@@ -158,6 +158,13 @@ export class RemesasSICAVO {
 		 * auditoria
 		 */
 		public auditoria?:String,
+
+		   
+		/** 
+       	* Fecha de vencimiento
+       	* */
+
+	    public fevencimiento?: Date,
 				
 		/**
 		 * Monto Pesos

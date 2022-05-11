@@ -2,9 +2,9 @@ import { TipoEventoVO } from "./TipoEventoVO";
 
 	export class MotivoEventoVO
 	{
-		public  mevId : Number;
+		public  mevId : number;
 		public  tipoEventoVO : TipoEventoVO;
-		public  mevDescripcion : String
+		public  mevDescripcion : string
 		
 		public  MotivoEventoVO()
 		{

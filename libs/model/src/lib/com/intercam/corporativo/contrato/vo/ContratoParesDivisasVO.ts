@@ -5,10 +5,10 @@ import { DivisasReutersVO } from "./DivisasReutersVO";
 	{
 	public  idVO:ContratoParesDivisasIdVO;
 	public  divisasReutersVO:DivisasReutersVO;
-	public  conPardivFaltaStr:String;
-	public  usuUsuario:String;
-	public  conDivStatus:String;
-	public  conDivStatusStr:String;
+	public  conPardivFaltaStr:string;
+	public  usuUsuario:string;
+	public  conDivStatus:string;
+	public  conDivStatusStr:string;
 	
 		public constructor(){
 			this.divisasReutersVO = new DivisasReutersVO();

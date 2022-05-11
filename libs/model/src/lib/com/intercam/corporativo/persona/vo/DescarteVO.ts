@@ -1,8 +1,8 @@
 
 	export class DescarteVO
 	{
-		public  dsctId : Number;
-		public  dsctDescripcion : String;
+		public  dsctId : number;
+		public  dsctDescripcion : string;
 		
 		
 		public  DescarteVO()

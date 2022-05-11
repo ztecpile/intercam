@@ -1,74 +1,93 @@
 @charset "UTF-8";
+
 /* CSS Document */
 
 .margin_top48 {
-	margin-top:48px;
+    margin-top: 48px;
 }
+
 .margin_bottom48 {
-	margin-top:48px;
+    margin-top: 48px;
 }
+
 .margin_top36 {
-	margin-top:36px;
+    margin-top: 36px;
 }
+
 .margin_top24 {
-	margin-top:24px;
+    margin-top: 24px;
 }
+
 .margin_bottom36 {
-	margin-bottom:36px;
+    margin-bottom: 36px;
 }
+
 .margin_bottom24 {
-	margin-bottom:24px;
+    margin-bottom: 24px;
 }
+
 .margin_left36 {
-	margin-left:36px;
+    margin-left: 36px;
 }
+
 .margin_left24 {
-	margin-left:24px;
+    margin-left: 24px;
 }
+
 .ancho_caja_400 {
-	width:400px;
+    width: 400px;
 }
+
 .ancho_caja_300 {
-	width:300px;
+    width: 300px;
 }
+
 .ancho_caja_874 {
     width: 874px;
 }
-.padding_top_24{
-	padding-top:24px;
-	}
 
-img, .ancho_caja_80{
-	width:88px;
-	height:88px;
-	display:inline-block;
-	border-radius: 50%;
-	}
-	
+.padding_top_24 {
+    padding-top: 24px;
+}
+
+img,
+.ancho_caja_80 {
+    width: 88px;
+    height: 88px;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+
 /*AQUI ES PARA CENTRAR*/
+
 .centrar_formulario {
-	margin: auto;
-	content: "";
-	display: flex;
-	justify-content: center;
+    margin: auto;
+    content: "";
+    display: flex;
+    justify-content: center;
 }
+
 .caja_der {
-	overflow:hidden;
-	float:left;
+    overflow: hidden;
+    float: left;
 }
+
 .medianil {
-	margin-right:74px;
+    margin-right: 74px;
 }
+
 .caja_Izq {
-	overflow:hidden;
-	float:left;
+    overflow: hidden;
+    float: left;
 }
+
 .pleca_sub_tit {
     display: inline-flex;
     padding-left: 15px;
     box-sizing: border-box;
-	padding-bottom:8px;
-	border-bottom:1px solid #bdbdbd;
-	font-family:"Museo Sans 900";
-	font-size:20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #bdbdbd;
+    font-family: "Museo Sans 900";
+    font-size: 20px;
 }

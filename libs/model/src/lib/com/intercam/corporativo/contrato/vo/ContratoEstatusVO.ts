@@ -1,11 +1,11 @@
 
     export class ContratoEstatusVO
     {
-        public  cesId : Number;
-        public  cesDescripcion : String;
-        public  cesDesCorta : String
-        public  tmpEstatusSabi : String
-        public  tmpEstatusSiif : Number
+        public  cesId : number;
+        public  cesDescripcion : string;
+        public  cesDesCorta : string
+        public  tmpEstatusSabi : string
+        public  tmpEstatusSiif : number
         /**
 	    * Constructor de la clase.
 	    */

@@ -3,10 +3,10 @@ import { UnidadNegTcontratoVO } from "./UnidadNegTcontratoVO";
 
     export class UnidadNegocioVO
     {
-		public  unegId:Number;
-		public  unegDescrip:String;
-		public  usuUsuario:String;
-		public  unegFalta:String;
+		public  unegId:number;
+		public  unegDescrip:string;
+		public  usuUsuario:string;
+		public  unegFalta:string;
 		public  contratoUnidadNegocios: Set <ContratoUnidadNegocioVO>;
 		public  unidadNegTcontratos:Set <UnidadNegTcontratoVO>;
 	}

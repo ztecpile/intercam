@@ -4,23 +4,23 @@
 		/**
 	     * Clave del cliente
 	     */
-	    public  clvCli:String;
+	    public  clvCli:string;
 	    /**
 	     * Clave de la sucursal
 	     */
-	    public  clvSuc:String;
+	    public  clvSuc:string;
 	    /**
 	     * Clave de la ventanilla
 	     */
-	    public  cveVenta:String;
+	    public  cveVenta:string;
 	    /**
 	     * Clave del caja
 	     */
-	    public  cjvCaja:String;
+	    public  cjvCaja:string;
 	    /**
 	     * Clave del promotor
 	     */
-	    public  clvPro:String;
+	    public  clvPro:string;
 
 	    /**
          * Constructor de la clase.

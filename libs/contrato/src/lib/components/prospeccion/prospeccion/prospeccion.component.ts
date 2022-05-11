@@ -1,5 +1,5 @@
 import { AfterContentInit, Component, ViewChild} from '@angular/core';
-import { TabsDynamicComponent } from '../../util/tabs/tabs-dynamic.component';
+import { TabsDynamicComponent } from 'libs/shred-components/src/lib/tabs/tabs-dynamic/tabs-dynamic.component';
 
 import { UsuarioVO } from '@intercam/model';
 
@@ -19,19 +19,7 @@ export class ProspeccionComponent implements AfterContentInit{
   constructor() {}
 
   ngAfterContentInit(): void {
-
-    //this.getUsuario();
-    const urlStr = 'http://10.9.2.81:7001/POSServiceWeb/usuario/findusuario-usuusuario/' + 'FBELTRAN';
-// this.http.get<UsuarioVO>(urlStr, {}).subscribe(
-// then => {
-// this.usuarioVO = then;
-// this._buscaProspecto.usuarioSesion = this.usuarioVO;
-// this._buscaProspecto._busquedaProspecto.mostrarEjecutivos(this.usuarioVO);
-// //this._buscaProspecto.mostrarEjecutivos(this.usuarioVO);
-// },
-// error => console.error('Error al buscar usuario', error)
-// );
-
+    this.getUsuario();
   }
   
   async getUsuario() {

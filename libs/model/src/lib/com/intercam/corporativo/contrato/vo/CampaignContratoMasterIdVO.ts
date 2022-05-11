@@ -1,6 +1,6 @@
 
     export class CampaignContratoMasterIdVO
     {
-		public  conId:Number;
-		public  cmId:Number;
+		public  conId:number;
+		public  cmId:number;
 	}

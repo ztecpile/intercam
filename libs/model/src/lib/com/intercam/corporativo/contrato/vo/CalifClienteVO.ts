@@ -3,11 +3,11 @@ import { CalifClienteIdVO } from "./CalifClienteIdVO";
 	export class CalifClienteVO
 	{
 		public  idVO : CalifClienteIdVO;
-		public  perId : Number;
-		public  carClave : String;
-		public  clvAgrupa : String;
-		public  cacFaltaStr : String;
-		public  cacEstatus : Boolean;
+		public  perId : number;
+		public  carClave : string;
+		public  clvAgrupa : string;
+		public  cacFaltaStr : string;
+		public  cacEstatus : boolean;
 		
 	    
 		/**
@@ -18,7 +18,7 @@ import { CalifClienteIdVO } from "./CalifClienteIdVO";
 	    	this.idVO = new CalifClienteIdVO();
 	    }
 	    
-	    public toString():String{
+	    public toString():string{
 	    	return this.idVO.toString();
 	    }
 	}

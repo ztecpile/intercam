@@ -1,8 +1,8 @@
 
 	export class TipoActaIdVO
 	{
-		public  tacId : Number;
-     	public  treClave : Number;
+		public  tacId : number;
+     	public  treClave : number;
 	    
 		/**
 	    * Constructor de la clase.
@@ -12,7 +12,7 @@
 	    	
 	    }
 	    
-	    public  toString() : String {
+	    public  toString() : string {
 			return this.tacId.toString()+','+this.treClave.toString();
 	    }
 	}

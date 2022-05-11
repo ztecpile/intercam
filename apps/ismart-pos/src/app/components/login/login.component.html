@@ -14,7 +14,7 @@
                     <mat-hint class="form-warnig" *ngIf="submitted && loginForm.controls.password.hasError('required')">El campo es obligatorio</mat-hint>
                 </mat-form-field>
             </form>
-            <mat-hint class="form-warnig" *ngIf="submitted && error?.code == 1 && !loginForm.controls.username.hasError('required')">{{error.message}}</mat-hint>
+            <mat-hint class="form-warnig" *ngIf="submitted && errMsj != null && !loginForm.controls.username.hasError('required')">{{errMsj}}</mat-hint>
         </mat-card-content>
         <mat-card-actions class="card-actions">
             <button mat-raised-button type="submit" form="login-form"> Iniciar Sesión</button>

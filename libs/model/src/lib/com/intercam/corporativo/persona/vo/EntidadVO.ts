@@ -2,15 +2,15 @@ import { MunicipVO } from "./MunicipVO";
 
 	export class EntidadVO
 	{
-		public  entClave : Number;
-		public  entDescripcion : String;
+		public  entClave : number;
+		public  entDescripcion : string;
 		public  municipiosVO : Set <MunicipVO>;
-		public  entCnbvClave : String;
-		public  paiClave : Number;
+		public  entCnbvClave : string;
+		public  paiClave : number;
 		
-		public  entIsoCodeBrx:String;
-		public  entRiesgo : Number;
-		public  entAbrv : String;
+		public  entIsoCodeBrx:string;
+		public  entRiesgo : number;
+		public  entAbrv : string;
 		
 		/**
 		 * Constructor de la clase.

@@ -5,17 +5,17 @@
         /**
          * Codigo de respuesta 
          */
-         public  codigoRes : Number;
+         public  codigoRes : number;
         
         /**
          * Mensaje
          */
-         public  mensaje : String;
+         public  mensaje : string;
         
         /**
          * Numero de serie del certificado
          */
-         public  nuSeriCer:String;
+         public  nuSeriCer:string;
         
         /**
          * Fecha de emision del certificado
@@ -30,12 +30,12 @@
         /**
          * Estado del certificado
          */
-         public  estado : String;
+         public  estado : string;
         
         /**
          * Certificado en formato PEM
          */
-         public  forPEM : String;
+         public  forPEM : string;
         
         /**
          * Informacion del titular

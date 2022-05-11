@@ -8,18 +8,18 @@
         }
 		
 		public  perfId : number;
-        public  perfDescripcion : String;
-        public  perfEstatus : String;
-        public  tmpCvelegSiif : Number;
-	    public  tconId : Number;        
-	    public  tmpCvelegSabi : String;
-	    public  tpeClave : String;
-        public  perfTpeClave: String;
+        public  perfDescripcion : string;
+        public  perfEstatus : string;
+        public  tmpCvelegSiif : number;
+	    public  tconId : number;        
+	    public  tmpCvelegSabi : string;
+	    public  tpeClave : string;
+        public  perfTpeClave: string;
         
         /**
         * iable para determinar cuantas personas tienen este Perfil (FIDEICOMISO)
         * Se usa en ResumenPorPerfil.mxml
         **/ 
-        public  totalPerfil : Number;
+        public  totalPerfil : number;
 	}
 

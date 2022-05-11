@@ -1,13 +1,13 @@
 
 	export class TipoDireccionVO
 	{
-		public  tdiId : Number;
-		public  tdiDescripcion : String;
-		public  tmpOldsiif : Number;
-		public  tmpEnvioEdo : Number;
-		public  tmpDoctoEnvio : Number;
-		public  tmpOldSabi : String;
-		public  tdiDescIng : String; //tdi_desc_ing
+		public  tdiId : number;
+		public  tdiDescripcion : string;
+		public  tmpOldsiif : number;
+		public  tmpEnvioEdo : number;
+		public  tmpDoctoEnvio : number;
+		public  tmpOldSabi : string;
+		public  tdiDescIng : string; //tdi_desc_ing
 		 
 		/**
 	    * Constructor de la clase.

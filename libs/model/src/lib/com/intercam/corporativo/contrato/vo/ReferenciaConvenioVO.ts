@@ -5,10 +5,10 @@
         public constructor()
         {
         }
-            public  banNombre : String ;
-            public  convNombre : String ;
-            public  convNumero : String;
-            public  refNumero : String;
-            public  refDivisa : String;
+            public  banNombre : string ;
+            public  convNombre : string ;
+            public  convNumero : string;
+            public  refNumero : string;
+            public  refDivisa : string;
     }
 

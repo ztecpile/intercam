@@ -3,8 +3,8 @@
 	export class CuestionarioRequeridoVO
 	{
 		
-		public   perId : Number;
-		public   tcuId : Number;
+		public   perId : number;
+		public   tcuId : number;
 		
 		public  CuestionarioRequeridoVO()
 		{

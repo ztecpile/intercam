@@ -1,17 +1,18 @@
+import { ContratoVO } from "./ContratoVO";
 
-    export class ContratoFondosVO 
+    export class ContratoFondosVO extends ContratoVO
     {
-        public  tmpNip : String;
-        public  cfoRetieneIsr:Boolean;
-        public  cfoDirecto:Boolean;
-        public  cfoInsEspeciales : String;
+        public  tmpNip : string;
+        public  cfoRetieneIsr:boolean;
+        public  cfoDirecto:boolean;
+        public  cfoInsEspeciales : string;
 
          /**
         * Constructor de la clase.
         */
         public constructor()
         {
-            
+            super();
             this.tmpNip = '';
             this.cfoRetieneIsr = true;
             this.cfoInsEspeciales = null;

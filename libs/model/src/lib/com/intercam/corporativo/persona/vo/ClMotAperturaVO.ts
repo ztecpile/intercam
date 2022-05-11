@@ -6,11 +6,11 @@
 		{
 		}
 		
-		public  idMotApertura : Number
-		public  descMotApertura : String
-		public  descCortaMotApertura : String
+		public  idMotApertura : number
+		public  descMotApertura : string
+		public  descCortaMotApertura : string
         
-        public  get perMotivoAper () : String {
+        public  get perMotivoAper () : string {
             return this.descCortaMotApertura;
         }
         

@@ -3,25 +3,25 @@ import { ContratoEjecutivoIdVO } from "./ContratoEjecutivoIdVO";
 	export class ContratoEjecutivoVO
 	{
 		public  idVO : ContratoEjecutivoIdVO;
-    	public  conId : Number;
-	    public  tejId : Number;
-	    public  cejEstatus : String;
-	    public  usuUsuario : String;
-	    public  cejFaltaStr : String;
-	    public  perIdEjec : Number;
-    	public  usuClaveEjec : String;
-   		public  perNomCortoEjec : String;
-    	public  emailEjec : String;
-    	public  perNomCortoClie : String;
-    	public  tipoCon : String;
-    	public  perIdClie : Number;
-    	public  sucDescripEjec : String;
-    	public  cveubiEjec : Number;
-    	public  clvPromLegado : String;
-    	public  tpeClaveClie : String;
+    	public  conId : number;
+	    public  tejId : number;
+	    public  cejEstatus : string;
+	    public  usuUsuario : string;
+	    public  cejFaltaStr : string;
+	    public  perIdEjec : number;
+    	public  usuClaveEjec : string;
+   		public  perNomCortoEjec : string;
+    	public  emailEjec : string;
+    	public  perNomCortoClie : string;
+    	public  tipoCon : string;
+    	public  perIdClie : number;
+    	public  sucDescripEjec : string;
+    	public  cveubiEjec : number;
+    	public  clvPromLegado : string;
+    	public  tpeClaveClie : string;
         
-        public  cejPorcentaje:Number;
-        public  clvPro:String;
+        public  cejPorcentaje:number;
+        public  clvPro:string;
 
 
 		/**

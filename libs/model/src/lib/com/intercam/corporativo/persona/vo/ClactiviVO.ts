@@ -5,24 +5,24 @@
 		{
 		}
 		
-		public  clActiviId:Number;
-		public  actNumero:String;
-		public  actDescri:String;
-		public  actGenera:String;
-		public  actSubSec:String;
-		public  actEspeci:String;
-		public  actNumIne:String;
-		public  actNumBmx:String;
-		public  actRfc:String;
-		public  actStatus:String;
-		public  actRiesgo:String;
-		public  actNumBc:String;
-		public  actActEco:String;
-		public  actActGub:String;
-		public  numTransac:String;
-		public  transaccio:String;
-		public  usuario:String;
+		public  clActiviId:number;
+		public  actNumero:string;
+		public  actDescri:string;
+		public  actGenera:string;
+		public  actSubSec:string;
+		public  actEspeci:string;
+		public  actNumIne:string;
+		public  actNumBmx:string;
+		public  actRfc:string;
+		public  actStatus:string;
+		public  actRiesgo:string;
+		public  actNumBc:string;
+		public  actActEco:string;
+		public  actActGub:string;
+		public  numTransac:string;
+		public  transaccio:string;
+		public  usuario:string;
 		public  fechaSis:Date;
-		public  sucOrigen:String
-		public  sucDestino:String;
+		public  sucOrigen:string
+		public  sucDestino:string;
 	}

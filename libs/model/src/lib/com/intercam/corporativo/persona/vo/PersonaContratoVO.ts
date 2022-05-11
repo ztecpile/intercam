@@ -49,37 +49,62 @@ export class PersonaContratoVO{
 	/**
 	* Identifica el id del prospecto
 	**/
-	public prpId:Number;
+	public prpId:number;
 
 	/**
 	* Tipo de cuenta 
 	*/
-	public tipoCuenta : String;
+	public tipoCuenta : string;
 	
 	/**
 	* Tipo de moneda
 	*/
-	public tipoMoneda : String;
-		/**
-		 * Descripcion del perfil del cliente asociado a un contrato
-		 **/ 
-		public perfDescripcion : string; 
+	public tipoMoneda : string;
 
-		/**
-		 * Solo se ocupa en flex
-		 * Id contrato y descripción del mismo
-		 **/
-		public conIdDes: string;
-
-		public actId : number;
-
+	/**
+	* Descripcion del perfil del cliente asociado a un contrato
+	**/ 
+	public perfDescripcion : string; 
+	
+	/**
+	* Solo se ocupa en flex
+	* Id contrato y descripción del mismo
+	**/
+	public conIdDes: string;
+	
+	public actId : number;
+	
+	/**
+	* Numero de Referencia
+	**/
+	public refNumero : string;
+		
+	/**
+	* Identificador de la persona es prospecto 
+	*/
+	public perEsProspecto: string;
+	
 	/**
 	* Indica si el contrato puede capturar Addenda
 	* Propiedad no persistida, se utiliza para el wizard de la operacion
 	*/
 	public conAddenda:boolean;
-	
-        constructor() {
+	 
+	/**
+	* Toma el valor del curp para persona fisica
+	*/
+	public pefCurp : string;
+	 
+	/**
+	* Determina si el contrato es de tipo Forward
+	*/ 
+	public isContratoFWS : boolean;
+	 
+	public toString():string{
+		 return this.perId + ',' + this.contratoId;
+	}
+
+    constructor() {
           
     }
 }

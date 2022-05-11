@@ -1,10 +1,10 @@
 
 	export class DivisasReutersVO
 	{
-		public  divIdReuters:Number;
-		public  divDesc:String;
-		public  divNombre:String;
-		public  stsDivCtto:Boolean;
+		public  divIdReuters:number;
+		public  divDesc:string;
+		public  divNombre:string;
+		public  stsDivCtto:boolean;
 
 		public constructor()
 		{

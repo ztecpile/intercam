@@ -6,39 +6,39 @@ import { TipoPersonaVO } from "./TipoPersonaVO";
 		/**
 		 * Id de la persona Moral a la que esta asociado el funcionario.
 		 */
-		public   perId : Number;
+		public   perId : number;
 		/**
 		 * Id del funcionario.
 		 */
-		public   pfuId : Number;
+		public   pfuId : number;
 		/**
 		 * Nombre del funcionario si es PF.
 		 */
-		public   pfuNombre : String;
+		public   pfuNombre : string;
 		/**
 		 * Apellido Paterno del funcionario si es PF.
 		 */
-		public   pfuPaterno : String;
+		public   pfuPaterno : string;
 		/**
 		 * Apellido Materno del funcionario si es PF.
 		 */
-		public   pfuMaterno : String;
+		public   pfuMaterno : string;
 		/**
 		 * Tipo de funcionario (Funcionario, Accionista...).
 		 */
-		public   pfuTipo : String;
+		public   pfuTipo : string;
 		/**
 		 * Porcentaje de participaci&oacute;n del accionista.
 		 */
-		public   pfuPorcentaje : Number;
+		public   pfuPorcentaje : number;
 		/**
 		 * Clave del pa&iacute;s.
 		 */
-		public   paiClave : Number;
+		public   paiClave : number;
 		/**
 		 * Consecutivo legado.
 		 */
-		public   pfuConsecLegado : Number;
+		public   pfuConsecLegado : number;
 		/**
 		 * Cargo del funcionario.
 		 */
@@ -50,95 +50,95 @@ import { TipoPersonaVO } from "./TipoPersonaVO";
 		/**
 		 * Razon social.
 		 */
-		public  pfuRazonSocial : String;
+		public  pfuRazonSocial : string;
 		/**
 		 * Respuesta de la pregunta ¿Tiene control de las Asambleas generales de accionistas?
 		 */
-		public  pfuControlAsamblea : Boolean;
+		public  pfuControlAsamblea : boolean;
 		/**
 		 * Respuesta de la pregunta ¿Tienen derecho a nombrar a la mayor&iacute;a del consejo de Administraci&oacute;n?
 		 */
-		public  pfuDerechoConsejo : Boolean;
+		public  pfuDerechoConsejo : boolean;
 		
 		/**
 		 * RFC del funcionario o acccionista.
 		 */
-		public  pfuRfc : String;
+		public  pfuRfc : string;
 		
 		/**
 		 * Codigo ciudadano CURP para nacionales ssn o fm3 o pasaporte o lo que aplique.
 		 */
-		public  pfuCodigoCiudadano : String;
+		public  pfuCodigoCiudadano : string;
 		
 		/**
 		 * Llave primaria de la tabla de categoría de persona.
 		 */
-		public  cpeId : Number;
+		public  cpeId : number;
 		
 		/**
 		 * Identificador del País. para la direccion.
 		 */
-		public  paiClaveDireccion : Number;
+		public  paiClaveDireccion : number;
 		
 		/**
 		 * Domicilio del accionista o funcionario.
 		 */
-		public  pfuCalle : String;
+		public  pfuCalle : string;
 		
 		/**
 		 * Numero interior del domicilio.
 		 */
-		public  pfuNumeroInt : String;
+		public  pfuNumeroInt : string;
 		
 		/**
 		 * Numero Exterior del domicilio.
 		 */
-		public  pfuNumeroExt : String;
+		public  pfuNumeroExt : string;
 		
 		/**
 		 * Codigo postal del domicilio.
 		 */
-		public  pfuCodigoPostal : String;
+		public  pfuCodigoPostal : string;
 		
 		/**
 		 * Colonia del domicilio.
 		 */
-		public  pfuColonia : String;
+		public  pfuColonia : string;
 		
 		/**
 		 * Municipio del domicilio.
 		 */
-		public  pfuMunicipio : String;
+		public  pfuMunicipio : string;
 		
 		/**
 		 * Entidad Federativa o estado del domicilio.
 		 */
-		public  pfuEntidadFed : String;
+		public  pfuEntidadFed : string;
 		
 		/**
 		 * Ciudad del domicilio para los casos que aplique.
 		 */
-		public  pfuCiudad : String;
+		public  pfuCiudad : string;
 		
 		/**
 		 * Telefono del funcionario o accionista.
 		 */
-		public  pfuTelefono : String;
+		public  pfuTelefono : string;
 		
 		/**
 		 * Extension del telefono del funcionario o accionista.
 		 */
-		public  pfuExtension : String;
+		public  pfuExtension : string;
 		
 		/**
 		 * Fax del funcionario o accionista.
 		 */
-		public  pfuFax : String;
+		public  pfuFax : string;
 		
 		/**
 		 * La persona es Pep
 		 */ 
-		public  pfuEsPep : Boolean;
+		public  pfuEsPep : boolean;
 		
 		
 		

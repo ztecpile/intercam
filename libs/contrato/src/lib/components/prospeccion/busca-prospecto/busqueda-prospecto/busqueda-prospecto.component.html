@@ -25,29 +25,29 @@
                 <div class="caja">
                     <select formControlName="cboPais" [control]="getCtr('cboPais')" (ngModelChange)="changeNacionalidad($event)" idbInput>
                         <option value="">Seleccione</option>
-                        <option *ngFor="let pai of arrPais " [ngValue]="pai.paiClave">{{pai.paiNacionalidad}}</option>
+                        <option *ngFor="let pai of arrPais " [ngValue]="pai.paiClave">{{getNacionalidad(pai)}}</option>
                     </select>
                 </div>
-                <label appearance="fill" class="formulario__label">Nacionalidad</label>
+                <label appearance="fill" class="formulario__label">{{lblPais}}</label>
             </div>
         </div>
 
         <div class="row">
             <div id="divperNom" [ngClass]="{'col-sm-3': showPF,'col-sm-6': showPM}">
-                <input type="text" class="formulario__input && transformacion" [control]="getCtr('perNom')" formControlName="perNom" idbInput>
+                <input type="text" class="formulario__input && transformacion" maxlength="60" [control]="getCtr('perNom')" formControlName="perNom" idbInput>
                 <label class="formulario__label">{{lblNombRzSocial}}</label>
             </div>
 
             <div id="divapePaterno" class="col-sm-3" *ngIf="showPF">
-                <input type="text" class="formulario__input && transformacion" [control]="getCtr('apePaterno')" formControlName="apePaterno" idbInput>
+                <input type="text" class="formulario__input && transformacion" maxlength="80" [control]="getCtr('apePaterno')" formControlName="apePaterno" idbInput>
 
-                <label class="formulario__label">Apellido Paterno</label>
+                <label class="formulario__label">1er. Apellido</label>
             </div>
 
             <div id="divapeMaterno" class="col-sm-3" *ngIf="showPF">
-                <input type="text" class="formulario__input && transformacion" [control]="getCtr('apeMaterno')" formControlName="apeMaterno" idbInput>
+                <input type="text" class="formulario__input && transformacion" maxlength="80" [control]="getCtr('apeMaterno')" formControlName="apeMaterno" idbInput>
 
-                <label class="formulario__label">Apellido Materno</label>
+                <label class="formulario__label">2do. Apellido</label>
             </div>
         </div>
 
@@ -58,7 +58,7 @@
             </div>
 
             <div id="divRFC" class="col-sm-3">
-                <input type="text" class="formulario__input && transformacion" [control]="getCtr('RFC')" formControlName="RFC" (ngModelChange)="textInputRFC($event)" idbInput>
+                <input type="text" class="formulario__input && transformacion" maxlength="13" [control]="getCtr('RFC')" formControlName="RFC" (ngModelChange)="textInputRFC($event)" idbInput>
                 <label class="formulario__label">RFC</label>
             </div>
 

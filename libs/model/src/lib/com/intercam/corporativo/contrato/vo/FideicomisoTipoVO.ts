@@ -4,19 +4,19 @@
         /**
          * Id de la entidad
          **/
-        public  fitId : Number;
+        public  fitId : number;
         /**
          * Nombre del tipo de Fideicomiso
          **/
-        public  fitNombre : String;
+        public  fitNombre : string;
         /**
          * Id/clave que se maneja en YATLA
          **/
-        public  fitYatla : Number;
+        public  fitYatla : number;
         /**
          * Determina si el negocio esta activo
          **/
-        public  fitActivo : Boolean;
+        public  fitActivo : boolean;
 		
         /********************************************************
          * Constructor

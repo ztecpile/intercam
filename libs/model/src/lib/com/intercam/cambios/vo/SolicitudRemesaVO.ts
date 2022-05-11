@@ -124,7 +124,7 @@ export interface SolicitudRemesaVO {
     /**
      * Fecha del cheque en formato de cadena
      */
-    sreFechaCheqStr: string;
+    sreFechaCheq: Date;
 
     /**
      * Cuenta

@@ -4,12 +4,12 @@
 		public  GruproSicaVO() 
 		{			
 		}	
-    	public  clvSuc:String;
+    	public  clvSuc:string;
 		public  cl1Gru:number;
 		public  cl2Gru:number;
-		public  desGru:String;
+		public  desGru:string;
 		
-		public  toString():String{
+		public  toString():string{
 				 const s = "[ "+ this.cl1Gru + " - " +  this.cl2Gru + "]" ;
 				return s;
 		}

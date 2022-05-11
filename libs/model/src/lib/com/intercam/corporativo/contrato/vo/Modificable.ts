@@ -4,12 +4,12 @@
         /**
          * Bandera que indica si la clase fue modificada o no.
          */
-        public  modificada : Boolean = false;
+        public  modificada : boolean = false;
         
         /**
          * Indica la sesion asociada (si la hay)
          */
-        public  sesion : String;
+        public  sesion : string;
         
         public constructor()
         {

@@ -5,32 +5,32 @@ import { ContratoProdGestionInvVO } from "./ContratoProdGestionInvVO";
 		/**
 		 * id
 		 */
-		public  cpiId:Number;
+		public  cpiId:number;
 		
 		/**
 		 * id Tipo de Servicio de Inversion
 		 */
-		public  tsiId:Number;
+		public  tsiId:number;
 		
 		/**
 		 * Descripcion
 		 */
-		public  cpiDesc:String;
+		public  cpiDesc:string;
 		
 		/**
 		 * Estatus
 		 */
-		public  cpiEstatus:String;
+		public  cpiEstatus:string;
 
 		/**
 		 * puntaje correspondiente al perfil
 		 */
-		public  cpiPuntaje:Number;
+		public  cpiPuntaje:number;
 
 		/**
 		 * id perfil de inversion en lumina 
 		 **/
-		public  cpiLuminaId:Number;
+		public  cpiLuminaId:number;
 		
 		/**
 		 * Lista de Contrato Porducto Inversion

@@ -35,23 +35,23 @@ import { UsuarioAutBancaElecVO } from "./UsuarioAutBancaElecVO";
         // List<DireccionVO> listaDireccionesVO = new ArrayList<DireccionVO>();
         public   listaDireccionesVO:DireccionVO[];
         // contrato ejecutivo
-        public  tejId:Number;
-        public  cejFaltaStr:String;
-        public  usuUsuario:String;
+        public  tejId:number;
+        public  cejFaltaStr:string;
+        public  usuUsuario:string;
         /**
         * Contiene numero de usuario
         */
-        public  usuClave:Number;
-        public  perId:Number;
+        public  usuClave:number;
+        public  perId:number;
         /**
         * Identificador del contrato
         * Requerido como identificador unico del objeto ContratoFolderFondos
         */
-        public  conId : Number;
+        public  conId : number;
 		/**
 		 * Contiene la sesion (si la hay)
 		 */
-		public  sesion : String;		
+		public  sesion : string;		
 		/**
 		 * Lista de Reportes y Notificaciones
 		 * */
@@ -67,14 +67,14 @@ import { UsuarioAutBancaElecVO } from "./UsuarioAutBancaElecVO";
         /**
         * Solicitud del contrato
         */
-        public  solicitud:Number;
+        public  solicitud:number;
         
-        public  clvPro:String;
+        public  clvPro:string;
 
 		
-		public  docfatca:Number;
+		public  docfatca:number;
 		
-		public  expcompleto:Number;
+		public  expcompleto:number;
 		
 		/**
 		 * Riesgos de Cliente y SPID correspondientes al contrato
@@ -97,14 +97,14 @@ import { UsuarioAutBancaElecVO } from "./UsuarioAutBancaElecVO";
         * Determina si el contrato es una reasignacion Divisas Banco
         * Se alimenta desde la prospeccion "ConsultaInformacionGeneral"
         */ 
-        public  isReasignacion : Boolean;
+        public  isReasignacion : boolean;
         
         /**
          * Nivel de riesgo del cliente
          */
-        public  vriId: Number;
+        public  vriId: number;
 		
-		public  campAtendida: String;
+		public  campAtendida: string;
 		
 		
 		public  contratoServicioInvVO:ContratoServicioInvVO;
@@ -112,7 +112,7 @@ import { UsuarioAutBancaElecVO } from "./UsuarioAutBancaElecVO";
         /**
          * id de prospeccion i00prospecto_persona
          */
-        public  prpId : Number;
+        public  prpId : number;
 
         /**
         * Almacena la informacíon del prospecto
@@ -164,14 +164,14 @@ import { UsuarioAutBancaElecVO } from "./UsuarioAutBancaElecVO";
         /**
         * Obtiene contrato Persona Titular
         * */
-		// public  getTitular(): ContratoPersonaVO {
-		// 	for each ( contratoPersonaVO:ContratoPersonaVO in listaRepresentantes){
-		// 		if(contratoPersonaVO.perfilVO.perfDescripcion == "TITULAR"){
-		// 			return contratoPersonaVO; 
-		// 		}
-		// 	}
-		// 	return null;
-		// }
+		public getTitular(): ContratoPersonaVO {
+		 	for(let contratoPersonaVO of this.listaRepresentantes){
+		 		if(contratoPersonaVO.perfilVO.perfDescripcion == "TITULAR"){
+		 			return contratoPersonaVO; 
+		 		}
+		 	}
+		 	return null;
+		}
 		
         /**
         * Remueve bitacoras de un tipo de clase y referencia

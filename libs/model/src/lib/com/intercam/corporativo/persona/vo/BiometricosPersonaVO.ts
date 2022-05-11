@@ -4,17 +4,17 @@
 		/**
 		 * ID del registro de huella
 		 */
-		public  bipId : Number;
+		public  bipId : number;
 		
 		/**
 		 * ID de la persona
 		 */
-		public  perId : Number;
+		public  perId : number;
 		
 		/**
 		 * ID de la transaccion de fimpe
 		 */
-		public  trfId : Number;
+		public  trfId : number;
 		
 		/**
 		 * Imagen escaneada del dedo
@@ -24,12 +24,12 @@
 		/**
 		 * Especifica el dedo escaneado
 		 */
-	 	public  bipTipo : Number;
+	 	public  bipTipo : number;
 		
 		/**
 		 * Posicion del dedo
 		 */
-		public  bipPosicion : String;
+		public  bipPosicion : string;
 		
 		public  BiometricosPersonaVO(){
 			

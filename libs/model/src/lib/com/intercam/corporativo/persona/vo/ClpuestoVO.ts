@@ -4,16 +4,16 @@
 		public  ClpuestoVO()
 		{
 		}
-		public  pueNumero : String	
-		public  pueDescri : String
-		public  numTransac : String
-		public  transaccio : String
-		public  usuario : String
+		public  pueNumero : string	
+		public  pueDescri : string
+		public  numTransac : string
+		public  transaccio : string
+		public  usuario : string
 		public  fechaSis : Date;
-		public  sucOrigen : String
-		public  sucDestino : String
+		public  sucOrigen : string
+		public  sucDestino : string
         
-        public  get pefPuesto () : String {
+        public  get pefPuesto () : string {
             return this.pueNumero;
         }
 	}

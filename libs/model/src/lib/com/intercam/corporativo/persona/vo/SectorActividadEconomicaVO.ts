@@ -1,8 +1,8 @@
 
 	export class SectorActividadEconomicaVO
 	{
-		public  saeId : Number;
-   		public  saeDescripcion : String;
+		public  saeId : number;
+   		public  saeDescripcion : string;
 		/**
 	    * Constructor de la clase.
 	    */

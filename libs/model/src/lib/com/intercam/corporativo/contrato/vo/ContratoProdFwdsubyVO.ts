@@ -5,15 +5,15 @@ import { ProductoFwdSubyVO } from "./ProductoFwdSubyVO";
     {
 		public  idVO:ContratoProdFwdsubyIdVO;
 		public  productoFwdSubyVO:ProductoFwdSubyVO;
-		public  cpfEstatus:String;
-		public  cpfUsuUsuario:String;
-		public  cpfFhAltaStr:String;
-		public  descrProd:String;
+		public  cpfEstatus:string;
+		public  cpfUsuUsuario:string;
+		public  cpfFhAltaStr:string;
+		public  descrProd:string;
 
         /**
          * Regresa la interpretacion en String del objeto.
          */
-        public  toString() : String
+        public  toString() : string
         {
             return this.idVO.toString() + " " + this.productoFwdSubyVO.toString();
         }

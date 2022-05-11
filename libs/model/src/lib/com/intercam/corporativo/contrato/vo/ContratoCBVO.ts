@@ -1,78 +1,79 @@
+import { ContratoVO } from "./ContratoVO";
 import { CuestionarioVO } from "./CuestionarioVO";
 import { TipoCuestionarioVO } from "./TipoCuestionarioVO";
 
  
-    export class ContratoCBVO 
+    export class ContratoCBVO extends ContratoVO
     {
 
-         public   ccbTasaComisMc:Number;
-         public   ccbTasaComis:Number;
+         public   ccbTasaComisMc:number;
+         public   ccbTasaComis:number;
 
-         public   ccbOperaCc:Boolean;
-         public   ccbTraspasaTit:Boolean;
-         public   ccbOpeReporto:Boolean;
-         public   ccbRepAsmb:String;
-         public   ccbRetieneIva:Boolean;
-         public   ccbRetieneIsr:Boolean;
-         public   ccbExeCobFin:String;
-         public   ccbEnvCtaCobadm:Boolean;
+         public   ccbOperaCc:boolean;
+         public   ccbTraspasaTit:boolean;
+         public   ccbOpeReporto:boolean;
+         public   ccbRepAsmb:string;
+         public   ccbRetieneIva:boolean;
+         public   ccbRetieneIsr:boolean;
+         public   ccbExeCobFin:string;
+         public   ccbEnvCtaCobadm:boolean;
 
-         public   ccbFenvCtaCobadmStr:String;
-         public   ccbTasaIntDeu:Number;
+         public   ccbFenvCtaCobadmStr:string;
+         public   ccbTasaIntDeu:number;
 
-         public   ccbComisPol:Number;
-         public   ccbPapelEmite:String;
+         public   ccbComisPol:number;
+         public   ccbPapelEmite:string;
          public   cuestionario:TipoCuestionarioVO;
          public   cuestionarioVO:CuestionarioVO;
-		 public   statusCuenta:String = '';
+		 public   statusCuenta:string = '';
 		 
          /**
          * Permiten realizar consultas de saldos, estos campos no estan
          * mapeados a la base de datos, ya que solo se calculan.
          * lmendoza 15/oct/2007
          */
-         public  ccbSaldoMD : Number
-         public  ccbSaldoCapitales : Number
-         public  ccbSaldoSocInv : Number
-         public  ccbSaldoEfe : Number
-         public  nombreCliente:String;
-         public  tmpClvCli : String;
-         public  tmpClvSuc : String;
-         public  conIdSica : Number;
+         public  ccbSaldoMD : number
+         public  ccbSaldoCapitales : number
+         public  ccbSaldoSocInv : number
+         public  ccbSaldoEfe : number
+         public  nombreCliente:string;
+         public  tmpClvCli : string;
+         public  tmpClvSuc : string;
+         public  conIdSica : number;
 		 
          /**
           * Campo para distinguir cliente, contraparte y corporativo en contratos de derivados.
           */
-         public  ccbTipoCliente : Number;
+         public  ccbTipoCliente : number;
 		 
-		 public  ccbAccertor : String;
+		 public  ccbAccertor : string;
          
          /**
          * Formador de Mercado.
          **/
-        public  ccbForMercado : String;
+        public  ccbForMercado : string;
 		
 		/**
 		 * indica si el contrato tiene asesor de inversion
 		 */
-		public  tieneAsesorInversion:Boolean;
+		public  tieneAsesorInversion:boolean;
 		
 		/**
 		 * indica el perId del asesor de inversion del contrato
 		 */
-		public  perIdAsesor:Number;
+		public  perIdAsesor:number;
         
         /**
         * Estrategias
         */
-        public  ccbEstrategias: Boolean;
+        public  ccbEstrategias: boolean;
 		
  		/**
         * Constructor de la clase.
         */
         public constructor()
         {
-           
+            super();
             this.cuestionario = new TipoCuestionarioVO();
             this.cuestionarioVO = new CuestionarioVO();
             this.ccbTasaComis = 0;

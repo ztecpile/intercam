@@ -4,19 +4,19 @@
 		/**
 		 * Indice
 		 * */
-		public  fupNumero : String;
+		public  fupNumero : string;
 		/**
 		 * Descripcion
 		 * */
-		public  fupDescri : String;
-		public  fupTipo : String;
-		public  fupTipFam : String;
-		public  numTransac : String;
-		public  transaccio : String;
-		public  vusuario : String;
+		public  fupDescri : string;
+		public  fupTipo : string;
+		public  fupTipFam : string;
+		public  numTransac : string;
+		public  transaccio : string;
+		public  vusuario : string;
 		public  fechaSis : Date;
-		public  sucOrigen : String;
-		public  sucDestino : String;
+		public  sucOrigen : string;
+		public  sucDestino : string;
 		
 		/*******************************************************************
 		 * Constructor 

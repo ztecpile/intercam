@@ -29,9 +29,10 @@ export class CustomHttpInterceptor implements HttpInterceptor {
       Promise<HttpEvent<any>> {
         let URL = '';
         if (request.url.includes('i18n'))  URL = request.url;
-        else if(request.url.includes('PreciosEngine')) URL = request.url;
+        else if(request.url.includes('/pos/')) URL = request.url;
+        else if(request.url.includes('/intercamSplitter/')) URL = request.url;
         else URL = environment.URLService + request.url;
-        const token = this._authService.token;
+        const token = this._authService.getToken();
         let changedRequest = request;
         // HttpHeader objecto immutable - copy values
        // let newHeader = new HttpHeaders();
@@ -43,16 +44,26 @@ export class CustomHttpInterceptor implements HttpInterceptor {
 
        // request.url.indexOf("oauth/token")
 
-        if (token) {
-            const authReq = request.clone({
-              url: URL,
-              headers: request.headers.set('Authorization', 'Bearer ' + token)
-            });
-            return next.handle(authReq).pipe(
-              map(res => this.responseBuilt(res)),  // manejo de respuestas
-              catchError((e) => (this.errorHandled(e)))) // manejo de errores
-            .toPromise();
+       if (token) {
+        let authReq;
+        //manejo al llamado de los precios, exclusivo para dichos procesos, 
+        //no afecta el funcionamiento de las pantallas del ismart 
+        if(request.url.includes('PreciosEngine')){
+           authReq = request.clone({
+            url: request.url,
+           });
+        }else {
+           authReq = request.clone({
+            url: URL,
+            headers: request.headers.set('Authorization', 'Bearer ' + token)
+          });
         }
+         
+          return next.handle(authReq).pipe(
+            map(res => this.responseBuilt(res)),  // manejo de respuestas
+            catchError((e) => (this.errorHandled(e)))) // manejo de errores
+          .toPromise();
+      }
 
         //newHeader = new HttpHeaders(headerSettings);
 

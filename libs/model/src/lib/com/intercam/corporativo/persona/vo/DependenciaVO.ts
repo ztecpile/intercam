@@ -1,10 +1,10 @@
 
 	export class DependenciaVO
 	{
-		public   depId : Number;
-		public   depDescripcion : String;
-		public   nivel : String;
-		public   poder : String;
+		public   depId : number;
+		public   depDescripcion : string;
+		public   nivel : string;
+		public   poder : string;
 		public  DependenciaVO()
 		{
 		}

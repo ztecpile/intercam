@@ -4,20 +4,20 @@
 		/**
 		 * id
 		 */
-		public  cpgId:Number;
+		public  cpgId:number;
 		
 		/**
 		 * descripcion
 		 */
-		public  cpgDes:String;
+		public  cpgDes:string;
 		
 		/**
 		 * id de contrato perfil inversion
 		 */
-		public  cpiId:Number;
+		public  cpiId:number;
 		
 		/**
 		 * id del producto de gestion en lumina
 		 */
-		public  cpgLuminaId:Number;
+		public  cpgLuminaId:number;
 	}

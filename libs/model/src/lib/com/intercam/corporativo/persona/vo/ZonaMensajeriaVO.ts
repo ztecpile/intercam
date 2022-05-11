@@ -3,7 +3,7 @@ import { ZonaMensajeriaIdVO } from "./ZonaMensajeriaIdVO";
 	export class ZonaMensajeriaVO
 	{
 		public  idVO : ZonaMensajeriaIdVO;
-	    public  zomDescripcion : String;
+	    public  zomDescripcion : string;
 		/**
 	    * Constructor de la clase.
 	    */
@@ -13,7 +13,7 @@ import { ZonaMensajeriaIdVO } from "./ZonaMensajeriaIdVO";
 	    	this.idVO = new ZonaMensajeriaIdVO();
 	    }
 	    
-	    public  toString() : String
+	    public  toString() : string
 	    {
 	    	return this.idVO.toString();
 	    }

@@ -1,8 +1,8 @@
 
 	export class TipoEjecutivoVO
 	{
-		public  tejId : Number;
-		public  tejDescripcion : String;
+		public  tejId : number;
+		public  tejDescripcion : string;
 		/**
 	    * Constructor de la clase.
 	    */

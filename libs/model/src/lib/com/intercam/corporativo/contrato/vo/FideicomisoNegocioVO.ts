@@ -3,19 +3,19 @@
         /**
          * Id de la entidad
          **/
-        public  finId : Number;
+        public  finId : number;
         /**
          * Nombre del Negocio de Fideicomiso
          **/
-        public  finNombre : String;
+        public  finNombre : string;
         /**
          * Id/clave que se maneja en YATLA
          **/
-        public  finYatla : Number;
+        public  finYatla : number;
         /**
          * Determina si el negocio esta activo
          **/
-        public  finActivo : Boolean;
+        public  finActivo : boolean;
 		
         /********************************************************
          * Constructor

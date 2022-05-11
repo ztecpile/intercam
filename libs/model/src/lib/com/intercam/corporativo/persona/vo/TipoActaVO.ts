@@ -3,7 +3,7 @@ import { TipoActaIdVO } from "./TipoActaIdVO";
 	export class TipoActaVO
 	{
 		public  idVO : TipoActaIdVO;
-     	public  tacDescrip : String ;
+     	public  tacDescrip : string ;
 	    
 		/**
 	    * Constructor de la clase.
@@ -13,7 +13,7 @@ import { TipoActaIdVO } from "./TipoActaIdVO";
 	    	this.idVO = new TipoActaIdVO();
 	    }
 	    
-	    public  toString():String{
+	    public  toString():string{
 	    	return this.idVO.toString();
 	    }
 	}

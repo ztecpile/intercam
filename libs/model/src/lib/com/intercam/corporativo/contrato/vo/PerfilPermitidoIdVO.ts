@@ -2,8 +2,8 @@
 
     export class PerfilPermitidoIdVO
     {
-        public  perfId : Number;
-        public  perfIdPermitido : Number;
+        public  perfId : number;
+        public  perfIdPermitido : number;
         
         public constructor() {
         }

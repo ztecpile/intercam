@@ -1,0 +1,41 @@
+
+export class RemesasCbwVO{
+
+    constructor(
+        public deal?: string,
+        public cliente?: string,
+        public actividad?: string,
+        public claveCliente?: string,
+        public tipoId?: string,
+        public numId?: string,
+        public apoderado?: string,
+        public direccion?: string,
+        public colonia?: string,
+        public ciudad?: string,
+        public estado?: string,
+        public codigoPostal?: string,
+        public girador?: string,
+        public beneficiario?: string,
+        public banco?: string,
+        public numCheque?: string,
+        public numCuenta?: string,
+        public aba?: string,
+        public fechaCheque?: string,
+        public horaTransmision?: string,
+        public divisa?: string,
+        public monto?: string,
+        public promotor?: string,
+        public fechaTransmision?: string,
+        public tipoCliente?: string,
+        public rfcCliente?: string,
+        public razonVentaCheque?: string,
+        public otroMotivo?: string,
+        public fechaNacimientoCreacion?: string,
+        public paoID?: number,
+        public paoConsecutivo?: number,
+        public nombreArchivo?: string,
+        public nomSucursal?: string,
+        public clvSucursal?: string,
+        public numCliente?: number
+    ){}
+}

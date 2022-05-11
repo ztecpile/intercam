@@ -115,7 +115,7 @@ export class PersonaVO {
     /**
      * Clave de la entidad.
      */
-    public entClave: Number;           // ent_calve
+    public entClave: number;           // ent_calve
     private _perFiel: string;
     private _perClasif: string;
 

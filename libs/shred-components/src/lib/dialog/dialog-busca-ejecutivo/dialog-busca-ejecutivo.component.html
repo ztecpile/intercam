@@ -1,0 +1,85 @@
+<button class="close-button" (click)="close()">
+    <img class="btn btn-cerrar-dialog" matTooltip="Cerrar" matTooltipPosition="right"/>
+</button>
+
+<div mat-dialog-title class="titulo">
+    Buscar Ejecutivo
+</div>
+
+<div mat-dialog-content class="title-model">
+    <div class="container-fluid">
+        <form [formGroup]="funcForm" class="formulario" (ngSubmit)="onSubmit()" autocomplete="off" idbForm>
+            <div class="row">
+                <div id="divlblBusqueda" class="col-sm-2">
+                    <label class="lbl_datos">{{ 'Búsqueda' | transloco}}</label>
+                </div>
+
+                <div id="divbuscaEje" class="col-sm-4">
+                    <input type="text" class="lbl_valor" [control]="getCtr('buscaEje')" formControlName="buscaEje" idbInput>
+                </div>
+
+                <div id="divbtnBusca" class="col-sm-1">
+                    <button mat-button class="btn-img buscar-btn" type="submit">
+                        <span class="tooltip">Buscar</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <br>
+        <table mat-table [dataSource]="dataSourceConcidencia" class="table table-striped table-hover">
+            <ng-container matColumnDef="perIdEjecutivo">
+                <th class="mat-header-cel" mat-header-cell *matHeaderCellDef>Cli ID</th>
+                <td class="mat-cell" mat-cell *matCellDef="let element">
+                    {{ element.perIdEjecutivo }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="nomEjecutivo">
+                <th class="mat-header-cel" mat-header-cell *matHeaderCellDef>Nombre Ejecutivo</th>
+                <td class="mat-cell" mat-cell *matCellDef="let element">
+                    {{ element.nomEjecutivo }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ccoClave">
+                <th class="mat-header-cel" mat-header-cell *matHeaderCellDef>C. Costos</th>
+                <td class="mat-cell" mat-cell *matCellDef="let element">
+                    {{ element.ccoClave }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="regDescripcion">
+                <th class="mat-header-cel" mat-header-cell *matHeaderCellDef>Region</th>
+                <td class="mat-cell" mat-cell *matCellDef="let element">
+                    {{ element.regDescripcion }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="sucDescripcion">
+                <th class="mat-header-cel" mat-header-cell *matHeaderCellDef>Sucursal</th>
+                <td class="mat-cell" mat-cell *matCellDef="let element">
+                    {{ element.sucDescripcion }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="sarDescripcion">
+                <th class="mat-header-cel" mat-header-cell *matHeaderCellDef>Sub Area</th>
+                <td class="mat-cell" mat-cell *matCellDef="let element">
+                    {{ element.sarDescripcion }}
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsPer"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsPer" (click)="selectItem = row" (dblclick)="enviarEjecutivo(row)"></tr>
+        </table>
+    </div>
+</div>
+
+<div mat-dialog-actions>
+    <div class="row">
+        <button mat-button class="btn-img accept-button" type="submit" (click)="recuperarEjecutivo()">
+            <span class="tooltip">Selecciona</span>
+        </button>
+    </div>
+</div>

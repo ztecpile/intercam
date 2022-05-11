@@ -3,16 +3,16 @@ import { TipoEventoVO } from "./TipoEventoVO";
 
 	export class EventoPersonaVO
 	{
-		public  epeId : Number;
+		public  epeId : number;
 		public  tipoEventoVO : TipoEventoVO;
 		public  motivoEventoVO : MotivoEventoVO;
-		public  perId : Number;
-		public  perIdCompania : Number;
-		public  epeDescripcion : String;
-		public  epeEventoStr : String;
-		public  epeStatus : String;
-		public  epeFaltaStr : String;
-		public  usuUsuario : String;
+		public  perId : number;
+		public  perIdCompania : number;
+		public  epeDescripcion : string;
+		public  epeEventoStr : string;
+		public  epeStatus : string;
+		public  epeFaltaStr : string;
+		public  usuUsuario : string;
 		
 		public  EventoPersonaVO()
 		{
@@ -21,7 +21,7 @@ import { TipoEventoVO } from "./TipoEventoVO";
 			this.epeEventoStr = '';
 		}
 		
-		public  toString() : String
+		public  toString() : string
 	    {
 	    	return this.epeId.toString();
 	    }

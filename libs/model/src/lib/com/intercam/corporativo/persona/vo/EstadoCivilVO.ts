@@ -1,15 +1,15 @@
 
 	export class EstadoCivilVO
 	{
-		public  edcId : Number;
-	    public  edcDescripcion : String;
+		public  edcId : number;
+	    public  edcDescripcion : string;
 	    // La descripci&ocuote;n en ingles del estado civil
-        public  edcDescIng : String; //edc_desc_ing
+        public  edcDescIng : string; //edc_desc_ing
     
         /**
          * Id estado civil Broxel 
          */
-        public  edcBrxId : Number;
+        public  edcBrxId : number;
         
 		/**
 	    * Constructor de la clase.
@@ -20,18 +20,18 @@
 	    	this.edcDescIng = '';
 	    }
 		
-		public  toString():String{
+		public  toString():string{
 			return this.edcDescripcion;		
 		}
         
         /**
         * Se utiliza para la configuracion del campo requerido para fideicomiso
         **/ 
-        public  get EdcId():Number{
+        public  get EdcId():number{
             return this.edcId;		
         }
         
-        public  set EdcId(value: Number) {
+        public  set EdcId(value: number) {
             this.edcId = value;
         }
 	}

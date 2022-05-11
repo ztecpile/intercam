@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { UsuarioVO } from '@intercam/model';
 import { Router } from '@angular/router';
-import { Session } from '../models/session.model';
 import { Observable } from 'rxjs';
-import { StorageService } from './storage.service';
+import { JwtDTO } from '../models/jwt-dto';
+import { LoginUsuario } from '../models/login-usuario';
+import { TokenService } from './token.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,64 +13,64 @@ import { StorageService } from './storage.service';
 export class AuthService {
 
   usuarioVO: UsuarioVO;
-  token: string;
+  
+  constructor(
+    public http: HttpClient, 
+    private router: Router,
+    private tokenServices: TokenService) { }
 
-  constructor(public http: HttpClient, private router: Router,
-    private storageService: StorageService) { }
-
-  login(username, password): Observable<boolean> {
-    const urlStr = 'usuario/validaPassPhrase';
-    const requestOptions: Object = {
-      headers: new HttpHeaders().set('Content-Type', 'application/json'),
-      params: new HttpParams().set('login', username).set('passPhrase', password),
-      responseType: 'text',
-    };
-
-    return this.http.get<boolean>(urlStr, requestOptions);
+  login(loginUsuario: LoginUsuario): Observable<JwtDTO> {
+    const urlStr = 'auth/login';
+    return this.http.post<JwtDTO>(urlStr, loginUsuario);
   }
   
-  logout() {
-    this.storageService.logout();
+  getUsuario(usuUsuario: string): Observable<UsuarioVO> {
+    const urlStr = 'usuario/findusuario-usuusuario/' + usuUsuario;
+    return this.http.get<UsuarioVO>(urlStr, {});
   }
 
-  loggedIn(){
-    return !!sessionStorage.getItem('token');
+  getRolVO(rolId: number): Observable<any> {
+    const urlStr = 'usuario/getRolVO/' + rolId;
+    return this.http.get<any>(urlStr, {});
+  }
+
+  isAccessAllowed(url: string, perId: number, conId: number, porCliente: boolean,
+    rolDejaLog: boolean, rolClave: number, usuId: string, reqCuestioSeguri: boolean, sistema: string): Observable<any[]> {
+
+    const urlStr = 'cierre-op/isAccessAllowed';
+    const params: Object = new Object({
+      'url': url,
+      'perId': perId,
+      'conId': conId,
+      'porCliente': porCliente,
+      'rolDejaLog': rolDejaLog,
+      'rolClave': rolClave,
+      'usuId': usuId,
+      'reqCuestioSeguri': reqCuestioSeguri,
+      'sistema': sistema
+    });
+    return this.http.post<any[]>(urlStr, params);
   }
 
   getToken(){
-    return sessionStorage.getItem('token');
+    return this.tokenServices.getToken();
   }
-  
-  public getUsuarioSession(): void {
-    this.token = sessionStorage.getItem('token');
-    const usuUsuario: string = sessionStorage.getItem('usuUsuario');
-    if (usuUsuario) {
-      const urlStr = 'usuario/findusuario-usuusuario/' + usuUsuario;
-      this.http.get<UsuarioVO>(urlStr, {}).subscribe(
-        then => {
-          this.usuarioVO = then;
-          sessionStorage.setItem('usuarioVO', JSON.stringify(then))
-          //this.gerUrlParam();
-          const data = new Session;
-          data.token = this.usuarioVO.usuClave;
-          data.user = this.usuarioVO;
-          this.correctLogin(data);
-        },
-        error => console.error('Error al buscar usuario', error)
-      );
-    } else {
-      this.gerUrlParam();
-    }
+
+  correctLogin(){
+    this.gerUrlParam();
   }
 
   private gerUrlParam(): void {
     const url = sessionStorage.getItem('url');
     console.log("urlPath: ", url);
     if(url) this.router.navigate([url]);
-  }
-
-  private correctLogin(data: Session){
-    this.storageService.setCurrentSession(data);
     this.router.navigate(['/']);
+  }
+  
+  logOut(): void {
+    console.log('Cerrando session...');
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+     this.router.navigate(['/login']));
+     this.tokenServices.logOut();
   }
 }

@@ -1,8 +1,8 @@
 
 	export class TipoAperturaVO
 	{
-		public  tiaId : Number;
-		public  tiaDescripcion : String;
+		public  tiaId : number;
+		public  tiaDescripcion : string;
 		
 		public constructor()
 		{

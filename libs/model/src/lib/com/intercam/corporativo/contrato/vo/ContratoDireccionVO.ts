@@ -3,49 +3,49 @@ import { ContratoDireccionIdVO } from "./ContratoDireccionIdVO";
     export class ContratoDireccionVO
     {
         public  idVO:ContratoDireccionIdVO;
-        public  codEstatus : String;
-        public  dirCalle : String;
-        public  dirColonia : String;
+        public  codEstatus : string;
+        public  dirCalle : string;
+        public  dirColonia : string;
 
-        public  tmpCveRepet: Number;
-        public  codTelefono : String;
+        public  tmpCveRepet: number;
+        public  codTelefono : string;
         /**
         * Nombre de la persona titular de la direccion
         */
-        public  perDesc:String;
+        public  perDesc:string;
         /**
         * Indica si la direccion es de contrato
         */
-        public  contrato:Boolean;
+        public  contrato:boolean;
         /**
         * Indica si la direccion es de estado de cuenta
         */
-        public  edoCta:Boolean;
+        public  edoCta:boolean;
         /**
         * Indica si es repetitiva
         */
-        public  codEsRepetitiva:String;
+        public  codEsRepetitiva:string;
 		/**
 		 * Indica si es direccion de trabajo
 		 * */
-		public  trabajo : Boolean;
+		public  trabajo : boolean;
 		/**
 		 * Indica si es direccion de una persona extranjera
 		 * */
-		public  extranjero : Boolean;
+		public  extranjero : boolean;
 		/**
 		 * Indica si es direccion de otro tipo
 		 * */
-		public  otros : Boolean;
+		public  otros : boolean;
 		/**
 		 * Indica el tipo de envio
 		 * */
-		public  tenDescripcion : String;
+		public  tenDescripcion : string;
 
 		/** 
 		 Especifica si un elemento debe de estar seleccionado.
 		 */
-		public  conSelected : Boolean = false; 
+		public  conSelected : boolean = false; 
 		
 		/**************************************************************************************
 		 * Constructor
@@ -58,7 +58,7 @@ import { ContratoDireccionIdVO } from "./ContratoDireccionIdVO";
             this.idVO = new ContratoDireccionIdVO();
         }
 		
-		public  toString():String{
+		public  toString():string{
 			return this.tenDescripcion + " Estatus: " + this.codEstatus;
 		}
     }

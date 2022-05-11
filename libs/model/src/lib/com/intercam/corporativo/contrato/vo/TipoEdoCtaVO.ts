@@ -1,15 +1,15 @@
 
 	export class TipoEdoCtaVO
 	{
-		public  tenClave : String;
+		public  tenClave : string;
 		
-		private  tenDescripcion : String;
+		public  tenDescripcion : string;
 		
-		private  tenSif : String;
+		public  tenSif : string;
 		
-		private  tenSib : String;
+		public  tenSib : string;
 		
-		private  tenLum : String;
+		public  tenLum : string;
 		
 		public constructor()
 		{

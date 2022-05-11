@@ -5,23 +5,23 @@
 		/**
 		 * Descripcion del error
 		 * */
-		public  descripcion : String;
+		public  descripcion : string;
 		/**
 		 * Identificador de la pantalla donde se presenta el error
 		 * */
-		public  idPantalla : String;
+		public  idPantalla : string;
 		/**
 		 * Nombre de la pantalla donde se presenta el error
 		 * */
-		public  nombrePantalla : String;
+		public  nombrePantalla : string;
 		/**
 		 * Identificador del campo donde se presenta el error
 		 * */
-		public  idCampo : String;
+		public  idCampo : string;
 		/**
 		 * Nombre de la clase del objeto que involucra el error
 		 * */
-		public  clase : String;
+		public  clase : string;
 		
 		/**
 		 * Constructor por default

@@ -1,7 +1,7 @@
 import { AfterContentInit, Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { Const, DireccionVO, PersonaFisicaVO, ProspeccionUtil, UsuarioContratoVO, UsuarioVO } from '@intercam/model';
+import { Const, PersonaFisicaVO, ProspeccionUtil, UsuarioContratoVO, UsuarioUtil, UsuarioVO } from '@intercam/model';
 import { PersonaService } from '../../../services/persona.service';
 
 @Component({
@@ -37,21 +37,21 @@ export class DialogBusquedaCoincidenciasComponent implements AfterContentInit {
   * Nombre de la persona a buscar, formado con el nombre, apellido paterno y materno utilizados en la 
   * busqueda. Simula el perNomCorto que tendria la persona a buscar.
   */
-  _nombreCorto : String;
+  _nombreCorto : string;
 
-  valor: String;
-  nombre: String;
-  paterno: String;
-  materno: String;
-  tipo: String;
-  perId: Number;
+  valor: string;
+  nombre: string;
+  paterno: string;
+  materno: string;
+  tipo: string;
+  perId: number;
 
-  estatusBntAlta: Boolean = true;
+  estatusBntAlta: boolean = true;
 
   /**
   * La lista de permisos sobre el usuario.
   */
-  _permisos : String[] = [Const.GRUPO_CONTROL_INTERCAM];
+  _permisos : string[] = [Const.GRUPO_CONTROL_INTERCAM];
 
   /**
   * valor que indica si el boton de alta estara habilitado, 
@@ -59,8 +59,8 @@ export class DialogBusquedaCoincidenciasComponent implements AfterContentInit {
 	* si existe algun registro color rojo en el grid el valor es false para todos,
 	* negro habilitado para todos
 	*/
-  enableBtnAltaPromo:Boolean = true;
-  enableBtnAltaControl:Boolean = false;
+  enableBtnAltaPromo:boolean = true;
+  enableBtnAltaControl:boolean = false;
   
   arrContratos: UsuarioContratoVO[];
 
@@ -88,7 +88,7 @@ export class DialogBusquedaCoincidenciasComponent implements AfterContentInit {
   ngAfterContentInit(): void {
     if(this.enableBtnAltaPromo){
       this.estatusBntAlta = true;
-    } else if(this.enableBtnAltaControl && this.usuarioVO.hasGrupo([Const.GRUPO_CONTROL_INTERCAM])){
+    } else if(this.enableBtnAltaControl && UsuarioUtil.hasGrupo(this._permisos, this.usuarioVO)){
       this.estatusBntAlta = true;
     }
   }
@@ -100,7 +100,7 @@ export class DialogBusquedaCoincidenciasComponent implements AfterContentInit {
       then => {
         this.arrCoincidencias = then;
 
-        let esLongitud : Boolean = this.tipo === Const.RFC ? this.valor.length == 13 : true;
+        let esLongitud : boolean = this.tipo === Const.RFC ? this.valor.length == 13 : true;
         if(!this.arrCoincidencias || this.arrCoincidencias.length == 0){
           this.estatusBntAlta = true;
           this.enviarResultado(false);
@@ -124,7 +124,7 @@ export class DialogBusquedaCoincidenciasComponent implements AfterContentInit {
               (persona.pefNoFm3 != null && persona.pefNoFm3.substring(0, 10) === this.valor.substring(0, 10))) {
               this.arrCoincidencias.splice(0,0,this.arrCoincidencias.splice(i,1)[0]);
               this.estatusBntAlta = this._nombreCorto === persona.perNomCorto && this.usuarioVO? 
-                  ProspeccionUtil.isInGrupoPermisos(this._permisos.toString(), this.usuarioVO.gruposVO) : true;
+              UsuarioUtil.hasGrupo(this._permisos, this.usuarioVO) : true;
             }
             i++;
           }
@@ -137,18 +137,18 @@ export class DialogBusquedaCoincidenciasComponent implements AfterContentInit {
   }
   
   chooseColor(item: PersonaFisicaVO) {
-    let color:String;
-    let esLongitud : Boolean = this.tipo === Const.RFC ? this.valor.length == 13: true;
+    let color:string;
+    let esLongitud : boolean = this.tipo === Const.RFC ? this.valor.length == 13: true;
     if (esLongitud && (item.perRfc === this.valor || item.pefNss === this.valor || item.pefNoFm3 === this.valor)) {
       this.enableBtnAltaPromo = false;
       this.enableBtnAltaControl = false;
       color = '#FF0000 !important';
     } else if (this.tipo === Const.RFC && item.perRfc && item.perRfc.substring(0, 10) == this.valor.substring(0, 10)){
-      let c : String = item.perNomCorto.trim() == this._nombreCorto ? '#F38737 !important' : '#0A0096 !important';
+      let c : string = item.perNomCorto.trim() == this._nombreCorto ? '#F38737 !important' : '#0A0096 !important';
       color = c;
       if(c === '#F38737 !important'){
         this.enableBtnAltaPromo = false;
-        this.enableBtnAltaControl = this.usuarioVO.hasGrupo([Const.GRUPO_CONTROL_INTERCAM]) ? true: false;
+        this.enableBtnAltaControl = UsuarioUtil.hasGrupo([Const.GRUPO_CONTROL_INTERCAM], this.usuarioVO) ? true: false;
       }
     }
     return color; 
@@ -162,7 +162,7 @@ export class DialogBusquedaCoincidenciasComponent implements AfterContentInit {
   * Determina la etiqueta
   */
   configurarEtiqueta() {
-    var etiqueta : String = Const.RFC;
+    var etiqueta : string = Const.RFC;
     switch (this.tipo) {
         case Const.NSS: 
             etiqueta = Const.NSS;
@@ -187,7 +187,7 @@ export class DialogBusquedaCoincidenciasComponent implements AfterContentInit {
   }
 
   campoValor(item:PersonaFisicaVO) {
-    var valor : String = item.perRfc;
+    var valor : string = item.perRfc;
     switch (this.tipo) {
         case Const.NSS: 
             valor = item.pefNss;
@@ -222,7 +222,7 @@ export class DialogBusquedaCoincidenciasComponent implements AfterContentInit {
   /**
   * Envia el evento que informa si la coincidencia existe o no, dependiendo del valor recibido.
   */
-  enviarResultado (existe : Boolean, perId : Number = 0, ejecutivoId:Number = 0) {
+  enviarResultado (existe : boolean, perId : number = 0, ejecutivoId:number = 0) {
     let datos = new Object;
     datos['existe'] = existe;
     datos['perId'] = perId;
@@ -233,5 +233,13 @@ export class DialogBusquedaCoincidenciasComponent implements AfterContentInit {
   
   selectUsuContrato(item: UsuarioContratoVO): void {
     this.contratoSel = item;
+  }
+
+  getClassBtnAlta(parametro: boolean) {
+    if(!parametro){
+      return 'btn-img alta-button-des'
+    } else {
+      return 'btn-img alta-button'
+    }
   }
 }

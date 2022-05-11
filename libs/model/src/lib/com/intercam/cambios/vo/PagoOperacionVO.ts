@@ -32,7 +32,7 @@ export interface PagoOperacionVO {
     paoBancoCliente: string;
 
     paoEntregaRecep: string;
-    paoEstatus: string;
+    paoEstatus: number;
     paoFechaStr: string;
     clvBan: string;
     banId: number;
@@ -58,6 +58,7 @@ export interface PagoOperacionVO {
     paoGirador: string;
     paoFdocumento: Date;
     seqDoc: number;
+    esRemesaSinDeal: boolean;
 
     //campos para remesa solo en sica
     obsCaptura: string;
@@ -249,5 +250,17 @@ export interface PagoOperacionVO {
      * <i>Esta propiedad no se persiste.</i>
      **/
     paoChequeArchivos: Array<any>;
+    
+    /**
+     * Almacena justificaci&oacute;n para el motivo de la remesa.</br>
+     * <i>Esta propiedad no se persiste.</i>
+     **/
+    motivoRemOtro: string;
+
+    /**
+     * Almacena justificaci&oacute;n para remesa con cheques consecutivos.</br>
+     * <i>Esta propiedad no se persiste.</i>
+     **/
+    motivoChqConsec: string;
 
 }

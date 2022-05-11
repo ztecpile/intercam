@@ -3,7 +3,7 @@ import { PerTarjetaIdVO } from "./PerTarjetaIdVO";
 	export class PerTarjetaVO
 	{   
 	    public  idVO : PerTarjetaIdVO;
-	    public  tatFaltaStr : String;
+	    public  tatFaltaStr : string;
 	    
 	    /**
 	    * Constructor de la clase.
@@ -13,7 +13,7 @@ import { PerTarjetaIdVO } from "./PerTarjetaIdVO";
 			this.idVO = new PerTarjetaIdVO;
 		}
 		
-		public  toString() : String{
+		public  toString() : string{
 		    return this.idVO.toString();
 	    }
 	     

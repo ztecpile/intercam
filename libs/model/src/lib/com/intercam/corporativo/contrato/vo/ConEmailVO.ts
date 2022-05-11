@@ -4,32 +4,32 @@
 		/**
 		 * Almacena Id de la cuenta de Correo
 		 */
-		public  cemId:Number;
+		public  cemId:number;
 		
 		/**
 		 * Almacena Id del Contrato
 		 */
-		public  conId:Number;
+		public  conId:number;
 		
 		/**
 		 * Almacena cuenta de Correo
 		 */
-		public  cemEmail:String;
+		public  cemEmail:string;
 		
 		/**
 		 * Almacena estatus de la cuenta de Correo
 		 */
-		public  cemSta:String;
+		public  cemSta:string;
 		
 		/**
 		 * Bandera para el manejo del estatus de la cuenta de Correo
 		 **/
-		public  checkSeleccionado:Boolean = true;
+		public  checkSeleccionado:boolean = true;
 		
 		/**
 		 * Bandera utilizada para indicar si la cuenta de Correo
 		 * ha sido seleccionada para el reenv&iacute;o de Factura
 		 **/
-		public  seleccionado:Boolean;
+		public  seleccionado:boolean;
 		
 	}//class

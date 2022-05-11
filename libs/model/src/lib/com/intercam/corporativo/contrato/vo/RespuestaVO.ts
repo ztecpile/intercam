@@ -2,18 +2,18 @@ import { GrupoPreguntaVO } from "./GrupoPreguntaVO";
 
 	export class RespuestaVO
 	{
-		public  resId : Number;
-		public  resControl : Number;
-		public  resDescripcion:String;
-		public  resOrden : Number;
-		public  resLongitud : Number;
-		public  preId : Number;	
-		public  resValor : String;
-		public  rcoId : Number;
+		public  resId : number;
+		public  resControl : number;
+		public  resDescripcion:string;
+		public  resOrden : number;
+		public  resLongitud : number;
+		public  preId : number;	
+		public  resValor : string;
+		public  rcoId : number;
 		
-		public  resDesPosicion : String;//t=Top, L=Left
+		public  resDesPosicion : string;//t=Top, L=Left
 		
-		public  grupoPreguntaVO :Set <GrupoPreguntaVO>;	
+		public  grupoPreguntaVO : GrupoPreguntaVO[];	
 
         /**
          * Valor de la respuesta.
@@ -23,7 +23,9 @@ import { GrupoPreguntaVO } from "./GrupoPreguntaVO";
         /**
         * Altura del control que alamcena la respuesta (para los casos de TextArea)
         */ 
-        public  resHeight : Number;
+        public  resHeight : number;
+
+		public resVisible: boolean;// esta propiedad se ocupa cuando la respuesta de la pregunta pertenece a grupopregunta
 
      	/**
 	     * Constructor de la clase.

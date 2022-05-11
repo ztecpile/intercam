@@ -10,7 +10,7 @@ export class CteReferenciadoVO {
 	/**
 	* Almacena Id cliente referenciado.
 	**/
-	public creId:Number;
+	public creId:number;
 		
 	/**
 	* Almacena prospecto persona.

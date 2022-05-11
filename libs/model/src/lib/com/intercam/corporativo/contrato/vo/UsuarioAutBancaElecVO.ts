@@ -1,14 +1,14 @@
 
 	export class UsuarioAutBancaElecVO
 	{
-		public  usbId:Number;
-		public  conId:Number;
-		public  usbMonto:Number;
-		public  usbNumero:String;
-		public  usbNombre:String;
-		public  usbCta:String;
-		public  usbEmail:String;
-		public  usbStatus:String;
+		public  usbId:number;
+		public  conId:number;
+		public  usbMonto:number;
+		public  usbNumero:string;
+		public  usbNombre:string;
+		public  usbCta:string;
+		public  usbEmail:string;
+		public  usbStatus:string;
 
 		public constructor()
 		{

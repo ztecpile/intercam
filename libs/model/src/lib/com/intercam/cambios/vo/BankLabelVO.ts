@@ -2,7 +2,7 @@
  * Derechos Reservados de Copia (c) - INTERCAM SERVICIOS FINANCIEROS - 2021.
  */
 
-export interface BankLabelVO {
+export class BankLabelVO {
 
     // ***************************************************** //
     //                 P R O P I E D A D E S                 //
@@ -87,5 +87,8 @@ export interface BankLabelVO {
      * Longitid de caracteres del campo en la cuenta clabe
      */
     blbLongRClabe: number;
+    
+    //Se agrega propiedad de prueba para comportamiento de validadores
+    blblTienerrores: string;
 
 }

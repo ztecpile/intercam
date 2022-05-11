@@ -1,12 +1,12 @@
 
 	export class PepFamiliaresVO
 	{
-		public  epfId :Number;
-		public  perId : Number;
-		public   epfNombre : String;
-		public   epfParentesco : Number;
-		public  epfTipo : String;
-		public  epfFechaStr : String;
+		public  epfId :number;
+		public  perId : number;
+		public   epfNombre : string;
+		public   epfParentesco : number;
+		public  epfTipo : string;
+		public  epfFechaStr : string;
 		
 		
 		public  PepFamiliaresVO()

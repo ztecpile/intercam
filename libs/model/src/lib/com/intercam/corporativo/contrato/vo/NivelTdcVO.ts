@@ -1,29 +1,29 @@
 
 
 	export class NivelTdcVO{
-		public  nivId:Number;
+		public  nivId:number;
 		
-		public  nivDesc:String;
+		public  nivDesc:string;
 		
-		public  nivTasa:Number;
+		public  nivTasa:number;
 		
-		public  nivTasaMor:Number;
+		public  nivTasaMor:number;
 		
-		public  nivComMor:Number;
+		public  nivComMor:number;
 		
-		public  nivCat:Number;
+		public  nivCat:number;
 		
-		public  nivAnual:Number;
+		public  nivAnual:number;
 		
-		public  nivRepo:Number;
+		public  nivRepo:number;
 		
-		public  nivRcl:Number;
+		public  nivRcl:number;
 		
-		public  nivReca:String;
+		public  nivReca:string;
 		
-		public  fechaLogStr:String;
+		public  fechaLogStr:string;
         
-        public  nivCodigoBrox :  String;
+        public  nivCodigoBrox :  string;
 
 		public constructor()
 		{

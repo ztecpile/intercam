@@ -9,21 +9,6 @@ import { EjecutivoAsistenteVO } from '../../corporativo/persona/vo/EjecutivoAsis
 
 
 export class UsuarioVO {
-    /**
-     * Constante o llave para identificar en el objeto InfoClvPromLegadoDivisas 
-     * la Lista de claves legadas de divisas
-     */
-    public static readonly LST_CLV_PROM_LEG = 'LST_CLV_PROM_LEG';
-    /**
-     * Constante o llave para identificar en el objeto InfoClvPromLegadoDivisas 
-     * la Clave legada por default para divisas
-     */
-    public static readonly CLV_PROM_LEG_DEFAULT = 'CLV_PROM_LEG_DEFAULT'
-    /**
-     * Constante o llave para identificar en el objeto InfoClvPromLegadoDivisas 
-     * la posicion de la clave legada por default para divisas en la lista de claves legadas 
-     */
-    public static readonly POS_CLV_PROM_LEG_DEFAULT = 'POS_CLV_PROM_LEG_DEFAULT'
 
     public usuId: number;
     public usuClave: string;
@@ -151,11 +136,11 @@ export class UsuarioVO {
     public clavesLegadasMiEquipo: ClavePromLegadoVO[];
 
     /**
-     * Lista de claves legadas de los usuarios que perteneces a un grupo determinado y deben validarse en algun proceso.
+     * Lista de claves legadas de los usuarios que pertenecen a un grupo determinado y deben validarse en algun proceso.
      *      EJEMPLO: Validar que los promotores no cierren las operaciones capturadas por los usuarios con perfil de
      *                  - Cheques Devueltos
      */
-    public clavesLegadasGpo: UsuarioVO[];
+    public clavesLegadasGpo: ClavePromLegadoVO[];
 
 
 
@@ -205,22 +190,6 @@ export class UsuarioVO {
         return clave;
     }
 
-    // acceso con alguno de estos grupos
-    public hasGrupo(str: string[]): boolean {
-        let grupo: string = null;
-        if (this.gruposVO != null) {
-            for (let j = 0; j < str.length; j++) {
-                grupo = str[j];
-                for (let i = 0; i < this.gruposVO.length; i++) {
-                    if (this.gruposVO[i].gpoNombre == grupo) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
-
     /**
      * Obtiene la lista de todas las claves legadas para los contratos de Cambios
      */
@@ -243,45 +212,6 @@ export class UsuarioVO {
             }
         });
         return lstClavePromLegadoVO;
-    }
-
-    /**
-     * Obtiene la lista de claves legadas y la clave legada por default con la que opera el promotor 
-     *      las operaciones de divisas. Tambien la pocision de la clave legada establecida por default en 
-     *      el arreglo de claves legadas.
-     *  Si el promotor tiene asignada la clave legada para operar Divisas-Banco, 
-     *      esa serÃ¡ la que se establezaca por default, de lo contrario serÃ¡ la de Divisas-Casa de Bolsa.
-     * 
-     * @return Object {LST_CLV_PROM_LEG: Lista de claves legadas para operad divisas, 
-     *                 POS_CLV_PROM_LEG_DEFAULT: Posicion de la clave legada establecida por default en 
-     *                      el arreglo de claves legadas.
-     *                 CLV_PROM_LEG_DEFAULT: Clave legada por defaul.
-     *                 }
-     */
-    public getInfoClvPromLegadoDivisas(): any {
-        const lstClvPromLegado: ClavePromLegadoVO[] = [];
-        let clavePromLegadoCasaBolsa: ClavePromLegadoVO = null;
-        let clavePromLegadoBanco: ClavePromLegadoVO = null;
-        let posClvPromLegDefault = 0;
-        let cont = 0;
-        this.clavesLegadas.forEach(clavePromLegadoVO => {
-            if (Const.TCON_CASA_CAMBIOS == clavePromLegadoVO.tconId || Const.TCON_DIVISAS_BANCO == clavePromLegadoVO.tconId) {
-                lstClvPromLegado.push(clavePromLegadoVO);
-                if (Const.TCON_CASA_CAMBIOS == clavePromLegadoVO.tconId && clavePromLegadoVO.cplDefault) {
-                    clavePromLegadoCasaBolsa = clavePromLegadoVO;
-                    posClvPromLegDefault = cont;
-                } else if (Const.TCON_DIVISAS_BANCO == clavePromLegadoVO.tconId && clavePromLegadoVO.cplDefault) {
-                    clavePromLegadoBanco = clavePromLegadoVO;
-                    posClvPromLegDefault = cont;
-                }
-                ++cont;
-            }
-        })
-
-        return {
-            LST_CLV_PROM_LEG: lstClvPromLegado, POS_CLV_PROM_LEG_DEFAULT: posClvPromLegDefault,
-            CLV_PROM_LEG_DEFAULT: clavePromLegadoBanco == null ? clavePromLegadoCasaBolsa : clavePromLegadoBanco
-        };
     }
 
     /**
@@ -316,44 +246,48 @@ export class UsuarioVO {
         };
     }
 
-    /**
-     * 
-     * Obtiene las claves legadas de acuerdo al tipo de negocio
-     * 
-     * @param tconId Identificador del tipo negocio
-     * @return Las clave legadas de un tipo negocio
-     * 
-     **/
-    public findClaves(tconId: number): ClavePromLegadoVO[] {
-        let claves: ClavePromLegadoVO[] = null;
-        if (this.clavesLegadas != null) {
-            claves = [];
-            for (let i = 0; i < this.clavesLegadas.length; i++) {
-                if (this.clavesLegadas[i].tconId == tconId) {
-                    claves.push(this.clavesLegadas[i]);
-                }
-            }
-        }
-        return claves;
-    }
+    //Migrado a UsuarioUtil.ts
 
-    // acceso con alguno de estos grupos
-    public getGpuClaves(gpos: number[]): number[] {
-        const claves: number[] = [];
-        let grupo = 0;
-        if (this.gruposVO != null) {
-            for (let i = 0; i < this.gruposVO.length; i++) {
-                grupo = this.gruposVO[i].gpoClave;
+    // /**
+    //  * 
+    //  * Obtiene las claves legadas de acuerdo al tipo de negocio
+    //  * 
+    //  * @param tconId Identificador del tipo negocio
+    //  * @return Las clave legadas de un tipo negocio
+    //  * 
+    //  **/
+    // public findClaves(tconId: number): ClavePromLegadoVO[] {
+    //     let claves: ClavePromLegadoVO[] = null;
+    //     if (this.clavesLegadas != null) {
+    //         claves = [];
+    //         for (let i = 0; i < this.clavesLegadas.length; i++) {
+    //             if (this.clavesLegadas[i].tconId == tconId) {
+    //                 claves.push(this.clavesLegadas[i]);
+    //             }
+    //         }
+    //     }
+    //     return claves;
+    // }
 
-                for (let j = 0; j < gpos.length; j++) {
-                    if (gpos[j] == grupo) {
-                        claves.push(grupo);
-                    }
-                }
-            }
-        }
-        return claves;
-    }
+    //Migrado a UsuarioUtil.ts
+
+    // // acceso con alguno de estos grupos
+    // public getGpuClaves(gpos: number[]): number[] {
+    //     const claves: number[] = [];
+    //     let grupo = 0;
+    //     if (this.gruposVO != null) {
+    //         for (let i = 0; i < this.gruposVO.length; i++) {
+    //             grupo = this.gruposVO[i].gpoClave;
+
+    //             for (let j = 0; j < gpos.length; j++) {
+    //                 if (gpos[j] == grupo) {
+    //                     claves.push(grupo);
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     return claves;
+    // }
 
     /**
      * Obtine una lita de grupos correspondientes a la lista de nombres de grupos dados en el parametro
@@ -375,45 +309,6 @@ export class UsuarioVO {
         }
         return lstGrupos;
     }
-
-    /**
-     * Recupera una clave legada de la lista de claves legadas (lstClvLegadas) correspondiente a la clvLegada dada.
-     * @param lstClvLegadas   Lista de claves legadas donde buscar
-     * @param clvLegada       Clave legada a buscar en la lista
-     * @return el objeto ClavePromLegadoVO de la lista de claves legadas (lstClvLegadas) correspondiente a
-     *         la clvPro igual al valor dado en clvLegada.
-     *   NOTA: Si no encuentra la clave legada en la lista, regresa null.
-     */
-    // public getClvLegada(lstClvLegadas: ArrayCollection, clvLegada: String): ClavePromLegadoVO {
-    //     var clvPromLegadoVO: ClavePromLegadoVO = null;
-    //     var posicion: number = 0;
-
-    //     while (clvPromLegadoVO == null && lstClvLegadas != null && lstClvLegadas.length > posicion++) {
-    //         clvPromLegadoVO = StringUtil.trim(clvLegada) ==
-    //             StringUtil.trim(lstClvLegadas.getItemAt(posicion - 1).idVO.clvPro) ?
-    //             ClavePromLegadoVO(lstClvLegadas.getItemAt(posicion - 1)) : null;
-    //     }
-    //     return clvPromLegadoVO;
-    // }
-
-    /**
-     * Valida que el usuario tenga asignado el grupo determinado por nombreGpo y 
-     * que el ori-pro de su clave legada corresponda a la que se establece en el parÃ¡metro oriPro.
-     *       EJEMPLO: validar si el usuario opera 'CHEQUES DEVUELTOS' y su oriPro es 'ROAL' 
-     *                   para la clave legada con que esta operando. 
-     * 
-     * @param nombreGpo  Nombre del grupo que debe tener asignado el usuario
-     * @param clvPromLeg Clave legada a buscar en la lista
-     * @param oriPro     Origen del promotor que debe tener asignado.
-     * 
-     * @return 
-     *       TRUE si el usuario tiene asignado el grupo nombreGpo y el oriPro de su calve legada clvPromLeg es oriPro
-     *       FALSE, en cualquier otor caso.
-     */
-    // public operarGrupoOriPro(nombreGpo: String, clvPromLeg: String, oriPro: String): Boolean {
-    //     return this.hasGrupo([nombreGpo]) &&
-    //         (StringUtil.trim(getClvLegada(clavesLegadas, clvPromLeg).oriPro) == oriPro);
-    // }
 
     /**
      * Recupera el objeto ClavePromLegadoVO de las claves legadas asociadas al usuario 
@@ -515,4 +410,119 @@ export class UsuarioVO {
         this.clavesLegadasMiEquipo = [];
         this.clavesLegadasGpo = [];
     }
+
+    
+  /*************************************************/
+  /* ***** Metodos migrados a UsuarioUtil.ts ***** */
+  /* ** Eliminar Codigo al final del desarrollo ** */
+  /*************************************************/
+  // /**
+  //  * Constante o llave para identificar en el objeto InfoClvPromLegadoDivisas 
+  //  * la Lista de claves legadas de divisas
+  //  */
+  // public static readonly LST_CLV_PROM_LEG = 'LST_CLV_PROM_LEG';
+  // /**
+  //  * Constante o llave para identificar en el objeto InfoClvPromLegadoDivisas 
+  //  * la Clave legada por default para divisas
+  //  */
+  // public static readonly CLV_PROM_LEG_DEFAULT = 'CLV_PROM_LEG_DEFAULT'
+  // /**
+  //  * Constante o llave para identificar en el objeto InfoClvPromLegadoDivisas 
+  //  * la posicion de la clave legada por default para divisas en la lista de claves legadas 
+  //  */
+  // public static readonly POS_CLV_PROM_LEG_DEFAULT = 'POS_CLV_PROM_LEG_DEFAULT'
+
+  // /**
+  //  * Obtiene la lista de claves legadas y la clave legada por default con la que opera el promotor 
+  //  *      las operaciones de divisas. Tambien la pocision de la clave legada establecida por default en 
+  //  *      el arreglo de claves legadas.
+  //  *  Si el promotor tiene asignada la clave legada para operar Divisas-Banco, 
+  //  *      esa serÃ¡ la que se establezaca por default, de lo contrario serÃ¡ la de Divisas-Casa de Bolsa.
+  //  * 
+  //  * @return Object {LST_CLV_PROM_LEG: Lista de claves legadas para operad divisas, 
+  //  *                 POS_CLV_PROM_LEG_DEFAULT: Posicion de la clave legada establecida por default en 
+  //  *                      el arreglo de claves legadas.
+  //  *                 CLV_PROM_LEG_DEFAULT: Clave legada por defaul.
+  //  *                 }
+  //  */
+  // public getInfoClvPromLegadoDivisas(): any {
+  //   const lstClvPromLegado: ClavePromLegadoVO[] = [];
+  //   let clavePromLegadoCasaBolsa: ClavePromLegadoVO = null;
+  //   let clavePromLegadoBanco: ClavePromLegadoVO = null;
+  //   let posClvPromLegDefault = 0;
+  //   let cont = 0;
+  //   this.clavesLegadas.forEach(clavePromLegadoVO => {
+  //     if (Const.TCON_CASA_CAMBIOS == clavePromLegadoVO.tconId || Const.TCON_DIVISAS_BANCO == clavePromLegadoVO.tconId) {
+  //       lstClvPromLegado.push(clavePromLegadoVO);
+  //       if (Const.TCON_CASA_CAMBIOS == clavePromLegadoVO.tconId && clavePromLegadoVO.cplDefault) {
+  //         clavePromLegadoCasaBolsa = clavePromLegadoVO;
+  //         posClvPromLegDefault = cont;
+  //       } else if (Const.TCON_DIVISAS_BANCO == clavePromLegadoVO.tconId && clavePromLegadoVO.cplDefault) {
+  //         clavePromLegadoBanco = clavePromLegadoVO;
+  //         posClvPromLegDefault = cont;
+  //       }
+  //       ++cont;
+  //     }
+  //   })
+
+  //   return {
+  //     LST_CLV_PROM_LEG: lstClvPromLegado, POS_CLV_PROM_LEG_DEFAULT: posClvPromLegDefault,
+  //     CLV_PROM_LEG_DEFAULT: clavePromLegadoBanco == null ? clavePromLegadoCasaBolsa : clavePromLegadoBanco
+  //   };
+  // }
+
+  // /**
+  //  * Valida que el usuario tenga asignado el grupo determinado por nombreGpo y
+  //  * que el ori-pro de su clave legada corresponda a la que se establece en el parÃ¡metro oriPro.
+  //  *       EJEMPLO: validar si el usuario opera 'CHEQUES DEVUELTOS' y su oriPro es 'ROAL'
+  //  *                   para la clave legada con que esta operando.
+  //  *
+  //  * @param nombreGpo  Nombre del grupo que debe tener asignado el usuario
+  //  * @param clvPromLeg Clave legada a buscar en la lista
+  //  * @param oriPro     Origen del promotor que debe tener asignado.
+  //  *
+  //  * @return
+  //  *       TRUE si el usuario tiene asignado el grupo nombreGpo y el oriPro de su calve legada clvPromLeg es oriPro
+  //  *       FALSE, en cualquier otor caso.
+  //  */
+  // public operarGrupoOriPro(nombreGpo: String, clvPromLeg: String, oriPro: String): Boolean {
+  //   return this.hasGrupo([nombreGpo]) &&
+  //       (StringUtil.trim(getClvLegada(clavesLegadas, clvPromLeg).oriPro) == oriPro);
+  // }
+
+  // acceso con alguno de estos grupos
+//   public hasGrupo(str: string[]): boolean {
+//     let grupo: string = null;
+//     if (this.gruposVO != null) {
+//       for (let j = 0; j < str.length; j++) {
+//         grupo = str[j];
+//         for (let i = 0; i < this.gruposVO.length; i++) {
+//           if (this.gruposVO[i].gpoNombre == grupo) {
+//             return true;
+//           }
+//         }
+//       }
+//     }
+//     return false;
+//   }
+
+  // /**
+  //  * Recupera una clave legada de la lista de claves legadas (lstClvLegadas) correspondiente a la clvLegada dada.
+  //  * @param lstClvLegadas   Lista de claves legadas donde buscar
+  //  * @param clvLegada       Clave legada a buscar en la lista
+  //  * @return el objeto ClavePromLegadoVO de la lista de claves legadas (lstClvLegadas) correspondiente a
+  //  *         la clvPro igual al valor dado en clvLegada.
+  //  *   NOTA: Si no encuentra la clave legada en la lista, regresa null.
+  //  */
+  // public getClvLegada(lstClvLegadas: ArrayCollection, clvLegada: String): ClavePromLegadoVO {
+  //   var clvPromLegadoVO: ClavePromLegadoVO = null;
+  //   var posicion: number = 0;
+  //   while (clvPromLegadoVO == null && lstClvLegadas != null && lstClvLegadas.length > posicion++) {
+  //     clvPromLegadoVO = StringUtil.trim(clvLegada) ==
+  //       StringUtil.trim(lstClvLegadas.getItemAt(posicion - 1).idVO.clvPro) ?
+  //       ClavePromLegadoVO(lstClvLegadas.getItemAt(posicion - 1)) : null;
+  //   }
+  //   return clvPromLegadoVO;
+  // }
+
 }

@@ -5,7 +5,7 @@
 		{			
 		}	
 		    
-    public  cdValor:Number;
-    public  deValor:String;
+    public  cdValor:number;
+    public  deValor:string;
 	}
 	

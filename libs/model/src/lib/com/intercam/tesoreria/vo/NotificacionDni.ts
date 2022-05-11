@@ -1,0 +1,32 @@
+export class NotificacionDni {
+  constructor(
+    public notiId?: number,
+    public notiAcreeId?: number,
+    public notiFecha1?: Date,
+    public notiStatus1?: string,
+    public notiFecha2?: Date,
+    public notiStatus2?: string,
+    public notiFecha3?: Date,
+    public notiStatus3?: string,
+    public notiFecha4?: Date,
+    public notiStatus4?: string,
+    public notiFecha5?: Date,
+    public notiStatus5?: string,
+    public notiFecha6?: Date,
+    public notiStatus6?: string,
+    public notiFecha7?: Date,
+    public notiStatus7?: string,
+    public notiFecha8?: Date,
+    public notiStatus8?: string,
+    public notiFecha9?: Date,
+    public notiStatus9?: string,
+    public notiFecha10?: Date,
+    public notiStatus10?: string,
+    public notiFecha11?: Date,
+    public notiStatus11?: string,
+    public notiFecha12?: Date,
+    public notiStatus12?: string,
+    public notiContador?: number,
+    public conSelected?: boolean
+  ) {}
+}

@@ -1,11 +1,11 @@
 
 	export class ContratosPerEjecVO
 	{
-		public  conId : Number;
-		public  tmpCveLegada : String;
-		public  tmpCveSucLegada : String;
-		public  cesDescripcion : String;
-		public  perNomCorto : String;
+		public  conId : number;
+		public  tmpCveLegada : string;
+		public  tmpCveSucLegada : string;
+		public  cesDescripcion : string;
+		public  perNomCorto : string;
 		/**
 	    * Constructor de la clase.
 	    */

@@ -40,6 +40,7 @@ export interface TransferenciaVO {
     traIban: string;
     traSwift: string;
     traSwiftInter: string;
+    traFaltaStr: string;
     usuUsuario: string;
     //Solo para Sica
     clvSuc: string;

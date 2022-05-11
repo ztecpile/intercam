@@ -1,22 +1,24 @@
+import { ContratoVO } from "./ContratoVO";
 
-	export class ContratoFideicomisoVO 
+	export class ContratoFideicomisoVO extends ContratoVO
 	{
-		public 	 cfsoReferencia:String;
-		public   fitId:Number;
-		public   fcatId:Number;
+		public 	 cfsoReferencia:string;
+		public   fitId:number;
+		public   fcatId:number;
 
-		public 	 cfsoConstLugar:String; 
-		public   cfsoConstFecha:String;
-		public 	 cfsoFiduciaria:String;
+		public 	 cfsoConstLugar:string; 
+		public   cfsoConstFecha:string;
+		public 	 cfsoFiduciaria:string;
         
-        public 	 cfsoFiduciariaRfc:String;
-        public 	 cfsoFiduciariaEfirma:String;
-        public 	 cfsoEfirmaVigencia:String;
+        public 	 cfsoFiduciariaRfc:string;
+        public 	 cfsoFiduciariaEfirma:string;
+        public 	 cfsoEfirmaVigencia:string;
         
         public  cfsoFalta : Date;
         public  cfsoFactualiza : Date;
 
 		public constructor()
 		{
+			super();
 		}
 	}

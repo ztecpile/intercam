@@ -2,32 +2,32 @@ import { CalifClienteVO } from "./CalifClienteVO";
 
 	export class CalificacionRiesgoVO
 	{     	
-     	 public  carClave : String;
-	     public  carRazonSocial : String;
-	     public  carPais : String;
-	     public  carFitchNLp : String;
-	     public  carFitchNCp : String;
-	     public  carFitchGLp : String;
-	     public  carFitchGCp : String;
-	     public  carFitchFrevisionStr : String;
-	     public  carSandpNLp : String;
-	     public  carSandpNCp : String;
-	     public  carSandpGLp : String;
-	     public  carSandpGCp : String;
-	     public  carSandpFrevisionStr : String;
-	     public  carMoodysNLp : String;
-	     public  carMoodysNCp : String;
-	     public  carMoodysGLp : String;
-	     public  carMoodysGCp : String;
-	     public  carMoodysFrevisionStr : String;
+     	 public  carClave : string;
+	     public  carRazonSocial : string;
+	     public  carPais : string;
+	     public  carFitchNLp : string;
+	     public  carFitchNCp : string;
+	     public  carFitchGLp : string;
+	     public  carFitchGCp : string;
+	     public  carFitchFrevisionStr : string;
+	     public  carSandpNLp : string;
+	     public  carSandpNCp : string;
+	     public  carSandpGLp : string;
+	     public  carSandpGCp : string;
+	     public  carSandpFrevisionStr : string;
+	     public  carMoodysNLp : string;
+	     public  carMoodysNCp : string;
+	     public  carMoodysGLp : string;
+	     public  carMoodysGCp : string;
+	     public  carMoodysFrevisionStr : string;
 	     public  estatus : Number;
-	     public  carFaltaStr : String;
+	     public  carFaltaStr : string;
 	     public  carEstatus : Boolean;
-	     public  carHrNLp : String;
-	     public  carHrNCp : String;
-	     public  carHrGLp : String;
-	     public  carHrGCp : String;
-	     public  carHrDrevisionStr : String;
+	     public  carHrNLp : string;
+	     public  carHrNCp : string;
+	     public  carHrGLp : string;
+	     public  carHrGCp : string;
+	     public  carHrDrevisionStr : string;
 	     
 	     public  califClientesVO : Set <CalifClienteVO>;
 	    

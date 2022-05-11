@@ -1,4 +1,4 @@
-import { CteReferenciadoVO, PersonaFisicaVO, ProspeccionPersonaVO } from "@intercam/model";
+import { CteReferenciadoVO, PersonaFisicaVO, PersonaMoralVO, ProspeccionPersonaVO } from "@intercam/model";
 
 export class ProspeccionResponse {
 
@@ -6,7 +6,11 @@ export class ProspeccionResponse {
 	
 	public perF: PersonaFisicaVO;
 
+    public perM: PersonaMoralVO;
+
     public cteReferenciado: CteReferenciadoVO;
+    
+    public updateEdoProspecto;
     
     constructor() {
     }

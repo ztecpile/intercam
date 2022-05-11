@@ -8,12 +8,12 @@ export class EdoReferenciacionVO {
 	/**
 	* Almacena Id Estado solicitud Referenciacion.
 	**/
-	public edrId:Number;
+	public edrId:number;
 		
 	/**
 	* Almacena Descripcion Estado solicitud Referenciacion.
 	**/
-	public descripcion:String;
+	public descripcion:string;
 		
 	//--------------------------------------------------------------------------
 	//

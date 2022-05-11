@@ -14,35 +14,35 @@ import { PersonaFisicaVO } from "./PersonaFisicaVO";
         public  canalVO : CanalVO;
         public   perIdCompania : number;
         public  cveubi : number;
-        public  asoFestatusStr : String ;
-        public  asoEstatus : String;
+        public  asoFestatusStr : string ;
+        public  asoEstatus : string;
         public  asoCertificadoCb : Boolean;
         public  asoCertificadoFondos : Boolean;
     
         // SABI
-        public  asoCveCnbv : String ;
+        public  asoCveCnbv : string ;
         public  asoNumNot : number;
-        public  asoNomNot : String;
-        public  asoNumEsc : String ;
-        public  asoFecEscStr : String;
-        public  asoPlazaEsc : String;
+        public  asoNomNot : string;
+        public  asoNumEsc : string ;
+        public  asoFecEscStr : string;
+        public  asoPlazaEsc : string;
         public  asoPromCer : number;
 		
 		/**
 		 * Sentra ID
 		 */
-		public  asoSentraId : String;
+		public  asoSentraId : string;
 		/**
 		 * Limite de compra
 		 */
-		public  asoLimiteCompra : Number;
+		public  asoLimiteCompra : number;
 		/**
 		 * Limite de venta
 		 */
-		public  asoLimiteVenta : Number;
+		public  asoLimiteVenta : number;
 		/**
 		 * Perfil de operador
 		 */
-		public  asoPerfilOperador : String;
+		public  asoPerfilOperador : string;
         
     }

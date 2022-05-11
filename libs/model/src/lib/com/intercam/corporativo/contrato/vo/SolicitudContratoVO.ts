@@ -4,16 +4,16 @@ import { ContratoFolderFondosVO } from "./ContratoFolderFondosVO";
     {
         
         
-        public  scoId:Number;
-        public  tconId:Number;
-        public  scoNomCorto:String;
-        public  scoIdentifiacion:String;
-        public  perId:Number;
-        public  scoUsuario:String;
+        public  scoId:number;
+        public  tconId:number;
+        public  scoNomCorto:string;
+        public  scoIdentifiacion:string;
+        public  perId:number;
+        public  scoUsuario:string;
         public  scoFalta:Date;
-        public  scoDatos:String;
-        public  scoEstatus:String;
-        public  conId:Number;      
+        public  scoDatos:string;
+        public  scoEstatus:string;
+        public  conId:number;      
         
         public  contrato:ContratoFolderFondosVO = new ContratoFolderFondosVO(); 
 

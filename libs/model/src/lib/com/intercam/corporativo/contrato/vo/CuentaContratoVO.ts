@@ -3,70 +3,70 @@ import { CuentaContratoIdVO } from "./CuentaContratoIdVO";
 	export class CuentaContratoVO 
 	{
 		public  idVO:CuentaContratoIdVO;
-	    public  usuUsario:String;
-	    public  cueFaltaStr :String;
-    	public  perNomCorto:String;
-	    public  banNombre:String;
-		public  cueEstatus:String;
-		public  cueConsecLegado:Number;
-        public  cueCuentaBan : String;
-        public  cueEsDefault : Boolean;
-	    public  cueSucursal:String;
-	    public  cueTipoLiquida:Number;
-	    public  cueMontoMax : Number
-	    public  cueFvigenciaStr : String;
-	    public  cuePlaza:String;
-	    public  tmpCveRepet : Number;
-	    public  cueLiqDerivados : Boolean;
-        public  cueDescripcion : String;
+	    public  usuUsario:string;
+	    public  cueFaltaStr :string;
+    	public  perNomCorto:string;
+	    public  banNombre:string;
+		public  cueEstatus:string;
+		public  cueConsecLegado:number;
+        public  cueCuentaBan : string;
+        public  cueEsDefault : boolean;
+	    public  cueSucursal:string;
+	    public  cueTipoLiquida:number;
+	    public  cueMontoMax : number
+	    public  cueFvigenciaStr : string;
+	    public  cuePlaza:string;
+	    public  tmpCveRepet : number;
+	    public  cueLiqDerivados : boolean;
+        public  cueDescripcion : string;
         public  motivoPagoBancaVO : any ; //MotivoPagoBancaVO;
         public  tipoRelacionBancaVO : any ;//TipoRelacionBancaVO;
 
 	    /**
 	     * Clabe de cuenta-banco
 	     */
-	    public  cueClabe:String;
+	    public  cueClabe:string;
 
 	    /**
 	     * Convenio de cuenta-banco
 	     */
-	    public  cueConvenio:String;
+	    public  cueConvenio:string;
 
 	    /**
 	     * Referencia No. 1 de cuenta-banco
 	     */
-	    public  cueReferencia1:String;
+	    public  cueReferencia1:string;
 
 	    /**
 	     * Identificadoer de la divisa
 	     */
-	    public  divId:String;
+	    public  divId:string;
         
         /**
         * Almacena si la repetitiva esta en el portal de Reuter 
         */
-        public  cueHabiliitaPortal : String;
+        public  cueHabiliitaPortal : string;
         /**
         * Bandera que determina si se habilita, deshabilita o se actualiza la repetitiva en el portal
         */
-        public  isHabilitado : Boolean;
+        public  isHabilitado : boolean;
         /**
         * Bandera que inidica si es la primera que vez que se manda a ET 
         */ 
-        public  isFirstEt : Boolean;
+        public  isFirstEt : boolean;
         /**
         * Bandera que inidica si el elemnto ha sido seleccionado
         * */
-        public  isSelected : Boolean;
+        public  isSelected : boolean;
         /**
         * Bandera que inidica si todos los elementos han sido seleccionados
         * */
-        public  isHeader : Boolean;
+        public  isHeader : boolean;
         
 		/** 
 		 Especifica si un elemento debe de estar seleccionado.
 		 */
-		public  conSelected : Boolean = false; 
+		public  conSelected : boolean = false; 
 
 		/**
 	    * Constructor de la clase.

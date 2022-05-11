@@ -1,11 +1,11 @@
 
 	export class TipoTelefonoVO
 	{
-		public  id : Number;
-    	public  descripcion : String;
-    	public  tmpCveSabi : String;
+		public  id : number;
+    	public  descripcion : string;
+    	public  tmpCveSabi : string;
     	//Descripci&oacute;n en ingles del tipo de Tel&eacute;fono
-    	public  tteDescIng : String; //tte_desc_ing
+    	public  tteDescIng : string; //tte_desc_ing
     	/**
 	    * Constructor de la clase.
 	    */

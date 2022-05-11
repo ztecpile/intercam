@@ -3,12 +3,12 @@ import { ValorRiesgoVO } from "./ValorRiesgoVO";
 
 	export class ContratoRiesgoVO
 	{
-		public  criId:Number;
+		public  criId:number;
 		public  tipoRiesgoVO:TipoRiesgoVO = new TipoRiesgoVO();
-		public  conId:Number;
-		public  criValor:Number;
-		public  criEstatus:String;
-		public  usuUsuario:String;
+		public  conId:number;
+		public  criValor:number;
+		public  criEstatus:string;
+		public  usuUsuario:string;
 		public  criFhalta:Date;
 		
 		

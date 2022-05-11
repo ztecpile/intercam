@@ -1,0 +1,5 @@
+<div [hidden]="!active" class="tab-content" [style.display]="active ? 'block' : 'none'">
+    <ng-content></ng-content>
+    <ng-container *ngIf="template" [ngTemplateOutlet]="template" [ngTemplateOutletContext]="{ objeto: dataContext }">
+    </ng-container>
+</div>

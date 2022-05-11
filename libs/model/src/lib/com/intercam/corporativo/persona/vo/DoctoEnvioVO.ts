@@ -4,7 +4,7 @@ import { TipoEnvioEdoVO } from "./TipoEnvioEdoVO";
 
 	export class DoctoEnvioVO
 	{
-		public  denId : Number;
+		public  denId : number;
 		public  contratoPersonaVO : ContratoPersonaVO;
 	   	public  tipoEnvioEdoVO : TipoEnvioEdoVO;
 	    public  direccionVO : DireccionVO;

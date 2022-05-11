@@ -3,7 +3,7 @@ import { TarjetaVO } from "./TarjetaVO";
 	export class PerTarjetaIdVO
 	{   
 	    public  tarIdVO : TarjetaVO;
-	    public  perId : Number;
+	    public  perId : number;
 	    
 	    /**
 	    * Constructor de la clase.
@@ -13,7 +13,7 @@ import { TarjetaVO } from "./TarjetaVO";
 			this.tarIdVO = new TarjetaVO;
 		}
 		
-		public  toString() : String{
+		public  toString() : string{
 		    return this.perId.toString() + ',' + this.tarIdVO.toString();
 	    }
 	     

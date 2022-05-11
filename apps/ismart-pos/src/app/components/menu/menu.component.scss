@@ -13,6 +13,16 @@
     vertical-align: middle;
 }
 
+.logo-button-menu-disable {
+    /* background-image: url(../../../assets/img/appicon_white.png); */
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 32px;
+    background-position: center;
+    vertical-align: middle;
+}
+
 ::ng-deep .btn-menu {
     cursor: pointer;
     position: relative;
@@ -45,4 +55,80 @@
 .btnBusca {
     width: 35px;
     height: 35px;
+}
+
+.btnTab {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #ffffff;
+    background-repeat: no-repeat;
+    background-position: right 16px;
+    background-size: 10%;
+    margin-right: 30px;
+}
+
+.btnTab:hover {
+    color: #658d3d;
+}
+
+.btnTab.active {
+    color: #658d3d;
+    background-repeat: no-repeat;
+    background-position: right 16px;
+    background-size: 10%;
+}
+
+.btn-tab-close {
+    padding: 9px 9px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px ridge #a4ca7e;
+    color: #658d3d;
+    /* margin: 4px 2px; */
+    position: fixed;
+    display: inline-block;
+    /* background-color: inherit; */
+    /* margin-top: 5px; */
+    /* margin-left: 10px; */
+    background-image: url(../../../assets/img/buttons/cerrarDes.png);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: center;
+}
+
+.btn-tab-close:hover {
+    padding: 8px 8px;
+    text-decoration: none;
+    display: inline-block;
+    /* margin: 4px 2px; */
+    cursor: pointer;
+    border: 2px solid #658d3d;
+    color: #658d3d;
+    /* margin-top: 5px; */
+    /* margin-left: 10px; */
+    background-image: url(../../../assets/img/buttons/cerrar.png);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: center;
+}
+
+.btn-tab-close:disabled {
+    cursor: not-allowed !important;
+    padding: 8px 8px;
+    display: inline-block;
+    /* margin: 4px 2px; */
+    cursor: pointer;
+    border: 2px solid #658d3d;
+    color: #658d3d;
+    /* margin-top: 5px; */
+    /* margin-left: 10px; */
+    background-image: url(../../../assets/img/buttons/cerrarDes.png);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: center;
 }

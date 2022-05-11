@@ -6,23 +6,20 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./sub-menu.component.scss']
 })
 export class SubMenuComponent implements OnInit {
-
-  ismart: string = '/ismart-pos';
-  urlImgIndicadores: string = '../assets/menu/indicadores.png';
-  urlImgBuscar: string = '../assets/menu/buscar.png';
-  urlImglogout: string = '../assets/menu/salir.png';
   
   @Output() buscar_cliente = new EventEmitter<any>();
   @Output() mostrar_precios = new EventEmitter<any>();
   @Output() logout = new EventEmitter<any>();
   
+  visibleBtnSubMenu : boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
-    
-  }
-
-  getUrlButton(prcIcono:string){
-    return prcIcono = prcIcono.replace(/[..]*/i,this.ismart);
+    if(sessionStorage.getItem('url')){
+      this.visibleBtnSubMenu = false;
+    } else {
+      this.visibleBtnSubMenu = true;
+    }
   }
 }

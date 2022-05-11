@@ -21,6 +21,7 @@
          public paiLonBanco : number;
          public paiOperaTransfer : boolean;
          public paiLonCuenta : number;
+         public ibanField: any = new Array();
         //  public ibanField: IbanFieldVO [];
 
 		 /**

@@ -9,22 +9,24 @@ import { RespuestasContratoVO } from "./RespuestasContratoVO";
 		public  cpeConsecLegado : number;
 		public  rpcFechareg : Date;
 		public  rpcFechacaptura : Date;
-		public  respuestasContratoVO :Set <RespuestasContratoVO>;
-
+		public 	rpcFecharegStr : string;
+		public 	rpcFechacapturaStr : string;
+		public  respuestasContratoVO : RespuestasContratoVO[];
+		
 		/**
 	     * Tipo de persona asociada al cuestionario
 	     */
-	    public  tpeClave : String;
+	    public  tpeClave : string;
 
 	    /**
 	     * Tipo de contrato asociado al cuestionario
 	     */
-	    public  tconId :Number;
+	    public  tconId :number;
 
 	    /**
 	     * Perfil del la persona asociada al cuetionario
 	     */
-	    public  perfId : Number;
+	    public  perfId : number;
 
 
      	/**

@@ -12,100 +12,100 @@ import { TransaccionFimpeVO } from "./TransaccionFimpeVO";
         /**
          * Tipo que especifica las nacionalidades.
          */
-        // private static const TIPO_NACIONALIDAD : String = 'N';
+        // private static const TIPO_NACIONALIDAD : string = 'N';
 
         // /**
         //  * Tipo que especifica las nacionalidades renunciadas.
         //  */
-        // private static const TIPO_RENUNCIADA : String = 'R';
+        // private static const TIPO_RENUNCIADA : string = 'R';
 
         // /**
         //  * Tipo que especifica las nacionalidades perdidas.
         //  */
-        // private static const TIPO_PERDIDA : String = 'P';
+        // private static const TIPO_PERDIDA : string = 'P';
         
         /**
          * Documento
          */
         public  documentoVO : any; //DocumentoVO;
-        public  pefPaterno : String;
-        public  pefMaterno : String;
-        public  pefNombre : String;
-        public  pefCurp : String;
-        public  pefSexo : Boolean;
-        public  pefRegimenCony : String;
-        public  pefFNacimientoStr : String;
-        public  pefNoFm3 : String;
-        public  pefNoIdentifica : String;
-        public  pefFexpIdentStr : String;
-        public  pefEnMexico : Boolean;
-        public  pefNss : String;
-        public  pefEmail : String;
-        public  pefNumDepEco : Number;
+        public  pefPaterno : string;
+        public  pefMaterno : string;
+        public  pefNombre : string;
+        public  pefCurp : string;
+        public  pefSexo : boolean;
+        public  pefRegimenCony : string;
+        public  pefFNacimientoStr : string;
+        public  pefNoFm3 : string;
+        public  pefNoIdentifica : string;
+        public  pefFexpIdentStr : string;
+        public  pefEnMexico : boolean;
+        public  pefNss : string;
+        public  pefEmail : string;
+        public  pefNumDepEco : number;
         public  estadoCivilVO : EstadoCivilVO;
-        public  pefEmail2 : String;
+        public  pefEmail2 : string;
         public  pepsVO : any []; //ArrayCollection;
-		public  pefIdCtaHabiente : String;
+		public  pefIdCtaHabiente : string;
 		
        
         public  contratos : PopUpInformativoABCPersonaFisicaVO [];
-        public  empleado : Boolean;
+        public  empleado : boolean;
         public  profesionVO : ProfesionVO;
-        public  pefSufijo : String;
-        public  pefTrabajo: String; // pef_trabajo;
-        public  pefAntiguedadAnio: Number; //pef_antiguedad_Anio
-        public  pefAntiguedadMes:Number;
-        public  pefPuesto:String;
-        public  pefDocMigratorio:String;
-        public  pefFecEvMigratorioStr:String;
-        public  pefCalInmigrado:String;
+        public  pefSufijo : string;
+        public  pefTrabajo: string; // pef_trabajo;
+        public  pefAntiguedadAnio: number; //pef_antiguedad_Anio
+        public  pefAntiguedadMes:number;
+        public  pefPuesto:string;
+        public  pefDocMigratorio:string;
+        public  pefFecEvMigratorioStr:string;
+        public  pefCalInmigrado:string;
         public  cargoFuncionarioVO : CargoFuncionarioVO;
 		/**
 		 * Identificacion del folio del certificado que indica que la persona esta jubilada
 		 */
-		public  pefCertJubilacion : String;
+		public  pefCertJubilacion : string;
 		/**
 		 * Fecha de presentacion del certificado de jubilacion
 		 */
-		public  pefFcertJubilacionStr : String;
+		public  pefFcertJubilacionStr : string;
 		/**
 		 * Numero de documento de jubilacion
 		 */
-		public  pefDocJubilacion : String;
+		public  pefDocJubilacion : string;
 		/**
 		 * Tipo de documento de jubilacion
 		 */
-		public  pefTdocJubilacion : String;
+		public  pefTdocJubilacion : string;
 	
 		/**
 		 * Numero identificador de 13 digitos OCR
 		 */
-		public  pefCic : String;
+		public  pefCic : string;
         
         /**
          * Numero identificador de 13 digitos CIC
          */
-        public  pefCicV2: String;
+        public  pefCicV2: string;
         		
 		/**
 		 * Anio registro del usuario ante el INE
 		 */
-		public  pefAnioRegistro : Number;
+		public  pefAnioRegistro : number;
 		
 		/**
 		 * Anio registro del usuario ante el INE
 		 */
-		public  pefAnioEmision : Number;
+		public  pefAnioEmision : number;
 		
 		/**
 		 * Anio y numero de emision 
 		 */
-		public  pefNumEmision : Number;
+		public  pefNumEmision : number;
 		
 		/**
 		 * Clave de elector
 		 */
-		public  pefClaveElector : String;
+		public  pefClaveElector : string;
 		
         /**
          * Calificacion migratoria de una PF extranjera.
@@ -122,13 +122,13 @@ import { TransaccionFimpeVO } from "./TransaccionFimpeVO";
          *  Codigo estado de Biometricos
          *  Esta propiedad solo se ocupa en Flex
          * */
-        public  trfCodigo: String;     
+        public  trfCodigo: string;     
         
         /**
         * Mensajes que envia FIMPE para biometricos
         * Esta propiedad solo se ocupa en flex
         * */
-        public  trfMensaje: String;
+        public  trfMensaje: string;
         
         public  transaccionFimpeVO : TransaccionFimpeVO;
         perNacionalidad: boolean;

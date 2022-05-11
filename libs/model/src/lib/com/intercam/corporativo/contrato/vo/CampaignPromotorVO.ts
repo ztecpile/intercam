@@ -1,12 +1,12 @@
 
 	export class CampaignPromotorVO
 	{
-		public  usuUsuario: String;
-		public  nombrePromotor: String;
-		public  totalClientes: Number;
-		public  totalContratos: Number;
-		public  totalCompletos: Number;
-		public  totalIncompletos: Number;
+		public  usuUsuario: string;
+		public  nombrePromotor: string;
+		public  totalClientes: number;
+		public  totalContratos: number;
+		public  totalCompletos: number;
+		public  totalIncompletos: number;
 		
 		public constructor()
 		{

@@ -2,7 +2,7 @@ import { TelefonoVO } from "../../persona/vo/TelefonoVO";
 
 	export class TarTelefonoIdVO
 	{   
-	    public  tarId : Number;
+	    public  tarId : number;
 	    
 	    public  telIdVO : TelefonoVO;
 	    
@@ -15,7 +15,7 @@ import { TelefonoVO } from "../../persona/vo/TelefonoVO";
 			this.telIdVO = new TelefonoVO();
 		}
 		
-		public  toString():String{
+		public  toString():string{
 			
 			return this.tarId.toString() + ',' + this.telIdVO.toString();
 		}

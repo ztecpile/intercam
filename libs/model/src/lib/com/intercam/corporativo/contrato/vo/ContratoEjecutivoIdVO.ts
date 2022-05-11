@@ -24,7 +24,7 @@ import { ContratoVO } from "./ContratoVO";
         /**
          * Obtiene la representación String del objeto.
          */  
-        public  toString() : String {
+        public  toString() : string {
             return this.perIdVO.perId + ',' + this.conIdVO.conId;
         }
     }

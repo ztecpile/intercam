@@ -1,0 +1,37 @@
+export class PagoTarjetaCreditoVO{
+    
+    constructor(
+		public numCliente?: string,
+		public cuenta?: string,
+		public nombreTit?: string,
+		public banco?: string,
+		public numTarjeta?: string,
+		public descripcion?: string,
+		public tipoMonto?: string,
+		public monto?: number, 
+		public status?: string,
+		public usuarioCaptura?: string,
+		public tipoPago?: string,
+		public tipoFechaPago?: string,
+		public fechaPrimerEnvio?: Date,
+		public frecuencia?: string,
+		public tipoDuracion?: string,
+		public duracionFecha?: Date,
+		public numPagos?: number,
+		public diaAnteriorEmail?: number,
+		public tipo?: string,
+		public descTipo?: string,
+		public usuarioAdmon?: string,
+		public consecutivo?: string,
+		public firma?: string,
+		public ip?: string,
+		public detalle?: string,
+		public tipoTarjeta?: string,
+		public comVen?: string,
+		public referencia?: string,
+		public tipoMoneda?: string,
+		public folio?: string,
+		public usuario?: number,
+		public conId?: number
+    ){}
+}

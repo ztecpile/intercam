@@ -6,39 +6,39 @@ import { ContratoPerfilInversionVO } from "./ContratoPerfilInversionVO";
 		/**
 		 * id
 		 */
-		public  tsiId:Number;
+		public  tsiId:number;
 		
 		/**
 		 * Descripcion
 		 */
-		public  tsiDesc:String;
+		public  tsiDesc:string;
 		
 		/**
 		 * Estatus
 		 */
-		public  tsiEstatus:String;
+		public  tsiEstatus:string;
 		
 		/**
 		 * valida si es requerido el cuestionario de perfilamiento
 		 */
-		public  tsiCuesperf:Boolean;
+		public  tsiCuesperf:boolean;
 		
 		/**
 		 * V Se muestra el Tipo de Servicio cuando el cliente es discrecional
 		 * F Se muestra el Tipo de Servicio cuando el cliente no es discrecional
 		 * A Se muestra el Tipo de Servicio, es indiferente si el cliente es discrecional  
 		 */
-		public  tsiDiscrecional:String;
+		public  tsiDiscrecional:string;
 		
 		/**
 		 * id tipo cliente inversion
 		 */
-		public  tciId:Number;
+		public  tciId:number;
 		
 		/**
 		 * id tipo servicio de inversion en lumina 
 		 */
-		public  tsiLuminaId:Number;
+		public  tsiLuminaId:number;
 
 
 		/**

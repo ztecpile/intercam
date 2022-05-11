@@ -3,8 +3,8 @@ import { ContratoVO } from "./ContratoVO";
 	export class ContratoPersonaIdVO
 	{
 		public  contratoVO : ContratoVO;
-	    public  perId : Number;
-	    public  cpeConsecLegado : Number;
+	    public  perId : number;
+	    public  cpeConsecLegado : number;
 	    /**
 	    * Constructor de la clase.
 	    */
@@ -13,11 +13,5 @@ import { ContratoVO } from "./ContratoVO";
 	    	this.contratoVO = new ContratoVO();
 	    	this.cpeConsecLegado = 0;
 	    }
-	    /**
-	     * Obtiene la representación String del objeto.
-	     */  
-	    public  toString() : String
-	    {
-	    	return this.perId + ',' + this.contratoVO.toString()+','+this.cpeConsecLegado;
-	    }
+
 	}

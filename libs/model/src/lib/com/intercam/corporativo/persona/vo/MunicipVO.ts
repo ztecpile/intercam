@@ -3,15 +3,15 @@ import { EntidadVO } from "./EntidadVO";
 
 	export class MunicipVO
 	{
-		public  munClave : Number;
+		public  munClave : number;
 		public  entidadVO : EntidadVO;
-     	public  munDescrip : String;
-     	public  munCnbvClave : String;
-		public  tmpCiudadIdSiif : Number;
-		public  tmpEdoIdSiif : Number;
+     	public  munDescrip : string;
+     	public  munCnbvClave : string;
+		public  tmpCiudadIdSiif : number;
+		public  tmpEdoIdSiif : number;
 		public  coloniasVO : Set <ColoniaVO>;
-		public  munLocNumero : String;
-		public  munEsFronterizo : Boolean;
+		public  munLocNumero : string;
+		public  munEsFronterizo : boolean;
 
 		/**
 	    * Constructor de la clase.

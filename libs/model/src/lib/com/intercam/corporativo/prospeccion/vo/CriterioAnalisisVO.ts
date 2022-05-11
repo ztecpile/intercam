@@ -2,32 +2,32 @@ export class CriterioAnalisisVO{
     /**
      * Id del criterio analisis
      * */
-    public craId : Number;
+    public craId : number;
     
     /**
      * Id relacion con el craId del criterio analisis
      * */
-    public craIdId : Number;
+    public craIdId : number;
     
     /**
      * nombre del criterio analisis
      * */
-    public craNombre :  String;
+    public craNombre :  string;
     
     /**
      * descripcion corta del criterio analisis
      * */
-    public craDescripcionCorta : String;
+    public craDescripcionCorta : string;
     
     /**
      * descripcion del criterio analisis
      * */
-    public craDescripcion : String;
+    public craDescripcion : string;
     
     /**
      * estatus del criterio analisis
      * */
-    public craEstatus : Boolean;
+    public craEstatus : boolean;
     
     /**
      * fecha del criterio analisis

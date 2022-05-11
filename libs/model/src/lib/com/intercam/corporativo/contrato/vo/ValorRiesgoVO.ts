@@ -1,7 +1,7 @@
 
 	export class ValorRiesgoVO
 	{
-		public  vriDescripcion:String;
+		public  vriDescripcion:string;
 		public constructor()
 		{
 		}

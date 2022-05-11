@@ -10,6 +10,7 @@ export class PersonasListasVO{
 		public nombreCliente? : string,
 		public perId? : number,
 		public rfc? : string,
-		public fechaNac? : string
+		public fechaNac? : string,
+		public plnClvLista? : string
     ){}
 }

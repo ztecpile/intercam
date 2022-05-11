@@ -1,16 +1,18 @@
 import { DatePipe } from '@angular/common';
 
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ClavePromLegadoVO, Const, ContratoPersonaVO, DireccionVO, EjecutivoAsistenteVO, EstatusNegociosProspectoVO, NegociosClienteProspectoVO, PerEmpleadoVO, Permisos, PersonaContratoVO, PersonaFisicaVO, PersonaVO, PipelineVO, ProspeccionPersonaVO, ProspeccionUtil, ProspectoExcepcionesVO, TipoContratoVO, UsuarioVO } from '@intercam/model';
+import { ClavePromLegadoVO, Const, ContratoPersonaVO, DireccionVO, EjecutivoAsistenteVO, EstatusNegociosProspectoVO, 
+  NegociosClienteProspectoVO, PerEmpleadoVO, Permisos, PersonaContratoVO, PersonaFisicaVO, PersonaVO, PipelineVO, 
+  ProspeccionPersonaVO, ProspeccionUtil, ProspectoExcepcionesVO, TipoContratoVO, UsuarioUtil, UsuarioVO } from '@intercam/model';
 import { CatContratoService } from 'libs/contrato/src/lib/services/cat-contrato.service';
 import  {AfterContentInit } from '@angular/core';
 import { PersonaService } from 'libs/contrato/src/lib/services/persona.service';
 import { ProspeccionService } from 'libs/contrato/src/lib/services/prospeccion.service';
-import Swal from 'sweetalert2';
 import { ReferenciacionService } from 'libs/contrato/src/lib/services/referenciacion.service';
 import { UsuarioService } from 'libs/contrato/src/lib/services/usuario.service';
 import { ContratoService } from 'libs/contrato/src/lib/services/contrato.service';
-import { Prospeccion } from 'libs/contrato/src/lib/util/Prospeccion';
+import { ProspeccionEvent } from 'libs/contrato/src/lib/util/ProspeccionEvent';
+import { AlertasService } from 'libs/shred-components/src/lib/alertas/alertas.service';
 
 
 @Component({
@@ -93,7 +95,7 @@ export class ResultadoProspectoComponent implements AfterContentInit {
 
   listTiposContratoGral : any = [];
 
-  _validaPoderes : Boolean = false;
+  _validaPoderes : boolean = false;
 
   personaDuenioCte:PersonaVO;
 
@@ -103,7 +105,7 @@ export class ResultadoProspectoComponent implements AfterContentInit {
 
   apeMaterno : string;
 
-  paisClave: Number;
+  paisClave: number;
 
   @Output() MOSTRAR_ALTA_PROSPECTO = new EventEmitter<any>();
   
@@ -115,7 +117,8 @@ export class ResultadoProspectoComponent implements AfterContentInit {
     private _catalogoService: CatContratoService,
     private _referenciacionService: ReferenciacionService,
     private _usuarioService: UsuarioService,
-    private _contratoService: ContratoService) { }
+    private _contratoService: ContratoService,
+    private alertasService:AlertasService) { }
 
     ngAfterContentInit(): void {
     this.getUsuario();
@@ -133,11 +136,10 @@ export class ResultadoProspectoComponent implements AfterContentInit {
       this.perNom = this.resultBusquedaEvent['perNom'] as string;
       this.apePaterno = this.resultBusquedaEvent['apePaterno'] as string;
       this.apeMaterno = this.resultBusquedaEvent['apeMaterno'] as string;
-      this.paisClave = this.resultBusquedaEvent['paisClave'] as Number;
+      this.paisClave = this.resultBusquedaEvent['paisClave'] as number;
 
-      // this.obtenerLimiteProspecto((this.ejeAsisteSelected != undefined && this.ejeAsisteSelected > 0) ? this.ejeAsisteSelected: this.usuarioSesion.idPersona);
-      this.obtenerLimiteProspecto((this.ejeAsisteSelected != undefined && this.ejeAsisteSelected > 0) ? this.ejeAsisteSelected: 133);
-
+      this.obtenerLimiteProspecto((this.ejeAsisteSelected != undefined && this.ejeAsisteSelected > 0) ? this.ejeAsisteSelected: this.usuarioSesion.idPersona);
+      
     }
     this.cargarCatalogos();
   }
@@ -232,7 +234,7 @@ export class ResultadoProspectoComponent implements AfterContentInit {
   enviarSolicitudReferenciacionResultHandler(negocio:NegociosClienteProspectoVO, negocios : NegociosClienteProspectoVO[],  estNegProspVO:EstatusNegociosProspectoVO){
     //muestra un mensaje donde Excedio el Número de Prospectos para dar un Alta, si sobrepaso los Limites de Prospectos
     if(!this._valLimiteProspectos){
-      this.mostrarMensaje(Const.valLimiteProspectos,'warning');
+      this.alertasService.mostrarMensaje(Const.valLimiteProspectos,'warning','');
       return;
     }
     //Almacenamos la informacion del tipo Negocio para el cual se quiere prospectar
@@ -270,12 +272,12 @@ export class ResultadoProspectoComponent implements AfterContentInit {
       this._informacionProspecto = estNegProspVO;
       //Valida que la persona no se encuentre en analisis de reporte de 24 hrs
       if(this._informacionProspecto.perAnalisis) {
-        this.mostrarMensaje(Const.solicitudPersonaBloqueada,'warning');
+        this.alertasService.mostrarMensaje(Const.solicitudPersonaBloqueada,'warning','');
         return;
       }
       //ME20-01-036 Validacon para Fideicomiso
       if(negocio.tconId == Const.TCON_FIDEICOMISO 
-        && (this.promotorProspecta && ProspeccionUtil.isInGrupoPermisos(Permisos.GPO_FIDUCIARIO,this.promotorProspecta.gruposVO))) {
+        && (this.promotorProspecta && UsuarioUtil.hasGrupo([Permisos.GPO_FIDUCIARIO],this.promotorProspecta))) {
           //Buscamos quien es el Dueño del cliente seleccionado.
           this.obtenerDuenoClienteSeleccionado(negocio.perId);
           return;
@@ -284,7 +286,7 @@ export class ResultadoProspectoComponent implements AfterContentInit {
         //Buscamos quien es el Dueño del cliente seleccionado.
         this.tipoNegocioSeleccionado(negocio)
       } else {
-      this.mostrarMensaje(Const.esProspecto,'warning');
+      this.alertasService.mostrarMensaje(Const.esProspecto,'warning','');
       }
     }
   }
@@ -307,7 +309,7 @@ export class ResultadoProspectoComponent implements AfterContentInit {
 
   validaProspectoContrato(negocios : NegociosClienteProspectoVO[]): boolean{
     this.existeContrato = false;
-    var prospecto:Boolean;
+    var prospecto:boolean;
     negocios.forEach(
       negocio => {
         if(negocio.esProspecto){
@@ -322,7 +324,7 @@ export class ResultadoProspectoComponent implements AfterContentInit {
 
   tipoNegocioSeleccionado(negocio:NegociosClienteProspectoVO){
     //Validamos si el usuario tiene privilegios para prospectar cualquier tipo de contrato
-    if (this.promotorProspecta != undefined && ProspeccionUtil.isInGrupoPermisos(Permisos.GPO_TIPOCONTRATOALL,this.promotorProspecta.gruposVO)) {
+    if (this.promotorProspecta != undefined && UsuarioUtil.hasGrupo([Permisos.GPO_TIPOCONTRATOALL],this.promotorProspecta)) {
       //Buscamos quien es el Dueño del cliente seleccionado.
       this.obtenerDuenoClienteSeleccionado(negocio.perId);
     }
@@ -345,7 +347,7 @@ export class ResultadoProspectoComponent implements AfterContentInit {
           //Almacena el contrato de DIVISAS BANCO ESTATUS 6
           var contratoPersonaReasinacion : ContratoPersonaVO;
           //Determinara si el cliente tiene por lo menos un contrato de Divisas BANCO
-          var tieneContratoDB : Boolean = false;     
+          var tieneContratoDB : boolean = false;     
           then.forEach(item=>{
             //Validamos que sea una contrato de Divisas Banco
             if (item.tipContrato == Const.TIPO_CONTRATO_DIVISAS_BANCO) {                              
@@ -366,7 +368,7 @@ export class ResultadoProspectoComponent implements AfterContentInit {
             //Buscamos quien es el Dueño del cliente seleccionado.
             this.obtenerDuenoClienteSeleccionado(negocio.perId);
           } else {
-            this.mostrarMensaje(Const.noContratoDB,'warning');
+            this.alertasService.mostrarMensaje(Const.noContratoDB,'warning','');
           }
         },
         error => console.error(error)
@@ -377,16 +379,16 @@ export class ResultadoProspectoComponent implements AfterContentInit {
       this.obtenerDuenoClienteSeleccionado(negocio.perId);
     } else {
       //Se muestra mensaje de negocio no valido
-      this.mostrarMensaje(Const.contratoNoPermitido,'warning');
+      this.alertasService.mostrarMensaje(Const.contratoNoPermitido,'warning','');
     }
   }
 
 
  validaPermiteContratacion(tipoContSeleccionado : Number):Boolean{
-  var permiteContratacion : Boolean = false;
+  var permiteContratacion : boolean = false;
   var auxlistTiposContratoGral : any[] = [];
 
-  var campo:String;
+  var campo:string;
 
   //Filtramos los negocios permitidos en el catalogo i00tipo_contrato.tpe_clave
   auxlistTiposContratoGral = Object.assign([], this.arrNegocio);
@@ -414,7 +416,7 @@ export class ResultadoProspectoComponent implements AfterContentInit {
       if (then && (then as String) == "A") {
         this.obtenerDuenoClienteSeleccionado(contratoCuentaEnlace.perId);
     } else {
-        this.mostrarMensaje("LA CUENTA ENLACE [" + contratoCuentaEnlace.cveLegada + "] NO ESTA ACTIVA", 'warning');
+        this.alertasService.mostrarMensaje("LA CUENTA ENLACE [" + contratoCuentaEnlace.cveLegada + "] NO ESTA ACTIVA", 'warning','');
     }
     }, error => console.error(error)
     );
@@ -435,7 +437,7 @@ export class ResultadoProspectoComponent implements AfterContentInit {
     if(personaVO != null) {
         this._duenoCliente = personaVO;
         this.personaDuenioCliente(this._duenoCliente.ejecutivoId);
-        var tieneContratos : Boolean = false;
+        var tieneContratos : boolean = false;
         //Se recorren los negocio en los cuales tiene puede tener contrato el cliente)
         this._informacionProspecto.negocios.forEach(contrato =>{
           if (contrato.conId && contrato.conId > 0){
@@ -505,7 +507,7 @@ export class ResultadoProspectoComponent implements AfterContentInit {
      );
   }
 
-  obtenerRelacionProspectoExcepciones(perId:Number){
+  obtenerRelacionProspectoExcepciones(perId:number){
     this._prospeccionService.findObtenerExcepcionesProspectoByPerId(perId).subscribe(
       then => {
         this.obtenerRelacionProspectoExcepcionesResult(then)
@@ -520,7 +522,7 @@ export class ResultadoProspectoComponent implements AfterContentInit {
     }
     this.lstProspectoExcepcionesVO = value;
     //Almacena el nombre de la excepcion
-    var strExcepcionNoProspectra : String = "NO APLICA";
+    var strExcepcionNoProspectra : string = "NO APLICA";
     //Verificamos si existen excepciones para algun tipo contrato para este prospecto
     if (this.lstProspectoExcepcionesVO.length > 0){
       this.lstProspectoExcepcionesVO.forEach(item =>{
@@ -542,7 +544,7 @@ export class ResultadoProspectoComponent implements AfterContentInit {
     //Validamos si la variable de excepcion es diferente a NO APLICA
     if(strExcepcionNoProspectra != "NO APLICA"){
       //Se muestra la excepcion y se pregunta si desa continuar
-      this.mostrarMensaje('¿Desea Continuar ','warning'); //concatena strExcepcionNoProspectra
+      this.alertasService.mostrarMensaje('¿Desea Continuar ','warning',''); //concatena strExcepcionNoProspectra
     } else {
       this.validaPermisoEspecialistas()
     }
@@ -563,7 +565,7 @@ export class ResultadoProspectoComponent implements AfterContentInit {
          this.getValidaCertificacionPoder(this.promotorProspecta);
          return;
       } else {
-        this.mostrarMensaje(' PROMOTOR NO TIENE CLAVE LEGADA', 'warning');
+        this.alertasService.mostrarMensaje(' PROMOTOR NO TIENE CLAVE LEGADA', 'warning','');
       }
     }
   }
@@ -597,7 +599,7 @@ export class ResultadoProspectoComponent implements AfterContentInit {
                 this.getValidaCertificacionPoder(this.promotorProspecta);
                 return;
             } else {
-              this.mostrarMensaje(Const.promotorNoClaveLegada, 'warning');
+              this.alertasService.mostrarMensaje(Const.promotorNoClaveLegada, 'warning','');
             }
         }
     } else {
@@ -618,7 +620,7 @@ export class ResultadoProspectoComponent implements AfterContentInit {
       return;
     }
 
-    var msj : String;
+    var msj : string;
     var perIdEjecutivo : number;
     if(this.usuarioSesion.listaEjecutivosSoyAsistente.length > 0 && this.ejeAsisteSelected != this.usuarioSesion.idPersona){
       perIdEjecutivo = this.ejeAsisteSelected;
@@ -628,7 +630,7 @@ export class ResultadoProspectoComponent implements AfterContentInit {
 
     msj =  ProspeccionUtil.validaPermisosCertificadoApoderado(this.lstCertAsignacionVO,this._tipoContratoVO.tconId, this._validaPoderes);
     if(msj != "") {
-      this.mostrarMensaje(msj.toString(),'warning');
+      this.alertasService.mostrarMensaje(msj,'warning','');
       return;
     }
 
@@ -642,7 +644,7 @@ export class ResultadoProspectoComponent implements AfterContentInit {
             {
               //Se valida si hay resulttado
               if (then == null || (then as []).length == 0) {
-                this.mostrarMensaje(Const.noDueno,'warning');
+                this.alertasService.mostrarMensaje(Const.noDueno,'warning','');
                 return;
             }
             //Se procese a prospectar para le mismo negocio
@@ -658,8 +660,8 @@ export class ResultadoProspectoComponent implements AfterContentInit {
 
   generaContratoMismoNegocio(){
     if ((this._tipoContratoVO.tconId == Const.TIPO_CONTRATO_DIVISAS_BANCO && this.cveTipoPersona == Const.PERSONA_MORAL) && 
-       (this.promotorProspecta && !ProspeccionUtil.isInGrupoPermisos(Permisos.GPO_TIPOCONTRATOALL,this.promotorProspecta.gruposVO))) {
-          this.mostrarMensaje('NO PUEDE SER PROSPECTADO PARA DIVISAS BANCO','warning')
+       (this.promotorProspecta && !UsuarioUtil.hasGrupo([Permisos.GPO_TIPOCONTRATOALL],this.promotorProspecta))) {
+          this.alertasService.mostrarMensaje('NO PUEDE SER PROSPECTADO PARA DIVISAS BANCO','warning','')
           return;
     }
     this.mostrarMensajeConfirmacion('Desea aperturar un nuevo contrato','info');
@@ -667,7 +669,7 @@ export class ResultadoProspectoComponent implements AfterContentInit {
 
   prospectarCliente(){
     //Enviamos al alta de prospecto
-    let altaProspectoEvent = new Prospeccion;
+    let altaProspectoEvent = new ProspeccionEvent;
     altaProspectoEvent.tipoContratoVO = this._tipoContratoVO; //Tipo de contrato
     altaProspectoEvent.modalidad = 'cteSinContrato';//Modalidad para el Alta de Cliente
     altaProspectoEvent.prospectoSeleccionado = this._prospectoSeleccionado;//Si la persona seleccionada ha sido prospecto, enviamos la informacion
@@ -701,68 +703,33 @@ export class ResultadoProspectoComponent implements AfterContentInit {
     this.MOSTRAR_ALTA_PROSPECTO.emit(altaProspectoEvent);
   }
 
-  mostrarMensaje(mensaje: string, tipoMensaje: any){
-    const _this= this;
-    Swal.fire({
-      confirmButtonText: 'Aceptar', 
-      buttonsStyling: false,
-      customClass: {
-        title: 'sweet-title',
-        confirmButton: 'button button1',
-        popup:'sweet-modal',
-      },
-      icon: tipoMensaje,
-      showConfirmButton: true,
-      text: mensaje,
-      background: ' linear-gradient (rgba(0,0,0,.6), rgba(0,0,0,.6)'
-    });
-  }
-  mostrarMensajeConfirmacion(mensaje: string, tipoMensaje: any){
-    const _this= this;
-    Swal.fire({
-      denyButtonText:'No',
-      confirmButtonText: 'Si', 
-      buttonsStyling: false,
-      customClass: {
-        title: 'sweet-title',
-        confirmButton: 'button button1',
-        denyButton: 'button button1',
-        popup:'sweet-modal',
-      },
-      icon: tipoMensaje,
-      showCloseButton: true,
-      showDenyButton: true,
-      showConfirmButton: true,
-      text: mensaje,
-      background: ' linear-gradient (rgba(0,0,0,.6), rgba(0,0,0,.6)'
-  
-    }).then(function(result){
-      if(result.isConfirmed){
-          var contrato:PersonaContratoVO = new PersonaContratoVO();
+  async mostrarMensajeConfirmacion(mensaje: string, tipoMensaje: any){
+    const { value: aceptar } = await this.alertasService.confirmAlert(mensaje, tipoMensaje, '','Si','No');
+    if(aceptar){
+      var contrato:PersonaContratoVO = new PersonaContratoVO();
+      
+      contrato.perId = this._duenoCliente.perId;
+      contrato.nombreCorto = this._duenoCliente.perNomCorto;
+      contrato.tipoContratoId = this._tipoContratoVO.tconId;
+      contrato.descripcionTipocontrato = this._tipoContratoVO.tconDescripcion;
+      var args:any = [];
           
-          contrato.perId = _this._duenoCliente.perId.valueOf();
-          contrato.nombreCorto = _this._duenoCliente.perNomCorto.toString() ;
-          contrato.tipoContratoId = _this._tipoContratoVO.tconId;
-          contrato.descripcionTipocontrato = _this._tipoContratoVO.tconDescripcion;
-          var args:any = [];
+      let evento=  new ProspeccionEvent;
+      args.push(this._duenoCliente.perId);
+      contrato.prpId = 0; 
+      contrato.contratoId = 0;
           
-          let evento=  new Prospeccion;
-          args.push(_this._duenoCliente.perId);
-          contrato.prpId = 0; 
-          contrato.contratoId = 0;
-          
-          if(_this.usuarioSesion.listaEjecutivosSoyAsistente.length > 0 && _this.ejeAsisteSelected > 0){
-              contrato.ejecutivoId =  _this.ejeAsisteSelected;
-          }
-          else{
-              contrato.ejecutivoId = _this.usuarioSesion.idPersona;
-          }
-          
-          evento.contratoPersonaVO = contrato;
-          evento.argumentos = args;
-          //_this.MOSTRAR_ALTA_PROSPECTO.emit(evento);
+      if(this.usuarioSesion.listaEjecutivosSoyAsistente.length > 0 && this.ejeAsisteSelected > 0){
+              contrato.ejecutivoId =  this.ejeAsisteSelected;
       }
-    });
+      else{
+          contrato.ejecutivoId = this.usuarioSesion.idPersona;
+      }
+          
+      evento.contratoPersonaVO = contrato;
+      evento.argumentos = args;
+      //_this.MOSTRAR_ALTA_PROSPECTO.emit(evento);
+    }
   }
 
   regresarBusquedaProspecto(){

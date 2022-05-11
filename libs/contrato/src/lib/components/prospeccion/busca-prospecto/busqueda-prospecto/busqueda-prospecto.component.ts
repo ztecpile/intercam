@@ -8,8 +8,8 @@ import { DireccionService } from 'libs/contrato/src/lib/services/direccion.servi
 import { PersonaService } from 'libs/contrato/src/lib/services/persona.service';
 import { ProspeccionService } from 'libs/contrato/src/lib/services/prospeccion.service';
 import { UsuarioService } from 'libs/contrato/src/lib/services/usuario.service';
-import { Prospeccion } from 'libs/contrato/src/lib/util/Prospeccion';
-import Swal from 'sweetalert2';
+import { ProspeccionEvent } from 'libs/contrato/src/lib/util/ProspeccionEvent';
+import { AlertasService } from 'libs/shred-components/src/lib/alertas/alertas.service';
 
 @Component({
   selector: 'intercam-busqueda-prospecto',
@@ -38,27 +38,28 @@ export class BusquedaProspectoComponent implements AfterContentInit {
   showFM3: boolean;
   showPF :boolean = true;
   showPM : boolean;
-  lblNombRzSocial: string = 'Nombre(s)';
+  lblNombRzSocial: string = 'Nombre';
+  lblPais: string = 'País de Nacimiento';
 
   /**
   * Mantiene una referencia de la fecha actual.
   */
-  fechaActual:Date = new Date('01/01/' + new Date().getFullYear() );
+  fechaActual:Date = new Date();
 
   currentDate : Date = new Date();
   tpeSelected: string= "F";
   tnaSelected: number = NaN;
   fechaNacimiento : Date;
   
-  rfcMod:Boolean = false;
-  processRep:Boolean = false;
+  rfcMod:boolean = false;
+  processRep:boolean = false;
 
   /**
   *Almacenara el rfc generado con homoclave
   */
-  rfcHomoClave : String;
+  rfcHomoClave : string;
 
-  _rfc:String;
+  _rfc:string;
 
   promotorProspecta:UsuarioVO;
 
@@ -75,7 +76,8 @@ export class BusquedaProspectoComponent implements AfterContentInit {
     private _commonsService : CorporativoCommonsService,
     private _prospeccionService: ProspeccionService,
     private _catalogoService : CatContratoService,
-    private _datePipe: DatePipe) { }
+    private _datePipe: DatePipe,
+    private alertasService:AlertasService) { }
   
     ngAfterContentInit(): void {
     this.getUsuario();
@@ -146,7 +148,7 @@ export class BusquedaProspectoComponent implements AfterContentInit {
       //se agregan todos los ejecutivos que asiste el promotor
       this.listaEjeAsistente = [].concat(this.usuarioSesion.listaEjecutivosSoyAsistente);
       this.listaEjeAsistente.unshift(ejecutivoSession);
-      this.form.get('ejecutivosAsiste').setValue(ejecutivoSession.ejecutivoId);
+      this.getCtr('ejecutivosAsiste').setValue(ejecutivoSession.ejecutivoId);
     }
   }
   
@@ -156,9 +158,10 @@ export class BusquedaProspectoComponent implements AfterContentInit {
     this.resetValores();
     if (tpeClave && tpeClave === 'F') {
       this.lblNombRzSocial = 'Nombre(s)';
-      this.form.get("apePaterno").setValidators([Validators.required]);
-      this.form.get("apePaterno").updateValueAndValidity();
-      this.form.get('RFC').enable();
+      this.lblPais = 'País de Nacimiento';
+      this.getCtr('apePaterno').setValidators([Validators.required]);
+      this.getCtr('apePaterno').updateValueAndValidity();
+      this.getCtr('RFC').enable();
       this.showPM = false;
       this.showPF = true;
      if(this.tnaSelected == 3){
@@ -170,19 +173,20 @@ export class BusquedaProspectoComponent implements AfterContentInit {
      }
     } else {
       //cuando la persona es moral
-      this.form.get("apePaterno").clearValidators();
-      this.form.get("apePaterno").updateValueAndValidity();
-      this.lblNombRzSocial= 'Denominación o Razón Social';
+      this.getCtr('apePaterno').clearValidators();
+      this.getCtr('apePaterno').updateValueAndValidity();
+      this.lblNombRzSocial= 'Nombre de la Empresa / Nombre Comercial / Razón Social';
+      this.lblPais = 'País';
       this.showPF = false;
       this.showPM = true;
       this.showNSS = false;
       this.showFM3 = false;
       if(this.tnaSelected.toString() != '' && this.tnaSelected !=1){
-        this.form.get('RFC').disable();
-        this.form.get('ID').enable();
+        this.getCtr('RFC').disable();
+        this.getCtr('ID').enable();
       }else {
-        this.form.get('RFC').enable();
-        this.form.get('ID').disable();
+        this.getCtr('RFC').enable();
+        this.getCtr('ID').disable();
       }
       this.showID = true;
      }
@@ -202,30 +206,52 @@ export class BusquedaProspectoComponent implements AfterContentInit {
     );
   }
 
+  getNacionalidad(item : PaisVO):string{
+    var nacionalidad : string;
+    if(item != null && item.paiDescripcion != null){
+        nacionalidad = item.paiDescripcion;
+    } else if (item !=null){
+        nacionalidad = item.paiNacionalidad;
+    }
+    return nacionalidad;
+  }
+
   changeNacionalidad(paiClave: number) {
     if (this.tpeSelected === 'F'){
-      this.form.get('RFC').enable();
-      if (paiClave === 1) { // si es nacional
+      this.getCtr('RFC').enable();
+      this.getCtr('NSS').enable();
+      this.getCtr('FM3').enable();
+      this.getCtr('FM3').setValue('');
+      this.getCtr('NSS').setValue('');
+      if (paiClave == 1) { // si es nacional
         this.showNSS = false;
         this.showFM3 = false;
-      } else if(paiClave ==3 && this.tpeSelected == 'F') {
+      } else if(paiClave == 3) {
+        this.getCtr('RFC').clearValidators();
+        this.getCtr('RFC').updateValueAndValidity();
         this.showNSS= true;
         this.showFM3=false;
-      } else if (paiClave ===2 || paiClave > 3){
+      } else if (paiClave == 2 || paiClave > 3){
+        this.getCtr('RFC').clearValidators();
+        this.getCtr('RFC').updateValueAndValidity();
        this.showFM3= true;
        this.showNSS = false;
       }
       
-    }else if(this.tpeSelected == 'M' ) { 
+    } else if(this.tpeSelected == 'M' ) {
+      this.getCtr('RFC').clearValidators();
+      this.getCtr('RFC').updateValueAndValidity();
+      this.getCtr('RFC').setValue('');
+      this.getCtr('ID').setValue('');
       this.showNSS = false;
       this.showFM3 = false;
       this.showID = true;
       if(!isNaN(this.tnaSelected) && paiClave !==1){
-        this.form.get('ID').enable();
-        this.form.get('RFC').disable();
+        this.getCtr('ID').enable();
+        this.getCtr('RFC').disable();
       }else if(!isNaN(this.tnaSelected) && paiClave ==1){
-        this.form.get('RFC').enable();
-        this.form.get('ID').disable();
+        this.getCtr('RFC').enable();
+        this.getCtr('ID').disable();
       }
     }
     this.tnaSelected = paiClave;
@@ -233,66 +259,59 @@ export class BusquedaProspectoComponent implements AfterContentInit {
 
   fechaSeleccionada(dateRecibe: Date): void {
     this.fechaNacimiento = dateRecibe;
+    this.getCtr('RFC').setValue('');
   }
 
   textInputRFC(input:string){ //funcion para el rfc/ y que haga la busqueda por este medio, activa validadores si encuentra un caracter en el input
-    if(input != null && input.length > 0){ //si el input tiene un caracter
-      this.form.get("RFC").setValidators([this.validatorLogRFC(this.tpeSelected)]);// toma ese valor y lo manda este validador
-      this.form.get("RFC").updateValueAndValidity(); //toma ese valor, lo actualiza y valida
-      this.form.get('NSS').disable();// si hay algo en el RFC deshabilita el NSS
-      this.form.get('FM3').disable(); // si hay algo en rfc deshabilita el FM3
+    if(input != null && input.length > 0){
+      this.getCtr('RFC').setValidators([this.validatorLogRFC(this.tpeSelected)]);
+      //this.getCtr('RFC').updateValueAndValidity();
+      if(this.tpeSelected == 'F'){
+        this.getCtr('NSS').setValue('');
+        this.getCtr('FM3').setValue('');
+      }
     } else {
-        if(input == null || input.length == 0 ){// aqui si no detecta nada le borra el validador que se agrego
-          this.form.get("RFC").clearValidators(); //quita los validadores que se agregaron
-          this.form.get('NSS').enable(); // habilira el NSS
-          this.form.get('FM3').enable(); // habilita el FM3 
-          this.form.get('RFC').disable(); // deshabilita el RFC
-        }
-        this.form.get('RFC').enable();
+      if(input == null || input.length == 0 ){
+        this.getCtr('RFC').clearValidators();
+        this.getCtr('RFC').updateValueAndValidity();
+      }
     }
   }
 
   textNSS(inputNSS:string){
-    if(inputNSS != null && inputNSS.length > 0){ // si el NSS tiene un caractter
-      this.form.get('NSS').setValidators([this.validatorSSN(this.tpeSelected)]);
-      this.form.get('NSS').updateValueAndValidity();
-      this.form.get("RFC").disable(); // entoces deshabilita el RFC
-      this.form.get('NSS').enable(); // habilita el nss 
-    
-    } else {
-      if(inputNSS == null || inputNSS.length > 0){ // si el NSS no tiene caracteres
-        this.form.get('NSS').updateValueAndValidity();
-        this.form.get('NSS').clearValidators();
-        this.form.get('RFC').enable();// habilita el RFC
-        this.form.get('NSS').enable();
-  
-      } this.form.get('NSS').enable();
-      this.form.get('RFC').enable();
-    }     
+    if(inputNSS != null && inputNSS.length > 0){
+      if(this.getCtr('RFC').value.length > 0){
+        this.getCtr('RFC').setValue('');
+        this.getCtr('RFC').clearValidators();
+        this.getCtr('RFC').updateValueAndValidity();
+      }
+      if(this.getCtr('FM3').value.length > 0){
+        this.getCtr('FM3').setValue('');
+      }
+    }
   }
 
   textFM3(inputFM3: string){
-    if(inputFM3 != null && inputFM3.length > 0){ // si el  FM3 tiene un caracter
-      this.form.get('RFC').disable(); // deshabilita el RFC
-      this.form.get('FM3').enable(); // habilita el FM3
-    }else {
-      if( inputFM3 == null || inputFM3.length > 0 ){
-        this.form.get('FM3').updateValueAndValidity();
-        this.form.get('FM3').clearValidators();
-  
-      } this.form.get('FM3').enable();
-        this.form.get('RFC').enable();
+    if(inputFM3 != null && inputFM3.length > 0){
+      if(this.getCtr('RFC').value.length > 0){
+        this.getCtr('RFC').setValue('');
+        this.getCtr('RFC').clearValidators();
+        this.getCtr('RFC').updateValueAndValidity();
+      }
+      if(this.getCtr('NSS').value.length > 0){
+        this.getCtr('NSS').setValue('');
+      }
     }
   }
   
   validatorLogRFC(tpeClave: string): ValidatorFn {
     return (control: AbstractControl): { [key: string]: boolean} | null => {
       let value = control.value;
-      if (value != null && value.length > 0 && value.length < 10 && tpeClave == Const.PERSONA_FISICA) {
+      if (value != null && value.length > 0 && value.length < 10) {
         return { 'longMinRFC': true };
-      } else if (value != null && value.length > 0 && value.length < 12 && tpeClave == Const.PERSONA_MORAL) {
-        return { 'longMinRFCPM': true };
-      } else if(value != null && value.length > 0 && value.length > 13){
+      } else if (value != null && value.length > 0 && value.length > 12 && tpeClave == Const.PERSONA_MORAL) {
+        return { 'longMaxRFCPM': true };
+      } else if(value != null && value.length > 0 && value.length > 13 && tpeClave == Const.PERSONA_FISICA){
         return { 'longMaxRFC': true };
       }
       return null;
@@ -331,18 +350,18 @@ export class BusquedaProspectoComponent implements AfterContentInit {
       return;
     }
 
-    let valido:Boolean = true;
+    let valido:boolean = true;
     if(this.tpeSelected == Const.PERSONA_MORAL) {
       //Validamos si escribieron algo en el rfc
-      if (this.form.get('RFC').value.length > 0){
+      if (this.getCtr('RFC').value.length > 0){
           //forzamos el validador sea requerido para que pueda validar la expresion regular 
-          this.form.get("RFC").setValidators([this.validatorRFC(this.tpeSelected)]);
-          this.form.get("RFC").updateValueAndValidity();
-          valido = ProspeccionUtil.validaRFC(this.form.get('RFC').value, this.tpeSelected);
+          this.getCtr('RFC').setValidators([this.validatorRFC(this.tpeSelected)]);
+          this.getCtr('RFC').updateValueAndValidity();
+          valido = ProspeccionUtil.validaRFC(this.getCtr('RFC').value, this.tpeSelected);
           this.rfcMod = true;
       }else {
           if((this.rfcMod)) {
-            this.form.get("RFC").clearValidators();
+            this.getCtr('RFC').clearValidators();
             this.rfcMod = false;
           }
       }
@@ -356,34 +375,34 @@ export class BusquedaProspectoComponent implements AfterContentInit {
         fechaNacimiento = this._datePipe.transform(this.fechaNacimiento, 'dd/MM/yyyy');
       }
       if (fechaNacimiento.toString().trim() == ""){
-          if(this.form.get('RFC').value.trim() != ""){
-            this.form.get("RFC").setValidators([this.validatorRFC(this.tpeSelected)]);
-            this.form.get("RFC").updateValueAndValidity();
-            valido = ProspeccionUtil.validaRFC(this.form.get('RFC').value, this.tpeSelected);
+          if(this.getCtr('RFC').value.trim() != ""){
+            this.getCtr('RFC').setValidators([this.validatorRFC(this.tpeSelected)]);
+            this.getCtr('RFC').updateValueAndValidity();
+            valido = ProspeccionUtil.validaRFC(this.getCtr('RFC').value, this.tpeSelected);
           } else {
-            this.form.get("RFC").clearValidators();
+            this.getCtr('RFC').clearValidators();
           }
       } else {
-        this.form.get("RFC").clearValidators();
+        this.getCtr('RFC').clearValidators();
         //validaFormatoFecha
       }
       
       if(valido && this.fechaValidaRFC(this.tpeSelected)) {
-          if(fechaNacimiento.toString().trim() != "" && this.form.get('RFC').value.trim() != "" && this.tpeSelected == Const.PERSONA_FISICA){
+          if(fechaNacimiento.toString().trim() != "" && this.getCtr('RFC').value.trim() != "" && this.tpeSelected == Const.PERSONA_FISICA){
               if (ProspeccionUtil.validarFechaMenorHoy(this.fechaNacimiento, this.fechaActual) && this.validarCongruenciaFechas()){
                   this.generarRFC();
               }
-          }else if(this.form.get('RFC').value.trim() == "" || this.tpeSelected != Const.PERSONA_FISICA){
-              this.form.get("RFC").clearValidators();
+          }else if(this.getCtr('RFC').value.trim() == "" || this.tpeSelected != Const.PERSONA_FISICA){
+              this.getCtr('RFC').clearValidators();
               if (fechaNacimiento.toString().trim() != "") {
                   if (!ProspeccionUtil.validarFechaMenorHoy(this.fechaNacimiento, this.fechaActual)) {
                       return;
                   }
                   if(this.tpeSelected == Const.PERSONA_FISICA){
                       this.generarRFC();   
-                  }else if (this.tnaSelected == Const.PAIS_CLAVE_US && this.form.get('NSS').value.trim() == ""){
+                  }else if (this.tnaSelected == Const.PAIS_CLAVE_US && this.getCtr('NSS').value.trim() == ""){
                       this.generarRFC();
-                  }else if ((this.tnaSelected ===2 || this.tnaSelected > 3) && this.form.get('FM3').value.trim() == ""){
+                  }else if ((this.tnaSelected ===2 || this.tnaSelected > 3) && this.getCtr('FM3').value.trim() == ""){
                       this.generarRFC(); 
                   }else {
                       this.btnBuscarProsp();  
@@ -391,7 +410,7 @@ export class BusquedaProspectoComponent implements AfterContentInit {
               }else {
                   this.btnBuscarProsp();  
               }
-          }else if(fechaNacimiento.toString().trim() == "" && this.form.get('RFC').value.trim() != "") {
+          }else if(fechaNacimiento.toString().trim() == "" && this.getCtr('RFC').value.trim() != "") {
               this.btnBuscarProsp(); 
           }
       }
@@ -400,13 +419,13 @@ export class BusquedaProspectoComponent implements AfterContentInit {
   }
 
   generarRFC() {	
-    if (this.form.get('RFC').value.trim() == "") {
+    if (this.getCtr('RFC').value.trim() == "") {
       const latest_date = this._datePipe.transform(this.fechaNacimiento, 'dd/MM/yyyy');
-      this._personaService.getRFC(this.form.get("perNom").value.trim().toUpperCase(),this.form.get("apePaterno").value.trim().toUpperCase(),
-      this.form.get("apeMaterno").value.trim().toUpperCase(),latest_date).subscribe(
+      this._personaService.getRFC(this.getCtr('perNom').value.trim().toUpperCase(),this.getCtr('apePaterno').value.trim().toUpperCase(),
+      this.getCtr('apeMaterno').value.trim().toUpperCase(),latest_date).subscribe(
         then => {
           this.rfcHomoClave = then.substring(0,10);
-          this.form.get('RFC').setValue(this.rfcHomoClave);
+          this.getCtr('RFC').setValue(this.rfcHomoClave);
           this._rfc = this.rfcHomoClave;
           this.btnBuscarProsp();
         },
@@ -417,10 +436,10 @@ export class BusquedaProspectoComponent implements AfterContentInit {
     }
   }
 
-  validarCongruenciaFechas() : Boolean {
-    var resValidacion : Boolean = true;
+  validarCongruenciaFechas() : boolean {
+    var resValidacion : boolean = true;
     const latest_date = this._datePipe.transform(this.fechaNacimiento, 'yyMMdd');
-     if(this.form.get('RFC').value.substr(4, 6) != latest_date.toString()) {
+     if(this.getCtr('RFC').value.substr(4, 6) != latest_date.toString()) {
         resValidacion = false;
     }
     return resValidacion;
@@ -429,20 +448,20 @@ export class BusquedaProspectoComponent implements AfterContentInit {
   /**
   * Metodo que valida que la fecha del RFC no sea mayor a la fecha actual
   * */
-   fechaValidaRFC(tipoPersona : string):Boolean {
+   fechaValidaRFC(tipoPersona : string):boolean {
     
-    var fechaValida : Boolean = true;
+    var fechaValida : boolean = true;
     var dateField :Date;
     
-    if (this.form.get('RFC').value != "" && this.form.get('RFC').value.length >= 10){
+    if (this.getCtr('RFC').value != "" && this.getCtr('RFC').value.length >= 10){
       if (tipoPersona == Const.PERSONA_FISICA) {
-        dateField = ProspeccionUtil.formatoFechaRFC(Number(this.form.get('RFC').value.substring(8,10)),
-                            Number(this.form.get('RFC').value.substring(6,8)),
-                            Number(this.form.get('RFC').value.substring(4,6)), this.fechaActual);
+        dateField = ProspeccionUtil.formatoFechaRFC(Number(this.getCtr('RFC').value.substring(8,10)),
+                            Number(this.getCtr('RFC').value.substring(6,8)),
+                            Number(this.getCtr('RFC').value.substring(4,6)), this.fechaActual);
       } else if (tipoPersona == Const.PERSONA_MORAL){
-        dateField = ProspeccionUtil.formatoFechaRFC(Number(this.form.get('RFC').value.substring(7,9)),
-                            Number(this.form.get('RFC').value.substring(5,7)),
-                            Number(this.form.get('RFC').value.substring(3,5)),this.fechaActual);
+        dateField = ProspeccionUtil.formatoFechaRFC(Number(this.getCtr('RFC').value.substring(7,9)),
+                            Number(this.getCtr('RFC').value.substring(5,7)),
+                            Number(this.getCtr('RFC').value.substring(3,5)),this.fechaActual);
       }
       if (!dateField){
             fechaValida = false;
@@ -459,42 +478,42 @@ export class BusquedaProspectoComponent implements AfterContentInit {
   
     var paramNomCorto;
   
-    if(this.form.get('RFC').value.trim() != "" || (this.form.get('NSS').value.trim() != "") 
-        || (this.form.get('FM3').value.trim() != "") || (this.form.get('ID').value.trim() != "")){
-            if(this.form.get('RFC').value.trim() != "") {
-                paramsBusqueda['RFC'] = this.form.get('RFC').value.trim() + "%";
+    if(this.getCtr('RFC').value.trim() != "" || (this.getCtr('NSS').value.trim() != "") 
+        || (this.getCtr('FM3').value.trim() != "") || (this.getCtr('ID').value.trim() != "")){
+            if(this.getCtr('RFC').value.trim() != "") {
+                paramsBusqueda['RFC'] = this.getCtr('RFC').value.trim().toUpperCase() + "%";
             }
-            if(this.form.get('NSS').value.trim() != "") {
-                paramsBusqueda['NSS'] = this.form.get('NSS').value.trim() + "%";
+            if(this.getCtr('NSS').value.trim() != "") {
+                paramsBusqueda['NSS'] = this.getCtr('NSS').value.trim().toUpperCase() + "%";
             }  
-            if(this.form.get('FM3').value.trim() != "") {
-                paramsBusqueda['FM3'] = this.form.get('FM3').value.trim() + "%";
+            if(this.getCtr('FM3').value.trim() != "") {
+                paramsBusqueda['FM3'] = this.getCtr('FM3').value.trim().toUpperCase() + "%";
             }
-            if(this.form.get('ID').value.trim() != "") {
-                paramsBusqueda['FM0'] = this.form.get('ID').value.trim();
+            if(this.getCtr('ID').value.trim() != "") {
+                paramsBusqueda['FM0'] = this.getCtr('ID').value.trim().toUpperCase();
             }
     } else {
-        if(this.form.get('cboPais').value != "") {
-            paramsBusqueda['paisClave'] = this.form.get('cboPais').value;
+        if(this.getCtr('cboPais').value != "") {
+            paramsBusqueda['paisClave'] = this.getCtr('cboPais').value;
         }
         if(paramsBusqueda['TipoPersona'] == Const.PERSONA_FISICA) {
-          if(this.form.get('NSS').value.trim() != "") {
-            paramsBusqueda['NSS'] = this.form.get('NSS').value.trim() + "%";
+          if(this.getCtr('NSS').value.trim() != "") {
+            paramsBusqueda['NSS'] = this.getCtr('NSS').value.trim().toUpperCase() + "%";
           }  
-          if(this.form.get('FM3').value.trim() != "") {
-            paramsBusqueda['FM3'] = this.form.get('FM3').value.trim() + "%";
+          if(this.getCtr('FM3').value.trim() != "") {
+            paramsBusqueda['FM3'] = this.getCtr('FM3').value.trim().toUpperCase() + "%";
           }
-          paramNomCorto=  "*"+ this.form.get("perNom").value.toUpperCase() + "*" + this.form.get("apePaterno").value.toUpperCase() + "*";
-          if(this.form.get("apePaterno").value != '' && this.form.get("apePaterno").value.length > 3){
-            paramNomCorto += this.form.get("apeMaterno").value.toUpperCase() + "*";
+          paramNomCorto=  "*"+ this.getCtr('perNom').value.toUpperCase() + "*" + this.getCtr('apePaterno').value.toUpperCase() + "*";
+          if(this.getCtr('apePaterno').value != '' && this.getCtr('apePaterno').value.length > 3){
+            paramNomCorto += this.getCtr('apeMaterno').value.toUpperCase() + "*";
           }
           paramsBusqueda['nomCorto'] = paramNomCorto; 
   
         } else if(paramsBusqueda['TipoPersona'] == Const.PERSONA_MORAL) {
-          if(this.form.get('ID').value.trim() != "") {
-            paramsBusqueda['FM0'] = this.form.get('ID').value.trim();
+          if(this.getCtr('ID').value.trim() != "") {
+            paramsBusqueda['FM0'] = this.getCtr('ID').value.trim().toUpperCase();
           }
-          paramsBusqueda['nomCorto'] = "*" + this.form.get("perNom").value.toUpperCase() + "*";
+          paramsBusqueda['nomCorto'] = "*" + this.getCtr('perNom').value.toUpperCase() + "*";
         }
     }      
     this._personaService.getEstatusNegocioPersonaProspecto(paramsBusqueda,this.MAXIMO_NUM_CTES).subscribe(
@@ -505,16 +524,16 @@ export class BusquedaProspectoComponent implements AfterContentInit {
           resultBusqueda['resultado'] = then;
           if(this.ejeAsisteSelected != undefined && this.ejeAsisteSelected > 0){
             resultBusqueda['ejeAsisteSelected'] = this.ejeAsisteSelected;
-          } else if(this.form.get('ejecutivosAsiste').value != ''){
-            resultBusqueda['ejeAsisteSelected'] = this.form.get('ejecutivosAsiste').value; 
+          } else if(this.getCtr('ejecutivosAsiste').value != ''){
+            resultBusqueda['ejeAsisteSelected'] = this.getCtr('ejecutivosAsiste').value; 
           }
           if(this.promotorProspecta != undefined){
             resultBusqueda['promotorProspecta']= this.promotorProspecta;
           }
           resultBusqueda['cveTipoPersona'] = this.tpeSelected;
-          resultBusqueda['perNom'] = this.form.get("perNom").value.toUpperCase();
-          resultBusqueda['apePaterno'] = this.form.get("apePaterno").value.toUpperCase();
-          resultBusqueda['apeMaterno'] = this.form.get("apeMaterno").value.toUpperCase();
+          resultBusqueda['perNom'] = this.getCtr('perNom').value.toUpperCase();
+          resultBusqueda['apePaterno'] = this.getCtr('apePaterno').value.toUpperCase();
+          resultBusqueda['apeMaterno'] = this.getCtr('apeMaterno').value.toUpperCase();
           resultBusqueda['paisClave'] = this.tnaSelected;
   
           this.MOSTRAR_RESULTADO_BUSQUEDA.emit(resultBusqueda);
@@ -537,7 +556,7 @@ export class BusquedaProspectoComponent implements AfterContentInit {
         this._valLimiteProspectos = then;
         if(parametro){
           if(!this._valLimiteProspectos){
-            this.mostrarMensaje('Excediste el Número de Prospectos','warning');
+            this.alertasService.mostrarMensaje('Excediste el Número de Prospectos','warning','');
             return;
            } else{
             this.mostrarMensajeNoExistenCoincidencias(Const.noExisteProspecto,'warning');
@@ -548,30 +567,11 @@ export class BusquedaProspectoComponent implements AfterContentInit {
     );
   }
 
-  mostrarMensajeNoExistenCoincidencias(mensaje: string, tipoMensaje: any){
-    const _this= this;
-    Swal.fire({
-      denyButtonText:'No',
-      confirmButtonText: 'Si', 
-      buttonsStyling: false,
-      customClass: {
-        title: 'sweet-title',
-        confirmButton: 'button button1',
-        denyButton: 'button button1',
-        popup:'sweet-modal',
-      },
-      icon: tipoMensaje,
-      showCloseButton: true,
-      showDenyButton: true,
-      showConfirmButton: true,
-      text: mensaje,
-      background: ' linear-gradient (rgba(0,0,0,.6), rgba(0,0,0,.6)'
-  
-    }).then(function(result){
-      if(result.isConfirmed){
-        _this.mostrarAltaProspectoHandler();
-      }
-    });
+  async mostrarMensajeNoExistenCoincidencias(mensaje: string, tipoMensaje: any){
+    const { value: aceptar } = await this.alertasService.confirmAlert(mensaje, tipoMensaje, '','Si','No');
+    if(aceptar){
+      this.mostrarAltaProspectoHandler();
+    }
   }
 
   //llenado de los objetos para la alta del prospecto 
@@ -582,20 +582,20 @@ export class BusquedaProspectoComponent implements AfterContentInit {
      //tipo Persona  
      persona.tipoPersonaVO = ProspeccionUtil.obtenerTipoPersona(this.tpeSelected, this.arrTipoPer);
      
-     var nombreCompleto :String = this.form.get('perNom').value;
-     if(this.form.get('apePaterno').value !== ''){
-       nombreCompleto = nombreCompleto + " " +  this.form.get('apePaterno').value;
+     var nombreCompleto :string = this.getCtr('perNom').value.toUpperCase();
+     if(this.getCtr('apePaterno').value !== ''){
+       nombreCompleto = nombreCompleto + " " +  this.getCtr('apePaterno').value.toUpperCase();
      }
-     if(this.form.get('apeMaterno').value !== ''){
-       nombreCompleto = nombreCompleto + " " + this.form.get('apeMaterno').value;
+     if(this.getCtr('apeMaterno').value !== ''){
+       nombreCompleto = nombreCompleto + " " + this.getCtr('apeMaterno').value.toUpperCase();
      }
    
      // 03/11/2013 se implementa el envío de persona fisica esto para solucion al bug 3861
      if(this.tpeSelected === Const.PERSONA_FISICA){
         personaFisica = new PersonaFisicaVO;
-        personaFisica.pefNombre = this.form.get('perNom').value;
-        personaFisica.pefPaterno = this.form.get('apePaterno').value;
-        personaFisica.pefMaterno = this.form.get('apeMaterno').value;
+        personaFisica.pefNombre = this.getCtr('perNom').value.toUpperCase();
+        personaFisica.pefPaterno = this.getCtr('apePaterno').value.toUpperCase();
+        personaFisica.pefMaterno = this.getCtr('apeMaterno').value.toUpperCase();
    
         //gjesus Para guardar la fecha de nacimiento 
         const latest_date = this._datePipe.transform(this.fechaNacimiento, 'yyMMdd');
@@ -604,9 +604,9 @@ export class BusquedaProspectoComponent implements AfterContentInit {
         }
         //guarda nacionalidad seleecionada
         if(this.tnaSelected === Const.PAIS_CLAVE_US){
-           personaFisica.pefNss= this.form.get('NSS').value;
-        } else if (this.tnaSelected === 2 && this.tnaSelected > 3){
-           personaFisica.pefNoFm3 = this.form.get('FM3').value;
+           personaFisica.pefNss= this.getCtr('NSS').value.toUpperCase();
+        } else if (this.tnaSelected === 2 || this.tnaSelected > 3){
+           personaFisica.pefNoFm3 = this.getCtr('FM3').value.toUpperCase();
         }
      } else {
         if (this.tnaSelected !== null){
@@ -617,8 +617,8 @@ export class BusquedaProspectoComponent implements AfterContentInit {
      //nombreCorto
      persona.perNomCorto =nombreCompleto.toUpperCase();
    
-     if(this.form.get('RFC').value !== null){
-        persona.perRfc = this.form.get('RFC').value;
+     if(this.getCtr('RFC').value !== null){
+        persona.perRfc = this.getCtr('RFC').value.toUpperCase();
      }
        
      if(this.tnaSelected !== null){  
@@ -636,7 +636,7 @@ export class BusquedaProspectoComponent implements AfterContentInit {
   }
 
   mostrarAltaProspecto(datosPersona: PersonaVO, personaFisica: PersonaFisicaVO ){
-    let altaProspectoEvent = new Prospeccion;
+    let altaProspectoEvent = new ProspeccionEvent;
     altaProspectoEvent.modalidad = this._modalid;
 
     //OCRUZ 03/11/2013 se implementa el envío de persona fisica esto para solucion al bug 3861
@@ -646,8 +646,8 @@ export class BusquedaProspectoComponent implements AfterContentInit {
       altaProspectoEvent.paisClave = this.tnaSelected;
     }
     
-    if(this.tpeSelected == 'M' && this.form.get('ID').value != '') { //si el tipo de persona es Moral
-      datosPersona.perRfc = this.form.get('ID').value;
+    if(this.tpeSelected == 'M' && this.getCtr('ID').value != '') { //si el tipo de persona es Moral
+      datosPersona.perRfc = this.getCtr('ID').value.toUpperCase();
     }
     
     altaProspectoEvent.persona = datosPersona;
@@ -659,78 +659,57 @@ export class BusquedaProspectoComponent implements AfterContentInit {
     
     this.MOSTRAR_ALTA_PROSPECTO.emit(altaProspectoEvent);
   }
-
-  //mostrar warnings
-  mostrarMensaje(mensaje: string, tipoMensaje: any){
-    const _this= this;
-    Swal.fire({
-      confirmButtonText: 'Aceptar', 
-      buttonsStyling: false,
-      customClass: {
-        title: 'sweet-title',
-        confirmButton: 'button button1',
-        popup:'sweet-modal',
-      },
-      icon: tipoMensaje,
-      showConfirmButton: true,
-      text: mensaje,
-      background: ' linear-gradient (rgba(0,0,0,.6), rgba(0,0,0,.6)'
-    });
-  }
   
   estatusCampos(parametro:boolean){
     if(parametro){
-      this.form.get('RFC').enable();
-      this.form.get('NSS').enable();
-      this.form.get('FM3').enable();
-      this.form.get('RFC').enable();
-      this.form.get('ID').enable();
+      this.getCtr('RFC').enable();
+      this.getCtr('NSS').enable();
+      this.getCtr('FM3').enable();
+      this.getCtr('RFC').enable();
+      this.getCtr('ID').enable();
     } else {
       if(this.tpeSelected === Const.PERSONA_FISICA){
         if(this.tnaSelected == 3) {
-          if(this.form.get('RFC').value.trim() != ''){
-            this.form.get('NSS').disable();
-          } else if(this.form.get('NSS').value.trim() != ''){
-            this.form.get('RFC').disable();
+          if(this.getCtr('RFC').value.trim() != ''){
+            this.getCtr('NSS').disable();
+          } else if(this.getCtr('NSS').value.trim() != ''){
+            this.getCtr('RFC').disable();
           }
         } else if (this.tnaSelected ===2 || this.tnaSelected > 3){
-          if(this.form.get('RFC').value.trim() != ''){
-          this.form.get('FM3').disable();
-          } else if(this.form.get('FM3').value.trim() != ''){
-          this.form.get('RFC').disable();
+          if(this.getCtr('RFC').value.trim() != ''){
+          this.getCtr('FM3').disable();
+          } else if(this.getCtr('FM3').value.trim() != ''){
+          this.getCtr('RFC').disable();
           }
         }
       } else if(this.tpeSelected === Const.PERSONA_MORAL){
-        if(this.form.get('RFC').value.trim() != ''){
-          this.form.get('ID').disable();
-        } else if(this.form.get('ID').value.trim() != ''){
-          this.form.get('RFC').enable();
+        if(this.getCtr('RFC').value.trim() != ''){
+          this.getCtr('ID').disable();
+        } else if(this.getCtr('ID').value.trim() != ''){
+          this.getCtr('RFC').enable();
         } else {
-          this.form.get('ID').disable();
+          this.getCtr('ID').disable();
         }
       }
     }
   }
 
   resetValores(){
-    this.form.get('cboPais').setValue('');
-    this.form.get('perNom').setValue('');
-    this.form.get('apePaterno').setValue('');
-    this.form.get('apeMaterno').setValue('');
-    this.form.get('RFC').setValue('');
-    this.form.get('FM3').setValue('');
-    this.form.get('NSS').setValue('');
-    this.form.get('ID').setValue('');
-    this.form.get('fNac').setValue('');
+    this.getCtr('cboPais').setValue('');
+    this.getCtr('perNom').setValue('');
+    this.getCtr('apePaterno').setValue('');
+    this.getCtr('apeMaterno').setValue('');
+    this.getCtr('RFC').setValue('');
+    this.getCtr('FM3').setValue('');
+    this.getCtr('NSS').setValue('');
+    this.getCtr('ID').setValue('');
+    this.getCtr('fNac').setValue('');
   }
 
   getCtr(name: string, group = ''): FormControl {
-    if (group || group === '') {
-        return this.form.get(name) as FormControl;
-    }
-    else {
-        return this.form.get([group, name]) as FormControl
-    }
+    if (group === '') return this.form.get(name) as FormControl
+    else return this.form.controls[group].get(name) as FormControl
+
   }
 
 }

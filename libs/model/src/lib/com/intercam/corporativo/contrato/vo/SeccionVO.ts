@@ -2,11 +2,11 @@ import { PreguntaVO } from "./PreguntaVO";
 
 	export class SeccionVO
 	{
-		public  secId : Number;
-		public  secDescripcion:String;	
-		public  preguntasVO : Set <PreguntaVO>;
-		public  secOrden : Number;
-        public  enable : Boolean = true;
+		public  secId : number;
+		public  secDescripcion:string;	
+		public  preguntasVO : PreguntaVO[];
+		public  secOrden : number;
+        public  enable : boolean = true;
 						
      	/**
 	    * Constructor de la clase.

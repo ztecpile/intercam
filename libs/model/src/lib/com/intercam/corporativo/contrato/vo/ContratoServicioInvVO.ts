@@ -8,7 +8,7 @@ import { TipoServicioInversionVO } from "./TipoServicioInversionVO";
 		/**
 		 *id contrato 
 		 */
-		public  conId:Number;
+		public  conId:number;
 		
 		public  tipoServicioInversionVO:TipoServicioInversionVO;
 		
@@ -18,16 +18,16 @@ import { TipoServicioInversionVO } from "./TipoServicioInversionVO";
 		
 		public  contratoPerfilInversionVO:ContratoPerfilInversionVO;
 		
-		public  csiDiscrecional:Boolean;
+		public  csiDiscrecional:boolean;
 		
-		public  csiPeridAsesor:Number;
+		public  csiPeridAsesor:number;
 		
-		public  csiAsesorInv:Boolean;
+		public  csiAsesorInv:boolean;
 		
-		public  conCcomisAut:Boolean;
+		public  conCcomisAut:boolean;
 		
-		public  csiIngreso:Boolean;
+		public  csiIngreso:boolean;
 		
-		public  csiInversion:Boolean;
+		public  csiInversion:boolean;
 
 	}

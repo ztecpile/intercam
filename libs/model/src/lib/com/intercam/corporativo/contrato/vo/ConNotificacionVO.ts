@@ -9,31 +9,31 @@ import { ConNotificacionIdVO } from "./ConNotificacionIdVO";
 		/**
 		 * Indica si la configuracion es para una notificacion o reporte
 		 */
-		public  cnoTipo : String;
+		public  cnoTipo : string;
 		/**
 		 * Lenguaje
 		 */
-		public  cnoLenguaje : String;
+		public  cnoLenguaje : string;
 		/**
 		 * Producto o Reporte
 		 */
-		public  cnoProducto : String;
+		public  cnoProducto : string;
 		/**
 		 * Codigo ISO de la moneda
 		 */
-		public  cnoMoneda : String;
+		public  cnoMoneda : string;
 		/**
 		 * Medio Predeterminado
 		 */
-		public  cnoMedio : String;
+		public  cnoMedio : string;
 		/**
 		 * Envio Automatico
 		 */
-		public  cnoEnvioAutomatico : String;
+		public  cnoEnvioAutomatico : string;
 		/**
 		 * Destinatarios de e-mail
 		 */
-		public  cnoDestinatarios : String;
+		public  cnoDestinatarios : string;
 		/**
 		 * Cantidad de Decimales
 		 */
@@ -41,25 +41,25 @@ import { ConNotificacionIdVO } from "./ConNotificacionIdVO";
 		/**
 		 * Nombre del Contacto
 		 */
-		public  cnoContacto : String;
+		public  cnoContacto : string;
 		/**
 		 * Cuenta Numerada
 		 */
-		public  cnoCuentaNumerada : String;
+		public  cnoCuentaNumerada : string;
 		/**
 		 * Status de Activo o Suspendido
 		 * */
-		public  cnoEstatus : String;
+		public  cnoEstatus : string;
 		
 		public  cnoFhalta : Date;
 		
-		public  cnoUsuario : String;
+		public  cnoUsuario : string;
 		
-		public  cnoJustificacion : String;
+		public  cnoJustificacion : string;
 		
-		public  cnoPassword: String;
+		public  cnoPassword: string;
 		
-		public  get consecutivo(): Number{
+		public  get consecutivo(): number{
 			return this.idVO.cnoConsecutivo;
 		}
 		

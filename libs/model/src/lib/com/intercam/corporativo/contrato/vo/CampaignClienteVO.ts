@@ -1,11 +1,11 @@
 
 	export class CampaignClienteVO
 	{
-		public  conid: Number;
-		public  tconId: String;
-		public  nombre: String;
-		public  perIdPromo: Number;
-		public  promotor: String;
+		public  conid: number;
+		public  tconId: string;
+		public  nombre: string;
+		public  perIdPromo: number;
+		public  promotor: string;
 		public  ccmEstatus: String;
 		
 		public constructor()

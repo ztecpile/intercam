@@ -6,15 +6,15 @@ import { TarjetaContratoIdVO } from "./TarjetaContratoIdVO";
 	 
 	             
 	    public  idVO : TarjetaContratoIdVO;
-	    public  usuUsario : String;
-	    public  tacFvigenciaStr : String;
-	    public  tacMontoMax : Number;
-	    public  tacFaltaStr : String;
-	    public  tarTitular : String;
-	    public  tarNumero : String;
-	    public  tacEstatus : String;
+	    public  usuUsario : string;
+	    public  tacFvigenciaStr : string;
+	    public  tacMontoMax : number;
+	    public  tacFaltaStr : string;
+	    public  tarTitular : string;
+	    public  tarNumero : string;
+	    public  tacEstatus : string;
 	    
-	    public  tmpCveRepet: Number;
+	    public  tmpCveRepet: number;
 	    
 	    /**
 	    * Constructor de la clase.

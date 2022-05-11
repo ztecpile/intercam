@@ -1,39 +1,39 @@
 
 	export class EnrolaCandidatoVO
 	{
-		public  trfId : Number;
-		public  sucClave : Number;
-		public  trfCodigo : String;
-		public  perId : Number;
-		public  rfc: String;
-		public  trfIUB : String;
+		public  trfId : number;
+		public  sucClave : number;
+		public  trfCodigo : string;
+		public  perId : number;
+		public  rfc: string;
+		public  trfIUB : string;
 		
-		public  perIdEnrolador : Number;
-		public  trfEstacion : Number;
-		public  trfIUBEnrolador: String;
+		public  perIdEnrolador : number;
+		public  trfEstacion : number;
+		public  trfIUBEnrolador: string;
 		
-		public  codigo : String;
-		public  sitKoala : String;
-		public  sitIne : String;
-		public  checaIne : String;
-		public  perNombre : String;
-		public  perApPaterno : String;
-		public  perApMaterno : String;
-		public  curp : String;
-		public  cic : String;
-		public  anioRegistro : Number;
-		public  anioEmision : Number;
-		public  numEmision : Number;
-		public  claveElector : String;
-		public  sexo : String;
-		public  fNacimiento : String;
-		public  paisClave : Number;
-		public  entClave : Number;
-		public  perEstatus : String;
+		public  codigo : string;
+		public  sitKoala : string;
+		public  sitIne : string;
+		public  checaIne : string;
+		public  perNombre : string;
+		public  perApPaterno : string;
+		public  perApMaterno : string;
+		public  curp : string;
+		public  cic : string;
+		public  anioRegistro : number;
+		public  anioEmision : number;
+		public  numEmision : number;
+		public  claveElector : string;
+		public  sexo : string;
+		public  fNacimiento : string;
+		public  paisClave : number;
+		public  entClave : number;
+		public  perEstatus : string;
 		
-		public  filtroNombre : String;
-		public  filtroRfc : String;
-		public  usuUsuario: String;
+		public  filtroNombre : string;
+		public  filtroRfc : string;
+		public  usuUsuario: string;
 		
 		public  EnrolaCandidatoVO() {
 			this.trfId = 0;

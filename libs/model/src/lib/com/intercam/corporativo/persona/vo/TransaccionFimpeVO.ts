@@ -5,67 +5,67 @@ export class TransaccionFimpeVO {
 	/**
 	 * Id de la transaccion con FIMPE
 	 */
-	public trfId: Number;
+	public trfId: number;
 
 	/**
 	 * Id persona del Operador o Enrolador
 	 */
-	public perIdEnrolador: Number;
+	public perIdEnrolador: number;
 
 	/**
 	 * Id persona del Cliente
 	 */
-	public perId: Number;
+	public perId: number;
 
 	/**
 	 * Prioridad de la transaccion
 	 */
-	public trfPrioridad: Number;
+	public trfPrioridad: number;
 
 	/**
 	 * Estacion donde se realizo la transaccion
 	 */
-	public trfEstacion: Number;
+	public trfEstacion: number;
 
 	/**
 	 * Bandera si viene o no la foto, para el reconocimiento facial
 	 */
-	public trfConFoto: String;
+	public trfConFoto: string;
 
 	/**
 	 * Tipo transaccion fimpe
 	 */
-	public trfTipo: Number;
+	public trfTipo: number;
 
 	/**
 	 * Score transaccion
 	 */
-	public trfScore: Number;
+	public trfScore: number;
 
 	/**
 	 * Resumen de observaciones
 	 */
-	public trfWatchList: String;
+	public trfWatchList: string;
 
 	/**
 	 * Codigo de proceso fimpe
 	 */
-	public trfCodigo: String;
+	public trfCodigo: string;
 
 	/**
 	 * Mensaje del proceso fimpe
 	 */
-	public trfMensaje: String;
+	public trfMensaje: string;
 
 	/**
 	 * Resultado del proceso fimpe
 	 */
-	public trfResultado: String;
+	public trfResultado: string;
 
 	/**
 	 * IUB de la persona enrolada
 	 */
-	public trfIUB: String;
+	public trfIUB: string;
 
 	/**
 	 * List Biometricos
@@ -75,58 +75,58 @@ export class TransaccionFimpeVO {
 	/**
 	 * Estado actual transaccion
 	 */
-	public lastTrfCodigo: String;
+	public lastTrfCodigo: string;
 
 	/**
 	 * Mensaje actual transaccion
 	 */
-	public lastTrfMensaje: String;
+	public lastTrfMensaje: string;
 
 	/**
 	 * ID actual transaccion
 	 */
-	public lastTrfId: Number;
+	public lastTrfId: number;
 
 	/**
 	 * Resumen de observaciones
 	 */
-	public lastWatchList: String;
+	public lastWatchList: string;
 
-	public valEstatusIne: String;
-	public valNombre: String;
-	public valAPaterno: String;
-	public valAMaterno: String;
-	public valMinucia2: String;
-	public valMinucia7: String;
+	public valEstatusIne: string;
+	public valNombre: string;
+	public valAPaterno: string;
+	public valAMaterno: string;
+	public valMinucia2: string;
+	public valMinucia7: string;
 
 	/**
 	 * Coincide nombre INE
 	 */
-	public trfNombre: String;
+	public trfNombre: string;
 
 	/**
 	 * Coincide aPaterno INE
 	 */
-	public trfApePaterno: String;
+	public trfApePaterno: string;
 
 	/**
 	 * Coincide aMaterno INE
 	 */
-	public trfApeMaterno: String;
+	public trfApeMaterno: string;
 
 	/**
 	 * % coincide biometria 2
 	 */
-	public trfSimili2: String;
+	public trfSimili2: string;
 
 	/**
 	 * % coincide biometria 7
 	 */
-	public trfSimili7: String;
+	public trfSimili7: string;
 
-	public trfSitINE: String;
+	public trfSitINE: string;
 
-	public trfChecaINE: String;
+	public trfChecaINE: string;
 
 	public TransaccionFimpeVO() {
 		this.trfId = null;
@@ -144,7 +144,7 @@ export class TransaccionFimpeVO {
 		this.trfResultado = 'F';
 	}
 
-	public toString(): String {
+	public toString(): string {
 		return "[" + this.perId.toString() + "," + this.trfPrioridad.toString() + "]";
 	}
 }

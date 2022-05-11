@@ -5,85 +5,85 @@
         /**
          * Id Usuario
          */
-        public  idPromotor: Number; 
+        public  idPromotor: number; 
         /**
          * nombre de usuario
          */
-        public  nombrePromotor: String;
+        public  nombrePromotor: string;
         /**
          * id Clente
          */
-        public  idCliente: Number;
+        public  idCliente: number;
         
         /**
          * nombre cliente
          */
-        public  nombreCliente: String;
+        public  nombreCliente: string;
         
         /**
          * contrato con el que se calculo el riesgo
          */
-        public  conId: Number;
+        public  conId: number;
         
         /**
          * legada de contrato
          */
-        public  tmpCveLegada: String;
+        public  tmpCveLegada: string;
         
         /**
          * Novel de riesgo actual
          */
-        public  vrIdActual: Number;
+        public  vrIdActual: number;
         
         /**
          * nivel de riesgo anterior:
          * este nivel no toma el riesgo calculado cuando se calcula de forma directa
          */
-        public  vrIdAnterior: Number;
+        public  vrIdAnterior: number;
         
         /**
          * folio del cuestionario cuando ya se capturo el cuestionario
          */
-        public  cuesFolio: Number;
+        public  cuesFolio: number;
         
         /**
          * Numero de clientes bajo riesgo
          */
-        public  noClientes1: Number;
+        public  noClientes1: number;
         /**
          * Numero de clientes medio riesgo
          */
-        public  noClientes2: Number;
+        public  noClientes2: number;
         /**
          * Numero de clientes alto riesgo
          */
-        public  noClientes3: Number;
+        public  noClientes3: number;
         
         /**
         * Clave de sucursal
         **/
-        public  sucClave: Number;
+        public  sucClave: number;
         
         /**
          * Sucursal del Promotor
          */
-        public  sucDescripcion: String;
+        public  sucDescripcion: string;
         
         /**
          * Cuestionario faltante riesgo medio
          */
-        public  cuesFaltante2: Number;
+        public  cuesFaltante2: number;
         
         /**
          * Cuestionario faltante riesgo alto
          */
-        public  cuesFaltante3: Number;
+        public  cuesFaltante3: number;
         
-        // public  get cuesfaltantesMedio(): Number {
+        // public  get cuesfaltantesMedio(): number {
         //     return this.noClientes2- this.cuesFaltante2;
         // }
         
-        // public  get cuesfaltantesAlto(): Number {
+        // public  get cuesfaltantesAlto(): number {
         //     return this.noClientes3- this.cuesFaltante3;
         // }
     

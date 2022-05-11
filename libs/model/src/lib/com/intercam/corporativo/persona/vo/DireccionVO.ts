@@ -3,13 +3,13 @@ import { TipoDireccionVO } from "./TipoDireccionVO";
 import { ZonaMensajeriaVO } from "./ZonaMensajeriaVO";
 
 export class DireccionVO {
-    public dirId: Number;
-    public perId: Number;
-    public sucClave: Number;
-    public tdiId: Number;
-    public paiClave: Number;
+    public dirId: number;
+    public perId: number;
+    public sucClave: number;
+    public tdiId: number;
+    public paiClave: number;
     public dirFaltaStr: string;
-    public envioDocumentos: Boolean;
+    public envioDocumentos: boolean;
     public dirCalle: string;
     public dirColonia: string;
     public dirNumeroInt: string;
@@ -18,26 +18,26 @@ export class DireccionVO {
     public dirEntidadFed: string;
     public dirCodigoPostal: string;
     public dirEntreCalles: string;
-    public dirEstatus: Boolean;
-    public dirTipoInmueble: Boolean;
+    public dirEstatus: boolean;
+    public dirTipoInmueble: boolean;
     public dirAtiende: string;
     public dirHorario: string;
     public usuUsuario: string;
     public munCnbvClave: string;
     public zomClave: string;
-    public dirConsecLegado: Number;
-    public dirEsRepetitiva: Boolean;
+    public dirConsecLegado: number;
+    public dirEsRepetitiva: boolean;
     public paisVO: PaisVO;
     public tipoDireccionVO: TipoDireccionVO;
     public zonaMensajeriaVO: ZonaMensajeriaVO;
     public entIsoCodeBrx: String;
     public colCityCodeBrx: String;
-    public tteId: Number;
+    public tteId: number;
 
     /**
      * iable para indicar si la direccion ya esta asociada al ctto en DB.
      */
-    public dirExistOnDB: Boolean;
+    public dirExistOnDB: boolean;
 
 
     /**

@@ -4,7 +4,7 @@
         /**
          * contrato
          */
-        public  conId : Number;
+        public  conId : number;
         
         /**
          * Estatus
@@ -13,13 +13,13 @@
          * RE - Rechazado
          * SU - Suspendido
          */
-        public  spiEstatus : String;
+        public  spiEstatus : string;
         
         /**
          * Estatus Solicitud
          * Ac - SUS
          */
-        public  spiEstsol : String;
+        public  spiEstsol : string;
         
         /**
          * fecha inicio operacion SPID
@@ -39,17 +39,17 @@
         /**
          * Observaciones
          */
-        public  spiObservacion : String;
+        public  spiObservacion : string;
         
         /**
          * Autoriza
          */
-        public  spiAutoriza : String;
+        public  spiAutoriza : string;
         
         /**
          * Solicita
          */
-        public  spiSolicita : String;
+        public  spiSolicita : string;
         
         /**
          * Fecha actualizacion
@@ -64,12 +64,12 @@
         /**
          * Alto riesgo
          */
-        public  spiAltoRiesgo:String =  "0";
+        public  spiAltoRiesgo:string =  "0";
         
         /**
         * iable unica de flex que indica si se valido el SPID
         **/
-        public  spidValido:Boolean;
+        public  spidValido:boolean;
         
         public constructor()
         {   

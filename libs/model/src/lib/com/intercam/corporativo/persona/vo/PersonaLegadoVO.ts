@@ -1,22 +1,22 @@
 
 	export class PersonaLegadoVO
 	{
-		public  clvCli : String;
-		public  tconDescripcion : String;
-		public  perNombre : String;
-		public  estatusCon : String;
-		public  nomCliente : String;
-		public  fecAltaClienteStr : String;
-		public  rfc : String;
-		public  promotorMigrado : String ;
-		public  cveSuc : String;
+		public  clvCli : string;
+		public  tconDescripcion : string;
+		public  perNombre : string;
+		public  estatusCon : string;
+		public  nomCliente : string;
+		public  fecAltaClienteStr : string;
+		public  rfc : string;
+		public  promotorMigrado : string ;
+		public  cveSuc : string;
 		
 		public  PersonaLegadoVO()
 		{
 			
 		}
 		
-		public  toString():String{
+		public  toString():string{
 			return this.nomCliente+', '+this.fecAltaClienteStr;
 		}
 	}

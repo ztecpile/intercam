@@ -8,7 +8,7 @@ import { PaisVO } from '../../corporativo/centrocostos/vo/PaisVO';
 import { SolicitudTransferVO } from './SolicitudTransferVO';
 
 export interface OperTransferVO {
-
+    otraFaltaStr: any;
     // ***************************************************** //
     //                 P R O P I E D A D E S                 //
     // ***************************************************** //
@@ -38,6 +38,7 @@ export interface OperTransferVO {
     otraDesCountryInter: string;
     otraCiudadInter: string;
     opiId: number;
+    otraFechaOper: string;
     otraFechaOperStr: string;
     otratipoCambioAnt: number;
     otraBeneficioCastigo: string;

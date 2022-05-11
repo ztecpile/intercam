@@ -2,21 +2,21 @@
 	export class ContratoSecuritiesVO 
 	{
 	    
-     public  cseJubilacion:String;
-     public  cseNoPropietarios:Number;
-     public  cseCasados:String;
-     public  cseFejecucionAcuerdoStr:String;
-     public  csePlan:String;
-     public  csePropietarios:String;
-     public  cseBeneficiarios:String;
-     public  sdiId:Number;
-     public  cseOtrasCuentas:String;
-     public  cseExcento:String;
-     public  cseSujetoRetencion:String;
-     public  cseCuentaEfectivo:String;
-     public  cseNotificaEmail:String;
-     public  cseOpcionesEmail:Number;
-     public  cseCorreoPostal:Number;	    
+     public  cseJubilacion:string;
+     public  cseNoPropietarios:number;
+     public  cseCasados:string;
+     public  cseFejecucionAcuerdoStr:string;
+     public  csePlan:string;
+     public  csePropietarios:string;
+     public  cseBeneficiarios:string;
+     public  sdiId:number;
+     public  cseOtrasCuentas:string;
+     public  cseExcento:string;
+     public  cseSujetoRetencion:string;
+     public  cseCuentaEfectivo:string;
+     public  cseNotificaEmail:string;
+     public  cseOpcionesEmail:number;
+     public  cseCorreoPostal:number;	    
 	    
      	/**
 	    * Constructor de la clase.

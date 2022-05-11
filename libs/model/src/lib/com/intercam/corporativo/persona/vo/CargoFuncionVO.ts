@@ -1,12 +1,12 @@
 
 	export class CargoFuncionVO
 	{	
-		public  cfId : Number;
-		public  cfDescripcion: String;
-		public  cfNivel : String;
-		public  cfPoder : String;
-		public  depId: Number;
-		public  cfEstatus : String;
+		public  cfId : number;
+		public  cfDescripcion: string;
+		public  cfNivel : string;
+		public  cfPoder : string;
+		public  depId: number;
+		public  cfEstatus : string;
 		
 		public  CargoFuncionVO()
 		{

@@ -3,7 +3,7 @@ import { TarTelefonoIdVO } from "./TarTelefonoIdVO";
 	export class TarTelefonoVO
 	{   
 	    public  idVO : TarTelefonoIdVO;
-        public  tatFaltaStr : String;
+        public  tatFaltaStr : string;
 	    
 	    
 	    /**
@@ -14,7 +14,7 @@ import { TarTelefonoIdVO } from "./TarTelefonoIdVO";
 			this.idVO = new TarTelefonoIdVO;
 		}
 		
-		public  toString() : String{
+		public  toString() : string{
 		    return this.idVO.toString();
 	    }
 	     

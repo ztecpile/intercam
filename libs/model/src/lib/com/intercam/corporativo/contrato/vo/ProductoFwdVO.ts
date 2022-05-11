@@ -3,15 +3,15 @@ import { ProductoFwdSubyVO } from "./ProductoFwdSubyVO";
 export class ProductoFwdVO
     {
 		
-		public  prdfId:Number;
-		public  prdfDescripcion:String;
+		public  prdfId:number;
+		public  prdfDescripcion:string;
 		public  productoFwdSubiesVO:Set <ProductoFwdSubyVO>;
-        public  prdfDesLarga: String;
+        public  prdfDesLarga: string;
         
         /**
          * Regresa la interpretacion en String del objeto.
          */
-        public  toString() : String
+        public  toString() : string
         {
             return this.prdfId.toString() + " " + this.prdfDescripcion;
         }

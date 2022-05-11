@@ -353,22 +353,6 @@
     background-position: center;
 }
 
-.contrato-button {
-    background-image: url(../img/contrato.png);
-    background-repeat: no-repeat;
-    height: 16px;
-    width: 16px;
-    background-position: center;
-}
-
-.contrato-button-des {
-    background-image: url(../img/contratoDes.png);
-    background-repeat: no-repeat;
-    height: 16px;
-    width: 16px;
-    background-position: center;
-}
-
 .enviar-correo-button {
     background-image: url(../img/buttons/sendEmail.png);
     background-repeat: no-repeat;
@@ -553,6 +537,22 @@
     background-position: center;
 }
 
+.relacion-button-des {
+    background-image: url(../img/buttons/relacionDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.tipos-btn {
+    background-image: url(../img/buttons/tipos.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
 .btn-pagos {
     background-image: url(../img/buttons/pagos.png);
     background-repeat: no-repeat;
@@ -569,11 +569,16 @@
     background-position: center;
 }
 
+.busca-global-button {
+    background-image: url(../img/buttons/buscaGlobal.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
 
-/* *************************************************** Imagenes ****************************************************** */
-
-.enviar-correo-button-des {
-    background-image: url(../img/buttons/sendEmailDes.png);
+.busca-global-button-des {
+    background-image: url(../img/buttons/buscaGlobalDes.png);
     background-repeat: no-repeat;
     height: 16px;
     width: 16px;
@@ -582,14 +587,6 @@
 
 .cerrar-button {
     background-image: url(../img/buttons/cerrar.png);
-    background-repeat: no-repeat;
-    height: 16px;
-    width: 16px;
-    background-position: center;
-}
-
-.deshacer-button {
-    background-image: url(../img/buttons/deshacer.png);
     background-repeat: no-repeat;
     height: 16px;
     width: 16px;
@@ -606,22 +603,6 @@
 
 .lista-tareas-button-des {
     background-image: url(../img/buttons/listarcontreasigDes.png);
-    height: 16px;
-    width: 16px;
-    background-position: center;
-}
-
-.enviar-correo-button-des {
-    background-image: url(../img/buttons/sendEmailDes.png);
-    background-repeat: no-repeat;
-    height: 20px;
-    width: 16px;
-    background-position: center;
-}
-
-.cerrar-button {
-    background-image: url(../img/buttons/cerrar.png);
-    background-repeat: no-repeat;
     height: 16px;
     width: 16px;
     background-position: center;
@@ -650,14 +631,6 @@
     background-position: center;
 }
 
-.cerrar-button {
-    background-image: url(../img/buttons/cerrar.png);
-    background-repeat: no-repeat;
-    height: 16px;
-    width: 16px;
-    background-position: center;
-}
-
 .funcionarios-button-des {
     background-image: url(../img/buttons/funcionariosDes.png);
     background-repeat: no-repeat;
@@ -668,14 +641,6 @@
 
 .observaciones-button-des {
     background-image: url(../img/buttons/observacionesDes.png);
-    height: 16px;
-    width: 16px;
-    background-position: center;
-}
-
-.deshacer-button {
-    background-image: url(../img/buttons/deshacer.png);
-    background-repeat: no-repeat;
     height: 16px;
     width: 16px;
     background-position: center;
@@ -728,14 +693,6 @@
     background-position: center
 }
 
-.deshacer-button-des {
-    background-image: url(../img/buttons/deshacerDes.png);
-    background-repeat: no-repeat;
-    height: 16px;
-    width: 16px;
-    background-position: center;
-}
-
 .doc-gris-button {
     background-image: url(../img/buttons/doc_gris.png);
     background-repeat: no-repeat;
@@ -752,27 +709,8 @@
     background-position: center;
 }
 
-.deshacer-button-des {
-    background-image: url(../img/buttons/deshacerDes.png);
-    background-repeat: no-repeat;
-    height: 16px;
-    width: 16px;
-    background-position: center;
-}
-
-
-/* *************************************************** Imagenes ****************************************************** */
-
 .pdf-button {
     background-image: url(../img/buttons/pdf.png);
-    background-repeat: no-repeat;
-    height: 16px;
-    width: 16px;
-    background-position: center;
-}
-
-.excel-button {
-    background-image: url(../img/buttons/descargarExcel.png);
     background-repeat: no-repeat;
     height: 16px;
     width: 16px;
@@ -900,12 +838,13 @@
 }
 
 .rechazar-button {
-  background-image: url(../img/buttons/rechazar.png);
-  background-repeat: no-repeat;
-  height: 16px;
-  width: 16px;
-  background-position: center;
+    background-image: url(../img/buttons/rechazar.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
 }
+
 .compra-btn {
     background-image: url(../img/buttons/compra.png);
     background-repeat: no-repeat;
@@ -922,8 +861,219 @@
     background-position: center;
 }
 
-.pagos-btn {
-    background-image: url(../img/buttons/pagos.png);
+.clientReferido-btn {
+    background-image: url(../img/buttons/clientReferido.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.historico-btn {
+    background-image: url(../img/buttons/historico.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.historico-btn-des {
+    background-image: url(../img/buttons/historicoDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.busca-ejecutivo-btn {
+    background-image: url(../img/buttons/buscaPersona.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.bitacora-button {
+    background-image: url(../img/buttons/bitacora.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.bitacora-button-des {
+    background-image: url(../img/buttons/bitacoraDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.imprimir-button {
+    background-image: url(../img/buttons/imprimir.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.imprimir-button-des {
+    background-image: url(../img/buttons/imprimirDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.lista-negra-button {
+    background-image: url(../img/buttons/listasnegras.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.lista-negra-button-des {
+    background-image: url(../img/buttons/listasnegrasDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.pending-task-btn {
+    background-image: url(../img/buttons/pendingTask.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.pending-task-btn-des {
+    background-image: url(../img/buttons/pendingTaskDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.bit-pendiente-btn {
+    background-image: url(../img/buttons/cuestionario.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.selected-btn {
+    background-image: url(../img/buttons/selected.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+    background-size: 90%;
+}
+
+.pagosMixtos-btn {
+    background-image: url(../img/buttons/pagosMixtos.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.siapa {
+    background-image: url(../img/SIAPA.jpg);
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.derivados-btn {
+    background-image: url(../img/buttons/derivados.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.mobile-money-btn {
+    background-image: url(../img/buttons/mobileMoney.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.carta-declaratoria-btn {
+    background-image: url(../img/buttons/cartadeclaratoria.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.entrevista-btn {
+    background-image: url(../img/buttons/entrevista.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.enviar-control-btn {
+    background-image: url(../img/buttons/enviaContr.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.cam-actualizacion-btn {
+    background-image: url(../img/buttons/camActualizacion.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.restar-button {
+    background-image: url(../img/buttons/restar.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.venta-button {
+    background-image: url(../img/buttons/venta.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.venta-button-des {
+    background-image: url(../img/buttons/ventaDes.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.buscar-pkl-button {
+    background-image: url(../img/buttons/buscarPkl.png);
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+}
+
+.buscar-pkl-button-des {
+    background-image: url(../img/buttons/buscarPklDes.png);
     background-repeat: no-repeat;
     height: 16px;
     width: 16px;

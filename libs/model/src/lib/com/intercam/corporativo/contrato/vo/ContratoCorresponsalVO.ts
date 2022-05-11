@@ -1,34 +1,34 @@
 
 	export class ContratoCorresponsalVO
 	{
-		public  modificado:Boolean = false;
+		public  modificado:boolean = false;
 		
-		public  conId:Number;
+		public  conId:number;
 		
-		public  ccoCuenta:String;
+		public  ccoCuenta:string;
 		
-		public  ccoFormaLiquidacion:String;
+		public  ccoFormaLiquidacion:string;
 		
-		public  ccoFhaltaStr:String;
+		public  ccoFhaltaStr:string;
 		
-		public  usuUsuarioAlta:String;
+		public  usuUsuarioAlta:string;
 		
-		public  ccoFhestatusStr:String;
+		public  ccoFhestatusStr:string;
 		
-		public  usuUsuarioEstatus:String;
+		public  usuUsuarioEstatus:string;
 		
-		public  ccoTipoNegocio:String;
+		public  ccoTipoNegocio:string;
 		
-		public  ccoCausaBaja:String;
+		public  ccoCausaBaja:string;
 		
-		public  ccoEstatus:String;
+		public  ccoEstatus:string;
 		
 		public constructor()
 		{
 			this.conId = 0;
 		}
 		
-		public  toString() : String
+		public  toString() : string
 		{
 			return 	" conId:" + this.conId + 
 					"\n ccoCuenta:" + this.ccoCuenta + 

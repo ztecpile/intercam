@@ -4,17 +4,17 @@ import { TipoPersonaVO } from "./TipoPersonaVO";
 
     export class CategPersonaVO
     {
-        public  cpeId : Number;
-        public  cpeDescripcion : String;
-        public  tmpCvelegSabi : String;
+        public  cpeId : number;
+        public  cpeDescripcion : string;
+        public  tmpCvelegSabi : string;
         public  tipoPersonaVO : TipoPersonaVO;
         public  personasVO : Set <PersonaVO>;
-        public  tmpCvelegSica : String;
-        public  tmpCvelegSiff : Number;
+        public  tmpCvelegSica : string;
+        public  tmpCvelegSiff : number;
         public  cpeEsContraparte : Boolean;
         public  sectoresVO : Set <SectorEconomicoVO>;
-		public  cpeRiesgo : Number;
-        public  cpeRegSimpli: Boolean;
+		public  cpeRiesgo : number;
+        public  cpeRegSimpli: boolean;
         /**
          * Constructor de la clase.
          */

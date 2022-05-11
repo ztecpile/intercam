@@ -1,0 +1,12 @@
+<div class="tab">
+    <button *ngFor="let tab of tabs" (click)="selectTab(tab,true)" [class.active]="tab.active">
+        {{tab.title}}
+    </button>
+
+    <button *ngFor="let tab of dynamicTabs" (click)="selectTab(tab,true)" [class.active]="tab.active">
+        {{tab.title}}
+    </button>
+</div>
+
+<ng-content></ng-content>
+<ng-template intercam-dynamic-tabs #container></ng-template>

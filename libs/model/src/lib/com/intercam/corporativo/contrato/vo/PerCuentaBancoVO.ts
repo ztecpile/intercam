@@ -4,28 +4,28 @@ import { PerCuentaBancoIdVO } from "./PerCuentaBancoIdVO";
 	{
 	    
 	     public  idVO : PerCuentaBancoIdVO;
-	     public  cueFaltaStr : String;
-	     public  usuUsuario : String;
-	     public  titular : String;
-	     public  cueClabe : String;
-	     public  banNombre : String;
+	     public  cueFaltaStr : string;
+	     public  usuUsuario : string;
+	     public  titular : string;
+	     public  cueClabe : string;
+	     public  banNombre : string;
 	    
-	     public  cueCuentaBan : String;
-	     public  banId : Number;
-	     public  tmpCveLegada :String;
+	     public  cueCuentaBan : string;
+	     public  banId : number;
+	     public  tmpCveLegada :string;
 	     //campo no mapeado, solo se usa en constructor
-	     public  tmpCveLegadaBanco:String;
+	     public  tmpCveLegadaBanco:string;
 	     
-	     public  cueSucursal:String;
-	     public  cuePlaza:String;
+	     public  cueSucursal:string;
+	     public  cuePlaza:string;
 	     
-	     public  cueTipoLiquida:Number;
+	     public  cueTipoLiquida:number;
 	     
-	     public  cueEsPperativa : Boolean;
+	     public  cueEsPperativa : boolean;
          /**
           * Numero de usuario (no esta en base) para propositos de Cumplimiento
           */   
-         public  usuId : Number;
+         public  usuId : number;
 	     
 		/**
 	    * Constructor de la clase.
@@ -35,7 +35,7 @@ import { PerCuentaBancoIdVO } from "./PerCuentaBancoIdVO";
 	    	this.idVO = new PerCuentaBancoIdVO();
 	    }
 
-		  public  toString() : String
+		  public  toString() : string
 			    {
 			    	return this.idVO.toString();
 			    }

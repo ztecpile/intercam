@@ -1,11 +1,11 @@
 
 	export class TipoRelVO
 	{
-		public  treClave : Number;
-		public  treDescripcion : String;
-		public  tpeClave : String;
-		public  tipoRelRiesgo:Number;
-        public  tconId : Number;
+		public  treClave : number;
+		public  treDescripcion : string;
+		public  tpeClave : string;
+		public  tipoRelRiesgo:number;
+        public  tconId : number;
         
         
 		/**
@@ -16,7 +16,7 @@
 	    	this.treDescripcion = '';
 	    }
 		
-		public  toString():String{
+		public  toString():string{
 			return "treDescripcion: " + this.treDescripcion;
 		}
 	}

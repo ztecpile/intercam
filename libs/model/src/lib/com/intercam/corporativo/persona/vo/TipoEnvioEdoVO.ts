@@ -2,11 +2,11 @@ import { TipoContratoVO } from "../../contrato/vo/TipoContratoVO";
 
 	export class TipoEnvioEdoVO
 	{
-	    public  tenId : Number;
-	    public  tenDescripcion : String;
+	    public  tenId : number;
+	    public  tenDescripcion : string;
 	    public  tipoContratoVO : TipoContratoVO;
-	    public  tenFrecuencia : Number;
-	    public  idDoctoEnvio : Boolean;
+	    public  tenFrecuencia : number;
+	    public  idDoctoEnvio : boolean;
 		/**
 	    * Constructor de la clase.
 	    */

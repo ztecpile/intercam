@@ -9,8 +9,8 @@
 
         }
 
-        public  grupoDia : Number;
-        public  gdiDescripcion : String;
+        public  grupoDia : number;
+        public  gdiDescripcion : string;
            
     }
 

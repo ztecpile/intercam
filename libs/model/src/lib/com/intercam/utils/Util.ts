@@ -9,7 +9,7 @@ export class Util {
   public static readonly NEAREST = 'NEAREST';
 
   /**
-   * Hace un clon de un objeto dado, mediante el procerso de serializacion y deserializacion 
+   * Hace un clon de un objeto dado, mediante el procerso de serializacion y deserializacion
    * Nota: para utilizar este metodo se requiere que la clase del objeto a clonar sea serializable.
    *
    * @param objeto el objeto a clonar
@@ -29,7 +29,7 @@ export class Util {
   }
 
   /**
-   * Remplaza en una cadena el texto de la forma {n} por el correspondoente valor dado en la n_esima posicion del arreglo 
+   * Remplaza en una cadena el texto de la forma {n} por el correspondoente valor dado en la n_esima posicion del arreglo
    *    Ejemplo: Util.getMsg("Cadena con parametros: {0} y {1} ", [valor1, valor2]);
    * @param msg mensaje base
    * @param params valores a reemplazar en el mensaje
@@ -42,7 +42,7 @@ export class Util {
     for (let index = 0; index < size; index++) {
       let value: any = params[index];
 
-      msgFinal = msgFinal.replace( '{'.concat(index.toString()).concat('}'), 
+      msgFinal = msgFinal.replace( '{'.concat(index.toString()).concat('}'),
         typeof(value) === 'string' ? value : value.toString());
     }
     return msgFinal;
@@ -64,8 +64,8 @@ export class Util {
 
   /**
    * Verifica si la cadena es nula, regresa una cadena vacia.
-   * 
-   * @param strString cadena a evaluar 
+   *
+   * @param strString cadena a evaluar
    * @return La cadena
    **/
   public static checkNulltoZero(value: number): number {
@@ -78,8 +78,8 @@ export class Util {
 
   /**
    * Verifica si la cadena es nula, regresa una cadena vacia.
-   * 
-   * @param strString cadena a evaluar 
+   *
+   * @param strString cadena a evaluar
    * @return La cadena
    **/
   public static checkStrNulltoEmpty(strString: string): string {
@@ -93,7 +93,7 @@ export class Util {
 
   /**
    * Verifica si la cadena es nula, regresa una cadena vacia
-   * @param strString cadena a evaluar 
+   * @param strString cadena a evaluar
    * @return La cadena
    **/
   public static checkStrEmptytoNull(strString: string): string {
@@ -106,12 +106,12 @@ export class Util {
   }
 
   /**
-   * Metodo que ordena los pagos de acuerdo a un campo dado y un tipo de orden (Ascendente/Descendente)
+   * Metodo que ordena un arreglo de acuerdo a una lista de campos dados y un tipo de orden (Ascendente/Descendente)
    * @param arrOrg:       arreglo a ordenar
-   * @param lstNameField: nombre del campo por el cual se hara el ordenamiento, por defecto es paoEstatus
-   * @param typeOrder:    tipo o forma de ordenamiento deseada, por defecto es "A" (Ascendente), 
+   * @param lstNameField: lista de los nombres de los campos por los cuales se hara el ordenamiento,
+   * @param typeOrder:    tipo o forma de ordenamiento deseada, por defecto es "A" (Ascendente),
    *                      cualquier otro valor sera Descendente
-   * 
+   *
    * @return arreglo de pagos ordenado
    */
   public static sortArray<T>(arrOrg: Array<T>, lstNameField: Array<string>, typeOrder: string = "A"): Array<T> {
@@ -136,9 +136,9 @@ export class Util {
   /**
    * Obtiene el indice dentro de un Array, donde se encuentra el elemento con un valor proporcionado.
    *    Funciona para campos compuestos separados por un punto (.)
-   *      Ejem. El arreglo tiene objetos de tipo ContratoPersonaVO y se requiere que se posicione 
+   *      Ejem. El arreglo tiene objetos de tipo ContratoPersonaVO y se requiere que se posicione
    *            de acuerdo al perId de la persona asociada, entonces el atributo campo recibe 'idVO.perId'.
-   * @param array       Arreglo a 
+   * @param array       Arreglo a
    * @param valorBuscar Valor que debe tener la propiedad
    * @param campo       Nombre del campo o propiedad a evaluar
    * @returns La posicion del elemento con el valor proporcionado en el arreglo
@@ -160,16 +160,16 @@ export class Util {
   /**
   * Funcion semi-generica (estraida del PresetComboBox) para obtener indice dentro de un dataProvider(array)
   * donde se encuentra el elemento con un valor proporcionado.
-  * Funciona para campos compuestos separados por un punto (.) . 
-  * Ejem. El combo objetivo en su dataProvider tiene objetos de tipo ContratoPersonaVO y se requiere que se 
+  * Funciona para campos compuestos separados por un punto (.) .
+  * Ejem. El combo objetivo en su dataProvider tiene objetos de tipo ContratoPersonaVO y se requiere que se
   * posicione de acuerdo al perId de la persona asociada, entonces el atributo campo recibe 'idVO.perId'.
-  * 
+  *
   * Esta funcion puede ser usada con los taggedComboBox mientras se les implementa la funcionalidad
   * presetValue(posicionar el combo Box al elemento con valor especifico).
   * $OJO$ cbObjetivo.labelField es la descripcion, pero debe ser unica,
   * para resultados seguros debe usarse el "campo" que corresponde al Id.
   */
-    public static getIndice (arrDataprovider : any[], dataLabel: any, valorBuscar : any, 
+    public static getIndice (arrDataprovider : any[], dataLabel: any, valorBuscar : any,
             campo : string = null) : number {
     let result : number = -1;
     //Busca por labelField
@@ -187,12 +187,12 @@ export class Util {
 
   /**
    * Compara dos fechas solo considera dia/mes/año
-   *    (No considera el tiempo) 
-   * 
-   * @param date1 Fecha 
-   * @param date2 Fecha  
+   *    (No considera el tiempo)
+   *
+   * @param date1 Fecha
+   * @param date2 Fecha
    * @returns Numero positivo (>0) si date1 > date2
-   *                 negativo (<0) si date1 < date2 
+   *                 negativo (<0) si date1 < date2
    *                 cero (0) si date1 = date 2
    */
   public static compareDate(date1: Date, date2: Date): number {
@@ -201,20 +201,20 @@ export class Util {
 
     _date1.setHours(0,0,0,0);
     _date2.setHours(0,0,0,0);
-    
+
    return _date1.getTime() - _date2.getTime();
   }
 
   /**
    * Asigna el formato dd-MM-yy a una fecha determinada
-   * 
+   *
    * @param date Fecha a formatear
    * @returns Fecha con formato
    */
   public static formatDateDDMMYYYY(date: Date): string {
     return formatDate(date,'dd/MM/yyyy', 'en');
   }
-  
+
   /**
    * Formato numerico con redondeo hacia arriba de k_decimales
    * @param value Valor a formatear
@@ -229,7 +229,7 @@ export class Util {
   }
 
   /**
-   * Formato de Moneda Nacional, con redondeo hacia arriba de k_decimales 
+   * Formato de Moneda Nacional, con redondeo hacia arriba de k_decimales
    * @param value Valor a formatear
    * @param precision Numero de digitos decimales
    *                  Por default redondea a 2 decimales
@@ -243,7 +243,7 @@ export class Util {
   }
 
   /**
-   * 
+   *
    * @param value Da formato a un numero previamente truncado a la precion establecida
    * @param precision Numero de digitos decimales
    *                  Por default redondea a 2 decimales
@@ -261,12 +261,12 @@ export class Util {
    * @returns numero truncado a los decimales establecidos
    */
   public static numberTrunc(value: number, precision: number): number {
-    let numPower: number = Math.pow(10, Math.abs(precision)); 
+    let numPower: number = Math.pow(10, Math.abs(precision));
     return ~~(value * numPower)/numPower;
   }
-  
+
   /**
-   * 
+   *
    * @param value Da formato a un numero previamente truncado a la precion establecida
    * @param precision Numero de digitos decimales
    *                  Por default redondea a 2 decimales
@@ -278,7 +278,7 @@ export class Util {
 
   /**
   * Convierte un String con formato (separador de miles y de decimales) en numerico.
-  * 
+  *
   * @param valueStr Cadena que representa un n&uacute;mero con formato y
   * que ser&aacute; convertida en n&uacute;mero; si es vacio se convierte a 0.
   * @return La cadena convertida en número o cero, si la cadena no representa un número
@@ -294,7 +294,7 @@ export class Util {
   /**
    * Redondea o trunca un numero con precision y redondeo especificos.
    * Los posibles valoes de redondeo son los definidos por mx.formatters.NumberBaseRoundType.
-   * 
+   *
    * @param value Valor a redondear.
    * @param precision n&uacute;mero que establece la precision (decimales a utilizar)
    * @param roundType Tipo de redondeo ('NONE', 'UP', 'DOWN', or 'NEAREST')
@@ -348,12 +348,40 @@ export class Util {
 
     return monto;
   }
-  
+
+  /**
+   * Formato numerico con redondeo establecido por la función roundingWithPrecision
+   * @param value Valor a formatear
+   * @param precision n&uacute;mero que establece la precision (decimales a utilizar)
+   *                  Por default redondea a 2 decimales
+   * @param roundType Tipo de redondeo ('NONE', 'UP', 'DOWN', or 'NEAREST')
+   *                  por default redondea 'NEAREST' >=5 sube y <5 trunca 
+   * @param aplicaConstante Bandera para indicar que aplique el factor "EXCEL" para ajuste de decimales.
+   *                  por default no aplica el factor
+   * @param minInt n&uacute;mero minimo de enteros a mostrar
+   *                  Por default mostrara minimo un entero
+   * 
+   * @returns String con el numero con redondeo a los decimales establecidos
+   */
+   public static numberFormatLocale (value: number, precision: number = 2, roundType: string = 'NEAREST', aplicaConstante: boolean = false, minInt: number = 1): string {
+    let locale = "en-US"; //"es-MX" No se usa por que mo da formato a valores menores de 1000
+    let options = {
+        style: "decimal",
+        useGrouping: true,
+        minimumIntegerDigits: minInt,
+        minimumFractionDigits: precision,
+        maximumFractionDigits: precision
+    };
+    
+    return Intl.NumberFormat(locale, options)
+                .format(this.roundingWithPrecision(value, precision, roundType, aplicaConstante));
+  }
+
   /**
    * Método para obtener el valor total de algun campo de los objetos de un  ArrayCollection
    * @param arrToSum      El arrayCollection a obtener la suma de sus elementos
    * @param fieldToSum    Campo por el cual se realizara la suma
-   * 
+   *
    * @return suma     suma total
    */
   public static sumToArray<T>(arrToSum: Array<T>, fieldToSum: string): number {
@@ -361,12 +389,12 @@ export class Util {
     for (const object of arrToSum) {
       suma += +object[fieldToSum]
     }
-    
+
     return Util.roundingWithPrecision(suma, 2, "NEAREST", true);
   }
 
   /**
-   * Calcula la diferencia entre dos montos determinados 
+   * Calcula la diferencia entre dos montos determinados
    *    y el resultado lo redondea a 2 decimales
    * @param minuendo Monto inicial
    * @param sustraendo Monto a Restar
@@ -379,7 +407,7 @@ export class Util {
   /**
    * Elimina todos los elementos de un arreglo
    * @param array Arreglo a eliminar todos sus elementos
-   * @returns 
+   * @returns
    */
   public static removeAll<T>(array: Array<T>): Array<T> {
     return array.splice(0, array.length);
@@ -434,33 +462,126 @@ export class Util {
       event.preventDefault();
   }
 
-*/ 
+*/
   return value
 }
 	/**
 		 * Convierte una cadena vacia a null.
-		 * 
+		 *
 		 * @param strData Cadena a verificar si es vacia y convertirla en <code>null</code>.
 		 * @return NULL si strData es la cadena vacia, strData en otro caso.
 		 */
    public static  emptyToNull(strData:string):string {
     if(strData !=null){
-       return strData.trim() == '' ? null : strData;                 
+       return strData.trim() == '' ? null : strData;
     }else{
        return null;
     }
-}   
+}
 
 public static validarNumeroPositivo( item : number) : boolean {
   var numPositivo : boolean = true;
-  
+
   if (this.isNull(item)) {
       numPositivo = false;
   } else if (item < 0) {
       numPositivo = false;
   }
-  
+
   return numPositivo;
 }
+
+  /**
+   * Razon de restriccion
+   * @param r        restriccion
+   * @param perId    Identificador de la persona
+   * @param conId    Identificador del contrato
+   * @param usuClave Clave del usuario
+   * @returns        Cadena con la razon de la restriccion-.
+  */
+  public static construyeRazonRestriccion(r: number, perId: number, conId: number, usuClave: string): string {
+    let razon: string = '';
+    switch (r) {
+      case Const.FUERA_DE_HORARIO:
+        razon = Const.fueraHorario;
+        break;
+      case Const.CLIENTE_NO_OPERABLE:
+        razon = Const.cliente + ' ' + perId.toString()
+          + ' ' + Const.noOperableUsuario + ' '
+          + usuClave.toString();
+        break;
+      case Const.CONTRATO_NO_OPERABLE:
+        razon = Const.contrato + ' '
+          + conId.toString() + ' ' + Const.noOperableUsuario + ' ' + usuClave;
+        break;
+      case Const.PERMITIDO:
+        razon = '';
+        break;
+      case Const.NO_PERMITIDO:
+        razon = Const.usuarioSinAcceso;
+        break;
+      case Const.CONTRATO_BANCO_NO_ANEXO:
+        razon = Const.contratoBancoNoAnexo;
+        break;
+      case Const.PER_BLOQUEADA:
+        razon = Const.personaBloqueada;
+        break;
+    }
+    return razon;
+  }
+
+  /**
+	* filtra los tipos de negocio conforme a lo selecionado en
+	* el combo Tipo Persona (Moral o Fisica)
+	* */
+  public static filterFunctionTipoContratoByTipoPersona(tpeClave:string,lstTipoContrato:any[]) : any[] {
+    var lstTipoContratoFilter:any[]=[];
+    var campo:String;
+    lstTipoContrato.forEach(tipoContrato =>{
+      campo = tipoContrato.tpeClave != null ? tipoContrato.tpeClave : Const.STRING_EMPTY;
+      if(campo.indexOf(tpeClave) != -1) {
+        lstTipoContratoFilter.push(tipoContrato);
+      }
+    });
+    return lstTipoContratoFilter;
+  }
+
+  /**
+  * La pantalla que se pretende mostrar esta asociada a un tipo de contrato
+  * Valida si en la lista de contratos que tiene el cliente, alguno de estos
+  * corresponde su tipo de contrato al de la pantalla
+  */
+  public static validaTipoContrato(idTipoContrato : number, contratos:any[]) : boolean {
+    var itemsNum : number;
+    var valorRetorno : boolean;
+
+    valorRetorno = false;
+    for(itemsNum = 0; itemsNum < contratos.length; itemsNum++) {
+      if(contratos[itemsNum].tipoContratoId == idTipoContrato) {
+        valorRetorno = true;
+        break;
+      }
+    }
+    return valorRetorno;
+  }
+
+/**
+ *
+ * @param value Regresa un true si la cadena  es nula o vacia
+ * @returns boolean
+ */
+  public static nullOrUndefindOrEmpyStr(value:string):boolean{
+    return this.isNull(value) || value.trim() === '';
+  }
+
+  
+  /**
+   * 
+   * ## Valida si un objeto de tipo <any> es diferente de indefinido, null o vacio ##
+   */
+  public static isNotNullEmpty(valor: any): boolean {
+    return (valor !== undefined && valor !== null && valor!=="");
+  }
+
 
 } // Termina la clase

@@ -1,18 +1,18 @@
 
 	export class ApUsuariVO
 	{
-		public  usuNumero: String;
-		public  usuClave: String;
-		public  usuStatus: String;
-		public  usuFeUlAc: Number;
-		public  usuAppID: String;
-		public  usuGrupo: String;
-		public  numTransac: String;
-		public  transaccio: String;
-		public  usuario: String;
-		public  fechaSis: Number;
-		public  sucOrigen: String;
-		public  sucDestino: String;
+		public  usuNumero: string;
+		public  usuClave: string;
+		public  usuStatus: string;
+		public  usuFeUlAc: number;
+		public  usuAppID: string;
+		public  usuGrupo: string;
+		public  numTransac: string;
+		public  transaccio: string;
+		public  usuario: string;
+		public  fechaSis: number;
+		public  sucOrigen: string;
+		public  sucDestino: string;
 		
 		public  ApUsuariVO()
 		{

@@ -1,1 +1,26 @@
-<intercam-contenedor></intercam-contenedor>
+<!DOCTYPE html>
+<div class="header"></div>
+<div class="posicion"></div>
+<!--Abre contenido-->
+<main class="">
+    <div class="bdcontent">
+        <!-- <div class="fecha margin_top24">Último acceso: 14 / 04 / 2020 a las 9:00 a.m</div>
+        <div class="flujo">
+            <ul class="progressbar">
+                <li></li>
+                <li></li>
+            </ul>
+        </div> -->
+        <!-- <router-outlet #outlet></router-outlet> -->
+        <intercam-contenedor #contenedor></intercam-contenedor>
+    </div>
+</main>
+<!--Cierra contenido-->
+<div class="degrada_menu">
+    <intercam-menu #menu (open_router)="showOpenRouter($event)" (close_cliente)="closeCliente()"></intercam-menu>
+</div>
+<div class="degrada-sub_menu">
+    <intercam-sub-menu (buscar_cliente)="buscarCliente($event)" (mostrar_precios)="mostrarPrecios($event)" (logout)="logout($event)"></intercam-sub-menu>
+</div>
+<div class="degradado_back"></div>
+<intercam-spinner></intercam-spinner>

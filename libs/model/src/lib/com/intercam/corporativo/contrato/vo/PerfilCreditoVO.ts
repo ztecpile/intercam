@@ -42,12 +42,12 @@ import { TipoCuestionarioVO } from "./TipoCuestionarioVO";
         /**
          * Id de la persona.
          */
-        public  perId : Number;
+        public  perId : number;
 
         /**
          * Id del contrato.
          */
-        public  conId : Number;
+        public  conId : number;
 
         /**
          * Constructor.
@@ -60,7 +60,7 @@ import { TipoCuestionarioVO } from "./TipoCuestionarioVO";
          * Usado para los filtros.
          * Estatus.
          */
-        public  get cesDesCorta () : String {
+        public  get cesDesCorta () : string {
             return this.contratoPersonaVO.idVO.contratoVO.contratoEstatusVO.cesDesCorta;
         }
 
@@ -68,7 +68,7 @@ import { TipoCuestionarioVO } from "./TipoCuestionarioVO";
          * Usado para los filtros.
          * tconId.
          */
-        public  get tconDescripcion () : String {
+        public  get tconDescripcion () : string {
             return this.contratoPersonaVO.idVO.contratoVO.tipoContratoVO.tconDescripcion;
         }
     }

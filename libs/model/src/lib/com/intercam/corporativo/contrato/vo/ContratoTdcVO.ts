@@ -1,17 +1,18 @@
+import { ContratoVO } from "./ContratoVO";
 
-	export class ContratoTdcVO 
+	export class ContratoTdcVO extends ContratoVO
 	{
-		public 	 ctdcNumTotalsystem:String;
-		public   ctdcNumPaystudio:Number;
-		public   ctdcLimCredito:Number;
+		public 	 ctdcNumTotalsystem:string;
+		public   ctdcNumPaystudio:number;
+		public   ctdcLimCredito:number;
 
-		public 	 nivId:Number; 
-		public   ctdcLimCreditoSol:Number;
-		public 	 nivIdSol:Number; 
+		public 	 nivId:number; 
+		public   ctdcLimCreditoSol:number;
+		public 	 nivIdSol:number; 
 
 		public constructor()
 		{
-		
+			super();
 			this.ctdcNumTotalsystem = "0";
 			this.ctdcNumPaystudio = 0;
 			this.ctdcLimCredito = 0;

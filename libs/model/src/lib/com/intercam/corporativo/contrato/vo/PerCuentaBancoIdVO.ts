@@ -3,7 +3,7 @@ import { CuentaBancoVO } from "./CuentaBancoVO";
 	export class PerCuentaBancoIdVO
 	{
 	    
-	     public  perId : Number;
+	     public  perId : number;
 	     public  cueIdVO : CuentaBancoVO;
 	    
 		/**
@@ -14,7 +14,7 @@ import { CuentaBancoVO } from "./CuentaBancoVO";
 
 	    }
 	    
-		  public  toString() : String
+		  public  toString() : string
 			    {
 			    	return this.perId.toString() + ',' + this.cueIdVO.toString();
 			    }

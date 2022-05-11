@@ -1,20 +1,20 @@
 
 	export class ListaNegraVO
 	{
-		public  numLis : Number;
-		public  lipNombre : String;
-		public  lipNombreCompleto : String;
-		public  lipAppat : String;
-		public  lipApmat : String;
-		public  lipCurp : String;
-		public  lipRfc : String;
+		public  numLis : number;
+		public  lipNombre : string;
+		public  lipNombreCompleto : string;
+		public  lipAppat : string;
+		public  lipApmat : string;
+		public  lipCurp : string;
+		public  lipRfc : string;
 
-		public  lipPuesto : String;
+		public  lipPuesto : string;
 
-		public  lipFnac : String;
-		public  lipDependencia : String;
+		public  lipFnac : string;
+		public  lipDependencia : string;
 		
-		public  lipFnacFormatStr :String;
+		public  lipFnacFormatStr :string;
 		
 		/**
 	    * Constructor de la clase.

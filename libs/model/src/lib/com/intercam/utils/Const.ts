@@ -56,13 +56,13 @@ export abstract class Const {
   //     public static readonly CLOSE_POPUP: string = "closePopUp";
 
   //CONSTANTES DE COLORES
-  public static readonly NARANJA: number = 0xF38737;  //   53  188   06
-  public static readonly ROJO: number = 0xFF0000;     //   53  188   06
-  public static readonly VERDE: number = 0x008000;    //   00  128   00
-  public static readonly AZUL: number = 0x0A0096;     //   10   00  150
-  public static readonly AZUL_02: number = 0x0000CC;  //   00   00  204
-  public static readonly GRIS: number = 0x585858;     //  135  135  135
-  public static readonly NEGRO: number = 0x000000;    //   00   00   00
+  public static readonly NARANJA: number = 0xf38737; //   53  188   06
+  public static readonly ROJO: number = 0xff0000; //   53  188   06
+  public static readonly VERDE: number = 0x008000; //   00  128   00
+  public static readonly AZUL: number = 0x0a0096; //   10   00  150
+  public static readonly AZUL_02: number = 0x0000cc; //   00   00  204
+  public static readonly GRIS: number = 0x585858; //  135  135  135
+  public static readonly NEGRO: number = 0x000000; //   00   00   00
 
   /**
    * Nombre del color gris
@@ -110,12 +110,10 @@ export abstract class Const {
   //     public static readonly COLOR: string  = "<font color='#ff003c'>X</font>";
 
   //     //CONSTANTES GLOBALES PARA CAMBIOS
-  //     public static readonly ESTATUS_OPERACION_CAMBIOS_PENDIENTE: number = 0;
-  public static readonly ESTATUS_OPERACION_CAMBIOS_POR_REV_CONTROL: number = 1;
   public static readonly ESTATUS_OPERACION_CAMBIOS_PENDIENTE: number = 0;
-  //     public static readonly ESTATUS_OPERACION_CAMBIOS_POR_REV_CONTROL: number = 1;
-  //     public static readonly ESTATUS_OPERACION_CAMBIOS_CANCELADA: number = 3;
-  //     public static readonly ESTATUS_OPERACION_CAMBIOS_OTRAS: number = 999;
+  public static readonly ESTATUS_OPERACION_CAMBIOS_POR_REV_CONTROL: number = 1;
+  public static readonly ESTATUS_OPERACION_CAMBIOS_CANCELADA: number = 3;
+  public static readonly ESTATUS_OPERACION_CAMBIOS_OTRAS: number = 999;
 
   //     // cuestionario de servicios de inversion para clientes sofisticados fisicas
   //     public static readonly TIPO_CUEST_SOF_CB_PF: number = 27;
@@ -166,12 +164,12 @@ export abstract class Const {
   /**
    * Estatus alta del pago de una operacion
    */
-   public static readonly ESTATUS_PAGO_ACTIVO: string = '1';
+  public static readonly ESTATUS_PAGO_ACTIVO: number = 1;
 
-   /**
-    * Estatus cancela del pago de una operacion
-    */
-   public static readonly ESTATUS_PAGO_CANCELADO: string = '2';
+  /**
+   * Estatus cancela del pago de una operacion
+   */
+  public static readonly ESTATUS_PAGO_CANCELADO: number = 2;
 
   /**
    * Constante para indicar folio vacio.
@@ -181,17 +179,17 @@ export abstract class Const {
   /**
    * Constante que indica que a todos los folios asociados a un DEAL se les enviara correo.
    */
-  public static readonly SERIE_FACTURA: string = "TODOS";
+  public static readonly SERIE_FACTURA: string = 'TODOS';
 
   /**
    * Constante para indicar que la factura electronica solo se enviara por correo electronico.
    */
-  public static readonly CLAVE_IMPRESORA: string = "NO-IMPRESORA";
+  public static readonly CLAVE_IMPRESORA: string = 'NO-IMPRESORA';
 
   /**
    * Codigo de respuesta exitosa del servicio de reimpresion de factura electronica.
    */
-  public static readonly RESPUESTA_EXITOSA: string = "OKS000";
+  public static readonly RESPUESTA_EXITOSA: string = 'OKS000';
 
   //     /**
   //      *
@@ -203,37 +201,38 @@ export abstract class Const {
   //      */
   //     public static readonly ORIGEN_OPE_POS: string = "P";
 
-       /**
-        * Origen de la Operaci&oacute;n generada en I-Cambios PRO (ET-Reuters).
-        */
-       public static readonly ORIGEN_OPERACION_ET: string = "E";
+  /**
+   * Origen de la Operaci&oacute;n generada en I-Cambios PRO (ET-Reuters).
+   */
+  public static readonly ORIGEN_OPERACION_ET: string = 'E';
 
-       /**
-        * Origen de la operaci&oacute;n TRADER.
-        */
-       public static readonly ORIGEN_OPERACION_TRADER: string = "T";
+  /**
+   * Origen de la operaci&oacute;n TRADER.
+   */
+  public static readonly ORIGEN_OPERACION_TRADER: string = 'T';
 
-       /**
-        * El Origen de la operaci&oacute;n es un Forward.
-        */
-       public static readonly ORIGEN_OPERACION_FWD: string = "W";
+  /**
+   * El Origen de la operaci&oacute;n es un Forward.
+   */
+  public static readonly ORIGEN_OPERACION_FWD: string = 'W';
 
-       /**
-        * El Origen de la operaci&oacute;n es un Reverso.
-        */
-       public static readonly ORIGEN_OPERACION_REVERSO: string = "O";
+  /**
+   * El Origen de la operaci&oacute;n es un Reverso.
+   */
+  public static readonly ORIGEN_OPERACION_REVERSO: string = 'O';
 
   //     //-- Estan repetidos estos
   public static readonly TIPO_CONTRATO_CAMBIOS: number = 1;
-  //     public static readonly TIPO_CONTRATO_FONDOS: number = 2;
+  public static readonly TIPO_CONTRATO_FONDOS: number = 2;
   //     public static readonly TIPO_CONTRATO_CASA_BOLSA: number = 3;
   public static readonly TIPO_CONTRATO_BANCO: number = 4;
   public static readonly TIPO_CONTRATO_DIVISAS_BANCO: number = 5;
   //     public static readonly TIPO_CONTRATO_DIVISAS_BANCO: number = 5;
-  //     public static readonly TIPO_CONTRATO_FIDEICOMISO: number = 7;
+  public static readonly TIPO_CONTRATO_FIDEICOMISO: number = 7;
 
-  //     public static readonly URL_DOCTOS: string = "http://inte-app-xpdnt:8080/estado/ViewDoc.jsp?file=";
-  //     public static readonly URL_DOCTOS_SUC: string = "/estado/ViewDoc.jsp?file=";
+  public static readonly URL_DOCTOS: string =
+    'http://inte-app-xpdnt:8080/estado/ViewDoc.jsp?file=';
+  public static readonly URL_DOCTOS_SUC: string = '/estado/ViewDoc.jsp?file=';
   //     public static readonly URL_DOCTOS_SUC_FWD: string = "/estado/ViewDocFwd.jsp?file=";
   //     public static readonly URL_DOCTOS_FWD: string = "http://inte-app-xpdnt:8080/estado/ViewDocFwd.jsp?file=";
 
@@ -258,13 +257,13 @@ export abstract class Const {
   //     /**
   //      * Constante para las solicitudes de remesas sin deal.
   //      */
-      public static readonly MOTIVO_SOLICITUD_REM: string = 'REM';
+  public static readonly MOTIVO_SOLICITUD_REM: string = 'REM';
 
-  //     /**
-  //      * Grupo al que se le habilitara la opcion de solicitar una modificacion o
-  //      * cancelacion de una operacion
-  //      */
-  //     public static readonly GRUPO_SOLICITUD_CANCELACION: string = "CANCELAPOS";
+  /**
+   * Grupo al que se le habilitara la opcion de solicitar una modificacion o
+   * cancelacion de una operacion
+   */
+  public static readonly GRUPO_SOLICITUD_CANCELACION: string = "CANCELAPOS";
 
   /**
    * Factor excel para el calculo correcto del redondeo
@@ -274,25 +273,24 @@ export abstract class Const {
   //     /**
   //      *
   //      */
-      public static readonly REMESA_SIN_ABA: string = "000000000";
+  public static readonly REMESA_SIN_ABA: string = '000000000';
 
   //     //CONSTANTES PARA INGRESOS
   //     public static readonly URL_FACTURA: string = "../FacturaServlet?ingresoId=";
 
   //     public static readonly TIPO_MERCADO_MERCADO_DINERO: number = 1;
 
-       public static readonly LIMITE_RANGO_SUPERIOR: number = 0.015;
-       public static readonly LIMITE_RANGO_INFERIOR: number = 0.015;
+  public static readonly LIMITE_RANGO_SUPERIOR: number = 0.015;
+  public static readonly LIMITE_RANGO_INFERIOR: number = 0.015;
   //     public static readonly LIMITE_OPERACION_TARJETA_SUPERIOR: number = 10000;
   //     public static readonly LIMITE_OPERACION_TARJETA_INFERIOR: number = 100;
 
-       public static readonly PAIS_MEXICO: string = 'MEXICO';
-  //     public static readonly PAIS_ESTADOS_UNIDOS: string = "ESTADOS UNIDOS";
-  //     public static readonly PAIS_EURO_ALEMANIA: string = "ALEMANIA";
-
+  public static readonly PAIS_MEXICO: string = 'MEXICO';
+  public static readonly PAIS_ESTADOS_UNIDOS: string = 'ESTADOS UNIDOS';
+  public static readonly PAIS_EURO_ALEMANIA: string = 'ALEMANIA';
 
   public static readonly PAIS_CLAVE_MEXICO: number = 1;
-  public static  readonly PAIS_CLAVE_US: number = 3;
+  public static readonly PAIS_CLAVE_US: number = 3;
 
   //     public static readonly MEXICO_ISO_CODE: string = "MX";
   //     public static readonly US_ISO_CODE: string = "US";
@@ -328,29 +326,29 @@ export abstract class Const {
 
   //     public static readonly divisaUSD_MXN: string = "USD/MXN";
 
-  public static readonly ESQUEMA_MESA_MATRIZ: string = "MATRIZ";
-  //     public static readonly ESQUEMA_MESA_RELACIONADA: string = "RELACI";
-  //     public static readonly ESQUEMA_MESA_TODAS: string = "TODAS";
-  //     public static readonly ESQUEMA_MESA_PROPIO: string = "PROPIO";
+  public static readonly ESQUEMA_MESA_MATRIZ: string = 'MATRIZ';
+  public static readonly ESQUEMA_MESA_RELACIONADA: string = "RELACI";
+  public static readonly ESQUEMA_MESA_TODAS: string = "TODAS";
+  public static readonly ESQUEMA_MESA_PROPIO: string = "PROPIO";
   //     public static readonly CTA_BANCOMER_REF: string = "CTA_BANCOMER_REF";
 
   //     /**
   //      * Esquema de los precios automaticos.
   //      */
-  //     public static readonly ESQUEMA_AUTOMATICO: string = "A";
+  public static readonly ESQUEMA_AUTOMATICO: string = "A";
 
   //     /**
   //      * Esquema de los precios manuales.
   //      */
-  //     public static readonly ESQUEMA_MANUAL: string = "M";
+  public static readonly ESQUEMA_MANUAL: string = "M";
 
-       public static readonly PRO_CLI_MESA: string = "PRO_CLI_MESA";
+  public static readonly PRO_CLI_MESA: string = 'PRO_CLI_MESA';
 
   //     public static readonly OPERADOR_DIVISION: string = "/";
 
   //     public static readonly OPERADOR_MULTIPLICACION: string = "*";
 
-  //  Constantes de pantallas generales pana navegar en el wizard 
+  //  Constantes de pantallas generales pana navegar en el wizard
   public static readonly WZ_INFO_GRAL: string = 'infoGral';
   public static readonly WZ_FROMA_PAGO: string = 'formaPago';
   public static readonly WZ_FACTURAS: string = 'facturas';
@@ -362,7 +360,6 @@ export abstract class Const {
   public static readonly WZ_COMPRA_VENTA_MEX: string = 'compraVentaMex';
   public static readonly WZ_COMPRA_REMESA: string = 'compraRemesa';
   public static readonly WZ_COMPRA_VOUCHER: string = 'compraVoucher';
-
 
   //-- Constantes globales de Instrumentos
   /**
@@ -385,20 +382,20 @@ export abstract class Const {
    */
   public static readonly ID_INSTRUM_VOUCHER: number = 4;
 
-       /**
-        * Id del instrumento Remesa
-        */
-       public static readonly ID_INSTRUM_REMESA: number = 5;
+  /**
+   * Id del instrumento Remesa
+   */
+  public static readonly ID_INSTRUM_REMESA: number = 5;
 
-       /**
-        * Id del instrumento Cheque
-        */
-       public static readonly ID_INSTRUM_CHEQUE: number = 6;
+  /**
+   * Id del instrumento Cheque
+   */
+  public static readonly ID_INSTRUM_CHEQUE: number = 6;
 
   //     /**
   //      * Id del instrumento Envios
   //      */
-       public static readonly ID_INSTRUM_ENVIOS: number = 7;
+  public static readonly ID_INSTRUM_ENVIOS: number = 7;
 
   /**
    * Id del instrumento Tarjeta
@@ -408,12 +405,12 @@ export abstract class Const {
   //     /**
   //      * Id del instrumento Peso Peso
   //      */
-       public static readonly ID_INSTRUM_PESOPESO: number = 9;
+  public static readonly ID_INSTRUM_PESOPESO: number = 9;
 
   //     /**
   //      * Id del instrumento Canje
   //      */
-       public static readonly ID_INSTRUM_CANJE: number = 10;
+  public static readonly ID_INSTRUM_CANJE: number = 10;
 
   //     /**
   //      * Descripcion del instrumento Transfer
@@ -423,7 +420,8 @@ export abstract class Const {
   //     /**
   //      * Descripcion del instrumento Efectivo
   //      */
-  //     public static readonly STR_INSTRUM_EFECTIVO: string = "EFECTIVO";
+  public static readonly STR_INSTRUM_EFECTIVO: string = 'EFECTIVO';
+  public static readonly STR__EFECTIVO: string = 'EFE';
 
   //     /**
   //      * Descripcion del instrumento Mex
@@ -443,7 +441,9 @@ export abstract class Const {
   //     /**
   //      * Descripcion del instrumento Cheque
   //      */
-  //     public static readonly STR_INSTRUM_CHEQUE: string = "CHEQUE";
+  public static readonly STR_INSTRUM_CHEQUE: string = 'CHEQUE';
+
+  public static readonly STR_CHEQUE: string = 'CHE';
 
   //     /**
   //      * Descripcion del instrumento Envios
@@ -469,27 +469,27 @@ export abstract class Const {
   //     /**
   //      * Id tipo de Tarjeta Cash Pass
   //      */
-    public static readonly ID_TIPO_TARJETA_CASH_PASS: number = 1;
+  public static readonly ID_TIPO_TARJETA_CASH_PASS: number = 1;
 
   //     /**
   //      * Id tipo de Tarjeta VTM Debito
   //      */
-     public static readonly ID_TIPO_TARJETA_VTM_DEBITO: number = 2;
+  public static readonly ID_TIPO_TARJETA_VTM_DEBITO: number = 2;
 
   //     /**
   //      * Id tipo de Tarjeta Multi Divisas
   //      */
-    public static readonly ID_TIPO_TARJETA_MULTIDIVISAS: number = 3;
+  public static readonly ID_TIPO_TARJETA_MULTIDIVISAS: number = 3;
 
-  //     //CUENTAS CLASIFICADOREAS DE DIVISAS Y METALES PARA CASA DE BOLSA
-  //     public static readonly CTA_ID_DIVISAS_DIV: string = '1710';
-  //     public static readonly CTA_ID_DIVISAS_METAL: string = '1711';
-  //     public static readonly CTA_ID_DIVISAS_METAL2: string = '1712';
+  //CUENTAS CLASIFICADOREAS DE DIVISAS Y METALES PARA CASA DE BOLSA
+  public static readonly CTA_ID_DIVISAS_DIV: string = '1710';
+  public static readonly CTA_ID_DIVISAS_METAL: string = '1711';
+  public static readonly CTA_ID_DIVISAS_METAL2: string = '1712';
 
-  //     //CUENTAS CLASIFICADORAS DE DIVISAS Y METALES PARA BANCO
-  //     public static readonly CTA_BAN_DIVISAS_DIV: string = '5005';
-  //     public static readonly CTA_BAN_DIVISAS_METAL: string = '5003';
-  //     public static readonly CTA_BAN_DIVISAS_METAL2: string = '5004';
+  //CUENTAS CLASIFICADORAS DE DIVISAS Y METALES PARA BANCO
+  public static readonly CTA_BAN_DIVISAS_DIV: string = '5005';
+  public static readonly CTA_BAN_DIVISAS_METAL: string = '5003';
+  public static readonly CTA_BAN_DIVISAS_METAL2: string = '5004';
 
   //CONSTANTES DE STATUS REMESA
   public static readonly REMESA_CAPTURADO: number = 1;
@@ -501,10 +501,10 @@ export abstract class Const {
   // CONSTANTES PARA EL CIERRE DE OPERACION
   //     public static readonly PERSONA_INTERCAM: number = 1;
   //     public static readonly BENEFICIARIO_INTERCAM: string = 'INTERCAM CASA DE CAMBIO';
-  public static readonly TIPO_RECEPCION: string = "R";
-  public static readonly TIPO_ENTREGA: string = "E";
-  public static readonly TIPO_COMPRA: string = "C";
-  public static readonly TIPO_VENTA: string = "V";  
+  public static readonly TIPO_RECEPCION: string = 'R';
+  public static readonly TIPO_ENTREGA: string = 'E';
+  public static readonly TIPO_COMPRA: string = 'C';
+  public static readonly TIPO_VENTA: string = 'V';
 
   //CatPago POS
   public static readonly CAT_PAGO_ABONO: number = 1;
@@ -524,7 +524,6 @@ export abstract class Const {
   public static readonly CAT_PAGO_EFECTIVOTMP: number = 2;
   public static readonly CAT_PAGO_CANJETMP: number = 5;
 
-
   //     public static readonly PAGO_EFECTIVO : string = "E";
   //     public static readonly PAGO_CHEQUE: string = "C";
   //     public static readonly PAGO_ABONO: string = "A";
@@ -541,7 +540,7 @@ export abstract class Const {
 
   //     public static readonly PERSONA_CASA_DE_BOLSA: number=2;
   //     public static readonly PERSONA_FONDOS_DE_INVERSION : number =3;
-  public static readonly PERSONA_FISICA_CON_ACTIVIDAD : number = 5;
+  public static readonly PERSONA_FISICA_CON_ACTIVIDAD: number = 5;
 
   //     /**
   //      * Id para persona fisica extranjera
@@ -563,7 +562,7 @@ export abstract class Const {
   //     /**
   //      * Modo de actualizacion del controlador
   //      */
-  //     public static readonly MODO_ACTUALIZACION : string = 'C';
+       public static readonly MODO_ACTUALIZACION : string = 'C';
 
   //     /**
   //      * Modo de consulta
@@ -586,39 +585,46 @@ export abstract class Const {
     5: 'descDivisas5',
   };
 
+  public static readonly TIPO_CONTRATO_DESC: Object =
+  {
+    1: 'C. BOLSA',
+    5: 'BANCO'
+  };
+
   //CONSTANTES PARA LOS TIPOS DE CONTRATOS
   public static readonly TCON_CASA_CAMBIOS: number = 1;
   public static readonly TCON_DIVISAS_BANCO: number = 5;
 
-  //     public static readonly result : number = 0;
-  //     // gjesus 17/12/13 valor para el Logo de la entrevista de un prospecto
-  //     public static readonly TCON_PROSPECTO : number = 0;
+  //public static readonly result : number = 0;
+  // gjesus 17/12/13 valor para el Logo de la entrevista de un prospecto
+  public static readonly TCON_PROSPECTO : number = 0;
   public static readonly TCON_FONDOS : number = 2;
   public static readonly TCON_CASA_BOLSA : number = 3;
   //     public static readonly TCON_SECURITIES : number = 7;
   public static readonly TCON_FIDEICOMISO : number = 7;
+  public static readonly TCON_BANCO_LUMINA : number = 7;
   //     public static readonly TCON_EXTRANJERA : number = 6;//Este valor no corresponde con el del catalogo, se copian los valores
   public static readonly TCON_BANCO: number = 4;
-  //     public static readonly TCON_DIVISAS_CASA_BOLSA : number = 5;
+  public static readonly TCON_DIVISAS_CASA_BOLSA : number = 5;
   //     public static readonly TCON_DIVISAS_BANCO_RESUTIOPE : number = 31;
   //     public static readonly TCON_DIVISAS_CB_RESUTIOPE : number = 1;
   //     public static readonly TCON_PROSPECTO_OTROS : number = 0;
-  public static readonly EXPID_NO_APLICA : number = 0;
+  public static readonly EXPID_NO_APLICA: number = 0;
 
-  //     public static readonly TITULAR_CAMBIOS_FISICA : number = 3;
-  //     public static readonly TITULAR_CAMBIOS_MORAL : number = 1;
-  //     public static readonly TITULAR_FONDOS_FISICA : number = 7;
-  //     public static readonly TITULAR_FONDOS_MORAL : number = 13;
-  //     public static readonly TITULAR_BOLSA_FISICA : number = 20;
-  //     public static readonly TITULAR_BOLSA_MORAL : number = 23;
+  public static readonly TITULAR_CAMBIOS_FISICA : number = 3;
+  public static readonly TITULAR_CAMBIOS_MORAL : number = 1;
+  public static readonly TITULAR_FONDOS_FISICA : number = 7;
+  public static readonly TITULAR_FONDOS_MORAL : number = 13;
+  public static readonly TITULAR_BOLSA_FISICA : number = 20;
+  public static readonly TITULAR_BOLSA_MORAL : number = 23;
   //     public static readonly TITULAR_SECURITIES_FISICA : number = 32;
   //     public static readonly TITULAR_SECURITIES_MORAL : number = 33;
-  //     public static readonly TITULAR_BANCO_FISICA : number = 31;
-  //     public static readonly TITULAR_BANCO_MORAL : number = 37;
-  //     public static readonly TITULAR_DIVISAS_BANCO_FISICA : number = 65;
-  //     public static readonly TITULAR_DIVISAS_BANCO_MORAL : number = 63;
-  //     public static readonly TITULAR_DIVISAS_CB_FISICA : number = 65;
-  //     public static readonly TITULAR_DIVISAS_CB_MORAL : number = 63;
+  public static readonly TITULAR_BANCO_FISICA : number = 31;
+  public static readonly TITULAR_BANCO_MORAL : number = 37;
+      public static readonly TITULAR_DIVISAS_BANCO_FISICA : number = 65;
+      public static readonly TITULAR_DIVISAS_BANCO_MORAL : number = 63;
+  public static readonly TITULAR_DIVISAS_CB_FISICA : number = 65;
+  public static readonly TITULAR_DIVISAS_CB_MORAL : number = 63;
 
   //     public static readonly BENEFICIARIO_FONDOS : number = 10;
   //     public static readonly BENEFICIARIO_BOLSA : number = 19;
@@ -689,16 +695,16 @@ export abstract class Const {
   //      **/
   //     public static readonly TERCERO_DIV_BANCO_MORAL : number = 69;
 
-  public static readonly ESTATUS_ACTIVO : string = "AC"
-  public static readonly ESTATUS_SUSPENDIDO : string = "SU"
-  //     public static readonly ESTATUS_SOLICITUD : string = "SO"
-  //     public static readonly ESTATUS_MIGRADO : string = "MI";
-  //     public static readonly ESTATUS_REV_CONTROL : string = "R";
+  public static readonly ESTATUS_ACTIVO: string = 'AC';
+  public static readonly ESTATUS_SUSPENDIDO: string = 'SU';
+  public static readonly ESTATUS_SOLICITUD : string = "SO"
+  public static readonly ESTATUS_MIGRADO : string = "MI";
+  public static readonly ESTATUS_REV_CONTROL : string = "R";
 
   //     /**
   //      * Estatus de solicitud aceptado
   //      */
-      public static readonly SOLICITUD_ACEPTADO : string = "ACEP";
+  public static readonly SOLICITUD_ACEPTADO: string = 'ACEP';
 
   //     /**
   //      * Estatus de solicitud rechazado
@@ -708,7 +714,7 @@ export abstract class Const {
   //     /**
   //      * Estatus de solicitud en solicitud
   //      */
-      public static readonly SOLICITUD_SOLICITUD : string = "SOLI";
+  public static readonly SOLICITUD_SOLICITUD: string = 'SOLI';
 
   //     /**
   //      * Estatus de solicitud para reverso
@@ -728,7 +734,7 @@ export abstract class Const {
   //     //public static readonly ID_REP_TARJETA : string = "©";
   //     public static readonly ID_REPETITIVA : string = "000000";
   //     public static readonly ID_REP_TARJETA : string = "999999";
-  //     public static readonly MESA_MATRIZ : string = "1";
+      public static readonly MESA_MATRIZ : string = "1";
 
   //     //Fondos
   //     public static readonly TIPO_ORDEN_ABONO_CUENTA_FONDOS : number = 11;
@@ -808,8 +814,8 @@ export abstract class Const {
   //     /**
   //      * URL para Cargar Imagen de cuestionario.
   //      **/
-  //     public static readonly URL_CARGA_IMAGEN: string = "AwsCargaImagen.jsp";
-  //     public static readonly URL_SERVLET_IMAGENES = "AwsServlet";
+  public static readonly URL_CARGA_IMAGEN: string = "AwsCargaImagen.jsp";
+  public static readonly URL_SERVLET_IMAGENES = "AwsServlet";
 
   //     public static readonly URL_REPORTE : string  = "&reporte=";
 
@@ -832,16 +838,16 @@ export abstract class Const {
   //     /**
   //      * Vistas imagenes cuestionario
   //      **/
-  //     public static readonly VISTA_AEREA: string = "A";
-  //     public static readonly VISTA_CALLE: string = "C";
-  //     public static readonly BUCKET_IMAGENES_CUESTIONARIO = "BUCKETIMGENT";
+  public static readonly VISTA_AEREA: string = "A";
+  public static readonly VISTA_CALLE: string = "C";
+  public static readonly BUCKET_IMAGENES_CUESTIONARIO = "BUCKETIMGENT";
 
   //     public static readonly MENU_AYUDA_POS2 = "AyudaPos2";
   //     public static readonly CARGA_AYUDA_POS2 = "upAyudaPos2";
   //     public static readonly URL_AYUDA_POS2 = "AwsView.jsp";
   //     public static readonly BUCKET_AYUDA_POS2 = "BUCKETAYUDAPOS2";
 
-  //     public static readonly URL_CONSULT_CONFIRM: string = "../ConsultConfirm.jsp?clvOpe=";
+      public static readonly URL_CONSULT_CONFIRM: string = "../ConsultConfirm.jsp?clvOpe=";
   //     public static readonly URL_IMPRIME_ANEXO: string = "../AnexoServlet?pepId=";
 
   //     public static readonly CONN_NAME_POSICION: string = "connPosicion";
@@ -875,15 +881,15 @@ export abstract class Const {
   public static readonly PERF_TITULAR_DESC: string = 'TITULAR';
   //     public static readonly PERF_COTITULAR_DESC : string = 'COTITULAR';
   //     public static readonly PERF_BENEFICIARIO_DESC : string = 'BENEFICIARIO';
-  //     public static readonly PERF_APODERADO_DESC : string = 'APODERADO';
+      public static readonly PERF_APODERADO_DESC : string = 'APODERADO';
   //     public static readonly PERF_PROV_RECURSOS_DESC : string = 'PROVEEDOR RECURSOS';
-  //     public static readonly PERF_PROP_REAL_DESC : string = 'PROPIETARIO REAL';
+  public static readonly PERF_PROP_REAL_DESC : string = 'PROPIETARIO REAL';
   //     public static readonly PERF_TERCERO_AUTORIZADO_DESC : string ='TERCERO AUTORIZADO';
   //     public static readonly PERF_CONTACTO_DESC : string ='CONTACTO';
   //     public static readonly PERF_TERCEROS_DESC : string ='TERCEROS';
   //     public static readonly PERF_ADICIONAL_DESC : string ='ADICIONAL';
   //     public static readonly PERF_FIDEICOMISARIO_DESC : string ='FIDEICOMISARIO';
-  //     public static readonly PERF_FIDEICOMITENTE_DESC : string ='FIDEICOMITENTE';
+  public static readonly PERF_FIDEICOMITENTE_DESC : string ='FIDEICOMITENTE';
 
   //     /**Catalogo descripcion i00division_contrato**/
   //     public static readonly DIVISION_CONTRATO_INDIVIDUAL_DESC : string = 'INDIVIDUAL';
@@ -906,10 +912,10 @@ export abstract class Const {
   //     //Calificacion
   //     public static readonly URL_UPLOAD_FILE : string = "../SubeArchivoServlet";
 
-       /**
-        * Identificador del rolId del Wizard de Modifica operacion.
-        */
-       public static readonly ROL_ID_MODIFICA_OPERACION_WIZARD:number= 349;
+  /**
+   * Identificador del rolId del Wizard de Modifica operacion.
+   */
+  public static readonly ROL_ID_MODIFICA_OPERACION_WIZARD: number = 349;
   //     /**
   //      * Identificador del rolId del Wizard de Modifica operacion.
   //      */
@@ -922,15 +928,15 @@ export abstract class Const {
   //     //Distribucion
   //     public static readonly URL_MODIFICA_DISTRIBUCION_FILE : string = "DistribucionOperacion.swf";
 
-       //EXPRESIONES REGULARES DE RFC
-       /**
-        * Expresion regular del formato del RFC de una persona Fisica
-        */
-       public static readonly EXP_REG_RFC_FISICA : RegExp = /(^([a-zñA-ZÑ]{4})(\d){6}([a-zñA-ZÑ0-9]{3})$)|(^([a-zñA-ZÑ]{4})(\d){6}$)/;
-       /**
-        * Expresion regular del formato del RFC de una persona Moral
-        */
-       public static readonly EXP_REG_RFC_MORAL : RegExp = /(^([a-zñA-Z&Ñ]{3})(\d){6}([a-zñA-Z0-9&Ñ]{3})$)/;
+  //EXPRESIONES REGULARES DE RFC
+  /**
+   * Expresion regular del formato del RFC de una persona Fisica
+   */
+  public static readonly EXP_REG_RFC_FISICA: RegExp = /(^([a-zñA-ZÑ]{4})(\d){6}([a-zñA-ZÑ0-9]{3})$)|(^([a-zñA-ZÑ]{4})(\d){6}$)/;
+  /**
+   * Expresion regular del formato del RFC de una persona Moral
+   */
+  public static readonly EXP_REG_RFC_MORAL: RegExp = /(^([a-zñA-Z&Ñ]{3})(\d){6}([a-zñA-Z0-9&Ñ]{3})$)/;
 
   //     /**
   //      * Longitud minima del RFC para persona fisica
@@ -943,8 +949,8 @@ export abstract class Const {
   //     public static readonly LONG_MIN_RFC_MORAL:number = 12;
 
   //     //CONSTATES PARA EL TIPO PERSONA
-  public static readonly PERSONA_MORAL : string= 'M';
-  public static readonly PERSONA_FISICA : string= 'F';
+  public static readonly PERSONA_MORAL: string = 'M';
+  public static readonly PERSONA_FISICA: string = 'F';
 
   //     public static readonly ANNOS_MAXIMOS : number = 110;
   //     public static readonly TIPO_EJECUTIVO : number = 1;
@@ -952,19 +958,19 @@ export abstract class Const {
   //     public static readonly ESTATUS_CON_DECISION_COMITE : number = 5;
   //     public static readonly ESTATUS_CON_QUEBRANTO_RECHAZO : number = 8;
 
-       //CONSTANTES PARA LA CATEGORIA DE PERSONA
-       /**
-        * Identificador de la categoria asociada a una persona física extranjera
-        */
-       public static readonly ID_PERSONA_FISICA_EXTRANJERA : number = 6;
-       /**
-        * Identificador de la categoria asociada a una persona moral extranjera
-        */
-       public static readonly ID_PERSONA_MORAL_EXTRANJERA : number = 9;
-       /**
-        * Identificador de la categoria asociada a una entidad financiera extranjera
-        */
-       public static readonly ID_ENTIDAD_FINANCIERA_EXTERIOR : number = 3;
+  //CONSTANTES PARA LA CATEGORIA DE PERSONA
+  /**
+   * Identificador de la categoria asociada a una persona física extranjera
+   */
+  public static readonly ID_PERSONA_FISICA_EXTRANJERA: number = 6;
+  /**
+   * Identificador de la categoria asociada a una persona moral extranjera
+   */
+  public static readonly ID_PERSONA_MORAL_EXTRANJERA: number = 9;
+  /**
+   * Identificador de la categoria asociada a una entidad financiera extranjera
+   */
+  public static readonly ID_ENTIDAD_FINANCIERA_EXTERIOR: number = 3;
   //     /**
   //      * Identificador de la categoria asociada a una persona moral nacional
   //      */
@@ -1006,19 +1012,19 @@ export abstract class Const {
   //     public static readonly CORPORATION : number =22;
   //     public static readonly GOVERMENT :    number =23;
 
-  //     //GRUPO DE CONTROL DE MATRIZ
-  //     public static readonly GRUPO_DE_CONTROL_DE_MATRIZ : string = 'CONTROLMATRIZ';
-  //     //GRUPO DE CONTROL DE MATRIZ
-  //     public static readonly GRUPO_DE_CONTROL_DIV_CB : string = 'CONTROLDIVCB';
+  //GRUPO DE CONTROL DE MATRIZ
+  public static readonly GRUPO_DE_CONTROL_DE_MATRIZ : string = 'CONTROLMATRIZ';
+  //GRUPO DE CONTROL DE MATRIZ
+  public static readonly GRUPO_DE_CONTROL_DIV_CB : string = 'CONTROLDIVCB';
   //     //GRUPO DE CONTROL DE MATRIZ
   //     public static readonly GRUPO_RECURSOSHUMANOS : string = 'RECURSOSHUMANOS';
   //     //GRUPO DE CONTROL DE MATRIZ
   //     public static readonly GRUPO_ENROLADOR_BIOMETRICO : string = 'ENROLADORBIOMETRICO';
   //     //
   /**
-  * GRUPO CONTROL INTERCAM
-  */
-  public static readonly GRUPO_CONTROL_INTERCAM : string = 'CONTROLINTERCAM';
+   * GRUPO CONTROL INTERCAM
+   */
+  public static readonly GRUPO_CONTROL_INTERCAM: string = 'CONTROLINTERCAM';
   //     public static readonly GRUPO_CONTROL_DIVBANCO: string = 'CONTROLDIVBANCO';
   //     public static readonly TIPO_DOCTO_CARTA_LIBERACION : number = 20;
   //     public static readonly LIMITE_OPERADOR : string ="OPE";
@@ -1057,10 +1063,10 @@ export abstract class Const {
   //      */
   //     public static readonly GRUPO_TRADER_MATRIZ: string = "TRADERMATRIZ";
 
-      /**
-        * Id direccion Fiscal
-        * */
-       public static readonly DIRECCION_FISCAL :  number =1;
+  /**
+   * Id direccion Fiscal
+   * */
+  public static readonly DIRECCION_FISCAL: number = 1;
   //     /**
   //      * Id direccion Particular
   //      * */
@@ -1078,97 +1084,99 @@ export abstract class Const {
   //      */
   //     public static readonly DIRECCION_REPETITIVA_DIV_BANCO : number = 19;
 
-       public static readonly URL_ROL_CIERRE_OPERACION : string = "CierreOperacion.swf";
+  public static readonly URL_ROL_CIERRE_OPERACION: string =
+    'CierreOperacion.swf';
 
   //     /**
   //      * Clave del rol para el alta de cierre rapido de divisas.
   //      * */
-  //     public static readonly ROL_CLAVE_CIERRE_OPERACION : number = 315;
+       public static readonly ROL_CLAVE_CIERRE_OPERACION : number = 315;
 
-  //     /**
-  //      * Clave del rol para el cierre de canjes.
-  //      * */
-  //     public static readonly ROL_CLAVE_CIERRE_CANJE : number = 351;
+  /**
+   * Clave del rol para el cierre de canjes.
+   * */
+  public static readonly ROL_CLAVE_CIERRE_CANJE: number = 351;
 
   //     public static readonly URL_ROL_DISTRIBUCION_OPERACION : string = "DistribucionOperacion.swf";
 
-  //     /**
-  //      * Clave del rol para distribucion de operaciones.
-  //      * */
-  //     public static readonly ROL_CLAVE_DISTRIBUCION_OPE : number = 318;
+      /**
+       * Clave del rol para distribucion de operaciones.
+       * */
+      public static readonly ROL_CLAVE_DISTRIBUCION_OPE : number = 318;
 
   public static readonly ACTIVIDAD_AGENCIA_ADUANAL: number = 868;
 
-       /**
-        * Identificador de la actividad no clasificada
-        * */
-       public static readonly ACT_NO_CLASIFICADA : number = 1101;
+  /**
+   * Identificador de la actividad no clasificada
+   * */
+  public static readonly ACT_NO_CLASIFICADA: number = 1101;
 
-       /**
-        * Identificador de la actividad no asignada
-        * */
-       public static readonly ACT_NO_ASIGNADA : number  = 1105;
+  /**
+   * Identificador de la actividad no asignada
+   * */
+  public static readonly ACT_NO_ASIGNADA: number = 1105;
 
-  //     /** * Grupo de Matriz para operar divisas (Default)
-  //      */
-  //     public static readonly PROM_DIV_INMTZ : string = "PROMDIVINMTZ";
-  //     /**
-  //      * Nombre inicial para construccion de Rol Promotores sucursales
-  //      */
-  //     public static readonly PROMDIV : string = "PROMDIV";
-  //     /**
-  //      * Clave del grupo para el cierre de Cheques Devueltos.
-  //      * */
-  //     public static readonly GPO_CHEQUES_DEVUELTOS : number = 415;
-       /**
-        * Grupo para operar Cheques Devueltos
-        */
-       public static readonly CHEQUES_DEVUELTOS : string = "CHEQUESDEVUELTOS";
+  /** * Grupo de Matriz para operar divisas (Default)
+   */
+  public static readonly PROM_DIV_INMTZ: string = 'PROMDIVINMTZ';
+  /**
+   * Nombre inicial para construccion de Rol Promotores sucursales
+   */
+  public static readonly PROMDIV: string = 'PROMDIV';
+  /**
+   * Clave del grupo para el cierre de Cheques Devueltos.
+   * */
+  public static readonly GPO_CHEQUES_DEVUELTOS: number = 415;
+  /**
+   * Grupo para operar Cheques Devueltos
+   */
+  public static readonly CHEQUES_DEVUELTOS: string = 'CHEQUESDEVUELTOS';
 
   //     /**
   //      * Grupo para operar iCambiosPro
   //      */
-  //     public static readonly I_CAMBIOS_PRO : string = "OPERAET";
-       /**
-        * Mensaje resp cuando no existe Fed Reference en la tabla cobro
-        */
-       public static readonly NO_ENC_FED_REF : string = " RECORD NOT IN TABLE: Cobro";
-       /**
-        * Mensaje resp cuando el Fed Reference no ha sido cargado, existe el registro pero aud_cob = null.
-        */
-       public static readonly FED_NOT_LOADED : string = "FED NOT LOADED";
-  //     /**
-  //      * Mensaje resp cuando no existe Registro de la trasnsfer en la tabla m03adictran
-  //      */
-  //     public static readonly NO_ENC_REG_TRANS : string = " RECORD NOT IN TABLE: m03adictran";
+       public static readonly I_CAMBIOS_PRO : string = "OPERAET";
+  /**
+   * Mensaje resp cuando no existe Fed Reference en la tabla cobro
+   */
+  public static readonly NO_ENC_FED_REF: string = ' RECORD NOT IN TABLE: Cobro';
+  /**
+   * Mensaje resp cuando el Fed Reference no ha sido cargado, existe el registro pero aud_cob = null.
+   */
+  public static readonly FED_NOT_LOADED: string = 'FED NOT LOADED';
+
+  /**
+   * Mensaje resp cuando no existe Registro de la trasnsfer en la tabla m03adictran
+   */
+  public static readonly NO_ENC_REG_TRANS: string = " RECORD NOT IN TABLE: m03adictran";
 
   /**
    * Identificadores de la Fecha valor para Divisas
    */
   public static readonly FECHA_VALOR_HOY: number = 0;
-  //     public static readonly FECHA_VALOR_24: number = 24;
-       public static readonly FECHA_VALOR_48 : number = 48;
+  public static readonly FECHA_VALOR_24: number = 24;
+  public static readonly FECHA_VALOR_48: number = 48;
   //     public static readonly FECHA_VALOR_72: number = 72;
   //     public static readonly FECHA_VALOR_96: number = 96;
   //     public static readonly FECHA_VALOR_48_STR : string = "48 HRS";
 
-  public static readonly SUC_MATRIZ : string = 'INMTZ';
+  public static readonly SUC_MATRIZ: string = 'INMTZ';
   //     public static readonly ESTATUS_LEGADO_SIFF :  number =  5;
 
   //     public static readonly CUENTA_MEXDOLAR  : string = 'M';
 
   //     public static readonly CUENTA_TRANSFER : string = 'T';
 
-  //      public static readonly REGIMEN_INVERSION : any[] = [
-  //         {regInv:"B", descripcion:"Bloqueado"}, {regInv:"A", descripcion:"Abierto"},
-  //         {regInv:"D", descripcion:"Dep. Efvo. R.F."}, {regInv:"R", descripcion:"Restringido"},
-  //         {regInv:"I", descripcion:"Congelada x Jurid"}, {regInv:"V", descripcion:"Dep. Efvo. R.F. R.V."},
-  //         {regInv:"M", descripcion:"Mancomunada"}, {regInv:"C", descripcion:"Inactivo Baja x Sist"}];
+  public static readonly REGIMEN_INVERSION : any[] = [
+       {regInv:"B", descripcion:"Bloqueado"}, {regInv:"A", descripcion:"Abierto"},
+       {regInv:"D", descripcion:"Dep. Efvo. R.F."}, {regInv:"R", descripcion:"Restringido"},
+       {regInv:"I", descripcion:"Congelada x Jurid"}, {regInv:"V", descripcion:"Dep. Efvo. R.F. R.V."},
+       {regInv:"M", descripcion:"Mancomunada"}, {regInv:"C", descripcion:"Inactivo Baja x Sist"}];
 
   //     public static readonly MENU_SICA : number= 60;
 
   //CONSTATES PARA CUENTAS ABC
-  public static readonly CLV_BANXICO_BBVBCMER: string = "40012";
+  public static readonly CLV_BANXICO_BBVBCMER: string = '40012';
 
   //     /**
   //      * Número trece de tipo "int".
@@ -1186,32 +1194,32 @@ export abstract class Const {
   //     /**
   //      * Numero 1 de tipo "int".
   //      */
-       public static readonly INT_1 :number = 1;
+  public static readonly INT_1: number = 1;
 
   /**
-  * Numero 2 de tipo "int".
-  */
-  public static readonly INT_2 :number = 2;
+   * Numero 2 de tipo "int".
+   */
+  public static readonly INT_2: number = 2;
 
   /**
-  * Numero 3 de tipo "int".
-  */
-  public static readonly INT_3 :number = 3;
+   * Numero 3 de tipo "int".
+   */
+  public static readonly INT_3: number = 3;
 
   /**
-  * Numero 4 de tipo "int".
-  */
-  public static readonly INT_4 :number = 4;
+   * Numero 4 de tipo "int".
+   */
+  public static readonly INT_4: number = 4;
 
-  //     /**
-  //      * Numero 5 de tipo "int".
-  //      */
-  //     public static readonly INT_5 :number = 5;
+  /**
+   * Numero 5 de tipo "int".
+   */
+  public static readonly INT_5: number = 5;
 
-       /**
-        * Numero 6 de tipo "int".
-        */
-       public static readonly INT_6 :number = 6;
+  /**
+   * Numero 6 de tipo "int".
+   */
+  public static readonly INT_6: number = 6;
   //     /**
   //      * Numero 7 de tipo "int".
   //      */
@@ -1230,35 +1238,49 @@ export abstract class Const {
   //     /**
   //      * Numero 10 de tipo "int".
   //      */
-  //     public static readonly INT_10 :number = 10;
+  public static readonly INT_10: number = 10;
   //     /**
   //      * Numero 11 de tipo "int".
   //      */
   //     public static readonly INT_11 :number =11;
 
+  public static readonly INT_55: number = 55;
+
+  /**Carrito 56 */
+  public static readonly INT_56: number = 56;
+
+  public static readonly DIRECCION_IP_127: string ='127.0.0.1';
+  
+  public static readonly URL_API_JSON_IP: string =
+    'https://api.ipify.org/?format=json';
   /**
-  * Numero -1 de tipo "int".
-  */
-  public static readonly INT_menos1 :number = -1;
+   * Numero -1 de tipo "int".
+   */
+  public static readonly INT_menos1: number = -1;
   /*
    * Número trece de tipo "int".
    */
   public static readonly INT_13: number = 13;
-    
-       /**
-        * Parámetro para definir si las repetitivas se autorizan.
-        */
-       public static readonly AUTORIZA_REPETITIVA : string = "AUTORIZA_REPETIT";
 
- /**
-  * Parámetro para definir si las repetitivas se autorizan.
-  */
- public static readonly TRANSFER_REQUIRE : string = "TRANSFER_REQUIRE";
+  /**
+   * Parámetro para definir si las repetitivas se autorizan.
+   */
+  public static readonly AUTORIZA_REPETITIVA: string = 'AUTORIZA_REPETIT';
 
-  //     /**
-  //      * Parámetro para definir el rango permitido para modificar el monto de una operacion
-  //      */
-  //     public static readonly RANGO_MODIFICA_MONTO_OPE : string = "RANGO_A_MOD";
+  /**
+   * Parámetro para definir si las repetitivas se autorizan.
+   */
+  public static readonly TRANSFER_REQUIRE: string = 'TRANSFER_REQUIRE';
+
+      /**
+       * Parámetro para definir el rango permitido para modificar el monto de una operacion
+       */
+      public static readonly RANGO_MODIFICA_MONTO_OPE : string = "RANGO_A_MOD";
+
+  /**
+   * Cadena para el texto 'TRUE'.
+   */
+  public static readonly STRING_TRUE: string = 'TRUE';
 
   /**
    * Cadena para la letra V.
@@ -1268,17 +1290,17 @@ export abstract class Const {
   /**
    * Cadena para la letra F.
    */
-  public static readonly STRING_F: string = "F";
+  public static readonly STRING_F: string = 'F';
 
-    /**
+  /**
    * Cadena para la letra E.
    */
-     public static readonly STRING_E: string = "E";
+  public static readonly STRING_E: string = 'E';
 
-       /**
+  /**
    * Cadena para la letra R.
    */
-  public static readonly STRING_R: string = "R";
+  public static readonly STRING_R: string = 'R';
 
   //     /**
   //      * El archivo con las propiedades de localización de los idiomas.
@@ -1298,48 +1320,48 @@ export abstract class Const {
   //     /**
   //      * Formato para fecha.
   //      */
-      public static readonly DATE_FORMAT : string = "dd/MM/YYYY";
-  //     /**
-  //      * Banco para pagos mixtos
-  //      */
-  //     public static readonly BANCO_MIXTO : string = "VARIO";
+  public static readonly DATE_FORMAT: string = 'dd/MM/YYYY';
+       /**
+        * Banco para pagos mixtos
+        */
+       public static readonly BANCO_MIXTO : string = "VARIO";
 
   //     //Tipos de Pago para Repetitivas de Cuentas
-       /**
-        * Constante asociad al tipo de cuenta Abono
-        */
-       public static readonly TIPO_ABONO : string = 'A';
+  /**
+   * Constante asociad al tipo de cuenta Abono
+   */
+  public static readonly TIPO_ABONO: string = 'A';
 
-      /**
-       * Constante asociad al tipo de cuenta Convenio
-       */
-      public static readonly TIPO_CONVENIO : string = 'C';
+  /**
+   * Constante asociad al tipo de cuenta Convenio
+   */
+  public static readonly TIPO_CONVENIO: string = 'C';
 
-      /**
-       * Constante asociad a las Referencias
-       */
-      public static readonly TIPO_REFERENCIA : string = 'R';
+  /**
+   * Constante asociad a las Referencias
+   */
+  public static readonly TIPO_REFERENCIA: string = 'R';
 
-      /**
-       * Constante asociad al tipo de cuenta SPEI
-       */
-      public static readonly TIPO_SPEI : string = 'S';
+  /**
+   * Constante asociad al tipo de cuenta SPEI
+   */
+  public static readonly TIPO_SPEI: string = 'S';
 
   //     /**
   //      * Constante asociad al tipo de cuenta SPID
   //      */
   //     public static readonly TIPO_SPID : string = 'D';
 
-      /**
-       * Constante asociad al Titular o Beneficiario
-       */
-      public static readonly TIPO_TITULAR : string = 'T';
+  /**
+   * Constante asociad al Titular o Beneficiario
+   */
+  public static readonly TIPO_TITULAR: string = 'T';
 
-  //     /**
-  //      * Constante para obtener la IP y el puerto de la tabla i03parametro_general, que se requiere en el metodo
-  //      * para encriptar el codigo de alta de las repetitivas de cuenta para clientes de banco.
-  //      */
-  //     public static readonly ENCRYPT_IP : string = 'DATOS_IP';
+      /**
+       * Constante para obtener la IP y el puerto de la tabla i03parametro_general, que se requiere en el metodo
+       * para encriptar el codigo de alta de las repetitivas de cuenta para clientes de banco.
+       */
+      public static readonly ENCRYPT_IP : string = 'DATOS_IP';
 
   //     /**
   //      * Constante para obtener la IP y el puerto de la tabla i03parametro_general, que se requiere en el metodo
@@ -1374,9 +1396,9 @@ export abstract class Const {
   //     public static readonly DESCRIPCION_PORCENT_INFLACION : string = 'INFLACION';
 
   //     public static readonly DOCUMENTO_MIGRATORIO_FM2 : string = 'FM2';
-  public static readonly DOCUMENTO_MIGRATORIO_FM3 : string = 'FM3';
-  public static readonly RFC : string = 'RFC';
-  public static readonly NSS : string = 'NSS';
+  public static readonly DOCUMENTO_MIGRATORIO_FM3: string = 'FM3';
+  public static readonly RFC: string = 'RFC';
+  public static readonly NSS: string = 'NSS';
 
   //     public static readonly CAL_INMIGRADO_S : string = 'S';
   //     public static readonly CAL_INMIGRADO_N : string = 'N';
@@ -1407,17 +1429,17 @@ export abstract class Const {
   //     /**
   //      * Descripcion para el tipo de Envio  definidos en la tabla i00tipo_envio_edo para otros banco
   //      * */
-     public static readonly TEN_DESCRIP_FACTURA : string = "FACTURA";
+  public static readonly TEN_DESCRIP_FACTURA: string = 'FACTURA';
 
   /**
    * Constante de la clave BANXICO para el banco  BANREGIO
    **/
   public static readonly CLV_BANXICO_BANREGIO: string = '40058';
 
-      /**
-       * Constante de la clave BANXICO para el banco  BANNORTE
-       **/
-      public static readonly CLV_BANXICO_BANORTE : string = '40072';
+  /**
+   * Constante de la clave BANXICO para el banco  BANNORTE
+   **/
+  public static readonly CLV_BANXICO_BANORTE: string = '40072';
 
   /**
    * Constante de la clave BANXICO para el banco  INTERBANCO
@@ -1434,10 +1456,10 @@ export abstract class Const {
   //      **/
   //     public static readonly ID_ERROR_REQUERIDOS_CONTRATO : string = "3021";
 
-      /**
-        * Clave InterBanco sica
-        **/
-       public static readonly CLV_INTERBANCO_SICA : string = 'INBMN';
+  /**
+   * Clave InterBanco sica
+   **/
+  public static readonly CLV_INTERBANCO_SICA: string = 'INBMN';
 
   //     /**
   //      * Tipo de Envios definidos en la tabla i00tipo_envio_edo para estado cuenta SEGUROS
@@ -1451,36 +1473,13 @@ export abstract class Const {
   //     /**
   //      * Clave InterBanco Dolares
   //      **/
-    public static readonly CLV_INTERBANCO_USD : string = 'INBUS';
+  public static readonly CLV_INTERBANCO_USD: string = 'INBUS';
 
   //     /**
   //      * Clave
   //      S
   //      **/
-    public static readonly CLV_INTERBANCO_EUR : string = 'INBEU';
-
-  //     /**
-  //      * Obtiene la deascripcion de los estatus de las solicitudes de pago por adelantado
-  //      */
-  //     // public static descSolPxAdelantado(estatus : Number) : string {
-  //     //     var desEstatus: string;
-  //     //     switch(estatus){
-  //     //         case 0:
-  //     //             desEstatus = ResourceManager.getInstance().getString(Const.RESOURCE, 'solicitud.auto');
-  //     //             break;
-  //     //         case 1:
-  //     //             desEstatus = ResourceManager.getInstance().getString(Const.RESOURCE, 'proceso.auto');
-  //     //             break;
-  //     //         case 2:
-  //     //             desEstatus = ResourceManager.getInstance().getString(Const.RESOURCE, 'autorizado');
-  //     //             break;
-  //     //         case 3:
-  //     //             desEstatus = ResourceManager.getInstance().getString(Const.RESOURCE, 'rechazado');;
-  //     //             break;
-  //     //     }
-
-  //     //     return  desEstatus;
-  //     // }
+  public static readonly CLV_INTERBANCO_EUR: string = 'INBEU';
 
   //     /**************************************************
   //      * Constanes de Reportes
@@ -1510,14 +1509,14 @@ export abstract class Const {
   //     public static readonly ERROR_BITACORA_1 : string = "116";
 
   //     //CONSTANTES GENERALES
-  //     /**
-  //      * Codigo abreviado para NO (N)
-  //      */
-  //     public static readonly NO : string = "N";
+  /**
+   * Codigo abreviado para NO (N)
+   */
+  public static readonly NO: string = "N";
   //     /**
   //      * Codigo abreviado para SI (S)
   //      */
-    public static readonly SI : string = "S";
+  public static readonly SI: string = 'S';
 
   //     /**
   //      * Formato de letra en color rojo
@@ -1557,13 +1556,13 @@ export abstract class Const {
   //     public static readonly URL_REPORT_COMISIONES : string = "../ReportComisionesFrame.jsp";
 
   /**
-  * Cadena vacia
-  */
-  public static readonly STR_EMPTY : string = "";
+   * Cadena vacia
+   */
+  public static readonly STR_EMPTY: string = '';
   //     /**
   //      * Caracter separador para los mensajes del store procedures
   //      * */
-  //     public static readonly SEPARADOR_STORE_PROCEDURES : string = ';';
+  public static readonly SEPARADOR_STORE_PROCEDURES: string = ';';
   //     /**
   //      * Archivo con las propiedades de los nombres de pantalla y nombres de campos
   //      * */
@@ -1579,12 +1578,11 @@ export abstract class Const {
    */
   public static readonly MAX_LONG_CAD_FORMA_PAGO: string = 'MAX_CAD_FORMAPAG';
 
-
   /**
-   * 
+   *
    */
 
-  public static readonly BCO_NO_EXIGE_CTA: string ='BCO_NO_EXIGE_CTA';
+  public static readonly BCO_NO_EXIGE_CTA: string = 'BCO_NO_EXIGE_CTA';
 
   /**
    * Numero de caracteres que puede contener la Cadena de instrucciones
@@ -1616,17 +1614,17 @@ export abstract class Const {
   //      */
   //     public static readonly IMAGEN_PROSPECTO : string = '../assets/entrevistaProspecto.jpg';
 
-  //     /**
-  //      * gjesus 17/12/13
-  //      * Parametro para opbtener el tipo de cuestionario P fisica de i09parametro
-  //      **/
-  //     public static readonly PerFisicaEntrevista : string = "ENT_UNICA_PFISIC";
+  /**
+  * gjesus 17/12/13
+  * Parametro para opbtener el tipo de cuestionario P fisica de i09parametro
+  **/
+  public static readonly PerFisicaEntrevista : string = "ENT_UNICA_PFISIC";
 
-  //     /**
-  //      *  gjesus 17/12/13
-  //      * Parametro para opbtener el tipo de cuestionario P Moral de i09parametro
-  //      **/
-  //     public static readonly PerMoralEntrevista : string = "ENT_UNICA_PMORAL";
+  /**
+  *  gjesus 17/12/13
+  * Parametro para opbtener el tipo de cuestionario P Moral de i09parametro
+  **/
+  public static readonly PerMoralEntrevista : string = "ENT_UNICA_PMORAL";
 
   /**
    * Constante que indica dentro del campo "codigo" en ResultadoVO(Usado en Cargo/Abono Banco),
@@ -1638,22 +1636,22 @@ export abstract class Const {
   //      * Constante que indica dentro del campo "codigo" en ResultadoVO(Usado en Cargo/Abono Banco),
   //      * cuando la operación en el StoredProcedure fué liquidada.
   //      */
-  public static readonly CODIGO_LIQUIDACION : string = '000007';
+  public static readonly CODIGO_LIQUIDACION: string = '000007';
 
   //     /**
   //      * Constatntes de tipos de movimiento en Instrucciones de Liquidación.
   //      * Estos valores pueden estar presentes en el atributo tipMov de OperacionInstruccionVO.
   //      */
-       public static readonly ID_ABONO_CUENTA : number = 1;
-       public static readonly ID_CARGO_CUENTA : number = 2;
-       public static readonly ID_TRASPASO : number = 3;
-       public static readonly ID_CARGO_SPEI : number = 4;
-       public static readonly ID_CARGO_SERVICIO : number = 5;
-       public static readonly ID_CARGO_PAGO_SERVICIO : number = 6;
-       public static readonly ID_CARGO_TAE : number = 8;
-       public static readonly ID_TRASFER_INTER : number = 9;
-			public static readonly ID_TRANSFER_POR_ARCHIVO : number = 10;
-			public static readonly ID_CARGO_OPERACION_DIVISA : number = 11;
+  public static readonly ID_ABONO_CUENTA: number = 1;
+  public static readonly ID_CARGO_CUENTA: number = 2;
+  public static readonly ID_TRASPASO: number = 3;
+  public static readonly ID_CARGO_SPEI: number = 4;
+  public static readonly ID_CARGO_SERVICIO: number = 5;
+  public static readonly ID_CARGO_PAGO_SERVICIO: number = 6;
+  public static readonly ID_CARGO_TAE: number = 8;
+  public static readonly ID_TRASFER_INTER: number = 9;
+  public static readonly ID_TRANSFER_POR_ARCHIVO: number = 10;
+  public static readonly ID_CARGO_OPERACION_DIVISA: number = 11;
 
   //     /**
   //      * Clave de la entidad cuando sea una persona moral extranjera y
@@ -1727,7 +1725,7 @@ export abstract class Const {
   //     /**
   //      * Id de tipo de Consulta C1.
   //      */
-  //     public static readonly TIPO_DE_CONSULTA_C1 : string = "C1";
+     public static readonly TIPO_DE_CONSULTA_C1 : string = "C1";
 
   //     /**
   //      * Id de tipo de Consulta C2.
@@ -1742,9 +1740,9 @@ export abstract class Const {
    * Identificador de empresa Banco Intercam
    */
   public static readonly EMPRESA_INTERCAM_BANCO: number = 292662;
-      /**
-       * IDENTIFICADOR INTERBANCO.
-       */
+  /**
+   * IDENTIFICADOR INTERBANCO.
+   */
   public static readonly BANCO_INTERBANCO: number = 46;
 
   //     /**
@@ -1770,12 +1768,12 @@ export abstract class Const {
   /**
    * Divisa para reasignacion de transferencias
    * */
-  public static readonly DIVISA_USD_TRANSFERENCIAS : string = 'USD';
+  public static readonly DIVISA_USD_TRANSFERENCIAS: string = 'USD';
 
   //     /**
   //      * Divisa para transferencianumberernacional Euro
   //      * */
-  //     public static readonly DIVISA_EUR_TRANSFERENCIAS : string = 'EUR';
+  public static readonly DIVISA_EUR_TRANSFERENCIAS: string = 'EUR';
 
   //     /**
   //      * Nombre del evento lanzado para un movimiento de tesoreria.
@@ -1886,27 +1884,27 @@ export abstract class Const {
   //     /**
   //      * tipo impresion valores de administracion
   //      * */
-  //     public static readonly TIPO_IMPRESION_VALORES : string = "V";
+       public static readonly TIPO_IMPRESION_VALORES : string = "V";
   //     /**
   //      * tipo impresion liquidable al vencimiento
   //      * */
-  //     public static readonly TIPO_IMPRESION_LIQUIDABLE : string = "L";
+       public static readonly TIPO_IMPRESION_LIQUIDABLE : string = "L";
 
   //     //-------------------------
   //     //    Prospeccion
   //     //-------------------------
 
-  //     /**
-  //      *    Constante <code>Const.PERSONA_FISICA</code> define el valor de
-  //      *  la propiedad <code>tipoPersona</code> para persona Fisica.
-  //      **/
-  //     public static readonly OPCION_PERSONA_FISICA: string = "FISICA";
+  /**
+   *    Constante <code>Const.PERSONA_FISICA</code> define el valor de
+   *  la propiedad <code>tipoPersona</code> para persona Fisica.
+   **/
+  public static readonly OPCION_PERSONA_FISICA: string = 'FISICA';
 
-  //     /**
-  //      *    Constante <code>Const.PERSONA_MORAL</code> define el valor de
-  //      *  la propiedad <code>tipoPersona</code> para persona Moral.
-  //      **/
-  //     public static readonly OPCION_PERSONA_MORAL: string = "MORAL";
+  /**
+   *    Constante <code>Const.PERSONA_MORAL</code> define el valor de
+   *  la propiedad <code>tipoPersona</code> para persona Moral.
+   **/
+  public static readonly OPCION_PERSONA_MORAL: string = 'MORAL';
 
   //     /**
   //      *    Constante <code>Const.PERSONA_FISICA_MORAL</code> define el valor de
@@ -1924,25 +1922,25 @@ export abstract class Const {
   //      *    Constante <code>Const.OPCION_DIVISAS</code> define el valor de
   //      *  la propiedad <code>tipoNegocio</code> para el negocio Divisas.
   //      **/
-  //     public static readonly OPCION_DIVISAS: string = "DIVISAS";
+  public static readonly OPCION_DIVISAS: string = 'DIVISAS';
 
   //     /**
   //      *    Constante <code>Const.OPCION_FONDOS_INVERSION</code> define el valor de
   //      *  la propiedad <code>tipoNegocio</code> para el negocio Fondos de Inversion.
   //      **/
-  //     public static readonly OPCION_FONDOS_INVERSION: string = "FONDOS DE INVERSION";
+       public static readonly OPCION_FONDOS_INVERSION: string = "FONDOS DE INVERSION";
 
   /**
-  *  Constante <code>Const.OPCION_BANCO</code> define el valor de
-  *  la propiedad <code>tipoNegocio</code> para el negocio Banco.
-  **/
-  public static readonly OPCION_BANCO: string = "BANCO";
+   *  Constante <code>Const.OPCION_BANCO</code> define el valor de
+   *  la propiedad <code>tipoNegocio</code> para el negocio Banco.
+   **/
+  public static readonly OPCION_BANCO: string = 'BANCO';
 
-  //     /**
-  //      *  Constante <code>Const.OPCION_FIDEICOMISO</code> define el valor de
-  //      *  la propiedad <code>tipoNegocio</code> para el negocio FIDEICOMISO.
-  //      **/
-  //     public static readonly OPCION_FIDEICOMISO: string = "FIDEICOMISO";
+  /**
+   *  Constante <code>Const.OPCION_FIDEICOMISO</code> define el valor de
+   *  la propiedad <code>tipoNegocio</code> para el negocio FIDEICOMISO.
+   **/
+  public static readonly OPCION_FIDEICOMISO: string = 'FIDEICOMISO';
 
   //     /**
   //      *    Constante <code>Const.PERSONA_FISICA_MORAL</code> define el valor de
@@ -1964,52 +1962,52 @@ export abstract class Const {
   //     public static readonly ID_TIPO_DIRECCION_OTRO:number = 6;
 
   /**
-  * Constante <code>Const.ID_ESTADO_PIPELINE_PROSPECTO</code>.
-  * Define el valor de la propiedad <code>EdoPipelineVO.epiId</code> para el
-  * estatus <code>PROSPECTO</code>.
-  **/
+   * Constante <code>Const.ID_ESTADO_PIPELINE_PROSPECTO</code>.
+   * Define el valor de la propiedad <code>EdoPipelineVO.epiId</code> para el
+   * estatus <code>PROSPECTO</code>.
+   **/
   public static readonly ID_ESTADO_PIPELINE_PROSPECTO: number = 1;
 
-  //     /**
-  //      * Estado del prospecto visitado en el pipeline
-  //      */
-  //     public static readonly ID_ESTADO_PIPELINE_VISITADO: number = 2;
+  /**
+   * Estado del prospecto visitado en el pipeline
+   */
+  public static readonly ID_ESTADO_PIPELINE_VISITADO: number = 2;
 
   /**
-  * Estado del prospecto cliente en el pipeline
-  */
+   * Estado del prospecto cliente en el pipeline
+   */
   public static readonly ID_ESTADO_PIPELINE_CLIENTE: number = 3;
 
-  //     /**
-  //      * Estado del prospecto cerro operacion en el pipeline
-  //      */
-  //     public static readonly ID_ESTADO_PIPELINE_CERRO: number = 4;
-
-  //     /**
-  //      * Estado del prospecto no prospero en el pipeline
-  //      */
-  //     public static readonly ID_ESTADO_PIPELINE_NO_PROSPERO: number = 5;
+  /**
+   * Estado del prospecto cerro operacion en el pipeline
+   */
+  public static readonly ID_ESTADO_PIPELINE_CERRO: number = 4;
 
   /**
-  * Estado del contrato 13 Revision Promotor
-  */
+   * Estado del prospecto no prospero en el pipeline
+   */
+  public static readonly ID_ESTADO_PIPELINE_NO_PROSPERO: number = 5;
+
+  /**
+   * Estado del contrato 13 Revision Promotor
+   */
   public static readonly ID_ESTADO_CONTRATO_REV_PROMOTOR: number = 13;
 
   /**
    * Constante <code>Const.CHAR_SPLIT_PUESTO</code>.
    * Define el caracter separador de los puestos almacenados en el campo "puesto" de la tabla "i00catmanager"
    **/
-  public static readonly CHAR_SPLIT_PUESTO: string = ",";
+  public static readonly CHAR_SPLIT_PUESTO: string = ',';
 
   //     /**
   //      * Cadena de coma y espacio.
   //      */
-      public static readonly STRING_COMMA_SPACE = ", ";
+  public static readonly STRING_COMMA_SPACE = ', ';
 
   //     /**
   //      * Cadena con un espacio.
   //      */
-      public static readonly STRING_SPACE = " ";
+  public static readonly STRING_SPACE = ' ';
 
   //     /**
   //      * Constante <code>Const.STATUS_UNO_BOTON</code>.
@@ -2076,41 +2074,41 @@ export abstract class Const {
   //     /**
   //      * grupos para la administracion de precios REUTERS
   //      */
-  //     public static readonly GPOS_ADMON_PRECI : string = "GPOS_ADMON_PRECI";
+  public static readonly GPOS_ADMON_PRECI: string = "GPOS_ADMON_PRECI";
 
   //     /**
   //      * grupos para la administracion de Metales
   //      */
-  //     public static readonly GPO_ADMON_METALES: string = "GPO_ADMON_METALE";
+  public static readonly GPO_ADMON_METALES: string = "GPO_ADMON_METALE";
 
-  //     /**
-  //      * grupos para la administracion de Divisas
-  //      */
-  //     public static readonly GPO_ADMON_DIVISAS: string = "GPOS_DIVISAS";
+  /**
+   * grupos para la administracion de Divisas
+   */
+  public static readonly GPO_ADMON_DIVISAS: string = "GPOS_DIVISAS";
 
   //     //CONSTANTES CON RESPECTO A LOS DIFERENTES ESTATUS FIX QUE MANEJA PRECIOS REUTERS
   //     /**
   //      * Contante que especifica que el estatus es activo
   //      */
-  //     public static readonly REUTERS_ACTIVO : string = "Activo";
+      public static readonly REUTERS_ACTIVO : string = "Activo";
   //     /**
   //      * Contante que especifica que el estatus es sin conexion
   //      */
-  //     public static readonly REUTERS_SIN_CONEXION : string = "noConexion";
+       public static readonly REUTERS_SIN_CONEXION : string = "noConexion";
   //     /**
   //      * Contante que especifica que el estatus es desconectado
   //      */
-  //     public static readonly REUTERS_DISCONNECT : string = "Desconectado";
+      public static readonly REUTERS_DISCONNECT : string = "Desconectado";
   //     /**
   //      * Contante que especifica que el ric (divisa) a consumir o
   //      * contribuir no esta dado de alta en Reuters
   //      */
-  //     public static readonly REUTERS_NO_EXISTE : string = "noExiste";
+       public static readonly REUTERS_NO_EXISTE : string = "noExiste";
   //     /**
   //      * Constante que especifica que el estatus de ese ric (divisa)
   //      * por el momento no esta disponible
   //      */
-  //     public static readonly REUTERS_SUSPENDIDA : string = "suspendida";
+       public static readonly REUTERS_SUSPENDIDA : string = "suspendida";
 
   //     /**
   //      *
@@ -2157,17 +2155,17 @@ export abstract class Const {
   //      */
   //     public static readonly REFERENCIACION_EDO_SOLICITUD_CR :number = 1;
   /**
-  *Constante que especifica que el estatus de la solicitud es "SOLICITUD REFERENCIACION CLIENTE "
-  */
-  public static readonly REFERENCIACION_EDO_SOLICITUD_RC :number = 2;
+   *Constante que especifica que el estatus de la solicitud es "SOLICITUD REFERENCIACION CLIENTE "
+   */
+  public static readonly REFERENCIACION_EDO_SOLICITUD_RC: number = 2;
   /**
-  *Constante que especifica que el estatus de la solicitud es "TOMADO"
-  */
-  public static readonly REFERENCIACION_EDO_TOMADO :number = 3;
+   *Constante que especifica que el estatus de la solicitud es "TOMADO"
+   */
+  public static readonly REFERENCIACION_EDO_TOMADO: number = 3;
   //     /**
   //      *Constante que especifica que el estatus de la solicitud es "NO PROSPERO"
   //      */
-       public static readonly REFERENCIACION_EDO_NO_PROSPERO :number = 4;
+  public static readonly REFERENCIACION_EDO_NO_PROSPERO: number = 4;
 
   //     //*********************************************************************************
   //     //
@@ -2180,9 +2178,9 @@ export abstract class Const {
   //     public static readonly REFERENCIACION_NO_PROCESADO :number = 0;
 
   /***
-  *Constante que especifica que el estatus_proceso se ha realizado
-  */
-  public static readonly REFERENCIACION_PROCESADO :number = 1;
+   *Constante que especifica que el estatus_proceso se ha realizado
+   */
+  public static readonly REFERENCIACION_PROCESADO: number = 1;
 
   //     //*********************************************************************************
   //     //
@@ -2191,13 +2189,13 @@ export abstract class Const {
   //     //*********************************************************************************
 
   /**
-  *Constante que especifica que el tipo de solicitud es "SOLICITUD CLIENTE REFERENCIADO"
-  */
-  public static readonly REFERENCIACION_TIP_SOLICITUD_CR : string = "CR";
-  //     /**
-  //      *Constante que especifica que el tipo de solicitud es "SOLICITUD REFERENCIACION CLIENTE "
-  //      */
-  //     public static readonly REFERENCIACION_TIP_SOLICITUD_RC : string = "RC";
+   *Constante que especifica que el tipo de solicitud es "SOLICITUD CLIENTE REFERENCIADO"
+   */
+  public static readonly REFERENCIACION_TIP_SOLICITUD_CR: string = 'CR';
+  /**
+   *Constante que especifica que el tipo de solicitud es "SOLICITUD REFERENCIACION CLIENTE "
+   */
+  public static readonly REFERENCIACION_TIP_SOLICITUD_RC: string = 'RC';
 
   //     /**
   //      * Constante que especifica que el proceso de respuesta fue hecho por el promotor
@@ -2233,14 +2231,16 @@ export abstract class Const {
   //      * Perfil en i00perfil_inversion para <<No opera mercado de dinero>> de Banco.
   //      */
   //     public static readonly NO_OPERA_MD :number = 7;
-  //     /**
-  //      * Tipo de Cuenta CLIC EXPRESS de Banco INTERCUENTA EXPRESS
-  //      */
-  //     public static readonly TIPO_CUENTA_CLIC_EXPRESS : string = 'INTERCUENTA EXPRESS';
-  //     /**
-  //      * Tipo de Cuenta CLIC EXPRESS de Banco en USD INTERCUENTA EXPRESS USD
-  //      */
-  //     public static readonly TIPO_CUENTA_CLIC_EXPRESS_USD : string = 'INTERCUENTA EXPRESS USD';
+  /**
+   * Tipo de Cuenta CLIC EXPRESS de Banco INTERCUENTA EXPRESS
+   */
+  public static readonly TIPO_CUENTA_CLIC_EXPRESS: string =
+    'INTERCUENTA EXPRESS';
+  /**
+   * Tipo de Cuenta CLIC EXPRESS de Banco en USD INTERCUENTA EXPRESS USD
+   */
+  public static readonly TIPO_CUENTA_CLIC_EXPRESS_USD: string =
+    'INTERCUENTA EXPRESS USD';
   //     /**
   //      * Tipo de Cuenta CLIC EXPRESS de Banco =INTERCUENTA EXPRESS
   //      */
@@ -2254,7 +2254,7 @@ export abstract class Const {
   /**
    * Tipo de Cuenta SERVICIO FX PESOS
    */
-  public static readonly TIPO_CUENTA_SERVICIO_FX_PESOS : string = "16";
+  public static readonly TIPO_CUENTA_SERVICIO_FX_PESOS: string = '16';
 
   //     /**
   //      * ORIGEN CASA DE BOLSA
@@ -2269,7 +2269,7 @@ export abstract class Const {
   //     /**
   //      * Parametro para obtener el tconId predertimnado.
   //      */
-  //     public static readonly TCON_ID_PREDETER: string = "TCON_ID_PREDETER";
+  public static readonly TCON_ID_PREDETER: string = 'TCON_ID_PREDETER';
 
   //     /**
   //      * Parametro para obtener las cuentas que pueden operar SPEI Movil
@@ -2343,22 +2343,22 @@ export abstract class Const {
   //     /**
   //      * Status float
   //      */
-  //     public static readonly STATUS_FLOAT: string = '1';
-  //     public static readonly STATUS_CANCELADO: string = '2';
-  //     public static readonly STATUS_COBRADO: string = '3';
-  //     public static readonly STATUS_RECOMPRA: string = '4';
-  //     public static readonly STATUS_STOPPAYMENT: string = '5';
-  //     public static readonly STATUS_FOLIORECOMPRA: string = '6';
-  //     public static readonly HABILITA_FLOAT: string = '7';
-  //     public static readonly STATUS_MARCADO: string = 'X';
-  //     public static readonly STATUS_NO_MARCADO: string = 'N';
-  //     public static readonly STATUS_TODOS: string = 'T';
+  public static readonly STATUS_FLOAT: string = '1';
+  public static readonly STATUS_CANCELADO: string = '2';
+  public static readonly STATUS_COBRADO: string = '3';
+  public static readonly STATUS_RECOMPRA: string = '4';
+  public static readonly STATUS_STOPPAYMENT: string = '5';
+  public static readonly STATUS_FOLIORECOMPRA: string = '6';
+  public static readonly HABILITA_FLOAT: string = '7';
+  public static readonly STATUS_MARCADO: string = 'X';
+  public static readonly STATUS_NO_MARCADO: string = 'N';
+  public static readonly STATUS_TODOS: string = 'T';
 
   //     ///////////////////////// Constantes para el modulo de carga de archivos de Cheques Float //////////////////////
   //     /**
   //      * Estatus "Cargado"
   //      */
-  //     public static readonly FLT_ESTATUS_CARGADO = "CA";
+  public static readonly FLT_ESTATUS_CARGADO = 'CA';
 
   //     /**
   //      * Estatus "Procesado"
@@ -2399,19 +2399,19 @@ export abstract class Const {
   //     public static readonly SWIFT_EXCEP_CAMPO_72: string = '/REC/NCH'
 
   //     /*Cargo Abonos Banco*/
-  //     public static readonly TARJETA_CREDITO_INTERCAM_BUSSINES_CLASS : string = '08';
-  //     public static readonly TARJETA_CREDITO_OTRO_BANCO : string = '09';
+  public static readonly TARJETA_CREDITO_INTERCAM_BUSSINES_CLASS: string = '08';
+  public static readonly TARJETA_CREDITO_OTRO_BANCO: string = '09';
 
   //     ///////////////////////// Constantes para el modulo de carga de archivos de TPV /////////////////////////
   //     /**
   //      * Divisa Pesos
   //      */
-       public static readonly ID_DIV_PESO : string = "MN"
+  public static readonly ID_DIV_PESO: string = 'MN';
 
   //     /**
   //      * Divisa Pesos Tesoreria
   //      */
-  //     public static readonly ID_DIV_MXP : string = "MXP"
+  public static readonly ID_DIV_MXP: string = 'MXP';
 
   //     /**
   //      * Parametro para obtener el layout Posre USD
@@ -2446,12 +2446,12 @@ export abstract class Const {
   //     /**
   //      * Parametro para obtener el layout Stat06
   //      */
-  //     public static readonly TPV_STAT06 : number = 105;
+  public static readonly TPV_STAT06: number = 105;
 
   //     /**
   //      * Parametro para obtener el layout Stat07
   //      */
-  //     public static readonly TPV_STAT07 : number = 106;
+  public static readonly TPV_STAT07: number = 106;
 
   //     /**
   //      * Ruta del servlet para la carga de datos TPV de archivo tipo NETPAY
@@ -2515,21 +2515,24 @@ export abstract class Const {
 
   //     ///////////////////////// Fin Constantes para el modulo de carga de archivos de TPV /////////////////////////
 
-       public static readonly MONEDA_PESOS         : string = 'PESOS';
-       public static readonly MONEDA_DOLARES       : string = 'DOLARES';
-       public static readonly MONEDA_EUROS       : string = 'EUROS';
-       public static readonly MONEDA_EURO_ID       : string = 'EURO';
-  //     /**
-  //      * REQUIERE OTRA FIRMA
-  //      */
-  //     public static readonly OTRA_FIRMA : string = 'Requiere otra firma';
+  public static readonly MONEDA_PESOS: string = 'PESOS';
+  public static readonly MONEDA_DOLARES: string = 'DOLARES';
+  public static readonly MONEDA_EUROS: string = 'EUROS';
+  public static readonly MONEDA_EURO_ID: string = 'EURO';
+  /**
+  * REQUIERE OTRA FIRMA
+  */
+  public static readonly OTRA_FIRMA : string = 'Requiere otra firma';
 
   //     /**'Otros Bancos'
   //      **/
-  //     public static readonly OTRO_BANCO : string = 'Otros Bancos';
+  public static readonly OTRO_BANCO : string = 'Otros Bancos';
 
-  //     public static readonly NIVEL_FIRMA_B    : string ='B';
-  //     public static readonly ID_TRASPASO_CVD  : string ='CVD';
+  public static readonly NIVEL_FIRMA_B: string = 'B';
+  public static readonly SUC_INTER: string = '001';
+  public static readonly CANAL_BXT: string = 'BxT';
+  public static readonly CANAL_BE: string = 'BE';
+  public static readonly ID_TRASPASO_CVD: string = 'CVD';
 
   //     // /**
   //     //  * validaciones de cuentas con Spid
@@ -2573,10 +2576,10 @@ export abstract class Const {
   //      */
   //     public static readonly CERTIFICACION_INTERNA_ID_DOC = 200;
 
-  //     /**
-  //      * Parametro para FWS
-  //      **/
-  //     public static readonly TIPO_NUM_CUENTA_FWS: string = "99";
+  /**
+  * Parametro para FWS
+  **/
+  public static readonly TIPO_NUM_CUENTA_FWS: string = "99";
 
   //     /**
   //      * Parametro para FWS SERVICIOS
@@ -2588,10 +2591,10 @@ export abstract class Const {
   //      **/
   //     public static readonly TIPO_CUENTA_DEVOLUCIONES_SPID : string = '15'
 
-       /**
-       * Parametro Tipo Cuenta Intercuenta enlace
-       **/
-       public static readonly TIPO_NUM_CENTA_ENLACE: string = "07";
+  /**
+   * Parametro Tipo Cuenta Intercuenta enlace
+   **/
+  public static readonly TIPO_NUM_CENTA_ENLACE: string = '07';
   //     /**
   //      * Parametro Tipo Cuenta Intercuenta enlace usd
   //      **/
@@ -2612,7 +2615,7 @@ export abstract class Const {
   //      */
   //     public static readonly CLAVE_PUESTO_ENLACE = '000052';
 
-       public static readonly ID_CARGO_SPID : number = 7;
+  public static readonly ID_CARGO_SPID: number = 7;
 
   //     //-------------------------
   //     // Precios Forwards
@@ -2717,15 +2720,15 @@ export abstract class Const {
   //      */
   //     public static readonly SUCURSAL_FWD:number= 92;
 
-       /**
-        * Id Instrumento Forward
-        */
-      public static readonly INSTRUMENTO_FORWARD:number= 9;
+  /**
+   * Id Instrumento Forward
+   */
+  public static readonly INSTRUMENTO_FORWARD: number = 9;
 
   //     /**
   //      * Identificador de la fecha valor forward
   //      */
-       public static readonly FECHA_VALOR_FORWARD: number = 984;
+  public static readonly FECHA_VALOR_FORWARD: number = 984;
 
   //     /** Rol para realizar Vencimientos Anticipados de FWD */
   //     public static readonly ROL_VENCIM_ANTICIPADO:number = 721;
@@ -2796,17 +2799,17 @@ export abstract class Const {
   //     /**
   //      * Identificador de la mesa para FWD
   //      */
-  //     public static readonly ID_MESA_FORWARD: number = 15;
+      public static readonly ID_MESA_FORWARD: number = 15;
 
-  //     /**
-  //      * Cadena COMPRA
-  //      */
-  //     public static readonly STR_COMPRA: string = "COMPRA";
+  /**
+   * Cadena COMPRA
+   */
+  public static readonly STR_COMPRA: string = 'COMPRA';
 
-  //     /**
-  //      * Cadena VENTA
-  //      */
-  //     public static readonly STR_VENTA: string = "VENTA";
+  /**
+   * Cadena VENTA
+   */
+  public static readonly STR_VENTA: string = 'VENTA';
 
   //     /**
   //      * Cadena Posicion inicial
@@ -2823,7 +2826,7 @@ export abstract class Const {
   //      * Define el valor de la propiedad <code>bprEstatus</code> para la <code>BitacoraProceso</code>
   //      * </br>Especifica el estatus del Proceso forward, ejecutado con &eacute;xito.
   //      */
-       public static readonly ESTATUS_PROC_EXITO: string = "OK";
+  public static readonly ESTATUS_PROC_EXITO: string = 'OK';
 
   //     /**
   //      * Especifica el estatus del Proceso forward, ejecuci&oacute;n no termin&oacute;.
@@ -2957,11 +2960,11 @@ export abstract class Const {
   //      **/
   //     public static readonly LIMITE_VENCIMIENTO:number= 5;
 
-       /**
-        * Define el valor de la propiedad <code>fwdTipoOp</code> para la <code>OperFwd</code></br>
-        * Especifica el tipo de Operaci&oacute;n Forward normal.
-        */
-       public static readonly TIPO_OPER_FORWARD: string = "F";
+  /**
+   * Define el valor de la propiedad <code>fwdTipoOp</code> para la <code>OperFwd</code></br>
+   * Especifica el tipo de Operaci&oacute;n Forward normal.
+   */
+  public static readonly TIPO_OPER_FORWARD: string = 'F';
 
   //     /**
   //      * Define el valor de la propiedad <code>fwdTipoOp</code> para la <code>OperFwd</code></br>
@@ -3008,7 +3011,7 @@ export abstract class Const {
   //     /**
   //      *
   //      **/
-  //     public static readonly TCON_TDC: number = 6;
+  public static readonly TCON_TDC: number = 6;
 
   //     /**
   //      *
@@ -3022,10 +3025,10 @@ export abstract class Const {
 
   //     // GRUPOS TARJETA DE CREDITO
 
-  //     /**
-  //      * Grupo de usuarios Autorizacion credito
-  //      */
-  //     public static readonly GRUPO_CREDITO: string = "CREDITO";
+      /**
+       * Grupo de usuarios Autorizacion credito
+       */
+      public static readonly GRUPO_CREDITO: string = "CREDITO";
 
   //     /**
   //      * Grupo de usuarios Autorizacion mesa
@@ -3117,16 +3120,16 @@ export abstract class Const {
   //     /**
   //      * Tipo de liquidacion ABONO de una cuenta de banco (cuentaBancoVO)
   //      */
-  //     public static readonly CUE_TIPO_LIQ_ABONO: number = 1;
+       public static readonly CUE_TIPO_LIQ_ABONO: number = 1;
   //     /**
   //     /**
   //      * Tipo de liquidacion SPEI de una cuenta de banco (cuentaBancoVO)
   //      */
-  //     public static readonly CUE_TIPO_LIQ_SPEI: number = 2;
-       /**
-        * Tipo de liquidacion SPID de una cuenta de banco (cuentaBancoVO)
-        */
-     public static readonly CUE_TIPO_LIQ_SPID: number = 3;
+       public static readonly CUE_TIPO_LIQ_SPEI: number = 2;
+  /**
+   * Tipo de liquidacion SPID de una cuenta de banco (cuentaBancoVO)
+   */
+  public static readonly CUE_TIPO_LIQ_SPID: number = 3;
 
   //     /**
   //      * Se establece el "catalogo" de Tipo liquidacion para las repetitivas de cuentas
@@ -3171,10 +3174,10 @@ export abstract class Const {
   //     //     return arrTipoLiquidaVO;
   //     // }
 
-  //     /**
-  //      * string Estatus SPID Devoluciones Pendientes
-  //      */
-  //     public static readonly SPID_ESTATUS_PENDIENTE: string = "P";
+      /**
+       * string Estatus SPID Devoluciones Pendientes
+       */
+      public static readonly SPID_ESTATUS_PENDIENTE: string = "P";
 
   /**
    * Nombre del color AZUL
@@ -3186,10 +3189,10 @@ export abstract class Const {
   //      */
   //     public static readonly FWD_ESTATUS_GARANTIA_CUBIERTA:number= 6;
 
-        /**
-       * Estatus del contrato 6 "DISPONIBLE"
-       */
-        public static readonly ESTATUS_CONTRATO_DISPOBIBLE : number = 6;
+  /**
+   * Estatus del contrato 6 "DISPONIBLE"
+   */
+  public static readonly ESTATUS_CONTRATO_DISPOBIBLE: number = 6;
 
   //     /**
   //      * Estatus del contrato 1 "ACTIVO"
@@ -3218,10 +3221,10 @@ export abstract class Const {
   //      * */
   //     public static readonly ESTATUS_CONTRATO_SUPLANTACION: number = 14;
 
-  //     /**
-  //      * Descripcion tipo contrato divisa bando 5
-  //      */
-  //     public static readonly TCON_DIVISAS_BANCO_DESC : string = "DIVISAS BANCO";
+  /**
+   * Descripcion tipo contrato divisa bando 5
+   */
+  public static readonly TCON_DIVISAS_BANCO_DESC: string = 'DIVISAS BANCO';
   //     /**
   //      * Limite de caractere para cuarta linea de TDC
   //      */
@@ -3301,21 +3304,19 @@ export abstract class Const {
   //     public static readonly RIESGO_CLIENTE_MEDIO : string = 'MEDIO';
   //     public static readonly RIESGO_CLIENTE_BAJO : string = 'BAJO';
 
-
-       /**
-        * Cadena vacia
-        */
-       public static readonly  STRING_EMPTY : string = "";
-
+  /**
+   * Cadena vacia
+   */
+  public static readonly STRING_EMPTY: string = '';
 
   //     public static readonly RIESGO_CLIENTE_ALTO_NUM : number = 3;
   //     public static readonly RIESGO_CLIENTE_MEDIO_NUM  : number = 2;
   //     public static readonly RIESGO_CLIENTE_BAJO_NUM  : number = 1 ;
 
-  //     /**
-  //      * Constante catalogo sisId de POS
-  //      */
-  //     public static readonly SIS_ID_POS = 1;
+  /**
+   * Constante catalogo sisId de POS
+   */
+  public static readonly SIS_ID_POS = 1;
 
   //     /**
   //      * Tipos de riesgo para clientes
@@ -3378,26 +3379,26 @@ export abstract class Const {
   //      */
   //     public static readonly URL_REPORTE_PAGOS : string = "../ReporteDePagos.jsp";
 
-       public static readonly REG_TRANS_DIVISA : string = "REGCLIC";
-       public static readonly REG_TRANS_CLICEXPRESS : string = "REGCEXP";
+  public static readonly REG_TRANS_DIVISA: string = 'REGCLIC';
+  public static readonly REG_TRANS_CLICEXPRESS: string = 'REGCEXP';
 
   //     //Id layout honorarios
   //     public static readonly NOM_HON_SEG : number = 13;
 
-       //Perfiles para el menu de cova
-       public static readonly ADMIN: string = "ADMINCOVA";
-       public static readonly OPER: string = "OPERADORCOVA";
-       public static readonly BASIC: string = "BASICOCOVA";
+  //Perfiles para el menu de cova
+  public static readonly ADMIN: string = 'ADMINCOVA';
+  public static readonly OPER: string = 'OPERADORCOVA';
+  public static readonly BASIC: string = 'BASICOCOVA';
 
-       //parametros para consulta
-       public static readonly PARAM_ADMIN: string = "ADMIN";
-       public static readonly PARAM_OPER: string = "OPER";
-       public static readonly PARAM_BASIC: string = "BASIC";
+  //parametros para consulta
+  public static readonly PARAM_ADMIN: string = 'ADMIN';
+  public static readonly PARAM_OPER: string = 'OPER';
+  public static readonly PARAM_BASIC: string = 'BASIC';
 
   //     /**
   //      * Parametro con el valor constante para operacion ANTAD TAE
   //      */
-  //     public static readonly VAL_OPERACION_TAE : string = "000033";
+  public static readonly VAL_OPERACION_TAE: string = '000033';
 
   //     /** 460	TOKEN CORRECTO PARA OPERACION SPEI*/
   //     public static readonly ID_BITACO_BT_460: string = "454";
@@ -3497,32 +3498,32 @@ export abstract class Const {
   //     /**
   //      * Constante de autorizacion monitor cumplimiento
   //      */
-       public static readonly AUT_CUMPLIMIENTO : string = "JA";
+  public static readonly AUT_CUMPLIMIENTO: string = 'JA';
 
   //     /**
   //      * Constante de rechazo monitor cumplimiento
   //      */
-       public static readonly RECHAZA_CUMPLIMIENTO : string = "RA";
+  public static readonly RECHAZA_CUMPLIMIENTO: string = 'RA';
 
-         /**
-          * Constante de rechazo monitor cumplimiento
-          */
-          public static readonly PENDIENTE_CUMPLIMIENTO : string = "PD";
-        
-          /**
-           * Constante de espera de informacion monitor cumplimiento
-           */
-          public static readonly ESPERA_INFORMACION : string = "EI";
-         
-          /**
-           * Constante de rechazo monitor cumplimiento
-           */
-          public static readonly ANALISIS_CUMPLIMIENTO : string = "AL";
+  /**
+   * Constante de rechazo monitor cumplimiento
+   */
+  public static readonly PENDIENTE_CUMPLIMIENTO: string = 'PD';
+
+  /**
+   * Constante de espera de informacion monitor cumplimiento
+   */
+  public static readonly ESPERA_INFORMACION: string = 'EI';
+
+  /**
+   * Constante de rechazo monitor cumplimiento
+   */
+  public static readonly ANALISIS_CUMPLIMIENTO: string = 'AL';
 
   //     /**
   //      * Constante de rechazo monitor cumplimiento
   //      */
-       public static readonly ASIGNA_ALERTA : string = "Inicia analisis";
+  public static readonly ASIGNA_ALERTA: string = 'Inicia analisis';
 
   //     /**Constante para identificar el grupo de DNI etrejo*/
   //     public static readonly GRUPO_ESTATUS_DNI : string = 'DI';
@@ -3532,7 +3533,7 @@ export abstract class Const {
   //     /**
   //      * Constante que identifica transferencia Internacional
   //      **/
-       public static readonly ID_CARGO_TRANSFERINTER : number = 10;
+  public static readonly ID_CARGO_TRANSFERINTER: number = 10;
 
   //     /**
   //      * Constante que identifica el tipo de Cuenta Mancomunado de Fondos PF
@@ -3576,7 +3577,7 @@ export abstract class Const {
   //     /**
   //      * Constante que identifica transferencia Internacional
   //      **/
-  //     public static readonly CVE_TRANS_INT : string = "16";
+  public static readonly CVE_TRANS_INT: string = '16';
 
   //     /**
   //      * Tipo mesa para los precios para banca movil y en linea
@@ -3725,21 +3726,21 @@ export abstract class Const {
   //     */
   //     public static readonly CLIENTE_ISNTITUCIONAL : string = 'Institucional';
 
-  //     /**
-  //      * Categ Contratos
-  //      * */
-  //     public static readonly TIPO_CAT_FIDEICOMISO: number = 23;
-  //     public static readonly TIPO_CAT_CAJA_AHORRO = 24;
-  //     public static readonly TIPO_CAT_FONDO_AHORRO = 27;
+  /**
+  * Categ Contratos
+  * */
+  public static readonly TIPO_CAT_FIDEICOMISO: number = 23;
+  public static readonly TIPO_CAT_CAJA_AHORRO = 24;
+  public static readonly TIPO_CAT_FONDO_AHORRO = 27;
 
   //     /**
   //      * grupo para identificar observaciones que se requieran en motor cumplimiento
   //      */
-       public static readonly GRUPO_OBS : string = 'OB';
+  public static readonly GRUPO_OBS: string = 'OB';
   //     /**
   //      *  grupo para identificar motivos que se requieran en motor cumplimiento
   //      */
-       public static readonly GRUPO_MOTIVOS : string = 'MO';
+  public static readonly GRUPO_MOTIVOS: string = 'MO';
 
   //     /**
   //      *  grupo para identificar motivos de asignacion
@@ -3788,9 +3789,10 @@ export abstract class Const {
   //     /**
   //      * Valor del parametro para consultar cuentas que requieren token, para homologacion FX vs Enlace
   //      */
-  //     public static readonly TIPO_CUENTAS_VALIDAN_TOKEN : string = "CUENTAS_CON_TOKEN";
+  public static readonly TIPO_CUENTAS_VALIDAN_TOKEN: string =
+    'CUENTAS_CON_TOKEN';
 
-       public static readonly USUARIO_BT: string = "000671";
+  public static readonly USUARIO_BT: string = '000671';
 
   //     public static readonly DIRECTOR_SUCURSAL: string = '000233';
   //     public static readonly DIRECTOR_REGIONAL: string = '000460';
@@ -3799,20 +3801,20 @@ export abstract class Const {
   public static readonly NEGOCIO_CASA_BOLSA: number = 2;
   public static readonly NEGOCIO_FORWARDS: number = 3;
 
-  //     public static readonly PLANTILLA_OPER_INTER : string = 'https://www.ieb.com.mx/NB/documentos/formatos/Plantilla_Operaciones_INTB.xlsm';
-  //     public static readonly PLANTILLA_OPER_SPEI : string = 'https://www.ieb.com.mx/NB/documentos/formatos/Plantilla_Operaciones_SPEI.xlsm';
-  //     public static readonly PLANTILLA_OPER_SPID : string = 'https://www.ieb.com.mx/NB/documentos/formatos/Plantilla_Operaciones_SPID.xlsm';
-  //     public static readonly PLANTILLA_OPER_SPEI_FIS : string = 'https://www.ieb.com.mx/NB/documentos/formatos/Generador.xls';
-  //     public static readonly PLANTILLA_SPID : string = 'https://www.ieb.com.mx/NB/documentos/formatos/Plantilla_Alta_SPID.xlsm';
-  //     public static readonly PLANTILLA_OPER_TI : string = 'https://www.ieb.com.mx/NB/documentos/formatos/Plantilla_Operaciones_TI.xlsm';
-  //     public static readonly PLANTILLA_REPT_TI : string = 'https://www.ieb.com.mx/NB/documentos/formatos/Plantilla_Repetitivas_TI.xlsm';
-  //     public static readonly NUM_SERV_ANTAD_TELMEX: string = '00002';
-  //     public static readonly NUM_SERV_ANTAD_SKY: string = '00003';
-  //     public static readonly NUM_SERV_ANTAD_CFE: string = '00001';
-  //     public static readonly NUM_SERV_ANTAD_SIAPA: string = '00015';
+  public static readonly PLANTILLA_OPER_INTER : string = 'https://www.ieb.com.mx/NB/documentos/formatos/Plantilla_Operaciones_INTB.xlsm';
+  public static readonly PLANTILLA_OPER_SPEI : string = 'https://www.ieb.com.mx/NB/documentos/formatos/Plantilla_Operaciones_SPEI.xlsm';
+  public static readonly PLANTILLA_OPER_SPID : string = 'https://www.ieb.com.mx/NB/documentos/formatos/Plantilla_Operaciones_SPID.xlsm';
+  public static readonly PLANTILLA_OPER_SPEI_FIS : string = 'https://www.ieb.com.mx/NB/documentos/formatos/Generador.xls';
+  public static readonly PLANTILLA_SPID : string = 'https://www.ieb.com.mx/NB/documentos/formatos/Plantilla_Alta_SPID.xlsm';
+  public static readonly PLANTILLA_OPER_TI : string = 'https://www.ieb.com.mx/NB/documentos/formatos/Plantilla_Operaciones_TI.xlsm';
+  public static readonly PLANTILLA_REPT_TI : string = 'https://www.ieb.com.mx/NB/documentos/formatos/Plantilla_Repetitivas_TI.xlsm';
+  public static readonly NUM_SERV_ANTAD_TELMEX: string = '00002';
+  public static readonly NUM_SERV_ANTAD_SKY: string = '00003';
+  public static readonly NUM_SERV_ANTAD_CFE: string = '00001';
+  public static readonly NUM_SERV_ANTAD_SIAPA: string = '00015';
 
-  //     public static readonly TIPO_CARGA_M : string = "Masiva";
-  //     public static readonly TIPO_CARGA_I : string = "Individual";
+  public static readonly TIPO_CARGA_M: string = 'Masiva';
+  public static readonly TIPO_CARGA_I: string = 'Individual';
   //     public static readonly TIPO_CARGA_CAR : string = "Carrito";
   //     public static readonly FECHA_SIBAMEX_BT = "La Fecha no corresponde con la de SIBAMEX";
 
@@ -3835,7 +3837,7 @@ export abstract class Const {
   //     /**
   //      * AREA PLD
   //      */
-       public static readonly AREA_PLD : string = 'PLD';
+  public static readonly AREA_PLD: string = 'PLD';
 
   //     /**
   //      * AREA UPF
@@ -3850,7 +3852,7 @@ export abstract class Const {
   //     /**
   //      * AREA DE AUTORIZACION PLD
   //      */
-       public static readonly AREA_AUTORIZA_PLD : number = 1;
+  public static readonly AREA_AUTORIZA_PLD: number = 1;
 
   //     public static readonly REPORT_AUT_BUR: string  = "ReporteAutBursatil";
   //     public static readonly REPORT_AUT_DIR: string  = "ReporteAutDirector";
@@ -3903,9 +3905,8 @@ export abstract class Const {
   /**
    * Clave de la sucursal generica "GENER"
    */
-   public static readonly SUCURSAL_GENER : string = "GENER";
+  public static readonly SUCURSAL_GENER: string = 'GENER';
 
-   
   //     /**
   //      * Identifica que el pago es Recepcion
   //      */
@@ -3915,95 +3916,95 @@ export abstract class Const {
   //     /**
   //      * Estatus PENDIENTE
   //      */
-  //     public static readonly PLD_PENDIENTE : string = 'PB';
+  public static readonly PLD_PENDIENTE: string = 'PB';
   //     /**
   //      * Estatus ANALISIS
   //      */
-  //     public static readonly PLD_ANALISIS : string = 'AB';
+  public static readonly PLD_ANALISIS: string = 'AB';
   //     /**
   //      * Estatus DIGITALIZACION
   //      */
-  //     public static readonly PLD_DIGITALIZACION : string = 'DI';
+  public static readonly PLD_DIGITALIZACION: string = 'DI';
   //     /**
   //      * Estatus ENVIO CUESTIONARIO
   //      */
-  //     public static readonly PLD_CUESTIONARIO : string = 'CU';
+  public static readonly PLD_CUESTIONARIO: string = 'CU';
   //     /**
   //      * Estatus SOLICITUD DE APROBACION
   //      */
-  //     public static readonly PLD_SOLICITUD_APROBACION : string = 'SA';
+  public static readonly PLD_SOLICITUD_APROBACION: string = 'SA';
   //     /**
   //      * Estatus CORRECCION DE ERRORES
   //      */
-  //     public static readonly PLD_CORRECCION_ERRORES : string = 'CR';
+  public static readonly PLD_CORRECCION_ERRORES: string = 'CR';
   //     /**
   //      * Estatus JUSTIFICO GERENTE
   //      */
-  //     public static readonly PLD_JUSTIFICO_GERENTE : string = 'JG';
+  public static readonly PLD_JUSTIFICO_GERENTE: string = 'JG';
   //     /**
   //      * Estatus COMITE GERENTE
   //      */
-  //     public static readonly PLD_COMITE_GERENTE : string = 'CG';
+  public static readonly PLD_COMITE_GERENTE: string = 'CG';
   //     /**
   //      * Estatus DIGITALIZACION_COMITE
   //      */
-  //     public static readonly PLD_DIGITALIZACION_COMITE : string = 'DC';
+  public static readonly PLD_DIGITALIZACION_COMITE: string = 'DC';
   //     /**
   //      * Estatus CORRECCION_ANALISIS_ESPECIALIZADO
   //      */
-  //     public static readonly PLD_CORRECCION_ANALISIS_ESPECIALIZADO : string = 'ES';
+  public static readonly PLD_CORRECCION_ANALISIS_ESPECIALIZADO: string = 'ES';
   //     /**
   //      * Estatus ANALISIS_PARCIALMENTE_REPORTADO
   //      */
-  //     public static readonly PLD_PARCIALMENTE_REPORTADO : string = 'RP';
+  public static readonly PLD_PARCIALMENTE_REPORTADO: string = 'RP';
   //     /**
   //      * Estatus JUSTIFICADO COMITE
   //      */
-  //     public static readonly PLD_JUSTIFICADO_COMITE : string = 'JC';
+  public static readonly PLD_JUSTIFICADO_COMITE: string = 'JC';
   //     /**
   //      * Estatus REPORTE GENERADO
   //      */
-  //     public static readonly PLD_REPORTE_GENERADO : string = 'GE';
+  public static readonly PLD_REPORTE_GENERADO: string = 'GE';
   //     /**
   //      * Estatus COMPLEMENTADO PARA REPORTE
   //      */
-  //     public static readonly PLD_COMPLEMENTADO_REPORTE : string = 'CM';
+  public static readonly PLD_COMPLEMENTADO_REPORTE: string = 'CM';
 
-  //     public static readonly PLD_JUSTIFICA_ANALISTA : string = 'JB';
+  public static readonly PLD_JUSTIFICA_ANALISTA: string = 'JB';
 
-  //     public static readonly PLD_COMITE_ANALISTA : string = 'CB';
+  public static readonly PLD_COMITE_ANALISTA: string = 'CB';
 
-  //     public static readonly PLD_PROPIETARIO_REAL : string = 'PR';
+  public static readonly PLD_PROPIETARIO_REAL: string = 'PR';
 
-  //     public static readonly PLD_TITULAR : string = 'TI';
+  public static readonly PLD_TITULAR: string = 'TI';
 
-  //     public static readonly PLD_FUNCIONARIO : string = 'FU';
+  public static readonly PLD_FUNCIONARIO: string = 'FU';
 
-  //     public static readonly PLD_OTRO :  string = 'OT';
+  public static readonly PLD_OTRO: string = 'OT';
 
-  //     public static readonly PLD_BUSQUEDA_MAPS : string = 'GM';
+  public static readonly PLD_BUSQUEDA_MAPS: string = 'GM';
 
-  //     public static readonly PLD_BUSQUEDA_INTERNET : string = 'BG';
+  public static readonly PLD_BUSQUEDA_INTERNET: string = 'BG';
 
-  //     public static readonly PLD_CUESTIONARIO_CONTESTADO : string = 'CO';
+  public static readonly PLD_CUESTIONARIO_CONTESTADO: string = 'CO';
 
-  //     public static readonly PLD_CUESTIONARIO_RECHAZADO : string = 'RE';
+  public static readonly PLD_CUESTIONARIO_RECHAZADO: string = 'RE';
 
-  //     public static readonly PLD_CUESTIONARIO_ENVIADO : string = 'EN';
+  public static readonly PLD_CUESTIONARIO_ENVIADO: string = 'EN';
 
-  //     public static readonly PLD_CUESTIONARIO_SAPROBACION : string = 'SA';
+  public static readonly PLD_CUESTIONARIO_SAPROBACION: string = 'SA';
 
-  //     public static readonly PLD_CUESTIONARIO_SEGUIMIENTO: string = 'SE';
+  public static readonly PLD_CUESTIONARIO_SEGUIMIENTO: string = 'SE';
 
-  //     public static readonly PLD_ID_PROPIETARIO : string = 'PLD_ID_PROPIETARIO_REAL';
+  public static readonly PLD_ID_PROPIETARIO: string = 'PLD_ID_PROPIETARIO_REAL';
 
-  //     public static readonly PLD_ID_FUNCIONARIO : string = 'PLD_ID_FUNCIONARIOS';
+  public static readonly PLD_ID_FUNCIONARIO: string = 'PLD_ID_FUNCIONARIOS';
 
-  //     public static readonly PLD_ID_APODERADO : string = 'PLD_ID_APODERADO';
+  public static readonly PLD_ID_APODERADO: string = 'PLD_ID_APODERADO';
 
-  //     public static readonly PLD_ID_COTITULAR : string = 'PLD_ID_COTITULAR';
+  public static readonly PLD_ID_COTITULAR: string = 'PLD_ID_COTITULAR';
 
-  //     public static readonly PLD_ID_TITULAR : string = 'PLD_ID_TITULAR';
+  public static readonly PLD_ID_TITULAR: string = 'PLD_ID_TITULAR';
 
   //     public static readonly ID_TIP_REP_INUSUAL :number = 2;
 
@@ -4017,24 +4018,24 @@ export abstract class Const {
   //     /**
   //      * Identifica el documento para monitor batch pld
   //      */
-  //     public static readonly PLD_DOC_MONITOR : number = 148;
+  public static readonly PLD_DOC_MONITOR: number = 148;
   //     /**
   //      * Identifica el documento para cuestionario
   //      * monitor batch pld
   //      */
   //     public static readonly PLD_DOC_CUESTIONARIO : number = 149;
 
-  //     /**
-  //      * Raiz de los parametros asociados a las divisas a excluir
-  //      */
-  //     public static readonly PARAM_DIV_EXC: string = 'DIVISA_EXC';
-  //     /**
-  //      * Bandera para determinar que la busqueda de divisa excluya o no las divisas especificadas en los
-  //      * parametros DIVISA_EXC_xxx de la tabla i9parametro
-  //      *      True:  Excluye
-  //      *      False: Incluye
-  //      **/
-  //     public static readonly BAND_DIV_EXC:boolean = false;
+  /**
+   * Raiz de los parametros asociados a las divisas a excluir
+   */
+  public static readonly PARAM_DIV_EXC: string = 'DIVISA_EXC';
+  /**
+   * Bandera para determinar que la busqueda de divisa excluya o no las divisas especificadas en los
+   * parametros DIVISA_EXC_xxx de la tabla i9parametro
+   *      True:  Excluye
+   *      False: Incluye
+   **/
+  public static readonly BAND_DIV_EXC: boolean = false;
 
   //     /**
   //      * Parametro para obtener la lista de negocios de divisas que pueden realizar Reversos.
@@ -4225,7 +4226,7 @@ export abstract class Const {
   //     /**
   //      * Indicador para pagos correspondientes a la Divisa
   //      **/
-       public static readonly TIPO_PAGO_DIVISA: string = "PAG_DIV";
+  public static readonly TIPO_PAGO_DIVISA: string = 'PAG_DIV';
 
   //     /**
   //      * Indicador para pagos correspondientes a los Pesos
@@ -4250,14 +4251,15 @@ export abstract class Const {
   //      */
   //     public static readonly PARAM_REVERSO_CASH_BACK: string = "REVERSO_CASH_BACK";
 
-  //     /**
-  //      * Clave del banco para COBIN
-  //      */
-  //     public static readonly CLV_BAN_COBIN: string = "COBIN";
+  /**
+   * Clave del banco para COBIN
+   */
+  public static readonly CLV_BAN_COBIN: string = "COBIN";
 
-  //     public static readonly REPORT_OPERADORES: string  = "ReporteOperadores";
-  //     public static readonly REPORT_AUT_OPERADORES: string  = "ReporteAutOperadores";
-  //     public static readonly REPORT_PAGOS_OPERADORES: string  = "ReportePagosOperadores";
+  public static readonly REPORT_OPERADORES: string = 'ReporteOperadores';
+  public static readonly REPORT_AUT_OPERADORES: string = 'ReporteAutOperadores';
+  public static readonly REPORT_PAGOS_OPERADORES: string =
+    'ReportePagosOperadores';
 
   //     //Identificador para layout factura de negocio bursatil
   //     public static readonly FACT_BUR : number = 17;
@@ -4289,16 +4291,18 @@ export abstract class Const {
   //     public static readonly GRUPO_TIPO_BUSQ : string = 'AM';
   //     public static readonly GRUPO_TIPO_MOV : string = 'MC';
 
-  //     //Nombres de los reportes del negocio seguros
-  //     public static readonly REPORT_BONO_INDIVIDUAL: string = "ReporTBonoIndividual";
-  //     public static readonly REPORT_AUT_BONO: string = "ReporAutBono";
-  //     public static readonly REPORT_PAGOS_SEGUROS_PROM: string = "ReportPagosSeguros";
-  //     public static readonly REPORT_PAGOS_ENLACE: string = "ReportPagosEnlace";
-  //     public static readonly REPORT_AUT_ENLACE: string = "ReportAutEnlace";
+  //Nombres de los reportes del negocio seguros
+  public static readonly REPORT_BONO_INDIVIDUAL: string =
+    'ReporTBonoIndividual';
+  public static readonly REPORT_AUT_BONO: string = 'ReporAutBono';
+  public static readonly REPORT_PAGOS_SEGUROS_PROM: string =
+    'ReportPagosSeguros';
+  public static readonly REPORT_PAGOS_ENLACE: string = 'ReportPagosEnlace';
+  public static readonly REPORT_AUT_ENLACE: string = 'ReportAutEnlace';
 
   //     //Identificadores para las pantallas
-  //     public static readonly PANTALLA_PROMOTORES: string = "Promotores";
-  //     public static readonly PANTALLA_ENLACE: string = "Enlace";
+  public static readonly PANTALLA_PROMOTORES: string = 'Promotores';
+  public static readonly PANTALLA_ENLACE: string = 'Enlace';
 
   //     /**
   //      * PARAMETROS CVE PUESTO DIRECTIVOS Y ASISTENTES SUCURSAL
@@ -4323,7 +4327,7 @@ export abstract class Const {
   //     /**
   //      * Tipo de operacion SPID
   //      */
-       public static readonly TIPO_MOV_SPID : number = 7;
+  public static readonly TIPO_MOV_SPID: number = 7;
 
   //     /**
   //      * Identifica el tipo de documento para Cancelar repetitiva
@@ -4350,7 +4354,7 @@ export abstract class Const {
   //     //Id layout factura asimilados gestion
   //     public static readonly NOM_FACTASIM_GEST : number = 23;
 
-  public static readonly criterio : string = "Criterio: ";
+  public static readonly criterio: string = 'Criterio: ';
   public static readonly MOV_DESCRIP_TRANSFERINTER =
     'Cargo a Cuenta con Salida Transferencia Internacional';
   public static readonly MOV_DESCRIP_TRANSFER_CTAS_MXN =
@@ -4370,7 +4374,7 @@ export abstract class Const {
   //     /**
   //      * Repetitiva capturada en POS FX
   //      */
-  //     public static readonly ORI_REPET_POS_FX: string = "FX";
+       public static readonly ORI_REPET_POS_FX: string = "FX";
 
   //     //comisiones TPV
   //     /**
@@ -4381,7 +4385,7 @@ export abstract class Const {
   //     /**
   //      * Url de Serlvlet para Reportes de Banco
   //      */
-  //     public static readonly URL_REPORTES_BANCO_XDOC: string = "../ReporteXDocBanco.jsp?conId=";
+       public static readonly URL_REPORTES_BANCO_XDOC: string = "ReporteXDocBanco.jsp?conId=";
   //     /**
   //      * ID DEL DOCUMENTO REPORTE REPETITIVAS SPID
   //      */
@@ -4392,12 +4396,12 @@ export abstract class Const {
   //     /**
   //      * Id para imagen frente de imagen cheque
   //      */
-      public static readonly FRENTE_CHEQUE: number = 1;
+  public static readonly FRENTE_CHEQUE: number = 1;
 
   //     /**
   //      * Id para imagen reverso de imagen cheque
   //      */
-      public static readonly REVERSO_CHEQUE: number = 2;
+  public static readonly REVERSO_CHEQUE: number = 2;
 
   //     /**
   //      * Clave <code>3087</code> del archivo msgSistemaResource.properties
@@ -4408,11 +4412,11 @@ export abstract class Const {
   //     public static readonly MSG_REM_SIN_DEAL_EN_LISTAS_NEGRAS_1: string = "3087";
 
   //     //Constantes solicitudes de transfer sin deal
-       public static readonly TRANSFER_AUTORIZADO: number = 2;
-       public static readonly TRANSFER_RECHAZADO: number = 3;
-       public static readonly TRANSFER_CAPTURADO: number = 1;
-       public static readonly TIPO_CUENTA_PROPIETARIO: string = "P";
-       public static readonly TIPO_CUENTA_TERCERO: string = "T";
+  public static readonly TRANSFER_AUTORIZADO: number = 2;
+  public static readonly TRANSFER_RECHAZADO: number = 3;
+  public static readonly TRANSFER_CAPTURADO: number = 1;
+  public static readonly TIPO_CUENTA_PROPIETARIO: string = 'P';
+  public static readonly TIPO_CUENTA_TERCERO: string = 'T';
 
   //     /**
   //      * etrejor
@@ -4448,79 +4452,79 @@ export abstract class Const {
   //     public static readonly NOM_HONFAC_FOND: number = 23;
 
   //     //Homologacion Fase 2
-  //     public static readonly SRC_RFC_ROJO : string = "../assets/rojoRFC.png";
-  //     public static readonly SRC_RFC_GRIS : string = "../assets/grisRFC.png";
-  //     public static readonly SRC_RFC_VERDE : string = "../assets/verdeRFC.png";
+      public static readonly SRC_RFC_ROJO : string = "../ismart-pos/assets/img/rojoRFC.png";
+      public static readonly SRC_RFC_GRIS : string = "../ismart-pos/assets/img/grisRFC.png";
+      public static readonly SRC_RFC_VERDE : string = "../ismart-pos/assets/img/verdeRFC.png";
 
-  //     public static readonly SRC_SO_ROJO : string = "../assets/rojoSO.png";
-  //     public static readonly SRC_SO_GRIS : string = "../assets/grisSO.png";
-  //     public static readonly SRC_SO_VERDE : string = "../assets/verdeSO.png";
+      public static readonly SRC_SO_ROJO : string = "../ismart-pos/assets/img/rojoSO.png";
+      public static readonly SRC_SO_GRIS : string = "../ismart-pos/assets/img/grisSO.png";
+      public static readonly SRC_SO_VERDE : string = "../ismart-pos/assets/img/verdeSO.png";
 
-  //     public static readonly SRC_AC_ROJO : string = "../assets/rojoAC.png";
-  //     public static readonly SRC_AC_GRIS : string = "../assets/grisAC.png";
-  //     public static readonly SRC_AC_VERDE : string = "../assets/verdeAC.png";
-  //     public static readonly TIPO_TRANSACION_SPID: string = "CD";
-  //     public static readonly TIPO_TRANSACION_TRANSFER_INT : string = "CT";
-  //     public static readonly NO_APLICA_MSG : string = "NO APLICA";
-  //     public static readonly EDO_REP_NA : string =  "NA";
+      public static readonly SRC_AC_ROJO : string = "../ismart-pos/assets/img/rojoAC.png";
+      public static readonly SRC_AC_GRIS : string = "../ismart-pos/assets/img/grisAC.png";
+      public static readonly SRC_AC_VERDE : string = "../ismart-pos/assets/img/verdeAC.png";
+      public static readonly TIPO_TRANSACION_SPID: string = "CD";
+      public static readonly TIPO_TRANSACION_TRANSFER_INT : string = "CT";
+   public static readonly NO_APLICA_MSG : string = "NO APLICA";
+   public static readonly EDO_REP_NA : string =  "NA";
 
   //     //constante para bcb actualisa
-  //     public static readonly BITCUENTABANVO_BCBOPERACION= "ACTUALIZA";
+   public static readonly BITCUENTABANVO_BCBOPERACION= "ACTUALIZA";
 
   //     /**
   //      * Parametro para obtener el layout Arbitro B136
   //      */
-  //     public static readonly ARBITRO_B136 : number = 116; // 116, 122, 134;
+  public static readonly ARBITRO_B136: number = 116; // 116, 122, 134;
 
   //     /**
   //      * Parametro para obtener el layout Arbitro D872
   //      */
-  //     public static readonly ARBITRO_D872 : number = 117; // 117, 123, 135
+  public static readonly ARBITRO_D872: number = 117; // 117, 123, 135
 
   //     /**
   //      * Parametro para obtener el layout Arbitro B872
   //      */
-  //     public static readonly ARBITRO_B872 : number = 118; // 118, 124, 136
+  public static readonly ARBITRO_B872: number = 118; // 118, 124, 136
 
   //     /**
   //      * Parametro para obtener el layout Arbitro B837
   //      */
-  //     public static readonly ARBITRO_B837 : number = 119; // 119, 125, 137
+  public static readonly ARBITRO_B837: number = 119; // 119, 125, 137
 
   //     /**
   //      * Parametro para obtener el layout Arbitro B837
   //      */
-  //     public static readonly ARBITRO_B238 : number = 120; // 120, 126, 138
+  public static readonly ARBITRO_B238: number = 120; // 120, 126, 138
 
   //     /**
   //      * Parametro para obtener la extensión del archivo del arbitro B136
   //      */
-  //     public static readonly EXTENSION_ARCHIVO_B136 : string = "B136";
+  public static readonly EXTENSION_ARCHIVO_B136: string = 'B136';
 
   //     /**
   //      * Parametro para obtener la extensión del archivo del arbitro D872
   //      */
-  //     public static readonly EXTENSION_ARCHIVO_D872 : string = "D872";
+  public static readonly EXTENSION_ARCHIVO_D872: string = 'D872';
 
   //     /**
   //      * Parametro para obtener la extensión del archivo del arbitro B872
   //      */
-  //     public static readonly EXTENSION_ARCHIVO_B872 : string = "T872";
+  public static readonly EXTENSION_ARCHIVO_B872: string = 'T872';
 
   //     /**
   //      * Parametro para obtener la extensión del archivo EMV.D872
   //      */
-  //     public static readonly ARCHIVO_D872: string = "EMV.D872";
+  public static readonly ARCHIVO_D872: string = 'EMV.D872';
 
   //     /**
   //      * Parametro para obtener la extensión del archivo EMV.T872
   //      */
-  //     public static readonly ARCHIVO_EMV_T872 : string = "EMV.T872";
+  public static readonly ARCHIVO_EMV_T872: string = 'EMV.T872';
 
   //     /**
   //      * Parametro para obtener la extensión del archivo EMV.T872
   //      */
-  //     public static readonly ARCHIVO_DLS_T82  : string = "DLS.T872";
+  public static readonly ARCHIVO_DLS_T82: string = 'DLS.T872';
 
   //     /**
   //      * Constante que indica que sean visible los nuevos campos del beneficiario
@@ -4558,27 +4562,27 @@ export abstract class Const {
   //     /**
   //      * Constante para el grupo operador transfer de tesoreria
   //      **/
-    public static readonly OPERTRANS: string = "OPERTRANS";
+  public static readonly OPERTRANS: string = 'OPERTRANS';
 
   //     /**
   //      * TIPO DE OPERACION SPID
   //      */
-  //     public static readonly DESC_OPE_SPID: string = "SPID";
+  public static readonly DESC_OPE_SPID: string = 'SPID';
 
-  //     /**
-  //      * ID DEL DOCUMENTO CARTA REPETITIVAS TRANSFER
-  //      */
-  //     public static readonly XDOC_ID_CARTA_REPETITIVAS_TRANSFER: number = 19;
+  /**
+   * ID DEL DOCUMENTO CARTA REPETITIVAS TRANSFER
+   */
+  public static readonly XDOC_ID_CARTA_REPETITIVAS_TRANSFER: number = 19;
 
-  //     /**
-  //      * ID DEL DOCUMENTO REPORTE OPERACIONES SPID PROCESAR
-  //      */
-  //     public static readonly XDOC_ID_REPORTE_OPERACIONES_SPID_PROCESAR: number = 20;
+  /**
+   * ID DEL DOCUMENTO REPORTE OPERACIONES SPID PROCESAR
+   */
+  public static readonly XDOC_ID_REPORTE_OPERACIONES_SPID_PROCESAR: number = 20;
 
-  //     /**
-  //      * ID DEL DOCUMENTO REPORTE OPERACIONES SPID INCORRECTAS
-  //      */
-  //     public static readonly XDOC_ID_REPORTE_OPERACIONES_SPID_INCORRECTAS: number = 21;
+  /**
+   * ID DEL DOCUMENTO REPORTE OPERACIONES SPID INCORRECTAS
+   */
+  public static readonly XDOC_ID_REPORTE_OPERACIONES_SPID_INCORRECTAS: number = 21;
 
   //     /**
   //      * MEN ID MENSAJE AUTORIZA REPETITIVA TI
@@ -4590,29 +4594,29 @@ export abstract class Const {
   //      */
   //     public static readonly MSJ_RECHAZA_REP_TI: number = 268;
 
-       /**
-        * Valor del estado de la solicitud de cambio Instruento autorizar
-        **/
-       public static readonly SOLICITUD_AUTORIZADA: string = "A";
+  /**
+   * Valor del estado de la solicitud de cambio Instruento autorizar
+   **/
+  public static readonly SOLICITUD_AUTORIZADA: string = 'A';
 
-       /**
-        * Valor del estado de la solicitud de cambio Instruento al rechazar
-        **/
-       public static readonly SOLICITUD_RECHAZADA: string = "R";
+  /**
+   * Valor del estado de la solicitud de cambio Instruento al rechazar
+   **/
+  public static readonly SOLICITUD_RECHAZADA: string = 'R';
 
-       /**
-        * Indica el Usuario que autoriza automaticamente.
-        **/
-       public static readonly AUTORIZA_AUTOMATICA: string = "AUTOMATICA";
+  /**
+   * Indica el Usuario que autoriza automaticamente.
+   **/
+  public static readonly AUTORIZA_AUTOMATICA: string = 'AUTOMATICA';
 
   //     /**
   //      * Parámetro para definir si las repetitivas se autorizan.
   //      */
-  //     public static readonly BANDERA_HOMOLOGACION_TRANSFER : string = "BANDERA_HOMOLOGACION_TRANSFER";
+      public static readonly BANDERA_HOMOLOGACION_TRANSFER : string = "BANDERA_HOMOLOGACION_TRANSFER";
 
   //     //Especifica el valor para desactivar campos en la edicion homologacion Transfer
 
-  //     public static readonly BANDERA_HOMOLOGACION_TRANSFER_VALOR : string = '1';
+     public static readonly BANDERA_HOMOLOGACION_TRANSFER_VALOR : string = '1';
 
   //     //estados para catalogos cova
   //     public static readonly ESTADO_CAT_COVA_BUSQUEDA: string = "BUSQUEDA";
@@ -4663,44 +4667,44 @@ export abstract class Const {
 
   //     //claves para identificar los pagos
   //     public static readonly CLAVE_TRASPASO: string = "TRAS";
-  //     public static readonly CLAVE_SPEI: string = "SPEI";
+  public static readonly CLAVE_SPEI: string = 'SPEI';
 
   //     //valor para validar la carga de pagos
   //     public static readonly ACTIVA_CARGA: string = "ACTIVA_CARGA";
-       /**
-        * Origen de la operaci&oacute;n OPciones Stardoc.
-        */
-       public static readonly ORIGEN_OPERACION_STARDOC: string = "S";
+  /**
+   * Origen de la operaci&oacute;n OPciones Stardoc.
+   */
+  public static readonly ORIGEN_OPERACION_STARDOC: string = 'S';
 
   //     /**
   //      * Parametro Esquema Intercam
   //      */
-  //     public static readonly ESQUEMA_INTERCAM  : number = 5;
+      public static readonly ESQUEMA_INTERCAM  : number = 5;
 
   //     /**
   //      * Parametro Esquema Intercam
   //      */
-  //     public static readonly ESQUEMA_COMODATO  : number = 2;
+      public static readonly ESQUEMA_COMODATO  : number = 2;
 
   //     /**
   //      * Parametro Esquema Intercam
   //      */
-  //     public static readonly ESQUEMA_DEFRAK  : number = 1;
+      public static readonly ESQUEMA_DEFRAK  : number = 1;
   //     /**
   //      * Parametros Area Intercam
   //      */
-  //     public static readonly AREA_TESORERIA : string = "TESORERIA";
+  public static readonly AREA_TESORERIA: string = 'TESORERIA';
 
-  //     public static readonly AREA_COBRANZA : string = "COBRANZA";
+  public static readonly AREA_COBRANZA: string = 'COBRANZA';
 
-  //     public static readonly AREA_CAJA : string = "CAJA";
+  public static readonly AREA_CAJA: string = 'CAJA';
 
-  //     public static readonly AREA_REMESAS : string = "REMESAS";
+  public static readonly AREA_REMESAS: string = 'REMESAS';
 
   //     /**
   //      * Constante para el grupo pld transfer de tesoreria
   //      **/
-    public static readonly PLDTESO: string = "PLDTESO";
+  public static readonly PLDTESO: string = 'PLDTESO';
 
   //     //clave negocio fondos banco de cova
   //     public static readonly CLV_NEGOCIO_FONDOS_BANCO : number = 10;
@@ -4736,16 +4740,17 @@ export abstract class Const {
   //     /**
   //      * Indica la edad mínima del beneficiario de la tarjeta, usuario ventanilla (Tarjetas Multidivisas )
   //      */
-     public static readonly CIERRE_TARJETA_USU_VENT : string = "cierreTarjeta_USU_VENT";
+  public static readonly CIERRE_TARJETA_USU_VENT: string =
+    'cierreTarjeta_USU_VENT';
 
   //     /**
   //      * Indica el valor minimo de recarga permitido para tarjeta nueva, usuario ventanilla (Tarjetas Multidivisas)
   //      */
   //     public static readonly MINTARJETA_USU_VENT : string = "MINTARJETA_USU_VENT";
 
-  //     public static readonly CANAL_PROCESO_REPET : string = "BXT00668REPET";//canal pos bxt
+       public static readonly CANAL_PROCESO_REPET : string = "BXT00668REPET";//canal pos bxt
 
-  //     public static readonly GRUPO_CANCELA_CUENTA : string = "CONTROLCUENTAS";
+  public static readonly GRUPO_CANCELA_CUENTA : string = "CONTROLCUENTAS";
 
   //     public static readonly TIPO_ENLACE_INTERCAM : string = "INTERCAM B";
 
@@ -4763,10 +4768,11 @@ export abstract class Const {
   //      */
   //     public static readonly TCON_DIVISAS_CASABOLSA = 1;
 
-       /**
-        * Constante que indica la activación de las validaciones de ejecutivo sucurlsa y usuario de ventanilla
-        */
-       public static readonly VALIDA_EJESUCURSAL_USUVENTANILLA : string = "VALIDA_EJESUCURSAL_USUVENT";
+  /**
+   * Constante que indica la activación de las validaciones de ejecutivo sucurlsa y usuario de ventanilla
+   */
+  public static readonly VALIDA_EJESUCURSAL_USUVENTANILLA: string =
+    'VALIDA_EJESUCURSAL_USUVENT';
 
   //     /**
   //      * Constante que indica la activación de las validaciones de ejecutivo sucurlsa y usuario de ventanilla
@@ -4776,7 +4782,7 @@ export abstract class Const {
   /**
    * Parametro Combo SPID
    */
-  public static readonly ORIGEN_BXT: string = "B";
+  public static readonly ORIGEN_BXT: string = 'B';
   //     /**
   //      * Valor Propósito de la Operación para las Compras
   //      */
@@ -4791,19 +4797,19 @@ export abstract class Const {
   //     public static readonly REPORTE_IMPRESION_NO_PAGO: string = "ImpresionNoPago";
   //     public static readonly EDO_CUENTA_NO_PAGO: string = "EstadoCuentaNoPago";
 
-          /**
-         * Constante que indica la razon o proposito de la compra de la remesa, en este caso prestamo
-         */
-          public static readonly PRESTAMO : string = "PRESTAMOS";
-          /**
-           * Constante que indica la razon o proposito de la compra de la remesa, en este caso pago de su cliente
-           */
-          public static readonly PAGO_CLIENTE : string = "PAGO DE CLIENTE";
+  /**
+   * Constante que indica la razon o proposito de la compra de la remesa, en este caso prestamo
+   */
+  public static readonly PRESTAMO: string = 'PRESTAMOS';
+  /**
+   * Constante que indica la razon o proposito de la compra de la remesa, en este caso pago de su cliente
+   */
+  public static readonly PAGO_CLIENTE: string = 'PAGO DE CLIENTE';
 
-          /**
-           * Constante que indica la opcion de Otros
-           */
-          public static readonly OTROS : string = "OTROS";
+  /**
+   * Constante que indica la opcion de Otros
+   */
+  public static readonly OTROS: string = 'OTROS';
 
   // /** ****************************************************************************************************************
   //  *  ***************************************** Methods **************************************************************
@@ -4905,65 +4911,65 @@ export abstract class Const {
   //         return arrAnios;
   //     }
 
-  //     public static getTitularId(tconId : number, tpeClave : string) : number{
-  //         let result : number;
-  //         if (tpeClave == Const.PERSONA_FISICA) {
-  //             switch (tconId) {
-  //                 case Const.TCON_CASA_CAMBIOS:
-  //                     result = Const.TITULAR_CAMBIOS_FISICA;
-  //                     break;
-  //                 case Const.TCON_FONDOS:
-  //                     result = Const.TITULAR_FONDOS_FISICA;
-  //                     break;
-  //                 case Const.TCON_CASA_BOLSA:
-  //                     result = Const.TITULAR_BOLSA_FISICA;
-  //                     break;
-  //                 /*case TCON_SECURITIES:
-  //                 result = TITULAR_SECURITIES_FISICA;
-  //                 break;*/
-  //                 case Const.TCON_BANCO:
-  //                     result = Const.TITULAR_BANCO_FISICA;
-  //                     break;
-  //                 case Const.TCON_DIVISAS_CASA_BOLSA:
-  //                     result = Const.TITULAR_DIVISAS_CB_FISICA;
-  //                     break;
-  //                 case Const.TCON_TDC:
-  //                     result = ConstPerfiles.TITULAR_FISICA_TDC;
-  //                     break;
-  //                 case Const.TCON_FIDEICOMISO:
-  //                     result = ConstPerfiles.TCON_FIDE_FIDEICOMITENTE_PF;
-  //                     break;
-  //             }
-  //         } else if (tpeClave == Const.PERSONA_MORAL) {
-  //             switch (tconId) {
-  //                 case Const.TCON_CASA_CAMBIOS:
-  //                     result = Const.TITULAR_CAMBIOS_MORAL;
-  //                     break;
-  //                 case Const.TCON_FONDOS:
-  //                     result = Const.TITULAR_FONDOS_MORAL;
-  //                     break;
-  //                 case Const.TCON_CASA_BOLSA:
-  //                     result = Const.TITULAR_BOLSA_MORAL;
-  //                     break;
-  //                 /*case TCON_SECURITIES:
-  //                 result = TITULAR_SECURITIES_MORAL;
-  //                 break;*/
-  //                 case Const.TCON_BANCO:
-  //                     result = Const.TITULAR_BANCO_MORAL;
-  //                     break;
-  //                 case Const.TCON_DIVISAS_CASA_BOLSA:
-  //                     result = Const.TITULAR_DIVISAS_CB_MORAL;
-  //                     break;
-  //                 case Const.TCON_TDC:
-  //                     result = ConstPerfiles.TITULAR_MORAL_TDC;
-  //                     break;
-  //                 case Const.TCON_FIDEICOMISO:
-  //                     result = ConstPerfiles.TCON_FIDE_FIDEICOMITENTE_PM;
-  //                     break;
-  //             }
-  //         }
-  //         return result;
-  //     }
+       public static getTitularId(tconId : number, tpeClave : string) : number{
+           let result : number;
+           if (tpeClave == Const.PERSONA_FISICA) {
+               switch (tconId) {
+                   case Const.TCON_CASA_CAMBIOS:
+                       result = Const.TITULAR_CAMBIOS_FISICA;
+                       break;
+                   case Const.TCON_FONDOS:
+                       result = Const.TITULAR_FONDOS_FISICA;
+                       break;
+                   case Const.TCON_CASA_BOLSA:
+                       result = Const.TITULAR_BOLSA_FISICA;
+                       break;
+                   /*case TCON_SECURITIES:
+                   result = TITULAR_SECURITIES_FISICA;
+                   break;*/
+                   case Const.TCON_BANCO:
+                       result = Const.TITULAR_BANCO_FISICA;
+                       break;
+                   case Const.TCON_DIVISAS_CASA_BOLSA:
+                       result = Const.TITULAR_DIVISAS_CB_FISICA;
+                       break;
+                   case Const.TCON_TDC:
+                       result = ConstPerfiles.TITULAR_FISICA_TDC;
+                       break;
+                   case Const.TCON_FIDEICOMISO:
+                       result = ConstPerfiles.TCON_FIDE_FIDEICOMITENTE_PF;
+                       break;
+               }
+           } else if (tpeClave == Const.PERSONA_MORAL) {
+               switch (tconId) {
+                   case Const.TCON_CASA_CAMBIOS:
+                       result = Const.TITULAR_CAMBIOS_MORAL;
+                       break;
+                   case Const.TCON_FONDOS:
+                       result = Const.TITULAR_FONDOS_MORAL;
+                       break;
+                   case Const.TCON_CASA_BOLSA:
+                       result = Const.TITULAR_BOLSA_MORAL;
+                       break;
+                   /*case TCON_SECURITIES:
+                   result = TITULAR_SECURITIES_MORAL;
+                   break;*/
+                   case Const.TCON_BANCO:
+                       result = Const.TITULAR_BANCO_MORAL;
+                       break;
+                   case Const.TCON_DIVISAS_CASA_BOLSA:
+                       result = Const.TITULAR_DIVISAS_CB_MORAL;
+                       break;
+                   case Const.TCON_TDC:
+                       result = ConstPerfiles.TITULAR_MORAL_TDC;
+                       break;
+                   case Const.TCON_FIDEICOMISO:
+                       result = ConstPerfiles.TCON_FIDE_FIDEICOMITENTE_PM;
+                       break;
+              }
+           }
+           return result;
+       }
 
   //     public static getCotitular (tconId : number, tpeClave : string) : number {
   //         let result : number;
@@ -5109,14 +5115,18 @@ export abstract class Const {
   public static readonly BACKGROUND_ALERT: string =
     'linear-gradient(rgba(0, 0, 0, 0.904),rgba(0, 0, 0, 0.904))';
 
-    //reportes de fondos banco
-  public static readonly REPORTE_DETALLE_PROMOTOR:string = "ReporteDetallePromotor";
-  public static readonly REPORTE_ASESOR_FONDOS_BANCO:string = "ReporteAsesorFondosBanco";
-  public static readonly ARCHIVO_FONDOS_BANCO:string = "ArchivoFondosBanco";
-  public static readonly REPORTE_PRODUCTIVIDAD_FONDOS_BANCO:string = "ReporteProductividadFondosBanco";
+  //reportes de fondos banco
+  public static readonly REPORTE_DETALLE_PROMOTOR: string =
+    'ReporteDetallePromotor';
+  public static readonly REPORTE_ASESOR_FONDOS_BANCO: string =
+    'ReporteAsesorFondosBanco';
+  public static readonly ARCHIVO_FONDOS_BANCO: string = 'ArchivoFondosBanco';
+  public static readonly REPORTE_PRODUCTIVIDAD_FONDOS_BANCO: string =
+    'ReporteProductividadFondosBanco';
   public static readonly EXTENSION_ARCHIVO_SWIFT: string = 'text/plain';
 
   public static readonly PERMISOS_AUTORIZAR: string = 'AUTORIZADORREMESAS';
+
   public static readonly PERMISOS_CARGA_CUENTA : string= "PERMISOSCAREDOCUENTA";
 
   public static readonly pais_origen_ayuda1: string = 'Este campo es para identificar mediante el sistema aquellas empresas con un pa\u00EDs de origen diferente a M\u00E9xico. Ejemplo\:'
@@ -5125,7 +5135,7 @@ export abstract class Const {
   public static readonly pais_origen_ayuda4:string = '3.\tLa empresa Suzuki Motor M\u00E9xico est\u00E1 constituida en M\u00E9xico, pero su pa\u00EDs de origen es Jap\u00F3n.';
 
   public static readonly noExisteProspecto:string = 'No existen coincidencias para los par\u00E1metros de b\u00FAsqueda. \u00BFDesea dar de alta como Prospecto?.';
-  
+
   public static readonly confirmacionRegistroProspecto:string = 'Registro Exitoso.';
   public static readonly errorRegistroProspecto:string = 'No se realizo el registro.';
   public static readonly modificacionExitosa:string = 'Modificaci\u00F3n exitosa.';
@@ -5146,4 +5156,86 @@ export abstract class Const {
   public static readonly noContratoDB: string ='Si tu cliente requiere servicio de divisas banco, podr\u00E1s ofertar cuenta Enlace o Servicio Empresarial FX.';
   public static readonly contratoNoPermitido: string = 'El Negocio seleccionado no es permitido.';
   public static readonly noDueno: string='No eres dueño este cliente';
+
+  public static readonly NEGOCIO_TOKEN_MOVIL : string = '04';
+
+  public static readonly permisoOperacion = 'No tiene permisos para ver la operaci\u00F3n';
+  public static readonly noExisteCanjeNo = 'No Existe el Canje No';
+  public static readonly noCanjesEnFechas = 'No Existen Canjes del ' ;
+  public static readonly noModificarOpPromotor = 'No es posible cerrar o modificar operaciones del promotor';
+
+  //errores de acceso
+  public static readonly PERMITIDO: number = -1;
+  public static readonly NO_PERMITIDO: number = 4;
+  public static readonly SESION_EXPIRADA: number = 0;
+  public static readonly FUERA_DE_HORARIO: number = 1;
+  public static readonly CLIENTE_NO_OPERABLE: number = 2;
+  public static readonly CONTRATO_NO_OPERABLE: number = 3;
+  public static readonly CONTRATO_BANCO_NO_ANEXO: number = 5;
+  public static readonly PER_BLOQUEADA: number = 1000;
+
+  public static readonly fueraHorario: string = "Fuera de horario";
+  public static readonly cliente: string = "Cliente";
+  public static readonly noOperableUsuario: string = "no operable por tu usuario";
+  public static readonly contrato: string = "Contrato";
+  public static readonly usuarioSinAcceso: string = "Usuario sin acceso al proceso solicitado";
+  public static readonly contratoBancoNoAnexo: string = "Cliente no operable para 'Banca por Tel\u00E9fono' No cuenta con el documento 'SOLICITUD DE BANCA POR INTERNET Y BANCA POR TELFON' firmado.";
+  public static readonly personaBloqueada: string = "Persona bloqueada por cumplimiento.";
+
+  public static readonly TIPO_CON_23 : number = 23;
+  public static readonly TIPO_CON_24 : number = 24;
+
+  /**
+  * Tipo Cuestionario COMPLEMENTO BANCO LUMINA, como el 11 para CB
+  */
+  public static readonly TCU_ID_COMPLEMENTO_BANCOLUMINA:number = 60;
+
+  public static readonly distUnSoloInst = 'Solo se permite distribuir operaciones con un instrumento';
+  public static readonly expiroSesion = 'Sesi\u00F3n expirada, ingresa nuevamente.';
+  public static readonly confirmeCerrarOperacion = 'Confirme cerrar Operaci\u00F3n';
+  public static readonly indiqueTipoCambioReal = 'Indique un tipo de cambio real';
+  public static readonly tipoCambioPromAlto='Favor de verificar el tipo de cambio capturado';
+  public static readonly advertencia = 'Advertencia';
+  public static readonly perdida = 'Operaci\u00F3n con p\u00E9rdida\!';
+  public static readonly tipoCambioBajo = 'TIPO DE CAMBIO BAJO!';
+  public static readonly noTienesAccesoPor =  'o tienes acceso por:';
+  public static readonly seGeneroOperacionNo = 'Se genera operaci\u00F3n';
+  public static readonly dealSica = 'DEAL';
+  public static readonly estatusTransaccion2 = 'Error al guardar la operacion en el sistema';
+  public static readonly elijaUnBanco = 'Elija un Banco';
+
+
+  public static readonly descDivisas1 = "C. BOLSA";
+  public static readonly descDivisas5 = "BANCO";
+  public static readonly idOne = 1;
+  public static readonly idTwo = 2;
+  public static readonly idThree = 3;
+  public static readonly idFour = 4;
+  public static readonly idFive = 5;
+  public static readonly reenvioSpid = "Reenv\u00EDo Spid";
+  public static readonly compraAbonoPesos = "Compra con Abono en Pesos";
+  public static readonly cheque = "Cheque";
+  public static readonly transfer = "Transfer";
+
+  public static readonly titular = "Titular";
+  public static readonly adicional = "ADICIONAL";
+  public static readonly TENID_CONTRATO_BANCO  = 12;
+  public static readonly cliente_sin_contrato = "El cliente no tiene contratos";
+  public static readonly contrato_sin_clave = "El contrato no tiene clave legada";
+    /** variable para movimiento alta de Correo desde BxT*/
+    public static readonly ID_NUEVO_CORREO: number = 57;
+
+
+  public static readonly TAB_REPETITIVAS_TARJETA = 6;
+  
+  public static readonly vendorLongitudMinimaError = "El valor \u00FAnico de referencia del proveedor debe contener al menos";
+  public static readonly vendorDuplicadoError="El valor \u00FAnico de referencia del proveedor\: "
+
+  public static readonly TPV_POSRE04 : number = 100;
+  public static readonly TPV_POSRE06 : number = 101;
+
+  public static readonly PROCESADOR_STAT6 = 'com.intercam.tesoreria.servlet.tpv.ProcesadorStat6';
+  public static readonly PROCESADOR_STAT7 = 'com.intercam.tesoreria.servlet.tpv.ProcesadorStat7';
+  public static readonly OPE_ESTATUS_CONC = 'CO';
+  public static readonly OPE_ESTATUS_PEND = 'CP';
 }

@@ -3,51 +3,51 @@ import { PersonaVO } from "./PersonaVO";
 
     export class PersonaMoralVO extends PersonaVO 
     {
-        //public  perId : Number;
+        //public  perId : number;
         public  pemRazonSocial : string;
-        public  pemEsDeIntercam : Boolean;
-        public  pemFconstitucionStr : String;
-        public  pemNoActaConst : String;
-        public  pemRegPubPropie : String;
-        public  pemNombreNotario : String;
-        public  pemNoNotario : String;
-        public  pemPlazaNotaria : String;
-        public  pemEsCorporativo : Boolean;
-        public  pemCtaBanxico : String;
-        public  pemTomoRpp : Number;
-        public  pemFolioRpp : String;
-        public  pemLibroRpp : Number;
-        public  pemFechaRppStr : String;
-        public  pemIdShcp : String;
+        public  pemEsDeIntercam : boolean;
+        public  pemFconstitucionStr : string;
+        public  pemNoActaConst : string;
+        public  pemRegPubPropie : string;
+        public  pemNombreNotario : string;
+        public  pemNoNotario : string;
+        public  pemPlazaNotaria : string;
+        public  pemEsCorporativo : boolean;
+        public  pemCtaBanxico : string;
+        public  pemTomoRpp : number;
+        public  pemFolioRpp : string;
+        public  pemLibroRpp : number;
+        public  pemFechaRppStr : string;
+        public  pemIdShcp : string;
         public  contratos : any; //Set <PopUpInformativoABCPersonaMoralVO>;
-        public  pemFechaActaStr : String;
+        public  pemFechaActaStr : string;
         public  contraparteVO :any; // ContraparteVO;
-        public  munClave : Number;
-        public  pemDocExtEst : String;
-        public  pemTipoSoc : String;
-        public  pemLocNumeroPlaza : String;
-        public  pemLocNumeroCiudadRpc : String;
+        public  munClave : number;
+        public  pemDocExtEst : string;
+        public  pemTipoSoc : string;
+        public  pemLocNumeroPlaza : string;
+        public  pemLocNumeroCiudadRpc : string;
         /**
          * Clave de la entidad de la plaza
          */
-        public  entClavePlaza : Number;
+        public  entClavePlaza : number;
         /**
          * Clave de la entidad de la ciudad RPC
          */
-        public  entClaveCiudad : Number;
+        public  entClaveCiudad : number;
         /**
          * Descripci&oacute;n de la localidad de la plaza.
          */
-        public  pemLocalidadPlaza : String;
+        public  pemLocalidadPlaza : string;
         /**
          * Descripci&oacute;n de la clave de la entidad de la ciudad RPC.
          */
-        public  pemLocalidadCiudad : String;
+        public  pemLocalidadCiudad : string;
 
         /**
          * Cotiza en bolsa
          */
-        public  pemCotBolsa : Boolean;
+        public  pemCotBolsa : boolean;
         
         /**
          * Id bolsa
@@ -57,12 +57,12 @@ import { PersonaVO } from "./PersonaVO";
         /**
          * Regimen Simplificado
          */
-        public  pemRegSimpl : Boolean;
+        public  pemRegSimpl : boolean;
         
         /**
          * clave pizarra
          */
-        public  pemClvPizarra : String;
+        public  pemClvPizarra : string;
         
         /**
          * Constructor de la clase.
@@ -90,15 +90,15 @@ import { PersonaVO } from "./PersonaVO";
 		/**
 		 * Id de taxes para las personas extranjeras.
 		 */
-		public  _perTaxId : String;
+		public  _perTaxId : string;
 
-		public  setPemIdShcp (taxId : String) : void {
+		public  setPemIdShcp (taxId : string) : void {
             this._perTaxId = taxId;
         }
         /**
          * Obtiene el taxId.
          */
-        public  getPemIdShcp () : String {
+        public  getPemIdShcp () : string {
             return this._perTaxId;
         }
         

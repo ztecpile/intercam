@@ -2,32 +2,32 @@
 	export class EsPepVO
 	{
 		
-		public   epId : Number ;
-		public   perId : Number;
-		public   epCargo : String;
-		public   epDependencia : String;
-		public   epEstatus : String;
-		public   epFechaDesdeStr : String;
-		public   epFechaHastaStr : String;
-		public   epPais : Number;
-		public   epNivel : String;
-		public   epPoder : String;
-		public   epIngresoMen : String;
-		public   epIngresoAd : String;
-		public   epOrigenIngreso : String;
-		public   epActividad : String;
-		public   epMontoIngreso : String;
-		public   epRfc : String;
-		public   epPorcentaje : Number;
-		public   epNombreSoc : String;
-		public   epDesOrigen : String;
-		public   epOperaRecursos : String;
-		public   epTipoRelacion : String;
-		public   epMotivoOperaRec : String;
-		public   epMontoAd : String;
-		public   epRazon : String;
-		public   epContinua : String;
-		public   epContratos : String;
+		public   epId : number ;
+		public   perId : number;
+		public   epCargo : string;
+		public   epDependencia : string;
+		public   epEstatus : string;
+		public   epFechaDesdeStr : string;
+		public   epFechaHastaStr : string;
+		public   epPais : number;
+		public   epNivel : string;
+		public   epPoder : string;
+		public   epIngresoMen : string;
+		public   epIngresoAd : string;
+		public   epOrigenIngreso : string;
+		public   epActividad : string;
+		public   epMontoIngreso : string;
+		public   epRfc : string;
+		public   epPorcentaje : number;
+		public   epNombreSoc : string;
+		public   epDesOrigen : string;
+		public   epOperaRecursos : string;
+		public   epTipoRelacion : string;
+		public   epMotivoOperaRec : string;
+		public   epMontoAd : string;
+		public   epRazon : string;
+		public   epContinua : string;
+		public   epContratos : string;
 		public  EsPepVO()
 		{
 		}

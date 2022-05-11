@@ -19,16 +19,17 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { ProspeccionComponent } from './prospeccion/prospeccion.component';
 import { BuscaProspectoComponent } from './busca-prospecto/busca-prospecto.component';
 import { AltaProspectoComponent } from './alta-prospecto/alta-prospecto.component';
 
-import { TabsDynamicComponent } from '../util/tabs/tabs-dynamic.component';
-import { TabDynamicComponent } from '../util/tabs/tab-dynamic.component';
-import { DynamicTabsDirective } from '../util/tabs/dynamic-tabs.directive';
 import { BusquedaProspectoComponent } from './busca-prospecto/busqueda-prospecto/busqueda-prospecto.component';
 import { ResultadoProspectoComponent } from './busca-prospecto/resultado-prospecto/resultado-prospecto.component';
+import { FilterProspectosPipe } from '../util/filter/filter-prospectos.pipe';
+import { MatIconModule } from '@angular/material/icon';
+import { UtilModule } from '../util/util.module';
 
 const routes: Routes = [
   {
@@ -52,11 +53,9 @@ const routes: Routes = [
     ProspeccionComponent,
     BuscaProspectoComponent,
     AltaProspectoComponent,
-    TabsDynamicComponent,
-    TabDynamicComponent,
-    DynamicTabsDirective,
     BusquedaProspectoComponent,
-    ResultadoProspectoComponent
+    ResultadoProspectoComponent,
+    FilterProspectosPipe
   ],
   imports: [
     RouterModule.forChild(routes),
@@ -74,7 +73,10 @@ const routes: Routes = [
     MatStepperModule,
     MatTooltipModule,
     MatDialogModule,
-    MatListModule
+    MatListModule,
+    MatMenuModule,
+    MatIconModule,
+    UtilModule
   ]
 })
 export class ProspeccionModule { }

@@ -2,12 +2,12 @@
 	export class DispositivosBiometricosVO
 	{
 		
-		public  dbioId : Number;
-		public  dbioModelo : String;
-		public  dbioSerie : String;
-		public  dbioUbicacion : String;
-		public  dbioUsuarioAsignado : String;
-		public  dbioEstatus : String;
+		public  dbioId : number;
+		public  dbioModelo : string;
+		public  dbioSerie : string;
+		public  dbioUbicacion : string;
+		public  dbioUsuarioAsignado : string;
+		public  dbioEstatus : string;
 		
 		public  DispositivosBiometricosVO() {
 		

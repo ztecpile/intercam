@@ -2,12 +2,12 @@
 	export class NBUsuariVO
 	{
 		
-		public  nbUsuarioId:Number;
-		public  usuNumero:String;
-		public   usuClient:String;
-		public   usuNombre:String;
-		public   usuEmail:String;
-		public   usuStatus:String;
+		public  nbUsuarioId:number;
+		public  usuNumero:string;
+		public   usuClient:string;
+		public   usuNombre:string;
+		public   usuEmail:string;
+		public   usuStatus:string;
 		
 		public  NbUsuariVO() 
 		{			

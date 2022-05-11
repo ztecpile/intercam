@@ -2,12 +2,12 @@
 	export class ProfesionVO {
 
 		public  proClave : number;
-		public  proDescripcion : String;
+		public  proDescripcion : string;
 		public  proRiesgo: number;
 		/**
 		 * Clave de la profesion para sibamex
 		 */
-		public  proNumeroClProfes : String;
+		public  proNumeroClProfes : string;
 
 		public  ProfesionVO(){
 			

@@ -2,8 +2,8 @@ import { SectorActividadEconomicaVO } from "./SectorActividadEconomicaVO";
 
 	export class GrupoActividadEconomicaVO
 	{
-		public  gacId : Number;
-	    public  gruDescripcion : String;
+		public  gacId : number;
+	    public  gruDescripcion : string;
 	    public  sectorActividadEconomicaVO : SectorActividadEconomicaVO;
 		/**
 	    * Constructor de la clase.
@@ -14,7 +14,7 @@ import { SectorActividadEconomicaVO } from "./SectorActividadEconomicaVO";
 	    	this.sectorActividadEconomicaVO = new SectorActividadEconomicaVO();
 	    }
 		
-		public  toString():String{
+		public  toString():string{
 			return this.gruDescripcion;
 		}
 	}

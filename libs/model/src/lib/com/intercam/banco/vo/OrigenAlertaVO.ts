@@ -52,6 +52,9 @@ export class OrigenAlertaVO{
 		public oalNombreRemitente?: string,
 		public oalDireccionRemitente?: string,
 		public oalPaisRemitente?: string,
-		public oalCiudadRemitente?: string
+		public oalCiudadRemitente?: string,
+        public oalNumBanco?: string,
+        public oalGeoLongitud?: string,
+        public oalGeoLatitud?: string
     ) {}
 }

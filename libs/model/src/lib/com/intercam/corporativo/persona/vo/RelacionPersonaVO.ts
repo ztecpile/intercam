@@ -2,43 +2,43 @@ import { TipoRelVO } from "./TipoRelVO";
 
     export class RelacionPersonaVO
     {
-        public  relId : Number;
-        public  perIdDe : Number;
-        public  perId : Number;
-        public  usuUsuario : String;
-        public  relNombreNotario : String;
-        public  relNumeroNotario : String;
-        public  relPlazaNotario : String;
-        public  relNumeroActaCont : String;
-        public  relRegPubPropiedad : String;
-        public  perNomCorto : String;
-        public  relFconstitucionStr : String;
-        public  relFechaRPPStr : String;
-        public  relFaltaStr : String;
+        public  relId : number;
+        public  perIdDe : number;
+        public  perId : number;
+        public  usuUsuario : string;
+        public  relNombreNotario : string;
+        public  relNumeroNotario : string;
+        public  relPlazaNotario : string;
+        public  relNumeroActaCont : string;
+        public  relRegPubPropiedad : string;
+        public  perNomCorto : string;
+        public  relFconstitucionStr : string;
+        public  relFechaRPPStr : string;
+        public  relFaltaStr : string;
         public  tipoRelacionVO : TipoRelVO;
-        public  relConsecLegado : Number;
-        public  tacId : Number;
-        public  relPlazaRPP : String;
-        public  relMontoMax : Number;
-        public  relLocNumero : String;
+        public  relConsecLegado : number;
+        public  tacId : number;
+        public  relPlazaRPP : string;
+        public  relMontoMax : number;
+        public  relLocNumero : string;
         
         /**
         * Email de las persona relacionadas
         * */
-        public  pefEmail : String;
+        public  pefEmail : string;
         /**
         *
         */
-        public  relCargo : String;
+        public  relCargo : string;
         /**
          * Clave de la entidad de la ciudad RPC
          * */
-        public  entClaveCiudad : Number;
+        public  entClaveCiudad : number;
 
         /**
          * Descripcion de la localidad o municipio.
          */
-        public  relLocalidadCiudad : String;
+        public  relLocalidadCiudad : string;
 
         /**
         * Constructor de la clase.
@@ -60,7 +60,7 @@ import { TipoRelVO } from "./TipoRelVO";
             this.relLocNumero = null;
         }
 		
-		public  toString():String{
+		public  toString():string{
 			return "" +this.tipoRelacionVO;
 		}
     }

@@ -2,9 +2,9 @@ import { PreguntaVO } from "./PreguntaVO";
 
 	export class GrupoPreguntaVO
 	{
-		public  gppId : Number;
+		public  gppId : number;
 		public  preguntaVO:PreguntaVO;
-		public  resId :Number;		
+		public  resId :number;		
 		
      	/**
 	    * Constructor de la clase.

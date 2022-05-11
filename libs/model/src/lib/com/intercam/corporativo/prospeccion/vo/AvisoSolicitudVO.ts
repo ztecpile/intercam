@@ -10,7 +10,7 @@ export class AvisoSolicitudVO {
     /**
 	* Almacena Id Aviso Solicitud. 
 	**/
-	public avsId:Number;
+	public avsId:number;
 				
 	/**
 	* Almacena Solicitud Referenciacion asociada.

@@ -1,71 +1,72 @@
+import { ContratoVO } from "./ContratoVO";
 import { ConSpidVO } from "./ConSpidVO";
 import { ContratoFwsVO } from "./ContratoFwsVO";
 
-    export class ContratoBancoVO 
+    export class ContratoBancoVO extends ContratoVO
     {
         /**
          * ID de la moneda
          **/
-        public  divId : String;
+        public  divId : string;
         /**
          * Tipo de cuenta
          **/
-        public  ccbnTipoCuenta : String;
+        public  ccbnTipoCuenta : string;
         /**
          * Instrucciones de envio
          **/
-        public  ccbnInsEnvio : String;
+        public  ccbnInsEnvio : string;
         /**
          * Tasa ISR
          **/
-        public  ccbnIsr : Number;
+        public  ccbnIsr : number;
         /**
          * Generar Cheques
          **/
-        public  ccbnGenChe : String;
+        public  ccbnGenChe : string;
         /**
          * Tipo del talonario
          **/
-        public  ccbnTipoTal : String;
+        public  ccbnTipoTal : string;
 
-        public  ccbnChePro : String;
+        public  ccbnChePro : string;
 
-        public  ccbnMontoPro : Number;
+        public  ccbnMontoPro : number;
 
-        public  ccbnAutRev : String;
+        public  ccbnAutRev : string;
 
-        public  ccbnTalonarioSuc : Number;
+        public  ccbnTalonarioSuc : number;
 
         /**
          * Entrego escritura (S o N)
          */
-        public  entregoEscritura : String;
+        public  entregoEscritura : string;
 
-        public  ccbnCobraIsr : String;
+        public  ccbnCobraIsr : string;
 
-        public  ccbnCobraIde : String;
+        public  ccbnCobraIde : string;
 
-        public  ccbnCobraIva : String;
+        public  ccbnCobraIva : string;
 
         /**
          * Indica si el contrato es para una entidad financiera otorgante de credito o no.
          */
-        public  ccbnEsEntidadOtorgante : Boolean;
+        public  ccbnEsEntidadOtorgante : boolean;
 		
 		/**
 		 * Numero de telefono para Spei Movil 
 		 */
-		public  telefonoSpei : String;
+		public  telefonoSpei : string;
 		
 		/**
 		 * perId del promotor que atiende el contrato en sibamex
 		 */
-		public  perIdPromAtiende:String;
+		public  perIdPromAtiende:string;
 
 		/**
 		 * legada del promotor que atiende el contrato en sibamex
 		 */
-		public  legadaPromAtiende:String;
+		public  legadaPromAtiende:string;
 		 
         
         /**
@@ -81,51 +82,51 @@ import { ContratoFwsVO } from "./ContratoFwsVO";
 		/**
 		 * Opera tel 
 		 **/
-		public  ccbnOperaTel : Boolean;
+		public  ccbnOperaTel : boolean;
         
         /**
         * Almacena las instrucciones globales de la combinacion de firmas
         */ 
-        public  ccbnInstruccionGlobal : String;
+        public  ccbnInstruccionGlobal : string;
 
 		/**
 		 * Opera Spid
 		 */		
-		public  ccbnOperaSpid : Boolean;
+		public  ccbnOperaSpid : boolean;
 		
 		/**
 		 * Proposito de la cuenta en Dolares
 		 */	
-		public  ccbnCuentaDolares : String;
+		public  ccbnCuentaDolares : string;
         
         /**
          * Opera derivados
          */
-        public  ccbnOperaDerivados : Boolean;
+        public  ccbnOperaDerivados : boolean;
         
         /**
          * estatus Stardoc
          */
-        public  ccbnStatusStardoc : String;
+        public  ccbnStatusStardoc : string;
         
         /**
          * Parte Derivados
          */
-        public  ccbnParte : String;
+        public  ccbnParte : string;
 		
-        public  ccbnOperaFondos :Boolean;
+        public  ccbnOperaFondos :boolean;
         
         /**
         * Indica si opera mercado de dinero
         */
-        public  ccbnOperaMD: Boolean;
+        public  ccbnOperaMD: boolean;
 		
         /********************************************************
          * Constructor
          * *******************************************************/
 		public constructor()
 		{
-			
+			super();
 			//conPerfilInversion = Const.NO_OPERA_MD;
 			this.ccbnCobraIva = "F";
 			this.ccbnOperaDerivados = false;

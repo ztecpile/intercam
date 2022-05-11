@@ -2,7 +2,7 @@ import { SucursalVO } from "../../centrocostos/vo/SucursalVO";
 
 	export class ZonaMensajeriaIdVO
 	{
-		public  zomClave : String;
+		public  zomClave : string;
 	    public  sucursalVO : SucursalVO;
 		/**
 	    * Constructor de la clase.
@@ -15,7 +15,7 @@ import { SucursalVO } from "../../centrocostos/vo/SucursalVO";
 	    /**
 	     * Obtiene la representación String del objeto.
 	     */
-	    public  toString() : String
+	    public  toString() : string
 	    {
 	    	return this.zomClave + ',' + this.sucursalVO.sucClave;
 	    }

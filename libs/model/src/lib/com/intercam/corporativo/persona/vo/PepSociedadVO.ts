@@ -1,16 +1,16 @@
 
 	export class PepSociedadVO
 	{
-		public  psoId : Number;
-		public  psoRazonSocial : String;
-		public  psoRfc : String;
-		public  psoGiro : String;
-		public  psoNombre : String;
-		public  psoNacionalidad : Boolean;
-		public  psoPais : String;
-		public  pepId : String;
-    	public  perId : Number;
-    	public  psoConsecLegado : Number;
+		public  psoId : number;
+		public  psoRazonSocial : string;
+		public  psoRfc : string;
+		public  psoGiro : string;
+		public  psoNombre : string;
+		public  psoNacionalidad : boolean;
+		public  psoPais : string;
+		public  pepId : string;
+    	public  perId : number;
+    	public  psoConsecLegado : number;
     	
 		/**
 	    * Constructor de la clase.

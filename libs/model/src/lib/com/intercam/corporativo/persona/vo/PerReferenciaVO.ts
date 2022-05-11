@@ -6,12 +6,12 @@
 	     */
         public  PerReferenciaVO(){}
 
-        public  prefId :		 		Number;
-        public  perId : 	 			Number;
-        public  conId :		 		Number;
-        public  prefNombre : 		String;
-        public  prefRelacion : 		String;
-		public  prefTiempoConocer :  String;
-		public  prefTelefono : 		String;
-		public  prefRefpersonal :	String;
+        public  prefId :		 	number;
+        public  perId : 	 		number;
+        public  conId :		 		number;
+        public  prefNombre : 		string;
+        public  prefRelacion : 		string;
+		public  prefTiempoConocer : string;
+		public  prefTelefono : 		string;
+		public  prefRefpersonal :	string;
 	}

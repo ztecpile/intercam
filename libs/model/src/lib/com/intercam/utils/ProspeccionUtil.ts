@@ -77,35 +77,67 @@ export abstract class ProspeccionUtil {
   }
 
   /**
-	* Obtiene el indice de la Ciudad en la lista de Ciudades.
+	* Obtiene entClave de la Ciudad en la lista de Ciudades extranjeras
 	**/
-  public static obtenerIndiceCiudad(nomCiudad:String, lstCiudad:EntidadVO[]):number {
-    var indice = 0;
+  public static obtenerEntClave(nomCiudad:string, lstCiudad:EntidadVO[]):number {
+    var entClave;
     if (lstCiudad != null) {
         for (let i = 0; i < lstCiudad.length; i++) {
           if(lstCiudad[i].entDescripcion === nomCiudad){
-            indice = i;
+            entClave = lstCiudad[i].entClave;
             break;
           }
         }
     }
-    return indice;
+    return entClave;
   }
 
-    /**
-	* Obtiene el indice de la Colonia en la lista de Colonias.
+  /**
+	* Obtiene entDescripcion de la lista de Ciudades extranjeras
 	**/
-  public static obtenerIndiceColonia(nomColonia:String, lstColonia:ColoniaVO[]):number {
-    var indice = -1;
+  public static obtenerEntDescripcion(entClave:number, lstCiudad:EntidadVO[]):string {
+    var entDescripcion;
+    if (lstCiudad != null) {
+        for (let i = 0; i < lstCiudad.length; i++) {
+          if(lstCiudad[i].entClave === entClave){
+            entDescripcion = lstCiudad[i].entDescripcion;
+            break;
+          }
+        }
+    }
+    return entDescripcion;
+  }
+
+  /**
+	* Obtiene la clave de la Colonia en la lista de Colonias.
+	**/
+  public static obtenerColClave(nomColonia:string, lstColonia:ColoniaVO[]):number {
+    var colClave;
     if (lstColonia != null) {
         for (let i = 0; i < lstColonia.length; i++) {
           if(lstColonia[i].colDescrip === nomColonia){
-            indice = i;
+            colClave = lstColonia[i].colClave;
             break;
           }
         }
     }
-    return indice;
+    return colClave;
+  }
+
+  /**
+	* Obtiene colDescrip en la lista de Colonias.
+	**/
+  public static obtenerColDescrip(colClave:number, lstColonia:ColoniaVO[]):string {
+    var colDescrip;
+    if (lstColonia != null) {
+        for (let i = 0; i < lstColonia.length; i++) {
+          if(lstColonia[i].colClave === colClave){
+            colDescrip = lstColonia[i].colDescrip;
+            break;
+          }
+        }
+    }
+    return colDescrip;
   }
 
   /**
@@ -163,9 +195,9 @@ export abstract class ProspeccionUtil {
   /**
   * valida los permisos de certificacion y apoderamiento
   */ 
-  public static validaPermisosCertificadoApoderado(lstCertAsignacionVO : any[], tconId : Number, validaPoder:Boolean):String {
+  public static validaPermisosCertificadoApoderado(lstCertAsignacionVO : any[], tconId : number, validaPoder:boolean):string {
     //Almacena el mensaje a mostrar
-    var msj : String = "";
+    var msj : string = "";
        
     //Verificamos si se va a validar si el promotor tiene poder para operar este negocio
     if (validaPoder) {
@@ -203,10 +235,10 @@ export abstract class ProspeccionUtil {
   }
 
   /**
-  * Valid el formato del del RFC
+  * Valida el formato del RFC
   * de la persona Fisica o Moral
   **/
-  public static validaRFC(rfc:string, tpeClave:string):Boolean {
+  public static validaRFC(rfc:string, tpeClave:string):boolean {
     if(tpeClave == Const.PERSONA_FISICA){
       const re = /(\D\D\D\D)(\d\d\d\d\d\d)(...)?/g;
       return re.test(rfc);
@@ -217,11 +249,27 @@ export abstract class ProspeccionUtil {
   }
 
   /**
+  * Valida la logitud del RFC
+  * de la persona Fisica o Moral
+  **/
+   public static validaLongRFC(rfc:string, tpeClave:string):boolean {
+    let status:boolean=true;
+    if(rfc.length < 10){
+      status = false;
+    } else if(tpeClave == Const.PERSONA_FISICA && rfc.length > 13) {
+      status = false;
+    } else if(tpeClave == Const.PERSONA_MORAL && rfc.length > 12) {
+      status = false;
+    }
+    return status;
+  }
+
+  /**
   * Metodo que valida que la fecha del RFC no sea mayor a la fecha actual
   * */
-   public static fechaValidaRFC(tipoPersona : string, perRfc: string, fechaActual: Date):Boolean {
+   public static fechaValidaRFC(tipoPersona : string, perRfc: string, fechaActual: Date):boolean {
     
-    var fechaValida : Boolean = true;
+    var fechaValida : boolean = true;
     var dateField :Date;
     
     if (perRfc != "" && perRfc.length >= 10){
@@ -275,8 +323,8 @@ export abstract class ProspeccionUtil {
   * Fecha a validar.
   * true si la fecha es menor a la actual.
   */
-  public static validarFechaMenorHoy(componente : Date, fechaActual: Date) : Boolean {
-    var valida : Boolean = componente.getTime() <= fechaActual.getTime();
+  public static validarFechaMenorHoy(componente : Date, fechaActual: Date) : boolean {
+    var valida : boolean = componente.getTime() <= fechaActual.getTime();
     return valida;
   }
 
@@ -284,8 +332,8 @@ export abstract class ProspeccionUtil {
   * Método que construye el nombre corto de una persona física, con base en
   * los parámetros pefPaterno, pefMaterno y pefNombre
   **/
-  public static buildPerNomCorto(pefPaterno:String, pefMaterno:String, pefNombre:String):String {
-    var nomCorto : String = pefNombre.trim();
+  public static buildPerNomCorto(pefPaterno:string, pefMaterno:string, pefNombre:string):string {
+    var nomCorto : string = pefNombre.trim();
 
     nomCorto += (nomCorto.length > 0 ? " " : "") + pefPaterno.trim();
     nomCorto = nomCorto.trim();
@@ -295,31 +343,12 @@ export abstract class ProspeccionUtil {
     
     return nomCorto;
   }
-  
-  public static isInGrupoPermisos (permisos : string, grupos : GrupoVO[]) : Boolean {
-    var permitido : Boolean = false;
-    if (permisos && grupos) {
-        var arrPermisos = new Array();
-        arrPermisos = permisos.split(',');
-        var i = 0;
-        while (!permitido && i < arrPermisos.length) {
-            var j = 0;
-            var permiso : String = arrPermisos[i];
-            while (!permitido && j < grupos.length) {
-                permitido = grupos[j].gpoNombre == permiso;
-                j++;
-            }
-            i++;
-        }
-    }
-    return permitido;
-  }
 
   /**
   * Valida el formato del del SNN
   * de la persona Fisica o Moral extranjero
   **/
-  public static validaSNN(nss: string, tpeClave: string):Boolean{
+  public static validaSNN(nss: string, tpeClave: string):boolean{
     if(tpeClave == Const.PERSONA_FISICA){
       const re= /(D\D\D\D) (\d\d\d\d\d\d) ?/g;
         return re.test(nss);
@@ -329,7 +358,7 @@ export abstract class ProspeccionUtil {
     }
   }
   
-  public static validaEmail(email:string):Boolean {
+  public static validaEmail(email:string):boolean {
     const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
   }

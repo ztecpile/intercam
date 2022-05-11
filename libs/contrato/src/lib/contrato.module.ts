@@ -5,13 +5,8 @@ import { ClientesModule } from './components/clientes/clientes.module';
 import { AltaContratosModule } from './components/contratos/alta.contratos.module';
 import { SoporteModule } from './components/soporte/soporte.module';
 import { ProspeccionModule } from './components/prospeccion/prospeccion.module';
-import { MatDialogModule } from '@angular/material/dialog';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatTableModule } from '@angular/material/table';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { ShredComponentsModule } from '@intercam/shred-components';
-import { DialogBusquedaCoincidenciasComponent } from './components/util/dialog-busqueda-coincidencias/dialog-busqueda-coincidencias.component';
-import { DialogReporte24hrsComponent } from './components/util/dialog-reporte24hrs/dialog-reporte24hrs.component';
+import { UtilModule } from './components/util/util.module';
 
 
 @NgModule({
@@ -22,17 +17,10 @@ import { DialogReporte24hrsComponent } from './components/util/dialog-reporte24h
     AltaContratosModule,
     SoporteModule,
     ProspeccionModule,
-    MatDialogModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatTableModule,
-    MatTooltipModule,
-    ShredComponentsModule
+    ShredComponentsModule,
+    UtilModule
   ],
-  declarations: [
-    DialogBusquedaCoincidenciasComponent,
-    DialogReporte24hrsComponent
-  ]
+  declarations: []
 })
 export class ContratoModule {
 }

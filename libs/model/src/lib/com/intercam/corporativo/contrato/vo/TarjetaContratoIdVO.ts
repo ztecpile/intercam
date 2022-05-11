@@ -1,10 +1,10 @@
 
 	export class TarjetaContratoIdVO
 	{   
-	    public  tarId : Number;
-	    public  conId : Number;
-	    public  perId : Number;
-	    public  cpeConsecLegado : Number;
+	    public  tarId : number;
+	    public  conId : number;
+	    public  perId : number;
+	    public  cpeConsecLegado : number;
 	    
 	    /**
 	    * Constructor de la clase.
@@ -14,7 +14,7 @@
 			
 		}
 		
-		public  toString():String{
+		public  toString():string{
 			
 			return this.tarId.toString() + ',' + this.conId.toString() + ',' + this.perId.toString() + ',' + this.cpeConsecLegado.toString();
 		}

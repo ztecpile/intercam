@@ -1,7 +1,7 @@
 
     export class CampaignContratoIdVO
     {
-		public  conId:Number;
-		public  cmId:Number;
-		public  cdId:Number;
+		public  conId:number;
+		public  cmId:number;
+		public  cdId:number;
 	}

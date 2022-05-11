@@ -1,10 +1,10 @@
 
 	export class RespuestaCumplimientoVO
 	{
-		public  codigo : String;
-		public  error : Boolean;
-		public  folio : String;
-		public  mensajeError : String;
+		public  codigo : string;
+		public  error : boolean;
+		public  folio : string;
+		public  mensajeError : string;
 		//List<PersonasListasVO>
 		public  coincidencias : any ; //PersonasListasVO;		
 	}

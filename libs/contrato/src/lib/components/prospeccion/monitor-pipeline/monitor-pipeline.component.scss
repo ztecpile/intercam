@@ -14,6 +14,7 @@ table {
 .table-in {
     border: 0px;
     padding: 8px 8px 10px 0px;
+    cursor: pointer;
 }
 
 .td-in {
@@ -51,14 +52,18 @@ table tbody {
     border-color: inherit;
 }
 
+.td-row {
+    border: rgb(212, 212, 212) 1px solid !important;
+}
+
 .hedaer-prospeccion {
-    background-color: rgb(75, 65, 172);
+    background-color: rgb(47, 70, 146);
     color: rgb(252, 252, 252) !important;
     width: 25%;
 }
 
 .hedaer-pros {
-    background-color: rgb(75, 65, 172);
+    background-color: rgb(47, 70, 146);
     color: rgb(252, 252, 252) !important;
     width: 25%;
     border: 1px solid black;
@@ -136,4 +141,80 @@ table tbody {
     background-color: rgb(255, 255, 255);
     width: 25%;
     border: 1px solid black;
+}
+
+.cont-class-btns {
+    content: '';
+    align-items: baseline;
+    margin-top: 20px;
+}
+
+.cont-class {
+    content: '';
+    align-items: baseline;
+    margin-top: 36px;
+}
+
+.lbl_clasificacion {
+    font-size: 11px;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    font-family: 'Museo Sans 500';
+    text-align: left;
+}
+
+.background-color-white {
+    background-color: rgb(252, 252, 252);
+    width: 20px;
+    height: 16px;
+    border: 1px solid black;
+    padding-bottom: 5px;
+}
+
+.background-color-red {
+    background-color: rgba(255, 77, 77);
+    width: 20px;
+    height: 16px;
+    border: 1px solid black;
+}
+
+.background-color-blue {
+    background-color: rgb(74, 165, 255);
+    width: 20px;
+    height: 16px;
+    border: 1px solid black;
+}
+
+.background-color-yellow {
+    background-color: rgb(255, 255, 153);
+    width: 20px;
+    height: 16px;
+    border: 1px solid black;
+}
+
+.background-color-dwelling {
+    background-color: rgb(155, 132, 182);
+    width: 20px;
+    height: 16px;
+    border: 1px solid black;
+}
+
+::ng-deep .sweet-title-p {
+    color: #ffffff !important;
+    font-size: 15px !important;
+    font-family: "Museo sans 100 "!important;
+}
+
+::ng-deep .sweet-input {
+    color: #ffffff !important;
+    font-size: 14px !important;
+    font-family: "Museo sans 100 "!important;
+}
+
+::ng-deep .cambios-estatus {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 3px;
+    outline: 0;
+    background: rgb(255, 255, 255) !important;
 }

@@ -24,12 +24,12 @@ import { TelefonoVO } from "../../persona/vo/TelefonoVO";
         /**
         * Documento referente al comprobante de domicilio
         */
-        public  docId:Number;
+        public  docId:number;
 		
 		/**
 		 * Tipo de contrato 1 o 5 para divisas CB o Divisas banco respectivamente.
 		 */
-		public  tconId : Number;
+		public  tconId : number;
 
         public constructor()
         {

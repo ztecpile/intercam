@@ -4,19 +4,19 @@
         /**
         * id de la tabla
         **/ 
-		public  rgmId : Number;
+		public  rgmId : number;
         /**
         * Nombre del regimen
         **/ 
-	    public  rgmNombre : String;
+	    public  rgmNombre : string;
         /**
         * Identificador de YATLA (FIDEICOMISO)
         **/ 
-        public  rgmYatla : String;
+        public  rgmYatla : string;
         /**
         * Determina el estatus del regimen
         **/ 
-        public  rgmActivo : Boolean;
+        public  rgmActivo : boolean;
         
 		/**
 	    * Constructor de la clase.

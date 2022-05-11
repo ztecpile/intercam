@@ -143,11 +143,7 @@
     </button>
 
 
-    <button *ngIf="!estatusBntAlta" mat-button class="btn-img alta-button-des">
-        <span class="tooltip">Alta de cliente</span>
-    </button>
-
-    <button *ngIf="estatusBntAlta" mat-button mat-dialog-close class="btn-img alta-button" (click)="enviarResultado(false)">
+    <button [ngClass]="getClassBtnAlta(estatusBntAlta)" mat-button mat-dialog-close (click)="enviarResultado(false)" [disabled]="!estatusBntAlta">
         <span class="tooltip">Alta de cliente</span>
     </button>
 </div>

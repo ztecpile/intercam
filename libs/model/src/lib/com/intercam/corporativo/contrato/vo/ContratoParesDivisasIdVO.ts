@@ -1,8 +1,8 @@
 
 	export class ContratoParesDivisasIdVO
 	{
-		public  conId:Number;
-		public  divIdReuters:Number;
+		public  conId:number;
+		public  divIdReuters:number;
 
 		public constructor()
 		{

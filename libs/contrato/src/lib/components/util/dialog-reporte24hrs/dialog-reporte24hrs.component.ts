@@ -17,12 +17,12 @@ export class DialogReporte24hrsComponent implements OnInit {
   /**
   * Almacena el contrato
   */ 
-  conId : Number;
+  conId : number;
    
   /**
   * Almacema el id si viene de prospeccion
   */
-  prpId : Number;
+  prpId : number;
     
   /**
   * Almacena el cliente
@@ -55,7 +55,7 @@ export class DialogReporte24hrsComponent implements OnInit {
   **/
   readOnly:Boolean = false;
 
-  usuUsuario : String;
+  usuUsuario : string;
 			
 	isEditionComponentesSA : Boolean;
 
@@ -307,7 +307,7 @@ export class DialogReporte24hrsComponent implements OnInit {
     }
   }
 
-  cmbListaPB_changeHandler(craId:Number){
+  cmbListaPB_changeHandler(craId:number){
     this.lstCatCriterio1.forEach(crit => {
       if(crit.craId == craId){
         this.craDescripcion1 = crit.craDescripcion;
@@ -317,7 +317,7 @@ export class DialogReporte24hrsComponent implements OnInit {
     this.btnAceptar_initializeHandler();
   }
 
-  cmbDocsS_changeHandler(craId:Number){
+  cmbDocsS_changeHandler(craId:number){
     this.lstCatCriterio2.forEach(crit => {
       if(crit.craId == craId){
         this.craDescripcion2 = crit.craDescripcion;
@@ -327,7 +327,7 @@ export class DialogReporte24hrsComponent implements OnInit {
     this.btnAceptar_initializeHandler();
   }
 
-  cmbInfoIPerS_changeHandler(craId:Number){
+  cmbInfoIPerS_changeHandler(craId:number){
     this.lstCatCriterio3.forEach(crit => {
       if(crit.craId == craId){
         this.craDescripcion3 = crit.craDescripcion;
@@ -337,7 +337,7 @@ export class DialogReporte24hrsComponent implements OnInit {
     this.btnAceptar_initializeHandler();
   }
 
-  cmbAlertaRiesgoAper_changeHandler(craId:Number){
+  cmbAlertaRiesgoAper_changeHandler(craId:number){
     this.lstCatCriterio4.forEach(crit => {
       if(crit.craId == craId){
         this.craDescripcion4 = crit.craDescripcion;
@@ -347,7 +347,7 @@ export class DialogReporte24hrsComponent implements OnInit {
     this.btnAceptar_initializeHandler();
   }
 
-  txtComentario_changeHandler(comentario:String):void {
+  txtComentario_changeHandler(comentario:string):void {
     if(comentario != null){
       this.personaAnalisisVO.peaComentario = comentario;
     }

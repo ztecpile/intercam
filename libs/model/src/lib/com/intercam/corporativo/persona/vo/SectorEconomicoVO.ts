@@ -1,15 +1,15 @@
 
 	export class SectorEconomicoVO
 	{
-		public  secId : Number;
-	    public  secDescripcion : String;
-	 	public  secCnbv : String;
-		public  secBanxico : String;
+		public  secId : number;
+	    public  secDescripcion : string;
+	 	public  secCnbv : string;
+		public  secBanxico : string;
 
 		/**
 		 * Clave de sector para Sibamex
 		 */
-		public  tmpClSectorId : String;
+		public  tmpClSectorId : string;
 
 		/**
 	    * Constructor de la clase.

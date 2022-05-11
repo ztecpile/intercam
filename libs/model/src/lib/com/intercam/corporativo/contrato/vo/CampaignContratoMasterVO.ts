@@ -6,6 +6,6 @@ import { CampaignContratoVO } from "./CampaignContratoVO";
 		
 		public  idVO:CampaignContratoMasterIdVO;
 		public  campaignContratoVO: CampaignContratoVO[];
-		public  ccmEstatus:String;
-        public  cmNtfenv:String;
+		public  ccmEstatus:string;
+        public  cmNtfenv:string;
 	}

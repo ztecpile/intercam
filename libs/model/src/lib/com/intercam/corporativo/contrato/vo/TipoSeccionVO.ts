@@ -2,8 +2,8 @@ import { SeccionVO } from "./SeccionVO";
 
 	export class TipoSeccionVO
 	{
-		public  sectId : Number;
-		public  tsecOrden : Number;
+		public  sectId : number;
+		public  tsecOrden : number;
 		/* public  tipoCuestionarioVO : TipoCuestionarioVO;
 		public  seccionesVO :ArrayCollection;	 */
 		public  seccionVO:SeccionVO;

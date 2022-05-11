@@ -1,13 +1,13 @@
 
     export class ProductoFwdSubyIdVO
     {
-		public  prsId:Number;
-		public  prdfId:Number;
+		public  prsId:number;
+		public  prdfId:number;
 
         /**
          * Regresa la interpretacion en String del objeto.
          */
-        public  toString() : String
+        public  toString() : string
         {
             return this.prsId.toString() + " " + this.prdfId.toString();
         }

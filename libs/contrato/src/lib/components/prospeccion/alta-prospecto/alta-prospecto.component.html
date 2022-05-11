@@ -135,7 +135,7 @@
             </div>
         </div>
 
-        <div class="container-fluid">
+        <div class="col-sm-9">
             <hr>
         </div>
 
@@ -186,7 +186,7 @@
             </div>
 
             <div class="element-btn" *ngIf="showBtnBuscaCP" id="divBtnBuscarCP" class="col-sm-3">
-                <button class="btn-img buscar-btn" type="button" (click)="btnBuscarCP($event)"><span class="tooltip">Buscar</span></button>
+                <button class="btn-img buscar-btn" type="button" (click)="btnBuscarCP($event)" [disabled]="!enabled"><span class="tooltip">Buscar</span></button>
             </div>
         </div>
 
@@ -234,13 +234,13 @@
             </div>
         </div>
 
-        <div class="container-fluid">
+        <div class="col-sm-9">
             <hr>
         </div>
         <!-------- DATOS ADICIONALES -------->
         <div class="row">
             <div id="divtelefono" class="col-sm-3">
-                <input type="tel" class="formulario__input" [control]="getCtr('telefono')" formControlName="telefono" idbInput>
+                <input type="tel" class="formulario__input" [control]="getCtr('telefono')" formControlName="telefono" maxlength="15" idbInput intercamOnlyNumber>
                 <label class="formulario__label">{{'Teléfono' | transloco}}</label>
             </div>
         </div>
@@ -252,7 +252,7 @@
             </div>
         </div>
 
-        <div class="container-fluid">
+        <div class="col-sm-9">
             <hr>
         </div>
         <!-------- DATOS EXCEPCIONES -------->
@@ -286,7 +286,7 @@
             </div>
         </div>
 
-        <div class="container-fluid">
+        <div class="col-sm-9">
             <hr>
         </div>
         <!-------- DATOS CONTACTO -------->
@@ -304,14 +304,14 @@
 
         <div class="row">
             <div id="divcomentarios" class="col-sm-3">
-                <textarea class="formulario__input" formControlName="comentarios" [control]="getCtr('comentarios')" idbInput cols="30" rows="4"></textarea>
+                <textarea class="formulario__input" formControlName="comentarios" [control]="getCtr('comentarios')" idbInput cols="30" rows="4" wrap="hard"></textarea>
                 <label class="formulario__label">{{'Comentarios' | transloco}}</label>
             </div>
         </div>
 
         <div class="centrar_btn">
             <button class="btn-img funcionarios-button" type="button" (click)="solicitudRevision()" *ngIf="isVisibleBtn"><span class="tooltip">Solicitud de Revisión</span></button>
-            <button class="btn-img save-button" type="submit" (click)="onSubmit()" *ngIf="btnGuardarProspecto"><span class="tooltip">Guardar</span></button>
+            <button class="btn-img save-button" type="button" (click)="onSubmit()" *ngIf="btnGuardarProspecto"><span class="tooltip">Guardar</span></button>
             <label *ngIf="stsProspectoVisible">{{stsProspecto}}</label>
         </div>
     </form>

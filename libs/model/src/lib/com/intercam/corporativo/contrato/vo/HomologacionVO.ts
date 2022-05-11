@@ -5,61 +5,61 @@
         /**
          * No de contrato a Homologar
          */
-        public  conId : Number;
+        public  conId : number;
         
         /**
          * Id de cliente incorrecto a Homologar
          */
-        public  perIdAnt : Number;
+        public  perIdAnt : number;
         
         /**
          * Nombre corto del cliente  incorrecto a Homologar
          */
-        public  perNombreCortoAnt : String;
+        public  perNombreCortoAnt : string;
         
         /**
          * Id cliente correcto a Homologar
          */
-        public  perId : Number;
+        public  perId : number;
         
         /**
          * Nombre corto del cliente a Homologar
          */
-        public  perNombreCorto : String;
+        public  perNombreCorto : string;
 		/**
 		 * Comentarios de la homologacion
 		 */
-		public  comentarios : String;
+		public  comentarios : string;
         /**
         * Usuario solicitante
         */
-        public  solicitante : String;
+        public  solicitante : string;
         /**
          * Coordinador de Sucursal
          */
-        public  coordinador : String;
+        public  coordinador : string;
         /**
          * Homologacion de datos de persona
          */
-        public  actualizanDatos : Boolean;
+        public  actualizanDatos : boolean;
         /**
          * Onservaciones
          */
-        public  observacion : String;
+        public  observacion : string;
         /**
         * Personas a confirmar por correo
         */
-       //List<String> emailPersonas
-        public  emailPersonas: String[];
+       //List<string> emailPersonas
+        public  emailPersonas: string[];
         /**
          * Personas a confirmar por correo
          */
         //List<Integer>
         public  perIdPersonas: number[];
         
-        public  usuId : Number;
+        public  usuId : number;
         
-        public  sucursal : String;
+        public  sucursal : string;
         
         //List<Integer>
         

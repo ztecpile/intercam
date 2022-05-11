@@ -5,51 +5,51 @@ import { ConCanalComercialVO } from "./ConCanalComercialVO";
 		/**
 		 * Custodia Administrativa
 		 */
-		public  cluCustodiaAdmin : String;
+		public  cluCustodiaAdmin : string;
 		/**
 		 * Categoria de ISR
 		 */
-		public  cluCategoriaIsr : String;
+		public  cluCategoriaIsr : string;
 		/**
 		 * Motivo de la exencion
 		 */
-		public  cluMotivoIsr : String;
+		public  cluMotivoIsr : string;
 		/**
 		 * Clave Banxico
 		 */
-		public  cluCveBanxico : String;
+		public  cluCveBanxico : string;
 		/**
 		 * Cuenta Propia
 		 */
-		public  cluCuentaPropia : String;
+		public  cluCuentaPropia : string;
 		/**
 		 * Ordenes de Arbitraje
 		 */
-		public  cluOrdArbitraje : String;
+		public  cluOrdArbitraje : string;
 		/**
 		 * Ventas en Corto
 		 */
-		public  cluVentasCorto : String;
+		public  cluVentasCorto : string;
 		/**
 		 * Cruces Propios
 		 */
-		public  cluCrucesPropios : String;
+		public  cluCrucesPropios : string;
 		/**
 		 * Fondos de Recompra
 		 */
-		public  cluFondosRecompra : String;
+		public  cluFondosRecompra : string;
 		/**
 		 * Fecha de Revision
 		 */
-		public  cluFechaRevisionStr : String;
+		public  cluFechaRevisionStr : string;
 		/**
 		 * Comision por Operaciones
 		 */
-		public  cluComisionOper : Number;
+		public  cluComisionOper : number;
 		/**
 		 * Comision por Custodia
 		 */
-		public  cluComisionCustodia : Number;
+		public  cluComisionCustodia : number;
 		
 		/**
 		 * Lista de Canales Comerciales

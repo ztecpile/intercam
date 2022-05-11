@@ -6,7 +6,7 @@ import { TipoContratoVO } from "./TipoContratoVO";
         /**
          * Id del contrato.
          */
-        public  conId : Number;
+        public  conId : number;
         /**
          * Tipo de Contrato.
          */
@@ -18,66 +18,66 @@ import { TipoContratoVO } from "./TipoContratoVO";
         /**
          * Fecha de alta del estatus.
          */
-        public  conFestatusStr : String;
+        public  conFestatusStr : string;
         /**
          * Fecha de impresion del contrato.
          */
-        public  conFimpContratoStr : String;
+        public  conFimpContratoStr : string;
         /**
          * Fecha de apertura del contrato.
          */
-        public  conFaperContratoStr : String;
+        public  conFaperContratoStr : string;
         /**
          * Fecha de reapertura.
          */
-        public  conFreaperturaStr : String;
+        public  conFreaperturaStr : string;
         /**
          * Fecha baja.
          */
-        public  conFbajaStr : String;
+        public  conFbajaStr : string;
         /**
          * Fecha de reimpresi&oacute;n.
          */
-        public  conFreimpresionStr : String;
+        public  conFreimpresionStr : string;
         /**
          * Cuenta discrecional.
          */
-        public  conManejoCta : Boolean;
+        public  conManejoCta : boolean;
         /**
          * Contrato firmado.
          */
-        public  conFirmado : Boolean;
+        public  conFirmado : boolean;
 
         /**
          * Ventas en corto.
          */
-        public  conVentaCorto : Boolean;
+        public  conVentaCorto : boolean;
         /**
          * Clave legada del contrato.
          */
-        public  tmpCveLegada : String;
+        public  tmpCveLegada : string;
         /**
          * Sucursal Legada.
          */
-        public  tmpCveSucLegada : String;
+        public  tmpCveSucLegada : string;
         /**
          * Observaciones.
          */
-        public  conObservacion : String;
+        public  conObservacion : string;
         /**
          * Divisi&oacute;n del contrato.
          */
-        public  dicId : Number;
+        public  dicId : number;
         /**
          * Descripci&oacute;n del tipo de contrato.
          */
         //TODO:No se pa que sirve
-        public  tconDescripcionVO : String;
+        public  tconDescripcionVO : string;
         
         /**
          * nombre del titular
          */
-        public  nombreTitular:String;
+        public  nombreTitular:string;
         
         /**
          * cve del ejecutivo titular en i00con_ejecutivo
@@ -87,39 +87,39 @@ import { TipoContratoVO } from "./TipoContratoVO";
         /**
          * Tipo de contrato.
          */
-        public  tconIdVO : Number;
+        public  tconIdVO : number;
         /**
          * Clave Promotor.
          */
-        public  tmpClvPro : String;
+        public  tmpClvPro : string;
         /**
          * Clave del usuario.
          */
-        public  usuUsuario : String;
+        public  usuUsuario : string;
         /**
          *
          */
-        public  tmpNumCli:Number;
+        public  tmpNumCli:number;
         /**
          * Env&iacute;o de Estado de Cuenta.
          */
-        public  conEnvioEdo:String;
+        public  conEnvioEdo:string;
         /**
          * No. de intentos sin documentos.
          */
-        public  conOperSinDoctos:Number;
+        public  conOperSinDoctos:number;
         /**
          *Email para el envio de estado de cuenta de los contratos
          * */
-        public  conEmail : String;
+        public  conEmail : string;
         /**
          * Descripcion del tipo de apertura (Si es caja de ahorro, fideicomisos, etc)
          */
-        public  conDescApertura : String;
+        public  conDescApertura : string;
         /**
          * Si el contrato opera con posicion propia
          */
-        public  conPosicionPropia : Boolean;
+        public  conPosicionPropia : boolean;
         /**
          * Correo electronico para el envio del estado de cuenta
          * */
@@ -131,11 +131,11 @@ import { TipoContratoVO } from "./TipoContratoVO";
         /**
          * cliNumeroBanco.
          */
-        public  cliNumeroBanco : String;
+        public  cliNumeroBanco : string;
         /**
          * Sesion
          */
-        public  conSesion : String;
+        public  conSesion : string;
         
         /**
          * Servicio de inversi&oacute;n.
@@ -144,7 +144,7 @@ import { TipoContratoVO } from "./TipoContratoVO";
         /**
          * Clave dealtracker exclusivo para las contrapartes
          */
-        public  tmpCveDealtrack : String;		
+        public  tmpCveDealtrack : string;		
         /**
          * categoria de la persona
          */
@@ -157,23 +157,23 @@ import { TipoContratoVO } from "./TipoContratoVO";
         /** 
          * Usuario Autorizado.
          */
-        public  conUsuAutoriza : String;
+        public  conUsuAutoriza : string;
         
         /**
          * gestion Inversion
          */
-        public  gesId : Number;
+        public  gesId : number;
         
         /**
          * Catalogo inversion
          */
-        public  cgiId : Number;
+        public  cgiId : number;
         
         /**
          * Determina Si el contrato si el contrato puede capturar Addenda en la factura
          */
         
-        public  conAddenda: Boolean;
+        public  conAddenda: boolean;
         
         
         public  correosAdicionalesVO : any []; //ArrayCollection;
@@ -181,17 +181,22 @@ import { TipoContratoVO } from "./TipoContratoVO";
         /**
          * Almacena el valor idBanxicoFide generado al consultar el algoritmo. 
          */ 
-        public  idBanxicoFide : String;
+        public  idBanxicoFide : string;
         
         /**
          * Fecha de Constitucion del Fideicomiso (conDescApertura)
          */ 
-        public  conFConstiFideStr : String;
+        public  conFConstiFideStr : string;
         
         /**
          * Manejo de efectivo ilimitado
          */
-        public  conEfeIlimtado: Boolean = false;
+        public  conEfeIlimtado: boolean = false;
+
+        /**
+        * Determina si se muestra el formato de servicios de Inversion, tiene dependencia de variable "servicioInversion"
+        **/ 
+        public showFormatoSi : boolean = false;
 
         /**
          * Constructor de la clase.
@@ -214,12 +219,5 @@ import { TipoContratoVO } from "./TipoContratoVO";
             this.idBanxicoFide = '';
             this.conFConstiFideStr = '';
         }
-        
-        /**
-         * Regresa la interpretaciÃ³n en String del objeto.
-         */
-        public  toString() : String
-        {
-            return this.conId.toString();
-        }
+
     }

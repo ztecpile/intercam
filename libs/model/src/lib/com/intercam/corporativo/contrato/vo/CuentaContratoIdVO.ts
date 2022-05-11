@@ -2,10 +2,10 @@ import { CuentaBancoVO } from "./CuentaBancoVO";
 
 export class CuentaContratoIdVO
 	{
-		 public  cueId:Number;
-    	 public  conId:Number;
-	     public  perId:Number;
-	     public  cpeConsecLegado : Number;
+		 public  cueId:number;
+    	 public  conId:number;
+	     public  perId:number;
+	     public  cpeConsecLegado : number;
 		 public  cuentaBancoVO : CuentaBancoVO;
 	     
 		/**
@@ -20,7 +20,7 @@ export class CuentaContratoIdVO
 		 * Obtiene la representación String del objeto.
 		 */  
 		
-		public toString():String{
+		public toString():string{
 			return " cueId: " + this.cueId +
 				   "\n conId: " + this.conId +
 				   "\n perId: " + this.perId +

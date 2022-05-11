@@ -1,0 +1,33 @@
+export class AcreedorVO {
+  constructor(
+    public acreId?: number,
+    public acreCve?: number,
+    public monto?: number,
+    public acreFecMovBan?: Date,
+    public acreFecAltAcr?: Date,
+    public acreCveClien?: string,
+    public acreNomClien?: string,
+    public acrePromotor?: string,
+    public acreReferen?: string,
+    public acreBanOrigen?: string,
+    public acreBanDestin?: string,
+    public acreDivisa?: string,
+    public acreEnviaNot?: string,
+    public acreTipRever?: number,
+    public acreEstatus?: number,
+    public acreEmpreId?: number,
+    public acreConId?: number,
+    public acreFolio?: number,
+    public acreConcilia?: number,
+    public acreMedioId?: number,
+    public acreFechaReg?: Date,
+    public acreBajaAcre?: number,
+    public acreBanId?: number,
+    public acreTipo?: string,
+    public acreRutaRepo?: string,
+    public fechaNotificacion?: Date,
+    public estatusNotificacion?: string,
+    public numeroNotificacion?: string,
+    public conSelected?: boolean
+  ) {}
+}

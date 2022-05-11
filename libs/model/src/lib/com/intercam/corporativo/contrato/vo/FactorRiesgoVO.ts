@@ -1,15 +1,15 @@
 
     export class FactorRiesgoVO
     {
-        public  farId: Number;
+        public  farId: number;
         
-        public  priId: Number;
+        public  priId: number;
         
-        public  friDesc: String;
+        public  friDesc: string;
         
-        public  valRiesgo: Number;
+        public  valRiesgo: number;
         
-        public  pondRiesgo: Number;
+        public  pondRiesgo: number;
         
-        public  farDetalle: String;
+        public  farDetalle: string;
     }

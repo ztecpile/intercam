@@ -5,13 +5,13 @@ import { TipoSeccionVO } from "./TipoSeccionVO";
 
 	export class TipoCuestionarioVO
 	{
-		public  tcuId : Number;
-		public  tcuDescripcion:String;
+		public  tcuId : number;
+		public  tcuDescripcion:string;
 		public  tipoContratoVO :TipoContratoVO;	
 		public  tipoPersonaVO :TipoPersonaVO;		
-		public  tipoSeccionesVO :Set <TipoSeccionVO>;
-		public  rpcFecharegStr : String;
-		public  rpcFechacapturaStr :String;
+		public  tipoSeccionesVO : TipoSeccionVO[];
+		public  rpcFecharegStr : string;
+		public  rpcFechacapturaStr :string;
 		public  perfilVO : PerfilVO;
 		
 		

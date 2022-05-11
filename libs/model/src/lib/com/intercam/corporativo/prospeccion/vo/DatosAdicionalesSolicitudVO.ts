@@ -8,17 +8,17 @@ export class DatosAdicionalesSolicitudVO {
 	/**
 	* Almacena email del Ejecutivo.
 	**/
-	public emailEjecutivo:String;
+	public emailEjecutivo:string;
 		
 	/**
 	* Almacena sucursal a la cual pertenece el Ejecutivo.
 	**/
-	public sucursal:String;
+	public sucursal:string;
 		
 	/**
 	* Almacena telefono/ext del Ejecutivo.
 	**/
-	public telefono:String;
+	public telefono:string;
 		
 	//--------------------------------------------------------------------------
 	//

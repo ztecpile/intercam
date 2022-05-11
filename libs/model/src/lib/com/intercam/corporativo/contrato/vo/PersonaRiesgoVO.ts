@@ -2,27 +2,27 @@ import { FactorRiesgoVO } from "./FactorRiesgoVO";
 
     export class PersonaRiesgoVO
     {
-       public  priId: Number;
+       public  priId: number;
         
         /**
          * Id de la persona
          */
-        public  perId: Number;
+        public  perId: number;
         
         /**
          * numero de contrato con el cual se calculo el riesgo
          */
-        public  conId: Number;
+        public  conId: number;
         
         /**
          * Valores del riesgo: 1= Bajo, 2= Medio, 3= Alto
          */
-        public  vriId: Number;
+        public  vriId: number;
         
         /**
          * Tipo de Calculo: C= Calculado, M= Manual, D= Directo
          */
-        public  priTcalculo: String;
+        public  priTcalculo: string;
         
         /**
          * Fecha en la que se realizo el calculo
@@ -32,22 +32,22 @@ import { FactorRiesgoVO } from "./FactorRiesgoVO";
         /**
          * Valor del riesgo, 1= Bajo, 2= Medio, 3= Alto
          */
-        public  priValor: Number;
+        public  priValor: number;
         
         /**
          * Regla de excepcion que se cumple por calculo del riesgo
          */
-        public  priRazon: String;
+        public  priRazon: string;
         
         /**
          * Observaciones para pregunta Manejo de Efectivo o para observaciones de como se realizo el calculo
          */
-        public  priObs: String;
+        public  priObs: string;
         
         /**
          * Usuario que realiza el calculo del riesgo
          */
-        public  usuUsuario: String;
+        public  usuUsuario: string;
         
         /**
          * Factores que componen el riesgo
@@ -58,11 +58,11 @@ import { FactorRiesgoVO } from "./FactorRiesgoVO";
         /**
          * Estatus Riesgo
          */
-        public   priEstatus: String;
+        public   priEstatus: string;
         
         /**
         * Valida si el cuestionario de riesgo es editable
         * */
-        public  priCueEdit: String;
+        public  priCueEdit: string;
 
     }

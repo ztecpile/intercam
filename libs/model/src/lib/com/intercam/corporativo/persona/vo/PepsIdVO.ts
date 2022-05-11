@@ -2,7 +2,7 @@ import { PersonaVO } from "./PersonaVO";
 
 	export class PepsIdVO
 	{
-		public  pepId : String;
+		public  pepId : string;
     	public  personaVO : PersonaVO;
 		/**
 	     * Constructor de la clase.
@@ -15,7 +15,7 @@ import { PersonaVO } from "./PersonaVO";
 	    /**
 	     * Obtiene la representación String del objeto.
 	     */
-	    public  toString() : String
+	    public  toString() : string
 	    {
 	    	return this.pepId + ',' + this.personaVO.perId;
 	    }

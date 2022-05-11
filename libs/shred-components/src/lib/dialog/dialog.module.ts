@@ -8,13 +8,15 @@ import { MatTableModule } from '@angular/material/table';
 import { MatRadioModule } from '@angular/material/radio';
 
 import { DialogBuscaPersonaComponent } from './dialog-busca-persona/dialog-busca-persona.component';
-import { DialogCierreRapidaComponent } from './dialog-cierre-rapida/dialog-cierre-rapida.component';
+import { DialogBuscaEjecutivoComponent } from './dialog-busca-ejecutivo/dialog-busca-ejecutivo.component';
+import { DialogPickListComponent } from './dialog-pick-list/dialog-pick-list.component';
 
 
 @NgModule({
   declarations: [
     DialogBuscaPersonaComponent,
-    DialogCierreRapidaComponent
+    DialogBuscaEjecutivoComponent,
+    DialogPickListComponent,
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,8 @@ import { DialogCierreRapidaComponent } from './dialog-cierre-rapida/dialog-cierr
   ],
   exports:[
     DialogBuscaPersonaComponent,
-    DialogCierreRapidaComponent
+    DialogBuscaEjecutivoComponent,
+    DialogPickListComponent
   ]
 })
 export class DialogModule { }

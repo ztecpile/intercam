@@ -4,6 +4,7 @@ import { PromClienteVO } from '../legacy/PromClienteVO';
 import { OperInstrumentoVO } from './OperInstrumentoVO';
 import { InfoFechaHabilVO } from '../../seguridad/vo/InfoFechaHabilVO';
 import { SolicitudRemesaVO } from './SolicitudRemesaVO';
+import { DevolucionSPIDVO } from './DevolucionSPIDVO';
 
 export class OperacionVO {
   public opeId: number;
@@ -134,7 +135,12 @@ export class OperacionVO {
   /**
    * Fecha de registro de la operacion
    */
-  public opeFechaRegistroStr: string;
+  public opeFechaRegistro: string;
+
+  /**
+   * Fecha de registro de la operacion String
+   */
+   public opeFechaRegistroStr: string;
 
   /**
    * Email asociado al contrato
@@ -192,7 +198,7 @@ export class OperacionVO {
   /**
    * Objeto con la Devolucion SPID
    */
-  //	public  devolucionVO:DevolucionSPIDVO;
+  public devolucionVO: DevolucionSPIDVO;
 
   /**
    * Clave legada contrato Banco
@@ -258,10 +264,10 @@ export class OperacionVO {
   public infoFechaHabilVO: InfoFechaHabilVO;
 
   /**
-   * Almacena solicitud de remesa.
+   * Almacena lista de solicitudes de remesa.
    * <i>Esta propiedad no se persiste.</i>
    **/
-  public solicitudRemesaVO: SolicitudRemesaVO;
+  public solicitudRemesaVO: Array<SolicitudRemesaVO>;
 
   /*
    *Fecha de operacion

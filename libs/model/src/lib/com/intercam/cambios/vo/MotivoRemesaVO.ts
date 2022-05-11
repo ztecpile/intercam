@@ -1,22 +1,18 @@
-export class MotivoRemesaVO {
-    public mreId: number;
+export interface MotivoRemesaVO {
+	mreId: number;
 
 	/**
 	 * Almacena la descripci&oacute;n del motivo de la Remesa, en espa&ntilde;ol.
 	 */
-	public mreDescripcion: string;
+	mreDescripcion: string;
 
 	/**
 	 * Almacena la descripci&oacute;n del motivo de la Remesa, en ingles.
 	 */
-	public mreDescripcionEn: string;
+	mreDescripcionEn: string;
 
 	/**
 	 * Almacena el estatus del registro.
 	 */
-	public mreEstatus: string;
-
-    constructor() {
-        
-    }
+	mreEstatus: string;
 }

@@ -1,7 +1,8 @@
 /**
  * Derechos Reservados de Copia (c) - INTERCAM SERVICIOS FINANCIEROS - 2021.
  */
-import { ConContrapartesVO } from '../../corporativo/contrato/vo/ConContrapartesVO';
+
+import { ContraparteVO } from '../../corporativo/derivados/vo/ContraparteVO';
 import { FormaPagoVO } from './FormaPagoVO';
 
 export interface CuentaOrigenVO {
@@ -22,7 +23,7 @@ export interface CuentaOrigenVO {
     /**
      * Contraparte asociada a la Cuenta Origen
      */
-    contraparteVO: ConContrapartesVO;
+    contraparteVO: ContraparteVO;
 
     /**
      * Descripcion del banco asociado a la Cuenta Origen

@@ -28,19 +28,19 @@ import { PerfilVO } from "./PerfilVO";
         /**
          * Porcentaje de inversion/beneficio.
          */
-        public  cpe_porcentaje : Number;
+        public  cpe_porcentaje : number;
         /**
          * Usuario.
          */
-        public  usu_clave : Number;
+        public  usu_clave : number;
         /**
          * Fecha de alta.
          */
-        public  cpe_faltaStr : String;
+        public  cpe_faltaStr : string;
         /**
          * Usuario.
          */
-        public  usuUsuario : String;
+        public  usuUsuario : string;
         /**
          * Nombre de la persona.
          */
@@ -48,51 +48,51 @@ import { PerfilVO } from "./PerfilVO";
         /**
          * TconId.
          */
-        public  tipContrato : Number;
+        public  tipContrato : number;
         /**
          * Descripcion deltipo de contrato.
          */
-        public  desTipContrato : String;
+        public  desTipContrato : string;
         /**
          * Estatus de la relacion.
          */
-        public  cpeEstatus : String;
+        public  cpeEstatus : string;
         /**
          * Tipo de cuenta.
          */
-        public  dicId:Number;
+        public  dicId:number;
         /**
          * Id del tipo de docuemnto que entrega.
          */
-        public  docId:Number;
+        public  docId:number;
         /**
          * Folio del documento.
          */
-        public  cpeFoldoc:String;
+        public  cpeFoldoc:string;
         /**
          * Descripcion.
          */
-        public  treDescripcion:String;
+        public  treDescripcion:string;
         /**
          * Monto m&aacute;ximo.
          */
-        public  cpeMontoMax : Number;
+        public  cpeMontoMax : number;
         /**
          * Vigencia del documento.
          */
-        public  cpeFvigenciaStr : String;
+        public  cpeFvigenciaStr : string;
         /**
          * Calle de la direccion.
          */
-        public  dirCalle : String;
+        public  dirCalle : string;
         /**
          * Nacionalidad de una persona relacionada en el contrato
          * */
-        public  paiNacionalidad : String;
+        public  paiNacionalidad : string;
         /**
          * Clave Repetitiva.
          */
-        public  tmpCveRepet : Number;
+        public  tmpCveRepet : number;
         /**
          * Identifica a la persona como de repetitiva.
          */
@@ -100,16 +100,16 @@ import { PerfilVO } from "./PerfilVO";
         /**
          * Identificador de la tabla benfac del SICA.
          */
-        public  tmpCveBenfac : Number;
+        public  tmpCveBenfac : number;
         /**
          * Campo para contrato DOS: Tipo de Notificacion para el perfil de Parte Interesada o
          * Pais de residencia del beneficiario Contingente para el perfil de Beneficiario
          **/
-        public  cpeTipoNotificacion : Number;
+        public  cpeTipoNotificacion : number;
         /**
          * Campo para contrato DOS: Identifcador del beneficiario (Para beneficiarios contingentes)
          **/
-        public  perIdBenef : Number;
+        public  perIdBenef : number;
         /**
          * Campo para contrato DOS: Lista para beneficiarios contingentes participantes en el contrato
          **/
@@ -130,11 +130,11 @@ import { PerfilVO } from "./PerfilVO";
         /**
          * Numero de persona asignado en SIBAMEX
          * */
-        public  perNumeroBanco:String;
+        public  perNumeroBanco:string;
         /**
          * Numero de grupo de banco
          * */
-        public  cluGrupoBanco:String;
+        public  cluGrupoBanco:string;
         /**
          * Constructor de la clase.
          */
@@ -147,16 +147,16 @@ import { PerfilVO } from "./PerfilVO";
          * Numero de Telefono
          */
 
-        public  cpeTelefono:String;
-		public  cpeMontoTdCredito:Number;
+        public  cpeTelefono:string;
+		public  cpeMontoTdCredito:number;
 		public  cpeAdicional:Boolean;
 		public  cpeOpDivisas:Boolean;
 		public  cpePropReal:Boolean;
-		public  cpeNumCardext:String;
-		public  cpeNumCardBrx:String;
-		public  cpeStatusTarjetabrx:String;
-		public  cpeEmbossingName:String;
-		public  cpeCuartaLinea:String;
+		public  cpeNumCardext:string;
+		public  cpeNumCardBrx:string;
+		public  cpeStatusTarjetabrx:string;
+		public  cpeEmbossingName:string;
+		public  cpeCuartaLinea:string;
         public  cpeTarjBrxCancelada:Boolean;
         
         public  cargoFuncionarioVO: CargoFuncionarioVO;
@@ -164,12 +164,12 @@ import { PerfilVO } from "./PerfilVO";
         /**
          * Persona que toma el control Propietario real
          */
-        public  cpePerControl: String;
+        public  cpePerControl: string;
         
         /**
          * Porcentaje de accionista
          */
-        public  cpePorAccionista: Number;
+        public  cpePorAccionista: number;
         
         /**
         * Lista que almacena los perfiles relacionados con la persona
@@ -182,12 +182,12 @@ import { PerfilVO } from "./PerfilVO";
         * PRO = PROPIETARIO
         * SUP = SUPLENTE
         **/ 
-        public  cpeMiembro : String;
+        public  cpeMiembro : string;
         
         /**
         * Cargo que desempenia como miembro
         **/ 
-        public  cpeCargo : String;
+        public  cpeCargo : string;
 
         public constructor()
         {
@@ -210,7 +210,7 @@ import { PerfilVO } from "./PerfilVO";
         /**
          * Obtiene la descripcion del perfil en caso de existir.
          */
-        public  get perfDescripcion() : String {
+        public  get perfDescripcion() : string {
             return this.perfilVO? this.perfilVO.perfDescripcion : '';
         }
 
@@ -225,8 +225,8 @@ import { PerfilVO } from "./PerfilVO";
          * Obtiene el rfc / Fm3 / Ssn, dependiendo de lo que se haya capturado.
          * En teoria, solo existe uno a la vez.
          */
-        // public  get rfcFm3Ssn() : String {
-        //      valor : String = this.personaVO? this.personaVO.perRfc : '';
+        // public  get rfcFm3Ssn() : string {
+        //      valor : string = this.personaVO? this.personaVO.perRfc : '';
 
         //     if (!valor && this.personaVO is PersonaFisicaVO) {
         //          perF : PersonaFisicaVO = PersonaFisicaVO(personaVO);

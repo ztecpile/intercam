@@ -18,7 +18,7 @@ export class InfoFechaHabilVO {
       * Fecha habil a operar
       */
      public fechaHabilOperar: Date;
-     //public  fechaHabilOperarStr : string;
+     public  fechaHabilOperarStr : string;
 
      /**
       * Indica si el dia de hoy, es habil o no 

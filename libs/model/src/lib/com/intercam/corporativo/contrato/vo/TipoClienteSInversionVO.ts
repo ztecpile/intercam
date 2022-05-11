@@ -6,22 +6,22 @@ import { TipoServicioInversionVO } from "./TipoServicioInversionVO";
 		/**
 		 * id tipo cliente inversion
 		 */
-		public   tciId:Number;
+		public   tciId:number;
 		
 		/**
 		 * descripcion
 		 */
-		public   tciDesc:String;
+		public   tciDesc:string;
 		
 		/**
 		 * Tipo de contrato
 		 */
-		public   tconId:Number;
+		public   tconId:number;
 		
 		/**
 		 * Estatus
 		 */
-		public   tciEstatus:String;
+		public   tciEstatus:string;
 		
 		/**
 		 * Lista de Tipo servicio Inversion

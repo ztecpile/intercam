@@ -170,6 +170,7 @@ export class OperInstrumentoVO {
   public opeFechaStr: string;
   /**
    * Bandera para determinar si se copia o no el tipo Costo al tipo Cambio.
+   *    Se utiliza en el alta de Canjes (cierreCanjeComponent).
    * True: copia el valor; False: no copia el valor
    * Nota: Cuando se modifique el valor del tipo de Cambio por edicion en dicho campo, o en el monto o
    *       en los pesos, se debe deshabilitar esta bandera.
@@ -217,7 +218,7 @@ export class OperInstrumentoVO {
    * Muestra la lista de cobros relizados para las deudas no pagas
    * solo se usa en SICA
    */
-  // public  cobrosDeuda:ArrayCollection;
+   public  cobrosDeuda:any[];
   /**
    * Contiene los datos del banco del pago que entregamos en Abono
    */

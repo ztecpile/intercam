@@ -4,37 +4,37 @@ import { CiaTarjetaVO } from "./CiaTarjetaVO";
 	export class TarjetaVO
 	{   
 	    
-	    public  tarId : Number;
+	    public  tarId : number;
 	    public  ciaVO : CiaTarjetaVO;
 	    public  documentoVO : any; // DocumentoVO;
 	    public  direccionVO : DireccionVO;
-	    public  tarIdIitular : Number;
-	    public  tarFaltaStr : String;
-	    public  tarTitular : String;
-	    public  tarNumero : String;
-	    public  tarFvigenciaStr : String;
-	    public  tarEstatus : Boolean;
-	    public  tarNumeroIdentificacion : String;
-	    public  tarNombreMadre : String;
+	    public  tarIdIitular : number;
+	    public  tarFaltaStr : string;
+	    public  tarTitular : string;
+	    public  tarNumero : string;
+	    public  tarFvigenciaStr : string;
+	    public  tarEstatus : boolean;
+	    public  tarNumeroIdentificacion : string;
+	    public  tarNombreMadre : string;
 	    
-	    public  tarAniversarioStr : String;
-	    public  tarTitularPat : String;
-        public  tarTitularMat : String;
-        public  tarTitularEmail : String;
+	    public  tarAniversarioStr : string;
+	    public  tarTitularPat : string;
+        public  tarTitularMat : string;
+        public  tarTitularEmail : string;
 		/**
 		 * Usuario POS que modifica o reasigna la tarjeta
 		 */
-		public  usuUsuario : String;
+		public  usuUsuario : string;
         
         /**
          * Pregunta tarjeta
          */
-        public  preId : Number;
+        public  preId : number;
         
         /**
          * Tipo Tarjeta
          */
-        public  ttaId : Number;
+        public  ttaId : number;
         
 	    /**
 	    * Constructor de la clase.
@@ -46,7 +46,7 @@ import { CiaTarjetaVO } from "./CiaTarjetaVO";
 			this.direccionVO = new DireccionVO();
 		}
 		
-		public  toString():String{
+		public  toString():string{
 			return this.tarId.toString();
 		}
 	     

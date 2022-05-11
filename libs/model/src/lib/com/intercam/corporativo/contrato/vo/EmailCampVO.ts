@@ -1,7 +1,7 @@
 export class EmailCampVO
     {
-        public  mailString:String;
-        public  mailEstatus:String;
+        public  mailString:string;
+        public  mailEstatus:string;
         
         public constructor()
         {

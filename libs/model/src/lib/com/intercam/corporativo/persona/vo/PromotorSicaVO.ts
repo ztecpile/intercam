@@ -1,36 +1,36 @@
 
     export class PromotorSicaVO
     {
-        public   clvPro:String;
+        public   clvPro:string;
 
-        public   clvSuc:String;
-        public   desPro:String;
+        public   clvSuc:string;
+        public   desPro:string;
         public   porPro:number;
-        public   winPro:String;
+        public   winPro:string;
         public   ex1Pro:number;
-        public   calPro:String;
-        public   colPro:String;
-        public   te1Pro:String;
+        public   calPro:string;
+        public   colPro:string;
+        public   te1Pro:string;
         public   ex2Pro:number;
         public   cl1Gru:number;
         public   cl2Gru:number;
-        public   maiPro:String;
-        public   oriPro:String;
+        public   maiPro:string;
+        public   oriPro:string;
         public   staPro:number;
         public   cveubi:number;
-        public   sicaUnificar:Boolean;
-        public  tconId :Number;
+        public   sicaUnificar:boolean;
+        public  tconId :number;
         
         /**
         * Para seleccion en grid
         */
-        public  conSelected : Boolean;
+        public  conSelected : boolean;
 
         public  PromotorSicaVO(){
 
         }
 
-        public  toString():String{
+        public  toString():string{
             return this.clvPro;
         }
     }

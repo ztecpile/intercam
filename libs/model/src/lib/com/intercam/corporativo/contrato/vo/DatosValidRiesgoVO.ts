@@ -4,26 +4,26 @@ import { TipoPersonaVO } from "../../persona/vo/TipoPersonaVO";
 
 	export class DatosValidRiesgoVO
 	{
-		public   perId: Number;
+		public   perId: number;
 		
-		public   cpeId: Number;
+		public   cpeId: number;
 		
 		public   tipoPersonaVO: TipoPersonaVO;  
 		
 		public   actividadVO: ActividadEconomicaVO;
 		
-		public   pemFconstitucion:String;
+		public   pemFconstitucion:string;
 		
-		public   pefFNacimiento:String;
+		public   pefFNacimiento:string;
 		
-		public   paiClaveResidencia: Number;
+		public   paiClaveResidencia: number;
 		
 		public   profesionVO: ProfesionVO;
 		
-		public   isPep: String;
+		public   isPep: string;
 		
-		public  pefFNacimientoStr : String;
-		public  pemFconstitucionStr : String;
+		public  pefFNacimientoStr : string;
+		public  pemFconstitucionStr : string;
 
 		/**
 		 * Constructor de la clase.

@@ -3,19 +3,19 @@
 	{
 		
 		
-		public  clvCli : String;
-     	public  clvSuc : String;
+		public  clvCli : string;
+     	public  clvSuc : string;
      
-     	public  empCli : String;
-     	public  porcentaje : Number;
+     	public  empCli : string;
+     	public  porcentaje : number;
      	
 
-	     public  carClave : String;
-	     public  carRazonSocial : String;
-	     public  perId : Number; 
-	     public  seleccionado : Boolean;
-	     public  modificado : Boolean;
-	     public  fecAltaStr : String;
+	     public  carClave : string;
+	     public  carRazonSocial : string;
+	     public  perId : number; 
+	     public  seleccionado : boolean;
+	     public  modificado : boolean;
+	     public  fecAltaStr : string;
 
 
 	    

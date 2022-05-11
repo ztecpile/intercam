@@ -1,12 +1,12 @@
 import {NgModule, Optional, SkipSelf} from '@angular/core';
 import {AuthorizatedGuard} from "./guards/authorizated.guard";
-import { StorageService } from './services/storage.service';
+import { TokenService } from './services/token.service';
 
 @NgModule({
   declarations: [  ],
   imports: [],
   providers: [
-    StorageService,
+    TokenService,
     AuthorizatedGuard,
   ],
   bootstrap: []

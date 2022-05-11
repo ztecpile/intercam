@@ -4,7 +4,7 @@
 		public CanalVO() 
 		{			
 		}	
-		public  canId : Number;
-	    public  canNombre : String;
+		public  canId : number;
+	    public  canNombre : string;
 	}
 	
