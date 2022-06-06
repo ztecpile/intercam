@@ -10,15 +10,18 @@ import { MatRadioModule } from '@angular/material/radio';
 import { DialogBuscaPersonaComponent } from './dialog-busca-persona/dialog-busca-persona.component';
 import { DialogBuscaEjecutivoComponent } from './dialog-busca-ejecutivo/dialog-busca-ejecutivo.component';
 import { DialogPickListComponent } from './dialog-pick-list/dialog-pick-list.component';
-
+import { DialogBuscarClienteComponent } from './dialog-buscar-cliente/buscar-cliente.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
     DialogBuscaPersonaComponent,
     DialogBuscaEjecutivoComponent,
     DialogPickListComponent,
+    DialogBuscarClienteComponent
   ],
   imports: [
+    MatCheckboxModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,

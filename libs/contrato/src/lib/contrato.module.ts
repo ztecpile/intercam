@@ -7,6 +7,7 @@ import { SoporteModule } from './components/soporte/soporte.module';
 import { ProspeccionModule } from './components/prospeccion/prospeccion.module';
 import { ShredComponentsModule } from '@intercam/shred-components';
 import { UtilModule } from './components/util/util.module';
+import { CierreBancoInversionesModule } from './components/cierre-banco-inversiones/cierre-banco-inversiones.module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { UtilModule } from './components/util/util.module';
     SoporteModule,
     ProspeccionModule,
     ShredComponentsModule,
-    UtilModule
+    UtilModule,
+    CierreBancoInversionesModule
   ],
   declarations: []
 })

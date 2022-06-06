@@ -4,9 +4,10 @@ export * from './com/intercam/seguridad/vo/UsuarioVO';
 export * from './com/intercam/seguridad/vo/InfoFechaHabilVO';
 
 // BAnco
+export * from './com/intercam/banco/vo/TipoInversionVO';
 /*
 export * from './com/intercam/banco/vo/InversionVO';
-export * from './com/intercam/banco/vo/TipoInversionVO';
+
 export * from './com/intercam/banco/vo/TasaInversionVO';
 export * from './com/intercam/banco/vo/PlazoInversionVO';
 export * from './com/intercam/banco/vo/MontoInversionVO';
