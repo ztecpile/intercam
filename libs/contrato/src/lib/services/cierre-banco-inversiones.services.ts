@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TipoInversionVO } from '@intercam/model';
-import { ConsultaMatrizTasasVO } from '../components/cierre-banco-inversiones/cierre-banco-inversiones.component';
+
 
 
 @Injectable({
@@ -20,7 +20,7 @@ export class CierreBancoInversionesServices {
 
     }
 
-    findFechaAperturaPorSucursal(){
+    findFechaAperturaPorSucursal() {
         const urlStr = 'soporte-banco/remote/consultaFechaAperturaPorSucursal?numSucursal=001';
         return this.http.get<string>(urlStr, {});
     }
@@ -29,6 +29,12 @@ export class CierreBancoInversionesServices {
         const urlStr = 'inversion-banco/remote/consultaMatrizTasas?tipoPersona=' + tipo_persona + '&moneda=' + moneda + '&tipoInversion=' + tipo_inversion + '&sucOrigen=001';
         return this.http.get<Object[]>(urlStr, {});
     }
+
+    findTasasCedes(formula_tasa,producto): Observable<Object[]> {
+        const urlStr = 'cedes/remote/findTasasCedes?formula='+formula_tasa+'&producto='+producto+'&moneda=01';
+        return this.http.get<Object[]>(urlStr, {});
+    }
+
 
 
 

@@ -1,0 +1,184 @@
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-6">
+            <div class="col-sm-12">
+                <div class="caja">
+                    <select [(ngModel)]="tipo_persona">
+                        <option value="">Seleccione</option>
+                        <option value="1">MORAL</option>
+                        <option value="2">FISICA</option>
+                    </select>
+                </div>
+                <label appearance="fill" class="formulario__label">Tipo Persona</label>
+            </div>
+            <br />
+            <div class="col-sm-12">
+                <div class="caja">
+                    <select [(ngModel)]="moneda">
+                        <option value="">Seleccione</option>
+                        <option value="01">Pesos</option>
+                        <option value="02">Dolares</option>
+                    </select>
+                </div>
+                <label appearance="fill" class="formulario__label">Moneda</label>
+            </div>
+            <br />
+            <div class="col-sm-12">
+                <div class="caja">
+                    <select [(ngModel)]="tipo_inversion">
+                        <option value="">Seleccione</option>
+                        <option *ngFor="let tipo of arrTipoInversion " [value]="tipo.numero">{{tipo.descripcion}}
+                        </option>
+                    </select>
+                </div>
+                <label appearance="fill" class="formulario__label">Tipo De Inversion</label>
+            </div>
+
+            <br />
+            <div id="divperRfc" class="col-sm-12">
+                <input [(ngModel)]="fecha" type="date" class="formulario__input" />
+                <label class="formulario__label">fecha</label>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div id="divperRfc" class="col-sm-12">
+                <input type="text" class="formulario__input" [value]="monto_superior" />
+                <label class="formulario__label">Monto</label>
+            </div>
+
+            <div id="divperRfc" class="col-sm-12">
+                <input type="number" class="formulario__input" [value]="dias" />
+                <label class="formulario__label">Dias</label>
+            </div>
+
+            <div id="divperRfc" class="row">
+                <div class="col-10">
+                    <input type="number" class="formulario__input" [(ngModel)]="claveCliente" readonly />
+                    <label class="formulario__label">Cliente</label>
+                </div>
+                <div class="col-2">
+
+                    <button (click)="buscaCliente()" class="btn-img buscar-btn">
+                        <span class="tooltip">Buscar</span>
+                    </button>
+
+                </div>
+            </div>
+
+            <div id="divperRfc" class="col-sm-12">
+                <input type="text" class="formulario__input" [(ngModel)]="nombreCliente" readonly />
+                <label class="formulario__label">Nombre</label>
+            </div>
+
+            <div id="divperRfc" class="col-sm-12">
+                <input type="number" class="formulario__input" [(ngModel)]="saldoInicial" />
+                <label class="formulario__label">
+                    Saldo Inicial</label>
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <div>
+        <button (click)=" findConsultaMatrizTasasVO()" class="btn-img actualiza-button" type="submit">
+            <span class="tooltip">Actualizar</span>
+        </button>
+    </div>
+
+
+
+    <br>
+
+    <div class="row">
+
+        <div class="col-sm-12">
+
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                <ng-container matColumnDef="monto_inferior">
+                    <th mat-header-cell *matHeaderCellDef>Monto Inferior</th>
+                    <td mat-cell *matCellDef="let element">{{ element.rangoInferior }}</td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="monto_superior">
+                    <th mat-header-cell *matHeaderCellDef>Monto Superior</th>
+                    <td mat-cell *matCellDef="let element">{{ element.rangoSuperior }}</td>
+                </ng-container>
+
+
+
+                <ng-container matColumnDef="1_a_6_dias">
+                    <th mat-header-cell *matHeaderCellDef>1 a 6 d&iacute;as</th>
+                    <td mat-cell *matCellDef="let element">{{ element.plazoInferior1 }}</td>
+                </ng-container>
+
+
+
+                <ng-container matColumnDef="7_a_13_dias">
+                    <th mat-header-cell *matHeaderCellDef>7 a 13 d&iacute;as</th>
+                    <td mat-cell *matCellDef="let element">{{ element.plazoInferior7 }}</td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="14_a_26_dias">
+                    <th mat-header-cell *matHeaderCellDef>14 a 26 d&iacute;as</th>
+                    <td mat-cell *matCellDef="let element">{{ element.plazoInferior14 }}</td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="27_a_34_dias">
+                    <th mat-header-cell *matHeaderCellDef>27 a 34 d&Aacute;as</th>
+                    <td mat-cell *matCellDef="let element">{{ element.plazoInferior27 }}</td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="35_a_40_dias">
+                    <th mat-header-cell *matHeaderCellDef>35 a 40 d&iacute;as</th>
+                    <td mat-cell *matCellDef="let element">{{ element.plazoInferior35 }}</td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="41_a_82_dias">
+                    <th mat-header-cell *matHeaderCellDef>41 a 82 d&iacute;as</th>
+                    <td mat-cell *matCellDef="let element">{{ element.plazoInferior41 }}</td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="83_a_86_dias">
+                    <th mat-header-cell *matHeaderCellDef>83 a 86 d&iacute;as</th>
+                    <td mat-cell *matCellDef="let element">{{ element.plazoInferior83 }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="87_a_91_dias">
+                    <th mat-header-cell *matHeaderCellDef>87 a 91 d&iacute;as</th>
+                    <td mat-cell *matCellDef="let element">{{ element.plazoInferior87 }}</td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="92_a_174_dias">
+                    <th mat-header-cell *matHeaderCellDef>92 a 174 d&iacute;as</th>
+                    <td mat-cell *matCellDef="let element">{{ element.plazoInferior92 }}</td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="175_a_184_dias">
+                    <th mat-header-cell *matHeaderCellDef>175 a 184 d&iacute;as</th>
+                    <td mat-cell *matCellDef="let element">{{ element.plazoInferior175 }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="185_a_365_dias">
+                    <th mat-header-cell *matHeaderCellDef>185 a 365 d&iacute;as</th>
+                    <td mat-cell *matCellDef="let element">{{ element.plazoInferior185 }}</td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="getRecord(row)"></tr>
+
+            </table>
+        </div>
+    </div>
+</div>

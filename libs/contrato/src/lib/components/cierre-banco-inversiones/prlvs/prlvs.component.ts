@@ -3,11 +3,11 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import {  TipoInversionVO, PersonaContratoVO, UsuarioVO } from '@intercam/model';
+import { CargoFuncionarioVO, PaisVO, TipoPersonaVO, BolsaVO, CategPersonaVO, TipoInversionVO, PersonaContratoVO, UsuarioVO } from '@intercam/model';
 import { DialogBuscaEjecutivoComponent } from 'libs/shred-components/src/lib/dialog/dialog-busca-ejecutivo/dialog-busca-ejecutivo.component';
 import { DialogBuscarClienteComponent } from 'libs/shred-components/src/lib/dialog/dialog-buscar-cliente/buscar-cliente.component';
 import { ClienteService } from 'libs/shred-components/src/lib/dialog/services/clientes.service';
-import { CierreBancoInversionesServices } from '../../services/cierre-banco-inversiones.services';
+import { CierreBancoInversionesServices } from '../../../services/cierre-banco-inversiones.services';
 
 
 
@@ -20,11 +20,11 @@ export class ConsultaMatrizTasasVO {
 
 
 @Component({
-  selector: 'cierre-banco-inversiones',
-  templateUrl: './cierre-banco-inversiones.component.html'
+  selector: 'prlvs-inversiones-component',
+  templateUrl: './prlvs.component.html'
 })
 
-export class CierreBancoInversiones {
+export class PrlvsInversionesComponent {
   displayedColumns: string[] = ['monto_inferior', 'monto_superior', '1_a_6_dias', '7_a_13_dias', '14_a_26_dias',
     '27_a_34_dias', '35_a_40_dias', '41_a_82_dias', '83_a_86_dias', '87_a_91_dias', '92_a_174_dias', '175_a_184_dias', '185_a_365_dias'];
   accion = 'Cierre Banco Inversion';
@@ -115,10 +115,9 @@ export class CierreBancoInversiones {
     ;
   }
   consultarSaldo(personaContratoVO: PersonaContratoVO) {
-    console.log(personaContratoVO.nombreCorto);
+    
     this.claveCliente = personaContratoVO.contratoId + "";
     this.nombreCliente = personaContratoVO.nombreCorto + "";
-    console.log(this.nombreCliente);
     let usuarioVO = JSON.parse(sessionStorage.getItem("usuarioVO")) as UsuarioVO;
     this._clienteService.findConsultaSaldoVO(personaContratoVO.tmpCveLegada, usuarioVO.usuClave).subscribe(then => {
       this.saldoInicial = then.saldo + "";
@@ -127,7 +126,6 @@ export class CierreBancoInversiones {
 
 
   getRecord(row) {
-    console.log(row);
     this.monto_superior = row.rangoSuperior;
     this.dias = row.numPlazo;
   }

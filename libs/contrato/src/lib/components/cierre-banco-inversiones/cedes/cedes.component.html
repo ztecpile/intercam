@@ -1,0 +1,139 @@
+<div class="container">
+
+    <div class="row">
+        <div class="col-6">
+            <div class="col-sm-12">
+                <div class="caja">
+                    <select [(ngModel)]="formula_tasa">
+                        <option value="001">TASA FIJA</option>
+
+                    </select>
+                </div>
+                <label appearance="fill" class="formulario__label">Formula Tasa</label>
+            </div>
+            <br />
+            <div class="col-sm-12">
+                <div class="caja">
+                    <select [(ngModel)]="producto">
+                        <option value="01">CEDES</option>
+                    </select>
+                </div>
+                <label appearance="fill" class="formulario__label">Producto</label>
+            </div>
+            <br />
+            <div id="divperRfc" class="col-sm-12">
+                <input [(ngModel)]="fecha" type="date" class="formulario__input" />
+                <label class="formulario__label">fecha</label>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div id="divperRfc" class="col-sm-12">
+                <input type="text" class="formulario__input" [value]="monto_superior" />
+                <label class="formulario__label">Monto</label>
+            </div>
+
+            <div id="divperRfc" class="col-sm-12">
+                <input type="number" class="formulario__input" [value]="plazo" />
+                <label class="formulario__label">Dias</label>
+            </div>
+
+            <div id="divperRfc" class="row">
+                <div class="col-10">
+                    <input type="number" class="formulario__input" [(ngModel)]="claveCliente" readonly />
+                    <label class="formulario__label">Cliente</label>
+                </div>
+                <div class="col-2">
+
+                    <button (click)="buscaCliente()" class="btn-img buscar-btn">
+                        <span class="tooltip">Buscar</span>
+                    </button>
+
+                </div>
+            </div>
+
+
+            <div id="divperRfc" class="col-sm-12">
+                <input type="text" class="formulario__input" [(ngModel)]="nombreCliente" readonly />
+                <label class="formulario__label">Nombre</label>
+            </div>
+
+            <div id="divperRfc" class="col-sm-12">
+                <input type="number" class="formulario__input" [(ngModel)]="saldoInicial" />
+                <label class="formulario__label">
+                    Saldo Inicial</label>
+            </div>
+
+
+        </div>
+    </div>
+    <br />
+
+    <div>
+        <button (click)="findTasasCedes()" class="btn-img actualiza-button" type="submit">
+            <span class="tooltip">Actualizar</span>
+        </button>
+    </div>
+
+
+
+    <br>
+
+    <div class="row">
+
+        <div class="col-sm-12">
+
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                <ng-container matColumnDef="monto_inferior">
+                    <th mat-header-cell *matHeaderCellDef>Monto Inferior</th>
+                    <td mat-cell *matCellDef="let element">{{ element.rangoInferior }}</td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="monto_superior">
+                    <th mat-header-cell *matHeaderCellDef>Monto Superior</th>
+                    <td mat-cell *matCellDef="let element">{{ element.rangoSuperior }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="3_meses">
+                    <th mat-header-cell *matHeaderCellDef>3 Meses</th>
+                    <td mat-cell *matCellDef="let element">{{ element.plazoInferior3 }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="6_meses">
+                    <th mat-header-cell *matHeaderCellDef>6 Meses</th>
+                    <td mat-cell *matCellDef="let element">{{ element.plazoInferior6 }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="9_meses">
+                    <th mat-header-cell *matHeaderCellDef>9 Meses</th>
+                    <td mat-cell *matCellDef="let element">{{ element.plazoInferior9 }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="12_meses">
+                    <th mat-header-cell *matHeaderCellDef>12 Meses</th>
+                    <td mat-cell *matCellDef="let element">{{ element.plazoInferior12 }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="18_meses">
+                    <th mat-header-cell *matHeaderCellDef>18 Meses</th>
+                    <td mat-cell *matCellDef="let element">{{ element.plazoInferior18 }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="24_meses">
+                    <th mat-header-cell *matHeaderCellDef>24 Meses</th>
+                    <td mat-cell *matCellDef="let element">{{ element.plazoInferior24}}</td>
+                </ng-container>
+
+
+
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="getRecord(row)"></tr>
+
+            </table>
+        </div>
+    </div>
+</div>

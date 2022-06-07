@@ -12,8 +12,11 @@ import { ModelModule } from "@intercam/model";
 import { ShredComponentsModule } from "@intercam/shred-components";
 import { TranslocoModule } from "@ngneat/transloco";
 import { MenusComponent } from "libs/shred-components/src/lib/menus/Menus.component";
-import { CierreBancoInversiones } from "./cierre-banco-inversiones.component";
+import { CierreBancoInversiones } from "./cierre-banco-inversiones/cierre-banco-inversiones.component";
 import { MenuComponent } from '../../../../../../apps/ismart-pos/src/app/components/menu/menu.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { PrlvsInversionesComponent } from "./prlvs/prlvs.component";
+import { CedesInversionesComponent } from "./cedes/cedes.component";
 //import { SubMenuComponent } from './components/sub-menu/sub-menu.component';
 const routes: Routes = [
     {
@@ -32,6 +35,8 @@ const routes: Routes = [
   @NgModule({
     declarations: [
       CierreBancoInversiones,
+      PrlvsInversionesComponent,
+      CedesInversionesComponent
 
     ],
     imports: [
@@ -48,9 +53,7 @@ const routes: Routes = [
       FormsModule,
       ReactiveFormsModule,
       MatRadioModule,
-
- 
-
+      MatTabsModule
     ]
   })
 
