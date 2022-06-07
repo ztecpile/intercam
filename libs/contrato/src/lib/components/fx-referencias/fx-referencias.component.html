@@ -1,0 +1,119 @@
+<div class="bdcontent">
+    <hr class="red" />
+    <h2>Fx Referencias</h2>
+    <hr class="red" />
+
+    <div class="container">
+        <form [formGroup]="funcForm" class="formulario" (ngSubmit)="onSubmit()" autocomplete="off" idbForm>
+        <div class="row">
+            <div class="mat-elevation-z8 col-sm-12 mr-5 ml-5">
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                    <ng-container matColumnDef="conId">
+                        <th mat-header-cell *matHeaderCellDef>No. Contrato</th>
+                        <td mat-cell *matCellDef="let element" (click)="selected(element)">{{ element.idVO.contratoVO.conId }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="nomCorto">
+                        <th mat-header-cell *matHeaderCellDef>Nombre del cliente</th>
+                        <td mat-cell *matCellDef="let element" (click)="selected(element)">{{ element.nomCorto }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="perfDescripcion">
+                        <th mat-header-cell *matHeaderCellDef>Perfil</th>
+                        <td mat-cell *matCellDef="let element" (click)="selected(element)">{{ element.perfilVO.perfDescripcion }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="desTipContrato">
+                        <th mat-header-cell *matHeaderCellDef>Tipo Contrato</th>
+                        <td mat-cell *matCellDef="let element" (click)="selected(element)">{{ element.desTipContrato }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="conEmail">
+                        <th hidden mat-header-cell *matHeaderCellDef>Email</th>
+                        <td hidden mat-cell *matCellDef="let element" (click)="selected(element)">{{element.idVO.contratoVO.conEmail}}</td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                </table>
+            </div>
+
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="col-sm-4">
+                <input type="text" title="mail" id="mail" class="formulario__input" maxlength="80"
+                    formControlName="mail" [control]="getCtr('mail')" idbInput [value]="getMail">
+                <label class="formulario__label">Mail</label>
+
+            </div>
+            <div class="col-sm-3" *ngIf="showBtn">
+                <button class="btn-img notifica-button-des" [disabled]="true" type="button">
+                    <span class="tooltip">Notificar</span>
+                </button>
+
+                <button class="btn-img accept-button-des"  [disabled]="true" type="button">
+                    <span class="tooltip">Generar</span>
+                </button>
+            </div>
+            <div class="col-sm-3" *ngIf="showBtn2">
+                <button class="btn-img notifica-button" (click)="envioReferencias()" type="button">
+                    <span class="tooltip">Notificar</span>
+                </button>
+
+                <button class="btn-img accept-button" (click)="generarReferencias()" type="button">
+                    <span class="tooltip">Generar</span>
+                </button>
+            </div>
+
+
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="mat-elevation-z8 col-sm-12 mr-5 ml-5">
+                <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
+
+                    <ng-container matColumnDef="refDivisa">
+                        <th mat-header-cell *matHeaderCellDef>Divisa</th>
+                        <td mat-cell *matCellDef="let element">{{ element.refDivisa }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="banNombre">
+                        <th mat-header-cell *matHeaderCellDef>Banco</th>
+                        <td mat-cell *matCellDef="let element">{{ element.banNombre }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="convNombre">
+                        <th mat-header-cell *matHeaderCellDef>Nombre Convenio</th>
+                        <td mat-cell *matCellDef="let element">{{ element.convNombre }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="convNumero">
+                        <th mat-header-cell *matHeaderCellDef>Convenio/ Cuenta</th>
+                        <td mat-cell *matCellDef="let element">{{ element.convNumero }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="refNumero">
+                        <th mat-header-cell *matHeaderCellDef>Referencia</th>
+                        <td mat-cell *matCellDef="let element">{{ element.refNumero }}</td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
+                </table>
+                <div id="paginadorDiv" class="row" hidden>
+                    <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator> 
+  
+                </div>
+            </div>
+
+        </div>
+        </form>
+    </div>
+
+
+    <hr class="red" />
+</div>
