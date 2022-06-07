@@ -1,0 +1,71 @@
+<div class="header-ayuda">
+    <div mat-dialog-title class="titulo"> Busqueda CP </div>
+</div>
+
+<div mat-dialog-content class="title-model">
+    <div class="container">
+        <form [formGroup]="funcForm" class="formulario" autocomplete="off" idbForm>
+            
+            <div id="divcboColonia" class="col-sm-4">
+                <div class="caja-select">
+                    <select formControlName="cboEntidad" [control]="getCtr('cboEntidad')" (ngModelChange)="changeEntidadDialog($event)" idbInput>
+                        <option value="">Seleccione</option>
+                        <option  *ngFor="let estado of listaEntidadVo" [value]="estado.entClave">{{estado.entDescripcion}}</option>
+                    </select>
+                </div>
+                <label  class="label">{{'Estado' }}</label>
+                <br>   
+                <br>
+                
+                <div class="caja-select">
+                    <select id="coloniaMun"   formControlName="cboMunicipio" [control]="getCtr('cboMunicipio')" (ngModelChange)="changeMunicipioDialog($event)" idbInput>
+                        <option value="">Seleccione</option>
+                        <option *ngFor="let municipio of listaMunicipios" [value]="municipio.munClave">{{municipio.munDescrip}}</option>
+                    </select>
+                    <label  class="lbl_datos" >{{'Municipio' }}</label>
+                </div> 
+                <br>
+                <br>
+                
+                <div class="caja-select">
+                    <select id="coloniaCbo" [disabled]="coloniaDisabled" formControlName="cboColoniaDialog" [control]="getCtr('cboColoniaDialog')" (ngModelChange)="changeColoniaDialog($event)" idbInput>
+                        <option value="">Seleccione</option>
+                        <option  *ngFor="let colonia of arrColoniaDialog" [value]="colonia.colClave">{{colonia.colDescrip}}</option>
+                    </select>
+                </div>
+                <label  class="lbl_datos" >{{'Colonia' }}</label>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="row">
+             <div id="divciudad" class="col-sm-3">
+                <input [disabled]="true" type="text" class="formulario__input" [control]="getCtr('ciudadDialog')" [disabled]="true" formControlName="ciudadDialog" idbInput>
+                <label class="lbl_datos">{{'Ciudad' }}</label>
+            </div>
+        </div>
+        <div class="row">
+            <div id="divCp" class="col-sm-3">
+                <input [disabled]="true" type="text" class="formulario__input" [control]="getCtr('cpDialog')" [disabled]="true" formControlName="cpDialog" 
+                idbInput>
+                <label class="lbl_datos">{{'C.P' }}</label>
+            </div>
+        </div> 
+            
+        </form>
+    </div>
+
+    <br>
+
+   
+</div>
+
+<div mat-dialog-actions>
+    <div class="row">
+        
+        <button mat-button class="btn-img cerrar-button" type="submit" (click)="envia()">
+            <span class="tooltip">Cerrar</span>
+        </button>
+    </div>
+
+</div>

@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<hr class="red" />
+<h2>Colonias</h2>
+<hr class="red" />
+    <div class="container">
+         
+    <form [formGroup]="funcForm" class="formulario" (ngSubmit)="onSubmit()" autocomplete="off" idbForm >
+             <br>
+        <div id="coloniasFormDiv">
+            <div class="row">
+                <div id="divcp" class="col-sm-3">
+                    <input type="text" class="formulario__input" [control]="getCtr('cp')" (input)="buscarCP($event)" formControlName="cp" pattern="^\d*[0-9]\d*$" idbInput>
+                    <label class="formulario__label">{{'* C.P.' }}</label>
+                </div>
+    
+                <div class="element-btn"  id="divBtnBuscarCP" class="col-sm-3">
+                    <button class="btn-img buscar-btn" type="button" (click)="buscarCodigoCP($event)"><span class="tooltip">Buscar</span></button>
+                </div>
+            </div>
+            <div class="row">
+                <div id="diventidad" class="col-sm-3">
+                    <input type="text" class="formulario__input" [control]="getCtr('entidad')" formControlName="entidad" idbInput>
+                    <label class="formulario__label">{{'Entidad' }}</label>
+                </div>
+                <div   id="divalcMun" class="col-sm-3">
+                    <input type="text" class="formulario__input" [control]="getCtr('alcMun')" formControlName="alcMun" idbInput>
+                    <label class="formulario__label">{{'Delegación/Municipio' }}</label>
+                </div>
+                <div id="divciudad" class="col-sm-3">
+                    <input type="text" class="formulario__input" [control]="getCtr('ciudad')" formControlName="ciudad" idbInput>
+                    <label class="formulario__label">{{'Ciudad' }}</label>
+                </div>
+
+            </div>
+            <div id="divcboColonia" class="col-sm-6">
+                <div class="caja">
+                    <select formControlName="cboColonia" [control]="getCtr('cboColonia')" (ngModelChange)="changeColonia($event)" idbInput>
+                        <option value="">Seleccione</option>
+                        <option disabled *ngFor="let colonia of arrColonia" [value]="colonia.colClave">{{colonia.colDescrip}}</option>
+                    </select>
+                </div>
+                <label appearance="fill" class="formulario__label">{{'Colonia' }}</label>
+            </div>
+            <br>
+             <div class="row">
+
+                <div id="updateColonia" class="col-sm-3">
+                    <input [disabled]="disabledCol" type="text" class="formulario__input" [control]="getCtr('updateColonia')"  (input)="actualizacion($event)" formControlName="updateColonia" idbInput>
+                    <label class="formulario__label">* Colonia </label>
+                    
+                </div>
+             </div>
+                
+                <div id="botonColonia" >
+                <div class="row col-sm-6 flex-container" tyle="margin-left: 14px;">
+                    <button class="btn-img alta-btn"  [disabled]="btnAltaIf"  (click)="habilitaCampos()" type="submit"><span class="tooltip">Alta</span></button>
+                    <button class="btn-img save-button" [disabled]="btnGuardarIf"  (click)="guardaColonia($event)" type="submit"><span class="tooltip">Guardar</span></button>
+                    <button class="btn-img deshacer-button" [disabled]="btnDeshacerIf"  (click)="limpiaCampos($event)"  type="submit"><span class="tooltip">Deshacer</span></button>
+                  
+                </div> 
+            </div> 
+                  
+            </div>
+       
+
+        <!-- <div>
+        <input type="number" min="1" max="100" />
+    </div> -->
+
+ 
+   
+    </form>
+    
+</div>
+

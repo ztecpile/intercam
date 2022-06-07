@@ -8,7 +8,7 @@ import { ProspeccionModule } from './components/prospeccion/prospeccion.module';
 import { ShredComponentsModule } from '@intercam/shred-components';
 import { UtilModule } from './components/util/util.module';
 import { AdministracionCierreExcepcionComponent } from './components/administracion-cierre-excepcion/administracion-cierre-excepcion.component';
-import { MatTableModule } from '@angular/material/table'; 
+import { MatTableModule } from '@angular/material/table';
 import { CierreBancoInversionesModule } from './components/cierre-banco-inversiones/cierre-banco-inversiones.module';
 import { FxReferenciasComponent } from './components/fx-referencias/fx-referencias.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -16,6 +16,8 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatRadioModule } from "@angular/material/radio";
 import { TranslocoModule } from "@ngneat/transloco";
+import { ProfesionesComponent } from './components/profesiones/profesiones.component';
+import { EntidadesComponent } from './components/entidades/entidades.component';
 
 @NgModule({
   imports: [
@@ -33,12 +35,14 @@ import { TranslocoModule } from "@ngneat/transloco";
     MatPaginatorModule,
     TranslocoModule,
     MatCheckboxModule,
-      MatFormFieldModule,
-      MatRadioModule,
+    MatFormFieldModule,
+    MatRadioModule,
   ],
   declarations: [
     AdministracionCierreExcepcionComponent,
-    FxReferenciasComponent
+    FxReferenciasComponent,
+    ProfesionesComponent,
+    EntidadesComponent
   ]
 })
 export class ContratoModule {

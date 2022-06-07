@@ -9,6 +9,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ShredComponentsModule } from '@intercam/shred-components';
 import { MatDialogModule } from '@angular/material/dialog';
 import { OnlyNumberDirective } from './directive/only-number.directive';
+import { DialogBusquedaCpComponent } from './dialog-busqueda-cp/dialog-busqueda-cp.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { OnlyNumberDirective } from './directive/only-number.directive';
     DialogReporte24hrsComponent,
     DialogPipelineBitacoraComponent,
     OnlyNumberDirective,
+    DialogBusquedaCpComponent
   ],
   imports: [
     CommonModule,
