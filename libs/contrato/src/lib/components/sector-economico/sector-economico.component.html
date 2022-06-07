@@ -1,0 +1,97 @@
+
+    <div class="bdcontent">
+        <hr class="red" />
+        <h2>Sector Econimico</h2>
+        <hr class="red" />
+
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="paginatorDataSource" class="mat-elevation-z8"  matSort >
+                <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+                <!-- Position Column display none-->
+                <ng-container matColumnDef="clave">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number" >Clave</th>
+                    <td mat-cell *matCellDef="let element">{{ element.secId }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="observaciones">
+                    <th mat-header-cell *matHeaderCellDef>Observaciones</th>
+                    <td mat-cell *matCellDef="let element">{{ element.secDescripcion }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="cnbv">
+                    <th mat-header-cell *matHeaderCellDef>Clave CNBV</th>
+                    <td mat-cell *matCellDef="let element">{{ element.secCnbv }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="banxico">
+                    <th mat-header-cell *matHeaderCellDef>Clave BANXICO</th>
+                    <td mat-cell *matCellDef="let element">{{ element.secBanxico }}</td>
+                </ng-container>
+
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="getRecord(row)"></tr>
+
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                aria-label="Select page of periodic elements">
+            </mat-paginator>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-6">
+
+
+                <div class="col-sm-12">
+                    <input type="text" class="formulario__input" [(ngModel)]="sectorEconomico.secId" [readonly]="MODO_FORMULARIO!=MODO_ALTA"/>
+                    <label class="formulario__label">Clave</label>
+                </div>
+
+                <div class="col-sm-12">
+                    <input type="text" class="formulario__input" [(ngModel)]="sectorEconomico.secDescripcion" />
+                    <label class="formulario__label">Observaciones</label>
+                </div>
+
+                <div class="col-sm-12">
+                    <input type="text" class="formulario__input" [(ngModel)]="sectorEconomico.secCnbv" />
+                    <label class="formulario__label">Clave CNBV</label>
+                </div>
+
+                <div class="col-sm-12">
+                    <input type="text" class="formulario__input"[(ngModel)]="sectorEconomico.secBanxico" />
+                    <label class="formulario__label">Clave BANXICO</label>
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+        <div class="centrar_btn">
+            <button  class="btn-img buscar-btn" (click)="modoConsultaClick()">
+                <span class="tooltip">Consulta</span>
+            </button>
+            <button class="btn-img alta-button" type="submit" (click)="modoAltaClick()">
+                <span class="tooltip">Alta</span>
+            </button>
+
+            <button [disabled]="sectorEconomico.secId==null" class="btn-img save-button" type="submit" (click)="modoGuardarClick()">
+                <span class="tooltip">Guardar</span>
+            </button>
+            <button [disabled]="sectorEconomico.secId==null||MODO_FORMULARIO==MODO_ALTA" class="btn-img eliminar-btn" type="submit" (click)="modoEliminarClick()">
+                <span class="tooltip">Eliminar</span>
+            </button>
+            <button [disabled]="MODO_FORMULARIO==MODO_CONSULTA||sectorEconomico.secId==null" class="btn-img deshacer-button" type="submit" (click)="modoDeshacerClick()">
+                <span  class="tooltip">Deshacer</span>
+            </button>
+
+
+
+
+        </div>
+        <hr class="red" />
+    </div>
