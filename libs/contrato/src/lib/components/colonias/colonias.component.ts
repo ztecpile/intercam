@@ -4,9 +4,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { ColoniaVO, Const, EntidadVO, MunicipVO, PaisVO } from '@intercam/model';
 import Swal from 'sweetalert2';
-import { ColoniasServices } from '../../../services/colonias.services';
-import { PersonaService } from '../../../services/persona.service';
-import { DialogBusquedaCpComponent } from '../../util/dialog-busqueda-cp/dialog-busqueda-cp.component';
+import { ColoniasServices } from '../../services/colonias.services';
+import { PersonaService } from '../../services/persona.service';
+import { DialogBusquedaCpComponent } from '../util/dialog-busqueda-cp/dialog-busqueda-cp.component';
 
 @Component({
   selector: 'intercam-colonias',

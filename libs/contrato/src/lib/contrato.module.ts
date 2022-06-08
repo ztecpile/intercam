@@ -18,7 +18,8 @@ import { MatRadioModule } from "@angular/material/radio";
 import { TranslocoModule } from "@ngneat/transloco";
 import { ProfesionesComponent } from './components/profesiones/profesiones.component';
 import { EntidadesComponent } from './components/entidades/entidades.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { ColoniasComponent } from './components/colonias/colonias.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -37,12 +38,14 @@ import { EntidadesComponent } from './components/entidades/entidades.component';
     MatCheckboxModule,
     MatFormFieldModule,
     MatRadioModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AdministracionCierreExcepcionComponent,
     FxReferenciasComponent,
     ProfesionesComponent,
-    EntidadesComponent
+    EntidadesComponent,
+    ColoniasComponent
   ]
 })
 export class ContratoModule {

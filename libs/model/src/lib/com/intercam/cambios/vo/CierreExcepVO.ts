@@ -2,7 +2,7 @@
  * Derechos Reservados de Copia (c) - INTERCAM SERVICIOS FINANCIEROS - 2021.
 */
 
-export interface CierreExcepVO {
+export class CierreExcepVO {
 
     // ***************************************************** //
     //                 P R O P I E D A D E S                 //
@@ -42,4 +42,7 @@ export interface CierreExcepVO {
      */
     cceUsucierra: string;
 
+    public  CierreExcepVO(){
+			
+    }
 }

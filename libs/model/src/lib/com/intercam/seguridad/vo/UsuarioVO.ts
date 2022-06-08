@@ -6,6 +6,7 @@ import { ClavePromLegadoVO } from './ClavePromLegadoVO';
 import { CentroCostosVO } from '../../corporativo/centrocostos/vo/CentroCostosVO';
 import { SucursalVO } from '../../corporativo/centrocostos/vo/SucursalVO';
 import { EjecutivoAsistenteVO } from '../../corporativo/persona/vo/EjecutivoAsistenteVO';
+import { CierreExcepVO } from '../../cambios/vo/CierreExcepVO';
 
 
 export class UsuarioVO {
@@ -87,7 +88,7 @@ export class UsuarioVO {
     public asoPromCert: number;
     public cvetno: string;
     public ccoCostoVO: CentroCostosVO;
-    // public cierreExcep: CierreExcepVO;
+    public cierreExcep: CierreExcepVO;
 
     // idisp
     public ctaban: string;
