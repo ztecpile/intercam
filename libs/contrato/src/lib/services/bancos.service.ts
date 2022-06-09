@@ -1,7 +1,8 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BancosVO, PaisVO } from '@intercam/model';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -42,11 +43,27 @@ export class BancoService {
  * @param banco parametro de entrada que se envia en el body
  * @returns retorna vacio
  */
-    deleteBanco(banco: BancosVO): Observable<object> {
+    deleteBanco(banco: BancosVO): Observable<void> {
         const urlStr = 'bancos/remote/deleteItem';
-        const params: Object = new Object({ 'newVersion': JSON.stringify(banco) });
-        return this.http.delete<BancosVO>(urlStr, params);
+        const options ={
+            headers: new HttpHeaders({
+                'Content-Type':'application/json'
+            }),
+            body:banco
+        };
+        return this.http.delete<ArrayBuffer>(urlStr, options).pipe(map(response=>this.manageResponse(response)));
     }
+/**
+ * Metodo para crear el ArrayBuffer
+ * @param response parametro de entrada para el buffer
+ * @returns 
+ */
+    manageResponse(response: ArrayBuffer): void {
+        if (response instanceof HttpErrorResponse) {
+          return;
+        }
+        return;
+      }
 /**
  * Metodo para recuperar los paises
  * @returns retorna una lista de paisVO
