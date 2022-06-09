@@ -9,7 +9,7 @@ import { BancoService } from '../../services/bancos.service';
 
 @Component({
     selector: 'bancos-component',
-    templateUrl: './bancos.component.html',
+    templateUrl: './bancos.component.html'
 })
 
 
@@ -47,6 +47,7 @@ export class BancosComponent implements OnInit {
     hdeshacer: boolean;
     hguardar: boolean;
     valueEstatus: string;
+    selectedRowPintar: any;
     constructor(private bancoServ: BancoService, private formbuilder: FormBuilder) {
         this.paginador = false;
         this.hdefault = false;
@@ -57,22 +58,13 @@ export class BancosComponent implements OnInit {
         this.hguardar = false;
         this.checkActivo = false;
         this.checkInactivo = false;
+    
     }
     ngOnInit(): void {
         this.getpaises();
         this.createFunForm();
-        this.funcForm.get("nombre").disable();
-        this.funcForm.get("claveBanxico").disable();
-        this.funcForm.get("claveSica").disable();
-        this.funcForm.get("claveSabi").disable();
-        this.funcForm.get("claveSiif").disable();
-        this.funcForm.get("checkOpTefbv").disable();
-        this.funcForm.get("checkOpSpeua").disable();
-        this.funcForm.get("checkOpInter").disable();
-        this.funcForm.get("combPais").disable();
-        this.funcForm.get("nombreCorto").disable();
-        this.funcForm.get("optActivo").disable();
-        this.funcForm.get("optInactivo").disable();
+       this.deshabilitarCampos();
+       this.atributosElemento();
     }
 
     getCtr(name: string, group = ''): FormControl {
@@ -191,12 +183,14 @@ export class BancosComponent implements OnInit {
             if (result.isConfirmed) {
                 _this.limpiarCampos();
                 _this.consulta();
+                _this.atributosElemento();
             }
         });
     }
 
     selectedRow(row: any) {
         console.log(row);
+        this.selectedRowPintar = row;
         let contratoSelec: BancosVO = row;
         this.habilitarCampo = false;
         this._modalidad = "modificacion";
@@ -207,7 +201,7 @@ export class BancosComponent implements OnInit {
         this.showBtn = false;
         this.showBtn2 = true;
         this.habilitarCampos();
-        document.getElementById('delete').removeAttribute('disable');
+        document.getElementById('delete').removeAttribute('disabled');
         this.banid = contratoSelec.banId;
         this.funcForm.get("nombre").setValue(contratoSelec.banNombre);
         this.funcForm.get("claveBanxico").setValue(contratoSelec.banClaveBanxico);
@@ -219,8 +213,8 @@ export class BancosComponent implements OnInit {
         this.funcForm.get("checkOpInter").setValue(contratoSelec.banOperaIntercam);
         this.funcForm.get("combPais").setValue(contratoSelec.paiClave);
         this.funcForm.get("nombreCorto").setValue(contratoSelec.banDescCorta);
-        document.getElementById('save').hasAttribute('disable');
-        document.getElementById('deshacer').hasAttribute('disable');
+        document.getElementById('save').setAttribute('disabled','');
+        document.getElementById('deshacer').setAttribute('disabled','');
 
         if (contratoSelec.banEstatus == 'Activo') {
             this.checkActivo = true;
@@ -326,19 +320,34 @@ export class BancosComponent implements OnInit {
     cambio(){
         document.getElementById('save').removeAttribute('disabled');
         document.getElementById('deshacer').removeAttribute('disabled');
-        document.getElementById('add').hasAttribute('disabled');
+       document.getElementById('deshacer').setAttribute('class','deshacer-button btn-img');
+       document.getElementById('save').setAttribute('class','save-button btn-img');
     }
     altaBancos() {
         let banco = new BancosVO;
         banco.banId = null;
-        banco.banOperaTefbv = this.valueCheckOpTef; //this.funcForm.get('checkOpTefbv').value;
-        banco.banOperaSpeua = this.valueCheckOpSpe; //this.funcForm.get('checkOpSpeua').value;
+       
+        banco.banId = this.banid;
+        if(this.funcForm.get('checkOpTefbv').value == true){
+            banco.banOperaTefbv = 'V';
+        }else{
+            banco.banOperaTefbv = 'F';
+        }
+        if(this.funcForm.get('checkOpSpeua').value == true){
+            banco.banOperaSpeua = 'V';
+        }else{
+            banco.banOperaSpeua = 'F';
+        }
+        if(this.funcForm.get('checkOpInter').value == true){
+            banco.banOperaIntercam = 'V';
+        }else{
+            banco.banOperaIntercam = 'F';
+        }
         banco.banClaveBanxico = this.funcForm.get('claveBanxico').value;
         banco.banIdSica = this.funcForm.get('claveSica').value;
         banco.banIdCasaBolsa = this.funcForm.get("claveSiif").value;
         banco.banIdFondos = this.funcForm.get("claveSabi").value;
         banco.banEstatus = this.valueEstatus;
-        banco.banOperaIntercam = this.valueCheckOpInt; //this.funcForm.get('checkOpInter').value;
         banco.banNombre = this.funcForm.get("nombre").value;
         banco.paiClave = this.funcForm.get('combPais').value;
         banco.paiDescripcion = null;
@@ -357,14 +366,27 @@ export class BancosComponent implements OnInit {
     modoficarBancos() {
         let banco = new BancosVO;
         banco.banId = this.banid;
-        banco.banOperaTefbv = this.funcForm.get('checkOpTefbv').value;
-        banco.banOperaSpeua = this.funcForm.get('checkOpSpeua').value;
+        banco.banId = this.banid;
+        if(this.funcForm.get('checkOpTefbv').value == true){
+            banco.banOperaTefbv = 'V';
+        }else{
+            banco.banOperaTefbv = 'F';
+        }
+        if(this.funcForm.get('checkOpSpeua').value == true){
+            banco.banOperaSpeua = 'V';
+        }else{
+            banco.banOperaSpeua = 'F';
+        }
+        if(this.funcForm.get('checkOpInter').value == true){
+            banco.banOperaIntercam = 'V';
+        }else{
+            banco.banOperaIntercam = 'F';
+        }
         banco.banClaveBanxico = this.funcForm.get('claveBanxico').value;
         banco.banIdSica = this.funcForm.get('claveSica').value;
         banco.banIdCasaBolsa = this.funcForm.get("claveSiif").value;
         banco.banIdFondos = this.funcForm.get("claveSabi").value;
         banco.banEstatus = this.valueEstatus;
-        banco.banOperaIntercam = this.funcForm.get('checkOpInter').value;
         banco.banNombre = this.funcForm.get("nombre").value;
         banco.paiClave = this.funcForm.get('combPais').value;
         banco.paiDescripcion = null;
@@ -382,19 +404,31 @@ export class BancosComponent implements OnInit {
     eliminar(e: any) {
         let banco = new BancosVO;
         banco.banId = this.banid;
-        banco.banOperaTefbv = this.funcForm.get('checkOpTefbv').value;
-        banco.banOperaSpeua = this.funcForm.get('checkOpSpeua').value;
+        if(this.funcForm.get('checkOpTefbv').value == true){
+            banco.banOperaTefbv = 'V';
+        }else{
+            banco.banOperaTefbv = 'F';
+        }
+        if(this.funcForm.get('checkOpSpeua').value == true){
+            banco.banOperaSpeua = 'V';
+        }else{
+            banco.banOperaSpeua = 'F';
+        }
+        if(this.funcForm.get('checkOpInter').value == true){
+            banco.banOperaIntercam = 'V';
+        }else{
+            banco.banOperaIntercam = 'F';
+        }
         banco.banClaveBanxico = this.funcForm.get('claveBanxico').value;
         banco.banIdSica = this.funcForm.get('claveSica').value;
         banco.banIdCasaBolsa = this.funcForm.get("claveSiif").value;
         banco.banIdFondos = this.funcForm.get("claveSabi").value;
         banco.banEstatus = this.valueEstatus;
-        banco.banOperaIntercam = this.funcForm.get('checkOpInter').value;
         banco.banNombre = this.funcForm.get("nombre").value;
         banco.paiClave = this.funcForm.get('combPais').value;
         banco.paiDescripcion = null;
         banco.banDescCorta = this.funcForm.get('nombreCorto').value;
-
+console.log(banco);
         this.bancoServ.deleteBanco(banco).subscribe(
             then => {
                 console.log(then);
@@ -426,9 +460,9 @@ export class BancosComponent implements OnInit {
         this.showBtn = true;
         this.showBtn2 = false;
         this.habilitarCampo = true;
-        document.getElementById('save').hasAttribute('disabled');
-        document.getElementById('deshacer').hasAttribute('disabled');
-        document.getElementById('add').removeAttribute('disabled');
+        document.getElementById('save').setAttribute('disabled','');
+        document.getElementById('deshacer').setAttribute('disabled','');
+        document.getElementById('delete').setAttribute('disabled','');
         this.funcForm.get("nombre").setValue('');
         this.funcForm.get("claveBanxico").setValue('');
         this.funcForm.get("claveSica").setValue('');
@@ -475,5 +509,13 @@ export class BancosComponent implements OnInit {
         this.funcForm.get("nombreCorto").disable();
         this.funcForm.get("optActivo").disable();
         this.funcForm.get("optInactivo").disable();
+    }
+
+    atributosElemento(){
+        document.getElementById('save').setAttribute('disabled','');
+       document.getElementById('deshacer').setAttribute('disabled','');
+       document.getElementById('delete').setAttribute('disabled','');
+       document.getElementById('deshacer').setAttribute('class','deshacer-button-des btn-img');
+       document.getElementById('save').setAttribute('class','save-button-des btn-img');
     }
 }

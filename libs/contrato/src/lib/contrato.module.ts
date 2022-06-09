@@ -7,19 +7,15 @@ import { SoporteModule } from './components/soporte/soporte.module';
 import { ProspeccionModule } from './components/prospeccion/prospeccion.module';
 import { ShredComponentsModule } from '@intercam/shred-components';
 import { UtilModule } from './components/util/util.module';
-import { AdministracionCierreExcepcionComponent } from './components/administracion-cierre-excepcion/administracion-cierre-excepcion.component';
 import { MatTableModule } from '@angular/material/table';
-import { CierreBancoInversionesModule } from './components/cierre-banco-inversiones/cierre-banco-inversiones.module';
-import { FxReferenciasComponent } from './components/fx-referencias/fx-referencias.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatRadioModule } from "@angular/material/radio";
 import { TranslocoModule } from "@ngneat/transloco";
-import { ProfesionesComponent } from './components/profesiones/profesiones.component';
-import { EntidadesComponent } from './components/entidades/entidades.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ColoniasComponent } from './components/colonias/colonias.component';
+import { GeneralModule } from './general.module';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -31,21 +27,17 @@ import { ColoniasComponent } from './components/colonias/colonias.component';
     ShredComponentsModule,
     UtilModule,
     MatTableModule,
-    CierreBancoInversionesModule,
     MatTableModule,
     MatPaginatorModule,
     TranslocoModule,
     MatCheckboxModule,
     MatFormFieldModule,
     MatRadioModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    GeneralModule
   ],
   declarations: [
-    AdministracionCierreExcepcionComponent,
-    FxReferenciasComponent,
-    ProfesionesComponent,
-    EntidadesComponent,
-    ColoniasComponent
+    
   ]
 })
 export class ContratoModule {

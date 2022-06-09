@@ -41,7 +41,7 @@ table.mat-table tbody {
 
 table.mat-table thead td,
 table.mat-table tbody td {
-    border-bottom: 1px solid #bcbcbc!important;
+    border-bottom: 1px solid #bcbcbc !important;
 }
 
 th.mat-header-cell,
@@ -113,4 +113,8 @@ table.mat-table .arrowDown {
 .pointer {
     cursor: pointer;
     color: blue;
+}
+
+.selected {
+    background-color: #72a566;
 }

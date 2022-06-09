@@ -7,7 +7,6 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatRadioModule } from "@angular/material/radio";
 import { MatTableModule } from "@angular/material/table";
-import { RouterModule, Routes } from "@angular/router";
 import { ModelModule } from "@intercam/model";
 import { ShredComponentsModule } from "@intercam/shred-components";
 import { TranslocoModule } from "@ngneat/transloco";
@@ -15,19 +14,7 @@ import { BancosComponent } from "./bancos.component";
 
 
 
-const routes: Routes = [
-    {
-      path: '',
-      children: [
-        {
-          path: '',
-          component: BancosComponent
-        }
-  
-  
-      ],
-    }
-  ];
+
   
   @NgModule({
     declarations: [
@@ -36,7 +23,6 @@ BancosComponent
     ],
     imports: [
       CommonModule,
-      RouterModule.forChild(routes),
       MatTableModule,
       HttpClientModule,
       TranslocoModule,
