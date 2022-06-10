@@ -28,9 +28,10 @@ export class FxReferenciasComponent implements OnInit {
     contratoPersonaVO!: ContratoPersonaVO[];
     perId: number; //clave de persona 
     paginador: boolean;
+    selectedRowPintar: any;
     constructor(private refServ: ReferenciasService) {
-        // this.perId = sessionStorage.getItem('perId');
-        this.perId = 876831;
+        this.perId = Number(sessionStorage.getItem('perId'));
+        // this.perId = 876831;
         console.log('perId: ', this.perId);
         this.paginador = false;
     }
@@ -85,9 +86,7 @@ export class FxReferenciasComponent implements OnInit {
                         datoscondicion.nomCorto = data.nomCorto;
                         datoscondicion.paiNacionalidad = data.paiNacionalidad;
                         datoscondicion.perIdBenef = data.perIdBenef;
-                        // datoscondicion.perNomCorto = data.perNomCorto;
                         datoscondicion.perNumeroBanco = data.perNumeroBanco;
-                        // datoscondicion.perfDescripcion = data.perfDescripcion;
                         datoscondicion.perfilVO = data.perfilVO;
                         datoscondicion.personaVO = data.personaVO;
                         datoscondicion.relPersonaVO = data.relPersonaVO;
@@ -116,12 +115,17 @@ export class FxReferenciasComponent implements OnInit {
     }
     selected(row: any) {
         console.log(row);
+        this.selectedRowPintar = row;
         let contratoSelec: ContratoPersonaVO = row;
         this.getMail = row.idVO.contratoVO.conEmail;
         this.showBtn = false;
         this.showBtn2 = true;
         this.setConId = row.idVO.contratoVO.conId;
         this.getTConId = row.idVO.tconId;
+        document.getElementById('notificar').removeAttribute('disabled');
+        document.getElementById('aceptar').removeAttribute('disabled');
+        document.getElementById('notificar').setAttribute('class', 'deshacer-button btn-img');
+        document.getElementById('aceptar').setAttribute('class', 'save-button btn-img');
         this.findReferencia(contratoSelec.idVO.contratoVO.conId);
 
 
@@ -209,6 +213,7 @@ export class FxReferenciasComponent implements OnInit {
             background: 'linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6))'
         }).then(function (result) {
             if (result.isConfirmed) {
+                _this.findReferencia(_this.setConId);
             }
         });
     }

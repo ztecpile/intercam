@@ -475,6 +475,7 @@ console.log(banco);
         this.funcForm.get("nombreCorto").setValue('');
         this.funcForm.get("optActivo").setValue(false);
         this.funcForm.get("optInactivo").setValue(false);
+        document.getElementById('tabla').removeAttribute('selected');
         this.deshabilitarCampos();
         this._modalidad = '';
         this.banid = 0;

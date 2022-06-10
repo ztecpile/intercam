@@ -5,51 +5,52 @@
 
 <h6>Habilitar operador para cierre forward con excepci&oacute;n</h6>
 <div class="container">
-<form [formGroup]="funcForm" class="formulario" (ngSubmit)="onSubmit()" autocomplete="off" idbForm>
+<form [formGroup]="funcForm" id="tabla" class="formulario" (ngSubmit)="onSubmit()" autocomplete="off" idbForm>
         <div class="mat-elevation-z8">
             <table mat-table [dataSource]="dataSource">
                 <ng-container matColumnDef="idCce" >
                     <th mat-header-cell *matHeaderCellDef hidden>idCce</th>
-                    <td mat-cell hidden *matCellDef="let element "(click)="selected(element)">{{element.idCce}}</td>
+                    <td mat-cell hidden *matCellDef="let element ">{{element.cierreExcep.idCce}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="perId" >
                     <th mat-header-cell *matHeaderCellDef hidden>perId</th>
-                    <td mat-cell hidden *matCellDef="let element "(click)="selected(element)">{{element.idPersona}}</td>
+                    <td mat-cell hidden *matCellDef="let element ">{{element.idPersona}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="claveOperador">
                     <th mat-header-cell *matHeaderCellDef>Clave Operador</th>
-                    <td mat-cell *matCellDef="let element "(click)="selected(element)">{{element.perEmpleadoUsuario}}</td>
+                    <td mat-cell *matCellDef="let element ">{{element.perEmpleadoUsuario}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="nombre">
                     <th mat-header-cell *matHeaderCellDef>Nombre</th>
-                    <td mat-cell *matCellDef="let element "(click)="selected(element)">{{element.perNomCorto}}</td>
+                    <td mat-cell *matCellDef="let element ">{{element.perNomCorto}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="claveSucursal">
                     <th mat-header-cell *matHeaderCellDef>Clave Sucursal</th>
-                    <td mat-cell *matCellDef="let element "(click)="selected(element)"> {{element.sucSica}}</td>
+                    <td mat-cell *matCellDef="let element "> {{element.sucursalVO.sucSica}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="habilitadoCierre">
                     <th mat-header-cell *matHeaderCellDef>Habilitado Cierre</th>
-                    <td mat-cell *matCellDef="let element" (click)="selected(element)"> 
+                    <td mat-cell *matCellDef="let element" > 
                         {{element.cierreExcep.cceCierreexcep}}</td>
                 </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns "></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns; "></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns; " [ngClass]="{ 'selected': row === selectedAdmon }"
+                (click)="selected(row)"></tr>
             </table>
         </div>
         <hr class="red" />
 
 
                 <div class="row">
-                    <div class="col-sm-3">
-                        <input type="text" title="busqueda" class="formulario__input" maxlength="80" formControlName="busqueda" [control]="getCtr('busqueda')"
-                            idbInput id="busqueda" (keyup.enter)="filtrar($event)">
+                    <div class="col-sm-6">
+                        <input type="text" class="formulario__input" maxlength="80" formControlName="busqueda" [control]="getCtr('busqueda')"
+                            idbInput (keyup.enter)="filtrar($event)">
                         <label class="formulario__label" >B&uacute;squeda Rapida</label>
                     </div>
                     <button class="btn-img find-button " type="submit" matTooltip="Buscar" (click)="filtrar($event)" > </button>
@@ -57,25 +58,25 @@
                 <div class="row">
                     <input type="text" hidden title="clave" id="nombre" class="formulario__input" maxlength="80" formControlName="claveOperador"
                      [value]="clave">
-                    <div class="col-sm-3">
-                        <input type="text" title="nombre" id="nombre" class="formulario__input" maxlength="80" formControlName="perNom"
-                        (keyup)="onchange()" [value]="valornombre">
+                    <div class="col-sm-6">
+                        <input type="text" class="formulario__input" maxlength="80" formControlName="perNom"
+                        (change)="onchange()">
                         <label class="formulario__label" >Nombre del Promotor</label>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <label class="lbl_datos">Estatus</label>
-                        <div id="divoptIdSi" class="col-sm-2">
-                            <input class="radio" title="si" id="si"  type="radio" formControlName="optSi"
-                                idbInput (click)="changeRadioSi($event)" [control]="getCtr('optSi')" value="V"
+                        <div id="divoptIdSi" class="col-sm-4">
+                            <input class="radio" type="radio" formControlName="optSi"
+                                idbInput (click)="changeRadioSi($event)" [control]="getCtr('optSi')"
                                  [checked]="checksi">
-                            <label class="lbl_datos" >Si</label>
+                            <label class="lbl_datos" >{{'Si'|transloco}}</label>
                         </div>
-                        <div id="divoptIdNo" class="col-sm-2">
-                            <input class="radio" title="no" id="no"  type="radio" formControlName="optNo"
-                                idbInput (click)="changeRadioNo($event)" [checked]="checkno" [control]="getCtr('optNo')" value="F">
-                            <label class="lbl_datos" >No</label>
+                        <div id="divoptIdNo" class="col-sm-4">
+                            <input class="radio" type="radio" formControlName="optNo"
+                                idbInput (click)="changeRadioNo($event)" [checked]="checkno" [control]="getCtr('optNo')">
+                            <label class="lbl_datos" >{{'No'|transloco}}</label>
                         </div>
                     </div>
                     
@@ -83,15 +84,10 @@
                 </div>
 
                 <div>
-                    <div *ngIf="showBtnDes">
-                        <button class="btn-img save-button-des" [disabled]="true" type="button"><span
-                                class="tooltip">Guardar</span></button>
-                        <button class="btn-img deshacer-button-des" [disabled]="true" type="button"><span
-                                class="tooltip">Deshacer</span></button>
-                    </div>
-                    <div *ngIf="showBtn">
-                        <button class="btn-img save-button" type="button" (click)="updateAce($event)"><span class="tooltip">Guardar</span></button>
-                        <button class="btn-img deshacer-button" type="button" (click)="limpiarFormulario($event)"><span class="tooltip">Deshacer</span></button>
+                    
+                    <div >
+                        <button id="save" class="btn-img save-button" type="button" (click)="updateAce($event)" ><span class="tooltip">Guardar</span></button>
+                        <button id="deshacer" class="btn-img deshacer-button" type="button" (click)="limpiarFormulario($event)" ><span class="tooltip">Deshacer</span></button>
                     </div>
                 </div>
     </form>
