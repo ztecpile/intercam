@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<div class="header"></div>
+<div class="posicion"></div>
+<!--Abre contenido-->
+<main class="">
+    <div class="bdcontent">
+        <hr class="red" />
+        <h2>Tipo Relaci&oacute;n</h2>
+        <hr class="red" />
+
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="paginatorDataSource" class="mat-elevation-z8" matSort>
+                <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+                <!-- Position Column display none-->
+                <ng-container matColumnDef="Observaciones">
+                    <th mat-header-cell *matHeaderCellDef>Observaciones</th>
+                    <td mat-cell *matCellDef="let element">{{ element.treDescripcion }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="Tipo">
+                    <th mat-header-cell *matHeaderCellDef>Tipo de Clientes</th>
+                    <td mat-cell *matCellDef="let element">{{ element.tpeClave==="M"? "Moral":"Física" }}</td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr (click)="getRecord(row)" mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+            </mat-paginator>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-6">
+
+
+                <div id="divperRfc" class="col-sm-12">
+                    <mat-label>Observaciones</mat-label>
+                    <textarea (keyup)="hasChenges()"  [(ngModel)]="tipoRelVO.treDescripcion" type="text" class="formulario__input"></textarea>
+                </div>
+
+                <br />
+                <div id="divcboTipo" class="col-sm-12">
+                    <div class="caja">
+                        <select (change)="hasChenges()" [(ngModel)]="tipoRelVO.tpeClave">
+                            <option value="F">Física</option>
+                            <option value="M">Moral</option>
+                        </select>
+                    </div>
+                    <label appearance="fill" class="formulario__label">Tipo Valor</label>
+                </div>
+
+
+                <acction-buttons-component (onModoConsultaClick)="onModoConsultaClick()"
+                    (onModoAltaClick)="onModoAltaClick()"
+                    (onModoEliminarClick)="onModoEliminarClick()"
+                    (onModoGuardarClick)="onModoGuardarClick()"
+                    (onModoActualizarClick)="onModoActualizarClick()"
+                    [modelo]="tipoRelVO" ></acction-buttons-component>
+
+
+
+            </div>
+            <div class="col-sm-12">
+
+            </div>
+        </div>
+
+
+        <hr class="red" />
+    </div>
+</main>

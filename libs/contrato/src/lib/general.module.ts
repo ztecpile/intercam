@@ -37,6 +37,8 @@ import { CierreCasaBolsaModule } from './components/cierre-casa-bolsa/cierre-cas
 import { SectorEconomicoComponent } from './components/sector-economico/sector-economico.component';
 import { SectorEconomicoModule } from './components/sector-economico/sector-economico.module';
 import { SectorEconomicoService } from './services/sector-economico.services';
+import { TiposRelacionComponent } from './components/tipo-relacion/tipo-relacion.component';
+import { AcctionButtonsComponent } from 'libs/shred-components/src/lib/form/acction-buttons/acction-buttons.component';
 
 const routes: Routes = [
   {
@@ -138,6 +140,16 @@ const routes: Routes = [
       }
 
     ]
+  },
+  {
+    path: '',
+    children: [
+      {
+        path: 'tipo-relacion',
+        component: TiposRelacionComponent
+      }
+
+    ]
   }
 ];
 providers: [
@@ -149,7 +161,7 @@ providers: [
   EntidadServices,
   CierreBancoInversionesServices,
   CierreCasaBolsaService,
-  SectorEconomicoService
+  SectorEconomicoService,
 ]
 @NgModule({
   imports: [
@@ -173,14 +185,19 @@ providers: [
     MatTabsModule,
     CierreBancoInversionesModule,
     CierreCasaBolsaModule,
-    SectorEconomicoModule
+    SectorEconomicoModule,
+
+
   ],
   declarations: [
     AdministracionCierreExcepcionComponent,
     FxReferenciasComponent,
     ProfesionesComponent,
     EntidadesComponent,
-    ColoniasComponent
+    ColoniasComponent,
+    AcctionButtonsComponent,
+    TiposRelacionComponent,
+       
   ]
 })
 export class GeneralModule {
