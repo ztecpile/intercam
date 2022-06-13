@@ -11,31 +11,32 @@
 
                     <ng-container matColumnDef="conId">
                         <th mat-header-cell *matHeaderCellDef>No. Contrato</th>
-                        <td mat-cell *matCellDef="let element" (click)="selected(element)">{{ element.idVO.contratoVO.conId }}</td>
+                        <td mat-cell *matCellDef="let element" >{{ element.idVO.contratoVO.conId }}</td>
                     </ng-container>
 
                     <ng-container matColumnDef="nomCorto">
                         <th mat-header-cell *matHeaderCellDef>Nombre del cliente</th>
-                        <td mat-cell *matCellDef="let element" (click)="selected(element)">{{ element.nomCorto }}</td>
+                        <td mat-cell *matCellDef="let element" >{{ element.nomCorto }}</td>
                     </ng-container>
 
                     <ng-container matColumnDef="perfDescripcion">
                         <th mat-header-cell *matHeaderCellDef>Perfil</th>
-                        <td mat-cell *matCellDef="let element" (click)="selected(element)">{{ element.perfilVO.perfDescripcion }}</td>
+                        <td mat-cell *matCellDef="let element">{{ element.perfilVO.perfDescripcion }}</td>
                     </ng-container>
 
                     <ng-container matColumnDef="desTipContrato">
                         <th mat-header-cell *matHeaderCellDef>Tipo Contrato</th>
-                        <td mat-cell *matCellDef="let element" (click)="selected(element)">{{ element.desTipContrato }}</td>
+                        <td mat-cell *matCellDef="let element" >{{ element.desTipContrato }}</td>
                     </ng-container>
 
                     <ng-container matColumnDef="conEmail">
                         <th hidden mat-header-cell *matHeaderCellDef>Email</th>
-                        <td hidden mat-cell *matCellDef="let element" (click)="selected(element)">{{element.idVO.contratoVO.conEmail}}</td>
+                        <td hidden mat-cell *matCellDef="let element" >{{element.idVO.contratoVO.conEmail}}</td>
                     </ng-container>
 
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns" [ngClass]="{ 'selected': row === selectedRowPintar }"
+                    (click)="selected(row)"></tr>
                 </table>
             </div>
 
@@ -49,21 +50,13 @@
                 <label class="formulario__label">Mail</label>
 
             </div>
-            <div class="col-sm-3" *ngIf="showBtn">
-                <button class="btn-img notifica-button-des" [disabled]="true" type="button">
+           
+            <div class="col-sm-3" >
+                <button id="notificar" class="btn-img notifica-button-des" (click)="envioReferencias()" type="button" disabled>
                     <span class="tooltip">Notificar</span>
                 </button>
 
-                <button class="btn-img accept-button-des"  [disabled]="true" type="button">
-                    <span class="tooltip">Generar</span>
-                </button>
-            </div>
-            <div class="col-sm-3" *ngIf="showBtn2">
-                <button class="btn-img notifica-button" (click)="envioReferencias()" type="button">
-                    <span class="tooltip">Notificar</span>
-                </button>
-
-                <button class="btn-img accept-button" (click)="generarReferencias()" type="button">
+                <button id="aceptar" class="btn-img accept-button-des" (click)="generarReferencias()" type="button" disabled>
                     <span class="tooltip">Generar</span>
                 </button>
             </div>
