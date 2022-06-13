@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { TipoRelVO } from '@intercam/model';
+import { AlertasService } from 'libs/shred-components/src/lib/alertas/alertas.service';
 import { AcctionButtonsComponent } from 'libs/shred-components/src/lib/form/acction-buttons/acction-buttons.component';
 import { TipoRelacionService } from '../../services/tipo-relacion.service';
 
@@ -27,7 +28,7 @@ export class TiposRelacionComponent {
 
     @ViewChild(AcctionButtonsComponent) acctionButtonsComponent: AcctionButtonsComponent;
 
-    constructor(private _tipoRelacionService: TipoRelacionService) { this.findTipoRelVO() }
+    constructor(private _tipoRelacionService: TipoRelacionService,private alertasService: AlertasService) { this.findTipoRelVO() }
 
 
 
@@ -59,22 +60,33 @@ export class TiposRelacionComponent {
     }
 
     onModoAltaClick() {
-        this.tipoRelVO = new TipoRelVO;
+        
+        this.tipoRelVO = new TipoRelVO();
     }
 
     onModoEliminarClick() {
         this._tipoRelacionService.deleteTipoRelVO(this.tipoRelVO).subscribe(then => {
+            this.alertasService.mostrarMensaje("Se elimino exitosamente", 'info', "Operacion realizada con exito");
             this.findTipoRelVO();
         });
         this.tipoRelVO = new TipoRelVO();
     }
 
     onModoGuardarClick(){
-        alert("Guardar");
+
+        this._tipoRelacionService.createTipoRelVO(this.tipoRelVO).subscribe(then => {
+            this.alertasService.mostrarMensaje("Se Creo exitosamente", 'info', "Operacion realizada con exito");
+            this.findTipoRelVO();
+        });
+    
     }
 
     onModoActualizarClick(){
-        alert("Actualizar");
+        this._tipoRelacionService.updateTipoRelVO(this.tipoRelVO).subscribe(then => {
+            this.alertasService.mostrarMensaje("Se actualizo exitosamente", 'info', "Operacion realizada con exito");
+            this.findTipoRelVO();
+        });
+        this.tipoRelVO = new TipoRelVO();
     }
 
 

@@ -74,6 +74,7 @@ export class AcctionButtonsComponent {
         this.MODO_FORMULARIO = this.MODO_ALTA;
         this.validarBtnGuardar=true;
         this.validarBtnReset=true;
+        this.validarBtnEliminar=false;
         this.onModoAltaClick.emit();
     }
     modoGuardarClick() {
