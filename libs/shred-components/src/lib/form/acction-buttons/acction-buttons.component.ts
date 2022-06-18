@@ -19,6 +19,14 @@ export class AcctionButtonsComponent {
     MODO_ELIMINAR: Number = 4;
     MODO_FORMULARIO: Number = this.MODO_CONSULTA;
 
+
+    BTN_ELIMINAR_OCULTO=false;
+    BTN_CONSULTA_OCULTO=false;
+    BTN_ALTA_OCULTO=false;
+    BTN_EDITAR_OCULTO=false;
+    BTN_DESHACER_OUCLTO=false;
+    
+
     modeloSelecionado: Object = null;
     hayCabios: boolean = false;
     rows: any;
@@ -132,4 +140,24 @@ export class AcctionButtonsComponent {
         else
             this.validarBtnEliminar = false;
     }
+    hiddeBtnEliminar(status:boolean){
+        this.BTN_ELIMINAR_OCULTO=status;
+    }
+
+    hiddeBtnAlta(status:boolean){
+        this.BTN_ALTA_OCULTO=status;
+    }
+
+    hiddeBtnConsulta(status:boolean){
+        this.BTN_CONSULTA_OCULTO=status;
+    }
+
+    hiddeBtnDeshacer(status:boolean){
+        this.BTN_DESHACER_OUCLTO=status;
+    }
+
+    hiddeBtnGuardar(status:boolean){
+        this.BTN_EDITAR_OCULTO=status;
+    }
+
 }

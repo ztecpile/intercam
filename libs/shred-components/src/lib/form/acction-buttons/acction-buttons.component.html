@@ -1,20 +1,20 @@
 <div class="centrar_btn">
-    <button class="btn-img buscar-btn" (click)="modoConsultaClick()">
+    <button [hidden]="BTN_CONSULTA_OCULTO" class="btn-img buscar-btn" (click)="modoConsultaClick()">
         <span class="tooltip">Consulta</span>
     </button>
-    <button class="btn-img alta-button" type="submit" (click)="modoAltaClick()">
+    <button [hidden]="BTN_ALTA_OCULTO" class="btn-img alta-button" type="submit" (click)="modoAltaClick()">
         <span class="tooltip">Alta</span>
     </button>
 
-    <button [disabled]="!validarBtnGuardar" class="btn-img save-button" type="submit"
+    <button [hidden]="BTN_EDITAR_OCULTO"  [disabled]="!validarBtnGuardar" class="btn-img save-button" type="submit"
         (click)="modoGuardarClick()">
         <span class="tooltip">Guardar</span>
     </button>
-    <button [disabled]="!validarBtnEliminar" class="btn-img eliminar-btn"
+    <button [hidden]="BTN_ELIMINAR_OCULTO" [disabled]="!validarBtnEliminar" class="btn-img eliminar-btn"
         type="submit" (click)="modoEliminarClick()">
         <span class="tooltip">Eliminar</span>
     </button>
-    <button [disabled]="!validarBtnReset" class="btn-img deshacer-button"
+    <button [hidden]="BTN_DESHACER_OUCLTO" [disabled]="!validarBtnReset" class="btn-img deshacer-button"
         type="submit" (click)="modoDeshacerClick()">
         <span class="tooltip">Deshacer</span>
     </button>
