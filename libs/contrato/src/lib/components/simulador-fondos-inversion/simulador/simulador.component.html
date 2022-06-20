@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col-sm-4">
+    <strong>
+      <h6>Importe Inicial :</h6>
+    </strong>
+    <strong>
+      <h6>Importe Final :</h6>
+    </strong>
+    <h6>Plus-minusvalia acumulada : </h6>
+    <strong>
+      <h6>$0.00</h6>
+    </strong>
+    <p>Tasa acomulada del periodo</p>
+    <p>Plus-minusvalia promdio mensual</p>
+    <p>Remdimiento promedio anual</p>
+    <p>Promedio simulado del</p>
+    <div class="centrar_btn" style="margin-top: 10px">
+      <button class="btn-img recibe-doc-button">
+        <span class="tooltip">Buscar</span>
+      </button>
+      
+      <button class="btn-img imprimir-button">
+        <span class="tooltip">Buscar</span>
+      </button>
+    </div>
+  </div>
+  <div class="col-sm-8">
+    <div class="row">
+      <div class="col-sm-6">
+        <table mat-table [dataSource]="fondoDataSource" class="mat-elevation-z8">
+          <ng-container matColumnDef="fondo2">
+            <th mat-header-cell *matHeaderCellDef>Fondo</th>
+            <td mat-cell *matCellDef="let element">{{ element.emisionId }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="tipo">
+            <th mat-header-cell *matHeaderCellDef>Tipo</th>
+            <td mat-cell *matCellDef="let element">{{
+              element.tipoFondoId==5?"Deuda":element.tipoFondoId==10?"Variable":"Cobertura"}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="porciento">
+            <th mat-header-cell *matHeaderCellDef>%</th>
+            <td mat-cell *matCellDef="let element">{{ element.value }}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
+        </table>
+      </div>
+      <div class="col-sm-6">
+        <p>CP:Corto Plazo, MP:Mediano Plazno, LP:Largo Pl</p>
+        <canvas baseChart
+              [data]="pieChartData"
+              [type]="pieChartType"
+              [options]="pieChartOptions"
+              [plugins]="pieChartPlugins">
+      </canvas>
+
+      </div>
+    </div>
+  </div>
+</div>

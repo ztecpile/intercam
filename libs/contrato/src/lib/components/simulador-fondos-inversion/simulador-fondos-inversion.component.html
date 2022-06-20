@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<div class="header"></div>
+<div class="posicion"></div>
+<!--Abre contenido-->
+<main class="">
+  <div class="bdcontent">
+
+    <hr class="red" />
+    <h2>Simulador</h2>
+    <hr class="red" />
+    <mat-accordion>
+      <!-- #docregion basic-panel -->
+      <!-- #docregion hide-toggle -->
+      <mat-expansion-panel expanded="true" (opened)="ABRIR_SIMULADOR=false" hideToggle>
+        <!-- #enddocregion hide-toggle -->
+        <mat-expansion-panel-header>
+          <mat-panel-title> Buesqueda </mat-panel-title>
+        </mat-expansion-panel-header>
+        <busqueda-component
+        (onCalcularClickEvent)="onCalcularClick($event)"
+        ></busqueda-component>
+      </mat-expansion-panel>
+
+      <!-- #enddocregion basic-panel -->
+      <mat-expansion-panel [expanded]="ABRIR_SIMULADOR"  hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title> Simulador </mat-panel-title>
+        </mat-expansion-panel-header>
+        <simulador-component [fondoDataSource]="fondoDataSource"  ></simulador-component>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</main>

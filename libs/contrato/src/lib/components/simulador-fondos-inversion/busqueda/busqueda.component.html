@@ -1,0 +1,252 @@
+<div class="row">
+    <div class="col-sm-3" style="z-index: 5">
+        <input type="text" class="formulario__input" (blur)="transformAmount($event)" [(ngModel)]="monto" />
+        <label class="formulario__label">{{ 'Monto' | transloco }}</label>
+    </div>
+    <div class="col-sm-3" style="z-index: 5">
+        <div class="caja">
+            <select [(ngModel)]="tipo_persona">
+                <option value="5">Persona Física</option>
+                <option value="10">Persona Moral</option>
+                <option value="15">Persona Moral Exenta</option>
+            </select>
+        </div>
+        <label appearance="fill" class="formulario__label">Tipo Persona</label>
+    </div>
+    <div class="col-sm-3" style="z-index: 5">
+        <div class="caja">
+            <select [(ngModel)]="periodo">
+                <option value="1">1 Mes</option>
+                <option value="3">3 Meses</option>
+                <option value="6">6 Meses</option>
+                <option value="12">1 a&ntilde;o</option>
+                <option value="36">3 a&ntilde;os</option>
+                <option value="60">5 a&ntilde;os</option>
+            </select>
+        </div>
+        <label appearance="fill" class="formulario__label">Periodo a simular</label>
+    </div>
+    <div class="col-sm-3">
+        <div class="centrar_btn" style="margin-top: 10px">
+            <button (click)="findFondosPrecio()" class="btn-img buscar-btn">
+                <span class="tooltip">Guardar</span>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="row align-items-center h-100">
+    <div class="mat-elevation-z8 col-sm-7 mr-5 ml-5">
+        <mat-tab-group>
+            <mat-tab label="Deuda">
+                <table mat-table [dataSource]="deudaDataSource" class="mat-elevation-z8">
+                    <ng-container matColumnDef="fondo">
+                        <th mat-header-cell *matHeaderCellDef>Fondo</th>
+                        <td mat-cell *matCellDef="let element">{{ element.emisionId }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="plazo">
+                        <th mat-header-cell *matHeaderCellDef>Plazo máximo</th>
+                        <td mat-cell *matCellDef="let element">{{ element.fondoPlazo }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="ano">
+                        <th mat-header-cell *matHeaderCellDef>En el a&ntilde;o</th>
+                        <td mat-cell *matCellDef="let element">{{ element.plazoTasa.anio }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="mes">
+                        <th mat-header-cell *matHeaderCellDef>En el mes</th>
+                        <td mat-cell *matCellDef="let element">{{ element.plazoTasa.mes }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="semana">
+                        <th mat-header-cell *matHeaderCellDef>7 dias</th>
+                        <td mat-cell *matCellDef="let element">{{ element.plazoTasa["7"]}}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="mes2">
+                        <th mat-header-cell *matHeaderCellDef>28 dias</th>
+                        <td mat-cell *matCellDef="let element">{{ element.plazoTasa["28"] }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="ano2">
+                        <th mat-header-cell *matHeaderCellDef>12 mese</th>
+                        <td mat-cell *matCellDef="let element">{{ element.plazoTasa["361"]}}</td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns"
+                        [ngClass]="{ 'selected': row === selectedRow }" (click)="getRecord(row)"></tr>
+                </table>
+
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                    aria-label="Select page of periodic elements">
+                </mat-paginator>
+
+            </mat-tab>
+            <mat-tab label="Cobertura">
+                <table mat-table [dataSource]="coberturaDataSource" class="mat-elevation-z8">
+                    <ng-container matColumnDef="fondo">
+                        <th mat-header-cell *matHeaderCellDef>Fondo</th>
+                        <td mat-cell *matCellDef="let element">{{ element.emisionId }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="plazo">
+                        <th mat-header-cell *matHeaderCellDef>Plazo máximo</th>
+                        <td mat-cell *matCellDef="let element">{{ element.fondoPlazo }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="ano">
+                        <th mat-header-cell *matHeaderCellDef>En el a&ntilde;o</th>
+                        <td mat-cell *matCellDef="let element">{{ element.plazoTasa.anio }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="mes">
+                        <th mat-header-cell *matHeaderCellDef>En el mes</th>
+                        <td mat-cell *matCellDef="let element">{{ element.plazoTasa.mes }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="semana">
+                        <th mat-header-cell *matHeaderCellDef>7 dias</th>
+                        <td mat-cell *matCellDef="let element">{{ element.plazoTasa["7"]}}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="mes2">
+                        <th mat-header-cell *matHeaderCellDef>28 dias</th>
+                        <td mat-cell *matCellDef="let element">{{ element.plazoTasa["28"] }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="ano2">
+                        <th mat-header-cell *matHeaderCellDef>12 mese</th>
+                        <td mat-cell *matCellDef="let element">{{ element.plazoTasa["361"]}}</td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns"
+                        [ngClass]="{ 'selected': row === selectedRow }" (click)="getRecord(row)"></tr>
+                </table>
+
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                    aria-label="Select page of periodic elements">
+                </mat-paginator>
+            </mat-tab>
+            <mat-tab label="Variable">
+                <table mat-table [dataSource]="variableDataSource" class="mat-elevation-z8">
+                    <ng-container matColumnDef="fondo">
+                        <th mat-header-cell *matHeaderCellDef>Fondo</th>
+                        <td mat-cell *matCellDef="let element">{{ element.emisionId }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="plazo">
+                        <th mat-header-cell *matHeaderCellDef>Plazo máximo</th>
+                        <td mat-cell *matCellDef="let element">{{ element.fondoPlazo }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="ano">
+                        <th mat-header-cell *matHeaderCellDef>En el a&ntilde;o</th>
+                        <td mat-cell *matCellDef="let element">{{ element.plazoTasa.anio }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="mes">
+                        <th mat-header-cell *matHeaderCellDef>En el mes</th>
+                        <td mat-cell *matCellDef="let element">{{ element.plazoTasa.mes }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="semana">
+                        <th mat-header-cell *matHeaderCellDef>7 dias</th>
+                        <td mat-cell *matCellDef="let element">{{ element.plazoTasa["7"]}}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="mes2">
+                        <th mat-header-cell *matHeaderCellDef>28 dias</th>
+                        <td mat-cell *matCellDef="let element">{{ element.plazoTasa["28"] }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="ano2">
+                        <th mat-header-cell *matHeaderCellDef>12 mese</th>
+                        <td mat-cell *matCellDef="let element">{{ element.plazoTasa["361"]}}</td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns"
+                        [ngClass]="{ 'selected': row === selectedRow }" (click)="getRecord(row)"></tr>
+                </table>
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                    aria-label="Select page of periodic elements">
+                </mat-paginator>
+            </mat-tab>
+
+        </mat-tab-group>
+    </div>
+
+    <div class="col-sm-1">
+        <div class="centrar_btn" style="margin-top: 10px; height: 100%;">
+            <button (click)="pasarAFondo()" [hidden]="selectedRow==null" class="btn-img continuar-btn align-middle">
+                <span class="tooltip">Pasar</span>
+            </button>
+
+            <button (click)="removerDeFondo()" [hidden]="fondoSelectedRow==null"
+                class="btn-img regresar-btn align-middle">
+                <span class="tooltip">Pasar</span>
+            </button>
+        </div>
+
+    </div>
+
+    <div class="mat-elevation-z8 col-sm-3 mr-5 ml-5">
+        <table mat-table [dataSource]="fondoDataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="fondo2">
+                <th mat-header-cell *matHeaderCellDef>Fondo</th>
+                <td mat-cell *matCellDef="let element">{{ element.emisionId }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="tipo">
+                <th mat-header-cell *matHeaderCellDef>Tipo</th>
+                <td mat-cell *matCellDef="let element">{{
+                    element.tipoFondoId==5?"Deuda":element.tipoFondoId==10?"Variable":"Cobertura"}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="porciento">
+                <th mat-header-cell *matHeaderCellDef>%</th>
+                <td mat-cell *matCellDef="let element">
+                    <ng-container>
+                        <input class="form-control" (keyup)="hasChenges()" [(ngModel)]="element.value">
+                    </ng-container>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Total">
+                <th mat-footer-cell *matFooterCellDef>Total :</th>
+            </ng-container>
+
+            <ng-container matColumnDef="numTotal">
+                <th mat-footer-cell *matFooterCellDef>{{total}}</th>
+            </ng-container>
+
+            <ng-container matColumnDef="porciento2">
+                <th mat-footer-cell *matFooterCellDef>%</th>
+            </ng-container>
+
+            <!-- Disclaimer column -->
+            <ng-container matColumnDef="disclaimer">
+                <td mat-footer-cell *matFooterCellDef colspan="3" class="text-danger">
+                    El total debe ser igual a 100
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns2"
+                [ngClass]="{ 'selected': row === fondoSelectedRow }" (click)="fondoSelectedRow=row "></tr>
+
+            <tr mat-footer-row *matFooterRowDef="['Total', 'numTotal', 'porciento2']"></tr>
+            <tr [hidden]="VALIDAR_TOTAL" mat-footer-row *matFooterRowDef="['disclaimer']" class="text-danger"></tr>
+
+        </table>
+
+        <div class="centrar_btn" style="margin-top: 10px">
+            <button (click)="mostrarSimulador()" class="btn-img buscar-btn">
+                <span class="tooltip">Buscar</span>
+            </button>
+        </div>
+    </div>
+</div>
