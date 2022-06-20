@@ -28,7 +28,8 @@ export class TiposRelacionComponent {
 
     @ViewChild(AcctionButtonsComponent) acctionButtonsComponent: AcctionButtonsComponent;
 
-    constructor(private _tipoRelacionService: TipoRelacionService,private alertasService: AlertasService) { this.findTipoRelVO() }
+    constructor(private _tipoRelacionService: TipoRelacionService,private alertasService: AlertasService) { this.findTipoRelVO();}
+
 
 
 
@@ -56,7 +57,8 @@ export class TiposRelacionComponent {
 
 
     onModoConsultaClick() {
-        alert("Click evento");
+      //  alert("Click evento");
+      this.tipoRelVO = new TipoRelVO();
     }
 
     onModoAltaClick() {

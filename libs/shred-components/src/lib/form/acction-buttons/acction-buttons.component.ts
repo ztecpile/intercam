@@ -20,12 +20,12 @@ export class AcctionButtonsComponent {
     MODO_FORMULARIO: Number = this.MODO_CONSULTA;
 
 
-    BTN_ELIMINAR_OCULTO=false;
-    BTN_CONSULTA_OCULTO=false;
-    BTN_ALTA_OCULTO=false;
-    BTN_EDITAR_OCULTO=false;
-    BTN_DESHACER_OUCLTO=false;
-    
+    BTN_ELIMINAR_OCULTO = false;
+    BTN_CONSULTA_OCULTO = false;
+    BTN_ALTA_OCULTO = false;
+    BTN_EDITAR_OCULTO = false;
+    BTN_DESHACER_OUCLTO = false;
+
 
     modeloSelecionado: Object = null;
     hayCabios: boolean = false;
@@ -42,10 +42,10 @@ export class AcctionButtonsComponent {
 
     validarBtnReset: boolean = false;//this.MODO_FORMULARIO == this.MODO_CONSULTA || this.modeloSelecionado == null || this.modelo.toString() != this.modeloSelecionado.toString()
     validarBtnEliminar: boolean = false;
-    validarBtnGuardar:boolean=false;
+    validarBtnGuardar: boolean = false;
 
     hasChenges() {
-        if(this.MODO_FORMULARIO!=this.MODO_ALTA)this.MODO_FORMULARIO = this.MODO_EDITAR;
+        if (this.MODO_FORMULARIO != this.MODO_ALTA) this.MODO_FORMULARIO = this.MODO_EDITAR;
         this.hayCabios = true;
         this.validarBtnDeshacer();
         this.validarEliminarBtn();
@@ -53,7 +53,7 @@ export class AcctionButtonsComponent {
 
     }
 
-    reiniciarBtn(){
+    reiniciarBtn() {
         this.MODO_FORMULARIO = this.MODO_CONSULTA;
         this.modeloSelecionado = null;
         this.modelo = new Object();
@@ -80,9 +80,9 @@ export class AcctionButtonsComponent {
 
     modoAltaClick() {
         this.MODO_FORMULARIO = this.MODO_ALTA;
-        this.validarBtnGuardar=true;
-        this.validarBtnReset=true;
-        this.validarBtnEliminar=false;
+        this.validarBtnGuardar = true;
+        this.validarBtnReset = true;
+        this.validarBtnEliminar = false;
         this.onModoAltaClick.emit();
     }
     modoGuardarClick() {
@@ -90,12 +90,12 @@ export class AcctionButtonsComponent {
             this.onModoGuardarClick.emit();
         else
             this.onModoActualizarClick.emit();
-        
+
         this.reiniciarBtn();
     }
 
     modoEliminarClick() {
-   
+
         this.onModoEliminarClick.emit();
     }
 
@@ -125,8 +125,8 @@ export class AcctionButtonsComponent {
         return true;
     }
 
-    validarGuardarBtn(){
-        this.validarBtnGuardar=!this.modeloSelecionado==null||(this.MODO_FORMULARIO==this.MODO_ALTA||this.MODO_FORMULARIO==this.MODO_EDITAR);
+    validarGuardarBtn() {
+        this.validarBtnGuardar = !this.modeloSelecionado == null || (this.MODO_FORMULARIO == this.MODO_ALTA || this.MODO_FORMULARIO == this.MODO_EDITAR);
     }
 
     validarEliminarBtn() {
@@ -140,24 +140,24 @@ export class AcctionButtonsComponent {
         else
             this.validarBtnEliminar = false;
     }
-    hiddeBtnEliminar(status:boolean){
-        this.BTN_ELIMINAR_OCULTO=status;
+    hiddeBtnEliminar(status: boolean) {
+        this.BTN_ELIMINAR_OCULTO = status;
     }
 
-    hiddeBtnAlta(status:boolean){
-        this.BTN_ALTA_OCULTO=status;
+    hiddeBtnAlta(status: boolean) {
+        this.BTN_ALTA_OCULTO = status;
     }
 
-    hiddeBtnConsulta(status:boolean){
-        this.BTN_CONSULTA_OCULTO=status;
+    hiddeBtnConsulta(status: boolean) {
+        this.BTN_CONSULTA_OCULTO = status;
     }
 
-    hiddeBtnDeshacer(status:boolean){
-        this.BTN_DESHACER_OUCLTO=status;
+    hiddeBtnDeshacer(status: boolean) {
+        this.BTN_DESHACER_OUCLTO = status;
     }
 
-    hiddeBtnGuardar(status:boolean){
-        this.BTN_EDITAR_OCULTO=status;
+    hiddeBtnGuardar(status: boolean) {
+        this.BTN_EDITAR_OCULTO = status;
     }
 
 }
