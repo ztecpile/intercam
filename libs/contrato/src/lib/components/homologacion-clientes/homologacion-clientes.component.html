@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<div class="header"></div>
+<div class="posicion"></div>
+<!--Abre contenido-->
+<main class="">
+    <div class="bdcontent">
+
+        <idb-titulo [titulo1]="accion"></idb-titulo>
+        <div class="container">
+            <form [formGroup]="funcForm" class="formulario" autocomplete="off" idbForm>
+            <div class="row">
+                <div class="col-6">
+
+                    <div id="divperRfc" class="row">
+                        <div class="col-10">
+                            <input type="number" class="formulario__input" formControlName="contrato" [control]="getCtr('contrato')" 
+                            (keyup.enter)="obtenerCarpetaContratos('')" idbInput />
+                            <label class="formulario__label">{{ 'Contrato' | transloco }}</label>
+                        </div>
+                        <div class="col-2">
+                            <div class="centrar_btn" style="margin-top: 10px;">
+                               <button class="btn-img buscar-btn " type="button" (click)="buscaCliente('cliIdIncorrecto')">
+                                    <span class="tooltip">Buscar Contato</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                    <div id="divcboTipo" class="col-sm-12">
+                        <div class="caja">
+                            <select  formControlName="comboCliIdIncorrecto" [control]="getCtr('comboCliIdIncorrecto')" (change)="habilitarBotones(); perIdIncorrcto();" idbInput>
+                                <option *ngFor="let search of contratosFolder" [value]="search">{{search}}</option>
+                                
+                            </select>
+                        </div>
+                        <label appearance="fill" class="formulario__label">Cli ID Incorrecto</label>
+                    </div>
+
+                    <br />
+                    <div id="divperRfc" class="col-sm-12">
+                        <input readonly type="text" class="formulario__input" formControlName="catTitular" [control]="getCtr('catTitular')" idbInput />
+                        <label class="formulario__label">{{ 'Categoria del titular' | transloco }}</label>
+                    </div>
+
+                    <br />
+                    <div id="divperRfc" class="col-sm-12">
+                        <input readonly type="text" class="formulario__input" formControlName="bioIncorrecta" [control]="getCtr('bioIncorrecta')" idbInput />
+                        <label class="formulario__label">{{ 'Biometría Persona incorrecta' | transloco }}</label>
+                    </div>
+
+                    <br />
+                    <div id="divperRfc" class="col-sm-12">
+                        <input readonly type="text" class="formulario__input" formControlName="tipoContrato" [control]="getCtr('tipoContrato')" idbInput />
+                        <label class="formulario__label">{{ 'Tipo de Contrato' | transloco }}</label>
+                    </div>
+
+                    <br />
+                    <div id="divperRfc" class="col-sm-12">
+                        <input readonly type="text" class="formulario__input" formControlName="sucursal" [control]="getCtr('sucursal')" idbInput />
+                        <label class="formulario__label">{{ 'Sucursal' | transloco }}</label>
+                    </div>
+
+
+                    <div id="divperRfc" class="row">
+                        <div class="col-10">
+                            <input readonly type="text" class="formulario__input" formControlName="cliIdCorrecto" [control]="getCtr('cliIdCorrecto')" idbInput />
+                            <label class="formulario__label">{{ 'Cli ID Correcto' | transloco }}</label>
+                        </div>
+                        <div class="col-2">
+                            <div class="centrar_btn" style="margin-top: 10px;">
+                                <button class="btn-img buscar-btn  " type="button" (click)="buscaCliente('cliIdCorrecto')">
+                                    <span class="tooltip">Buscar Cliente ID Correcto</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div id="divperRfc" class="col-sm-12">
+                        <input readonly type="text" class="formulario__input" formControlName="bioCorrecta" [control]="getCtr('bioCorrecta')" idbInput />
+                        <label class="formulario__label">{{ 'Biometría Persona Correcta' | transloco }}</label>
+                    </div>
+
+
+                </div>
+
+                <div class="col-6">
+                    <div id="divperRfc" class="col-sm-12">
+
+                        <mat-checkbox id="checkHomo" class="example-margin" labelPosition="before" [checked]="isChecked" (change)="isCheckedHom(); habilitarBotones();" > 
+                            <strong class="lbl_datos">Homologación de datos de la Persona</strong></mat-checkbox>
+                    </div>
+
+                    <div id="divperRfc" class="col-sm-12">
+                        <input readonly type="text" class="formulario__input" idbInput [value]="userlog" />
+                        <label class="formulario__label">{{ 'Usuario' | transloco }}</label>
+                    </div>
+
+
+                    <div id="divperRfc" class="row">
+                        <div class="col-10">
+                            <input type="text" class="formulario__input" formControlName="usuSolicitante" [control]="getCtr('usuSolicitante')" (change)="habilitarBotones()" idbInput />
+                            <label class="formulario__label">{{ 'Usuario Solicitante' | transloco }}</label>
+                        </div>
+                        <div class="col-2">
+                            <div class="centrar_btn" style="margin-top: 10px;">
+                                <button class="btn-img buscar-btn  "  type="button" (click)="buscaCliente('usuSol')">
+                                    <span class="tooltip">Buscar Usuario Solicitante</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="divperRfc" class="row">
+                        <div class="col-10">
+                            <input type="text" class="formulario__input" formControlName="coorSucursal" [control]="getCtr('coorSucursal')" (change)="habilitarBotones()" idbInput />
+                            <label class="formulario__label">{{ 'Coordinador de Sucursal' | transloco }}</label>
+                        </div>
+                        <div class="col-2">
+                            <div class="centrar_btn" style="margin-top: 10px;">
+                                <button class="btn-img buscar-btn  " type="button" (click)="buscaCliente('coorSucursal')">
+                                    <span class="tooltip">Buscar Coordinador</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                    <div id="divcboTipo" class="col-sm-12">
+                        <div class="caja">
+                            <select formControlName="combMotivo" [control]="getCtr('combMotivo')" (change)="cambio()" (change)="habilitarBotones()" idbInput>
+                                <option  value="" selected>-- Seleccionar --</option>
+                                <option *ngFor="let search of dataMotivo" [value]="search">{{search}}</option>
+                            </select>
+                        </div>
+                        <label appearance="fill" class="formulario__label">Motivo de Homologaci&oacute;n</label>
+                    </div>
+
+
+                    <div id="divperRfc" class="col-sm-12">
+                        <mat-label>Otro:</mat-label>
+                        <textarea id="inputOtro" type="text" class="formulario__input" formControlName="otro" [control]="getCtr('otro')" (change)="habilitarBotones()" idbInput ></textarea>
+
+                    </div>
+
+                    <div id="divperRfc" class="col-sm-12">
+                        <mat-label>Observaci&oacute;n:</mat-label>
+                        <textarea type="text" class="formulario__input" formControlName="observacion" [control]="getCtr('observaicion')" (change)="habilitarBotones()" idbInput></textarea>
+                    </div>
+
+
+
+
+                </div>
+                <div class="centrar_btn">
+                            
+                    <button id="save" class="btn-img save-button" type="button" (click)="guardaHomologacion()">
+                        <span class="tooltip">Guardar</span>
+                    </button>
+        
+                    <button id="deshacer" class="btn-img deshacer-button" (click)="limpiarCampos()" type="button" >
+                        <span class="tooltip">Deshacer</span>
+                    </button>
+                </div>
+            </div>
+            <br />
+            </form>
+        </div>
+    </div>
+</main>
