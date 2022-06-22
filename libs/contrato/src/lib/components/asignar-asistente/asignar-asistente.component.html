@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<div class="header"></div>
+<div class="posicion"></div>
+<!--Abre contenido-->
+<main class="">
+    <div class="bdcontent">
+
+        <hr class="red" />
+        <h2>Asigna Asistentes</h2>
+        <hr class="red" />
+        <div class="row">
+            <div class="col-sm-3" style="z-index: 5">
+                <div class="caja">
+                    <select>
+                        <option value="1">Asistente Opera POS</option>
+                        <option value="3">Asistente Opera Mobility</option>
+                    </select>
+                </div>
+                <label appearance="fill" class="formulario__label">Tipo Asistente</label>
+            </div>
+
+            <div class="col-12">
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                    <ng-container matColumnDef="nombre">
+                        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+                        <td mat-cell *matCellDef="let element">{{ element.nombreEjecutivo }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="sucursal">
+                        <th mat-header-cell *matHeaderCellDef>Sucursal</th>
+                        <td mat-cell *matCellDef="let element">{{ element.sucursal }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="estatus">
+                        <th mat-header-cell *matHeaderCellDef>Estatus</th>
+                        <td mat-cell *matCellDef="let element">{{ element.estatus==true?"AC":"SU" }}</td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns"
+                        [ngClass]="{ 'selected': row === selectedRow }" (click)="getRecord(row)"></tr>
+                </table>
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                    aria-label="Select page of periodic elements">
+                </mat-paginator>
+            </div>
+
+            <div class="col-sm-3" style="z-index: 5">
+                <div id="divperRfc" class="row">
+                    <div class="col-10">
+                        <input type="text" class="formulario__input" [(ngModel)]="selectedRow.nombreEjecutivo" />
+                        <label class="formulario__label">Asistentes</label>
+                    </div>
+                    <div class="col-2">
+                        <button [disabled]="!MODO_ALTA" (click)="buscarEmpleado()" class="btn-img buscar-btn mt-3">
+                            <span class="tooltip">Buscar</span>
+                        </button>
+                    </div>
+                </div>
+
+                <acction-buttons-component (onModoConsultaClick)="onModoConsultaClick()"
+                    (onModoAltaClick)="onModoAltaClick()" (onModoEliminarClick)="onModoEliminarClick()"
+                    (onModoGuardarClick)="onModoGuardarClick()" (onModoActualizarClick)="onModoActualizarClick()"
+                    [modelo]="selectedRow">
+                </acction-buttons-component>
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+</main>

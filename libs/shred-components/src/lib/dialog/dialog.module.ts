@@ -12,13 +12,17 @@ import { DialogBuscaEjecutivoComponent } from './dialog-busca-ejecutivo/dialog-b
 import { DialogPickListComponent } from './dialog-pick-list/dialog-pick-list.component';
 import { DialogBuscarClienteComponent } from './dialog-buscar-cliente/buscar-cliente.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-
+import { DialogDealInfoComponent } from './dialog-deal/dialog-deal.component';
+import { BuscarEmpleadoComponet } from './dialog-buscar-empleado/dialog-buscar-empleado.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 @NgModule({
   declarations: [
     DialogBuscaPersonaComponent,
     DialogBuscaEjecutivoComponent,
     DialogPickListComponent,
-    DialogBuscarClienteComponent
+    DialogBuscarClienteComponent,
+    DialogDealInfoComponent,
+    BuscarEmpleadoComponet
   ],
   imports: [
     MatCheckboxModule,
@@ -29,7 +33,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatDialogModule,
     TranslocoModule,
     MatTableModule,
-    MatRadioModule
+    MatRadioModule,
+    MatPaginatorModule
   ],
   exports:[
     DialogBuscaPersonaComponent,
