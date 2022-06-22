@@ -39,7 +39,8 @@ import { SectorEconomicoModule } from './components/sector-economico/sector-econ
 import { SectorEconomicoService } from './services/sector-economico.services';
 import { TiposRelacionComponent } from './components/tipo-relacion/tipo-relacion.component';
 import { AcctionButtonsComponent } from 'libs/shred-components/src/lib/form/acction-buttons/acction-buttons.component';
-
+import { HomologacionClientesComponent } from './components/homologacion-clientes/homologacion-clientes.component';
+import { HomologacionClientes } from './components/homologacion-clientes/homologacion-clientes.module';
 const routes: Routes = [
   {
     path: '',
@@ -150,6 +151,16 @@ const routes: Routes = [
       }
 
     ]
+  },
+  {
+    path: '',
+    children: [
+      {
+        path: 'homologacion-clientes',
+        component: HomologacionClientesComponent
+      }
+
+    ]
   }
 ];
 providers: [
@@ -186,6 +197,7 @@ providers: [
     CierreBancoInversionesModule,
     CierreCasaBolsaModule,
     SectorEconomicoModule,
+    HomologacionClientes
 
 
   ],
