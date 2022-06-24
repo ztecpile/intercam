@@ -15,8 +15,13 @@ export class SimuladorFondosInversionService {
     findFondosPrecioVO(monto: string, tipo_persona, periodo): Observable<Object[]> {
         monto = monto.replace("$", "");
         monto = monto.replace(",", "");
-        const urlStr = 'simulador-fondos/remote/findFondosPrecio?monto=' + monto + '&tipoPersona=' + tipo_persona;
+        //const urlStr = 'simulador-fondos/remote/findFondosPrecio?monto=' + monto + '&tipoPersona=' + tipo_persona;
+        const urlStr="simulador.php";
         return this.http.get<Object[]>(urlStr, {});
 
+    }
+    findFondosRendimientos(){
+        const urlStr="rendimientos.php";
+        return this.http.get<Object[]>(urlStr, {}); 
     }
 }

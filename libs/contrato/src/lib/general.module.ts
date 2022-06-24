@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -41,6 +41,13 @@ import { TiposRelacionComponent } from './components/tipo-relacion/tipo-relacion
 import { AcctionButtonsComponent } from 'libs/shred-components/src/lib/form/acction-buttons/acction-buttons.component';
 import { HomologacionClientesComponent } from './components/homologacion-clientes/homologacion-clientes.component';
 import { HomologacionClientes } from './components/homologacion-clientes/homologacion-clientes.module';
+import { SimuladorFondosInversionComponent } from './components/simulador-fondos-inversion/simulador-fondos-inversion.component';
+import { SimuladorComponent } from './components/simulador-fondos-inversion/simulador/simulador.component';
+import { BusquedaComponent } from './components/simulador-fondos-inversion/busqueda/busqueda.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { NgChartsModule } from 'ng2-charts';
+import { MonitorOperacionesInterbancariasComponent } from './components/monitor-operaciones-interbancarias/monitor-operaciones-interbancarias.component';
+import { AsignarAsistenteComponent } from './components/asignar-asistente/asignar-asistente.component';
 const routes: Routes = [
   {
     path: '',
@@ -162,6 +169,39 @@ const routes: Routes = [
 
     ]
   }
+  ,
+  {
+    path: '',
+    children: [
+      {
+        path: 'simulador-fondos',
+        component: SimuladorFondosInversionComponent
+      }
+
+    ]
+  },
+  {
+    path: '',
+    children: [
+      {
+        path: 'monitor-operacion',
+        component: MonitorOperacionesInterbancariasComponent
+      }
+
+    ]
+  },
+  {
+    path: '',
+    children: [
+      {
+        path: 'asignar-asistente',
+        component: AsignarAsistenteComponent
+      }
+
+    ]
+  }
+
+
 ];
 providers: [
   AdministracionCierreExcepcionService,
@@ -197,10 +237,14 @@ providers: [
     CierreBancoInversionesModule,
     CierreCasaBolsaModule,
     SectorEconomicoModule,
-    HomologacionClientes
+    HomologacionClientes,
+    MatExpansionModule,
+
+    NgChartsModule
 
 
   ],
+  providers: [CurrencyPipe],
   declarations: [
     AdministracionCierreExcepcionComponent,
     FxReferenciasComponent,
@@ -209,6 +253,11 @@ providers: [
     ColoniasComponent,
     AcctionButtonsComponent,
     TiposRelacionComponent,
+    SimuladorFondosInversionComponent,
+    SimuladorComponent,
+    BusquedaComponent,
+    MonitorOperacionesInterbancariasComponent,
+    AsignarAsistenteComponent
        
   ]
 })
