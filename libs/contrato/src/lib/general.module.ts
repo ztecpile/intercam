@@ -41,6 +41,9 @@ import { TiposRelacionComponent } from './components/tipo-relacion/tipo-relacion
 import { AcctionButtonsComponent } from 'libs/shred-components/src/lib/form/acction-buttons/acction-buttons.component';
 import { HomologacionClientesComponent } from './components/homologacion-clientes/homologacion-clientes.component';
 import { HomologacionClientes } from './components/homologacion-clientes/homologacion-clientes.module';
+import { EnvioMasivoFacturasComponent } from './components/envio-masivo-facturas/envio-masivo-facturas.component';
+import { EnvioMasivoFacturasService } from './services/envio-masivo-factura.service';
+import { EnvioMasivoFacturasModule } from './components/envio-masivo-facturas/envio-masivo-facturas.module';
 const routes: Routes = [
   {
     path: '',
@@ -161,6 +164,16 @@ const routes: Routes = [
       }
 
     ]
+  },
+  {
+    path: '',
+    children: [
+      {
+        path: 'envio-masivo-facturas',
+        component: EnvioMasivoFacturasComponent
+      }
+
+    ]
   }
 ];
 providers: [
@@ -173,6 +186,7 @@ providers: [
   CierreBancoInversionesServices,
   CierreCasaBolsaService,
   SectorEconomicoService,
+EnvioMasivoFacturasService
 ]
 @NgModule({
   imports: [
@@ -197,7 +211,8 @@ providers: [
     CierreBancoInversionesModule,
     CierreCasaBolsaModule,
     SectorEconomicoModule,
-    HomologacionClientes
+    HomologacionClientes,
+    EnvioMasivoFacturasModule
 
 
   ],

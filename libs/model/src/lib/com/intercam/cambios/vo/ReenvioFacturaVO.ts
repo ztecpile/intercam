@@ -2,7 +2,7 @@
  * Derechos Reservados de Copia (c) - INTERCAM SERVICIOS FINANCIEROS - 2021.
 */
 
-export interface ReenvioFacturaVO {
+export class ReenvioFacturaVO {
 
     // ***************************************************** //
     //                 P R O P I E D A D E S                 //
