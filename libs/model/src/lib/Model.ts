@@ -5,6 +5,7 @@ export * from './com/intercam/seguridad/vo/InfoFechaHabilVO';
 
 // BAnco
 export * from './com/intercam/banco/vo/TipoInversionVO';
+export * from './com/intercam/utils/ABCParametrosVO';
 /*
 export * from './com/intercam/banco/vo/InversionVO';
 
