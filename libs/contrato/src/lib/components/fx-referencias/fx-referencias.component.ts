@@ -191,7 +191,7 @@ export class FxReferenciasComponent implements OnInit {
 
     createFunForm() {
         this.funcForm = new FormGroup({
-            mail: new FormControl()
+            mail: new FormControl('',[Validators.email])
         });
     }
     mostrarMensaje(mensaje: string, tipoMensaje: any) {

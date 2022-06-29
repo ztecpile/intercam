@@ -23,7 +23,7 @@ export class BusquedaComponent {
     coberturaDataSource: MatTableDataSource<Object>;
     variableDataSource: MatTableDataSource<Object>;
     fondoDataSource: Object[] = [];// MatTableDataSource<Object>=new MatTableDataSource([]) ;
-    monto: string = "$0";
+    monto: string = "$1000.00";
     tipo_persona: number = 5;
     periodo: number = 1;
     selectedRow: Object;
@@ -54,7 +54,7 @@ export class BusquedaComponent {
 
     transformAmount(element) {
         this.monto = this.currencyPipe.transform(this.monto, '$');
-        element.target.porcentaje = this.monto;
+        element.target.value = this.monto;
     }
 
     getRecord(row) {
@@ -76,8 +76,8 @@ export class BusquedaComponent {
     hasChenges() {
         this.total = 0;
         this.fondoDataSource.map(item => {
-            if (item.hasOwnProperty("porcentaje"))
-                this.total += Number(item["porcentaje"]);
+            if (item.hasOwnProperty("value"))
+                this.total += Number(item["value"]);
         });
     }
 

@@ -147,18 +147,18 @@ export class BancosComponent implements OnInit {
 
         // this.funcForm = this.formbuilder.group({
         this.funcForm = new FormGroup({
-            nombre: new FormControl('', [Validators.required]),
-            claveBanxico: new FormControl('', [Validators.required]),
-            claveSica: new FormControl(''),
-            claveSabi: new FormControl(''),
-            claveSiif: new FormControl(''),
+            nombre: new FormControl('', [Validators.required,Validators.maxLength(50), Validators.pattern(/^[a-z0-9\s]*$/i)]),
+            claveBanxico: new FormControl('', [Validators.required,Validators.maxLength(8), Validators.pattern(/^[a-z0-9\s]*$/i)]),
+            claveSica: new FormControl('',[Validators.maxLength(20), Validators.pattern(/^[a-z\s]*$/i)]),
+            claveSabi: new FormControl('',[Validators.maxLength(20), Validators.pattern(/^[a-z\s]*$/i)]),
+            claveSiif: new FormControl('',[Validators.maxLength(20), Validators.pattern(/^[a-z\s]*$/i)]),
             optActivo: new FormControl(''),
             optInactivo: new FormControl(''),
             checkOpInter: new FormControl(''),
             checkOpSpeua: new FormControl(''),
             checkOpTefbv: new FormControl(''),
             combPais: new FormControl(''),
-            nombreCorto: new FormControl('')
+            nombreCorto: new FormControl('',[Validators.maxLength(10), Validators.pattern(/^[a-z\s]*$/i)])
 
         });
     }

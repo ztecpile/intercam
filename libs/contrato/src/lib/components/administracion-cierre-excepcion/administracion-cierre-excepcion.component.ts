@@ -30,6 +30,8 @@ export class AdministracionCierreExcepcionComponent implements OnInit {
   clave: string;
   idCce: number;
   cceCierreexcep: string;
+  mensajeError: string;
+  submitted: boolean = false;
   constructor(private ACEService: AdministracionCierreExcepcionService, private formBuilder: FormBuilder) {
     this.perId = Number(sessionStorage.getItem('perId'));
 
@@ -39,11 +41,12 @@ export class AdministracionCierreExcepcionComponent implements OnInit {
 
   }
   onSubmit() {
+    this.submitted = true;
     console.log("Guardando...");
+    console.log(this.funcForm.value);
   }
   filtrar(e: any) {
     console.log(e);
-
     return this.dataSource.filter = this.funcForm.get("busqueda").value.trim().toLowerCase();
   }
 
@@ -55,6 +58,7 @@ export class AdministracionCierreExcepcionComponent implements OnInit {
     document.getElementById('tabla').removeAttribute('selected');
     this.atributosElemento();
     this.deshabilitarCampos();
+    this.submitted = false;
   }
   getCtr(name: string, group = ''): FormControl {
     if (group === '') return this.funcForm.get(name) as FormControl
@@ -65,7 +69,7 @@ export class AdministracionCierreExcepcionComponent implements OnInit {
     document.getElementById('deshacer').removeAttribute('disabled');
     document.getElementById('deshacer').setAttribute('class', 'deshacer-button btn-img');
     document.getElementById('save').setAttribute('class', 'save-button btn-img');
-
+    this.submitted = true;
   }
   selected(element: any) {
     console.log(element);
@@ -194,11 +198,11 @@ export class AdministracionCierreExcepcionComponent implements OnInit {
   }
   createFunForm() {
     this.funcForm = new FormGroup({
-      perNom: new FormControl('', [Validators.required]),
-      optSi: new FormControl(false, [Validators.required]),
-      optNo: new FormControl(false, [Validators.required]),
-      claveOperador: new FormControl('', [Validators.required]),
-      busqueda: new FormControl('', [Validators.required])
+      perNom: new FormControl('', [Validators.maxLength(50), Validators.pattern(/^[a-z\s]*$/i)]),
+      optSi: new FormControl(false),
+      optNo: new FormControl(false),
+      claveOperador: new FormControl(''),
+      busqueda: new FormControl('')
     });
   }
 

@@ -122,9 +122,9 @@ export class EnvioMasivoFacturasComponent implements OnInit {
         return retorno;
     }
 
-    constructor(private servEnvio: EnvioMasivoFacturasService, private dialog: MatDialog) { sessionStorage.setItem("cliente", ''); }
+    constructor(private servEnvio: EnvioMasivoFacturasService, private dialog: MatDialog) {  }
     ngOnInit(): void {
-
+        sessionStorage.setItem("cliente", '');
         if (this.cliente == '') {
             this.buscaCliente();
         }

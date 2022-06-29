@@ -13,7 +13,7 @@
             <table mat-table id="tabla" [dataSource]="dataSource" class="mat-elevation-z8">
                 <ng-container matColumnDef="banid">
                     <th hidden mat-header-cell *matHeaderCellDef>banid</th>
-                    <td hidden mat-cell *matCellDef="let element" >{{ element.banId }}
+                    <td hidden mat-cell *matCellDef="let element">{{ element.banId }}
                     </td>
                 </ng-container>
 
@@ -25,44 +25,44 @@
 
                 <ng-container matColumnDef="estatus">
                     <th mat-header-cell *matHeaderCellDef>Estatus</th>
-                    <td mat-cell *matCellDef="let element" >{{ element.banEstatus }}
+                    <td mat-cell *matCellDef="let element">{{ element.banEstatus }}
                     </td>
                 </ng-container>
 
                 <ng-container matColumnDef="claveBanxico">
                     <th hidden mat-header-cell *matHeaderCellDef>clave Banxico</th>
-                    <td hidden mat-cell *matCellDef="let element" >{{
+                    <td hidden mat-cell *matCellDef="let element">{{
                         element.banClaveBanxico }}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="claveSica">
                     <th hidden mat-header-cell *matHeaderCellDef>clave SICA</th>
-                    <td hidden mat-cell *matCellDef="let element" >{{
+                    <td hidden mat-cell *matCellDef="let element">{{
                         element.banIdSica }}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="claveSabi">
                     <th hidden mat-header-cell *matHeaderCellDef>clave SABi</th>
-                    <td hidden mat-cell *matCellDef="let element" >
+                    <td hidden mat-cell *matCellDef="let element">
                         {{element.banIdFondos }}
                     </td>
                 </ng-container>
 
                 <ng-container matColumnDef="claveSiif">
                     <th hidden mat-header-cell *matHeaderCellDef>clave SIIF</th>
-                    <td hidden mat-cell *matCellDef="let element" >
+                    <td hidden mat-cell *matCellDef="let element">
                         {{element.banIdCasaBolsa }}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="claveOperaIntercam">
                     <th hidden mat-header-cell *matHeaderCellDef>clave opera intercam</th>
-                    <td hidden mat-cell *matCellDef="let element" >{{
+                    <td hidden mat-cell *matCellDef="let element">{{
                         element.banOperaIntercam }}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="claveOperaTefbv">
                     <th hidden mat-header-cell *matHeaderCellDef>clave opera tefbv</th>
-                    <td hidden mat-cell *matCellDef="let element" >{{
+                    <td hidden mat-cell *matCellDef="let element">{{
                         element.banOperaTefbv }}</td>
                 </ng-container>
 
@@ -74,19 +74,19 @@
 
                 <ng-container matColumnDef="pais">
                     <th hidden mat-header-cell *matHeaderCellDef>pais</th>
-                    <td hidden mat-cell *matCellDef="let element" >{{ element.paiClave
+                    <td hidden mat-cell *matCellDef="let element">{{ element.paiClave
                         }}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="nombreCorto">
                     <th hidden mat-header-cell *matHeaderCellDef>pais</th>
-                    <td hidden mat-cell *matCellDef="let element" >{{
+                    <td hidden mat-cell *matCellDef="let element">{{
                         element.banDescCorta }}</td>
                 </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns" [ngClass]="{ 'selected': row === selectedRowPintar }"
-                (click)="selectedRow(row)"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns"
+                    [ngClass]="{ 'selected': row === selectedRowPintar }" (click)="selectedRow(row)"></tr>
             </table>
             <div id="paginadorDiv" class="row">
                 <mat-paginator [pageSizeOptions]="[15]" hidden showFirstLastButtons></mat-paginator>
@@ -97,80 +97,80 @@
             <form [formGroup]="funcForm" class="formulario" (ngSubmit)="onSubmit()" autocomplete="off" idbForm>
                 <div class="row">
                     <div id="divNombre" class="col-sm-8">
-                        <input  type="textarea" class="formulario__input" [control]="getCtr('nombre')"
-                            formControlName="nombre"  (change)="cambio()" idbInput >
-                        <label class="formulario__label">{{ 'Nombre' | transloco}}</label>
+                        <input type="textarea" class="formulario__input" [control]="getCtr('nombre')"
+                            formControlName="nombre" (change)="cambio()" idbInput>
+                        <label class="formulario__label">{{ 'Nombre *' | transloco}}</label>
                     </div>
                     <div id="divClaveBanxico" class="col-sm-8">
-                        <input  type="text"  class="formulario__input"
-                            [control]="getCtr('claveBanxico')"  formControlName="claveBanxico" (change)="cambio()" idbInput>
-                        <label class="formulario__label" >{{ 'Clave BANXICO' | transloco }}</label>
+                        <input type="text" class="formulario__input" [control]="getCtr('claveBanxico')"
+                            formControlName="claveBanxico" (change)="cambio()" idbInput>
+                        <label class="formulario__label">{{ 'Clave BANXICO *' | transloco }}</label>
                     </div>
 
                     <div id="divClaveSica" class="col-sm-8">
-                        <input type="text"   class="formulario__input" [control]="getCtr('claveSica')"
+                        <input type="text" class="formulario__input" [control]="getCtr('claveSica')"
                             formControlName="claveSica" (change)="cambio()" idbInput>
-                        <label class="formulario__label" >{{ 'Clave SICA' | transloco }}</label>
+                        <label class="formulario__label">{{ 'Clave SICA' | transloco }}</label>
                     </div>
 
                     <div id="divClaveSabi" class="col-sm-8">
-                        <input type="text"  class="formulario__input" [control]="getCtr('claveSabi')"
+                        <input type="text" class="formulario__input" [control]="getCtr('claveSabi')"
                             formControlName="claveSabi" (change)="cambio()" idbInput>
-                        <label class="formulario__label" >{{ 'Clave SABI' | transloco }}</label>
+                        <label class="formulario__label">{{ 'Clave SABI' | transloco }}</label>
                     </div>
 
                     <div id="divClaveSiif" class="col-sm-8">
-                        <input type="text"   class="formulario__input" [control]="getCtr('claveSiif')"
+                        <input type="text" class="formulario__input" [control]="getCtr('claveSiif')"
                             formControlName="claveSiif" (change)="cambio()" idbInput>
-                        <label class="formulario__label" >{{ 'Clave SIIF' | transloco }}</label>
+                        <label class="formulario__label">{{ 'Clave SIIF' | transloco }}</label>
                     </div>
                 </div>
                 <br>
-                <br>
-               
-                <div class="row">
-                  <label appearance="fill" class="formulario__label" title="estatus">Estatus</label>
-                    <div id="divOptActivo" class="col-sm-8">
-                        
-                        <input class="radio"  type="radio" [control]="getCtr('optActivo')"
-                            (click)="changeRadioActivo($event)" [checked]="checkActivo" formControlName="optActivo"
-                            idbInput>
-                        <label class="lbl_datos" >{{'Activo'|transloco}}</label>
-                    </div>
-                    <div id="divOptInactivo" class="col-sm-8">
-                        <input class="radio" type="radio"[control]="getCtr('optInactivo')"
-                            (click)="changeRadioInactivo($event)" [checked]="checkInactivo"
-                            formControlName="optInactivo" idbInput>
-                        <label class="lbl_datos" >{{'Inactivo'|transloco}}</label>
-                    </div>
+
+                <div class="row" id="divOpt" class="col-sm-8">
+                    <label appearance="fill" class="formulario_check_label" title="estatus">Estatus</label>
+                    &nbsp;
+                    <input class="radio" type="radio" [control]="getCtr('optActivo')"
+                        (click)="changeRadioActivo($event)" [checked]="checkActivo" formControlName="optActivo"
+                        idbInput>&nbsp;
+                    <label class="lbl_datos">{{'Activo'|transloco}}</label>
+                    &nbsp;
+                    <input class="radio" type="radio" [control]="getCtr('optInactivo')"
+                        (click)="changeRadioInactivo($event)" [checked]="checkInactivo" formControlName="optInactivo"
+                        idbInput>&nbsp;
+                    <label class="lbl_datos">{{'Inactivo'|transloco}}</label>
+
                 </div>
-                <div class="row">
-                    <div id="divCheckOpInter" class="form-check">
-                        <input class="form-check-input" type="checkbox"  formControlName="checkOpInter"
-                            [control]="getCtr('checkOpInter')" (click)="changeCheckInter($event)" [checked]="checkOpInt" idbInput>
-                        <label class="formulario_check_label">
-                            {{'Opera Intercam' | transloco}}
-                        </label>
-                    </div>
-                    <div id="divCheckOpSpeua" class="form-check">
-                        <input class="form-check-input" type="checkbox" formControlName="checkOpSpeua"
-                            [control]="getCtr('checkOpSpeua')" (click)="changeCheckSpeia($event)" [checked]="checkOpSpe" idbInput>
-                        <label class="formulario_check_label">
-                            {{'Opera Speua' | transloco}}
-                        </label>
-                    </div>
-                    <div id="divCheckOpTefbv" class="form-check">
-                        <input class="form-check-input" type="checkbox" formControlName="checkOpTefbv"
-                            [control]="getCtr('checkOpTefbv')" (click)="changeCheckFbv($event)" [checked]="checkOpTef" idbInput>
-                        <label class="formulario_check_label" >
-                            {{'Opera tefbv' | transloco}}
-                        </label>
-                    </div>
+                <br>
+                <div class="row" id="divCheckOp" class="col-sm-8">
+                    <label class="formulario_check_label">
+                        {{'Opera Intercam' | transloco}}
+                    </label>&nbsp;
+                    <input class="form-check-input" type="checkbox" formControlName="checkOpInter"
+                        [control]="getCtr('checkOpInter')" (click)="changeCheckInter($event)" [checked]="checkOpInt"
+                        idbInput>&nbsp;
+
+                    <label class="formulario_check_label">
+                        {{'Opera Speua' | transloco}}
+                    </label>&nbsp;
+                    <input class="form-check-input" type="checkbox" formControlName="checkOpSpeua"
+                        [control]="getCtr('checkOpSpeua')" (click)="changeCheckSpeia($event)" [checked]="checkOpSpe"
+                        idbInput>&nbsp;
+
+                    <label class="formulario_check_label">
+                        {{'Opera tefbv' | transloco}}
+                    </label>&nbsp;
+                    <input class="form-check-input" type="checkbox" formControlName="checkOpTefbv"
+                        [control]="getCtr('checkOpTefbv')" (click)="changeCheckFbv($event)" [checked]="checkOpTef"
+                        idbInput>
+
+
                 </div>
                 <div class="row">
                     <div id="divComPais" class="col-sm-8">
                         <div class="caja">
-                            <select formControlName="combPais" [control]="getCtr('combPais')" (change)="cambio()" idbInput>
+                            <select formControlName="combPais" [control]="getCtr('combPais')" (change)="cambio()"
+                                idbInput>
                                 <option *ngFor="let search of datapaises" [value]="search.paiClave">
                                     {{search.paiDescripcion}}</option>
                             </select>
@@ -180,16 +180,16 @@
                     <div id="divNombreCorto" class="col-sm-8">
                         <input type="text" class="formulario__input" [control]="getCtr('nombreCorto')"
                             formControlName="nombreCorto" (change)="cambio()" idbInput>
-                        <label class="formulario__label" >{{ 'Nombre corto' | transloco }}</label>
+                        <label class="formulario__label">{{ 'Nombre corto' | transloco }}</label>
                     </div>
                 </div>
             </form>
         </div>
         <div class="centrar_btn">
-            <button class="btn-img buscar-btn" id="buscar" type="button" (click)="consulta()" >
+            <button class="btn-img buscar-btn" id="buscar" type="button" (click)="consulta()">
                 <span class="tooltip">Buscar</span>
             </button>
-            <button id="add" class="btn-img alta-button" type="button" (click)="changeAltaButton()" >
+            <button id="add" class="btn-img alta-button" type="button" (click)="changeAltaButton()">
                 <span class="tooltip">Alta</span>
             </button>
 
@@ -197,11 +197,11 @@
                 <span class="tooltip">Guardar</span>
             </button>
 
-            <button id="delete" class="btn-img eliminar-btn" type="button" (click)="eliminar($event)" >
+            <button id="delete" class="btn-img eliminar-btn" type="button" (click)="eliminar($event)">
                 <span class="tooltip">Eliminar</span>
             </button>
 
-            <button id="deshacer" class="btn-img deshacer-button" (click)="limpiarCampos()" type="button" >
+            <button id="deshacer" class="btn-img deshacer-button" (click)="limpiarCampos()" type="button">
                 <span class="tooltip">Deshacer</span>
             </button>
         </div>

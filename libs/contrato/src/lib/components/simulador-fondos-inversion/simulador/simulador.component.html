@@ -1,36 +1,24 @@
 <div class="row">
   <div class="col-sm-4">
     <strong>
-      <h6>Importe Inicial : {{saldoInicial}}</h6>
+      <h6>Importe Inicial :</h6>
     </strong>
     <strong>
-      <h6>Importe Final : {{saldoFinal}}</h6>
+      <h6>Importe Final :</h6>
     </strong>
     <h6>Plus-minusvalia acumulada : </h6>
     <strong>
-      <h6>{{plusMinAcu}}</h6>
+      <h6>$0.00</h6>
     </strong>
-    <p>Tasa acomulada del periodo : </p>
-    <strong>
-      <h6>{{tasaAcom}}</h6>
-    </strong>
-    <p>Plus-minusvalia promdio mensual : </p>
-    <strong>
-      <h6>{{plusMinMen}}</h6>
-    </strong>
-    <p>Remdimiento promedio anual : </p>
-    <strong>
-      <h6>{{rendiAnual}}</h6>
-    </strong>
-    <p>Promedio simulado del : </p>
-    <strong>
-      <h6>{{fechasSimuladas}}</h6>
-    </strong>
+    <p>Tasa acomulada del periodo</p>
+    <p>Plus-minusvalia promdio mensual</p>
+    <p>Remdimiento promedio anual</p>
+    <p>Promedio simulado del</p>
     <div class="centrar_btn" style="margin-top: 10px">
       <button class="btn-img recibe-doc-button">
         <span class="tooltip">Buscar</span>
       </button>
-
+      
       <button class="btn-img imprimir-button">
         <span class="tooltip">Buscar</span>
       </button>
@@ -62,17 +50,14 @@
       </div>
       <div class="col-sm-6">
         <p>CP:Corto Plazo, MP:Mediano Plazno, LP:Largo Pl</p>
-        <canvas style="max-height:300px ;" baseChart [data]="pieChartData" [type]="pieChartType"
-          [options]="pieChartOptions" [plugins]="pieChartPlugins">
-        </canvas>
+        <canvas baseChart
+              [data]="pieChartData"
+              [type]="pieChartType"
+              [options]="pieChartOptions"
+              [plugins]="pieChartPlugins">
+      </canvas>
 
       </div>
-
-
     </div>
-  </div>
-  <div class="col-sm-12">
-    <canvas style="max-height: 300px;" baseChart width="400" height="400" [data]="lineChartData"
-      [options]="lineChartOptions" [type]="lineChartType"></canvas>
   </div>
 </div>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<hr class="red" />
+<h2>FX Bit&aacute;cora de Precios</h2>
+<hr class="red" />
+<div class="container">
+    <form class="formulario" [formGroup]="funcForm" idbForm>
+        <div class="row">
+            <div id="divcboMesa" class="col-sm-2">
+                <div class="caja">
+                    <select id="cboMesa" formControlName="cboMesa" [control]="getCtr('cboMesa')" (change)="obtenerBitacora()" idbInput>
+                        <option [selected]="mesaselect" *ngFor="let tipo of dataCatMesas "
+                            [value]="tipo.cveMesa">{{tipo.cveMesa}}</option>
+                    </select>
+                </div>
+                <label appearance="fill" class="formulario__label">Mesa</label>
+            </div>
+
+            <div id="divcboDivisa" class="col-sm-2">
+                <div class="caja">
+                    <select id="cboDivisa" formControlName="cboDivisa" [control]="getCtr('cboDivisa')"  (change)="obtenerBitacora()" idbInput>
+                        <option *ngFor="let tipo of dataDivisas " [value]="tipo.divId">{{tipo.divId}}</option>
+                    </select>
+                </div>
+                <label appearance="fill" class="formulario__label">Divisa</label>
+            </div>
+            <div class="col-sm-4">
+                <idb-calendario id="fecha" etiqueta="Fecha" lenguaje="es" max="0-0-0" [control]="getCtr('fecha')"
+                    [fecha]="fechaActual" (fechaSeleccionada)="obtenerBitacora()" idbInput></idb-calendario>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" class="formulario__input" maxlength="30" formControlName="hora"
+                    [control]="getCtr('hora')" idbInput (keyup.enter)="obtenerBitacora()"/>
+                <label class="formulario__label">{{
+                    'Hora' | transloco
+                    }}</label>
+            </div>
+            <div class="col-sm-2">
+                <button class="btn-img  regresar-btn" type="button" (click)="regAnt()"><span class="tooltip">Registro
+                        Anterior</span>
+                </button>
+                <button class="btn-img  continuar-btn" type="button" (click)="regSig()"><span class="tooltip">Registro
+                        Siguiente</span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+<h6>Bit&aacute;cora Tipos</h6>
+<div class="mat-elevation-z8">
+    <table style="text-align: center;" mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="instrumento">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;">Instrumento</th>
+            <td mat-cell *matCellDef="let element ">{{element.instrumento}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="compra">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;">Compra<br>HOY</th>
+            <td mat-cell *matCellDef="let element ">{{element.compra}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="venta">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;">Venta<br>HOY</th>
+            <td mat-cell *matCellDef="let element ">{{element.venta}}</td>
+        </ng-container>
+        <ng-container matColumnDef="compra2">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;">Compra<br>24 HRS</th>
+            <td mat-cell *matCellDef="let element ">{{element.compra1}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="venta2">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;">Venta<br>24 HRS</th>
+            <td mat-cell *matCellDef="let element ">{{element.venta1}}</td>
+        </ng-container>
+        <ng-container matColumnDef="compra3">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;">Compra<br>48 HRS</th>
+            <td mat-cell *matCellDef="let element ">{{element.compra2}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="venta3">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;">Venta<br>48 HRS</th>
+            <td mat-cell *matCellDef="let element ">{{element.venta2}}</td>
+        </ng-container>
+        <ng-container matColumnDef="compra4">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;">Compra<br>72 HRS</th>
+            <td mat-cell *matCellDef="let element ">{{element.compra3}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="venta4">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;">Venta<br>72 HRS</th>
+            <td mat-cell *matCellDef="let element ">{{element.venta3}}</td>
+        </ng-container>
+        <ng-container matColumnDef="compra5">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;">Compra<br>96 HRS</th>
+            <td mat-cell *matCellDef="let element ">{{element.compra4}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="venta5">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;">Venta<br>96 HRS</th>
+            <td mat-cell *matCellDef="let element ">{{element.venta4}}</td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns "></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns; "></tr>
+
+    </table>
+    <div id="paginadorDiv" class="row" hidden>
+        <mat-paginator [pageSizeOptions]="[5,10,20,30,50,100]" showFirstLastButtons></mat-paginator>
+
+    </div>
+</div>

@@ -19,8 +19,4 @@ export class SimuladorFondosInversionService {
         return this.http.get<Object[]>(urlStr, {});
 
     }
-    findFondosRendimientos(params:Object){
-        const urlStr="simulador-fondos/remote/findRendimientos";
-        return this.http.post<Object[]>(urlStr, params); 
-    }
 }
