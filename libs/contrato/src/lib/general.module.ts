@@ -31,7 +31,7 @@ import { CierreBancoInversiones } from './components/cierre-banco-inversiones/ci
 import { CierreCasaBolsaComponent } from './components/cierre-casa-bolsa/cierre-casa-bolsa.component';
 import { CierreBancoInversionesServices } from './services/cierre-banco-inversiones.services';
 import { CierreCasaBolsaService } from './services/cierre-casa-bolsa.service';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
 import { ModelModule } from '@intercam/model';
 import { CierreCasaBolsaModule } from './components/cierre-casa-bolsa/cierre-casa-bolsa.module';
 import { SectorEconomicoComponent } from './components/sector-economico/sector-economico.component';
@@ -44,10 +44,13 @@ import { HomologacionClientes } from './components/homologacion-clientes/homolog
 import { SimuladorFondosInversionComponent } from './components/simulador-fondos-inversion/simulador-fondos-inversion.component';
 import { SimuladorComponent } from './components/simulador-fondos-inversion/simulador/simulador.component';
 import { BusquedaComponent } from './components/simulador-fondos-inversion/busqueda/busqueda.component';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { NgChartsModule } from 'ng2-charts';
 import { MonitorOperacionesInterbancariasComponent } from './components/monitor-operaciones-interbancarias/monitor-operaciones-interbancarias.component';
 import { AsignarAsistenteComponent } from './components/asignar-asistente/asignar-asistente.component';
+import { ABCParametrosComponent } from './components/parametros-abc/abc-parametros.component';
+import { ConfiguracionLimitesHorariosComponent } from './components/configuracion-limites-horarios/configuracion-limites-horarios.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -199,6 +202,16 @@ const routes: Routes = [
       }
 
     ]
+  },
+  {
+    path: '',
+    children: [
+      {
+        path: 'abc-parametros',
+        component: ABCParametrosComponent
+      }
+
+    ]
   }
 
 
@@ -257,8 +270,10 @@ providers: [
     SimuladorComponent,
     BusquedaComponent,
     MonitorOperacionesInterbancariasComponent,
-    AsignarAsistenteComponent
-       
+    AsignarAsistenteComponent,
+    ABCParametrosComponent,
+    ConfiguracionLimitesHorariosComponent,
+
   ]
 })
 export class GeneralModule {
