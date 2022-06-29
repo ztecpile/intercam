@@ -48,7 +48,7 @@ export class SimuladorComponent {
     public pieChartType: ChartType = 'pie';
     public pieChartPlugins = [DatalabelsPlugin];
 
-    onCalcularClick(labels: string[], data: number[]) {
+    onCalcularClick(labels: string[], data: number[],params:Object) {
 
         const options2 = { style: 'currency', currency: 'USD' };
         const numberFormat = new Intl.NumberFormat('en-US', options2);
@@ -62,11 +62,11 @@ export class SimuladorComponent {
 
         this.pieChartData.labels = labels;
         this.pieChartData.datasets[0].data = data;
-        this._simuladorFondosInversionService.findFondosRendimientos().subscribe(then => {
+        this._simuladorFondosInversionService.findFondosRendimientos(params).subscribe(then => {
             this.lineChartData.labels = (then.map(item => { return item["precioFondoFechaStr"] }));
             this.lineChartData.datasets[0].data = (then.map(item => { return item["tasaRendimiento"] }));
-            this.lineChart?.update();
-            console.log(then[then.length - 1]);
+            this.lineChart.update();
+            console.log(this.chart.data);
             this.saldoInicial=(then[0]["tasaRendimiento"]);
             this.saldoFinal =numberFormat.format(then[then.length - 1]["tasaRendimiento"]);
             this.plusMinAcu=numberFormat.format(Number(then[then.length - 1]["tasaRendimiento"])-Number(then[0]["tasaRendimiento"]));
