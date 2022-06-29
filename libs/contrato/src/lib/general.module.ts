@@ -51,6 +51,9 @@ import { AsignarAsistenteComponent } from './components/asignar-asistente/asigna
 import { ABCParametrosComponent } from './components/parametros-abc/abc-parametros.component';
 import { ConfiguracionLimitesHorariosComponent } from './components/configuracion-limites-horarios/configuracion-limites-horarios.component';
 
+import { EnvioMasivoFacturasComponent } from './components/envio-masivo-facturas/envio-masivo-facturas.component';
+import { EnvioMasivoFacturasService } from './services/envio-masivo-factura.service';
+import { EnvioMasivoFacturasModule } from './components/envio-masivo-facturas/envio-masivo-facturas.module';
 const routes: Routes = [
   {
     path: '',
@@ -171,6 +174,16 @@ const routes: Routes = [
       }
 
     ]
+  },
+  {
+    path: '',
+    children: [
+      {
+        path: 'envio-masivo-facturas',
+        component: EnvioMasivoFacturasComponent
+      }
+
+    ]
   }
   ,
   {
@@ -226,6 +239,7 @@ providers: [
   CierreBancoInversionesServices,
   CierreCasaBolsaService,
   SectorEconomicoService,
+EnvioMasivoFacturasService
 ]
 @NgModule({
   imports: [
@@ -252,8 +266,8 @@ providers: [
     SectorEconomicoModule,
     HomologacionClientes,
     MatExpansionModule,
-
-    NgChartsModule
+    NgChartsModule,
+    EnvioMasivoFacturasModule
 
 
   ],

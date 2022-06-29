@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<div class="header"></div>
+<div class="posicion"></div>
+<!--Abre contenido-->
+<main class="">
+  <div class="bdcontent">
+    <hr class="red" />
+    <h2>Envio masivo de Facturas</h2>
+    <hr class="red" />
+
+    <div class="container">
+      <form class="formulario" [formGroup]="funcForm" autocomplete="off" idbForm>
+        <div class="row">
+          <div id="divperRfc" class="col-sm-12">
+            <input readonly type="text" class="formulario__input" formControlName="cliente" [control]="getCtr('cliente')"
+              idbInput />
+            <label class="formulario__label">{{ 'Cliente' | transloco }}</label>
+          </div>
+          <div class="col-sm-12">
+            <mat-radio-group aria-label="Select an option">
+              <mat-radio-button class="ml-5" [checked]="isCheckedDeal" (change)="isRadioChange('deal');" value="1">Deal</mat-radio-button>
+              <mat-radio-button class="ml-5" [checked]="isCheckedIngre" (change)="isRadioChange('ingre');" value="2">Ingresos</mat-radio-button>
+            </mat-radio-group>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-4">
+              <idb-calendario etiqueta="Fecha Inicial" lenguaje="es" max="0-0-0" formControlName="fechaInicial"
+                [control]="getCtr('fechaInicial')" (fechaSeleccionada)="comparacionFechas($event)" idbInput></idb-calendario>
+            </div>
+
+            <div class="col-sm-4">
+              <idb-calendario etiqueta="Fecha Final" lenguaje="es" max="0-0-0" formControlName="fechaFinal"
+                [control]="getCtr('fechaFinal')" (fechaSeleccionada)="comparacionFechas($event)" idbInput></idb-calendario>
+
+            </div>
+            <div class="col-sm-4">
+              <label hidden id="mensaje" class="textRojo">{{mensaje}}</label>
+            </div>
+          </div>
+
+          <div id="divperRfc" class="row">
+            <div class="col-10">
+              <input type="text" class="formulario__input placeholder" pattern="^[0-9,]*$" formControlName="dealIngreso"
+                placeholder="Podr&aacute; ingresar hasta 20 valores separados por comas (,)"
+                [control]="getCtr('dealIngreso')" idbInput />
+              <label class="formulario__label">{{
+                'Deal / Ingreso' | transloco
+                }}</label>
+            </div>
+            <div class="col-2">
+              <div class="centrar_btn" style="margin-top: 10px">
+                <button id="buscar" class="btn-img buscar-btn" type="button" (click)="obtenerOperacionIngreso()">
+                  <span class="tooltip">Buscar Deal/Ingreso</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="row">
+        <div class="mat-elevation-z8 col-sm-7 mr-5 ml-5">
+          <table mat-table [dataSource]="dataSourceFactura" class="mat-elevation-z8">
+            <ng-container matColumnDef="check">
+              <th mat-header-cell *matHeaderCellDef>
+                <mat-checkbox (change)="$event ? masterToggle(1) : null"
+                [checked]="selection.hasValue() && isAllSelected(1)"
+                [indeterminate]="selection.hasValue() && !isAllSelected(1)"
+                [aria-label]="checkboxLabel(null,1,null)"> </mat-checkbox>
+              </th>
+              <td mat-cell *matCellDef="let row" >
+                <mat-checkbox (click)="$event.stopPropagation()"
+                (change)="$event ? selection.toggle(row) : null"
+                [checked]="selection.isSelected(row)"
+                [aria-label]="checkboxLabel(row,1,null)"> </mat-checkbox>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="OIngreso">
+              <th mat-header-cell *matHeaderCellDef>Operaci&oacute;n/Ingreso</th>
+              <td mat-cell *matCellDef="let element">{{ element.opIngre }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="Monto">
+              <th mat-header-cell *matHeaderCellDef>Monto</th>
+              <td mat-cell *matCellDef="let element">{{ element.monto }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="Divisa">
+              <th mat-header-cell *matHeaderCellDef>Divisa</th>
+              <td mat-cell *matCellDef="let element">{{ element.divisa }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="Instrumento">
+              <th mat-header-cell *matHeaderCellDef>Instrumento</th>
+              <td mat-cell *matCellDef="let element">{{ element.instrumento }}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </div>
+        <div class="col-sm-1"></div>
+        <div class="mat-elevation-z8 col-sm-4 mr-5 ml-5">
+          <table mat-table [dataSource]="dataSourceEmai" class="mat-elevation-z8">
+            <ng-container matColumnDef="checkSeleccionado">
+              <th mat-header-cell *matHeaderCellDef>
+                <mat-checkbox (change)="$event ? masterToggle(2) : null"
+                [checked]="selection2.hasValue() && isAllSelected(2)"
+                [indeterminate]="selection2.hasValue() && !isAllSelected(2)"
+                [aria-label]="checkboxLabel(null,2,null)"> </mat-checkbox>
+              </th>
+              <td mat-cell *matCellDef="let row2">
+                <mat-checkbox (click)="$event.stopPropagation()"
+                (change)="$event ? selection2.toggle(row2) : null"
+                [checked]="selection2.isSelected(row2)"
+                [aria-label]="checkboxLabel(null,2,row2)"> </mat-checkbox>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="correo">
+              <th mat-header-cell *matHeaderCellDef>Cuenta de Correo</th>
+              <td mat-cell *matCellDef="let element">{{ element.cemEmail }}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-10 derecha_btn">
+      <button id="notificar" class="btn-img notifica-button" type="button" matTooltipPosition="center" (click)="enviarFacturas()">
+        <span class="tooltip">Enviar</span>
+      </button>
+
+
+    </div>
+    <hr class="red" />
+  </div>
+</main>
