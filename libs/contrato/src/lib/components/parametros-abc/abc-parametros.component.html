@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<div class="header"></div>
+<div class="posicion"></div>
+<!--Abre contenido-->
+     <div class="container">
+        <hr class="red" />
+        <h2>ABC Parametros</h2>
+        <hr class="red" />
+
+        <form [formGroup]="funcForm" class="formulario" (ngSubmit)="onSubmit()" autocomplete="off" idbForm >
+   
+        <div class="tab-content">
+            <table  mat-table class="table table-striped table-hover mat-elevation-z8" [dataSource]="dataSource">
+        
+                <ng-container matColumnDef="parNombre">
+                    <th mat-header-cell *matHeaderCellDef>Nombre</th>
+                    <td mat-cell *matCellDef="let row">{{ row.parNombre }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="parDescripcion">
+                    <th mat-header-cell *matHeaderCellDef>Descripcion</th>
+                    <td mat-cell *matCellDef="let row">{{ row.parDescripcion }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="parValor">
+                    <th mat-header-cell *matHeaderCellDef>Valor</th>
+                    <td mat-cell *matCellDef="let row">{{ row.parValor }}</td>
+                </ng-container>
+
+                <ng-container hidden matColumnDef="tipoValorCbo">
+                    <th hidden mat-header-cell *matHeaderCellDef>tipoValor</th>
+                    <td hidden mat-cell *matCellDef="let row">{{ row.parValTipo }}</td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsParametros"></tr>
+                <tr mat-row (click)="getRecord(row)" *matRowDef="let row; columns: displayedColumnsParametros"></tr>
+            </table>
+            <div id="paginadorDiv" class="row" hidden>
+                <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator> 
+
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+            <div id="divNombre" class="col-sm-3">
+                <input type="text" (keyup)="hasChenges()" class="formulario__input"  (ngModel)="parametro.parNombre"  formControlName="parNombre" (input)="actualizacionParNombre($event)"  idbInput>
+                <label class="formulario__label">{{'Nombre' }}</label>
+            </div>
+           <div class="row">
+            <div id="divalcMun" class="col-sm-3">
+                <input type="text" (keyup)="hasChenges()" class="formulario__input"   (ngModel)="parametro.parDescripcion" formControlName="parDescripcion" idbInput>
+                <label class="formulario__label">{{'Descripción' }}</label>
+            </div>
+           </div>
+            <div class="row">
+                <div id="divtipoPersona" class="col-sm-3">
+                    <div class="caja">
+                        <select formControlName="tipoValorCbo" (change)="hasChenges()"  (ngModel)="parametro.parValTipo" (ngModelChange)="actualizacionParNombre($event)" idbInput>
+                            <option value="A">Alfebetico</option>
+                            <option value="C">Caracter</option>
+                            <option value="I">Entero</option>
+                            <option value="R">Real</option>
+                            
+                        </select>
+                    </div>
+                    <label appearance="fill" class="formulario__label">Tipo Valor</label>
+                </div>
+            </div>
+            <br>
+               
+             <div id="divValor" (keyup)="hasChenges()" class="col-sm-3">
+                <input type="text" class="formulario__input"   (ngModel)="parametro.parValor" formControlName="parValor" idbInput>
+                <label class="formulario__label">{{'Valor' }}</label>
+            </div>
+
+        </div> 
+        <acction-buttons-component (onModoConsultaClick)="onModoConsultaClick()"
+                    (onModoAltaClick)="onModoAltaClick()"
+                     (onModoGuardarClick)="onModoGuardarClick()"
+                    (onModoActualizarClick)="onModoActualizarClick()"
+                    [modelo]="parametro" >
+        </acction-buttons-component>
+      
+        <br>
+        <h6>Restablecer Valores</h6>
+        <br>
+
+        <div id="divBotones" class="col-sm-12">
+            
+            <label class="ctro_label">{{'Reiniciar Información de Fecha Hábil' }}
+                <button class="btn-img deshacer-button" type="button" (click)="reiniciaInfo()" ></button>
+
+            </label>
+            <br>
+            <label class="ctro_label">{{'Generar Motivos Linea de Operación' }}
+                <button class="btn-img deshacer-button" type="button"  (click)="generaMotivos()" ></button>
+
+            </label>
+            <br>
+            <label class="ctro_label">{{'Ejecutar proceso de Cancelación de Solicitud Reverso' }}
+                <button class="btn-img proceso-button" type="button"  (click)="ejecutaProceso()"></button>
+
+            </label>
+            <br>
+            <label class="ctro_label">{{'Envio de SPID de operaciones Fecha Valor' }}
+                <button class="btn-img btn-pagos" type="button"  (click)="envioSPID()"></button>
+
+            </label>
+
+        </div>
+        </form>
+        <hr class="red" />
+
+    </div>
+ 
