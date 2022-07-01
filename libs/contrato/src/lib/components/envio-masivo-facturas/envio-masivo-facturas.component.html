@@ -5,7 +5,7 @@
 <main class="">
   <div class="bdcontent">
     <hr class="red" />
-    <h2>Envio masivo de Facturas</h2>
+    <h2>Envio Masivo de Facturas</h2>
     <hr class="red" />
 
     <div class="container">
@@ -14,6 +14,7 @@
           <div id="divperRfc" class="col-sm-12">
             <input readonly type="text" class="formulario__input" formControlName="cliente" [control]="getCtr('cliente')"
               idbInput />
+           
             <label class="formulario__label">{{ 'Cliente' | transloco }}</label>
           </div>
           <div class="col-sm-12">
@@ -25,12 +26,12 @@
 
           <div class="row">
             <div class="col-sm-4">
-              <idb-calendario etiqueta="Fecha Inicial" lenguaje="es" max="0-0-0" formControlName="fechaInicial"
+              <idb-calendario etiqueta="Fecha Inicial" lenguaje="es" max="0-0-0" 
                 [control]="getCtr('fechaInicial')" (fechaSeleccionada)="comparacionFechas($event)" idbInput></idb-calendario>
             </div>
 
             <div class="col-sm-4">
-              <idb-calendario etiqueta="Fecha Final" lenguaje="es" max="0-0-0" formControlName="fechaFinal"
+              <idb-calendario etiqueta="Fecha Final" lenguaje="es" max="0-0-0" 
                 [control]="getCtr('fechaFinal')" (fechaSeleccionada)="comparacionFechas($event)" idbInput></idb-calendario>
 
             </div>
@@ -72,7 +73,7 @@
                 <mat-checkbox (click)="$event.stopPropagation()"
                 (change)="$event ? selection.toggle(row) : null"
                 [checked]="selection.isSelected(row)"
-                [aria-label]="checkboxLabel(row,1,null)"> </mat-checkbox>
+                [aria-label]="checkboxLabel(row,1,null)" [(ngModel)]="row.selecionado"> </mat-checkbox>
               </td>
             </ng-container>
 
@@ -114,7 +115,7 @@
                 <mat-checkbox (click)="$event.stopPropagation()"
                 (change)="$event ? selection2.toggle(row2) : null"
                 [checked]="selection2.isSelected(row2)"
-                [aria-label]="checkboxLabel(null,2,row2)"> </mat-checkbox>
+                [aria-label]="checkboxLabel(null,2,row2)" [(ngModel)]="row2.selecionado"> </mat-checkbox>
               </td>
             </ng-container>
 

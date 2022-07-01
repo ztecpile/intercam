@@ -211,9 +211,11 @@ export class EnvioMasivoFacturasComponent implements OnInit {
         )
     }
     enviarFacturas() {
+        let OperInt = this.opIng.filter(item => item["selecionado"] == true);
+        let correos = this.correos.filter(item => item["selected"] == true);
         const body = {
-            "lstOperacionReenvioFactura": this.opIng,
-            "lstCuentasCorreo": this.correos
+            "lstOperacionReenvioFactura": OperInt.map(item => {}),
+            "lstCuentasCorreo": correos.map(item => {})
         };
         console.log(body);
         this.servEnvio.sendFacturas(body).subscribe(

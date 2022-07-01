@@ -15,6 +15,7 @@
                         <div class="col-10">
                             <input type="number" class="formulario__input" formControlName="contrato" [control]="getCtr('contrato')" 
                             (keyup.enter)="obtenerCarpetaContratos('')" idbInput />
+                           
                             <label class="formulario__label">{{ 'Contrato' | transloco }}</label>
                         </div>
                         <div class="col-2">
@@ -40,24 +41,28 @@
                     <br />
                     <div id="divperRfc" class="col-sm-12">
                         <input readonly type="text" class="formulario__input" formControlName="catTitular" [control]="getCtr('catTitular')" idbInput />
+                     
                         <label class="formulario__label">{{ 'Categoria del titular' | transloco }}</label>
                     </div>
 
                     <br />
                     <div id="divperRfc" class="col-sm-12">
                         <input readonly type="text" class="formulario__input" formControlName="bioIncorrecta" [control]="getCtr('bioIncorrecta')" idbInput />
+                       
                         <label class="formulario__label">{{ 'Biometría Persona incorrecta' | transloco }}</label>
                     </div>
 
                     <br />
                     <div id="divperRfc" class="col-sm-12">
                         <input readonly type="text" class="formulario__input" formControlName="tipoContrato" [control]="getCtr('tipoContrato')" idbInput />
+                      
                         <label class="formulario__label">{{ 'Tipo de Contrato' | transloco }}</label>
                     </div>
 
                     <br />
                     <div id="divperRfc" class="col-sm-12">
                         <input readonly type="text" class="formulario__input" formControlName="sucursal" [control]="getCtr('sucursal')" idbInput />
+                     
                         <label class="formulario__label">{{ 'Sucursal' | transloco }}</label>
                     </div>
 
@@ -65,6 +70,7 @@
                     <div id="divperRfc" class="row">
                         <div class="col-10">
                             <input readonly type="text" class="formulario__input" formControlName="cliIdCorrecto" [control]="getCtr('cliIdCorrecto')" idbInput />
+                          
                             <label class="formulario__label">{{ 'Cli ID Correcto' | transloco }}</label>
                         </div>
                         <div class="col-2">
@@ -79,6 +85,7 @@
 
                     <div id="divperRfc" class="col-sm-12">
                         <input readonly type="text" class="formulario__input" formControlName="bioCorrecta" [control]="getCtr('bioCorrecta')" idbInput />
+                       
                         <label class="formulario__label">{{ 'Biometría Persona Correcta' | transloco }}</label>
                     </div>
 
@@ -94,6 +101,7 @@
 
                     <div id="divperRfc" class="col-sm-12">
                         <input readonly type="text" class="formulario__input" idbInput [value]="userlog" />
+                       
                         <label class="formulario__label">{{ 'Usuario' | transloco }}</label>
                     </div>
 
@@ -101,6 +109,7 @@
                     <div id="divperRfc" class="row">
                         <div class="col-10">
                             <input type="text" class="formulario__input" formControlName="usuSolicitante" [control]="getCtr('usuSolicitante')" (change)="habilitarBotones()" idbInput />
+                           
                             <label class="formulario__label">{{ 'Usuario Solicitante' | transloco }}</label>
                         </div>
                         <div class="col-2">
@@ -115,6 +124,7 @@
                     <div id="divperRfc" class="row">
                         <div class="col-10">
                             <input type="text" class="formulario__input" formControlName="coorSucursal" [control]="getCtr('coorSucursal')" (change)="habilitarBotones()" idbInput />
+                           
                             <label class="formulario__label">{{ 'Coordinador de Sucursal' | transloco }}</label>
                         </div>
                         <div class="col-2">
@@ -134,19 +144,20 @@
                                 <option *ngFor="let search of dataMotivo" [value]="search">{{search}}</option>
                             </select>
                         </div>
-                        <label appearance="fill" class="formulario__label">Motivo de Homologaci&oacute;n</label>
+                        <label appearance="fill" class="formulario__label">Motivo de Homologacion</label>
                     </div>
 
 
                     <div id="divperRfc" class="col-sm-12">
-                        <mat-label>Otro:</mat-label>
                         <textarea id="inputOtro" type="text" class="formulario__input" formControlName="otro" [control]="getCtr('otro')" (change)="habilitarBotones()" idbInput ></textarea>
-
+                        
+                        <label appearance="fill" class="formulario__label">Otro</label>
                     </div>
 
                     <div id="divperRfc" class="col-sm-12">
-                        <mat-label>Observaci&oacute;n:</mat-label>
                         <textarea type="text" class="formulario__input" formControlName="observacion" [control]="getCtr('observaicion')" (change)="habilitarBotones()" idbInput></textarea>
+                        
+                        <label appearance="fill" class="formulario__label">Observacion</label>
                     </div>
 
 

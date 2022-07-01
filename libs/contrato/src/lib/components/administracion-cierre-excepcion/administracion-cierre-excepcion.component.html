@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <hr class="red" />
-<h2>FWD Administraci&oacute;n cierre por Excepcion</h2>
+<h2>FWD Administracion cierre por Excepcion</h2>
 <hr class="red" />
 
 <h6>Habilitar operador para cierre forward con excepci&oacute;n</h6>
@@ -51,7 +51,7 @@
             <div class="col-sm-6">
                 <input type="text" name="busqueda" class="formulario__input" maxlength="80" formControlName="busqueda"
                     [control]="getCtr('busqueda')" idbInput (keyup.enter)="filtrar($event)" required>
-
+<br>
                 <label class="formulario__label">Busqueda Rapida</label>
             </div>
 
@@ -64,6 +64,7 @@
             <div class="col-sm-6">
                 <input type="text" class="formulario__input" maxlength="80" formControlName="perNom"
                     (change)="onchange()">
+                    <br>
                 <label class="formulario__label">Nombre del Promotor</label>
 
             </div>

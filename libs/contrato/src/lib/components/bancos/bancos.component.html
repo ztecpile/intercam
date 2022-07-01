@@ -99,29 +99,34 @@
                     <div id="divNombre" class="col-sm-8">
                         <input type="textarea" class="formulario__input" [control]="getCtr('nombre')"
                             formControlName="nombre" (change)="cambio()" idbInput>
+                           
                         <label class="formulario__label">{{ 'Nombre *' | transloco}}</label>
                     </div>
                     <div id="divClaveBanxico" class="col-sm-8">
                         <input type="text" class="formulario__input" [control]="getCtr('claveBanxico')"
                             formControlName="claveBanxico" (change)="cambio()" idbInput>
+                          
                         <label class="formulario__label">{{ 'Clave BANXICO *' | transloco }}</label>
                     </div>
 
                     <div id="divClaveSica" class="col-sm-8">
                         <input type="text" class="formulario__input" [control]="getCtr('claveSica')"
                             formControlName="claveSica" (change)="cambio()" idbInput>
+                         
                         <label class="formulario__label">{{ 'Clave SICA' | transloco }}</label>
                     </div>
 
                     <div id="divClaveSabi" class="col-sm-8">
                         <input type="text" class="formulario__input" [control]="getCtr('claveSabi')"
                             formControlName="claveSabi" (change)="cambio()" idbInput>
+                            
                         <label class="formulario__label">{{ 'Clave SABI' | transloco }}</label>
                     </div>
 
                     <div id="divClaveSiif" class="col-sm-8">
                         <input type="text" class="formulario__input" [control]="getCtr('claveSiif')"
                             formControlName="claveSiif" (change)="cambio()" idbInput>
+                         
                         <label class="formulario__label">{{ 'Clave SIIF' | transloco }}</label>
                     </div>
                 </div>
@@ -175,11 +180,13 @@
                                     {{search.paiDescripcion}}</option>
                             </select>
                         </div>
+                        
                         <label class="formulario__label">{{ 'Pais' | transloco }}</label>
                     </div>
                     <div id="divNombreCorto" class="col-sm-8">
                         <input type="text" class="formulario__input" [control]="getCtr('nombreCorto')"
                             formControlName="nombreCorto" (change)="cambio()" idbInput>
+                           
                         <label class="formulario__label">{{ 'Nombre corto' | transloco }}</label>
                     </div>
                 </div>
