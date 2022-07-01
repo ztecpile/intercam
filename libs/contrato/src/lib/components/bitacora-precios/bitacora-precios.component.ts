@@ -32,13 +32,13 @@ export class listPromotor {
 }
 
 const ELEMENT_DATA: bp[] = [
-  { posicion: 1, instrumento: 'TRANSFER', compra: '0.000000', venta: '0.000000', compra1: ' 0.000000', venta1: '0.000000', compra2: '0.000000', venta2: '0.000000', compra3: '0.000000', venta3: '0.000000', compra4: '0.000000', venta4: '0.000000',unix: 0 },
-  { posicion: 2, instrumento: 'EFECTIVO', compra: '0.000000', venta: '0.000000', compra1: '0.000000', venta1: '0.000000', compra2: '0.000000', venta2: '0.000000', compra3: '0.000000', venta3: '0.000000', compra4: '0.000000', venta4: '0.000000',unix: 0 },
-  { posicion: 3, instrumento: 'MEX', compra: '0.000000', venta: '0.000000', compra1: '0.000000', venta1: '0.000000', compra2: '0.000000', venta2: '0.000000', compra3: '0.000000', venta3: '0.000000', compra4: '0.000000', venta4: '0.000000',unix: 0 },
-  { posicion: 4, instrumento: 'CASH BACK', compra: '0.000000', venta: '0.000000', compra1: '0.000000', venta1: '0.000000', compra2: '0.000000', venta2: '0.000000', compra3: '0.000000', venta3: '0.000000', compra4: '0.000000', venta4: '0.000000',unix: 0 },
-  { posicion: 5, instrumento: 'REMESA', compra: '0.000000', venta: '0.000000', compra1: '0.000000', venta1: '0.000000', compra2: '0.000000', venta2: '0.000000', compra3: '0.000000', venta3: '0.000000', compra4: '0.000000', venta4: '0.000000',unix: 0 },
-  { posicion: 6, instrumento: 'CHEQUE', compra: '0.000000', venta: '0.000000', compra1: '0.000000', venta1: '0.000000', compra2: '0.000000', venta2: '0.000000', compra3: '0.000000', venta3: '0.000000', compra4: '0.000000', venta4: '0.000000',unix: 0 },
-  { posicion: 7, instrumento: 'TARJETA', compra: '0.000000', venta: '0.000000', compra1: '0.000000', venta1: '0.000000', compra2: '0.000000', venta2: '0.000000', compra3: '0.000000', venta3: '0.000000', compra4: '0.000000', venta4: '0.000000',unix: 0 },
+  { posicion: 1, instrumento: 'TRANSFER', compra: '0.000000', venta: '0.000000', compra1: ' 0.000000', venta1: '0.000000', compra2: '0.000000', venta2: '0.000000', compra3: '0.000000', venta3: '0.000000', compra4: '0.000000', venta4: '0.000000', unix: 0 },
+  { posicion: 2, instrumento: 'EFECTIVO', compra: '0.000000', venta: '0.000000', compra1: '0.000000', venta1: '0.000000', compra2: '0.000000', venta2: '0.000000', compra3: '0.000000', venta3: '0.000000', compra4: '0.000000', venta4: '0.000000', unix: 0 },
+  { posicion: 3, instrumento: 'MEX', compra: '0.000000', venta: '0.000000', compra1: '0.000000', venta1: '0.000000', compra2: '0.000000', venta2: '0.000000', compra3: '0.000000', venta3: '0.000000', compra4: '0.000000', venta4: '0.000000', unix: 0 },
+  { posicion: 4, instrumento: 'CASH BACK', compra: '0.000000', venta: '0.000000', compra1: '0.000000', venta1: '0.000000', compra2: '0.000000', venta2: '0.000000', compra3: '0.000000', venta3: '0.000000', compra4: '0.000000', venta4: '0.000000', unix: 0 },
+  { posicion: 5, instrumento: 'REMESA', compra: '0.000000', venta: '0.000000', compra1: '0.000000', venta1: '0.000000', compra2: '0.000000', venta2: '0.000000', compra3: '0.000000', venta3: '0.000000', compra4: '0.000000', venta4: '0.000000', unix: 0 },
+  { posicion: 6, instrumento: 'CHEQUE', compra: '0.000000', venta: '0.000000', compra1: '0.000000', venta1: '0.000000', compra2: '0.000000', venta2: '0.000000', compra3: '0.000000', venta3: '0.000000', compra4: '0.000000', venta4: '0.000000', unix: 0 },
+  { posicion: 7, instrumento: 'TARJETA', compra: '0.000000', venta: '0.000000', compra1: '0.000000', venta1: '0.000000', compra2: '0.000000', venta2: '0.000000', compra3: '0.000000', venta3: '0.000000', compra4: '0.000000', venta4: '0.000000', unix: 0 },
 ];
 
 
@@ -266,11 +266,11 @@ export class BitacoraPreciosComponent implements OnInit {
         console.log(then);
         console.log(this.listInst);
         const dataPro: bp[] = [];
-        
-   for (let index = 0; index < then.length; index++) {
-    let mattab = new bp;
-    const element = then[index];
-    
+
+        for (let index = 0; index < then.length; index++) {
+          let mattab = new bp;
+          const element = then[index];
+
           for (const inst of this.listInst) {
             if (element.insId == inst.insId) {
               mattab.instrumento = inst.insNombre;
@@ -376,11 +376,34 @@ export class BitacoraPreciosComponent implements OnInit {
 
   filtrar(e: any) {
     const fecha = new Date(this.funcForm.get('fecha').value);
+    const mes = fecha.getMonth() + 1;
+    const dia = fecha.getUTCDate();
+    const anio = fecha.getFullYear();
+    const date = String(mes + '/' + dia + '/' + anio);
     const hora = this.funcForm.get('hora').value;
-let unixtime = new Date(fecha+hora);
-console.log(unixtime.getTime);
+    let unixtime = new Date(String(date + ' ' + hora));
+    let unixtimeMax = new Date(this.sumaCinco(unixtime));
+    let unixtimeMin = new Date(this.restaCinco(unixtime));
+    console.log('unixtime',unixtime.getTime());
+    console.log('unixtimeMax',unixtimeMax.getTime());
+    console.log('unixtimeMin',unixtimeMin.getTime());
+
+    if ((unixtime.getTime() < unixtimeMin.getTime()) || (unixtime.getTime() > unixtimeMax.getTime())) {
+      this.obtenerBitacora();
+    }
+    console.log(unixtime.getTime());
     console.log(e);
-    return this.dataSource.filter = String(unixtime);
+    return this.dataSource.filter = String(unixtime.getTime());
+  }
+
+  sumaCinco(fechahora: Date) {
+    const nueva = fechahora.getMinutes() + ":" + (fechahora.setMinutes(fechahora.getMinutes() + 5) && fechahora.getMinutes());
+    console.log(nueva);
+    return nueva;
+  }
+
+  restaCinco(fechahora: Date) {
+    return fechahora.getMinutes() + ":" + (fechahora.setMinutes(fechahora.getMinutes() - 5) && fechahora.getMinutes());
   }
 
 }
