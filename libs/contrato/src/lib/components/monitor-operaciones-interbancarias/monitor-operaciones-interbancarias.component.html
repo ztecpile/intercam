@@ -38,10 +38,10 @@
                 <label appearance="fill" class="formulario__label">Filtro</label>
             </div>
             <div class="col-sm-3">
-                <mat-radio-group [(ngModel)]="FILTRO_RADIO" aria-label="Select an option" >
+                <mat-radio-group [(ngModel)]="FILTRO_RADIO" aria-label="Select an option">
                     <mat-radio-button class="mt-2 pr-5" value="1">Deal</mat-radio-button>
                     <mat-radio-button class="pl-5 mr-1" value="2">Ticket</mat-radio-button>
-                    <mat-radio-button value="2">Sin Deal</mat-radio-button>
+                    <mat-radio-button value="3">Sin Deal</mat-radio-button>
                 </mat-radio-group>
 
             </div>
@@ -89,17 +89,33 @@
 
                     <ng-container matColumnDef="transaccion">
                         <th mat-header-cell *matHeaderCellDef>Estatus Transacci&oacute;n</th>
-                        <td mat-cell *matCellDef="let element">{{ element.operInstrumentoVO.opiEstatus==0?" Generadas Incompletas":element.operInstrumentoVO.opiEstatus==2?"Error **** ":"Generadas Completas " }}</td>
+                        <td mat-cell *matCellDef="let element">{{ element.operInstrumentoVO.opiEstatus==0?" Generadas Incompletas":element.operInstrumentoVO.opiEstatus==2?"Error **** ":"Generadas Completas " }}
+                        </td>
                     </ng-container>
                     <ng-container matColumnDef="cadena_deal">
                         <th mat-header-cell *matHeaderCellDef>Cadena DealTracker</th>
-                        <td width ="20%" max-height="30px" mat-cell *matCellDef="let element">{{ element.tdtMsjDeal }}</td>
+                        <td width="20%" max-height="30px" mat-cell *matCellDef="let element">{{ element.tdtMsjDeal }}
+                        </td>
+                    </ng-container>
+
+                    <!-- Disclaimer column -->
+                    <ng-container matColumnDef="disclaimer">
+                        <td mat-footer-cell *matFooterCellDef [colSpan]="displayedColumns.length" class="text-danger">
+                          <h3> No se Encontraron datos.</h3>
+                        </td>
                     </ng-container>
 
 
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+                    <tr mat-footer-row [hidden]="dataSource.filteredData.length"  *matFooterRowDef="['disclaimer']">
+                    </tr>
+
                     <tr mat-row *matRowDef="let row; columns: displayedColumns"
                         [ngClass]="{ 'selected': row === selectedRow }" (click)="getRecord(row)"></tr>
+
+
+
                 </table>
                 <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
                     aria-label="Select page of periodic elements">
@@ -110,9 +126,8 @@
                     <span class="tooltip">Completar Operacion</span>
                     Completar Operacion
                 </button>
-    
-                <button (click)="verOperacion()"  [disabled]="ESTATUS_TRANSACCION!=1"
-                    class="btn-img ">
+
+                <button (click)="verOperacion()" [disabled]="ESTATUS_TRANSACCION!=1" class="btn-img ">
                     <span class="tooltip">Ver Operacion</span>
                     Ver Operacion
                 </button>

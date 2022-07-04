@@ -15,7 +15,7 @@ export class MonitorOperacionesInterbancariasServices {
         //const urlStr = 'per-asistente/remote/fill';
         const urlStr = 'operacion-cambios/remote/findOperaciones';
         // const urlStr = 'findOperaciones.php';
-        return this.http.get<DealtrackerVO[]>(urlStr, {});
+        return this.http.post<DealtrackerVO[]>(urlStr, parsm);
     }
 
 }

@@ -1,4 +1,4 @@
-import { Component, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatTableDataSource } from "@angular/material/table";
@@ -15,25 +15,30 @@ import { MonitorOperacionesInterbancariasServices } from "../../services/monitor
 })
 
 
-export class MonitorOperacionesInterbancariasComponent {
+export class MonitorOperacionesInterbancariasComponent implements AfterViewInit {
     ESTATUS: number = -1;
     FECHA_INICIO: string = new Date().toJSON().slice(0, 10);
     FECHA_FIN: string = new Date().toJSON().slice(0, 10);
     FILTRO_TEXT: string;
-    FILTRO_RADIO: string;
+    FILTRO_RADIO: string="1";
 
     ESTATUS_TRANSACCION: number;
     selectedRow: DealtrackerVO;
+
+  
 
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
     constructor(private _monitorOperacionesInterbancariasServices: MonitorOperacionesInterbancariasServices, private dialog: MatDialog) {
 
     }
-
+    ngAfterViewInit(): void {
+        this.paginator._intl.itemsPerPageLabel = "Registros por página:";
+    }
+ 
 
     displayedColumns = ["ticket", "deal", "tipo", "promotor", "fecha", "hora", "pos", "transaccion", "cadena_deal"];
-    dataSource: MatTableDataSource<DealtrackerVO>;
+    dataSource: MatTableDataSource<DealtrackerVO>= new MatTableDataSource();
     dataSourceFilter: DealtrackerVO[];
 
 

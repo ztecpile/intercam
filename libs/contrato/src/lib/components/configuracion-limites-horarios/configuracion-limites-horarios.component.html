@@ -34,7 +34,16 @@
           <td mat-cell *matCellDef="let element">{{ element.lsiEstatus=="AC"?"ACTIVA":"SUSPENDIDO" }}</td>
         </ng-container>
 
+         <!-- Disclaimer column -->
+         <ng-container matColumnDef="disclaimer">
+          <td mat-footer-cell *matFooterCellDef [colSpan]="displayedColumns.length" class="text-danger">
+              <h3> No se Encontraron datos.</h3>
+          </td>
+      </ng-container>
+
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-footer-row [hidden]="dataSource.filteredData.length" *matFooterRowDef="['disclaimer']">
+        </tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns" [ngClass]="{ 'selected': row === limiteSolicitudInstrumentoVO }"
           (click)="getRecord(row)"></tr>
       </table>
@@ -51,7 +60,7 @@
               <option *ngFor="let tipo of mesas " [value]="tipo.cveMesa">{{tipo.moDescripcion}}</option>
             </select>
           </div>
-          <label appearance="fill" class="formulario__label">Mesa</label>
+          <label appearance="fill" class="formulario__label">* Mesa</label>
         </div>
         <br />
         <div id="divcboTipo" class="col-sm-12">
@@ -61,13 +70,13 @@
               <option value="SU">Suspendido</option>
             </select>
           </div>
-          <label appearance="fill" class="formulario__label">Estatus</label>
+          <label appearance="fill" class="formulario__label">* Estatus</label>
         </div>
 
         <br />
         <div id="divperRfc" class="col-sm-12">
           <input (keyup)="hasChenges()" type="text" class="formulario__input" (blur)="transformAmount($event)" [(ngModel)]="limiteSolicitudInstrumentoVO.lsiMontoLim" />
-          <label class="formulario__label">{{ 'Monto Maximo' }}</label>
+          <label class="formulario__label">* {{ 'Monto Maximo' }}</label>
         </div>
 
         <br />
@@ -81,7 +90,7 @@
           </div>
 
 
-          <label class="formulario__label">{{ 'Horario'  }}</label>
+          <label class="formulario__label">* {{ 'Horario'  }}</label>
         </div>
       </div>
     </div>

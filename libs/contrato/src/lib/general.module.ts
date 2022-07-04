@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -16,7 +16,7 @@ import { BancoService } from './services/bancos.service';
 import { ReferenciasService } from './services/referencias.service';
 import { TranslocoModule } from '@ngneat/transloco';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatFormFieldModule,MatFormFieldControl } from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
 import { BancosComponentModule } from './components/bancos/bancos.module';
 import { ProfesionesComponent } from './components/profesiones/profesiones.component';
@@ -31,24 +31,30 @@ import { CierreBancoInversiones } from './components/cierre-banco-inversiones/ci
 import { CierreCasaBolsaComponent } from './components/cierre-casa-bolsa/cierre-casa-bolsa.component';
 import { CierreBancoInversionesServices } from './services/cierre-banco-inversiones.services';
 import { CierreCasaBolsaService } from './services/cierre-casa-bolsa.service';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
 import { ModelModule } from '@intercam/model';
 import { CierreCasaBolsaModule } from './components/cierre-casa-bolsa/cierre-casa-bolsa.module';
 import { SectorEconomicoComponent } from './components/sector-economico/sector-economico.component';
-import { SectorEconomicoModule } from './components/sector-economico/sector-economico.module';
 import { SectorEconomicoService } from './services/sector-economico.services';
 import { TiposRelacionComponent } from './components/tipo-relacion/tipo-relacion.component';
 import { AcctionButtonsComponent } from 'libs/shred-components/src/lib/form/acction-buttons/acction-buttons.component';
 import { HomologacionClientesComponent } from './components/homologacion-clientes/homologacion-clientes.component';
 import { HomologacionClientes } from './components/homologacion-clientes/homologacion-clientes.module';
+import { SimuladorFondosInversionComponent } from './components/simulador-fondos-inversion/simulador-fondos-inversion.component';
+import { SimuladorComponent } from './components/simulador-fondos-inversion/simulador/simulador.component';
+import { BusquedaComponent } from './components/simulador-fondos-inversion/busqueda/busqueda.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { NgChartsModule } from 'ng2-charts';
+import { MonitorOperacionesInterbancariasComponent } from './components/monitor-operaciones-interbancarias/monitor-operaciones-interbancarias.component';
+import { AsignarAsistenteComponent } from './components/asignar-asistente/asignar-asistente.component';
+import { ABCParametrosComponent } from './components/parametros-abc/abc-parametros.component';
+import { ConfiguracionLimitesHorariosComponent } from './components/configuracion-limites-horarios/configuracion-limites-horarios.component';
+
 import { EnvioMasivoFacturasComponent } from './components/envio-masivo-facturas/envio-masivo-facturas.component';
 import { EnvioMasivoFacturasService } from './services/envio-masivo-factura.service';
 import { EnvioMasivoFacturasModule } from './components/envio-masivo-facturas/envio-masivo-facturas.module';
-import { BitacoraPreciosService } from './services/bitacora-precios.service';
+import { ReutersAdministracionPerfilesComponent } from './components/reuters-administracion-perfiles/reuters-administracion-perfiles.component';
 import { BitacoraPreciosComponent } from './components/bitacora-precios/bitacora-precios.component';
-import { CalendarioModule } from 'libs/shred-components/src/lib/calendario/calendario.module';
-import { CustomPaginator } from './util/ConfiguracionPaginador';
-
 const routes: Routes = [
   {
     path: '',
@@ -114,16 +120,6 @@ const routes: Routes = [
     path: '',
     children: [
       {
-        path: 'cedes',
-        component: CedesInversionesComponent
-      }
-
-    ]
-  },
-  {
-    path: '',
-    children: [
-      {
         path: 'cierre-banco-inversion',
         component: CierreBancoInversiones
       }
@@ -179,6 +175,67 @@ const routes: Routes = [
       }
 
     ]
+  }
+  ,
+  {
+    path: '',
+    children: [
+      {
+        path: 'simulador-fondos',
+        component: SimuladorFondosInversionComponent
+      }
+
+    ]
+  },
+  {
+    path: '',
+    children: [
+      {
+        path: 'monitor-operacion',
+        component: MonitorOperacionesInterbancariasComponent
+      }
+
+    ]
+  },
+  {
+    path: '',
+    children: [
+      {
+        path: 'asignar-asistente',
+        component: AsignarAsistenteComponent
+      }
+
+    ]
+  },
+  {
+    path: '',
+    children: [
+      {
+        path: 'abc-parametros',
+        component: ABCParametrosComponent
+      }
+
+    ]
+  },
+  {
+    path: '',
+    children: [
+      {
+        path: 'limite-horarios',
+        component: ConfiguracionLimitesHorariosComponent
+      }
+
+    ]
+  },
+  {
+    path: '',
+    children: [
+      {
+        path: 'reuters-administracion-perfiles',
+        component: ReutersAdministracionPerfilesComponent
+      }
+
+    ]
   },
   {
     path: '',
@@ -190,13 +247,27 @@ const routes: Routes = [
 
     ]
   }
-];
 
+
+];
+providers: [
+  AdministracionCierreExcepcionService,
+  BancoService,
+  ReferenciasService,
+  ColoniasServices,
+  ProfesionService,
+  EntidadServices,
+  CierreBancoInversionesServices,
+  CierreCasaBolsaService,
+  SectorEconomicoService,
+  EnvioMasivoFacturasService
+]
 @NgModule({
   imports: [
     RouterModule.forChild(routes),
     CommonModule,
     ShredComponentsModule,
+    MatTableModule,
     MatTableModule,
     MatPaginatorModule,
     TranslocoModule,
@@ -213,14 +284,14 @@ const routes: Routes = [
     MatTabsModule,
     CierreBancoInversionesModule,
     CierreCasaBolsaModule,
-    SectorEconomicoModule,
     HomologacionClientes,
-    EnvioMasivoFacturasModule,
-    CalendarioModule,
+    MatExpansionModule,
+    NgChartsModule,
+    EnvioMasivoFacturasModule
+
+
   ],
-  providers: [
-  { provide: MatPaginatorIntl, useValue: CustomPaginator()}
-  ],
+  providers: [CurrencyPipe],
   declarations: [
     AdministracionCierreExcepcionComponent,
     FxReferenciasComponent,
@@ -229,10 +300,18 @@ const routes: Routes = [
     ColoniasComponent,
     AcctionButtonsComponent,
     TiposRelacionComponent,
+    SimuladorFondosInversionComponent,
+    SimuladorComponent,
+    BusquedaComponent,
+    MonitorOperacionesInterbancariasComponent,
+    AsignarAsistenteComponent,
+    ABCParametrosComponent,
+    ConfiguracionLimitesHorariosComponent,
+    ReutersAdministracionPerfilesComponent,
+    SectorEconomicoComponent,
     BitacoraPreciosComponent
-    
-    
-       
+  
+
   ]
 })
 export class GeneralModule {

@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-3" style="z-index: 5">
         <input type="text" class="formulario__input" (blur)="transformAmount($event)" [(ngModel)]="monto" />
-        <label class="formulario__label">{{ 'Monto' | transloco }}</label>
+        <label class="formulario__label">* {{ 'Monto' | transloco }}</label>
     </div>
     <div class="col-sm-3" style="z-index: 5">
         <div class="caja">
@@ -11,7 +11,7 @@
                 <option value="15">Persona Moral Exenta</option>
             </select>
         </div>
-        <label appearance="fill" class="formulario__label">Tipo Persona</label>
+        <label appearance="fill" class="formulario__label">* Tipo Persona</label>
     </div>
     <div class="col-sm-3" style="z-index: 5">
         <div class="caja">
@@ -24,7 +24,7 @@
                 <option value="60">5 a&ntilde;os</option>
             </select>
         </div>
-        <label appearance="fill" class="formulario__label">Periodo a simular</label>
+        <label appearance="fill" class="formulario__label">* Periodo a simular</label>
     </div>
     <div class="col-sm-3">
         <div class="centrar_btn" style="margin-top: 10px">
@@ -45,7 +45,7 @@
                     </ng-container>
 
                     <ng-container matColumnDef="plazo">
-                        <th mat-header-cell *matHeaderCellDef>Plazo máximo</th>
+                        <th mat-header-cell *matHeaderCellDef>Plazo maximo</th>
                         <td mat-cell *matCellDef="let element">{{ element.fondoPlazo }}</td>
                     </ng-container>
 
@@ -74,7 +74,16 @@
                         <td mat-cell *matCellDef="let element">{{ element.plazoTasa["361"]}}</td>
                     </ng-container>
 
+                    <!-- Disclaimer column -->
+                    <ng-container matColumnDef="disclaimer">
+                        <td mat-footer-cell *matFooterCellDef [colSpan]="displayedColumns.length" class="text-danger">
+                            <h3> No se Encontraron datos.</h3>
+                        </td>
+                    </ng-container>
+
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-footer-row [hidden]="deudaDataSource.filteredData.length" *matFooterRowDef="['disclaimer']">
+                    </tr>
                     <tr mat-row *matRowDef="let row; columns: displayedColumns"
                         [ngClass]="{ 'selected': row === selectedRow }" (click)="getRecord(row)"></tr>
                 </table>
@@ -92,7 +101,7 @@
                     </ng-container>
 
                     <ng-container matColumnDef="plazo">
-                        <th mat-header-cell *matHeaderCellDef>Plazo máximo</th>
+                        <th mat-header-cell *matHeaderCellDef>Plazo maximo</th>
                         <td mat-cell *matCellDef="let element">{{ element.fondoPlazo }}</td>
                     </ng-container>
 
@@ -120,8 +129,16 @@
                         <th mat-header-cell *matHeaderCellDef>12 mese</th>
                         <td mat-cell *matCellDef="let element">{{ element.plazoTasa["361"]}}</td>
                     </ng-container>
+                     <!-- Disclaimer column -->
+                     <ng-container matColumnDef="disclaimer">
+                        <td mat-footer-cell *matFooterCellDef [colSpan]="displayedColumns.length" class="text-danger">
+                            <h3> No se Encontraron datos.</h3>
+                        </td>
+                    </ng-container>
 
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-footer-row [hidden]="coberturaDataSource.filteredData.length" *matFooterRowDef="['disclaimer']">
+                    </tr>
                     <tr mat-row *matRowDef="let row; columns: displayedColumns"
                         [ngClass]="{ 'selected': row === selectedRow }" (click)="getRecord(row)"></tr>
                 </table>
@@ -138,7 +155,7 @@
                     </ng-container>
 
                     <ng-container matColumnDef="plazo">
-                        <th mat-header-cell *matHeaderCellDef>Plazo máximo</th>
+                        <th mat-header-cell *matHeaderCellDef>Plazo maximo</th>
                         <td mat-cell *matCellDef="let element">{{ element.fondoPlazo }}</td>
                     </ng-container>
 
@@ -167,7 +184,15 @@
                         <td mat-cell *matCellDef="let element">{{ element.plazoTasa["361"]}}</td>
                     </ng-container>
 
+                    <ng-container matColumnDef="disclaimer">
+                        <td mat-footer-cell *matFooterCellDef [colSpan]="displayedColumns.length" class="text-danger">
+                            <h3> No se Encontraron datos.</h3>
+                        </td>
+                    </ng-container>
+
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-footer-row [hidden]="variableDataSource.filteredData.length" *matFooterRowDef="['disclaimer']">
+                    </tr>
                     <tr mat-row *matRowDef="let row; columns: displayedColumns"
                         [ngClass]="{ 'selected': row === selectedRow }" (click)="getRecord(row)"></tr>
                 </table>

@@ -1,5 +1,5 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { SimuladorFondosInversionService } from '../../../services/simulador-fondos-inversion.services';
@@ -14,16 +14,16 @@ import { SimuladorFondosInversionService } from '../../../services/simulador-fon
 
 
 
-export class BusquedaComponent {
+export class BusquedaComponent implements AfterViewInit {
 
 
     displayedColumns: string[] = ['fondo', 'plazo', 'ano', 'mes', 'semana', 'mes2', 'ano2'];
     displayedColumns2: string[] = ["fondo2", 'tipo', "porciento"];
-    deudaDataSource: MatTableDataSource<Object>;
-    coberturaDataSource: MatTableDataSource<Object>;
-    variableDataSource: MatTableDataSource<Object>;
+    deudaDataSource: MatTableDataSource<Object> = new MatTableDataSource();
+    coberturaDataSource: MatTableDataSource<Object> = new MatTableDataSource();
+    variableDataSource: MatTableDataSource<Object> = new MatTableDataSource();
     fondoDataSource: Object[] = [];// MatTableDataSource<Object>=new MatTableDataSource([]) ;
-    monto: string = "$1000.00";
+    monto: string = "0";
     tipo_persona: number = 5;
     periodo: number = 1;
     selectedRow: Object;
@@ -38,17 +38,21 @@ export class BusquedaComponent {
 
     constructor(private _simuladorFondosInversionService: SimuladorFondosInversionService, private currencyPipe: CurrencyPipe) { }
 
+    ngAfterViewInit(): void {
+        this.paginator._intl.itemsPerPageLabel = "Registros por página:";
+    }
+
     findFondosPrecio() {
         this._simuladorFondosInversionService.findFondosPrecioVO(this.monto, this.tipo_persona, this.periodo).subscribe(then => {
 
             this.deudaDataSource = new MatTableDataSource(then.filter(item => item["tipoFondoId"] == 5));
             this.deudaDataSource.paginator = this.paginator;
 
-            this.coberturaDataSource=new MatTableDataSource(then.filter(item => item["tipoFondoId"] == 15));
-            this.coberturaDataSource.paginator=this.paginator;
+            this.coberturaDataSource = new MatTableDataSource(then.filter(item => item["tipoFondoId"] == 15));
+            this.coberturaDataSource.paginator = this.paginator;
 
-            this.variableDataSource=new MatTableDataSource(then.filter(item => item["tipoFondoId"] == 10));
-            this.variableDataSource.paginator=this.paginator;
+            this.variableDataSource = new MatTableDataSource(then.filter(item => item["tipoFondoId"] == 10));
+            this.variableDataSource.paginator = this.paginator;
         });
     }
 
@@ -82,9 +86,9 @@ export class BusquedaComponent {
     }
 
     mostrarSimulador() {
-       
+
         if (this.total == 100) {
-            this.onCalcularClickEvent.emit({data:this.fondoDataSource,periodo:this.periodo,importe:this.monto});
+            this.onCalcularClickEvent.emit({ data: this.fondoDataSource, periodo: this.periodo, importe: this.monto });
         }
         else {
             this.VALIDAR_TOTAL = false;

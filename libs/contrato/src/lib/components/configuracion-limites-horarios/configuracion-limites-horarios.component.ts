@@ -20,7 +20,7 @@ import { ConfiguracionLimitesHorariosService } from '../../services/configuracio
 export class ConfiguracionLimitesHorariosComponent implements AfterViewInit {
 
     displayedColumns: string[] = ['Mesa', 'Monto', 'Horario', 'Estatus'];
-    dataSource: MatTableDataSource<LimiteSolicitudInstrumentoVO>;
+    dataSource: MatTableDataSource<LimiteSolicitudInstrumentoVO>= new MatTableDataSource();
     monto = "";
     hora: string = "00";
     min = "00";
@@ -49,6 +49,7 @@ export class ConfiguracionLimitesHorariosComponent implements AfterViewInit {
     }
     ngAfterViewInit(): void {
         this._acctionButtonsComponent.hiddeBtnConsulta(true);
+        this.paginator._intl.itemsPerPageLabel = "Registros por página:";
     }
 
     transformAmount(element) {

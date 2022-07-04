@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { SectorEconomicoVO } from '@intercam/model';
 import { TranslocoModule } from "@ngneat/transloco";
 import { AlertasService } from 'libs/shred-components/src/lib/alertas/alertas.service';
+import { AcctionButtonsComponent } from 'libs/shred-components/src/lib/form/acction-buttons/acction-buttons.component';
 import { SectorEconomicoService } from '../../services/sector-economico.services';
 
 
@@ -16,76 +17,68 @@ import { SectorEconomicoService } from '../../services/sector-economico.services
 })
 
 
-export class SectorEconomicoComponent {
+export class SectorEconomicoComponent implements AfterViewInit {
     displayedColumns: string[] = ['clave', 'observaciones', 'cnbv', 'banxico'];
-    dataSource: SectorEconomicoVO[] = [new SectorEconomicoVO()]
+    dataSource: SectorEconomicoVO[] = [new SectorEconomicoVO()];
     paginatorDataSource: MatTableDataSource<SectorEconomicoVO> = new MatTableDataSource<SectorEconomicoVO>(this.dataSource);
-
-
-    MODO_CONSULTA: Number = 1;
-    MODO_ALTA: Number = 2;
-    MODO_EDITAR = 3;
-    MODO_ELIMINAR: Number = 4;
-    MODO_FORMULARIO: Number = this.MODO_CONSULTA;
 
     sectorEconomico: SectorEconomicoVO = new SectorEconomicoVO();
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
-
+    @ViewChild(AcctionButtonsComponent) _acctionButtonsComponent: AcctionButtonsComponent;
 
 
     constructor(private _sectorEconomicoService: SectorEconomicoService, private alertasService: AlertasService) {
         this.findSectorEconomicoVO();
     }
-
-    getRecord(row) {
-        if (this.MODO_FORMULARIO != this.MODO_EDITAR && this.MODO_FORMULARIO != this.MODO_ALTA) {
-            this.sectorEconomico = row;
-        }
+    ngAfterViewInit(): void {
+        this.paginator._intl.itemsPerPageLabel = "Registros por página:";
     }
 
+    getRecord(row) {
+        if (this._acctionButtonsComponent.isModoConsulta()) {
+            this.sectorEconomico =row;
+            this._acctionButtonsComponent.setFilaSelecionada(row);
+        }
+
+    }
     modoConsultaClick() {
-        this.MODO_FORMULARIO = this.MODO_CONSULTA;
+   
         this.sectorEconomico = new SectorEconomicoVO();
     }
     modoAltaClick() {
-        this.MODO_FORMULARIO = this.MODO_ALTA;
         this.sectorEconomico = new SectorEconomicoVO();
     }
 
     modoGuardarClick() {
-        if (this.MODO_FORMULARIO == this.MODO_ALTA) {
-            if(this.sectorEconomico!=null) this.sectorEconomico.secBanxico = null;
+            
+            if (this.sectorEconomico != null) this.sectorEconomico.secBanxico = null;
             this._sectorEconomicoService.createItemSectorEconomicoVO(this.sectorEconomico).subscribe(then => {
                 this.alertasService.mostrarMensaje("Se creo Sector exitosamente", 'info', "Operacion realizada con exito");
                 this.findSectorEconomicoVO();
-                this.MODO_FORMULARIO = this.MODO_CONSULTA;
                 this.sectorEconomico = new SectorEconomicoVO();
             });
-        }
-
-        else{
-            this._sectorEconomicoService.updateItemSectorEconomicoVO(this.sectorEconomico).subscribe(then => {
-                this.alertasService.mostrarMensaje("Se Actualizo exitosamente", 'info', "Operacion realizada con exito");
-                this.findSectorEconomicoVO();
-                this.MODO_FORMULARIO = this.MODO_CONSULTA;
-                this.sectorEconomico = new SectorEconomicoVO();
-            });
-        }
+        
     }
-
-    modoEliminarClick() {
-        this._sectorEconomicoService.deleteItemSectorEconomicoVO(this.sectorEconomico).subscribe(then => {
+    modoActulaizar() {
+        this._sectorEconomicoService.updateItemSectorEconomicoVO(this.sectorEconomico).subscribe(then => {
+            this.alertasService.mostrarMensaje("Se Actualizo exitosamente", 'info', "Operacion realizada con exito");
             this.findSectorEconomicoVO();
-            this.alertasService.mostrarMensaje("El Sector se elimino exitosamente", 'info', "Operacion realizada con exito");
-            this.MODO_FORMULARIO = this.MODO_CONSULTA;
             this.sectorEconomico = new SectorEconomicoVO();
         });
     }
 
+    modoEliminarClick() {
+        /*this._sectorEconomicoService.deleteItemSectorEconomicoVO(this.sectorEconomico).subscribe(then => {
+            this.findSectorEconomicoVO();
+            this.alertasService.mostrarMensaje("El Sector se elimino exitosamente", 'info', "Operacion realizada con exito");
+            this.sectorEconomico = new SectorEconomicoVO();
+        });*/
+        this.sectorEconomico= new SectorEconomicoVO();
+    }
+
     modoDeshacerClick() {
-        this.MODO_FORMULARIO = this.MODO_CONSULTA;
         this.sectorEconomico = new SectorEconomicoVO();
     }
 

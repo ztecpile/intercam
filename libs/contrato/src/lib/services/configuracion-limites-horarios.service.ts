@@ -9,7 +9,7 @@ export class ConfiguracionLimitesHorariosService {
     constructor(public http: HttpClient) { }
 
     getMesasDivisas() {
-        const urlStr =  `${environment.URLServicePrice}/preciosRemote/getMesasDivisas?tipoEsquema=TODAS`;
+        const urlStr =  `${environment.URLServicePrice}preciosRemote/getMesasDivisas?tipoEsquema=TODAS`;
         //const urlStr = 'getMesasDivisas.php?tipoEsquema=MATRIZ';
         return this.http.get<any[]>(urlStr, {});
     }
