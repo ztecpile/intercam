@@ -16,7 +16,7 @@ import Swal from 'sweetalert2';
 
 export class HomologacionClientesComponent implements OnInit {
 
-    accion = 'Homologación de Clientes';
+    accion = 'Homologacion de Clientes';
     public funcForm: FormGroup;
     userlog = sessionStorage.getItem('usuUsuario');
     @Output() buscar_cliente = new EventEmitter<any>();
