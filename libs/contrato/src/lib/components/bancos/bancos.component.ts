@@ -48,6 +48,7 @@ export class BancosComponent implements OnInit {
     hguardar: boolean;
     valueEstatus: string;
     selectedRowPintar: any;
+    submitted: boolean=false;
     constructor(private bancoServ: BancoService, private formbuilder: FormBuilder) {
         this.paginador = false;
         this.hdefault = false;
@@ -74,6 +75,8 @@ export class BancosComponent implements OnInit {
    
     onSubmit() {
         console.log("Guardando...");
+        this.submitted = true;
+        this.funcForm.valid;
     }
     changeRadioActivo(e: any) {
         this.cambio();
@@ -145,8 +148,8 @@ export class BancosComponent implements OnInit {
 
     createFunForm() {
 
-        // this.funcForm = this.formbuilder.group({
-        this.funcForm = new FormGroup({
+        this.funcForm = this.formbuilder.group({
+        // this.funcForm = new FormGroup({
             nombre: new FormControl('', [Validators.required,Validators.maxLength(50), Validators.pattern(/^[a-z0-9\s]*$/i)]),
             claveBanxico: new FormControl('', [Validators.required,Validators.maxLength(8), Validators.pattern(/^[a-z0-9\s]*$/i)]),
             claveSica: new FormControl('',[Validators.maxLength(20), Validators.pattern(/^[a-z\s]*$/i)]),
@@ -322,8 +325,11 @@ export class BancosComponent implements OnInit {
         document.getElementById('deshacer').removeAttribute('disabled');
        document.getElementById('deshacer').setAttribute('class','deshacer-button btn-img');
        document.getElementById('save').setAttribute('class','save-button btn-img');
+       this.submitted = true;
+       this.funcForm.valid;
     }
     altaBancos() {
+        this.submitted = true;
         let banco = new BancosVO;
         banco.banId = null;
        
@@ -353,6 +359,7 @@ export class BancosComponent implements OnInit {
         banco.paiDescripcion = null;
         banco.banDescCorta = this.funcForm.get('nombreCorto').value;
         console.log(banco);
+        if(this.funcForm.valid){
         this.bancoServ.createBanco(banco).subscribe(
             then => {
                 console.log(then);
@@ -361,9 +368,11 @@ export class BancosComponent implements OnInit {
                 this.mostrarMensaje('No se pudo crear el item', 'error');
             }
         )
+        }
     }
 
     modoficarBancos() {
+        this.submitted = true;
         let banco = new BancosVO;
         banco.banId = this.banid;
         banco.banId = this.banid;
@@ -391,7 +400,7 @@ export class BancosComponent implements OnInit {
         banco.paiClave = this.funcForm.get('combPais').value;
         banco.paiDescripcion = null;
         banco.banDescCorta = this.funcForm.get('nombreCorto').value;
-
+if(this.funcForm.valid){
         this.bancoServ.updateBanco(banco).subscribe(
             then => {
                 console.log(then);
@@ -400,6 +409,7 @@ export class BancosComponent implements OnInit {
                 this.mostrarMensaje('No se pudo actualizar el item', 'error');
             }
         )
+}
     }
     eliminar(e: any) {
         let banco = new BancosVO;

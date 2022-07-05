@@ -101,12 +101,20 @@
                             formControlName="nombre" (change)="cambio()" idbInput>
                            
                         <label class="formulario__label">{{ 'Nombre *' | transloco}}</label>
+                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.nombre.hasError('maxlength')">El campo debe tener como m&aacute;ximo 50 caracteres. </mat-hint>
+                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.nombre.hasError('pattern')">El campo solo debe de ser alfanum&eacute;rico. </mat-hint>
+                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.nombre.hasError('required')">El campo es requerido. </mat-hint>
+                        
                     </div>
                     <div id="divClaveBanxico" class="col-sm-8">
                         <input type="text" class="formulario__input" [control]="getCtr('claveBanxico')"
                             formControlName="claveBanxico" (change)="cambio()" idbInput>
                           
                         <label class="formulario__label">{{ 'Clave BANXICO *' | transloco }}</label>
+                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveBanxico.hasError('maxlength')">El campo debe tener como m&aacute;ximo 8 caracteres. </mat-hint>
+                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveBanxico.hasError('pattern')">El campo solo debe de ser alfanum&eacute;rico. </mat-hint>
+                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveBanxico.hasError('required')">El campo es requerido. </mat-hint>
+                        
                     </div>
 
                     <div id="divClaveSica" class="col-sm-8">
@@ -114,6 +122,8 @@
                             formControlName="claveSica" (change)="cambio()" idbInput>
                          
                         <label class="formulario__label">{{ 'Clave SICA' | transloco }}</label>
+                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveSica.hasError('maxlength')">El campo debe tener como m&aacute;ximo 20 caracteres. </mat-hint>
+                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveSica.hasError('pattern')">El campo solo debe de ser alfab&eacute;tico. </mat-hint>
                     </div>
 
                     <div id="divClaveSabi" class="col-sm-8">
@@ -121,6 +131,8 @@
                             formControlName="claveSabi" (change)="cambio()" idbInput>
                             
                         <label class="formulario__label">{{ 'Clave SABI' | transloco }}</label>
+                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveSabi.hasError('maxlength')">El campo debe tener como m&aacute;ximo 20 caracteres. </mat-hint>
+                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveSabi.hasError('pattern')">El campo solo debe de ser alfab&eacute;tico. </mat-hint>
                     </div>
 
                     <div id="divClaveSiif" class="col-sm-8">
@@ -128,12 +140,14 @@
                             formControlName="claveSiif" (change)="cambio()" idbInput>
                          
                         <label class="formulario__label">{{ 'Clave SIIF' | transloco }}</label>
+                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveSiif.hasError('maxlength')">El campo debe tener como m&aacute;ximo 20 caracteres. </mat-hint>
+                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveSiif.hasError('pattern')">El campo solo debe de ser alfab&eacute;tico. </mat-hint>
                     </div>
                 </div>
                 <br>
 
                 <div class="row" id="divOpt" class="col-sm-8">
-                    <label appearance="fill" class="formulario_check_label" title="estatus">Estatus</label>
+                    <label appearance="fill" class="formulario_check_label" title="estatus">{{ 'Estatus' | transloco }}</label>
                     &nbsp;
                     <input class="radio" type="radio" [control]="getCtr('optActivo')"
                         (click)="changeRadioActivo($event)" [checked]="checkActivo" formControlName="optActivo"
@@ -188,28 +202,30 @@
                             formControlName="nombreCorto" (change)="cambio()" idbInput>
                            
                         <label class="formulario__label">{{ 'Nombre corto' | transloco }}</label>
+                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveSiif.hasError('maxlength')">El campo debe tener como m&aacute;ximo 10 caracteres. </mat-hint>
+                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveSiif.hasError('pattern')">El campo solo debe de ser alfab&eacute;tico. </mat-hint>
                     </div>
                 </div>
             </form>
         </div>
         <div class="centrar_btn">
             <button class="btn-img buscar-btn" id="buscar" type="button" (click)="consulta()">
-                <span class="tooltip">Buscar</span>
+                <span class="tooltip">{{ 'Buscar' | transloco }}</span>
             </button>
             <button id="add" class="btn-img alta-button" type="button" (click)="changeAltaButton()">
-                <span class="tooltip">Alta</span>
+                <span class="tooltip">{{ 'Alta' | transloco }}</span>
             </button>
 
             <button id="save" class="btn-img save-button" (click)="validarModalidad($event)" type="button">
-                <span class="tooltip">Guardar</span>
+                <span class="tooltip">{{ 'Guardar' | transloco }}</span>
             </button>
 
             <button id="delete" class="btn-img eliminar-btn" type="button" (click)="eliminar($event)">
-                <span class="tooltip">Eliminar</span>
+                <span class="tooltip">{{ 'Eliminar' | transloco }}</span>
             </button>
 
             <button id="deshacer" class="btn-img deshacer-button" (click)="limpiarCampos()" type="button">
-                <span class="tooltip">Deshacer</span>
+                <span class="tooltip">{{ 'Deshacer' | transloco }}</span>
             </button>
         </div>
         <hr class="red" />

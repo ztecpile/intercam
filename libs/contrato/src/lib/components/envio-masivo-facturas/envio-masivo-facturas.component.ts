@@ -1,6 +1,6 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
@@ -19,7 +19,7 @@ export interface OperacionIngresos {
     instrumento: string
 }
 
-export interface ConEmailVo{
+export interface ConEmailVo {
     checkSeleccionado: boolean,
     conId: number;
     cemEmail: string;
@@ -57,6 +57,10 @@ export class EnvioMasivoFacturasComponent implements OnInit {
     mensaje: string;
     opIng: ReenvioFacturaVO[];
     correos: ConEmailVO[];
+    submitted: boolean = false;
+    mensajeError: string | null;
+    visual: boolean;
+    visual2: boolean;
 
     /**
      * Seleccionar todas las filas
@@ -122,7 +126,7 @@ export class EnvioMasivoFacturasComponent implements OnInit {
         return retorno;
     }
 
-    constructor(private servEnvio: EnvioMasivoFacturasService, private dialog: MatDialog) {  }
+    constructor(private servEnvio: EnvioMasivoFacturasService, private dialog: MatDialog, private formbuilder: FormBuilder) { }
     ngOnInit(): void {
         sessionStorage.setItem("cliente", '');
         if (this.cliente == '') {
@@ -138,14 +142,32 @@ export class EnvioMasivoFacturasComponent implements OnInit {
         if (group === '') return this.funcForm.get(name) as FormControl
         else return this.funcForm.controls[group].get(name) as FormControl
     }
+    validacion() {
+        const valueDealIngre = this.funcForm.get('dealIngreso').value;
+        this.submitted = true;
+        this.funcForm.valid;
+        var totalcomas = 0;
+        for (var i = 0; i < valueDealIngre.length; i++) {
+            if (valueDealIngre[i] === ",") {
+                totalcomas++;
+            }
+        }
+        if (totalcomas > 19) {
+            this.mensajeError = 'El campo debe tener como maximo 20 Deal o Ingresos.'
+            this.deshabilitarBotones();
+        }else{
+            this.mensajeError = null;
+            this.habilitarBotones();
+        }
+
+    }
     createFunForm() {
 
-        // this.funcForm = this.formbuilder.group({
-        this.funcForm = new FormGroup({
+        this.funcForm = this.formbuilder.group({
             cliente: new FormControl(''),
             fechaInicial: new FormControl(''),
             fechaFinal: new FormControl(''),
-            dealIngreso: new FormControl(''),
+            dealIngreso: new FormControl('', [Validators.pattern(/^[0-9,]*$/)]),
             radioDeal: new FormControl(''),
             radioIngresos: new FormControl(''),
         });
@@ -214,20 +236,22 @@ export class EnvioMasivoFacturasComponent implements OnInit {
         let OperInt = this.opIng.filter(item => item["selecionado"] == true);
         let correos = this.correos.filter(item => item["selected"] == true);
         const body = {
-            "lstOperacionReenvioFactura": OperInt.map(item => {}),
-            "lstCuentasCorreo": correos.map(item => {})
+            "lstOperacionReenvioFactura": OperInt.map(item => { }),
+            "lstCuentasCorreo": correos.map(item => { })
         };
         console.log(body);
-        this.servEnvio.sendFacturas(body).subscribe(
-            then => {
-                console.log(then);
-                this.mostrarMensaje('Se enviaron las facturas', 'info');
-            },
-            error => {
-                console.log('error', error);
-                this.mostrarMensaje('No se pudo enviar las facturas', 'error');
-            }
-        )
+        if (this.funcForm.valid) {
+            this.servEnvio.sendFacturas(body).subscribe(
+                then => {
+                    console.log(then);
+                    this.mostrarMensaje('Se enviaron las facturas', 'info');
+                },
+                error => {
+                    console.log('error', error);
+                    this.mostrarMensaje('No se pudo enviar las facturas', 'error');
+                }
+            )
+        }
     }
     obtenerCuentas(conId: any) {
         this.servEnvio.getListaCuentasCorreo(conId).subscribe(
@@ -278,11 +302,14 @@ export class EnvioMasivoFacturasComponent implements OnInit {
         if (meses == 1) {
             console.log(fechaInicio + ',' + fechaFin);
             this.habilitarBotones();
-            document.getElementById('mensaje').setAttribute('hidden', '');
+            this.submitted = false;
+            this.mensaje = null;
+            // document.getElementById('mensaje').setAttribute('hidden', '');
         } else {
             console.log(fechaInicio + ',' + fechaFin);
             this.deshabilitarBotones();
-            document.getElementById('mensaje').removeAttribute('hidden');
+            this.submitted = true;
+            // document.getElementById('mensaje').removeAttribute('hidden');
 
         }
     }
@@ -298,6 +325,8 @@ export class EnvioMasivoFacturasComponent implements OnInit {
                 if (diaFin < diaInicio) {
                     totalMes = 2;
                     this.mensaje = 'Fecha Inicial no puede ser mayor a la Fecha Final';
+                    this.visual = true;
+                    this.visual2 = false;
                 } else {
                     totalMes = 1;
                 }
@@ -307,6 +336,8 @@ export class EnvioMasivoFacturasComponent implements OnInit {
                 } else {
                     totalMes = 2;
                     this.mensaje = 'El rango de fechas no puede exceder 1 mes(es)';
+                    this.visual2 = true;
+                    this.visual = false;
                 }
 
             }
@@ -374,10 +405,10 @@ export class EnvioMasivoFacturasComponent implements OnInit {
             datalist.push(data);
         }
         this.opIng = datalist;
-    } 
+    }
 
     tratadoDatosCorreo(row: ConEmailVo) {
-console.log(row);
+        console.log(row);
         const listmail: ConEmailVO[] = [];
         if (row.checkSeleccionado == true) {
             let mail = new ConEmailVO;

@@ -7,7 +7,7 @@
 
         <idb-titulo [titulo1]="accion"></idb-titulo>
         <div class="container">
-            <form [formGroup]="funcForm" class="formulario" autocomplete="off" idbForm>
+            <form [formGroup]="funcForm" class="formulario" (ngSubmit)="ngSubmit()" autocomplete="off" idbForm>
             <div class="row">
                 <div class="col-6">
 
@@ -21,7 +21,7 @@
                         <div class="col-2">
                             <div class="centrar_btn" style="margin-top: 10px;">
                                <button class="btn-img buscar-btn " type="button" (click)="buscaCliente('cliIdIncorrecto')">
-                                    <span class="tooltip">Buscar Contato</span>
+                                    <span class="tooltip">{{ 'Buscar Contato' | transloco }}</span>
                                 </button>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                                 
                             </select>
                         </div>
-                        <label appearance="fill" class="formulario__label">Cli ID Incorrecto</label>
+                        <label appearance="fill" class="formulario__label">{{ 'Cli ID Incorrecto' | transloco }}</label>
                     </div>
 
                     <br />
@@ -76,7 +76,7 @@
                         <div class="col-2">
                             <div class="centrar_btn" style="margin-top: 10px;">
                                 <button class="btn-img buscar-btn  " type="button" (click)="buscaCliente('cliIdCorrecto')">
-                                    <span class="tooltip">Buscar Cliente ID Correcto</span>
+                                    <span class="tooltip">{{ 'Buscar Cliente ID Correcto' | transloco }}</span>
                                 </button>
                             </div>
                         </div>
@@ -96,7 +96,7 @@
                     <div id="divperRfc" class="col-sm-12">
 
                         <mat-checkbox id="checkHomo" class="example-margin" labelPosition="before" [checked]="isChecked" (change)="isCheckedHom(); habilitarBotones();" > 
-                            <strong class="lbl_datos">Homologación de datos de la Persona</strong></mat-checkbox>
+                            <strong class="lbl_datos">{{ 'Homologaci&oacute;n de datos de la Persona' | transloco }}</strong></mat-checkbox>
                     </div>
 
                     <div id="divperRfc" class="col-sm-12">
@@ -110,12 +110,13 @@
                         <div class="col-10">
                             <input type="text" class="formulario__input" formControlName="usuSolicitante" [control]="getCtr('usuSolicitante')" (change)="habilitarBotones()" idbInput />
                            
-                            <label class="formulario__label">{{ 'Usuario Solicitante' | transloco }}</label>
+                            <label class="formulario__label">{{ 'Usuario Solicitante *' | transloco }}</label>
+                            <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.usuSolicitante.hasError('required')">El campo es requerido. </mat-hint>
                         </div>
                         <div class="col-2">
                             <div class="centrar_btn" style="margin-top: 10px;">
                                 <button class="btn-img buscar-btn  "  type="button" (click)="buscaCliente('usuSol')">
-                                    <span class="tooltip">Buscar Usuario Solicitante</span>
+                                    <span class="tooltip">{{ 'Buscar Usuario Solicitante' | transloco }}</span>
                                 </button>
                             </div>
                         </div>
@@ -125,12 +126,13 @@
                         <div class="col-10">
                             <input type="text" class="formulario__input" formControlName="coorSucursal" [control]="getCtr('coorSucursal')" (change)="habilitarBotones()" idbInput />
                            
-                            <label class="formulario__label">{{ 'Coordinador de Sucursal' | transloco }}</label>
+                            <label class="formulario__label">{{ 'Coordinador de Sucursal *' | transloco }}</label>
+                            <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.coorSucursal.hasError('required')">El campo es requerido. </mat-hint>
                         </div>
                         <div class="col-2">
                             <div class="centrar_btn" style="margin-top: 10px;">
                                 <button class="btn-img buscar-btn  " type="button" (click)="buscaCliente('coorSucursal')">
-                                    <span class="tooltip">Buscar Coordinador</span>
+                                    <span class="tooltip">{{ 'Buscar Coordinador' | transloco }}</span>
                                 </button>
                             </div>
                         </div>
@@ -140,24 +142,25 @@
                     <div id="divcboTipo" class="col-sm-12">
                         <div class="caja">
                             <select formControlName="combMotivo" [control]="getCtr('combMotivo')" (change)="cambio()" (change)="habilitarBotones()" idbInput>
-                                <option  value="" selected>-- Seleccionar --</option>
+                                <option  value="" selected>{{ '-- Seleccionar --' | transloco }}</option>
                                 <option *ngFor="let search of dataMotivo" [value]="search">{{search}}</option>
                             </select>
                         </div>
-                        <label appearance="fill" class="formulario__label">Motivo de Homologacion</label>
+                        <label appearance="fill" class="formulario__label">{{ 'Motivo de Homologacion *' | transloco }}</label>
+                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.combMotivo.hasError('required')">El campo es requerido. </mat-hint>
                     </div>
 
 
                     <div id="divperRfc" class="col-sm-12">
                         <textarea id="inputOtro" type="text" class="formulario__input" formControlName="otro" [control]="getCtr('otro')" (change)="habilitarBotones()" idbInput ></textarea>
                         
-                        <label appearance="fill" class="formulario__label">Otro</label>
+                        <label appearance="fill" class="formulario__label">{{ 'Otro' | transloco }}</label>
                     </div>
 
                     <div id="divperRfc" class="col-sm-12">
                         <textarea type="text" class="formulario__input" formControlName="observacion" [control]="getCtr('observaicion')" (change)="habilitarBotones()" idbInput></textarea>
                         
-                        <label appearance="fill" class="formulario__label">Observacion</label>
+                        <label appearance="fill" class="formulario__label">{{ 'Observacion' | transloco }}</label>
                     </div>
 
 
@@ -167,11 +170,11 @@
                 <div class="centrar_btn">
                             
                     <button id="save" class="btn-img save-button" type="button" (click)="guardaHomologacion()">
-                        <span class="tooltip">Guardar</span>
+                        <span class="tooltip">{{ 'Guardar' | transloco }}</span>
                     </button>
         
                     <button id="deshacer" class="btn-img deshacer-button" (click)="limpiarCampos()" type="button" >
-                        <span class="tooltip">Deshacer</span>
+                        <span class="tooltip">{{ 'Deshacer' | transloco }}</span>
                     </button>
                 </div>
             </div>
