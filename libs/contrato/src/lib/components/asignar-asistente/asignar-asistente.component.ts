@@ -26,6 +26,7 @@ export class AsignarAsistenteComponent implements AfterViewInit {
 
     ngAfterViewInit(): void {
         this._acctionButtonsComponent.hiddeBtnConsulta(true);
+        this.paginator._intl.itemsPerPageLabel = "Registros por página:";
 
     }
     displayedColumns = ["nombre", "sucursal", "estatus"];
@@ -42,37 +43,20 @@ export class AsignarAsistenteComponent implements AfterViewInit {
     buscarEmpleado() {
         this.dialog.open(BuscarEmpleadoComponet).afterClosed().subscribe((result) => {
             if (result !== undefined) {
-                /*
-                                let obj:EjecutivoAsistenteIdVO = {
-                    asistenteId: 14,
-                    ejecutivoId: 935,
-                    nombreEjecutivo: "Prueba"
-                };
-                 let obj2:EjecutivoAsistenteVO={
-                     idVO: obj,
-                     asistenteId: 14,
-                     ejecutivoId: 935,
-                     nombreEjecutivo: "Prueba",
-                     sucursal: "Sucursal",
-                     estatus: false,
-                     EjecutivoAsistenteVO: function (): void {
-                         throw new Error("Function not implemented.");
-                     }
-                 }
-                */
-               this.selectedRow= new EjecutivoAsistenteVO();
-               this.selectedRow.idVO= new EjecutivoAsistenteIdVO();
-                this.selectedRow.idVO.asistenteId =result['data'].perIdEjecutivo;
-                this.selectedRow.idVO.ejecutivoId=935;
-                this.selectedRow.idVO.nombreEjecutivo=result['data'].nomEjecutivo;
-                this.selectedRow.idVO["tipoAsistente"]="P";
-                this.selectedRow.asistenteId=result['data'].perIdEjecutivo;
-                this.selectedRow.ejecutivoId=935;
-                this.selectedRow.nombreEjecutivo=result['data'].nomEjecutivo;
-                this.selectedRow.sucursal=result['data'].sucDescripcion;
-                this.selectedRow.estatus=false;
-                this.selectedRow["tipoAsistente"]="P";
-                
+
+                this.selectedRow = new EjecutivoAsistenteVO();
+                this.selectedRow.idVO = new EjecutivoAsistenteIdVO();
+                this.selectedRow.idVO.asistenteId = result['data'].perIdEjecutivo;
+                this.selectedRow.idVO.ejecutivoId = 935;
+                this.selectedRow.idVO.nombreEjecutivo = result['data'].nomEjecutivo;
+                this.selectedRow.idVO["tipoAsistente"] = "P";
+                this.selectedRow.asistenteId = result['data'].perIdEjecutivo;
+                this.selectedRow.ejecutivoId = 935;
+                this.selectedRow.nombreEjecutivo = result['data'].nomEjecutivo;
+                this.selectedRow.sucursal = result['data'].sucDescripcion;
+                this.selectedRow.estatus = false;
+                this.selectedRow["tipoAsistente"] = "P";
+
             }
         });;
     }
@@ -99,13 +83,13 @@ export class AsignarAsistenteComponent implements AfterViewInit {
     onModoGuardarClick() {
         this._asignarAsistenteServices.crearPerAsistente(this.selectedRow).subscribe(then => {
             this.findPerAsistente();
-            this.selectedRow= new EjecutivoAsistenteVO;
+            this.selectedRow = new EjecutivoAsistenteVO;
         });
     }
     onModoActualizarClick() {
         this._asignarAsistenteServices.crearPerAsistente(this.selectedRow).subscribe(then => {
             this.findPerAsistente();
-            this.selectedRow= new EjecutivoAsistenteVO;
+            this.selectedRow = new EjecutivoAsistenteVO;
         });
     }
 
