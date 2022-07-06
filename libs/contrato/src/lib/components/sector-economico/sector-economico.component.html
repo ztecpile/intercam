@@ -40,7 +40,8 @@
             </tr>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns"  [ngClass]="{ 'selected': row === sectorEconomico }" (click)="getRecord(row)"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"
+                [ngClass]="{ 'selected': row === sectorEconomico }" (click)="getRecord(row)"></tr>
 
         </table>
         <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
@@ -48,41 +49,60 @@
         </mat-paginator>
     </div>
     <br>
-    <div class="row">
-        <div class="col-6">
+
+    <form [formGroup]="formGrupo">
+        <div class="row">
+            <div class="col-6">
 
 
-            <div class="col-sm-12">
-                <input type="text" class="formulario__input" [(ngModel)]="sectorEconomico.secId"
-                     />
-                <label class="formulario__label">* Clave</label>
-            </div>
+                <div class="col-sm-12">
+                    <input formControlName="clave" type="number" class="formulario__input"
+                    [(ngModel)]="sectorEconomico.secId"  max="99999999999999999999" (keyup)="hasChenges();" />
+                    <label class="formulario__label">* Clave</label>
+                    <mat-hint class="form-warnig" *ngIf="submitted && formGrupo.controls.clave.hasError('required')">El
+                        campo es obligatorio</mat-hint>
+                    <mat-hint class="form-warnig" *ngIf="submitted && formGrupo.controls['clave'].hasError('max')">La Clave debe ser menor a 20 carácteres</mat-hint>
 
-            <div class="col-sm-12">
-                <input type="text" class="formulario__input" [(ngModel)]="sectorEconomico.secDescripcion" />
-                <label class="formulario__label">* Observaciones</label>
-            </div>
+                </div>
 
-            <div class="col-sm-12">
-                <input type="text" class="formulario__input" [(ngModel)]="sectorEconomico.secCnbv" />
-                <label class="formulario__label">* Clave CNBV</label>
-            </div>
+                <div class="col-sm-12">
+                    <input formControlName="obserbaciones" type="text" class="formulario__input" maxlength="50"   [(ngModel)]="sectorEconomico.secDescripcion" (keyup)="hasChenges();"   />
+                    <label class="formulario__label">* Observaciones</label>
+                    <mat-hint class="form-warnig"
+                        *ngIf="submitted && formGrupo.controls.obserbaciones.hasError('required')">El campo es
+                        obligatorio</mat-hint>
+                </div>
 
-            <div class="col-sm-12">
-                <input type="text" class="formulario__input" [(ngModel)]="sectorEconomico.secBanxico" />
-                <label class="formulario__label">* Clave BANXICO</label>
+                <div class="col-sm-12">
+                    <input formControlName="clave_cnbv" type="number" class="formulario__input" type="number"
+                    [(ngModel)]="sectorEconomico.secCnbv" ngModel max="99999999"  min="00000000" (keyup)="hasChenges();" />
+                    <label class="formulario__label">* Clave CNBV</label>
+                    <mat-hint class="form-warnig"
+                        *ngIf="submitted && formGrupo.controls.clave_cnbv.hasError('required')">El campo es obligatorio
+                    </mat-hint>
+
+                    <mat-hint class="form-warnig"
+                        *ngIf="submitted && (formGrupo.controls['clave_cnbv'].hasError('max')||formGrupo.controls['clave_cnbv'].hasError('min'))">La Clave debe ser igual a 8 carácteres
+                    </mat-hint>
+
+
+                </div>
+
+                <div class="col-sm-12">
+                    <input type="text" class="formulario__input"  />
+                    <label class="formulario__label">Clave BANXICO</label>
+                </div>
+
+
             </div>
         </div>
-    </div>
+    </form>
 
-  
 
-    <acction-buttons-component (onModoConsultaClick)="modoConsultaClick()"
-    (onModoAltaClick)="modoAltaClick()"
-    (onModoEliminarClick)="modoEliminarClick()"
-    (onModoGuardarClick)="modoGuardarClick()"
-    (onModoActualizarClick)="modoActulaizar()"
-    [modelo]="sectorEconomico"></acction-buttons-component>
+    <acction-buttons-component (onModoConsultaClick)="modoConsultaClick()" (onModoAltaClick)="modoAltaClick()"
+        (onModoEliminarClick)="modoEliminarClick()" (onModoGuardarClick)="modoGuardarClick()"
+        (onModoActualizarClick)="modoActulaizar()" [modelo]="sectorEconomico"
+        [formGroup]="formGrupo"></acction-buttons-component>
 
 
     <hr class="red" />

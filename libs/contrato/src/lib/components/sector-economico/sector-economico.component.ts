@@ -1,6 +1,7 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -18,6 +19,9 @@ import { SectorEconomicoService } from '../../services/sector-economico.services
 
 
 export class SectorEconomicoComponent implements AfterViewInit {
+
+
+    submitted: Boolean = false;
     displayedColumns: string[] = ['clave', 'observaciones', 'cnbv', 'banxico'];
     dataSource: SectorEconomicoVO[] = [new SectorEconomicoVO()];
     paginatorDataSource: MatTableDataSource<SectorEconomicoVO> = new MatTableDataSource<SectorEconomicoVO>(this.dataSource);
@@ -29,22 +33,36 @@ export class SectorEconomicoComponent implements AfterViewInit {
     @ViewChild(AcctionButtonsComponent) _acctionButtonsComponent: AcctionButtonsComponent;
 
 
-    constructor(private _sectorEconomicoService: SectorEconomicoService, private alertasService: AlertasService) {
+
+    formGrupo: FormGroup = this.formBuilder.group({
+        clave: ['', Validators.required],
+        obserbaciones: ['', Validators.required],
+        clave_cnbv: ['', Validators.required],
+
+    });
+
+    constructor(private _sectorEconomicoService: SectorEconomicoService, private alertasService: AlertasService, private formBuilder: FormBuilder) {
         this.findSectorEconomicoVO();
     }
     ngAfterViewInit(): void {
         this.paginator._intl.itemsPerPageLabel = "Registros por página:";
     }
 
+    hasChenges() {
+        this._acctionButtonsComponent.hasChenges();
+    }
+
     getRecord(row) {
+
         if (this._acctionButtonsComponent.isModoConsulta()) {
-            this.sectorEconomico =row;
+            this.sectorEconomico ={...row};
             this._acctionButtonsComponent.setFilaSelecionada(row);
         }
 
+
     }
     modoConsultaClick() {
-   
+
         this.sectorEconomico = new SectorEconomicoVO();
     }
     modoAltaClick() {
@@ -52,30 +70,38 @@ export class SectorEconomicoComponent implements AfterViewInit {
     }
 
     modoGuardarClick() {
-            
+        this.submitted = true;
+        if (this.formGrupo.valid) {
             if (this.sectorEconomico != null) this.sectorEconomico.secBanxico = null;
             this._sectorEconomicoService.createItemSectorEconomicoVO(this.sectorEconomico).subscribe(then => {
                 this.alertasService.mostrarMensaje("Se creo Sector exitosamente", 'info', "Operacion realizada con exito");
                 this.findSectorEconomicoVO();
                 this.sectorEconomico = new SectorEconomicoVO();
+                this.submitted = false;
             });
-        
+        }
+
     }
     modoActulaizar() {
-        this._sectorEconomicoService.updateItemSectorEconomicoVO(this.sectorEconomico).subscribe(then => {
-            this.alertasService.mostrarMensaje("Se Actualizo exitosamente", 'info', "Operacion realizada con exito");
-            this.findSectorEconomicoVO();
-            this.sectorEconomico = new SectorEconomicoVO();
-        });
+        this.submitted = true;
+        if (this.formGrupo.valid) {
+            this._sectorEconomicoService.updateItemSectorEconomicoVO(this.sectorEconomico).subscribe(then => {
+                this.alertasService.mostrarMensaje("Se Actualizo exitosamente", 'info', "Operacion realizada con exito");
+                this.findSectorEconomicoVO();
+                console.log(this.sectorEconomico);
+                this.sectorEconomico = new SectorEconomicoVO();
+                this.submitted = false;
+            });
+        }
     }
 
     modoEliminarClick() {
-        /*this._sectorEconomicoService.deleteItemSectorEconomicoVO(this.sectorEconomico).subscribe(then => {
+        this._sectorEconomicoService.deleteItemSectorEconomicoVO(this.sectorEconomico).subscribe(then => {
             this.findSectorEconomicoVO();
             this.alertasService.mostrarMensaje("El Sector se elimino exitosamente", 'info', "Operacion realizada con exito");
             this.sectorEconomico = new SectorEconomicoVO();
-        });*/
-        this.sectorEconomico= new SectorEconomicoVO();
+        });
+        this.sectorEconomico = new SectorEconomicoVO();
     }
 
     modoDeshacerClick() {
