@@ -1,5 +1,6 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 
 
@@ -39,6 +40,7 @@ export class AcctionButtonsComponent {
     @Output() onModoDeshacerClick = new EventEmitter();
 
     @Input() modelo: Object = null;
+    @Input() formGroup:FormGroup=null;
 
     validarBtnReset: boolean = false;//this.MODO_FORMULARIO == this.MODO_CONSULTA || this.modeloSelecionado == null || this.modelo.toString() != this.modeloSelecionado.toString()
     validarBtnEliminar: boolean = false;
@@ -86,12 +88,14 @@ export class AcctionButtonsComponent {
         this.onModoAltaClick.emit();
     }
     modoGuardarClick() {
+        
+
         if (this.MODO_FORMULARIO == this.MODO_ALTA)
             this.onModoGuardarClick.emit();
         else
             this.onModoActualizarClick.emit();
-
-        this.reiniciarBtn();
+        if(this.formGroup==null||this.formGroup?.valid )
+            this.reiniciarBtn();
     }
 
     modoEliminarClick() {
