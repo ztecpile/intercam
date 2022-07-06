@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { TipoRelVO } from '@intercam/model';
@@ -14,7 +15,7 @@ import { TipoRelacionService } from '../../services/tipo-relacion.service';
 })
 
 
-export class TiposRelacionComponent {
+export class TiposRelacionComponent implements AfterViewInit {
 
     displayedColumns: string[] = ['Observaciones', 'Tipo'];
 
@@ -28,11 +29,20 @@ export class TiposRelacionComponent {
 
     @ViewChild(AcctionButtonsComponent) acctionButtonsComponent: AcctionButtonsComponent;
 
-    constructor(private _tipoRelacionService: TipoRelacionService,private alertasService: AlertasService) { this.findTipoRelVO();}
+    formGrupo: FormGroup = this.formBuilder.group({
+        tipo_valor: ['', Validators.required],
+        obserbaciones: ['', Validators.required],
+
+
+    });
+    submitted: Boolean = true;
+    constructor(private _tipoRelacionService: TipoRelacionService, private alertasService: AlertasService, private formBuilder: FormBuilder) { this.findTipoRelVO(); }
 
 
 
-
+    ngAfterViewInit(): void {
+        this.paginator._intl.itemsPerPageLabel = "Registros por página:";
+    }
 
     findTipoRelVO() {
         this._tipoRelacionService.findTipoRelVO().subscribe(then => {
@@ -57,12 +67,12 @@ export class TiposRelacionComponent {
 
 
     onModoConsultaClick() {
-      //  alert("Click evento");
-      this.tipoRelVO = new TipoRelVO();
+        //  alert("Click evento");
+        this.tipoRelVO = new TipoRelVO();
     }
 
     onModoAltaClick() {
-        
+
         this.tipoRelVO = new TipoRelVO();
     }
 
@@ -74,21 +84,28 @@ export class TiposRelacionComponent {
         this.tipoRelVO = new TipoRelVO();
     }
 
-    onModoGuardarClick(){
+    onModoGuardarClick() {
+        this.submitted = true;
+        if (this.formGrupo.valid) {
+            this._tipoRelacionService.createTipoRelVO(this.tipoRelVO).subscribe(then => {
+                this.alertasService.mostrarMensaje("Se Creo exitosamente", 'info', "Operacion realizada con exito");
+                this.findTipoRelVO();
+            });
+            this.submitted = false;
+        }
 
-        this._tipoRelacionService.createTipoRelVO(this.tipoRelVO).subscribe(then => {
-            this.alertasService.mostrarMensaje("Se Creo exitosamente", 'info', "Operacion realizada con exito");
-            this.findTipoRelVO();
-        });
-    
     }
 
-    onModoActualizarClick(){
-        this._tipoRelacionService.updateTipoRelVO(this.tipoRelVO).subscribe(then => {
-            this.alertasService.mostrarMensaje("Se actualizo exitosamente", 'info', "Operacion realizada con exito");
-            this.findTipoRelVO();
-        });
-        this.tipoRelVO = new TipoRelVO();
+    onModoActualizarClick() {
+        this.submitted = true;
+        if (this.formGrupo.valid) {
+            this._tipoRelacionService.updateTipoRelVO(this.tipoRelVO).subscribe(then => {
+                this.alertasService.mostrarMensaje("Se actualizo exitosamente", 'info', "Operacion realizada con exito");
+                this.findTipoRelVO();
+            });
+            this.tipoRelVO = new TipoRelVO();
+            this.submitted = false;
+        }
     }
 
 
