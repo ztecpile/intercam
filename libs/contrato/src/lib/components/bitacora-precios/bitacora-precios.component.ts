@@ -96,7 +96,7 @@ export class BitacoraPreciosComponent implements OnInit {
 
   ngOnInit(): void {
     this.createFunForm();
-
+document.getElementById('cboMesa').setAttribute('disabled','');
     if (this.listpromo.length == 0) {
       this.mostrarMensaje('El promotor no tiene clave legada para este negocio', 'error');
     }
@@ -204,7 +204,7 @@ export class BitacoraPreciosComponent implements OnInit {
         console.log(then);
         if (then = '1') {
           this.cboMesaDisabled = false;
-          this.funcForm.get('cboMesa').enable();
+          document.getElementById('cboMesa').removeAttribute('disabled');
         }
       },
       error => {
