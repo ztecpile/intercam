@@ -4,7 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { BitacoraPreciosService } from '../../services/bitacora-precios.service';
 import { MatTableModule } from '@angular/material/table'
 import { InstrumentoVO, MapeoDivisa, MesasOperacionVO, TipoCambioBitacoraVO, UsuarioVO } from '@intercam/model';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ConsultaInfoGralEvent } from '../../util/ConsultaInfoGralEvent';
 import Swal from 'sweetalert2';
 
@@ -74,7 +74,7 @@ export class BitacoraPreciosComponent implements OnInit {
   listpromo: listPromotor[] = []
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private bPService: BitacoraPreciosService) {
+  constructor(private bPService: BitacoraPreciosService,private formbuilder: FormBuilder) {
     this.perId = sessionStorage.getItem('perId');
     this.usuarioVO = JSON.parse(sessionStorage.getItem("usuarioVO")) as UsuarioVO;
     console.log(this.usuarioVO);
@@ -150,7 +150,7 @@ export class BitacoraPreciosComponent implements OnInit {
   }
   createFunForm() {
 
-    this.funcForm = new FormGroup({
+    this.funcForm = this.formbuilder.group({
       cboMesa: new FormControl(''),
       cboDivisa: new FormControl(''),
       fecha: new FormControl(''),

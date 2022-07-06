@@ -43,7 +43,7 @@ export class AdministracionCierreExcepcionComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     console.log("Guardando...");
-    console.log(this.funcForm.value);
+    this.funcForm.value;
   }
   filtrar(e: any) {
     console.log(e);
@@ -70,6 +70,7 @@ export class AdministracionCierreExcepcionComponent implements OnInit {
     document.getElementById('deshacer').setAttribute('class', 'deshacer-button btn-img');
     document.getElementById('save').setAttribute('class', 'save-button btn-img');
     this.submitted = true;
+    this.funcForm.valid;
   }
   selected(element: any) {
     console.log(element);
@@ -111,6 +112,7 @@ export class AdministracionCierreExcepcionComponent implements OnInit {
     document.getElementById('save').setAttribute('class', 'save-button-des btn-img');
   }
   updateAce(el: any): void {
+    this.submitted = true;
     console.log(el);
     console.log(this.perId);
     console.log(this.clave);
@@ -129,6 +131,7 @@ export class AdministracionCierreExcepcionComponent implements OnInit {
     if(this.funcForm.get("optNo").value == true) {
       cierreExcepVO.cceCierreexcep = 'F';
     }
+    if(this.funcForm.valid){
     this.ACEService.getActualizarOperador(cierreExcepVO).subscribe(
       then => {
         this.mostrarMensaje('Actualización Exitosa', 'info');
@@ -140,6 +143,7 @@ export class AdministracionCierreExcepcionComponent implements OnInit {
         this.onchange();
       }
     )
+    }
   }
 
   mostrarMensaje(mensaje: string, tipoMensaje: any) {
@@ -197,7 +201,7 @@ export class AdministracionCierreExcepcionComponent implements OnInit {
     }
   }
   createFunForm() {
-    this.funcForm = new FormGroup({
+    this.funcForm = this.formBuilder.group({
       perNom: new FormControl('', [Validators.maxLength(50), Validators.pattern(/^[a-z\s]*$/i)]),
       optSi: new FormControl(false),
       optNo: new FormControl(false),

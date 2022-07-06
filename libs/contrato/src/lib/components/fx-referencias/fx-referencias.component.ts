@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ReferenciasService } from '../../services/referencias.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { ContratoPersonaVO, ReferenciaConvenioVO, PersonaVO } from '@intercam/model';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import Swal from 'sweetalert2';
@@ -29,7 +29,10 @@ export class FxReferenciasComponent implements OnInit {
     perId: number; //clave de persona 
     paginador: boolean;
     selectedRowPintar: any;
-    constructor(private refServ: ReferenciasService) {
+    submitted: boolean = false;
+    accionbutton: string;
+   
+    constructor(private refServ: ReferenciasService,private formBuilder: FormBuilder) {
         this.perId = Number(sessionStorage.getItem('perId'));
         // this.perId = 876831;
         console.log('perId: ', this.perId);
@@ -126,6 +129,7 @@ export class FxReferenciasComponent implements OnInit {
         document.getElementById('aceptar').removeAttribute('disabled');
         document.getElementById('notificar').setAttribute('class', 'deshacer-button btn-img');
         document.getElementById('aceptar').setAttribute('class', 'save-button btn-img');
+        document.getElementById('mail').removeAttribute('disabled');
         this.findReferencia(contratoSelec.idVO.contratoVO.conId);
 
 
@@ -148,6 +152,8 @@ export class FxReferenciasComponent implements OnInit {
     }
 
     generarReferencias() {
+        this.submitted = true;
+        if(this.funcForm.valid){
         this.refServ.generateReferencias(this.setConId).subscribe(
             then => {
                 console.log(then);
@@ -160,11 +166,11 @@ export class FxReferenciasComponent implements OnInit {
             }
 
         )
+        }
     }
 
     envioReferencias() {
-        const referenciaConvenioVO: ReferenciaConvenioVO[] = [];
-
+        this.submitted = true;
         const body = {
             'mailTo': this.getMail,
             'referencias': this.dataSource2.filteredData,
@@ -173,6 +179,7 @@ export class FxReferenciasComponent implements OnInit {
             'tconId': this.getTConId
         }
         console.log('body', body);
+        if(this.funcForm.valid){
         this.refServ.sendReferencias(body).subscribe(
             then => {
                 console.log(then);
@@ -183,17 +190,22 @@ export class FxReferenciasComponent implements OnInit {
                 this.mostrarMensaje('No se pudo en la notificacion de las referencias', 'error');
             }
         )
+        }
     }
 
     onSubmit() {
-        console.log("Guardando...");
+        this.submitted= true;
+        this.funcForm.valid
+      
     }
 
     createFunForm() {
-        this.funcForm = new FormGroup({
+        this.funcForm = this.formBuilder.group({
             mail: new FormControl('',[Validators.email])
         });
     }
+
+
     mostrarMensaje(mensaje: string, tipoMensaje: any) {
         const _this = this;
         Swal.fire({
@@ -220,5 +232,8 @@ export class FxReferenciasComponent implements OnInit {
     ngOnInit(): void {
         this.createFunForm();
         this.findPersonaContrato();
+        document.getElementById('mail').setAttribute('disabled', '');
+        document.getElementById('notificar').setAttribute('disabled', '');
+        document.getElementById('aceptar').setAttribute('disabled', '');
     }
 }

@@ -3,25 +3,28 @@
 <h2>FX Bitacora de Precios</h2>
 <hr class="red" />
 <div class="container">
-    <form class="formulario" [formGroup]="funcForm" idbForm>
-        <div class="row">
+
+    <div class="row">
+        <form class="formulario" [formGroup]="funcForm" idbForm>
             <div id="divcboMesa" class="col-sm-2">
                 <div class="caja">
-                    <select id="cboMesa" formControlName="cboMesa" [control]="getCtr('cboMesa')" (change)="obtenerBitacora()" idbInput>
-                        <option [selected]="mesaselect" *ngFor="let tipo of dataCatMesas "
-                            [value]="tipo.cveMesa">{{tipo.cveMesa}}</option>
+                    <select id="cboMesa" formControlName="cboMesa" [control]="getCtr('cboMesa')"
+                        (change)="obtenerBitacora()" idbInput>
+                        <option [selected]="mesaselect" *ngFor="let tipo of dataCatMesas " [value]="tipo.cveMesa">
+                            {{tipo.cveMesa}}</option>
                     </select>
                 </div>
-                <label appearance="fill" class="formulario__label">Mesa</label>
+                <label appearance="fill" class="formulario__label">{{ 'Mesa' | transloco }}</label>
             </div>
 
             <div id="divcboDivisa" class="col-sm-2">
                 <div class="caja">
-                    <select id="cboDivisa" formControlName="cboDivisa" [control]="getCtr('cboDivisa')"  (change)="obtenerBitacora()" idbInput>
+                    <select id="cboDivisa" formControlName="cboDivisa" [control]="getCtr('cboDivisa')"
+                        (change)="obtenerBitacora()" idbInput>
                         <option *ngFor="let tipo of dataDivisas " [value]="tipo.divId">{{tipo.divId}}</option>
                     </select>
                 </div>
-                <label appearance="fill" class="formulario__label">Divisa</label>
+                <label appearance="fill" class="formulario__label">{{ 'Divisa' | transloco }}</label>
             </div>
             <div class="col-sm-4">
                 <idb-calendario id="fecha" etiqueta="Fecha" lenguaje="es" max="0-0-0" [control]="getCtr('fecha')"
@@ -29,21 +32,22 @@
             </div>
             <div class="col-sm-2">
                 <input type="text" class="formulario__input" maxlength="30" formControlName="hora"
-                    [control]="getCtr('hora')" idbInput (keyup.enter)="obtenerBitacora()"/>
+                    [control]="getCtr('hora')" idbInput (keyup.enter)="obtenerBitacora()" />
                 <label class="formulario__label">{{
                     'Hora' | transloco
                     }}</label>
             </div>
-            <div class="col-sm-2">
-                <button class="btn-img  regresar-btn" type="button" (click)="regAnt()"><span class="tooltip">Registro
-                        Anterior</span>
-                </button>
-                <button class="btn-img  continuar-btn" type="button" (click)="regSig()"><span class="tooltip">Registro
-                        Siguiente</span>
-                </button>
-            </div>
+        </form>
+        <div class="col-sm-2">
+            <button class="btn-img  regresar-btn" type="button" (click)="regAnt()"><span class="tooltip">
+                {{ 'Registro Anterior' | transloco }}</span>
+            </button>
+            <button class="btn-img  continuar-btn" type="button" (click)="regSig()"><span class="tooltip">
+                {{ 'Registro Siguiente' | transloco }}</span>
+            </button>
         </div>
-    </form>
+    </div>
+
 </div>
 <h6>Bit&aacute;cora Tipos</h6>
 <div class="mat-elevation-z8">

@@ -1,6 +1,6 @@
 
 import { Component, EventEmitter, OnInit, Output, ViewChildren } from '@angular/core';
-import { FormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { HomologacionVO } from '@intercam/model';
 import { HomologacionClienteService } from '../../services/homologacion-clientes.service';
 import { DialogBuscarClienteComponent } from "libs/shred-components/src/lib/dialog/dialog-buscar-cliente/buscar-cliente.component";
@@ -42,10 +42,10 @@ export class HomologacionClientesComponent implements OnInit {
     pernomCortonew: any;
     tpeclave: string;
     cpeId: number;
+    submitted: boolean = false;
 
 
-
-    constructor(private homServe: HomologacionClienteService, private dialog: MatDialog) {
+    constructor(private homServe: HomologacionClienteService, private dialog: MatDialog, private formbuilder: FormBuilder) {
         this.isChecked = false;
         this.perId = Number(sessionStorage.getItem('perId'));
 
@@ -79,6 +79,7 @@ export class HomologacionClientesComponent implements OnInit {
     }
 
     guardaHomologacion() {
+        this.submitted = true;
         let hom = new HomologacionVO;
         hom.conId = this.funcForm.get('contrato').value;
         hom.perIdAnt = this.perIdAnt;
@@ -94,6 +95,7 @@ export class HomologacionClientesComponent implements OnInit {
 
         hom.emailPersonas = this.cadenaMail;
         console.log(hom);
+        if(this.funcForm.valid){
         this.homServe.saveHomologacion(hom).subscribe(
             then => {
                 console.log(then);
@@ -104,6 +106,7 @@ export class HomologacionClientesComponent implements OnInit {
                 this.mostrarMensaje('No se realizo la homologaci\u00F3n', 'error');
             }
         )
+        }
     }
 
     obtenerCarpetaContratos(conId: any) {
@@ -292,16 +295,15 @@ export class HomologacionClientesComponent implements OnInit {
 
     createFunForm() {
 
-        // this.funcForm = this.formbuilder.group({
-        this.funcForm = new FormGroup({
+        this.funcForm = this.formbuilder.group({
             contrato: new FormControl(0),
             catTitular: new FormControl(''),
             tipoContrato: new FormControl(''),
             sucursal: new FormControl(''),
             cliIdCorrecto: new FormControl(''),
-            usuSolicitante: new FormControl('', Validators.required),
-            coorSucursal: new FormControl('', Validators.required),
-            combMotivo: new FormControl('', Validators.required),
+            usuSolicitante: new FormControl('', [Validators.required]),
+            coorSucursal: new FormControl('', [Validators.required]),
+            combMotivo: new FormControl('', [Validators.required]),
             comboCliIdIncorrecto: new FormControl(''),
             otro: new FormControl(''),
             observacion: new FormControl(''),
@@ -310,6 +312,11 @@ export class HomologacionClientesComponent implements OnInit {
             bioCorrecta: new FormControl('')
 
         });
+    }
+
+    ngSubmit(){
+        this.submitted = true;
+        this.funcForm.valid;
     }
 
     buscaCliente(valor: any) {

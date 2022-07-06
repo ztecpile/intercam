@@ -25,34 +25,34 @@
           </div>
 
           <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-6">
               <idb-calendario etiqueta="Fecha Inicial" lenguaje="es" max="0-0-0" 
                 [control]="getCtr('fechaInicial')" (fechaSeleccionada)="comparacionFechas($event)" idbInput></idb-calendario>
-            </div>
+                <mat-hint class="form-warnig" *ngIf="submitted && mensaje != null && visual && !visual2">{{mensaje}} </mat-hint>
+              </div>
 
-            <div class="col-sm-4">
+            <div class="col-sm-6">
               <idb-calendario etiqueta="Fecha Final" lenguaje="es" max="0-0-0" 
                 [control]="getCtr('fechaFinal')" (fechaSeleccionada)="comparacionFechas($event)" idbInput></idb-calendario>
-
-            </div>
-            <div class="col-sm-4">
-              <label hidden id="mensaje" class="textRojo">{{mensaje}}</label>
+                <mat-hint class="form-warnig" *ngIf="submitted && mensaje != null && visual2 && !visual">{{mensaje}} </mat-hint>
             </div>
           </div>
 
           <div id="divperRfc" class="row">
             <div class="col-10">
-              <input type="text" class="formulario__input placeholder" pattern="^[0-9,]*$" formControlName="dealIngreso"
+              <input type="text"  class="formulario__input placeholder" formControlName="dealIngreso"
                 placeholder="Podr&aacute; ingresar hasta 20 valores separados por comas (,)"
-                [control]="getCtr('dealIngreso')" idbInput />
+                [control]="getCtr('dealIngreso')" idbInput (change)="validacion()" />
               <label class="formulario__label">{{
                 'Deal / Ingreso' | transloco
                 }}</label>
+                <mat-hint class="form-warnig" *ngIf="submitted && mensajeError != null">{{mensajeError}} </mat-hint>
+                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.dealIngreso.hasError('pattern')">El campo debe de ser num&eacute;rico, separados por comas (,). </mat-hint>
             </div>
             <div class="col-2">
               <div class="centrar_btn" style="margin-top: 10px">
                 <button id="buscar" class="btn-img buscar-btn" type="button" (click)="obtenerOperacionIngreso()">
-                  <span class="tooltip">Buscar Deal/Ingreso</span>
+                  <span class="tooltip">{{ 'Buscar Deal/Ingreso' | transloco }}</span>
                 </button>
               </div>
             </div>
@@ -133,7 +133,7 @@
 
     <div class="col-sm-10 derecha_btn">
       <button id="notificar" class="btn-img notifica-button" type="button" matTooltipPosition="center" (click)="enviarFacturas()">
-        <span class="tooltip">Enviar</span>
+        <span class="tooltip">{{ 'Enviar' | transloco }}</span>
       </button>
 
 
