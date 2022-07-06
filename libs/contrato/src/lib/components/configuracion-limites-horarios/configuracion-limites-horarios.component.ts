@@ -2,6 +2,7 @@
 
 import { CurrencyPipe } from '@angular/common';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { LimiteSolicitudInstrumentoVO, MesasOperacionVO } from '@intercam/model';
@@ -20,7 +21,7 @@ import { ConfiguracionLimitesHorariosService } from '../../services/configuracio
 export class ConfiguracionLimitesHorariosComponent implements AfterViewInit {
 
     displayedColumns: string[] = ['Mesa', 'Monto', 'Horario', 'Estatus'];
-    dataSource: MatTableDataSource<LimiteSolicitudInstrumentoVO>= new MatTableDataSource();
+    dataSource: MatTableDataSource<LimiteSolicitudInstrumentoVO> = new MatTableDataSource();
     monto = "";
     hora: string = "00";
     min = "00";
@@ -39,7 +40,14 @@ export class ConfiguracionLimitesHorariosComponent implements AfterViewInit {
     };
     mesas: MesasOperacionVO[] = [];
 
-    constructor(private _configuracionLimitesHorariosService: ConfiguracionLimitesHorariosService, private currencyPipe: CurrencyPipe) {
+    formGrupo: FormGroup = this.formBuilder.group({
+        mesa: ['', Validators.required],
+        estatus: ['', Validators.required],
+        monto: ['', Validators.required],
+        horario: ['', Validators.required],
+    });
+    submitted: Boolean = true;
+    constructor(private _configuracionLimitesHorariosService: ConfiguracionLimitesHorariosService, private currencyPipe: CurrencyPipe, private formBuilder: FormBuilder) {
         this.getMesasDivisas();
         this.limiteSolicitudInstrumentoVO["hora"] = "00";
         this.limiteSolicitudInstrumentoVO["min"] = "00";
@@ -67,7 +75,7 @@ export class ConfiguracionLimitesHorariosComponent implements AfterViewInit {
                     console.log(fecha.getTimezoneOffset());
                     item["hora"] = ("00" + fecha.getUTCHours()).slice(-2);
                     item["min"] = ("00" + fecha.getUTCMinutes()).slice(-2);
-                   // item.lsiHorarioLim = ("00" + fecha.getUTCHours()).slice(-2) + " : " + ("00" + fecha.getUTCMinutes()).slice(-2);
+                    // item.lsiHorarioLim = ("00" + fecha.getUTCHours()).slice(-2) + " : " + ("00" + fecha.getUTCMinutes()).slice(-2);
                     return item;
                 }));
                 this.dataSource.paginator = this.paginator;
@@ -82,13 +90,6 @@ export class ConfiguracionLimitesHorariosComponent implements AfterViewInit {
         }
     }
 
-    /*  getRecord(row) {
-          this.selectedRow =row;
-          this.limiteSolicitudInstrumentoVO=row;
-          this.hora=(this.limiteSolicitudInstrumentoVO.lsiHorarioLim+"").split(" : ")[0];
-          this._acctionButtonsComponent.setFilaSelecionada(row);
-      }*/
-
     timeFormat(e) {
         // Always 2 digits
 
@@ -102,7 +103,7 @@ export class ConfiguracionLimitesHorariosComponent implements AfterViewInit {
         this.hasChenges();
     }
 
-    onModoDeshacerClick(){
+    onModoDeshacerClick() {
         this.limiteSolicitudInstrumentoVO = {
             "lsiId": null,
             "lsiMontoLim": null,
@@ -110,7 +111,7 @@ export class ConfiguracionLimitesHorariosComponent implements AfterViewInit {
             "lsiEstatus": null,
             "lsiMesa": null,
             "lsiUsuario": null,
-        };  
+        };
     }
 
     onModoAltaClick() {
@@ -128,65 +129,73 @@ export class ConfiguracionLimitesHorariosComponent implements AfterViewInit {
 
     onModoEliminarClick() {
 
-       this.limiteSolicitudInstrumentoVO.lsiMontoLim=Number(this.limiteSolicitudInstrumentoVO.lsiMontoLim+"".replace(",",""));
-       this._configuracionLimitesHorariosService.eliminarLimiteCambioInstrumento(this.limiteSolicitudInstrumentoVO).subscribe(then=>{
-        this.limiteSolicitudInstrumentoVO = {
-            "lsiId": null,
-            "lsiMontoLim": null,
-            "lsiHorarioLim": null,
-            "lsiEstatus": null,
-            "lsiMesa": null,
-            "lsiUsuario": null,
-        };
-        this.limiteSolicitudInstrumentoVO["hora"] = "00";
-        this.limiteSolicitudInstrumentoVO["min"] = "00";
-        this.getMesasDivisas();
+        this.limiteSolicitudInstrumentoVO.lsiMontoLim = Number(this.limiteSolicitudInstrumentoVO.lsiMontoLim + "".replace(",", ""));
+        this._configuracionLimitesHorariosService.eliminarLimiteCambioInstrumento(this.limiteSolicitudInstrumentoVO).subscribe(then => {
+            this.limiteSolicitudInstrumentoVO = {
+                "lsiId": null,
+                "lsiMontoLim": null,
+                "lsiHorarioLim": null,
+                "lsiEstatus": null,
+                "lsiMesa": null,
+                "lsiUsuario": null,
+            };
+            this.limiteSolicitudInstrumentoVO["hora"] = "00";
+            this.limiteSolicitudInstrumentoVO["min"] = "00";
+            this.getMesasDivisas();
 
-       });
+        });
     }
 
     onModoGuardarClick() {
-        let hora = new Date();
-        hora.setHours(this.limiteSolicitudInstrumentoVO["hora"]);
-        hora.setMinutes(this.limiteSolicitudInstrumentoVO["min"]);
-        this.limiteSolicitudInstrumentoVO.lsiHorarioLim = hora;
-        this._configuracionLimitesHorariosService.guardarLimiteCambioInstrumento(this.limiteSolicitudInstrumentoVO).subscribe(then => {
-            this.limiteSolicitudInstrumentoVO = {
-                "lsiId": null,
-                "lsiMontoLim": null,
-                "lsiHorarioLim": null,
-                "lsiEstatus": null,
-                "lsiMesa": null,
-                "lsiUsuario": null,
-            };
-            this.limiteSolicitudInstrumentoVO["hora"] = "00";
-            this.limiteSolicitudInstrumentoVO["min"] = "00";
-            this.getMesasDivisas();
+        this.submitted = true;
+        if (this.formGrupo.valid) {
+            let hora = new Date();
+            hora.setHours(this.limiteSolicitudInstrumentoVO["hora"]);
+            hora.setMinutes(this.limiteSolicitudInstrumentoVO["min"]);
+            this.limiteSolicitudInstrumentoVO.lsiHorarioLim = hora;
+            this._configuracionLimitesHorariosService.guardarLimiteCambioInstrumento(this.limiteSolicitudInstrumentoVO).subscribe(then => {
+                this.limiteSolicitudInstrumentoVO = {
+                    "lsiId": null,
+                    "lsiMontoLim": null,
+                    "lsiHorarioLim": null,
+                    "lsiEstatus": null,
+                    "lsiMesa": null,
+                    "lsiUsuario": null,
+                };
+                this.limiteSolicitudInstrumentoVO["hora"] = "00";
+                this.limiteSolicitudInstrumentoVO["min"] = "00";
+                this.getMesasDivisas();
 
-        });
+            });
+            this.submitted = false;
+        }
     }
 
     onModoActualizarClick() {
-        this.limiteSolicitudInstrumentoVO.lsiMontoLim=Number(this.limiteSolicitudInstrumentoVO.lsiMontoLim+"".replace(",",""));
-        let hora = new Date("1700-06-02T04:30:00.000+0000");
-        console.log(hora.getTimezoneOffset());
-        hora.setUTCHours(this.limiteSolicitudInstrumentoVO["hora"]);
-        hora.setUTCMinutes(this.limiteSolicitudInstrumentoVO["min"]);
-        this.limiteSolicitudInstrumentoVO.lsiHorarioLim = hora;
-        this._configuracionLimitesHorariosService.actualizarLimiteCambioInstrumento(this.limiteSolicitudInstrumentoVO).subscribe(then => {
-            this.limiteSolicitudInstrumentoVO = {
-                "lsiId": null,
-                "lsiMontoLim": null,
-                "lsiHorarioLim": null,
-                "lsiEstatus": null,
-                "lsiMesa": null,
-                "lsiUsuario": null,
-            };
-            this.limiteSolicitudInstrumentoVO["hora"] = "00";
-            this.limiteSolicitudInstrumentoVO["min"] = "00";
-            this.getMesasDivisas();
+        this.submitted = true;
+        if (this.formGrupo.valid) {
+            this.limiteSolicitudInstrumentoVO.lsiMontoLim = Number(this.limiteSolicitudInstrumentoVO.lsiMontoLim + "".replace(",", ""));
+            let hora = new Date("1700-06-02T04:30:00.000+0000");
+            console.log(hora.getTimezoneOffset());
+            hora.setUTCHours(this.limiteSolicitudInstrumentoVO["hora"]);
+            hora.setUTCMinutes(this.limiteSolicitudInstrumentoVO["min"]);
+            this.limiteSolicitudInstrumentoVO.lsiHorarioLim = hora;
+            this._configuracionLimitesHorariosService.actualizarLimiteCambioInstrumento(this.limiteSolicitudInstrumentoVO).subscribe(then => {
+                this.limiteSolicitudInstrumentoVO = {
+                    "lsiId": null,
+                    "lsiMontoLim": null,
+                    "lsiHorarioLim": null,
+                    "lsiEstatus": null,
+                    "lsiMesa": null,
+                    "lsiUsuario": null,
+                };
+                this.limiteSolicitudInstrumentoVO["hora"] = "00";
+                this.limiteSolicitudInstrumentoVO["min"] = "00";
+                this.getMesasDivisas();
 
-        });
+            });
+            this.submitted = false;
+        }
     }
 
 
