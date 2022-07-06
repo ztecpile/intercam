@@ -5,34 +5,33 @@
             <div class="col-sm-12">
                 <div class="caja">
                     <select [(ngModel)]="tipo_persona">
-                        <option value="">Seleccione</option>
                         <option value="1">MORAL</option>
                         <option value="2">FISICA</option>
                     </select>
                 </div>
-                <label appearance="fill" class="formulario__label">* Tipo Persona</label>
+                <label appearance="fill" class="formulario__label">Tipo Persona</label>
             </div>
             <br />
             <div class="col-sm-12">
                 <div class="caja">
                     <select [(ngModel)]="moneda">
-                        <option value="">Seleccione</option>
+                        
                         <option value="01">Pesos</option>
                         <option value="02">Dolares</option>
                     </select>
                 </div>
-                <label appearance="fill" class="formulario__label">* Moneda</label>
+                <label appearance="fill" class="formulario__label">Moneda</label>
             </div>
             <br />
             <div class="col-sm-12">
                 <div class="caja">
                     <select [(ngModel)]="tipo_inversion">
-                        <option value="">Seleccione</option>
+                        
                         <option *ngFor="let tipo of arrTipoInversion " [value]="tipo.numero">{{tipo.descripcion}}
                         </option>
                     </select>
                 </div>
-                <label appearance="fill" class="formulario__label">* Tipo De Inversion</label>
+                <label appearance="fill" class="formulario__label">Tipo De Inversion</label>
             </div>
 
             <br />
@@ -45,12 +44,12 @@
         <div class="col-6">
             <div id="divperRfc" class="col-sm-12">
                 <input type="text" class="formulario__input" [value]="monto_superior" />
-                <label class="formulario__label">* Monto</label>
+                <label class="formulario__label">Monto</label>
             </div>
 
             <div id="divperRfc" class="col-sm-12">
                 <input type="number" class="formulario__input" [value]="dias" />
-                <label class="formulario__label">* Dias</label>
+                <label class="formulario__label">Dias</label>
             </div>
 
             <div id="divperRfc" class="row">

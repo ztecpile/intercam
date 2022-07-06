@@ -33,9 +33,9 @@ export class PrlvsInversionesComponent {
   monto_superior = "";
   dias = "";
   arrTipoInversion: TipoInversionVO[] = [];
-  tipo_persona: string = "";
-  moneda: string = "";
-  tipo_inversion: string = "";
+  tipo_persona: string = "1";
+  moneda: string = "01";
+  tipo_inversion: string = "1";
   nombreCliente: string = "";
   saldoInicial: string = "";
   claveCliente: string = "";
