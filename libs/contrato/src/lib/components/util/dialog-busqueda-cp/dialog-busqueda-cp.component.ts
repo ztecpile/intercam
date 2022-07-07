@@ -72,7 +72,7 @@ export class DialogBusquedaCpComponent implements OnInit {
             this.arrayEntidad= then;
             for (let i = 0; i < this.arrayEntidad.length; i++) {
               if(i == 0){
-                this.funcForm.get('cboEntidad').setValue(this.arrayEntidad[i].entClave);
+               
                 this.listaEntidadVo = this.arrayEntidad;
                 break;
               }
@@ -116,7 +116,6 @@ export class DialogBusquedaCpComponent implements OnInit {
             this.arrayMunicipios = then;
              for (let i = 0; i < this.arrayMunicipios.length; i++) {
               if(i == 0){
-                this.funcForm.get('cboMunicipio').setValue(this.arrayMunicipios[i].munClave);
                 this.listaMunicipios = this.arrayMunicipios;
                 break;
               }
@@ -136,7 +135,7 @@ export class DialogBusquedaCpComponent implements OnInit {
         this.arrColoniaDialog = then;
          for (let i = 0; i < this.arrColoniaDialog.length; i++) {
           if(i == 0){
-            this.funcForm.get('cboColoniaDialog').setValue(this.arrColoniaDialog[i].colClave);
+           // this.funcForm.get('cboColoniaDialog').setValue(this.arrColoniaDialog[i].colClave);
             this.arrColoniaDialog = this.arrColoniaDialog;
             break;
           }
