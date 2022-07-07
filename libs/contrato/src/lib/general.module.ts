@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -55,6 +55,7 @@ import { EnvioMasivoFacturasService } from './services/envio-masivo-factura.serv
 import { EnvioMasivoFacturasModule } from './components/envio-masivo-facturas/envio-masivo-facturas.module';
 import { ReutersAdministracionPerfilesComponent } from './components/reuters-administracion-perfiles/reuters-administracion-perfiles.component';
 import { BitacoraPreciosComponent } from './components/bitacora-precios/bitacora-precios.component';
+import { CustomPaginator } from './util/ConfiguracionPaginador';
 const routes: Routes = [
   {
     path: '',
@@ -291,7 +292,7 @@ providers: [
 
 
   ],
-  providers: [CurrencyPipe],
+  providers: [CurrencyPipe,  { provide: MatPaginatorIntl, useValue: CustomPaginator()}],
   declarations: [
     AdministracionCierreExcepcionComponent,
     FxReferenciasComponent,
