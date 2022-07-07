@@ -15,7 +15,7 @@
             <div class="col-sm-12">
                 <div class="caja">
                     <select [(ngModel)]="moneda">
-                        
+
                         <option value="01">Pesos</option>
                         <option value="02">Dolares</option>
                     </select>
@@ -26,7 +26,7 @@
             <div class="col-sm-12">
                 <div class="caja">
                     <select [(ngModel)]="tipo_inversion">
-                        
+
                         <option *ngFor="let tipo of arrTipoInversion " [value]="tipo.numero">{{tipo.descripcion}}
                         </option>
                     </select>
@@ -80,12 +80,20 @@
     </div>
     <br />
 
-    <div>
-        <button (click)=" findConsultaMatrizTasasVO()" class="btn-img actualiza-button" type="submit">
-            <span class="tooltip">Actualizar</span>
-        </button>
-    </div>
+    <div class="row">
+        <div class="col-sm-11 ">
+            <button (click)=" findConsultaMatrizTasasVO()" class="btn-img actualiza-button" type="submit">
+                <span class="tooltip">Actualizar</span>
+            </button>
+        </div>
 
+        <div class="col-sm-1">
+            <button [disabled]="true"  class="btn-img p-1">
+                <span class="tooltip">prlvs</span>
+                PRLVS
+            </button>
+        </div>
+    </div>
 
 
     <br>

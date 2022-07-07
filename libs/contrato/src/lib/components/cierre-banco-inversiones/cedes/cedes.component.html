@@ -69,12 +69,20 @@
     </div>
     <br />
 
-    <div>
-        <button (click)="findTasasCedes()" class="btn-img actualiza-button" type="submit">
-            <span class="tooltip">Actualizar</span>
-        </button>
-    </div>
+    <div class="row">
+        <div class="col-sm-11">
+            <button (click)="findTasasCedes()" class="btn-img actualiza-button" type="submit">
+                <span class="tooltip">Actualizar</span>
+            </button>
+        </div>
 
+        <div class="col-sm-1">
+            <button [disabled]="true" class="btn-img p-1">
+                <span class="tooltip">prlvs</span>
+                CEDES
+            </button>
+        </div>
+    </div>
 
 
     <br>
