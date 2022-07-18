@@ -10,10 +10,9 @@ import { Injectable } from "@angular/core";
 export class AsignarAsistenteServices {
     constructor(public http: HttpClient) { }
 
-    findPerAsistente(): Observable<EjecutivoAsistenteVO[]> {
+    findPerAsistente(ejecutivoID:number): Observable<EjecutivoAsistenteVO[]> {
         const urlStr = 'per-asistente/remote/fill';
-        //const urlStr = 'per-asistente.php';
-        return this.http.post<EjecutivoAsistenteVO[]>(urlStr, [935]);
+        return this.http.post<EjecutivoAsistenteVO[]>(urlStr, [ejecutivoID]);
     }
 
     crearPerAsistente(params:EjecutivoAsistenteVO){
