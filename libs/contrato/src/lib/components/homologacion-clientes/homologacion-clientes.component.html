@@ -5,7 +5,10 @@
 <main class="">
     <div class="bdcontent">
 
-        <idb-titulo [titulo1]="accion"></idb-titulo>
+        <hr class="red" />
+        <strong><h5>Homologaci&oacute;n de Clientes</h5></strong>
+        <hr class="red" />
+        
         <div class="container">
             <form [formGroup]="funcForm" class="formulario" (ngSubmit)="ngSubmit()" autocomplete="off" idbForm>
             <div class="row">
@@ -49,7 +52,7 @@
                     <div id="divperRfc" class="col-sm-12">
                         <input readonly type="text" class="formulario__input" formControlName="bioIncorrecta" [control]="getCtr('bioIncorrecta')" idbInput />
                        
-                        <label class="formulario__label">{{ 'Biometría Persona incorrecta' | transloco }}</label>
+                        <label class="formulario__label">{{ 'Biometria Persona incorrecta' | transloco }}</label>
                     </div>
 
                     <br />
