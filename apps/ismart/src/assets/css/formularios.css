@@ -200,3 +200,20 @@ textarea{
 	border: 1px solid transparent;
 	border-radius: 4px;
 }
+
+
+.placeholder::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #ff0000;
+}
+.placeholder:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #ff0000;
+    opacity:  1;
+}
+.placeholder::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #ff0000;
+    opacity:  1;
+}
+.placeholder:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color:    #ff0000;
+}
+.placeholder::placeholder { color: red }

@@ -1,10 +1,12 @@
 <div class="bdcontent">
     <hr class="red" />
-    <h2>Fx Referencias</h2>
+    <strong><h5>Referencias bancarias</h5></strong>
     <hr class="red" />
 
+   
     <div class="container">
-        <div class="row">
+        <div class="row"> 
+            <strong><h6>Contrato</h6></strong>
             <div class="mat-elevation-z8 col-sm-12 mr-5 ml-5">
                 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -55,6 +57,7 @@
 
                 </form>
             </div>
+            
             <div class="col-sm-3">
                 <button id="notificar" class="btn-img notifica-button-des" (click)="envioReferencias()" type="button">
                     <span class="tooltip">{{ 'Notificar' | transloco }}</span>
@@ -69,6 +72,8 @@
         </div>
 
         <br>
+        <hr class="red" />
+        <strong><h6>Referencias</h6></strong>
         <div class="row">
             <div class="mat-elevation-z8 col-sm-12 mr-5 ml-5">
                 <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">

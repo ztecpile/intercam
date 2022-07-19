@@ -6,7 +6,7 @@
     <div class="bdcontent">
 
         <hr class="red" />
-        <h2>Bancos</h2>
+        <strong><h5>Bancos</h5></strong>
         <hr class="red" />
 
         <div class="mat-elevation-z8">
@@ -89,7 +89,7 @@
                     [ngClass]="{ 'selected': row === selectedRowPintar }" (click)="selectedRow(row)"></tr>
             </table>
             <div id="paginadorDiv" class="row">
-                <mat-paginator [pageSizeOptions]="[15]" hidden showFirstLastButtons></mat-paginator>
+                <mat-paginator [pageSizeOptions]="[20]" hidden showFirstLastButtons></mat-paginator>
 
             </div>
         </div>
@@ -202,9 +202,10 @@
                             formControlName="nombreCorto" (change)="cambio()" idbInput>
                            
                         <label class="formulario__label">{{ 'Nombre corto' | transloco }}</label>
-                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveSiif.hasError('maxlength')">El campo debe tener como m&aacute;ximo 10 caracteres. </mat-hint>
-                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveSiif.hasError('pattern')">El campo solo debe de ser alfab&eacute;tico. </mat-hint>
+                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.nombreCorto.hasError('maxlength')">El campo debe tener como m&aacute;ximo 10 caracteres. </mat-hint>
+                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.nombreCorto.hasError('pattern')">El campo solo debe de ser alfab&eacute;tico. </mat-hint>
                     </div>
+                    
                 </div>
             </form>
         </div>
