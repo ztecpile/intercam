@@ -1,7 +1,9 @@
+import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { EntidadVO, MunicipVO, PaisVO } from '@intercam/model';
 import Swal from 'sweetalert2';
@@ -21,7 +23,9 @@ export class EntidadesComponent implements OnInit {
   funcForm: FormGroup;
   displayedColumnsEntidades: string[] = ['Entidad','Clave'];
   dataSource = new MatTableDataSource<EntidadVO>();
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  
+  @ViewChild(MatPaginator) paginator: MatPaginator ;
+  @ViewChild(MatSort) sort: MatSort ;
   entidadVO = new EntidadVO;
   municipioVO = new MunicipVO;
 
@@ -50,7 +54,7 @@ export class EntidadesComponent implements OnInit {
   nivelRiesgo:string;
   paginador: boolean;
   tableEnt: boolean;
-  constructor(private formBuilder: FormBuilder,private servicesEntidad: EntidadServices,private _direccionService: DireccionService) {
+  constructor(private liveAnnouncer: LiveAnnouncer,private formBuilder: FormBuilder,private servicesEntidad: EntidadServices,private _direccionService: DireccionService) {
     this.btnGuardarIf=true;
     this.btnBuscarIf=true;
     this.btnEliminarIf=true;
@@ -69,14 +73,21 @@ export class EntidadesComponent implements OnInit {
     this.funcForm.get('claveCNBV').disable();
     this.funcForm.get('codigoBroxel').disable();
     this.funcForm.get('nivelRiesgo').disable();
-   
+    this.dataSource.filterPredicate = 
+    (data: EntidadVO, filter: string) => data.entDescripcion.indexOf(filter) != -1; 
   }
 
   onSubmit() {
     console.log("Guardando...");
     //this.changePais()
   }
-  
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
+
+ 
   createFunForm() {
     this.funcForm = this.formBuilder.group({
       pais: new FormControl('', [Validators.required]),
@@ -402,6 +413,18 @@ export class EntidadesComponent implements OnInit {
       this._modalidad="alta";
     }
 
+  }
+  /** Announce the change in sort state for assistive technology. */
+  announceSortChange(sortState: Sort) {
+    // This example uses English messages. If your application supports
+    // multiple language, you would internationalize these strings.
+    // Furthermore, you can customize the message to add additional
+    // details about the values being sorted.
+    if (sortState.direction) {
+      this.liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
+    } else {
+      this.liveAnnouncer.announce('Sorting cleared');
+    }
   }
 }
 export class EntidadResponse{

@@ -1,5 +1,5 @@
 <div class="header-ayuda">
-    <div mat-dialog-title class="titulo"> Busqueda CP </div>
+    <div mat-dialog-title class="titulo"> BUSQUEDA CP </div>
 </div>
 
 <div mat-dialog-content class="title-model">
@@ -13,7 +13,7 @@
                         <option  *ngFor="let estado of listaEntidadVo" [value]="estado.entClave">{{estado.entDescripcion}}</option>
                     </select>
                 </div>
-                <label  class="label">{{'Estado' }}</label>
+                <label  class="lbl_datos">{{'ESTADO' }}</label>
                 <br>   
                 <br>
                 
@@ -22,7 +22,7 @@
                         <option value="">Seleccione</option>
                         <option *ngFor="let municipio of listaMunicipios" [value]="municipio.munClave">{{municipio.munDescrip}}</option>
                     </select>
-                    <label  class="lbl_datos" >{{'Municipio' }}</label>
+                    <label  class="lbl_datos" >{{'MUNICIPIO' }}</label>
                 </div> 
                 <br>
                 <br>
@@ -33,7 +33,7 @@
                         <option  *ngFor="let colonia of arrColoniaDialog" [value]="colonia.colClave">{{colonia.colDescrip}}</option>
                     </select>
                 </div>
-                <label  class="lbl_datos" >{{'Colonia' }}</label>
+                <label  class="lbl_datos" >{{'COLONIA' }}</label>
             </div>
             <br>
             <br>
@@ -41,7 +41,7 @@
             <div class="row">
              <div id="divciudad" class="col-sm-3">
                 <input [disabled]="true" type="text" class="formulario__input" [control]="getCtr('ciudadDialog')" [disabled]="true" formControlName="ciudadDialog" idbInput readonly>
-                <label class="lbl_datos">{{'Ciudad' }}</label>
+                <label class="lbl_datos">{{'CIUDAD' }}</label>
             </div>
         </div>
         <div class="row">

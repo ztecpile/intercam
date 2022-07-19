@@ -1,7 +1,7 @@
 <!DOCTYPE html>
  
 <hr class="red" />
-<h2>Profesiones</h2>
+<h2>Profesión</h2>
 <hr class="red" />
     <div class="container">
         
@@ -10,7 +10,7 @@
         <div class="tab-content">
                 <table mat-table [dataSource]="dataSource" class="table table-striped table-hover mat-elevation-z8" style>
                     <ng-container matColumnDef="observacion">
-                        <th mat-header-cell *matHeaderCellDef>Observacion</th>
+                        <th mat-header-cell *matHeaderCellDef>Observaciones</th>
                         <td mat-cell *matCellDef="let row" (click)="selectProfesion(row)">
                             {{row.proDescripcion}}
                         </td>
@@ -51,14 +51,14 @@
             
             <div class="row">
                 <div id="divObservacion" class="col-sm-3">
-                    <input type="text" [disabled]="true" class="formulario__input" [control]="getCtr('observacion')" (input)="actualizacionDescripcion($event)" formControlName="observacion" idbInput >
-                    <label class="formulario__label">Observacion</label>
+                    <input type="text" [disabled]="true" class="formulario__input" maxlength="50" required="true"   (input)="actualizacionDescripcion($event)" formControlName="observacion" idbInput >
+                    <label class="formulario__label">OBSERVACIONES</label>
                      
                 </div>
                 <div id="nivelRiesgo" disabled="funcForm.invalid" class="col-sm-2">
-                    <input   type="text" [disabled]="funcForm.invalid" class="formulario__input" [control]="getCtr('proRiesgo')" (input)="actualizacionNivel($event)" pattern="^\d*[0-3]\d*$" formControlName="proRiesgo" idbInput>
-                    <label class="formulario__label">Nivel de riesgo</label>
-                    
+                    <input   type="text" [disabled]="funcForm.invalid" class="formulario__input"   pattern="^\d*[0-3]\d*$"  maxlength="1" [control]="getCtr('proRiesgo')" (input)="actualizacionNivel($event)" formControlName="proRiesgo" idbInput>
+                    <label class="formulario__label">NIVEL DE RIESGO</label>
+                    <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.proRiesgo.hasError('pattern')">El Nivel de Riesgo solo acepta 0,1,2,3. </mat-hint>
                 </div> 
             </div>
             

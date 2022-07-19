@@ -36,6 +36,7 @@ export class ProfesionesComponent implements OnInit {
   proRiesgo:number;
   selectOptIdContrato: boolean;
   activeTab:boolean;
+  submitted: boolean=false;
   constructor(private serviceProfesion : ProfesionService) {
     this.btnGuardarIf=true;
     this.btnBuscarIf=false;
@@ -59,8 +60,8 @@ export class ProfesionesComponent implements OnInit {
   
   createFunForm() {
     this.funcForm = new FormGroup({
-      observacion: new FormControl('', [Validators.required]), 
-      proRiesgo: new FormControl('', [Validators.required]),
+      observacion: new FormControl('', [Validators.required,Validators.maxLength(50), Validators.pattern(/^[a-z0-9\s]*$/i)]), 
+      proRiesgo: new FormControl('',[ Validators.maxLength(50), Validators.pattern(/^[0-3\s]/)]),
       proClave: new FormControl('', [Validators.required])
       });
   }
@@ -74,6 +75,7 @@ export class ProfesionesComponent implements OnInit {
       this.funcForm.get("observacion").enable(); 
       this.funcForm.get("proRiesgo").enable();
       this.activeTab= true;
+      this.btnGuardarIf=true;
       this._modalidad="alta";
 
    }
@@ -242,6 +244,7 @@ export class ProfesionesComponent implements OnInit {
   }
   /**Metodo que valida si el nivel sufrio algun cambio  */
   actualizacionNivel(event: Event){
+    this.submitted = true;
     var riesgo= this.proRiesgo;
     var riesgoEv = (event.target as HTMLInputElement).value;
      if(riesgo.toString !== riesgoEv.toString && this._modalidad!== "alta"){
