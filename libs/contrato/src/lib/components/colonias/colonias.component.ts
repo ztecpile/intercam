@@ -117,6 +117,7 @@ export class ColoniasComponent implements OnInit {
     let entidad = new EntidadVO;
     let listaColonias:  ColoniaVO[];
 
+    
     //saveColonia.colClave=1;
     entidad=this.entidadesVo;
     municipio.entidadVO=entidad;
@@ -275,7 +276,7 @@ export class ColoniasComponent implements OnInit {
   habilitaCampos():void{
     this.funcForm.get("updateColonia").enable();
     this.btnAltaIf = false;
-    this.btnGuardarIf=false;
+    this.btnGuardarIf=true;
   }
   
   limpiaCampos(e:any){
@@ -285,7 +286,10 @@ export class ColoniasComponent implements OnInit {
       this.funcForm.get("ciudad").setValue('');
       this.funcForm.get("cboColonia").setValue('');
       this.funcForm.get("updateColonia").setValue('');
-    
+      this.funcForm.get("updateColonia").disable();
+      this.btnGuardarIf=true;
+      this.btnDeshacerIf=true;
+     
 }
 actualizacion(event: Event){
   if(this.updateColonia !== (event.target as HTMLInputElement).value){
