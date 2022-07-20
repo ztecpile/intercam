@@ -19,9 +19,15 @@ export class BusquedaComponent implements AfterViewInit {
 
     displayedColumns: string[] = ['fondo', 'plazo', 'ano', 'mes', 'semana', 'mes2', 'ano2'];
     displayedColumns2: string[] = ["fondo2", 'tipo', "porciento"];
+    
     deudaDataSource: MatTableDataSource<Object> = new MatTableDataSource();
     coberturaDataSource: MatTableDataSource<Object> = new MatTableDataSource();
     variableDataSource: MatTableDataSource<Object> = new MatTableDataSource();
+
+    deudaDataSourceBkp: Object[] = [];
+    coberturaDataSourceBkp: Object[]=[];
+    variableDataSourceBkp: Object[]=[];
+
     fondoDataSource: Object[] = [];// MatTableDataSource<Object>=new MatTableDataSource([]) ;
     monto: string = "0";
     tipo_persona: number = 5;
@@ -46,12 +52,15 @@ export class BusquedaComponent implements AfterViewInit {
         this._simuladorFondosInversionService.findFondosPrecioVO(this.monto, this.tipo_persona, this.periodo).subscribe(then => {
 
             this.deudaDataSource = new MatTableDataSource(then.filter(item => item["tipoFondoId"] == 5));
+            this.deudaDataSourceBkp= then.filter(item => item["tipoFondoId"] == 5);
             this.deudaDataSource.paginator = this.paginator;
 
             this.coberturaDataSource = new MatTableDataSource(then.filter(item => item["tipoFondoId"] == 15));
+            this.coberturaDataSourceBkp = then.filter(item => item["tipoFondoId"] == 15);
             this.coberturaDataSource.paginator = this.paginator;
 
             this.variableDataSource = new MatTableDataSource(then.filter(item => item["tipoFondoId"] == 10));
+            this.variableDataSourceBkp =then.filter(item => item["tipoFondoId"] == 10);
             this.variableDataSource.paginator = this.paginator;
         });
     }
@@ -62,12 +71,24 @@ export class BusquedaComponent implements AfterViewInit {
     }
 
     getRecord(row) {
-        this.selectedRow = { ...row };
+        this.selectedRow = row ;
         this.fondoSelectedRow = null;
     }
 
     pasarAFondo() {
         this.fondoDataSource = [...this.fondoDataSource, this.selectedRow]//new MatTableDataSource([this.fondoDataSource.data,this.selectedRow]);
+        if(this.selectedRow["tipoFondoId"]==5){
+            this.deudaDataSourceBkp = this.deudaDataSourceBkp.filter(item => item["fondoId"] != this.selectedRow["fondoId"]);
+            this.deudaDataSource = new MatTableDataSource(this.deudaDataSourceBkp);
+        }
+        if(this.selectedRow["tipoFondoId"]==10){
+            this.variableDataSourceBkp = this.variableDataSourceBkp.filter(item => item["fondoId"] != this.selectedRow["fondoId"]);
+            this.variableDataSource = new MatTableDataSource(this.variableDataSourceBkp);
+        }
+        if(this.selectedRow["tipoFondoId"]==15){
+            this.coberturaDataSourceBkp = this.coberturaDataSourceBkp.filter(item => item["fondoId"] != this.selectedRow["fondoId"]);
+            this.coberturaDataSource = new MatTableDataSource(this.coberturaDataSourceBkp);
+        }
         this.selectedRow = null;
     }
 
@@ -93,6 +114,10 @@ export class BusquedaComponent implements AfterViewInit {
         else {
             this.VALIDAR_TOTAL = false;
         }
+    }
+
+    formatoDeNumero(e){
+        return this.currencyPipe.transform(e, ' ');
     }
 
 

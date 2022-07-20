@@ -1,6 +1,6 @@
 <div class="row">
-    <div class="col-sm-3" style="z-index: 5">
-        <input type="text" class="formulario__input" (blur)="transformAmount($event)" [(ngModel)]="monto" />
+    <div class="col-sm-3" style="z-index: 5;padding-top: 10px;">
+        <input type="text" class="formulario__input" (blur)="transformAmount($event)" [(ngModel)]="monto" style="padding-top: 20px;" />
         <label class="formulario__label">* {{ 'Monto' | transloco }}</label>
     </div>
     <div class="col-sm-3" style="z-index: 5">
@@ -29,7 +29,7 @@
     <div class="col-sm-3">
         <div class="centrar_btn" style="margin-top: 10px">
             <button (click)="findFondosPrecio()" class="btn-img buscar-btn">
-                <span class="tooltip">Guardar</span>
+                <span class="tooltip">Buscar</span>
             </button>
         </div>
     </div>
@@ -51,27 +51,27 @@
 
                     <ng-container matColumnDef="ano">
                         <th mat-header-cell *matHeaderCellDef>En el a&ntilde;o</th>
-                        <td mat-cell *matCellDef="let element">{{ element.plazoTasa.anio }}</td>
+                        <td mat-cell *matCellDef="let element">{{ formatoDeNumero(element.plazoTasa.anio) }}</td>
                     </ng-container>
 
                     <ng-container matColumnDef="mes">
                         <th mat-header-cell *matHeaderCellDef>En el mes</th>
-                        <td mat-cell *matCellDef="let element">{{ element.plazoTasa.mes }}</td>
+                        <td mat-cell *matCellDef="let element">{{ formatoDeNumero( element.plazoTasa.mes) }}</td>
                     </ng-container>
 
                     <ng-container matColumnDef="semana">
                         <th mat-header-cell *matHeaderCellDef>7 dias</th>
-                        <td mat-cell *matCellDef="let element">{{ element.plazoTasa["7"]}}</td>
+                        <td mat-cell *matCellDef="let element">{{ formatoDeNumero(element.plazoTasa["7"])}}</td>
                     </ng-container>
 
                     <ng-container matColumnDef="mes2">
                         <th mat-header-cell *matHeaderCellDef>28 dias</th>
-                        <td mat-cell *matCellDef="let element">{{ element.plazoTasa["28"] }}</td>
+                        <td mat-cell *matCellDef="let element">{{ formatoDeNumero(element.plazoTasa["28"]) }}</td>
                     </ng-container>
 
                     <ng-container matColumnDef="ano2">
-                        <th mat-header-cell *matHeaderCellDef>12 mese</th>
-                        <td mat-cell *matCellDef="let element">{{ element.plazoTasa["361"]}}</td>
+                        <th mat-header-cell *matHeaderCellDef>12 meses</th>
+                        <td mat-cell *matCellDef="let element">{{ formatoDeNumero(element.plazoTasa["361"])}}</td>
                     </ng-container>
 
                     <!-- Disclaimer column -->
@@ -88,7 +88,7 @@
                         [ngClass]="{ 'selected': row === selectedRow }" (click)="getRecord(row)"></tr>
                 </table>
 
-                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                <mat-paginator [pageSizeOptions]="[20]" showFirstLastButtons
                     aria-label="Select page of periodic elements">
                 </mat-paginator>
 
@@ -107,27 +107,27 @@
 
                     <ng-container matColumnDef="ano">
                         <th mat-header-cell *matHeaderCellDef>En el a&ntilde;o</th>
-                        <td mat-cell *matCellDef="let element">{{ element.plazoTasa.anio }}</td>
+                        <td mat-cell *matCellDef="let element">{{ formatoDeNumero( element.plazoTasa.anio) }}</td>
                     </ng-container>
 
                     <ng-container matColumnDef="mes">
                         <th mat-header-cell *matHeaderCellDef>En el mes</th>
-                        <td mat-cell *matCellDef="let element">{{ element.plazoTasa.mes }}</td>
+                        <td mat-cell *matCellDef="let element">{{ formatoDeNumero(element.plazoTasa.mes) }}</td>
                     </ng-container>
 
                     <ng-container matColumnDef="semana">
                         <th mat-header-cell *matHeaderCellDef>7 dias</th>
-                        <td mat-cell *matCellDef="let element">{{ element.plazoTasa["7"]}}</td>
+                        <td mat-cell *matCellDef="let element">{{ formatoDeNumero(element.plazoTasa["7"] )}}</td>
                     </ng-container>
 
                     <ng-container matColumnDef="mes2">
                         <th mat-header-cell *matHeaderCellDef>28 dias</th>
-                        <td mat-cell *matCellDef="let element">{{ element.plazoTasa["28"] }}</td>
+                        <td mat-cell *matCellDef="let element">{{ formatoDeNumero( element.plazoTasa["28"]) }}</td>
                     </ng-container>
 
                     <ng-container matColumnDef="ano2">
                         <th mat-header-cell *matHeaderCellDef>12 mese</th>
-                        <td mat-cell *matCellDef="let element">{{ element.plazoTasa["361"]}}</td>
+                        <td mat-cell *matCellDef="let element">{{ formatoDeNumero( element.plazoTasa["361"])}}</td>
                     </ng-container>
                      <!-- Disclaimer column -->
                      <ng-container matColumnDef="disclaimer">
@@ -143,7 +143,7 @@
                         [ngClass]="{ 'selected': row === selectedRow }" (click)="getRecord(row)"></tr>
                 </table>
 
-                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                <mat-paginator [pageSizeOptions]="[ 20]" showFirstLastButtons
                     aria-label="Select page of periodic elements">
                 </mat-paginator>
             </mat-tab>
@@ -161,27 +161,27 @@
 
                     <ng-container matColumnDef="ano">
                         <th mat-header-cell *matHeaderCellDef>En el a&ntilde;o</th>
-                        <td mat-cell *matCellDef="let element">{{ element.plazoTasa.anio }}</td>
+                        <td mat-cell *matCellDef="let element">{{ formatoDeNumero( element.plazoTasa.anio) }}</td>
                     </ng-container>
 
                     <ng-container matColumnDef="mes">
                         <th mat-header-cell *matHeaderCellDef>En el mes</th>
-                        <td mat-cell *matCellDef="let element">{{ element.plazoTasa.mes }}</td>
+                        <td mat-cell *matCellDef="let element">{{ formatoDeNumero(element.plazoTasa.mes) }}</td>
                     </ng-container>
 
                     <ng-container matColumnDef="semana">
                         <th mat-header-cell *matHeaderCellDef>7 dias</th>
-                        <td mat-cell *matCellDef="let element">{{ element.plazoTasa["7"]}}</td>
+                        <td mat-cell *matCellDef="let element">{{ formatoDeNumero( element.plazoTasa["7"])}}</td>
                     </ng-container>
 
                     <ng-container matColumnDef="mes2">
                         <th mat-header-cell *matHeaderCellDef>28 dias</th>
-                        <td mat-cell *matCellDef="let element">{{ element.plazoTasa["28"] }}</td>
+                        <td mat-cell *matCellDef="let element">{{ formatoDeNumero(element.plazoTasa["28"] )}}</td>
                     </ng-container>
 
                     <ng-container matColumnDef="ano2">
                         <th mat-header-cell *matHeaderCellDef>12 mese</th>
-                        <td mat-cell *matCellDef="let element">{{ element.plazoTasa["361"]}}</td>
+                        <td mat-cell *matCellDef="let element">{{ formatoDeNumero(element.plazoTasa["361"])}}</td>
                     </ng-container>
 
                     <ng-container matColumnDef="disclaimer">
@@ -196,7 +196,7 @@
                     <tr mat-row *matRowDef="let row; columns: displayedColumns"
                         [ngClass]="{ 'selected': row === selectedRow }" (click)="getRecord(row)"></tr>
                 </table>
-                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                <mat-paginator [pageSizeOptions]="[20]" showFirstLastButtons
                     aria-label="Select page of periodic elements">
                 </mat-paginator>
             </mat-tab>
