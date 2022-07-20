@@ -95,6 +95,9 @@ export class TiposRelacionComponent implements AfterViewInit {
         }
 
     }
+    onModoDeshacerClick(){
+        this.tipoRelVO= new TipoRelVO();
+    }
 
     onModoActualizarClick() {
         this.submitted = true;
