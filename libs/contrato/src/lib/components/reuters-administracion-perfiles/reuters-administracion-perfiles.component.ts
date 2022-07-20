@@ -17,7 +17,9 @@ export class ReutersAdministracionPerfilesComponent implements OnInit {
     displayedColumns: string[] = ['divisa', 'activar', 'solo_lectura'];
     displayedColumns2: string[] = ["seccion", 'permitir'];
     grupoVO: GrupoVO[];
-    grupoSelecionado: Number = 345;
+    divisasCount:number=0;
+    seccionesCount:number=0;
+    grupoSelecionado: Number = -1;
     divisasDataSource: DivisasVO[];
     dataSource: MatTableDataSource<DivisasVO>;
     preciosGposeccVO: PreciosGposeccVO;
@@ -58,12 +60,16 @@ export class ReutersAdministracionPerfilesComponent implements OnInit {
     }
 
     getSeccionesByGpo() {
+        this.seccionesCount=0;
         this.sectionDataSource.map(item => { item["selected"] = null });
         this._reutersAdministracionPerfilesService.getSeccionesByGpo(this.grupoSelecionado).subscribe(then => {
 
             then.map(item => {
                 this.sectionDataSource.map(secction => {
-                    if (secction["value"] == item.seccion) secction["selected"] = true;
+                    if (secction["value"] == item.seccion){
+                        secction["selected"] = true;
+                        this.seccionesCount++;
+                    } 
 
                 });
             });
@@ -72,7 +78,7 @@ export class ReutersAdministracionPerfilesComponent implements OnInit {
     }
 
     getPerfilesByGpo() {
-
+        this.divisasCount=0;
         this.divisasDataSource.map(item => { item["selecionado"] = null; item.soloLectura = null; });
         this._reutersAdministracionPerfilesService.getPerfilesByGpo(this.grupoSelecionado).subscribe(then => {
             this.divisasDataSource.map(item => {
@@ -80,7 +86,8 @@ export class ReutersAdministracionPerfilesComponent implements OnInit {
 
                 then.map(perfil => {
                     if (perfil.divId == item.divId) {
-                        item["selecionado"] = true
+                        item["selecionado"] = true;
+                        this.divisasCount++;
                         if(perfil.soloLectura==="S") item.soloLectura="S";
                     };
 
@@ -124,7 +131,16 @@ export class ReutersAdministracionPerfilesComponent implements OnInit {
     cambioDeGrupo() {
         this.getPerfilesByGpo();
         this.getSeccionesByGpo();
-
     }
+
+    chackChange()
+    {
+        this.divisasCount = this.divisasDataSource.filter(item => item["selecionado"] == true).length;
+        this.seccionesCount = this.sectionDataSource.filter(item => item["selected"] == true).length;
+    }
+
+    
+
+
 }
 
