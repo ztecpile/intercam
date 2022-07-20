@@ -150,11 +150,11 @@ export class BancosComponent implements OnInit {
 
         this.funcForm = this.formbuilder.group({
         // this.funcForm = new FormGroup({
-            nombre: new FormControl('', [Validators.required,Validators.maxLength(50), Validators.pattern(/^[a-z0-9\s]*$/i)]),
+            nombre: new FormControl('', [Validators.required,Validators.maxLength(80), Validators.pattern(/^[a-z0-9\s]*$/i)]),
             claveBanxico: new FormControl('', [Validators.required,Validators.maxLength(8), Validators.pattern(/^[a-z0-9\s]*$/i)]),
-            claveSica: new FormControl('',[Validators.maxLength(20), Validators.pattern(/^[a-z\s]*$/i)]),
-            claveSabi: new FormControl('',[Validators.maxLength(20), Validators.pattern(/^[a-z\s]*$/i)]),
-            claveSiif: new FormControl('',[Validators.maxLength(20), Validators.pattern(/^[a-z\s]*$/i)]),
+            claveSica: new FormControl('',[Validators.maxLength(20), Validators.pattern(/^[a-z0-9\s]*$/i)]),
+            claveSabi: new FormControl('',[Validators.maxLength(20), Validators.pattern(/^[a-z0-9\s]*$/i)]),
+            claveSiif: new FormControl('',[Validators.maxLength(20), Validators.pattern(/^[a-z0-9\s]*$/i)]),
             optActivo: new FormControl(''),
             optInactivo: new FormControl(''),
             checkOpInter: new FormControl(''),
@@ -294,8 +294,8 @@ export class BancosComponent implements OnInit {
 
                 this.dataSource = new MatTableDataSource(listaResponse);
                 this.paginador = true;
-                document.getElementById('paginadorDiv').removeAttribute('hidden');
                 this.dataSource.paginator = this.paginator;
+                document.getElementById('paginadorDiv').removeAttribute('hidden');
 
             },
             error => {
@@ -481,11 +481,21 @@ console.log(banco);
         this.funcForm.get("checkOpTefbv").setValue(false);
         this.funcForm.get("checkOpSpeua").setValue(false);
         this.funcForm.get("checkOpInter").setValue(false);
+        document.getElementById('checkOpTefbv').removeAttribute('mat-checkbox-checked');
+        document.getElementById('checkOpSpeua').removeAttribute('mat-checkbox-checked');
+        document.getElementById('checkOpInter').removeAttribute('mat-checkbox-checked');
         this.funcForm.get("combPais").setValue(1);
         this.funcForm.get("nombreCorto").setValue('');
         this.funcForm.get("optActivo").setValue(false);
         this.funcForm.get("optInactivo").setValue(false);
-        document.getElementById('tabla').removeAttribute('selected');
+        document.getElementById('optActivo').removeAttribute('mat-radio-checked');
+        document.getElementById('optInactivo').removeAttribute('mat-radio-checked');
+        document.getElementById("checkOpSpeua").setAttribute('class','mat-checkbox example-margin mat-accent mat-checkbox-label-before mat-checkbox-disabled');
+        document.getElementById("checkOpTefbv").setAttribute('class','mat-checkbox example-margin mat-accent mat-checkbox-label-before mat-checkbox-disabled');
+        document.getElementById("checkOpInter").setAttribute('class','mat-checkbox example-margin mat-accent mat-checkbox-label-before mat-checkbox-disabled');
+        document.getElementById("optActivo").setAttribute('class','mat-radio-button ml-5 mat-accent mat-radio-disabled');
+        document.getElementById("optInactivo").setAttribute('class','mat-radio-button ml-5 mat-accent mat-radio-disabled');
+        this.selectedRowPintar = '';
         this.deshabilitarCampos();
         this._modalidad = '';
         this.banid = 0;
@@ -504,6 +514,11 @@ console.log(banco);
         this.funcForm.get("nombreCorto").enable();
         this.funcForm.get("optActivo").enable();
         this.funcForm.get("optInactivo").enable();
+        document.getElementById("checkOpSpeua").setAttribute('class','mat-checkbox example-margin mat-accent mat-checkbox-label-before');
+        document.getElementById("checkOpTefbv").setAttribute('class','mat-checkbox example-margin mat-accent mat-checkbox-label-before');
+        document.getElementById("checkOpInter").setAttribute('class','mat-checkbox example-margin mat-accent mat-checkbox-label-before');
+        document.getElementById("optActivo").setAttribute('class','mat-radio-button ml-5 mat-accent');
+        document.getElementById("optInactivo").setAttribute('class','mat-radio-button ml-5 mat-accent');
         
     }
 
@@ -520,6 +535,11 @@ console.log(banco);
         this.funcForm.get("nombreCorto").disable();
         this.funcForm.get("optActivo").disable();
         this.funcForm.get("optInactivo").disable();
+        document.getElementById("checkOpSpeua").setAttribute('class','mat-checkbox example-margin mat-accent mat-checkbox-label-before mat-checkbox-disabled');
+        document.getElementById("checkOpTefbv").setAttribute('class','mat-checkbox example-margin mat-accent mat-checkbox-label-before mat-checkbox-disabled');
+        document.getElementById("checkOpInter").setAttribute('class','mat-checkbox example-margin mat-accent mat-checkbox-label-before mat-checkbox-disabled');
+        document.getElementById("optActivo").setAttribute('class','mat-radio-button ml-5 mat-accent mat-radio-disabled');
+        document.getElementById("optInactivo").setAttribute('class','mat-radio-button ml-5 mat-accent mat-radio-disabled');
     }
 
     atributosElemento(){

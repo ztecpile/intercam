@@ -88,8 +88,8 @@
                 <tr mat-row *matRowDef="let row; columns: displayedColumns"
                     [ngClass]="{ 'selected': row === selectedRowPintar }" (click)="selectedRow(row)"></tr>
             </table>
-            <div id="paginadorDiv" class="row">
-                <mat-paginator [pageSizeOptions]="[20]" hidden showFirstLastButtons></mat-paginator>
+            <div id="paginadorDiv" class="row" hidden>
+                <mat-paginator [pageSizeOptions]="[20]" showFirstLastButtons></mat-paginator>
 
             </div>
         </div>
@@ -123,7 +123,7 @@
                          
                         <label class="formulario__label">{{ 'Clave SICA' | transloco }}</label>
                         <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveSica.hasError('maxlength')">El campo debe tener como m&aacute;ximo 20 caracteres. </mat-hint>
-                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveSica.hasError('pattern')">El campo solo debe de ser alfab&eacute;tico. </mat-hint>
+                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveSica.hasError('pattern')">El campo solo debe de ser alfanum&eacute;rico. </mat-hint>
                     </div>
 
                     <div id="divClaveSabi" class="col-sm-8">
@@ -132,7 +132,7 @@
                             
                         <label class="formulario__label">{{ 'Clave SABI' | transloco }}</label>
                         <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveSabi.hasError('maxlength')">El campo debe tener como m&aacute;ximo 20 caracteres. </mat-hint>
-                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveSabi.hasError('pattern')">El campo solo debe de ser alfab&eacute;tico. </mat-hint>
+                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveSabi.hasError('pattern')">El campo solo debe de ser alfanum&eacute;rico. </mat-hint>
                     </div>
 
                     <div id="divClaveSiif" class="col-sm-8">
@@ -141,7 +141,7 @@
                          
                         <label class="formulario__label">{{ 'Clave SIIF' | transloco }}</label>
                         <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveSiif.hasError('maxlength')">El campo debe tener como m&aacute;ximo 20 caracteres. </mat-hint>
-                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveSiif.hasError('pattern')">El campo solo debe de ser alfab&eacute;tico. </mat-hint>
+                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveSiif.hasError('pattern')">El campo solo debe de ser alfanum&eacute;rico. </mat-hint>
                     </div>
                 </div>
                 <br>
@@ -149,14 +149,12 @@
                 <div class="row" id="divOpt" class="col-sm-8">
                     <label appearance="fill" class="formulario_check_label" title="estatus">{{ 'Estatus' | transloco }}</label>
                     &nbsp;
-                    <input class="radio" type="radio" [control]="getCtr('optActivo')"
-                        (click)="changeRadioActivo($event)" [checked]="checkActivo" formControlName="optActivo"
-                        idbInput>&nbsp;
+                        <mat-radio-button class="ml-5" id="optActivo" [checked]="checkActivo" (change)="changeRadioActivo($event);"></mat-radio-button>
+                      
                     <label class="lbl_datos">{{'Activo'|transloco}}</label>
                     &nbsp;
-                    <input class="radio" type="radio" [control]="getCtr('optInactivo')"
-                        (click)="changeRadioInactivo($event)" [checked]="checkInactivo" formControlName="optInactivo"
-                        idbInput>&nbsp;
+                        <mat-radio-button class="ml-5" id="optInactivo" [checked]="checkInactivo" (change)="changeRadioInactivo($event);"></mat-radio-button> 
+                       
                     <label class="lbl_datos">{{'Inactivo'|transloco}}</label>
 
                 </div>
@@ -165,23 +163,18 @@
                     <label class="formulario_check_label">
                         {{'Opera Intercam' | transloco}}
                     </label>&nbsp;
-                    <input class="form-check-input" type="checkbox" formControlName="checkOpInter"
-                        [control]="getCtr('checkOpInter')" (click)="changeCheckInter($event)" [checked]="checkOpInt"
-                        idbInput>&nbsp;
+                        <mat-checkbox id="checkOpInter" class="example-margin" labelPosition="before" [checked]="checkOpInt" (change)="changeCheckInter($event);" ></mat-checkbox>&nbsp;
+                        &nbsp;
 
                     <label class="formulario_check_label">
                         {{'Opera Speua' | transloco}}
                     </label>&nbsp;
-                    <input class="form-check-input" type="checkbox" formControlName="checkOpSpeua"
-                        [control]="getCtr('checkOpSpeua')" (click)="changeCheckSpeia($event)" [checked]="checkOpSpe"
-                        idbInput>&nbsp;
+                        <mat-checkbox id="checkOpSpeua" class="example-margin" labelPosition="before" [checked]="checkOpSpe" (change)="changeCheckSpeia($event);" ></mat-checkbox>&nbsp;
 
                     <label class="formulario_check_label">
                         {{'Opera tefbv' | transloco}}
                     </label>&nbsp;
-                    <input class="form-check-input" type="checkbox" formControlName="checkOpTefbv"
-                        [control]="getCtr('checkOpTefbv')" (click)="changeCheckFbv($event)" [checked]="checkOpTef"
-                        idbInput>
+                        <mat-checkbox id="checkOpTefbv" class="example-margin" labelPosition="before" [checked]="checkOpTef" (change)="changeCheckFbv($event);" ></mat-checkbox>
 
 
                 </div>
