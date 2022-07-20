@@ -20,12 +20,26 @@ export class MonitorOperacionesInterbancariasComponent implements AfterViewInit 
     FECHA_INICIO: string = new Date().toJSON().slice(0, 10);
     FECHA_FIN: string = new Date().toJSON().slice(0, 10);
     FILTRO_TEXT: string;
-    FILTRO_RADIO: string="1";
+    FILTRO_RADIO: string = "1";
 
     ESTATUS_TRANSACCION: number;
     selectedRow: DealtrackerVO;
+    meses = {
+        "Jan": "01",
+        "Feb": "02",
+        "Mar": "03",
+        "Apr": "04",
+        "May": "05",
+        "June": "06",
+        "July": "07",
+        "Aug": "08",
+        "Sept": "09",
+        "Oct": "10",
+        "Nov": "11",
+        "Dec": "12",
+    }
 
-  
+
 
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -35,10 +49,10 @@ export class MonitorOperacionesInterbancariasComponent implements AfterViewInit 
     ngAfterViewInit(): void {
         this.paginator._intl.itemsPerPageLabel = "Registros por página:";
     }
- 
+
 
     displayedColumns = ["ticket", "deal", "tipo", "promotor", "fecha", "hora", "pos", "transaccion", "cadena_deal"];
-    dataSource: MatTableDataSource<DealtrackerVO>= new MatTableDataSource();
+    dataSource: MatTableDataSource<DealtrackerVO> = new MatTableDataSource();
     dataSourceFilter: DealtrackerVO[];
 
 
@@ -82,7 +96,16 @@ export class MonitorOperacionesInterbancariasComponent implements AfterViewInit 
         this.dialog.open(DialogDealInfoComponent, { data: this.selectedRow })
     }
     completarOperacion() {
-        alert("Comletar");
+
+    }
+
+    formatoHora(e) {
+        let hora = e.split(",")[1];
+        return String(hora).replace("1700","");
+    }
+    formatoFecha(e) {
+        let date = (e + "").split(" ");
+        return date[1] + "/" + this.meses[date[0]] + "/" + date[2];
     }
 
 

@@ -73,12 +73,12 @@
 
                     <ng-container matColumnDef="fecha">
                         <th mat-header-cell *matHeaderCellDef>Fecha</th>
-                        <td mat-cell *matCellDef="let element">{{ element.tdtFecha }}</td>
+                        <td mat-cell *matCellDef="let element">{{ formatoFecha(element.tdtFecha) }}</td>
                     </ng-container>
 
                     <ng-container matColumnDef="hora">
                         <th mat-header-cell *matHeaderCellDef>Hora</th>
-                        <td mat-cell *matCellDef="let element">{{ element.tdtHora }}</td>
+                        <td mat-cell *matCellDef="let element">{{    formatoHora(element.tdtHora) }}</td>
                     </ng-container>
 
 
