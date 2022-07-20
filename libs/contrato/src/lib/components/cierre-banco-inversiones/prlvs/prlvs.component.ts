@@ -53,6 +53,9 @@ export class PrlvsInversionesComponent {
       error => console.error(error)
     );
   }
+  validarDias(){
+    this.dias=(this.dias+"").replace(".","");
+  }
 
   findTipoInversionVO() {
     this._cierreBancoInversiones.findTipoInversionVO().subscribe(
