@@ -60,7 +60,7 @@ export class ColoniasComponent implements OnInit {
   coloniaDialog:string;
   entidadDialog:string;
   ciudadDialog:string;
-
+  submitted: boolean=false;
   constructor(private dialog: MatDialog,private coloniaServices :ColoniasServices,
     private _personaService: PersonaService,private formBuilder: FormBuilder
   ) {
@@ -75,6 +75,9 @@ export class ColoniasComponent implements OnInit {
   ngOnInit(): void {
     this.createFunForm();
      this.funcForm.get("updateColonia").disable();
+     this.funcForm.get("entidad").disable();
+     this.funcForm.get("alcMun").disable();
+     this.funcForm.get("ciudad").disable();
   }
  buscarCodigoCP(e:any){
    this.showGetCP();
@@ -151,10 +154,13 @@ export class ColoniasComponent implements OnInit {
 
 
   btnBuscarCP(e: any){
+    this.submitted = true;
     if(this._paisClaveDir == Const.PAIS_CLAVE_MEXICO || 
       isNaN(this._paisClaveDir) && this.funcForm.get("cp").value !=''){
       this.obtenerColonias(this.funcForm.get("cp").value);
     }
+    this.btnAltaIf=false;
+    this.btnDeshacerIf=false;
   }
  /** Obtienen colonias por codigo postal */
   obtenerColonias(cp){

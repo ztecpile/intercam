@@ -1,14 +1,14 @@
 <!DOCTYPE html>
  
 <hr class="red" />
-<h2>Profesión</h2>
+<strong><h5>Profesión</h5></strong>
 <hr class="red" />
     <div class="container">
         
     <form [formGroup]="funcForm" class="formulario" (ngSubmit)="onSubmit()" autocomplete="off" idbForm >
         <br>
         <div class="tab-content">
-                <table mat-table [dataSource]="dataSource" class="table table-striped table-hover mat-elevation-z8" style>
+                <table id="tabla" mat-table [dataSource]="dataSource" class="table table-striped table-hover mat-elevation-z8" style>
                     <ng-container matColumnDef="observacion">
                         <th mat-header-cell *matHeaderCellDef>Observaciones</th>
                         <td mat-cell *matCellDef="let row" (click)="selectProfesion(row)">
@@ -38,11 +38,12 @@
                        
                     </ng-container>
                     <tr mat-header-row *matHeaderRowDef="displayedColumnsProfesiones"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumnsProfesiones">
+                    <tr mat-row *matRowDef="let row; columns: displayedColumnsProfesiones"
+                    [ngClass]="{ 'selected': row === selectedProfesion }" (click)="selected(row)">
                     </tr>
                 </table>   
                 <div id="paginadorDiv" class="row" hidden>
-                    <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator> 
+                    <mat-paginator [pageSizeOptions]="[20]" showFirstLastButtons></mat-paginator> 
   
                 </div>
                       </div>

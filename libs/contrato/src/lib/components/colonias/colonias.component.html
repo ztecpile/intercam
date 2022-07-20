@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 <hr class="red" />
-<h2>Alta de Colonias</h2>
+<strong><h5>Alta de Colonias</h5></strong>
 <hr class="red" />
     <div class="container">
          
@@ -10,7 +10,8 @@
         <div id="coloniasFormDiv">
             <div class="row">
                 <div id="divcp" class="col-sm-3">
-                    <input type="text" class="formulario__input" [control]="getCtr('cp')" (input)="buscarCP($event)" formControlName="cp" pattern="^\d*[0-9]\d*$" idbInput>
+                    <input type="text" class="formulario__input" [control]="getCtr('cp')" maxlength="5" (input)="buscarCP($event)" formControlName="cp" pattern="^\d*[0-9]\d*$" idbInput>
+                    <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.cp.hasError('pattern')">Codigo Postal Invalido. </mat-hint>
                     <label class="formulario__label">{{'* C.P.' }}</label>
                 </div>
     

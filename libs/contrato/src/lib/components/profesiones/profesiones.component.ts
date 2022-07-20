@@ -37,6 +37,7 @@ export class ProfesionesComponent implements OnInit {
   selectOptIdContrato: boolean;
   activeTab:boolean;
   submitted: boolean=false;
+  selectedProfesion : ProfesionVO;
   constructor(private serviceProfesion : ProfesionService) {
     this.btnGuardarIf=true;
     this.btnBuscarIf=false;
@@ -123,7 +124,8 @@ export class ProfesionesComponent implements OnInit {
     this.btnEliminarIf=true;
     this.btnDeshacerIf=true;
     this.btnAltaIf=false;
- 
+    this.selectedProfesion='';
+     
   }
  
 
@@ -186,6 +188,7 @@ export class ProfesionesComponent implements OnInit {
         this.btnBuscarIf = true;
         this.btnBuscarIf = true;
         this.btnBuscarIf = true;
+        document.getElementById('tabla').removeAttribute('selected');
 
       });
   }
@@ -207,7 +210,7 @@ export class ProfesionesComponent implements OnInit {
       error => console.error(error)
     )
   }
-  selectProfesion(row : ProfesionVO){
+  selectProfesion(row : ProfesionVO){ 
     console.log("selected: ", row); 
     this.profesionSelectd=row;
     this.funcForm.get("observacion").setValue(row.proDescripcion);
@@ -226,6 +229,10 @@ export class ProfesionesComponent implements OnInit {
 
 
 
+  }
+  selected(element: any) {
+    console.log(element);
+    this.selectedProfesion = element;
   }
   /**Metodo que valida si la descripcion sufrio algun cambio  */
   actualizacionDescripcion(event: Event){
