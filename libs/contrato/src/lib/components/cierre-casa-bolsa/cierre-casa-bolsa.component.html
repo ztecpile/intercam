@@ -19,11 +19,19 @@
       <td mat-cell *matCellDef="let element">{{ element.tipoPapel }}</td>
     </ng-container>
 
-    <ng-container matColumnDef="No">
+    <ng-container matColumnDef="NoPapel">
       <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2">Papel</th>
     </ng-container>
 
-    <ng-container matColumnDef="Plazo">
+       <!-- Position Column display none-->
+       <ng-container matColumnDef="Plazo">
+        <th mat-header-cell *matHeaderCellDef [ngStyle]="{ display: 'none' }">
+          No.
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element.tipoPapel }}</td>
+      </ng-container>
+
+    <ng-container matColumnDef="NoPlazo">
       <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"> Plazo</th>
       <td mat-cell *matCellDef="let element">{{ element.plazo }}</td>
     </ng-container>
@@ -97,8 +105,8 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="[
-        'No',
-        'header-row-efectiva',
+        'NoPapel',
+        'NoPlazo',
         'header-row-second-group',
         'header-row-efectiva2',
         'header-row-efectiva3',
