@@ -57,7 +57,7 @@
 
                 <div class="col-sm-12">
                     <input formControlName="clave" type="number" class="formulario__input"
-                    [(ngModel)]="sectorEconomico.secId"  max="99999999999999999999" (keyup)="hasChenges();" />
+                    [(ngModel)]="sectorEconomico.secId"  max="99999999999999999999" (keyup)="hasChenges();" [readonly]="!deshabilitarInputs" />
                     <label class="formulario__label">* Clave</label>
                     <mat-hint class="form-warnig" *ngIf="submitted && formGrupo.controls.clave.hasError('required')">El
                         campo es obligatorio</mat-hint>
@@ -66,7 +66,7 @@
                 </div>
 
                 <div class="col-sm-12">
-                    <input formControlName="obserbaciones" type="text" class="formulario__input" maxlength="50"   [(ngModel)]="sectorEconomico.secDescripcion" (keyup)="hasChenges();"   />
+                    <input formControlName="obserbaciones" type="text" class="formulario__input" maxlength="50"   [(ngModel)]="sectorEconomico.secDescripcion" (keyup)="hasChenges();" [readonly]="!deshabilitarInputs"  />
                     <label class="formulario__label">* Observaciones</label>
                     <mat-hint class="form-warnig"
                         *ngIf="submitted && formGrupo.controls.obserbaciones.hasError('required')">El campo es
@@ -75,7 +75,7 @@
 
                 <div class="col-sm-12">
                     <input formControlName="clave_cnbv" type="number" class="formulario__input" type="number"
-                    [(ngModel)]="sectorEconomico.secCnbv" ngModel max="99999999"  min="00000000" (keyup)="hasChenges();" />
+                    [(ngModel)]="sectorEconomico.secCnbv" ngModel max="99999999"  min="00000000" (keyup)="hasChenges();" [readonly]="!deshabilitarInputs" />
                     <label class="formulario__label">* Clave CNBV</label>
                     <mat-hint class="form-warnig"
                         *ngIf="submitted && formGrupo.controls.clave_cnbv.hasError('required')">El campo es obligatorio
@@ -89,7 +89,7 @@
                 </div>
 
                 <div class="col-sm-12">
-                    <input type="text" class="formulario__input"  />
+                    <input type="text" class="formulario__input" [readonly]="!deshabilitarInputs" />
                     <label class="formulario__label">Clave BANXICO</label>
                 </div>
 

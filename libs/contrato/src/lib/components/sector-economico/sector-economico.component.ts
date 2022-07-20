@@ -29,6 +29,8 @@ export class SectorEconomicoComponent implements AfterViewInit {
     sectorEconomico: SectorEconomicoVO = new SectorEconomicoVO();
     selectedRow: SectorEconomicoVO = new SectorEconomicoVO();
 
+    deshabilitarInputs:boolean=false;
+
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
     @ViewChild(AcctionButtonsComponent) _acctionButtonsComponent: AcctionButtonsComponent;
@@ -117,6 +119,7 @@ export class SectorEconomicoComponent implements AfterViewInit {
                 this.paginatorDataSource = new MatTableDataSource<SectorEconomicoVO>(this.dataSource);
                 this.paginatorDataSource.paginator = this.paginator;
                 this.paginatorDataSource.sort = this.sort;
+                this.deshabilitarInputs = true;
             },
             error => console.error(error)
         );
