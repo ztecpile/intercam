@@ -27,6 +27,7 @@ export class SectorEconomicoComponent implements AfterViewInit {
     paginatorDataSource: MatTableDataSource<SectorEconomicoVO> = new MatTableDataSource<SectorEconomicoVO>(this.dataSource);
 
     sectorEconomico: SectorEconomicoVO = new SectorEconomicoVO();
+    selectedRow: SectorEconomicoVO = new SectorEconomicoVO();
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
@@ -41,9 +42,7 @@ export class SectorEconomicoComponent implements AfterViewInit {
 
     });
 
-    constructor(private _sectorEconomicoService: SectorEconomicoService, private alertasService: AlertasService, private formBuilder: FormBuilder) {
-        this.findSectorEconomicoVO();
-    }
+    constructor(private _sectorEconomicoService: SectorEconomicoService, private alertasService: AlertasService, private formBuilder: FormBuilder) {}
     ngAfterViewInit(): void {
         this.paginator._intl.itemsPerPageLabel = "Registros por página:";
     }
@@ -55,6 +54,7 @@ export class SectorEconomicoComponent implements AfterViewInit {
     getRecord(row) {
 
         if (this._acctionButtonsComponent.isModoConsulta()) {
+            this.selectedRow=row;
             this.sectorEconomico ={...row};
             this._acctionButtonsComponent.setFilaSelecionada(row);
         }
@@ -62,8 +62,8 @@ export class SectorEconomicoComponent implements AfterViewInit {
 
     }
     modoConsultaClick() {
-
         this.sectorEconomico = new SectorEconomicoVO();
+        this.findSectorEconomicoVO();
     }
     modoAltaClick() {
         this.sectorEconomico = new SectorEconomicoVO();
@@ -106,6 +106,8 @@ export class SectorEconomicoComponent implements AfterViewInit {
 
     modoDeshacerClick() {
         this.sectorEconomico = new SectorEconomicoVO();
+        this.selectedRow= new SectorEconomicoVO();
+        this.submitted=false;
     }
 
     findSectorEconomicoVO() {
