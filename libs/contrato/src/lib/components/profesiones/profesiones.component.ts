@@ -37,7 +37,7 @@ export class ProfesionesComponent implements OnInit {
   selectOptIdContrato: boolean;
   activeTab:boolean;
   submitted: boolean=false;
-  selectedProfesion : ProfesionVO;
+  selectedProfesion : any;
   constructor(private serviceProfesion : ProfesionService) {
     this.btnGuardarIf=true;
     this.btnBuscarIf=false;
