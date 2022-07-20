@@ -33,7 +33,6 @@ export class CedesInversionesComponent {
     }
     formatNumber(num) {
         num = (Math.round(num * 100) / 100).toFixed(2);
-        console.log(num);
         return Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(num).replace("$", "");
     }
 
@@ -80,8 +79,6 @@ export class CedesInversionesComponent {
                 let rangoInferior = item["monto"].rangoInferior;
                 if (rangoInferior == null) {
                     rangoInferior = "0.0";
-                    console.log(rangoInferior);
-
                 }
 
                 if (dataSourc[rangoInferior] == undefined)
@@ -96,16 +93,17 @@ export class CedesInversionesComponent {
                 dataSource2.push(dataSourc[i]);
             }
             this.dataSource = dataSource2.sort(function (a, b) {
-                if (a.rangoInferior > b.rangoInferior) {
+                let val1=Number(a.rangoInferior.replaceAll(",",""));
+                let val2=Number(b.rangoInferior.replaceAll(",",""));
+                console.log(val1,val2);
+                if (val1 > val2) {
                     return 1;
                 }
-                if (a.rangoInferior < b.rangoInferior) {
+                if (val1 < val2) {
                     return -1;
                 }
-                // a must be equal to b
                 return 0;
             });
-            console.log(this.dataSource);
         });
     }
 }
