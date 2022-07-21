@@ -35,8 +35,8 @@ export class TiposRelacionComponent implements AfterViewInit {
 
 
     });
-    submitted: Boolean = true;
-    constructor(private _tipoRelacionService: TipoRelacionService, private alertasService: AlertasService, private formBuilder: FormBuilder) { this.findTipoRelVO(); }
+    submitted: Boolean = false;
+    constructor(private _tipoRelacionService: TipoRelacionService, private alertasService: AlertasService, private formBuilder: FormBuilder) {  }
 
 
 
@@ -68,6 +68,7 @@ export class TiposRelacionComponent implements AfterViewInit {
 
     onModoConsultaClick() {
         //  alert("Click evento");
+        this.findTipoRelVO();
         this.tipoRelVO = new TipoRelVO();
     }
 
