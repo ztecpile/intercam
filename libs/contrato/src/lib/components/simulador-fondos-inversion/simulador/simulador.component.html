@@ -15,13 +15,15 @@
     <p>Remdimiento promedio anual</p>
     <p>Promedio simulado del</p>
     <div class="centrar_btn" style="margin-top: 10px">
-      <button class="btn-img recibe-doc-button">
-        <span class="tooltip">Buscar</span>
-      </button>
-      
       <button class="btn-img imprimir-button">
-        <span class="tooltip">Buscar</span>
+        <span class="tooltip">Imprimir</span>
       </button>
+
+      <button class="btn-img recibe-doc-button">
+        <span class="tooltip">PDF</span>
+      </button>
+
+
     </div>
   </div>
   <div class="col-sm-8">
@@ -50,12 +52,9 @@
       </div>
       <div class="col-sm-6">
         <p>CP:Corto Plazo, MP:Mediano Plazno, LP:Largo Pl</p>
-        <canvas baseChart
-              [data]="pieChartData"
-              [type]="pieChartType"
-              [options]="pieChartOptions"
-              [plugins]="pieChartPlugins">
-      </canvas>
+        <canvas baseChart [data]="pieChartData" [type]="pieChartType" [options]="pieChartOptions"
+          [plugins]="pieChartPlugins">
+        </canvas>
 
       </div>
     </div>
