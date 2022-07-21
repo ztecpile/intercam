@@ -49,51 +49,51 @@
             <div class="col-12">
 
 
-                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort (matSortChange)="sortData($event)">
                     <ng-container matColumnDef="ticket">
-                        <th mat-header-cell *matHeaderCellDef>Ticket</th>
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header >Ticket</th>
                         <td mat-cell *matCellDef="let element">{{ element.tdtTicket }}</td>
                     </ng-container>
 
                     <ng-container matColumnDef="deal">
-                        <th mat-header-cell *matHeaderCellDef>Deal</th>
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Deal</th>
                         <td mat-cell *matCellDef="let element">{{ element.operInstrumentoVO.tmpDealsica }}</td>
                     </ng-container>
 
                     <ng-container matColumnDef="tipo">
-                        <th mat-header-cell *matHeaderCellDef>Tipo</th>
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</th>
                         <td mat-cell *matCellDef="let element">{{ element.opiTipo }}</td>
                     </ng-container>
 
                     <ng-container matColumnDef="promotor">
-                        <th mat-header-cell *matHeaderCellDef>Promotor</th>
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Promotor</th>
                         <td mat-cell *matCellDef="let element">{{ element.tmpCvePro }}</td>
                     </ng-container>
 
 
                     <ng-container matColumnDef="fecha">
-                        <th mat-header-cell *matHeaderCellDef>Fecha</th>
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
                         <td mat-cell *matCellDef="let element">{{ formatoFecha(element.tdtFecha) }}</td>
                     </ng-container>
 
                     <ng-container matColumnDef="hora">
-                        <th mat-header-cell *matHeaderCellDef>Hora</th>
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Hora</th>
                         <td mat-cell *matCellDef="let element">{{    formatoHora(element.tdtHora) }}</td>
                     </ng-container>
 
 
                     <ng-container matColumnDef="pos">
-                        <th mat-header-cell *matHeaderCellDef>Estatus Pos</th>
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Estatus Pos</th>
                         <td mat-cell *matCellDef="let element">{{ element.tdtEstatus }}</td>
                     </ng-container>
 
                     <ng-container matColumnDef="transaccion">
-                        <th mat-header-cell *matHeaderCellDef>Estatus Transacci&oacute;n</th>
-                        <td mat-cell *matCellDef="let element">{{ element.operInstrumentoVO.opiEstatus==0?" Generadas Incompletas":element.operInstrumentoVO.opiEstatus==2?"Error **** ":"Generadas Completas " }}
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header >Estatus Transaccion</th>
+                        <td mat-cell *matCellDef="let element">{{formatoTransaccion(element)}}
                         </td>
                     </ng-container>
                     <ng-container matColumnDef="cadena_deal">
-                        <th mat-header-cell *matHeaderCellDef>Cadena DealTracker</th>
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Cadena DealTracker</th>
                         <td width="20%" max-height="30px" mat-cell *matCellDef="let element">{{ element.tdtMsjDeal }}
                         </td>
                     </ng-container>
@@ -117,7 +117,7 @@
 
 
                 </table>
-                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                <mat-paginator [pageSizeOptions]="[20]" showFirstLastButtons
                     aria-label="Select page of periodic elements">
                 </mat-paginator>
             </div>

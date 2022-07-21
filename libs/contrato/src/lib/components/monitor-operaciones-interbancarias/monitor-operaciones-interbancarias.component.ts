@@ -5,7 +5,7 @@ import { MatTableDataSource } from "@angular/material/table";
 import { DealtrackerVO } from "@intercam/model";
 import { DialogDealInfoComponent } from "libs/shred-components/src/lib/dialog/dialog-deal/dialog-deal.component";
 import { MonitorOperacionesInterbancariasServices } from "../../services/monitor-operaciones-interbancarias.services";
-
+import { MatSort, Sort } from '@angular/material/sort';
 
 @Component({
     selector: 'monitor-operaciones-interbancarias',
@@ -42,12 +42,14 @@ export class MonitorOperacionesInterbancariasComponent implements AfterViewInit 
 
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
+    @ViewChild(MatSort) sort: MatSort;
+
     constructor(private _monitorOperacionesInterbancariasServices: MonitorOperacionesInterbancariasServices, private dialog: MatDialog) {
-       
+
     }
     ngAfterViewInit(): void {
         this.paginator._intl.itemsPerPageLabel = "Registros por página:";
-        this.dialog.open(DialogDealInfoComponent);
+        this.findPerAsistente();
     }
 
 
@@ -68,10 +70,14 @@ export class MonitorOperacionesInterbancariasComponent implements AfterViewInit 
         this._monitorOperacionesInterbancariasServices.findOperaciones(parsm).subscribe(then => {
             this.dataSource = new MatTableDataSource(then);
             this.dataSourceFilter = then;
+            this.dataSource.sort = this.sort;
             this.dataSource.paginator = this.paginator;
         });
     }
 
+    sortData(sort: Sort) {
+        console.log(sort);
+    }
 
     getRecord(row) {
         this.selectedRow = row;
@@ -101,11 +107,25 @@ export class MonitorOperacionesInterbancariasComponent implements AfterViewInit 
 
     formatoHora(e) {
         let hora = e.split(",")[1];
-        return String(hora).replace("1700","");
+        return String(hora).replace("1700", "");
     }
     formatoFecha(e) {
         let date = (e + "").split(" ");
         return date[1] + "/" + this.meses[date[0]] + "/" + date[2];
+    }
+
+    formatoTransaccion(element) {
+        switch (element.operInstrumentoVO.opiEstatus) {
+            case 0:
+                return "Operación Generadas Pendiente";
+            case 1:
+                return " Operación Generadas Completa";
+
+            case 2:
+                return "Error al guardar la o peracion en el sistema";
+        }
+        return element.operInstrumentoVO.opiEstatus;
+        //       element.operInstrumentoVO.opiEstatus==0?" Generadas Incompletas":element.operInstrumentoVO.opiEstatus==2?"Error **** ":"Generadas Completas "
     }
 
 

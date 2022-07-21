@@ -3,9 +3,17 @@
 </button>
 
 <hr class="red" />
-<h2>DEAL {{model.opeId}}</h2>
+<h2 class="deal-div">DEAL {{model.opeId}}
+    <div class="tooltip-info">
+        <label>Tipo Ope : </label><br>
+        <label>Tipo Cambio : </label><br>
+        <label>Fecha Valor : {{model.infoFechaHabilVO.mapFechaValorDiv[0].fvaDescripcion}}</label><br>
+        <label>Monto : EUR</label><br>
+        <label>Monto : MN</label><br>
+    </div>
+</h2>
 <hr class="red" />
-<div class="row" style="z-index: 5">
+<div class="row deal-container" style="z-index: 5">
 
     <div class="col-sm-4" style="z-index: 5">
         <input type="text" class="formulario__input" [value]="model.tmpCveSucLegada" readonly />

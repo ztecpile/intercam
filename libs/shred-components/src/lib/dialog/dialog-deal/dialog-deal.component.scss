@@ -15,3 +15,95 @@
     border: none;
     background-color: rgba(255, 255, 255, 0);
 }
+
+
+.deal-div {
+    padding: 17px 17px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 4px 2px;
+    position: relative;
+    display: inline-block;
+}
+
+.deal-div:hover {
+    background-color: #f1f1f1;
+    padding: 16px 16px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.deal-div:disabled {
+    cursor: not-allowed !important;
+    background-color: #f1f1f1;
+    padding: 17px 17px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-family: 'Museo Sans 700';
+    text-transform: uppercase;
+    opacity: 0.5;
+}
+
+
+/* tooltip-info text */
+
+.deal-div .tooltip-info {
+    visibility: hidden;
+    width: 50vh;
+    background-color: rgb(0, 0, 0);
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    /* Position the tooltip-info text */
+    position: absolute;
+    z-index: 1;
+    bottom: -50%;
+    left: 50%;
+    margin-left: -60px;
+    /* Fade in tooltip-info */
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+
+/* tooltip-info arrow */
+
+.deal-div .tooltip-info::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgb(73, 73, 73) transparent transparent transparent;
+}
+
+
+/* Show the tooltip-info text when you mouse over the tooltip-info container */
+
+.deal-div:hover .tooltip-info {
+    visibility: visible;
+    opacity: 1;
+}
+
+.deal-div .tooltip-info label{
+    font-size: 12px;
+}
+
+.formulario__label{
+    position: unset !important;
+    padding-bottom: 40px !important;
+}
+
+.deal-container{
+    overflow: scroll;
+    max-height: 70vh;
+}

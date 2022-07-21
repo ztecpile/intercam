@@ -8,20 +8,20 @@ import { DealService } from "../services/deal.service";
     selector: 'dialog-deal-component',
     templateUrl: './dialog-deal.component.html',
     styleUrls: ['./dialog-deal.component.scss']
-   
+
 })
 
 export class DialogDealInfoComponent {
 
-    model:OperacionVO=new OperacionVO;
-    constructor(@Inject(MAT_DIALOG_DATA) public data: DealtrackerVO,private _dealService:DealService,public dialogRef: MatDialogRef<DialogBuscarClienteComponent>){ this.findOperacionVO();}
+    model: OperacionVO = new OperacionVO;
+    constructor(@Inject(MAT_DIALOG_DATA) public data: DealtrackerVO, private _dealService: DealService, public dialogRef: MatDialogRef<DialogBuscarClienteComponent>) { this.findOperacionVO(); }
 
-    findOperacionVO(){
-      /*  this._dealService.findOperacionByDeal(this.data.operInstrumentoVO.tmpDealsica,this.data.operInstrumentoVO.fechaValorVO.idVO.tconId).subscribe(then=>{
-            this.model=then;
-        });*/
+    findOperacionVO() {
+        this._dealService.findOperacionByDeal(this.data.operInstrumentoVO.tmpDealsica, this.data.operInstrumentoVO.fechaValorVO.idVO.tconId).subscribe(then => {
+            this.model = then;
+        });
     }
-    close(){
+    close() {
         this.dialogRef.close();
     }
 
