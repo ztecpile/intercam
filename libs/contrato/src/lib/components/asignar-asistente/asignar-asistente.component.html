@@ -60,7 +60,7 @@
             <div class="col-sm-3" style="z-index: 5">
                 <div id="divperRfc" class="row">
                     <div class="col-10">
-                        <input type="text" class="formulario__input" [(ngModel)]="selectedRow.nombreEjecutivo" />
+                        <input type="text" class="formulario__input" [(ngModel)]="selectedRow.nombreEjecutivo" readonly/>
                         <label class="formulario__label">Asistentes</label>
                     </div>
                     <div class="col-2">
@@ -72,7 +72,9 @@
 
                 <acction-buttons-component (onModoConsultaClick)="onModoConsultaClick()"
                     (onModoAltaClick)="onModoAltaClick()" (onModoEliminarClick)="onModoEliminarClick()"
-                    (onModoGuardarClick)="onModoGuardarClick()" (onModoActualizarClick)="onModoActualizarClick()"
+                    (onModoGuardarClick)="onModoGuardarClick()"
+                     (onModoActualizarClick)="onModoActualizarClick()"
+                     (onModoDeshacerClick)="onModoDeshacerClick()"
                     [modelo]="selectedRow">
                 </acction-buttons-component>
             </div>

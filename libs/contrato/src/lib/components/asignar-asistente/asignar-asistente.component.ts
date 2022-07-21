@@ -24,7 +24,7 @@ export class AsignarAsistenteComponent implements AfterViewInit {
     ejecutivo: UsuarioVO;
     tipoAsistente: String = "P";
     displayedColumns = ["nombre", "sucursal", "estatus"];
-    dataSource: MatTableDataSource<EjecutivoAsistenteVO>=new MatTableDataSource();
+    dataSource: MatTableDataSource<EjecutivoAsistenteVO> = new MatTableDataSource();
     dataSourceBkp: EjecutivoAsistenteVO[] = [];
     selectedRow = new EjecutivoAsistenteVO;
 
@@ -73,6 +73,7 @@ export class AsignarAsistenteComponent implements AfterViewInit {
                 this.selectedRow.sucursal = result['data'].sucDescripcion;
                 this.selectedRow.estatus = false;
                 this.selectedRow["tipoAsistente"] = "P";
+                this._acctionButtonsComponent.hasChenges();
 
             }
         });;
@@ -125,13 +126,17 @@ export class AsignarAsistenteComponent implements AfterViewInit {
                 case 'sucursal':
                     return compare(a.sucursal, b.sucursal, isAsc);
                 case 'estatus':
-                    
-                    return compare(a.estatus==true?"AC":"SU", b.estatus==true?"AC":"SU", isAsc);
+
+                    return compare(a.estatus == true ? "AC" : "SU", b.estatus == true ? "AC" : "SU", isAsc);
                 default:
                     return 0;
             }
         });
 
+    }
+    onModoDeshacerClick() {
+        this.MODO_ALTA = false;
+        this.selectedRow = new EjecutivoAsistenteVO();
     }
 
 }
