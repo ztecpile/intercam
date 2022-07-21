@@ -54,6 +54,7 @@ export class EntidadesComponent implements OnInit {
   nivelRiesgo:string;
   paginador: boolean;
   tableEnt: boolean;
+  submitted: boolean=false;
   constructor(private liveAnnouncer: LiveAnnouncer,private formBuilder: FormBuilder,private servicesEntidad: EntidadServices,private _direccionService: DireccionService) {
     this.btnGuardarIf=true;
     this.btnBuscarIf=true;
@@ -75,6 +76,7 @@ export class EntidadesComponent implements OnInit {
     this.funcForm.get('nivelRiesgo').disable();
     this.dataSource.filterPredicate = 
     (data: EntidadVO, filter: string) => data.entDescripcion.indexOf(filter) != -1; 
+    this.submitted=false;
   }
 
   onSubmit() {
@@ -150,6 +152,7 @@ export class EntidadesComponent implements OnInit {
     this.funcForm.get("nivelRiesgo").disable();
     document.getElementById("paginadorDiv").setAttribute("hidden", "true");
      this.cargaCatalogos();
+     this.funcForm.reset();
    
   }
 
@@ -225,25 +228,30 @@ export class EntidadesComponent implements OnInit {
     return true;
   }
   guardarEntidades(entidades : EntidadVO): void{
-     const entidadSave  = new EntidadVO;
-    entidadSave.entDescripcion= this.funcForm.get("entidad").value;
-    entidadSave.entAbrv= this.funcForm.get("abreviatura").value;
-    entidadSave.entCnbvClave= this.funcForm.get("claveCNBV").value;
-    entidadSave.entIsoCodeBrx= this.funcForm.get("codigoBroxel").value;
-    entidadSave.entRiesgo= this.funcForm.get("nivelRiesgo").value;
-    entidadSave.paiClave= this.funcForm.get("cboPaisOr").value;
-
-    this.servicesEntidad.saveEntidad(entidadSave).subscribe(
-      then =>{
-        this.entidadVO = then;
-        this.mostrarMensaje('Alta Exitosa','info');
-      },
-      error => {
-        console.error(error);
-        //this.mostrarMensaje(Const.errorRegistroProspecto, 'error');
-        this.btnBuscarIf = true;
-        
-      });
+    const entidadSave  = new EntidadVO;
+    if(this.funcForm.get("entidad").value!=null|| this.funcForm.get("entidad").value!=""){
+      entidadSave.entDescripcion= this.funcForm.get("entidad").value;
+      entidadSave.entAbrv= this.funcForm.get("abreviatura").value;
+      entidadSave.entCnbvClave= this.funcForm.get("claveCNBV").value;
+      entidadSave.entIsoCodeBrx= this.funcForm.get("codigoBroxel").value;
+      entidadSave.entRiesgo= this.funcForm.get("nivelRiesgo").value;
+      entidadSave.paiClave= this.funcForm.get("cboPaisOr").value;
+  
+      this.servicesEntidad.saveEntidad(entidadSave).subscribe(
+        then =>{
+          this.entidadVO = then;
+          this.mostrarMensaje('Alta Exitosa','info');
+          this._modalidad="";
+        },
+        error => {
+          console.error(error);
+          //this.mostrarMensaje(Const.errorRegistroProspecto, 'error');
+          this.btnBuscarIf = true;
+          
+        });
+    }
+     
+   
       this.funcForm.reset();
   }
   obtenerEntidades(e: any){
@@ -354,6 +362,7 @@ export class EntidadesComponent implements OnInit {
    
   }
   actualizacionRiesgo(event: Event){
+    this.submitted = true;
     let riesgo = event.target as unknown as HTMLInputElement["valueOf"];
     if(this.entidadEdit.entRiesgo.valueOf !== riesgo){
         this._modalidad="modificacion";
@@ -374,6 +383,7 @@ export class EntidadesComponent implements OnInit {
       this.btnEliminarIf = true;
     }
   actualizacionCodigoBrx(event: Event){
+    this.submitted = true;
     if(this.entidadEdit.entIsoCodeBrx!==((event.target as HTMLInputElement).value)&& this.entidadEdit.entIsoCodeBrx!== undefined){
         this._modalidad="modificacion";
         this.habilitaBotones();
@@ -384,6 +394,7 @@ export class EntidadesComponent implements OnInit {
 
   }
   actualizacionEntidad(event: Event){
+    this.submitted = true;
     if(this.entidadEdit.entDescripcion!==((event.target as HTMLInputElement).value) && this.entidadEdit.entDescripcion!== undefined){
         this._modalidad="modificacion";
         this.habilitaBotones();
@@ -395,6 +406,7 @@ export class EntidadesComponent implements OnInit {
 
   }
   actualizacionClaveCBNV(event: Event){
+    this.submitted = true;
     if(this.entidadEdit.entCnbvClave!==((event.target as HTMLInputElement).value)&& this.entidadEdit.entCnbvClave!== undefined){
         this._modalidad="modificacion";
         this.habilitaBotones();
@@ -405,6 +417,7 @@ export class EntidadesComponent implements OnInit {
 
   }
   actualizacionAbrev(event: Event){
+    this.submitted = true;
     if(this.entidadEdit.entAbrv!==((event.target as HTMLInputElement).value)&& this.entidadEdit.entAbrv!== undefined){
         this._modalidad="modificacion";
         this.habilitaBotones();

@@ -82,15 +82,17 @@ export class ColoniasComponent implements OnInit {
  buscarCodigoCP(e:any){
    this.showGetCP();
  }
-  onSubmit() {
-    console.log("Guardando...");
-  }
+ onSubmit() {
+  this.submitted = true;
+  console.log("Guardando...");
+  this.funcForm.value;
+}
   createFunForm() {
     this.funcForm = this.formBuilder.group({
       codigoPostal: new FormControl('', [Validators.required]),
-      entidad: new FormControl('', [Validators.required]),
-      alcMun: new FormControl('', [Validators.required]),
-      ciudad: new FormControl('', [Validators.required]),
+      entidad: new FormControl(''),
+      alcMun: new FormControl(''),
+      ciudad: new FormControl(''),
       updateColonia: new FormControl('', [Validators.required]),
       cp: [''],
       cboColonia:['']
@@ -131,20 +133,24 @@ export class ColoniasComponent implements OnInit {
     saveColonia.colAsentami="Colonia";
     saveColonia.colCiudad=this.funcForm.get("ciudad").value;
  
-    this.coloniaServices.saveColonia(saveColonia).subscribe(
-      then => {
-        this.colonias = then;
-        this.confirmacionColonia = true;
-        this.mostrarMensaje('Registro Exitos', 'info');
-      },
-      error => {
-        console.error(error);
-        //this.mostrarMensaje(Const.errorRegistroProspecto, 'error');
-        this.btnGuardarIf = true;
-      });
+    if(this.funcForm.valid){
+      this.coloniaServices.saveColonia(saveColonia).subscribe(
+        then => {
+          this.colonias = then;
+          this.confirmacionColonia = true;
+          this.mostrarMensaje('Registro Exitos', 'info');
+        },
+        error => {
+          console.error(error);
+          //this.mostrarMensaje(Const.errorRegistroProspecto, 'error');
+          this.btnGuardarIf = true;
+        });
+    }
+    
   
 }
   buscarCP(event: Event) {
+    this.submitted=true;
     if((this._paisClaveDir == Const.PAIS_CLAVE_MEXICO || 
       isNaN(this._paisClaveDir)) && (event.target as HTMLInputElement).value.length == 5){
         //this.obtenerColoniasHard();
@@ -298,6 +304,7 @@ export class ColoniasComponent implements OnInit {
      
 }
 actualizacion(event: Event){
+  this.submitted= true;
   if(this.updateColonia !== (event.target as HTMLInputElement).value){
     this.btnGuardarIf=false;
     this.btnDeshacerIf=false;
