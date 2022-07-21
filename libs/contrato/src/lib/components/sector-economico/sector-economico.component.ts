@@ -29,7 +29,7 @@ export class SectorEconomicoComponent implements AfterViewInit {
     sectorEconomico: SectorEconomicoVO = new SectorEconomicoVO();
     selectedRow: SectorEconomicoVO = new SectorEconomicoVO();
 
-    deshabilitarInputs:boolean=false;
+    deshabilitarInputs: boolean = false;
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
@@ -44,20 +44,23 @@ export class SectorEconomicoComponent implements AfterViewInit {
 
     });
 
-    constructor(private _sectorEconomicoService: SectorEconomicoService, private alertasService: AlertasService, private formBuilder: FormBuilder) {}
+    constructor(private _sectorEconomicoService: SectorEconomicoService, private alertasService: AlertasService, private formBuilder: FormBuilder) { }
     ngAfterViewInit(): void {
         this.paginator._intl.itemsPerPageLabel = "Registros por página:";
     }
 
     hasChenges() {
-        this._acctionButtonsComponent.hasChenges();
+        if (this.sectorEconomico.secId || this.sectorEconomico.secDescripcion || this.sectorEconomico.secCnbv || this.sectorEconomico.secBanxico != null) {
+            //             
+            this._acctionButtonsComponent.hasChenges();
+        }
     }
 
     getRecord(row) {
 
         if (this._acctionButtonsComponent.isModoConsulta()) {
-            this.selectedRow=row;
-            this.sectorEconomico ={...row};
+            this.selectedRow = row;
+            this.sectorEconomico = { ...row };
             this._acctionButtonsComponent.setFilaSelecionada(row);
         }
 
@@ -69,6 +72,7 @@ export class SectorEconomicoComponent implements AfterViewInit {
     }
     modoAltaClick() {
         this.sectorEconomico = new SectorEconomicoVO();
+        this.deshabilitarInputs = true;
     }
 
     modoGuardarClick() {
@@ -108,8 +112,9 @@ export class SectorEconomicoComponent implements AfterViewInit {
 
     modoDeshacerClick() {
         this.sectorEconomico = new SectorEconomicoVO();
-        this.selectedRow= new SectorEconomicoVO();
-        this.submitted=false;
+        this.selectedRow = new SectorEconomicoVO();
+        this.submitted = false;
+        this.deshabilitarInputs = false;
     }
 
     findSectorEconomicoVO() {

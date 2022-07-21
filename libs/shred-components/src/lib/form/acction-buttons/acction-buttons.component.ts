@@ -40,7 +40,7 @@ export class AcctionButtonsComponent {
     @Output() onModoDeshacerClick = new EventEmitter();
 
     @Input() modelo: Object = null;
-    @Input() formGroup:FormGroup=null;
+    @Input() formGroup: FormGroup = null;
 
     validarBtnReset: boolean = false;//this.MODO_FORMULARIO == this.MODO_CONSULTA || this.modeloSelecionado == null || this.modelo.toString() != this.modeloSelecionado.toString()
     validarBtnEliminar: boolean = false;
@@ -88,13 +88,13 @@ export class AcctionButtonsComponent {
         this.onModoAltaClick.emit();
     }
     modoGuardarClick() {
-        
+
 
         if (this.MODO_FORMULARIO == this.MODO_ALTA)
             this.onModoGuardarClick.emit();
         else
             this.onModoActualizarClick.emit();
-        if(this.formGroup==null||this.formGroup?.valid )
+        if (this.formGroup == null || this.formGroup?.valid)
             this.reiniciarBtn();
     }
 
@@ -116,17 +116,21 @@ export class AcctionButtonsComponent {
     }
 
     ObjCompare(obj1, obj2) {
+        if (obj1!=null&&obj2!=null) {
         const Obj1_keys = Object.keys(obj1);
         const Obj2_keys = Object.keys(obj2);
-        if (Obj1_keys.length !== Obj2_keys.length) {
-            return false;
-        }
-        for (let k of Obj1_keys) {
-            if (obj1[k] !== obj2[k]) {
+        
+            if (Obj1_keys.length !== Obj2_keys.length) {
                 return false;
             }
+            for (let k of Obj1_keys) {
+                if (obj1[k] !== obj2[k]) {
+                    return false;
+                }
+            }
+            return true;
         }
-        return true;
+        return false;
     }
 
     validarGuardarBtn() {
