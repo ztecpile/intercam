@@ -13,7 +13,7 @@ export class DealService {
 
     constructor(public http: HttpClient) { }
     findOperacionByDeal(deal:number,tconId:number): Observable<OperacionVO> {
-        const urlStr = 'findOperacionByDeal.php?deal='+deal+'&tconId='+tconId;
+        const urlStr = 'operacion-cambios/remote/findOperacionByDeal?deal='+deal+'&tconId='+tconId;
         return this.http.get<OperacionVO>(urlStr, {});
       }
   

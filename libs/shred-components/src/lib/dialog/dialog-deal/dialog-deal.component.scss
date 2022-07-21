@@ -1,0 +1,17 @@
+.btn-cerrar-dialog {
+    background-image: url(../../../../../../apps/ismart-pos/src/assets/img/buttons/cerrar.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 25px;
+    width: 25px;
+    background-position: center;
+    padding-top: 10px;
+}
+
+.close-button {
+    float: right;
+    top: -30px;
+    right: -30px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+}

@@ -1,113 +1,114 @@
+<button class="close-button" (click)="close()">
+    <img class="btn btn-cerrar-dialog" matTooltip="Cerrar" matTooltipPosition="right" />
+</button>
 
+<hr class="red" />
+<h2>DEAL {{model.opeId}}</h2>
+<hr class="red" />
+<div class="row" style="z-index: 5">
 
-        <hr class="red" />
-        <h2>DEAL  {{model.opeId}}</h2>
-        <hr class="red" />
-        <div class="row" style="z-index: 5">
+    <div class="col-sm-4" style="z-index: 5">
+        <input type="text" class="formulario__input" [value]="model.tmpCveSucLegada" readonly />
+        <label class="formulario__label">CLV.MESA</label>
+    </div>
 
-            <div class="col-sm-4" style="z-index: 5">
-                <input type="text" class="formulario__input" [value]="model.tmpCveSucLegada" readonly />
-                <label class="formulario__label">CLV.MESA</label>
-            </div>
+    <div class="col-sm-4" style="z-index: 5">
+        <div class="caja">
+            <select [disabled]="true">
+                <option>{{model.tmpClvPro}}</option>
 
-            <div class="col-sm-4" style="z-index: 5">
-                <div class="caja">
-                    <select [disabled]="true">
-                        <option >{{model.tmpClvPro}}</option>
-
-                    </select>
-                </div>
-                <label appearance="fill" class="formulario__label"></label>
-            </div>
-           
-            <div class="col-sm-4" style="z-index: 5">
-                <input type="text" class="formulario__input" [value]="model.tmpCveSucLegada" readonly />
-                <label class="formulario__label">Sucursal</label>
-            </div>
-
-            <div id="divperRfc" class="row" style="z-index: 5">
-                <div class="col-4">
-                    <input type="number" class="formulario__input"  readonly [value]="model.tmpCveClieSica"/>
-                    <label class="formulario__label">Cliente</label>
-                </div>
-                <div class="col-2">
-
-                    <button class="btn-img buscar-btn" [disabled]="true">
-                        <span class="tooltip">Buscar</span>
-                    </button>
-                </div>
-                <div class="col-sm-6">
-                    
-                    <label class="formulario__input">{{model.instrumentosOpeVO[0].facturasVO[0].facDescrip}}</label>
-                </div>
-            </div>
-
-            <div class="col-sm-6" style="z-index: 5">
-                <input type="text" class="formulario__input" [value]="model.instrumentosOpeVO[0].opiMonto" readonly />
-                <label class="formulario__label">Monto Operacion</label>
-            </div>
-            <div class="col-sm-6" style="z-index: 5">
-                <input type="text" class="formulario__input" [value]="model.instrumentosOpeVO[0].opiTcosto" readonly />
-                <label class="formulario__label">Monto m.n</label>
-            </div>
-            <div class="col-sm-12" style="z-index: 5">
-                <input type="text" class="formulario__input" [value]="model.instrumentosOpeVO[0].opiTcosto" readonly/>
-                <label class="formulario__label">Tipo Costo</label>
-            </div>
-            <div class="col-sm-12" style="z-index: 5">
-                <div class="caja">
-                    <select [disabled]="true">
-                        <option value="-1">Todas</option>
-
-                    </select>
-                </div>
-                <label appearance="fill" class="formulario__label">Compra Venta </label>
-            </div>
-
-            <div class="col-sm-12" style="z-index: 5">
-                <div class="caja">
-                    <select [disabled]="true">
-                        <option >{{model.instrumentosOpeVO[0].divisasVO.divId}}</option>
-
-                    </select>
-                </div>
-                <label appearance="fill" class="formulario__label">Divisas </label>
-            </div>
-
-            <div class="col-sm-12" style="z-index: 5">
-                <div class="caja">
-                    <select [disabled]="true">
-                        <option >{{model.infoFechaHabilVO.mapFechaValorDiv[0].fvaDescripcion}}</option>
-
-                    </select>
-                </div>
-                <label appearance="fill" class="formulario__label">Fecha Valor </label>
-            </div>
-
-            <div class="col-sm-12" style="z-index: 5">
-                <div class="caja">
-                    <select [disabled]="true">
-                        <option value="-1">{{ model.instrumentosOpeVO[0].insIdVO.insNombre }}</option>
-
-                    </select>
-                </div>
-                <label appearance="fill" class="formulario__label">Instrumento </label>
-            </div>
-
-            <div class="col-sm-12" style="z-index: 5">
-                <div class="caja">
-                    <select [disabled]="true">
-                        <option value="-1">Todas</option>
-
-                    </select>
-                </div>
-                <label appearance="fill" class="formulario__label">Liquidacion </label>
-            </div>
-
-            <div id="divNombre" class="col-sm-12" style="z-index: 5">
-                <input  type="textarea" class="formulario__input" 
-                       >
-                <label class="formulario__label">{{ 'Instrucción' | transloco}}</label>
-            </div>
-
+            </select>
         </div>
+        <label appearance="fill" class="formulario__label"></label>
+    </div>
+
+    <div class="col-sm-4" style="z-index: 5">
+        <input type="text" class="formulario__input" [value]="model.tmpCveSucLegada" readonly />
+        <label class="formulario__label">Sucursal</label>
+    </div>
+
+    <div id="divperRfc" class="row" style="z-index: 5">
+        <div class="col-4">
+            <input type="number" class="formulario__input" readonly [value]="model.tmpCveClieSica" />
+            <label class="formulario__label">Cliente</label>
+        </div>
+        <div class="col-2">
+
+            <button class="btn-img buscar-btn" [disabled]="true">
+                <span class="tooltip">Buscar</span>
+            </button>
+        </div>
+        <div class="col-sm-6">
+
+            <label class="formulario__input">{{model.instrumentosOpeVO[0].facturasVO[0].facDescrip}}</label>
+        </div>
+    </div>
+
+    <div class="col-sm-6" style="z-index: 5">
+        <input type="text" class="formulario__input" [value]="model.instrumentosOpeVO[0].opiMonto" readonly />
+        <label class="formulario__label">Monto Operacion</label>
+    </div>
+    <div class="col-sm-6" style="z-index: 5">
+        <input type="text" class="formulario__input" [value]="model.instrumentosOpeVO[0].opiTcosto" readonly />
+        <label class="formulario__label">Monto m.n</label>
+    </div>
+    <div class="col-sm-12" style="z-index: 5">
+        <input type="text" class="formulario__input" [value]="model.instrumentosOpeVO[0].opiTcosto" readonly />
+        <label class="formulario__label">Tipo Costo</label>
+    </div>
+    <div class="col-sm-12" style="z-index: 5">
+        <div class="caja">
+            <select [disabled]="true">
+                <option value="-1">Todas</option>
+
+            </select>
+        </div>
+        <label appearance="fill" class="formulario__label">Compra Venta </label>
+    </div>
+
+    <div class="col-sm-12" style="z-index: 5">
+        <div class="caja">
+            <select [disabled]="true">
+                <option>{{model.instrumentosOpeVO[0].divisasVO.divId}}</option>
+
+            </select>
+        </div>
+        <label appearance="fill" class="formulario__label">Divisas </label>
+    </div>
+
+    <div class="col-sm-12" style="z-index: 5">
+        <div class="caja">
+            <select [disabled]="true">
+                <option>{{model.infoFechaHabilVO.mapFechaValorDiv[0].fvaDescripcion}}</option>
+
+            </select>
+        </div>
+        <label appearance="fill" class="formulario__label">Fecha Valor </label>
+    </div>
+
+    <div class="col-sm-12" style="z-index: 5">
+        <div class="caja">
+            <select [disabled]="true">
+                <option value="-1">{{ model.instrumentosOpeVO[0].insIdVO.insNombre }}</option>
+
+            </select>
+        </div>
+        <label appearance="fill" class="formulario__label">Instrumento </label>
+    </div>
+
+    <div class="col-sm-12" style="z-index: 5">
+        <div class="caja">
+            <select [disabled]="true">
+                <option value="-1">Todas</option>
+
+            </select>
+        </div>
+        <label appearance="fill" class="formulario__label">Liquidacion </label>
+    </div>
+
+    <div id="divNombre" class="col-sm-12" style="z-index: 5">
+        <input type="textarea" class="formulario__input">
+        <label class="formulario__label">{{ 'Instrucción' | transloco}}</label>
+    </div>
+
+</div>
