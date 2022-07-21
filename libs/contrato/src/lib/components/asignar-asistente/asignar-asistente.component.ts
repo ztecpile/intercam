@@ -24,7 +24,7 @@ export class AsignarAsistenteComponent implements AfterViewInit {
     ejecutivo: UsuarioVO;
     tipoAsistente: String = "P";
     displayedColumns = ["nombre", "sucursal", "estatus"];
-    dataSource: MatTableDataSource<EjecutivoAsistenteVO>;
+    dataSource: MatTableDataSource<EjecutivoAsistenteVO>=new MatTableDataSource();
     dataSourceBkp: EjecutivoAsistenteVO[] = [];
     selectedRow = new EjecutivoAsistenteVO;
 

@@ -6,7 +6,9 @@
     <div class="bdcontent">
 
         <hr class="red" />
-        <h2>Asigna Asistentes</h2>
+          <strong>
+            <h5>Asigna Asistentes</h5>
+        </strong>
         <hr class="red" />
         <div class="row">
             <div class="col-sm-3" style="z-index: 5">
@@ -20,7 +22,8 @@
             </div>
 
             <div class="col-12">
-                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort (matSortChange)="sortData($event)" >
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort
+                    (matSortChange)="sortData($event)">
                     <ng-container matColumnDef="nombre">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
                         <td mat-cell *matCellDef="let element">{{ element.nombreEjecutivo }}</td>

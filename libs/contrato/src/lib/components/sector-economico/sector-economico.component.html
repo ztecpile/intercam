@@ -1,6 +1,8 @@
 <div class="bdcontent">
     <hr class="red" />
-    <h2>Sector Economico</h2>
+    <strong>
+        <h5>Sector Econ&oacute;mico</h5>
+    </strong>
     <hr class="red" />
 
     <div class="mat-elevation-z8">
@@ -40,12 +42,11 @@
             </tr>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns"
-                [ngClass]="{ 'selected': row === selectedRow }" (click)="getRecord(row)"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns" [ngClass]="{ 'selected': row === selectedRow }"
+                (click)="getRecord(row)"></tr>
 
         </table>
-        <mat-paginator [pageSizeOptions]="[20]" showFirstLastButtons
-            aria-label="Select page of periodic elements">
+        <mat-paginator [pageSizeOptions]="[20]" showFirstLastButtons aria-label="Select page of periodic elements">
         </mat-paginator>
     </div>
     <br>
@@ -57,16 +58,20 @@
 
                 <div class="col-sm-12">
                     <input formControlName="clave" type="number" class="formulario__input"
-                    [(ngModel)]="sectorEconomico.secId"  max="99999999999999999999" (keyup)="hasChenges();" [readonly]="!deshabilitarInputs" />
+                        [(ngModel)]="sectorEconomico.secId" max="99999999999999999999" (keyup)="hasChenges();"
+                        [readonly]="!deshabilitarInputs" />
                     <label class="formulario__label">* Clave</label>
                     <mat-hint class="form-warnig" *ngIf="submitted && formGrupo.controls.clave.hasError('required')">El
                         campo es obligatorio</mat-hint>
-                    <mat-hint class="form-warnig" *ngIf="submitted && formGrupo.controls['clave'].hasError('max')">La Clave debe ser menor a 20 carácteres</mat-hint>
+                    <mat-hint class="form-warnig" *ngIf="submitted && formGrupo.controls['clave'].hasError('max')">La
+                        Clave debe ser menor a 20 carácteres</mat-hint>
 
                 </div>
 
                 <div class="col-sm-12">
-                    <input formControlName="obserbaciones" type="text" class="formulario__input" maxlength="50"   [(ngModel)]="sectorEconomico.secDescripcion" (keyup)="hasChenges();" [readonly]="!deshabilitarInputs"  />
+                    <input formControlName="obserbaciones" type="text" class="formulario__input" maxlength="50"
+                        [(ngModel)]="sectorEconomico.secDescripcion" (keyup)="hasChenges();"
+                        [readonly]="!deshabilitarInputs" />
                     <label class="formulario__label">* Observaciones</label>
                     <mat-hint class="form-warnig"
                         *ngIf="submitted && formGrupo.controls.obserbaciones.hasError('required')">El campo es
@@ -75,21 +80,24 @@
 
                 <div class="col-sm-12">
                     <input formControlName="clave_cnbv" type="number" class="formulario__input" type="number"
-                    [(ngModel)]="sectorEconomico.secCnbv" ngModel max="99999999"  min="00000000" (keyup)="hasChenges();" [readonly]="!deshabilitarInputs" />
+                        [(ngModel)]="sectorEconomico.secCnbv" ngModel max="99999999" min="00000000"
+                        (keyup)="hasChenges();" [readonly]="!deshabilitarInputs" />
                     <label class="formulario__label">* Clave CNBV</label>
                     <mat-hint class="form-warnig"
                         *ngIf="submitted && formGrupo.controls.clave_cnbv.hasError('required')">El campo es obligatorio
                     </mat-hint>
 
                     <mat-hint class="form-warnig"
-                        *ngIf="submitted && (formGrupo.controls['clave_cnbv'].hasError('max')||formGrupo.controls['clave_cnbv'].hasError('min'))">La Clave debe ser igual a 8 carácteres
+                        *ngIf="submitted && (formGrupo.controls['clave_cnbv'].hasError('max')||formGrupo.controls['clave_cnbv'].hasError('min'))">
+                        La Clave debe ser igual a 8 carácteres
                     </mat-hint>
 
 
                 </div>
 
                 <div class="col-sm-12">
-                    <input  formControlName="clave_banxico"  type="text" class="formulario__input" [readonly]="!deshabilitarInputs" [(ngModel)]="sectorEconomico.secBanxico"  />
+                    <input formControlName="clave_banxico" type="text" class="formulario__input"
+                        [readonly]="!deshabilitarInputs" [(ngModel)]="sectorEconomico.secBanxico" />
                     <label class="formulario__label">Clave BANXICO</label>
                 </div>
 
@@ -101,8 +109,8 @@
 
     <acction-buttons-component (onModoConsultaClick)="modoConsultaClick()" (onModoAltaClick)="modoAltaClick()"
         (onModoEliminarClick)="modoEliminarClick()" (onModoGuardarClick)="modoGuardarClick()"
-        (onModoActualizarClick)="modoActulaizar()" (onModoDeshacerClick)="modoDeshacerClick()" [modelo]="sectorEconomico"
-        [formGroup]="formGrupo"></acction-buttons-component>
+        (onModoActualizarClick)="modoActulaizar()" (onModoDeshacerClick)="modoDeshacerClick()"
+        [modelo]="sectorEconomico" [formGroup]="formGrupo"></acction-buttons-component>
 
 
     <hr class="red" />

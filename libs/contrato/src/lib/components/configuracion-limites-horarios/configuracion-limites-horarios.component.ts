@@ -46,7 +46,7 @@ export class ConfiguracionLimitesHorariosComponent implements AfterViewInit {
         monto: ['', Validators.required],
         horario: ['', Validators.required],
     });
-    submitted: Boolean = true;
+    submitted: Boolean = false;
     constructor(private _configuracionLimitesHorariosService: ConfiguracionLimitesHorariosService, private currencyPipe: CurrencyPipe, private formBuilder: FormBuilder) {
         this.getMesasDivisas();
         this.limiteSolicitudInstrumentoVO["hora"] = "00";

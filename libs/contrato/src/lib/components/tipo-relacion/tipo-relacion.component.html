@@ -5,7 +5,11 @@
 <main class="">
     <div class="bdcontent">
         <hr class="red" />
-        <h2>Tipo de Relacion</h2>
+          <strong>
+            <h5>Tipos de Relaci&oacute;n</h5>
+        </strong>
+
+
         <hr class="red" />
 
         <div class="mat-elevation-z8">
@@ -25,9 +29,10 @@
                 </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr (click)="getRecord(row)" mat-row *matRowDef="let row; columns: displayedColumns"  [ngClass]="{ 'selected': row === tipoRelVO }"></tr>
+                <tr (click)="getRecord(row)" mat-row *matRowDef="let row; columns: displayedColumns"
+                    [ngClass]="{ 'selected': row === tipoRelVO }"></tr>
             </table>
-            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+            <mat-paginator [pageSizeOptions]="[20]" showFirstLastButtons>
             </mat-paginator>
         </div>
         <br>
@@ -36,9 +41,12 @@
 
 
                 <div id="divperRfc" class="col-sm-12">
-                    <mat-label>Observaciones</mat-label>
-                    <textarea formControlName="obserbaciones" (keyup)="hasChenges()"  [(ngModel)]="tipoRelVO.treDescripcion" type="text" class="formulario__input" maxlength="50"></textarea>
-                    <mat-hint class="form-warnig" *ngIf="submitted && formGrupo.controls.obserbaciones.hasError('required')">El
+                    <mat-label>* Observaciones</mat-label>
+                    <textarea formControlName="obserbaciones" (keyup)="hasChenges()"
+                        [(ngModel)]="tipoRelVO.treDescripcion" type="text" class="formulario__input"
+                        maxlength="50"></textarea>
+                    <mat-hint class="form-warnig"
+                        *ngIf="submitted && formGrupo.controls.obserbaciones.hasError('required')">El
                         campo es obligatorio</mat-hint>
                 </div>
 
@@ -50,20 +58,18 @@
                             <option value="M">Moral</option>
                         </select>
                     </div>
-                    <label appearance="fill" class="formulario__label">Tipo de Clientes</label>
-                    <mat-hint class="form-warnig" *ngIf="submitted && formGrupo.controls.tipo_valor.hasError('required')">El
+                    <label appearance="fill" class="formulario__label">* Tipo de Clientes</label>
+                    <mat-hint class="form-warnig"
+                        *ngIf="submitted && formGrupo.controls.tipo_valor.hasError('required')">El
                         campo es obligatorio</mat-hint>
                 </div>
 
 
                 <acction-buttons-component (onModoConsultaClick)="onModoConsultaClick()"
-                    (onModoAltaClick)="onModoAltaClick()"
-                    (onModoEliminarClick)="onModoEliminarClick()"
-                    (onModoGuardarClick)="onModoGuardarClick()"
-                    (onModoActualizarClick)="onModoActualizarClick()"
-                    (onModoDeshacerClick)="onModoDeshacerClick()"
-                    [modelo]="tipoRelVO"
-                    [formGroup]="formGrupo" ></acction-buttons-component>
+                    (onModoAltaClick)="onModoAltaClick()" (onModoEliminarClick)="onModoEliminarClick()"
+                    (onModoGuardarClick)="onModoGuardarClick()" (onModoActualizarClick)="onModoActualizarClick()"
+                    (onModoDeshacerClick)="onModoDeshacerClick()" [modelo]="tipoRelVO" [formGroup]="formGrupo">
+                </acction-buttons-component>
 
 
 

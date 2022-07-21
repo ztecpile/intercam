@@ -5,8 +5,7 @@
 <main class="">
   <div class="bdcontent">
     <hr class="red" />
-    <h2>Configuracion limite de Horarios</h2>
-    <hr class="red" />
+ 
 
     <div class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -48,7 +47,7 @@
           [ngClass]="{ 'selected': row === limiteSolicitudInstrumentoVO }" (click)="getRecord(row)"></tr>
       </table>
 
-      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+      <mat-paginator [pageSizeOptions]="[20]" showFirstLastButtons>
       </mat-paginator>
     </div>
 
@@ -67,7 +66,8 @@
         <br />
         <div id="divcboTipo" class="col-sm-12">
           <div class="caja">
-            <select (change)="hasChenges()" [(ngModel)]="limiteSolicitudInstrumentoVO.lsiEstatus" formControlName="estatus">
+            <select (change)="hasChenges()" [(ngModel)]="limiteSolicitudInstrumentoVO.lsiEstatus"
+              formControlName="estatus">
               <option value="AC">Activa</option>
               <option value="SU">Suspendido</option>
             </select>
@@ -80,7 +80,7 @@
         <br />
         <div id="divperRfc" class="col-sm-12">
           <input (keyup)="hasChenges()" type="text" class="formulario__input" (blur)="transformAmount($event)"
-            [(ngModel)]="limiteSolicitudInstrumentoVO.lsiMontoLim" formControlName="monto"/>
+            [(ngModel)]="limiteSolicitudInstrumentoVO.lsiMontoLim" formControlName="monto" />
           <label class="formulario__label">* {{ 'Monto Maximo' }}</label>
           <mat-hint class="form-warnig" *ngIf="submitted && formGrupo.controls.monto.hasError('required')">El
             campo es obligatorio</mat-hint>
@@ -89,7 +89,7 @@
         <br />
         <div id="divperRfc" class="col-sm-12">
 
-          <div class="timer-content formulario__input" >
+          <div class="timer-content formulario__input">
             <input (change)="timeFormat($event)" type="number" min="0" max="23"
               [(ngModel)]="limiteSolicitudInstrumentoVO['hora']" onkeydown="return false" formControlName="horario">:
             <input (change)="timeFormat($event)" type="number" min="0" max="59"

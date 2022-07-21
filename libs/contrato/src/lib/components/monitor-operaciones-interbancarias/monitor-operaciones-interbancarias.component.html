@@ -6,7 +6,9 @@
     <div class="bdcontent">
 
         <hr class="red" />
-        <h2>Monitor de Operaciones Interbancarias</h2>
+        <strong>
+            <h5>MONITOR DE OPERACIONES INTERBANCARIAS</h5>
+        </strong>
         <hr class="red" />
         <div class="row">
             <div class="col-sm-3">
@@ -49,9 +51,10 @@
             <div class="col-12">
 
 
-                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort (matSortChange)="sortData($event)">
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort
+                    (matSortChange)="sortData($event)">
                     <ng-container matColumnDef="ticket">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header >Ticket</th>
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Ticket</th>
                         <td mat-cell *matCellDef="let element">{{ element.tdtTicket }}</td>
                     </ng-container>
 
@@ -78,7 +81,7 @@
 
                     <ng-container matColumnDef="hora">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Hora</th>
-                        <td mat-cell *matCellDef="let element">{{    formatoHora(element.tdtHora) }}</td>
+                        <td mat-cell *matCellDef="let element">{{ formatoHora(element.tdtHora) }}</td>
                     </ng-container>
 
 
@@ -88,7 +91,7 @@
                     </ng-container>
 
                     <ng-container matColumnDef="transaccion">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header >Estatus Transaccion</th>
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Estatus Transaccion</th>
                         <td mat-cell *matCellDef="let element">{{formatoTransaccion(element)}}
                         </td>
                     </ng-container>
@@ -101,14 +104,14 @@
                     <!-- Disclaimer column -->
                     <ng-container matColumnDef="disclaimer">
                         <td mat-footer-cell *matFooterCellDef [colSpan]="displayedColumns.length" class="text-danger">
-                          <h3> No se Encontraron datos.</h3>
+                            <h3> No se Encontraron datos.</h3>
                         </td>
                     </ng-container>
 
 
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 
-                    <tr mat-footer-row [hidden]="dataSource.filteredData.length"  *matFooterRowDef="['disclaimer']">
+                    <tr mat-footer-row [hidden]="dataSource.filteredData.length" *matFooterRowDef="['disclaimer']">
                     </tr>
 
                     <tr mat-row *matRowDef="let row; columns: displayedColumns"
@@ -122,7 +125,8 @@
                 </mat-paginator>
             </div>
             <div class="centrar_btn" style="margin-top: 10px; height: 100%;">
-                <button [disabled]="selectedRow?.tdtEstatus!=0" (click)="completarOperacion()" class="btn-img align-middle">
+                <button [disabled]="selectedRow?.tdtEstatus!=0" (click)="completarOperacion()"
+                    class="btn-img align-middle">
                     <span class="tooltip">Completar Operacion</span>
                     Completar Operacion
                 </button>
