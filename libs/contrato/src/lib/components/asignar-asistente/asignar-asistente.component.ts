@@ -2,6 +2,7 @@ import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 import { AfterViewInit, Component, ViewChild } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { MatPaginator } from "@angular/material/paginator";
+import { MatSort, Sort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
 import { EjecutivoAsistenteIdVO, EjecutivoAsistenteVO, UsuarioVO } from "@intercam/model";
 import { BuscarEmpleadoComponet } from "libs/shred-components/src/lib/dialog/dialog-buscar-empleado/dialog-buscar-empleado.component";
@@ -18,11 +19,13 @@ import { AsignarAsistenteServices } from "../../services/asignar-asistente.servi
 export class AsignarAsistenteComponent implements AfterViewInit {
     @ViewChild(AcctionButtonsComponent) _acctionButtonsComponent: AcctionButtonsComponent;
     @ViewChild(MatPaginator) paginator: MatPaginator;
-    ejecutivo:UsuarioVO;
-    tipoAsistente:String="P";
+    @ViewChild(MatSort) sort: MatSort;
+
+    ejecutivo: UsuarioVO;
+    tipoAsistente: String = "P";
     displayedColumns = ["nombre", "sucursal", "estatus"];
     dataSource: MatTableDataSource<EjecutivoAsistenteVO>;
-    dataSourceBkp : EjecutivoAsistenteVO [] = [];
+    dataSourceBkp: EjecutivoAsistenteVO[] = [];
     selectedRow = new EjecutivoAsistenteVO;
 
 
@@ -37,20 +40,21 @@ export class AsignarAsistenteComponent implements AfterViewInit {
     ngAfterViewInit(): void {
         this._acctionButtonsComponent.hiddeBtnConsulta(true);
         this.paginator._intl.itemsPerPageLabel = "Registros por página:";
+        this.dataSource.sort = this.sort;
 
     }
 
-    findPerAsistente(ejecutivoId:number) {
+    findPerAsistente(ejecutivoId: number) {
         this._asignarAsistenteServices.findPerAsistente(ejecutivoId).subscribe(then => {
-            this.dataSourceBkp=then;
-            this.dataSource = new MatTableDataSource(then.filter(item=> item.idVO["tipoAsistente"] == this.tipoAsistente));
+            this.dataSourceBkp = then;
+            this.dataSource = new MatTableDataSource(then.filter(item => item.idVO["tipoAsistente"] == this.tipoAsistente));
             this.dataSource.paginator = this.paginator;
         });
     }
 
-    cambiarTipoAsistente(e){
-        this.dataSource = new MatTableDataSource(this.dataSourceBkp.filter(item=> item.idVO["tipoAsistente"] == this.tipoAsistente));
-        this.dataSource.paginator = this.paginator; 
+    cambiarTipoAsistente(e) {
+        this.dataSource = new MatTableDataSource(this.dataSourceBkp.filter(item => item.idVO["tipoAsistente"] == this.tipoAsistente));
+        this.dataSource.paginator = this.paginator;
     }
 
     buscarEmpleado() {
@@ -106,4 +110,32 @@ export class AsignarAsistenteComponent implements AfterViewInit {
         });
     }
 
+    sortData(sort: Sort) {
+
+        if (!sort.active || sort.direction === '') {
+            this.dataSource.data = this.dataSourceBkp;
+            return;
+        }
+
+        this.dataSource.data = this.dataSource.data.sort((a, b) => {
+            const isAsc = sort.direction === 'asc';
+            switch (sort.active) {
+                case 'nombre':
+                    return compare(a.nombreEjecutivo, b.nombreEjecutivo, isAsc);
+                case 'sucursal':
+                    return compare(a.sucursal, b.sucursal, isAsc);
+                case 'estatus':
+                    
+                    return compare(a.estatus==true?"AC":"SU", b.estatus==true?"AC":"SU", isAsc);
+                default:
+                    return 0;
+            }
+        });
+
+    }
+
+}
+
+function compare(a: number | string, b: number | string, isAsc: boolean) {
+    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }

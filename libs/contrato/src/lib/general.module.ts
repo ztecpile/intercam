@@ -56,6 +56,7 @@ import { EnvioMasivoFacturasModule } from './components/envio-masivo-facturas/en
 import { ReutersAdministracionPerfilesComponent } from './components/reuters-administracion-perfiles/reuters-administracion-perfiles.component';
 import { BitacoraPreciosComponent } from './components/bitacora-precios/bitacora-precios.component';
 import { CustomPaginator } from './util/ConfiguracionPaginador';
+import {MatSortModule} from '@angular/material/sort';
 const routes: Routes = [
   {
     path: '',
@@ -288,7 +289,8 @@ providers: [
     HomologacionClientes,
     MatExpansionModule,
     NgChartsModule,
-    EnvioMasivoFacturasModule
+    EnvioMasivoFacturasModule,
+    MatSortModule
 
 
   ],
