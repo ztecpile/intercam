@@ -122,12 +122,12 @@
                 </mat-paginator>
             </div>
             <div class="centrar_btn" style="margin-top: 10px; height: 100%;">
-                <button [disabled]="ESTATUS_TRANSACCION!=0" (click)="completarOperacion()" class="btn-img align-middle">
+                <button [disabled]="selectedRow?.tdtEstatus!=0" (click)="completarOperacion()" class="btn-img align-middle">
                     <span class="tooltip">Completar Operacion</span>
                     Completar Operacion
                 </button>
 
-                <button (click)="verOperacion()" [disabled]="ESTATUS_TRANSACCION!=1" class="btn-img ">
+                <button (click)="verOperacion()" [disabled]="!(selectedRow?.tdtEstatus>0)" class="btn-img ">
                     <span class="tooltip">Ver Operacion</span>
                     Ver Operacion
                 </button>

@@ -2,9 +2,8 @@ import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatTableDataSource } from "@angular/material/table";
-import { DealtrackerVO, EjecutivoAsistenteVO } from "@intercam/model";
+import { DealtrackerVO } from "@intercam/model";
 import { DialogDealInfoComponent } from "libs/shred-components/src/lib/dialog/dialog-deal/dialog-deal.component";
-import { AsignarAsistenteServices } from "../../services/asignar-asistente.service";
 import { MonitorOperacionesInterbancariasServices } from "../../services/monitor-operaciones-interbancarias.services";
 
 
@@ -44,10 +43,11 @@ export class MonitorOperacionesInterbancariasComponent implements AfterViewInit 
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
     constructor(private _monitorOperacionesInterbancariasServices: MonitorOperacionesInterbancariasServices, private dialog: MatDialog) {
-
+       
     }
     ngAfterViewInit(): void {
         this.paginator._intl.itemsPerPageLabel = "Registros por página:";
+        this.dialog.open(DialogDealInfoComponent);
     }
 
 
