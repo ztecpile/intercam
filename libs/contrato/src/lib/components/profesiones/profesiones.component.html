@@ -53,8 +53,9 @@
             <div class="row">
                 <div id="divObservacion" class="col-sm-3">
                     <input type="text" [disabled]="true" class="formulario__input" maxlength="50" required="true"   (input)="actualizacionDescripcion($event)" formControlName="observacion" idbInput >
-                    <label class="formulario__label">OBSERVACIONES</label>
-                     
+                    <label class="formulario__label">OBSERVACIONES*</label>
+                    <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.observacion.hasError('required')">El campo es requerido. </mat-hint>
+
                 </div>
                 <div id="nivelRiesgo" disabled="funcForm.invalid" class="col-sm-2">
                     <input   type="text" [disabled]="funcForm.invalid" class="formulario__input"   pattern="^\d*[0-3]\d*$"  maxlength="1" [control]="getCtr('proRiesgo')" (input)="actualizacionNivel($event)" formControlName="proRiesgo" idbInput>

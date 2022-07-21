@@ -56,14 +56,16 @@ export class ProfesionesComponent implements OnInit {
     
   }
   onSubmit() {
+    this.submitted = true;
     console.log("Guardando...");
+    this.funcForm.value;
   }
   
   createFunForm() {
     this.funcForm = new FormGroup({
       observacion: new FormControl('', [Validators.required,Validators.maxLength(50), Validators.pattern(/^[a-z0-9\s]*$/i)]), 
       proRiesgo: new FormControl('',[ Validators.maxLength(50), Validators.pattern(/^[0-3\s]/)]),
-      proClave: new FormControl('', [Validators.required])
+      proClave: new FormControl('' )
       });
   }
   getCtr(name: string, group= ''): FormControl { 
@@ -143,26 +145,29 @@ export class ProfesionesComponent implements OnInit {
     profesion.proRiesgo=this.funcForm.get('proRiesgo').value;
     profesion.proNumeroClProfes=this.proNumeroClProfes;
  
-    this.serviceProfesion.saveProfesion(profesion).subscribe(
-      then =>{
-        profesion = then;
-        this.mostrarMensaje('Registro Exitoso','info');
-        this.btnBuscarIf = false;
-        this.btnAltaIf = true;
-        this.btnEliminarIf = true;
-        this.btnGuardarIf = true;
-        this.btnDeshacerIf = true;
-        this.obtenerProfesiones();
-      },
-      error => {
-        console.error(error);
-        //this.mostrarMensaje(Const.errorRegistroProspecto, 'error');
-        this.btnBuscarIf = false;
-        this.btnAltaIf = true;
-        this.btnEliminarIf = true;
-        this.btnGuardarIf = true;
-        this.btnDeshacerIf = true;
-      });
+    if(this.funcForm.valid){
+      this.serviceProfesion.saveProfesion(profesion).subscribe(
+        then =>{
+          profesion = then;
+          this.mostrarMensaje('Registro Exitoso','info');
+          this.btnBuscarIf = false;
+          this.btnAltaIf = true;
+          this.btnEliminarIf = true;
+          this.btnGuardarIf = true;
+          this.btnDeshacerIf = true;
+          this.obtenerProfesiones();
+        },
+        error => {
+          console.error(error);
+          //this.mostrarMensaje(Const.errorRegistroProspecto, 'error');
+          this.btnBuscarIf = false;
+          this.btnAltaIf = true;
+          this.btnEliminarIf = true;
+          this.btnGuardarIf = true;
+          this.btnDeshacerIf = true;
+        });
+    }
+    
   }
   /**Metodo que actualiza la profesion sel */
   updateProfesion(): void{

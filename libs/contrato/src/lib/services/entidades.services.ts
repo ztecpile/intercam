@@ -40,7 +40,7 @@ export class EntidadServices{
   
     } 
     deleteEntidad(profesion: EntidadVO):Observable<void> {
-      const url = `'entidad/deleteItem`;
+      const url = 'entidad/deleteItem';
       console.log(url);
       const options = {
         headers: new HttpHeaders({
