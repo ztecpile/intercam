@@ -85,6 +85,7 @@ export class AcctionButtonsComponent {
         this.validarBtnGuardar = false;
         this.validarBtnReset = true;
         this.validarBtnEliminar = false;
+        this.validarBtnReset=false;
         this.onModoAltaClick.emit();
     }
     modoGuardarClick() {

@@ -41,6 +41,7 @@ export class SectorEconomicoComponent implements AfterViewInit {
         clave: ['', Validators.required],
         obserbaciones: ['', Validators.required],
         clave_cnbv: ['', Validators.required],
+        clave_banxico:['']
 
     });
 

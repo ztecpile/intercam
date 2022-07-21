@@ -89,7 +89,7 @@
                 </div>
 
                 <div class="col-sm-12">
-                    <input type="text" class="formulario__input" [readonly]="!deshabilitarInputs" />
+                    <input  formControlName="clave_banxico"  type="text" class="formulario__input" [readonly]="!deshabilitarInputs" [(ngModel)]="sectorEconomico.secBanxico"  />
                     <label class="formulario__label">Clave BANXICO</label>
                 </div>
 
