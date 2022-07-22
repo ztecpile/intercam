@@ -33,15 +33,21 @@ export class CierreCasaBolsaComponent {
   findTasaLuminaVO() {
     this._cierreCasaBolsaService.findTasaLuminaVO().subscribe(
       then => {
-       this.dataSource=then;
+        this.dataSource = then;
       },
       error => console.error(error)
     );
   }
 
+  formatoNumero(n) {
+    n = parseFloat(n) || 0;
+    return n.toFixed(4);
+
+  }
+
   displayedColumns: string[] = ['Papel', 'Plazo', 'Efectiva', 'Efectiva1', 'Efectiva2', 'Efectiva3', 'Efectiva4', 'Efectiva5'];
   //displayedColumns: string[] = ['PerId', 'Nombre', 'ApPaterno', 'ApMaterno', 'RSocial'];
-  dataSource:CierreCasaBolsa[] =[] ; //new MatTableDataSource();
+  dataSource: CierreCasaBolsa[] = []; //new MatTableDataSource();
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
 }
