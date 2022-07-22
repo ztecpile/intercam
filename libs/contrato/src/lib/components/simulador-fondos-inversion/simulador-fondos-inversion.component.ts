@@ -15,26 +15,30 @@ import { SimuladorComponent } from './simulador/simulador.component';
 
 export class SimuladorFondosInversionComponent {
 
-    ABRIR_SIMULADOR= false;
+    ABRIR_SIMULADOR = false;
     dataSource: MatTableDataSource<Object>;
     displayedColumns: string[] = ['fondo', 'plazo', 'ano', 'mes', 'semana', 'mes2', 'ano2'];
     displayedColumns2: string[] = ["fondo2", 'tipo', "porciento"];
-    fondoDataSource:Object[];
-    
+    fondoDataSource: Object[];
+
     @Output() onCalcularClickEvent = new EventEmitter();
-    @ViewChild(SimuladorComponent) simulador:SimuladorComponent;
+    @ViewChild(SimuladorComponent) simulador: SimuladorComponent;
 
-    onCalcularClick(e){
-        this.ABRIR_SIMULADOR=true;
-        this.fondoDataSource=e.data;
-        let labels:string[]=[];
-        let data:number[]=[];
-        e.data.map(item=>{
+    constructor(private _simuladorFondosInversionService: SimuladorFondosInversionService) { }
+
+    onCalcularClick(e) {
+
+        this.fondoDataSource = e.data;
+        let labels: string[] = []
+        let data: number[] = [];
+        e.data.map(item => {
             labels.push(item.emisionId);
-            data.push(item.value);
+            data.push(item.porcentaje);
         });
-     this.simulador.onCalcularClick(labels,data);
-    
-    }
 
+        this._simuladorFondosInversionService.findFondosRendimientos({ "periodo": e.periodo, "monto": e.importe.replace("$", ""), "porcentaje": this.fondoDataSource }).subscribe(then => {
+            this.simulador.onCalcularClick(labels, data, then);
+            this.ABRIR_SIMULADOR = true;
+        });
+    }
 }

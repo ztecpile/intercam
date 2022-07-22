@@ -101,8 +101,8 @@ export class BusquedaComponent implements AfterViewInit {
     hasChenges() {
         this.total = 0;
         this.fondoDataSource.map(item => {
-            if (item.hasOwnProperty("value"))
-                this.total += Number(item["value"]);
+            if (item.hasOwnProperty("porcentaje"))
+                this.total += Number(item["porcentaje"]);
         });
     }
 
