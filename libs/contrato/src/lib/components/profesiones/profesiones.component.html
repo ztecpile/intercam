@@ -7,10 +7,10 @@
         
     <form [formGroup]="funcForm" class="formulario" (ngSubmit)="onSubmit()" autocomplete="off" idbForm >
         <br>
-        <div class="tab-content">
-                <table id="tabla" mat-table [dataSource]="dataSource" class="table table-striped table-hover mat-elevation-z8" style>
+        <div class="mat-elevation-z8">
+                <table id="tabla" mat-table matSort [dataSource]="dataSource" class=" mat-elevation-z8" matSortActive="observacion" matSortDirection="asc">
                     <ng-container matColumnDef="observacion">
-                        <th mat-header-cell *matHeaderCellDef>Observaciones</th>
+                        <th mat-header-cell *matHeaderCellDef   mat-sort-header>Observaciones</th>
                         <td mat-cell *matCellDef="let row" (click)="selectProfesion(row)">
                             {{row.proDescripcion}}
                         </td>

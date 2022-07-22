@@ -22,10 +22,10 @@
             <br>
             <div class="table-container-coincidencias" >
                 
-                    <table mat-table matTableFilter  [dataSource]="dataSource" id="tablaEntidad" class="table-hover" 
-                    matSort matSortChange="announceSortChange($event)">
+                    <table mat-table matSort matTableFilter  [dataSource]="dataSource" id="tablaEntidad" class="table-hover" 
+                    matSort >
                         <ng-container  matColumnDef="Entidad">
-                            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Entidad">Entidad</th>
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">Entidad</th>
                             <td mat-cell *matCellDef="let row" (click)="selectEntidades(row)"> 
                                 {{row.entDescripcion}}
                             </td>
@@ -50,14 +50,15 @@
             <br>
             <div class="row">
                 <div id="divEntidad" class="col-sm-3">
-                    <input type="text" required="true" [disabled]="true" class="formulario__input" maxlength="50"  pattern="/^[a-z\s]*$/i$"  [control]="getCtr('entidad')" (input)="actualizacionEntidad($event)" formControlName="entidad" idbInput >
+                    <input type="text" required="true" [disabled]="true" required="true" class="formulario__input" maxlength="50"    [control]="getCtr('entidad')" (input)="actualizacionEntidad($event)" formControlName="entidad" idbInput >
                     <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.entidad.hasError('pattern')">Entidad solo acepta letras. </mat-hint>
+                    <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.entidad.hasError('required')">El campo es obligatorio. </mat-hint>
 
                     <label class="formulario__label">Entidad*</label>
                      
                 </div>
                 <div id="abreviatura" class="col-sm-2">
-                      <input type="text" class="formulario__input" [control]="getCtr('abreviatura')" maxlength="5"  pattern="/^[a-z\s]*$/i" (input)="actualizacionAbrev($event)" formControlName="abreviatura"  idbInput>
+                      <input type="text" class="formulario__input" [control]="getCtr('abreviatura')" maxlength="5"  (input)="actualizacionAbrev($event)" formControlName="abreviatura"  idbInput>
                       <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.abreviatura.hasError('pattern')">Abreviatura solo acepta letras. </mat-hint>
 
                       <label class="formulario__label">Abreviatura</label>                    

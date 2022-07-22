@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { ParametrosService } from '../../services/parametros.service';
 
 import { AcctionButtonsComponent } from 'libs/shred-components/src/lib/form/acction-buttons/acction-buttons.component';
+import { MatSort } from '@angular/material/sort';
 
 
 @Component({
@@ -28,7 +29,7 @@ export class ABCParametrosComponent implements OnInit {
   displayedColumnsParametros: string[] = ['parNombre','parDescripcion','parValor','tipoValorCbo'];
   dataSource = new MatTableDataSource<ABCParametrosVO>();
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  
+  @ViewChild(MatSort) sort: MatSort ;
   @ViewChild(AcctionButtonsComponent) acctionButtonsComponent: AcctionButtonsComponent;
    
   constructor(private servicesParametros: ParametrosService, private  formBuilder: FormBuilder) { }

@@ -12,8 +12,7 @@
                 <div id="divcp" class="col-sm-3">
                     <input type="text" class="formulario__input" [control]="getCtr('cp')"  required="true" maxlength="5" (input)="buscarCP($event)" formControlName="cp" pattern="^\d*[0-9]\d*$" idbInput>
                     <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.cp.hasError('pattern')">Codigo Postal Invalido. </mat-hint>
-                    <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.cp.hasError('required')">El campo es requerido. </mat-hint>
-
+ 
                     <label class="formulario__label">{{'  C.P. *' }}</label>
                 </div>
     
