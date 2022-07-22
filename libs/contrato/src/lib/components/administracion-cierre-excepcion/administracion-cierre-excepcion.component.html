@@ -42,6 +42,9 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns; "
                 [ngClass]="{ 'selected': row === selectedAdmon }" (click)="selected(row)"></tr>
         </table>
+        <div id="paginadorDiv" class="row" hidden>
+            <mat-paginator [pageSizeOptions]="[20]" showFirstLastButtons></mat-paginator>
+        </div>
     </div>
     <hr class="red" />
 
@@ -50,7 +53,7 @@
 
             <div class="col-sm-6">
                 <input type="text" name="busqueda" class="formulario__input" maxlength="80" formControlName="busqueda"
-                    [control]="getCtr('busqueda')" idbInput (keyup.enter)="filtrar($event)" required>
+                    [control]="getCtr('busqueda')" idbInput (keyup.Backspace)="filtrar($event)" required>
                 <label class="formulario__label">{{ 'Busqueda Rapida' | transloco }}</label>
                 
             </div>
@@ -73,12 +76,12 @@
         <div class="row" id="divopt" class="col-sm-6">
             <label class="formulario_check_label">{{ 'Estatus' | transloco }}</label>&nbsp;
 
-            <input class="radio" type="radio" formControlName="optSi" idbInput (click)="changeRadioSi($event)"
-                [control]="getCtr('optSi')" [checked]="checksi">&nbsp;
+            <mat-radio-button [disabled]="optSiDisabled" class="ml-4" id="optSi" [checked]="checksi" (change)="changeRadioSi($event);"></mat-radio-button>
+                
             <label class="lbl_datos">{{'Si'|transloco}}</label>
             &nbsp;
-            <input class="radio" type="radio" formControlName="optNo" idbInput (click)="changeRadioNo($event)"
-                [checked]="checkno" [control]="getCtr('optNo')">&nbsp;
+            <mat-radio-button [disabled]="optNoDisabled" class="ml-4" id="optNo" [checked]="checkno" (change)="changeRadioNo($event);"></mat-radio-button>
+               
             <label class="lbl_datos">{{'No'|transloco}}</label>
 
         </div>

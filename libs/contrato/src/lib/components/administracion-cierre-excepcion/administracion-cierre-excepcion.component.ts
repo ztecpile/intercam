@@ -5,6 +5,7 @@ import { UsuarioVO, CierreExcepVO, ProfesionVO } from '@intercam/model';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { SucursalVO } from 'libs/model/src/lib/com/intercam/corporativo/centrocostos/vo/SucursalVO';
+import { MatPaginator } from '@angular/material/paginator';
 @Component({
   selector: 'intercam-administracion-cierre-excepcion',
   templateUrl: './administracion-cierre-excepcion.component.html',
@@ -13,7 +14,7 @@ import { SucursalVO } from 'libs/model/src/lib/com/intercam/corporativo/centroco
 
 
 export class AdministracionCierreExcepcionComponent implements OnInit {
-
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   displayedColumns: string[] = ['idCce', 'perId', 'claveOperador', 'nombre', 'claveSucursal', 'habilitadoCierre'];
   dataSource = new MatTableDataSource<UsuarioVO>();
   funcForm: FormGroup;
@@ -26,12 +27,15 @@ export class AdministracionCierreExcepcionComponent implements OnInit {
   checked: boolean = false;
   valornombre: string = "";
   cierreExcepVO: CierreExcepVO;
-  selectedAdmon: UsuarioVO;
+  selectedAdmon: any;
   clave: string;
   idCce: number;
   cceCierreexcep: string;
   mensajeError: string;
   submitted: boolean = false;
+  paginador: boolean;
+  optSiDisabled:boolean;
+  optNoDisabled:boolean;
   constructor(private ACEService: AdministracionCierreExcepcionService, private formBuilder: FormBuilder) {
     this.perId = Number(sessionStorage.getItem('perId'));
 
@@ -46,7 +50,11 @@ export class AdministracionCierreExcepcionComponent implements OnInit {
     this.funcForm.value;
   }
   filtrar(e: any) {
-    console.log(e);
+    console.log(e,e.key);
+    if(this.funcForm.get('busqueda').value == ''){
+      this.selectedAdmon = '';
+      return this.dataSource.filter = '';
+    }
     return this.dataSource.filter = this.funcForm.get("busqueda").value.trim().toLowerCase();
   }
 
@@ -55,7 +63,11 @@ export class AdministracionCierreExcepcionComponent implements OnInit {
     this.funcForm.get("perNom").setValue('');
     this.funcForm.get("optSi").setValue(false);
     this.funcForm.get("optNo").setValue(false);
-    document.getElementById('tabla').removeAttribute('selected');
+    this.checksi = false;
+    this.checkno = false;
+    this.optNoDisabled = true;
+    this.optSiDisabled = true;
+    this.selectedAdmon = '';
     this.atributosElemento();
     this.deshabilitarCampos();
     this.submitted = false;
@@ -102,6 +114,8 @@ export class AdministracionCierreExcepcionComponent implements OnInit {
     this.funcForm.get("perNom").enable();
     this.funcForm.get("optNo").enable();
     this.funcForm.get("optSi").enable();
+    this.optNoDisabled = false;
+    this.optSiDisabled = false;
 
 
   }
@@ -186,14 +200,14 @@ export class AdministracionCierreExcepcionComponent implements OnInit {
     this.onchange();
     if (e) {
       this.checkno = true;
-      this.funcForm.get('optNO').setValue(true);
+      this.funcForm.get('optNo').setValue(true);
     }
   }
 
   selectedRadio(id: string): void {
     if (id === 'si') {
       this.checkno = false;
-      this.funcForm.get('optNO').setValue(false);
+      this.funcForm.get('optNo').setValue(false);
     }
     if (id === 'no') {
       this.checksi = false;
@@ -235,6 +249,9 @@ export class AdministracionCierreExcepcionComponent implements OnInit {
           listaResponse.push(datos);
         }
         this.dataSource = new MatTableDataSource(listaResponse);
+        this.paginador = true;
+        this.dataSource.paginator = this.paginator;
+        document.getElementById('paginadorDiv').removeAttribute('hidden');
       },
       error => {
         console.error('error', error);
@@ -245,6 +262,8 @@ export class AdministracionCierreExcepcionComponent implements OnInit {
   this.funcForm.get("perNom").disable();
   this.funcForm.get("optNo").disable();
   this.funcForm.get("optSi").disable();
+  this.optNoDisabled = true;
+  this.optSiDisabled = true;
  }
   ngOnInit(): void {
 
