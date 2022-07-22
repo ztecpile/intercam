@@ -55,6 +55,7 @@ export class EntidadesComponent implements OnInit {
   paginador: boolean;
   tableEnt: boolean;
   submitted: boolean=false;
+  selectedEnt: any;
   constructor(private liveAnnouncer: LiveAnnouncer,private formBuilder: FormBuilder,private servicesEntidad: EntidadServices,private _direccionService: DireccionService) {
     this.btnGuardarIf=true;
     this.btnBuscarIf=true;
@@ -74,6 +75,7 @@ export class EntidadesComponent implements OnInit {
     this.funcForm.get('claveCNBV').disable();
     this.funcForm.get('codigoBroxel').disable();
     this.funcForm.get('nivelRiesgo').disable();
+    this. entidadEdit= new EntidadVO;
     this.dataSource.filterPredicate = 
     (data: EntidadVO, filter: string) => data.entDescripcion.indexOf(filter) != -1; 
     this.submitted=false;
@@ -95,11 +97,11 @@ export class EntidadesComponent implements OnInit {
     this.funcForm = this.formBuilder.group({
       pais: new FormControl('', [Validators.required]),
       entidad: new FormControl('', [Validators.required, Validators.pattern(/^[a-z\s]*$/i)]),
-      abreviatura: new FormControl('', [Validators.required,Validators.pattern(/^[a-z\s]*$/i)]),
-      claveCNBV: new FormControl('', [Validators.required]),
-      codigoBroxel: new FormControl('', [Validators.required]),
-      entClave: new FormControl('', [Validators.required]), 
-      nivelRiesgo: new FormControl('', [Validators.required,Validators.pattern(/^([0-9])*$/)], ),
+      abreviatura: new FormControl('', [Validators.pattern(/^[a-z\s]*$/i)]),
+      claveCNBV: new FormControl('',  [Validators.pattern(/^[0-9]*$/i)]),
+      codigoBroxel: new FormControl('', [Validators.pattern(/^([0-9])*$/)]),
+      entClave: new FormControl('', ), 
+      nivelRiesgo: new FormControl('', [Validators.pattern(/^([0-9])*$/)], ),
       cboPaisOr:['']
      });
   }
@@ -152,7 +154,7 @@ export class EntidadesComponent implements OnInit {
     this.funcForm.get("codigoBroxel").disable();
     this.funcForm.get("nivelRiesgo").disable();
     document.getElementById("paginadorDiv").setAttribute("hidden", "true");
-     this.cargaCatalogos();
+     this.selectedEnt ="";
      this.funcForm.reset();
    
   }
@@ -246,14 +248,16 @@ export class EntidadesComponent implements OnInit {
           this.entidadVO = then;
           this.mostrarMensaje('Alta Exitosa','info');
           this._modalidad="";
+          this.funcForm.reset();
         },
         error => {
           console.error(error);
           //this.mostrarMensaje(Const.errorRegistroProspecto, 'error');
           this.btnBuscarIf = true;
+          this.funcForm.reset();
           
         });
-        this.funcForm.reset();
+        
     }
      
    
@@ -362,6 +366,7 @@ export class EntidadesComponent implements OnInit {
       this.funcForm.get('nivelRiesgo').enable();
       this._modalidad="modificacion";
       this.btnEliminarIf=false;
+      this.btnDeshacerIf= false;
 
     }
 
@@ -370,7 +375,7 @@ export class EntidadesComponent implements OnInit {
   actualizacionRiesgo(event: Event){
     this.submitted = true;
     let riesgo = event.target as unknown as HTMLInputElement["valueOf"];
-    if(this.entidadEdit.entRiesgo.valueOf !== riesgo){
+    if((this.entidadEdit.entRiesgo!==this.funcForm.get('nivelRiesgo').value) && this.entidadEdit.entRiesgo!== undefined ){
         this._modalidad="modificacion";
     }else{  
       this.habilitaBotones();
@@ -444,6 +449,10 @@ export class EntidadesComponent implements OnInit {
     } else {
       this.liveAnnouncer.announce('Sorting cleared');
     }
+  }
+  selected(element: any) {
+    console.log(element);
+    this.selectedEnt = element;
   }
 }
 export class EntidadResponse{
