@@ -80,8 +80,9 @@ export class EntidadesComponent implements OnInit {
   }
 
   onSubmit() {
+    this.submitted = true;
     console.log("Guardando...");
-    //this.changePais()
+    this.funcForm.value;
   }
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
@@ -93,8 +94,8 @@ export class EntidadesComponent implements OnInit {
   createFunForm() {
     this.funcForm = this.formBuilder.group({
       pais: new FormControl('', [Validators.required]),
-      entidad: new FormControl('', [Validators.required]),
-      abreviatura: new FormControl('', [Validators.required]),
+      entidad: new FormControl('', [Validators.required, Validators.pattern(/^[a-z\s]*$/i)]),
+      abreviatura: new FormControl('', [Validators.required,Validators.pattern(/^[a-z\s]*$/i)]),
       claveCNBV: new FormControl('', [Validators.required]),
       codigoBroxel: new FormControl('', [Validators.required]),
       entClave: new FormControl('', [Validators.required]), 
@@ -168,26 +169,29 @@ export class EntidadesComponent implements OnInit {
      //entidadSave.municipiosVO=;
      entidadSave.entClave= this.funcForm.get("entClave").value;
  
-    this.servicesEntidad.updateEntidad(entidadSave).subscribe(
-      then =>{
-
-        //this.entidadVO = then;
-        this.mostrarMensaje('Actualización Exitosa','info');
-        this.resetValidador();
-        this.btnBuscarIf = true;
-        this.btnBuscarIf = true;
-        this.btnBuscarIf = true;
-        this.btnBuscarIf = true;
-      },
-      error => {
-        console.error(error);
-        //this.mostrarMensaje(Const.errorRegistroProspecto, 'error');
-        this.btnBuscarIf = true;
-        this.btnBuscarIf = true;
-        this.btnBuscarIf = true;
-        this.btnBuscarIf = true;
-
-      });
+     if(this.funcForm.valid){
+      this.servicesEntidad.updateEntidad(entidadSave).subscribe(
+        then =>{
+  
+          //this.entidadVO = then;
+          this.mostrarMensaje('Actualización Exitosa','info');
+          this.resetValidador();
+          this.btnBuscarIf = true;
+          this.btnBuscarIf = true;
+          this.btnBuscarIf = true;
+          this.btnBuscarIf = true;
+        },
+        error => {
+          console.error(error);
+          //this.mostrarMensaje(Const.errorRegistroProspecto, 'error');
+          this.btnBuscarIf = true;
+          this.btnBuscarIf = true;
+          this.btnBuscarIf = true;
+          this.btnBuscarIf = true;
+  
+        });
+     }
+    
   }
     /**
     * 
@@ -229,14 +233,14 @@ export class EntidadesComponent implements OnInit {
   }
   guardarEntidades(entidades : EntidadVO): void{
     const entidadSave  = new EntidadVO;
-    if(this.funcForm.get("entidad").value!=null|| this.funcForm.get("entidad").value!=""){
+   
       entidadSave.entDescripcion= this.funcForm.get("entidad").value;
       entidadSave.entAbrv= this.funcForm.get("abreviatura").value;
       entidadSave.entCnbvClave= this.funcForm.get("claveCNBV").value;
       entidadSave.entIsoCodeBrx= this.funcForm.get("codigoBroxel").value;
       entidadSave.entRiesgo= this.funcForm.get("nivelRiesgo").value;
       entidadSave.paiClave= this.funcForm.get("cboPaisOr").value;
-  
+     if(this.funcForm.valid){
       this.servicesEntidad.saveEntidad(entidadSave).subscribe(
         then =>{
           this.entidadVO = then;
@@ -249,10 +253,11 @@ export class EntidadesComponent implements OnInit {
           this.btnBuscarIf = true;
           
         });
+        this.funcForm.reset();
     }
      
    
-      this.funcForm.reset();
+      
   }
   obtenerEntidades(e: any){
     let pais =this.funcForm.get("cboPaisOr").value;
@@ -264,6 +269,7 @@ export class EntidadesComponent implements OnInit {
         this.dataSource = new MatTableDataSource(then);
         this.dataSource.paginator = this.paginator;
         this.paginador=true;
+        this.dataSource.sort = this.sort;
         document.getElementById('paginadorDiv').removeAttribute('hidden');
       },
       error => console.error(error) 

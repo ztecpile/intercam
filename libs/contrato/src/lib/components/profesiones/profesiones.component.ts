@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { EntidadVO, ProfesionVO } from '@intercam/model';
 import Swal from 'sweetalert2';
@@ -19,6 +20,7 @@ export class ProfesionesComponent implements OnInit {
   displayedColumnsProfesiones: string[] = ['observacion','proRiesgo','proClave','proNumeroClProfes'];
   dataSource = new MatTableDataSource<ProfesionVO>();
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort ;
   btnGuardarIf:boolean;
   btnBuscarIf:boolean;
   btnEliminarIf:boolean;
@@ -209,6 +211,7 @@ export class ProfesionesComponent implements OnInit {
         
         this.dataSource.paginator = this.paginator;
         this.paginador=true;
+        this.dataSource.sort = this.sort;
         document.getElementById('paginadorDiv').removeAttribute('hidden');
         this.btnAltaIf=false;
       },
