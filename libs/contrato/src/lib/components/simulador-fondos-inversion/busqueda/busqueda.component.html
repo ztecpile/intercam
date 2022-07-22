@@ -126,7 +126,7 @@
                     </ng-container>
 
                     <ng-container matColumnDef="ano2">
-                        <th mat-header-cell *matHeaderCellDef>12 mese</th>
+                        <th mat-header-cell *matHeaderCellDef>12 meses</th>
                         <td mat-cell *matCellDef="let element">{{ formatoDeNumero( element.plazoTasa["361"])}}</td>
                     </ng-container>
                      <!-- Disclaimer column -->
@@ -180,7 +180,7 @@
                     </ng-container>
 
                     <ng-container matColumnDef="ano2">
-                        <th mat-header-cell *matHeaderCellDef>12 mese</th>
+                        <th mat-header-cell *matHeaderCellDef>12 meses</th>
                         <td mat-cell *matCellDef="let element">{{ formatoDeNumero(element.plazoTasa["361"])}}</td>
                     </ng-container>
 
@@ -207,12 +207,12 @@
     <div class="col-sm-1">
         <div class="centrar_btn" style="margin-top: 10px; height: 100%;">
             <button (click)="pasarAFondo()" [hidden]="selectedRow==null" class="btn-img continuar-btn align-middle">
-                <span class="tooltip">Pasar</span>
+                <span class="tooltip">Asignar</span>
             </button>
 
             <button (click)="removerDeFondo()" [hidden]="fondoSelectedRow==null"
                 class="btn-img regresar-btn align-middle">
-                <span class="tooltip">Pasar</span>
+                <span class="tooltip">Desasignar</span>
             </button>
         </div>
 
