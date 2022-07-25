@@ -89,7 +89,7 @@ export class ColoniasComponent implements OnInit {
 }
   createFunForm() {
     this.funcForm = this.formBuilder.group({
-      codigoPostal: new FormControl('', [Validators.required]),
+      codigoPostal: new FormControl('', [Validators.required,Validators.pattern(/^[a-z\s]*$/i)]),
       entidad: new FormControl(''),
       alcMun: new FormControl(''),
       ciudad: new FormControl(''),

@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 import { ParametrosService } from '../../services/parametros.service';
 
 import { AcctionButtonsComponent } from 'libs/shred-components/src/lib/form/acction-buttons/acction-buttons.component';
-import { MatSort } from '@angular/material/sort';
+import { MatSort, Sort } from '@angular/material/sort';
 
 
 @Component({
@@ -27,6 +27,7 @@ export class ABCParametrosComponent implements OnInit ,AfterViewInit{
   parametro: ABCParametrosVO =new ABCParametrosVO;
   displayedColumnsParametros: string[] = ['parNombre','parDescripcion','parValor','tipoValorCbo'];
   dataSource = new MatTableDataSource<ABCParametrosVO>();
+  dataSourceBkp: ABCParametrosVO[] = [];
   selectedParam: any;
   submitted: boolean;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -39,7 +40,7 @@ export class ABCParametrosComponent implements OnInit ,AfterViewInit{
     this.parametro=  new ABCParametrosVO;
    }
   ngAfterViewInit(): void {
-    this.acctionButtonsComponent.hiddeBtnEliminar(true); 
+     this.acctionButtonsComponent.hiddeBtnEliminar(true); 
   }
 
   ngOnInit(): void {
@@ -182,19 +183,41 @@ onModoGuardarClick() :void{
       
     this.servicesParametros.findAllParametros().subscribe(
       then => {
-        var parametro = new ABCParametrosVO;
+         var parametro = new ABCParametrosVO;
         // console.log(then);
         this.dataSource = new MatTableDataSource(then);
-        
+        this.dataSourceBkp = then;
         this.dataSource.paginator = this.paginator;
         this.paginador=true;
+        this.dataSource.sort = this.sort
         document.getElementById('paginadorDiv').removeAttribute('hidden');
         this.btnAltaIf=false;
       },
       error => console.error(error)
     )
   }
- 
+  sortData(sort: Sort) {
+
+    if (!sort.active || sort.direction === '') {
+        this.dataSource.data = this.dataSourceBkp;
+        return;
+    }
+
+    this.dataSource.data = this.dataSource.data.sort((a, b) => {
+        const isAsc = sort.direction === 'asc';
+        switch (sort.active) {
+            case 'parNombre':
+                return compare(a.parNombre, b.parNombre, isAsc);
+            case 'parDescripcion':
+                return compare(a.parDescripcion, b.parDescripcion, isAsc);
+            case 'parValor':
+                  return compare(a.parValor, b.parValor, isAsc);
+          default:
+                return 0;
+        }
+    });
+
+}
  
   hasChenges() {
     this.submitted = true;
@@ -400,4 +423,7 @@ actualizacionTipoValorCbo(event:any){
   }
 }
  
+}
+function compare(a: number | string, b: number | string, isAsc: boolean) {
+  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }

@@ -141,7 +141,7 @@ export class EntidadesComponent implements OnInit {
     this.btnDeshacerIf=true;
     this.btnAltaIf=false;
     this.funcForm.get("pais").clearValidators();
-    this.funcForm.get("entidad").clearValidators();
+    this.funcForm.get("entidad").setValidators(Validators.required);
     this.funcForm.get("abreviatura").clearValidators();
     this.funcForm.get("claveCNBV").clearValidators();
     this.funcForm.get("codigoBroxel").clearValidators();
@@ -156,6 +156,7 @@ export class EntidadesComponent implements OnInit {
     document.getElementById("paginadorDiv").setAttribute("hidden", "true");
      this.selectedEnt ="";
      this.funcForm.reset();
+     this.submitted = true;
    
   }
 
@@ -264,6 +265,7 @@ export class EntidadesComponent implements OnInit {
       
   }
   obtenerEntidades(e: any){
+    this._modalidad="";
     let pais =this.funcForm.get("cboPaisOr").value;
      
     this.servicesEntidad.findAllEntidadByPaiClave(pais).subscribe(
@@ -342,13 +344,13 @@ export class EntidadesComponent implements OnInit {
     this.tableEnt=true;
     var table =document.getElementById('tablaEntidad');
     table.setAttribute("style","disable: true");
+    this.submitted= true;
 
   }
 
   selectEntidades(row : EntidadVO){
     console.log("selected: ", row); 
-    if(this._modalidad!=="alta"){
-      this.entidadEdit.entDescripcion=this.entidadEdit.entDescripcion=row.entDescripcion;
+       this.entidadEdit.entDescripcion=this.entidadEdit.entDescripcion=row.entDescripcion;
       this.entidadEdit.entAbrv=this.entidadEdit.entAbrv=row.entAbrv;
       this.entidadEdit.entCnbvClave=this.entidadEdit.entCnbvClave=row.entCnbvClave;
       this.entidadEdit.entIsoCodeBrx=this.entidadEdit.entIsoCodeBrx=row.entIsoCodeBrx;
@@ -368,7 +370,7 @@ export class EntidadesComponent implements OnInit {
       this.btnEliminarIf=false;
       this.btnDeshacerIf= false;
 
-    }
+     
 
    
   }
