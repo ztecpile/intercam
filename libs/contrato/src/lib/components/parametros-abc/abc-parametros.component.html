@@ -33,7 +33,7 @@
                 </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumnsParametros"></tr>
-                <tr mat-row (click)="getRecord(row)" *matRowDef="let row; columns: displayedColumnsParametros"
+                <tr mat-row   *matRowDef="let row; columns: displayedColumnsParametros"
                 [ngClass]="{ 'selected': row === selectedParam }" (click)="selected(row)"></tr>
             </table>
             <div id="paginadorDiv" class="row" hidden>
@@ -45,7 +45,7 @@
 
         <div class="row">
             <div id="divNombre" class="col-sm-3">
-                <input type="text" (keyup)="hasChenges()" class="formulario__input"  maxlength="60" (ngModel)="parametro.parNombre"  formControlName="parNombre" (input)="actualizacionParNombre($event)"  idbInput>
+                <input type="text"  class="formulario__input"  maxlength="60" (ngModel)="parametro.parNombre"  formControlName="parNombre" (input)="actualizacionParNombre($event)"  idbInput>
                 <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.parNombre.hasError('pattern')">Nombre solo acepta letras  y numeros. </mat-hint>
                 <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.parNombre.hasError('required')">El campo es obligatorio. </mat-hint>
                 <label class="formulario__label">{{'Nombre *' }}</label>
@@ -54,7 +54,7 @@
             <div class="row">
                 <div id="divtipoPersona" class="col-sm-3">
                     <div class="caja">
-                        <select formControlName="tipoValorCbo" (change)="hasChenges()"  (ngModel)="parametro.parValTipo" (input)="actualizacionParTipo($event)" idbInput>
+                        <select formControlName="tipoValorCbo"   (ngModel)="parametro.parValTipo" (input)="actualizacionTipoValorCbo($event)" idbInput>
                             <option>Seleccione Valor</option>
                             <option value="A">Alfebetico</option>
                             <option value="C">Caracter</option>
@@ -63,15 +63,16 @@
                             
                         </select>
                         <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.tipoValorCbo.hasError('required')">El campo es obligatorio. </mat-hint>
-                
+                        
                     </div>
+                    <label appearance="fill" class="formulario__label">{{'Tipo Valor *'}}</label>
                 <br>
-                    <label appearance="fill" class="formulario__label">Tipo Valor *</label>
+                    
                 </div>
             </div>
             <div class="row">
                 <div id="divalcMun" class="col-sm-3">
-                    <input type="text" (keyup)="hasChenges()" maxlength="60" class="formulario__input"   (ngModel)="parametro.parDescripcion" formControlName="parDescripcion" idbInput (input)="actualizacionParDesc($event)">
+                    <input type="text"   maxlength="60" class="formulario__input"   (ngModel)="parametro.parDescripcion" formControlName="parDescripcion" idbInput (input)="actualizacionParDesc($event)">
                     <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.parDescripcion.hasError('pattern')">Nombre solo acepta letras  y numeros. </mat-hint>
                 <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.parDescripcion.hasError('required')">El campo es obligatorio. </mat-hint>
                 
@@ -80,7 +81,7 @@
                </div>
             <br>
                
-             <div id="divValor" (keyup)="hasChenges()" class="col-sm-3">
+             <div id="divValor"   class="col-sm-3">
                 <input type="text" class="formulario__input"   maxlength="50" (ngModel)="parametro.parValor" formControlName="parValor" idbInput (input)="actualizacionParValor($event)">
                 <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.parValor.hasError('pattern')">Nombre solo acepta letras  y numeros. </mat-hint>
                 <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.parValor.hasError('required')">El campo es obligatorio. </mat-hint>

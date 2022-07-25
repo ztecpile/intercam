@@ -34,7 +34,10 @@ export class ABCParametrosComponent implements OnInit ,AfterViewInit{
   @ViewChild(AcctionButtonsComponent) acctionButtonsComponent: AcctionButtonsComponent;
   _modalidad: string;
    
-  constructor(private servicesParametros: ParametrosService, private  formBuilder: FormBuilder) { }
+  constructor(private servicesParametros: ParametrosService, private  formBuilder: FormBuilder) {
+
+    this.parametro=  new ABCParametrosVO;
+   }
   ngAfterViewInit(): void {
     this.acctionButtonsComponent.hiddeBtnEliminar(true); 
   }
@@ -50,6 +53,7 @@ export class ABCParametrosComponent implements OnInit ,AfterViewInit{
     this.btnBuscarIf=false;
      this.btnDeshacerIf=true;
     this.btnAltaIf=false;
+    this.parametro=  new ABCParametrosVO;
   
   }
   onSubmit() {
@@ -63,11 +67,11 @@ export class ABCParametrosComponent implements OnInit ,AfterViewInit{
     this.funcForm = this.formBuilder.group({
       parNombre: new FormControl('', [Validators.required,Validators.pattern(/^[a-z0-9\s]*$/i)]), 
       parDescripcion: new FormControl('', [Validators.required,Validators.pattern(/^[a-z0-9\s]*$/i)]),
-      parValTipo: new FormControl('', [Validators.required]),
+      parValTipo: new FormControl(''),
       parValor: new FormControl('', [Validators.required,Validators.pattern(/^[a-z0-9\s]*$/i)]), 
-      parCaducidad: new FormControl('', [Validators.required]),
-      parCaducidadStr: new FormControl('', [Validators.required]),
-      tipoValorCbo:['']
+      parCaducidad: new FormControl(''),
+      parCaducidadStr: new FormControl(''),
+      tipoValorCbo:['',[Validators.required]]
       });
     }
 
@@ -81,9 +85,19 @@ export class ABCParametrosComponent implements OnInit ,AfterViewInit{
   this.funcForm.get("parNombre").setValue(row.parNombre);
   this.funcForm.get("parDescripcion").setValue(row.parDescripcion);
   this.funcForm.get("parValTipo").setValue(row.parValTipo);
+  this.funcForm.get("tipoValorCbo").setValue(row.parValTipo);
   this.funcForm.get("parValor").setValue(row.parValor);
   this.funcForm.get("parCaducidad").setValue(row.parCaducidad);
   this.funcForm.get("parCaducidadStr").setValue(row.parCaducidadStr);
+  this.funcForm.get("parNombre").enable();
+  this.funcForm.get("parDescripcion").enable();
+  this.funcForm.get("parValTipo").enable();
+  this.funcForm.get("parValor").enable();
+  this.funcForm.get("parCaducidad").enable();
+  this.funcForm.get("parCaducidadStr").enable();
+  this.funcForm.get("tipoValorCbo").enable();
+
+  this._modalidad="modificacion";
 }
 
 /**Validacion de form */
@@ -133,6 +147,7 @@ getRecord(row) {
 /**Metodo para  */
 /**Metodo apara dar de alta los parametros*/
 onModoGuardarClick() :void{
+
     let parametros = new ABCParametrosVO;
     parametros.parCaducidad = this.funcForm.get('parCaducidad').value;
     parametros.parCaducidadStr=this.funcForm.get('parCaducidadStr').value;
@@ -140,7 +155,15 @@ onModoGuardarClick() :void{
     parametros.parNombre= this.funcForm.get('parNombre').value;
     parametros.parValTipo= this.funcForm.get('tipoValorCbo').value;
     parametros.parValor= this.funcForm.get('parValor').value;
-    if(this.funcForm.valid){
+    
+    if(this.funcForm.valid&& this._modalidad=="alta"){
+      this.servicesParametros.saveParametros(parametros).subscribe(then => {
+        this.mostrarMensaje("Operacion realizada con exito", 'info');
+        this.funcForm.reset();
+        this.onModoConsultaClick();
+    });
+    }
+    else if(this.funcForm.valid&& this._modalidad=="modificacion"){
       this.servicesParametros.saveParametros(parametros).subscribe(then => {
         this.mostrarMensaje("Operacion realizada con exito", 'info');
         this.funcForm.reset();
@@ -151,8 +174,8 @@ onModoGuardarClick() :void{
      
 
 
-  }
-   
+  
+}
 
   /**mETODO QUE OBTIENE EL REGISTRO DE LA TABLA  */
   onModoConsultaClick(){
@@ -193,8 +216,12 @@ modoDeshacerClick(){
   this.funcForm.get("parValTipo").disable();
   this.funcForm.get("parValor").disable(); 
   this.funcForm.get("tipoValorCbo").disable();
+  this.selectedParam ="";
+  this.btnDeshacerIf=true;
+  this.btnGuardarIf=true;
 }
 onModoAltaClick() {
+  this._modalidad="alta";
   this.funcForm.get("parNombre").enable();
   this.funcForm.get("parDescripcion").enable();
   this.funcForm.get("parValTipo").enable();
@@ -310,7 +337,7 @@ mostrarMensaje(mensaje: string, tipoMensaje: any) {
 }
 
 actualizacionParTipo(event:any){
-  if(this.selectParametrosRow.parValTipo !== (event.target as HTMLInputElement).value && this._modalidad!== "alta"){
+  if(this.parametro.parValTipo !== (event.target as HTMLInputElement).value && this._modalidad!== "alta"){
     this.btnGuardarIf=false;
     this.btnDeshacerIf=false;
      this._modalidad="modificacion";
@@ -322,14 +349,55 @@ actualizacionParTipo(event:any){
   }
 }
 actualizacionParDesc(event:any){
-
+  if(this.parametro.parDescripcion !== (event.target as HTMLInputElement).value && this._modalidad!== "alta"){
+    this.btnGuardarIf=false;
+    this.btnDeshacerIf=false;
+    this._modalidad="modificacion";
+    
+  }else{
+    this.btnGuardarIf=false;
+    this.btnDeshacerIf=false;
+     this._modalidad="alta"
+  }
+  
 }
 
 actualizacionParValor(event:any){
-
+  if(this.parametro.parValor !== (event.target as HTMLInputElement).value && this._modalidad!== "alta"){
+    this.btnGuardarIf=false;
+    this.btnDeshacerIf=false;
+    this._modalidad="modificacion";
+    
+  }else{
+    this.btnGuardarIf=false;
+    this.btnDeshacerIf=false;
+     this._modalidad="alta"
+  }
 }
 
 actualizacionParNombre(event:any){
-
+  if(this.parametro.parNombre !== (event.target as HTMLInputElement).value && this._modalidad!== "alta"){
+    this.btnGuardarIf=false;
+    this.btnDeshacerIf=false;
+    this._modalidad="modificacion";
+    
+  }else{
+    this.btnGuardarIf=false;
+    this.btnDeshacerIf=false;
+     this._modalidad="alta"
+  }
 }
+actualizacionTipoValorCbo(event:any){
+  if(this.parametro.parValTipo !== (event.target as HTMLInputElement).value && this._modalidad!== "alta"){
+    this.btnGuardarIf=false;
+    this.btnDeshacerIf=false;
+    this._modalidad="modificacion";
+    
+  }else{
+    this.btnGuardarIf=false;
+    this.btnDeshacerIf=false;
+     this._modalidad="alta"
+  }
+}
+ 
 }
