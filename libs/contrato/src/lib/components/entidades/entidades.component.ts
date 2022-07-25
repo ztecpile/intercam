@@ -101,7 +101,7 @@ export class EntidadesComponent implements OnInit {
       claveCNBV: new FormControl('',  [Validators.pattern(/^[0-9]*$/i)]),
       codigoBroxel: new FormControl('', [Validators.pattern(/^([0-9])*$/)]),
       entClave: new FormControl('', ), 
-      nivelRiesgo: new FormControl('', [Validators.pattern(/^([0-9])*$/)], ),
+      nivelRiesgo: new FormControl('', [Validators.pattern(/^([0-3])*$/)], ),
       cboPaisOr:['']
      });
   }
@@ -148,6 +148,12 @@ export class EntidadesComponent implements OnInit {
     this.funcForm.get("nivelRiesgo").clearValidators();
     this.funcForm.get("cboPaisOr").clearValidators();
       
+    this.funcForm.get("abreviatura").setValidators(Validators.pattern(/^[a-z\s]*$/i));
+    this.funcForm.get("claveCNBV").setValidators(Validators.pattern(/^[0-9]*$/i));
+    this.funcForm.get("codigoBroxel").setValidators(Validators.pattern(/^([0-9])*$/));
+    this.funcForm.get("nivelRiesgo").setValidators(Validators.pattern(/^([0-3])*$/));
+    this.funcForm.get("cboPaisOr").clearValidators();
+
     this.funcForm.get("entidad").disable();
     this.funcForm.get("abreviatura").disable();
     this.funcForm.get("claveCNBV").disable();
