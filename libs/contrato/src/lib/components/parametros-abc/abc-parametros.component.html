@@ -4,39 +4,42 @@
 <!--Abre contenido-->
      <div class="container">
         <hr class="red" />
-        <strong><h5>Parametros</h5></strong>
+        <strong><h5>Parámetros</h5></strong>
         <hr class="red" />
 
         <form [formGroup]="funcForm" class="formulario" (ngSubmit)="onSubmit()" autocomplete="off" idbForm >
    
         <div class="mat-elevation-z8">
-            <table  matSort mat-table class="mat-elevation-z8" [dataSource]="dataSource">
+
+            <table  mat-table class="mat-elevation-z8" [dataSource]="dataSource"
+            matSort matSortChange="sortData($event)">
         
                 <ng-container matColumnDef="parNombre">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">Nombre</th>
-                    <td mat-cell *matCellDef="let row">{{ row.parNombre }}</td>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+                    <td mat-cell *matCellDef="let row" (click)="selectParametros(row)">{{ row.parNombre }}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="parDescripcion">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">Descripcion</th>
-                    <td mat-cell *matCellDef="let row">{{ row.parDescripcion }}</td>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Descripcion</th>
+                    <td mat-cell *matCellDef="let row" (click)="selectParametros(row)">{{ row.parDescripcion }}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="parValor">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">Valor</th>
-                    <td mat-cell *matCellDef="let row">{{ row.parValor }}</td>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Valor</th>
+                    <td mat-cell *matCellDef="let row" (click)="selectParametros(row)">{{ row.parValor }}</td>
                 </ng-container>
 
                 <ng-container hidden matColumnDef="tipoValorCbo">
-                    <th hidden mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">tipoValor</th>
-                    <td hidden mat-cell *matCellDef="let row">{{ row.parValTipo }}</td>
+                    <th hidden mat-header-cell *matHeaderCellDef >tipoValor</th>
+                    <td hidden mat-cell *matCellDef="let row" (click)="selectParametros(row)">{{ row.parValTipo }}</td>
                 </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumnsParametros"></tr>
-                <tr mat-row (click)="getRecord(row)" *matRowDef="let row; columns: displayedColumnsParametros"></tr>
+                <tr mat-row   *matRowDef="let row; columns: displayedColumnsParametros"
+                [ngClass]="{ 'selected': row === selectedParam }" (click)="selected(row)"></tr>
             </table>
             <div id="paginadorDiv" class="row" hidden>
-                <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator> 
+                <mat-paginator [pageSizeOptions]="[20]" showFirstLastButtons></mat-paginator> 
 
             </div>
         </div>
@@ -44,43 +47,61 @@
 
         <div class="row">
             <div id="divNombre" class="col-sm-3">
-                <input type="text" (keyup)="hasChenges()" class="formulario__input"  (ngModel)="parametro.parNombre"  formControlName="parNombre" (input)="actualizacionParNombre($event)"  idbInput>
+                <input type="text"  class="formulario__input"  maxlength="60" (ngModel)="parametro.parNombre"  formControlName="parNombre" (input)="actualizacionParNombre($event)"  idbInput>
+                <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.parNombre.hasError('pattern')">Nombre solo acepta letras  y numeros. </mat-hint>
+                <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.parNombre.hasError('required')">El campo es obligatorio. </mat-hint>
                 <label class="formulario__label">{{'Nombre *' }}</label>
             </div>
-           <div class="row">
-            <div id="divalcMun" class="col-sm-3">
-                <input type="text" (keyup)="hasChenges()" class="formulario__input"   (ngModel)="parametro.parDescripcion" formControlName="parDescripcion" idbInput>
-                <label class="formulario__label">{{'Descripción *' }}</label>
-            </div>
-           </div>
+           
             <div class="row">
                 <div id="divtipoPersona" class="col-sm-3">
                     <div class="caja">
-                        <select formControlName="tipoValorCbo" (change)="hasChenges()"  (ngModel)="parametro.parValTipo" (ngModelChange)="actualizacionParNombre($event)" idbInput>
+                        <select formControlName="tipoValorCbo"   (ngModel)="parametro.parValTipo" (input)="actualizacionTipoValorCbo($event)" idbInput>
+                            <option>Seleccione Valor</option>
                             <option value="A">Alfebetico</option>
                             <option value="C">Caracter</option>
                             <option value="I">Entero</option>
                             <option value="R">Real</option>
                             
                         </select>
+                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.tipoValorCbo.hasError('required')">El campo es obligatorio. </mat-hint>
+                        
                     </div>
-                    <label appearance="fill" class="formulario__label">Tipo Valor *</label>
+                    <label appearance="fill" class="formulario__label">{{'Tipo Valor *'}}</label>
+                <br>
+                    
                 </div>
             </div>
+            <div class="row">
+                <div id="divalcMun" class="col-sm-3">
+                    <input type="text"   maxlength="60" class="formulario__input"   (ngModel)="parametro.parDescripcion" formControlName="parDescripcion" idbInput (input)="actualizacionParDesc($event)">
+                    <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.parDescripcion.hasError('pattern')">Nombre solo acepta letras  y numeros. </mat-hint>
+                <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.parDescripcion.hasError('required')">El campo es obligatorio. </mat-hint>
+                
+                    <label class="formulario__label">{{'Descripcion *' }}</label>
+                </div>
+               </div>
             <br>
                
-             <div id="divValor" (keyup)="hasChenges()" class="col-sm-3">
-                <input type="text" class="formulario__input"   (ngModel)="parametro.parValor" formControlName="parValor" idbInput>
+             <div id="divValor"   class="col-sm-3">
+                <input type="text" class="formulario__input"   maxlength="50" (ngModel)="parametro.parValor" formControlName="parValor" idbInput (input)="actualizacionParValor($event)">
+                <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.parValor.hasError('pattern')">Nombre solo acepta letras  y numeros. </mat-hint>
+                <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.parValor.hasError('required')">El campo es obligatorio. </mat-hint>
+                
                 <label class="formulario__label">{{'Valor *' }}</label>
             </div>
 
         </div> 
-        <acction-buttons-component (onModoConsultaClick)="onModoConsultaClick()"
-                    (onModoAltaClick)="onModoAltaClick()"
-                     (onModoGuardarClick)="onModoGuardarClick()"
-                    (onModoActualizarClick)="onModoActualizarClick()"
-                    [modelo]="parametro" >
-        </acction-buttons-component>
+        <div class="row col-sm-6 flex-container">
+            <button class="btn-img buscar-btn"  [disabled]="btnBuscarIf"  (click)="onModoConsultaClick()" type="submit"><span class="tooltip">Buscar</span></button>
+                   
+            <button class="btn-img alta-btn"  [disabled]="btnAltaIf"  (click)="onModoAltaClick()" type="submit"><span class="tooltip">Alta</span></button>
+            
+            
+             <button class="btn-img save-button" [disabled]="btnGuardarIf" (click)="onModoGuardarClick()"  type="submit"><span class="tooltip">Guardar</span></button>
+            <button class="btn-img deshacer-button" [disabled]="btnDeshacerIf" (click)="modoDeshacerClick()"   type="submit"><span class="tooltip">Deshacer</span></button>
+            
+        </div>  
       
         <br>
         <h6>Restablecer Valores</h6>

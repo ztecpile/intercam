@@ -18,6 +18,6 @@ import { MunicipVO } from "./MunicipVO";
 		public  EntidadVO()
 		{
 			this.entDescripcion = '';
-			this.entRiesgo = 0;
+			this.entRiesgo = 0; 
 		}
 	}

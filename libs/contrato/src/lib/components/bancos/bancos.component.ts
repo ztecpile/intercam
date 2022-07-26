@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, RequiredValidator, Validators } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { BancosVO, BolsaVO, PaisVO } from '@intercam/model';
 import Swal from 'sweetalert2';
@@ -13,10 +14,12 @@ import { BancoService } from '../../services/bancos.service';
 })
 
 
-export class BancosComponent implements OnInit {
+export class BancosComponent implements OnInit,AfterViewInit {
     @ViewChild(MatPaginator) paginator: MatPaginator;
+    @ViewChild(MatSort) sort: MatSort;
     displayedColumns: string[] = ['banid', 'nombre', 'estatus', 'claveBanxico', 'claveSica', 'claveSabi', 'claveSiif', 'claveOperaIntercam', 'pais', 'nombreCorto', 'claveOperaTefbv', 'claveOperaSpeua'];
     dataSource = new MatTableDataSource<BancosVO>();
+    dataSourceBkp: BancosVO[]=[];
     showBtn: boolean = true;
     showBtn2: boolean = false;
     paginador: boolean;
@@ -49,6 +52,11 @@ export class BancosComponent implements OnInit {
     valueEstatus: string;
     selectedRowPintar: any;
     submitted: boolean=false;
+    optActivoDisabled:boolean;
+    optInactivoDisabled: boolean;
+    checkOpSpeDisabled: boolean;
+    checkOpIntDisabled: boolean;
+    checkOpTefDisabled: boolean;
     constructor(private bancoServ: BancoService, private formbuilder: FormBuilder) {
         this.paginador = false;
         this.hdefault = false;
@@ -66,6 +74,10 @@ export class BancosComponent implements OnInit {
         this.createFunForm();
        this.deshabilitarCampos();
        this.atributosElemento();
+    }
+    ngAfterViewInit(): void {
+        this.dataSource.sort = this.sort;
+
     }
 
     getCtr(name: string, group = ''): FormControl {
@@ -105,6 +117,7 @@ export class BancosComponent implements OnInit {
         }
       }
     changeCheckInter(e: any) {
+        this.cambio();
         console.log(e);
         if (e) {
             this.checkOpInt = true;
@@ -219,7 +232,7 @@ export class BancosComponent implements OnInit {
         document.getElementById('save').setAttribute('disabled','');
         document.getElementById('deshacer').setAttribute('disabled','');
 
-        if (contratoSelec.banEstatus == 'Activo') {
+        if (contratoSelec.banEstatus == 'AC') {
             this.checkActivo = true;
             this.funcForm.get("optActivo").setValue(true);
             this.checkInactivo = false;
@@ -273,11 +286,7 @@ export class BancosComponent implements OnInit {
                     const bancoVO: BancosVO = new BancosVO;
                     bancoVO.banClaveBanxico = data.banClaveBanxico;
                     bancoVO.banDescCorta = data.banDescCorta;
-                    if (data.banEstatus == 'AC') {
-                        bancoVO.banEstatus = 'Activo';
-                    }else{
-                        bancoVO.banEstatus = 'Inactivo';
-                    }
+                    bancoVO.banEstatus = data.banEstatus;
                     bancoVO.banId = data.banId;
                     bancoVO.banIdCasaBolsa = data.banIdCasaBolsa;
                     bancoVO.banIdFondos = data.banIdFondos;
@@ -291,8 +300,9 @@ export class BancosComponent implements OnInit {
                     listaResponse.push(bancoVO);
 
                 }
-
+                this.dataSourceBkp = then;
                 this.dataSource = new MatTableDataSource(listaResponse);
+                this.dataSource.sort = this.sort;
                 this.paginador = true;
                 this.dataSource.paginator = this.paginator;
                 document.getElementById('paginadorDiv').removeAttribute('hidden');
@@ -364,6 +374,7 @@ export class BancosComponent implements OnInit {
             then => {
                 console.log(then);
                 this.mostrarMensaje('Se creo un nuevo item', 'info');
+                this.consulta();
             }, error => {
                 this.mostrarMensaje('No se pudo crear el item', 'error');
             }
@@ -400,11 +411,13 @@ export class BancosComponent implements OnInit {
         banco.paiClave = this.funcForm.get('combPais').value;
         banco.paiDescripcion = null;
         banco.banDescCorta = this.funcForm.get('nombreCorto').value;
+        console.log(banco);
 if(this.funcForm.valid){
         this.bancoServ.updateBanco(banco).subscribe(
             then => {
                 console.log(then);
                 this.mostrarMensaje('Se actualizo el item', 'info');
+                this.consulta();
             }, error => {
                 this.mostrarMensaje('No se pudo actualizar el item', 'error');
             }
@@ -443,6 +456,7 @@ console.log(banco);
             then => {
                 console.log(then);
                 this.mostrarMensaje('Se elimino el item', 'info');
+                this.consulta();
             }, error => {
                 console.log('error', error)
                 this.mostrarMensaje('No se pudo eliminar el item', 'error');
@@ -484,7 +498,7 @@ console.log(banco);
         document.getElementById('checkOpTefbv').removeAttribute('mat-checkbox-checked');
         document.getElementById('checkOpSpeua').removeAttribute('mat-checkbox-checked');
         document.getElementById('checkOpInter').removeAttribute('mat-checkbox-checked');
-        this.funcForm.get("combPais").setValue(1);
+        this.funcForm.get("combPais").setValue('');
         this.funcForm.get("nombreCorto").setValue('');
         this.funcForm.get("optActivo").setValue(false);
         this.funcForm.get("optInactivo").setValue(false);
@@ -519,7 +533,11 @@ console.log(banco);
         document.getElementById("checkOpInter").setAttribute('class','mat-checkbox example-margin mat-accent mat-checkbox-label-before');
         document.getElementById("optActivo").setAttribute('class','mat-radio-button ml-5 mat-accent');
         document.getElementById("optInactivo").setAttribute('class','mat-radio-button ml-5 mat-accent');
-        
+        this.optActivoDisabled = false;
+    this.optInactivoDisabled = false;
+    this.checkOpTefDisabled =false;
+        this.checkOpSpeDisabled=false;
+        this.checkOpIntDisabled=false;
     }
 
     deshabilitarCampos(){
@@ -540,6 +558,11 @@ console.log(banco);
         document.getElementById("checkOpInter").setAttribute('class','mat-checkbox example-margin mat-accent mat-checkbox-label-before mat-checkbox-disabled');
         document.getElementById("optActivo").setAttribute('class','mat-radio-button ml-5 mat-accent mat-radio-disabled');
         document.getElementById("optInactivo").setAttribute('class','mat-radio-button ml-5 mat-accent mat-radio-disabled');
+        this.optActivoDisabled = true;
+        this.optInactivoDisabled = true;
+        this.checkOpTefDisabled =true;
+        this.checkOpSpeDisabled=true;
+        this.checkOpIntDisabled=true;
     }
 
     atributosElemento(){
@@ -549,4 +572,28 @@ console.log(banco);
        document.getElementById('deshacer').setAttribute('class','deshacer-button-des btn-img');
        document.getElementById('save').setAttribute('class','save-button-des btn-img');
     }
-}
+
+    sortChange(sort: any) {
+        console.log(sort);
+        if (!sort.active || sort.direction === '') {
+          this.dataSource.data = this.dataSourceBkp;
+          return;
+        }
+    
+        this.dataSource.data = this.dataSource.data.sort((a, b) => {
+          const isAsc = sort.direction === 'asc';
+          switch (sort.active) {
+            case 'claveOperador':
+              return compare(a.banNombre, b.banNombre, isAsc);
+            case 'habilitadoCierre':
+              return compare(a.banEstatus == 'AC' ? 'Activo' : 'Inactivo', b.banEstatus == 'AC' ? 'Activo' : 'Inactivo', isAsc);
+            default:
+              return 0;
+          }
+        });
+    
+      }
+    }
+    function compare(a: number | string, b: number | string, isAsc: boolean) {
+      return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+    }

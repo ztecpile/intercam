@@ -15,6 +15,8 @@
                             <option *ngFor="let pai of arrPais" [value]="pai.paiClave"> {{pai.paiDescripcion}}
                             </option>
                         </select>
+                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.entidad.hasError('required')">El campo es obligatorio. </mat-hint>
+
                     </div>
                     <label appearance="fill" class="formulario__label">{{'País' }}</label>
                 </div>
@@ -39,7 +41,8 @@
                         </ng-container>
                         <tr soporte:filterPost></tr>
                         <tr mat-header-row *matHeaderRowDef="displayedColumnsEntidades"></tr>
-                        <tr mat-row  *matRowDef="let row; columns: displayedColumnsEntidades">
+                        <tr mat-row  *matRowDef="let row; columns: displayedColumnsEntidades"
+                        [ngClass]="{ 'selected': row === selectedEnt }" (click)="selected(row)">
                         </tr>
                     </table> 
                     <div id="paginadorDiv" class="row" hidden>
@@ -50,7 +53,7 @@
             <br>
             <div class="row">
                 <div id="divEntidad" class="col-sm-3">
-                    <input type="text" required="true" [disabled]="true" required="true" class="formulario__input" maxlength="50"    [control]="getCtr('entidad')" (input)="actualizacionEntidad($event)" formControlName="entidad" idbInput >
+                    <input type="text"  [disabled]="true" required="true" class="formulario__input" maxlength="50"   (input)="actualizacionEntidad($event)" formControlName="entidad" idbInput >
                     <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.entidad.hasError('pattern')">Entidad solo acepta letras. </mat-hint>
                     <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.entidad.hasError('required')">El campo es obligatorio. </mat-hint>
 
@@ -58,25 +61,25 @@
                      
                 </div>
                 <div id="abreviatura" class="col-sm-2">
-                      <input type="text" class="formulario__input" [control]="getCtr('abreviatura')" maxlength="5"  (input)="actualizacionAbrev($event)" formControlName="abreviatura"  idbInput>
+                      <input type="text" class="formulario__input"  maxlength="5"  (input)="actualizacionAbrev($event)" formControlName="abreviatura"  idbInput>
                       <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.abreviatura.hasError('pattern')">Abreviatura solo acepta letras. </mat-hint>
 
                       <label class="formulario__label">Abreviatura</label>                    
                      
                 </div>
                 <div id="claveCNBV" class="col-sm-2">
-                  <input type="text" class="formulario__input" [control]="getCtr('claveCNBV')" maxlength="8" pattern="^\d*[0-9]\d*$" (input)="actualizacionClaveCBNV($event)" formControlName="claveCNBV"  idbInput>
+                  <input type="text" class="formulario__input" maxlength="8" pattern="^\d*[0-9]\d*$" (input)="actualizacionClaveCBNV($event)" formControlName="claveCNBV"  idbInput>
                   <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveCNBV.hasError('pattern')">La Clave CNBV solo acepta números. </mat-hint>
                     <label class="formulario__label">Clave CNBV</label>
                 </div>
                 <div id="codigoBroxel" class="col-sm-2">
-                    <input [disabled]='true' type="text" class="formulario__input" [control]="getCtr('codigoBroxel')" maxlength="5" (input)="actualizacionCodigoBrx($event)" pattern="^\d*[0-9]\d*$" formControlName="codigoBroxel" idbInput>
+                    <input [disabled]='true' type="text" class="formulario__input"   maxlength="5" (input)="actualizacionCodigoBrx($event)" pattern="^\d*[0-9]\d*$" formControlName="codigoBroxel" idbInput>
                     <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.codigoBroxel.hasError('pattern')">El Código Broxel solo acepta números. </mat-hint>
                     <label class="formulario__label">Codigo Broxel</label>
                     
                 </div>
                 <div id="nivelRiesgo" disabled="funcForm.invalid" class="col-sm-2">
-                    <input   type="text" [disabled]="funcForm.invalid" class="formulario__input"   pattern="^\d*[0-3]\d*$"  maxlength="1" (input)="actualizacionRiesgo($event)" pattern="^\d*[0-3]\d*$" [control]="getCtr('nivelRiesgo')" formControlName="nivelRiesgo" idbInput>
+                    <input   type="text"  class="formulario__input"  maxlength="1" (input)="actualizacionRiesgo($event)" pattern="^\d*[0-3]\d*$"   formControlName="nivelRiesgo" idbInput>
                     <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.nivelRiesgo.hasError('pattern')">El Nivel de Riesgo solo acepta 0,1,2,3. </mat-hint>
                     <label class="formulario__label">Nivel de riesgo</label>
                     

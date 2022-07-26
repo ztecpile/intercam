@@ -51,7 +51,7 @@
                     <input [disabled]="disabledCol" type="text" class="formulario__input"  maxlength="50" required="true" [control]="getCtr('updateColonia')"  (input)="actualizacion($event)" formControlName="updateColonia" idbInput>
                     <label class="formulario__label">* Colonia </label>
                     <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.updateColonia.hasError('required')">El campo es requerido. </mat-hint>
-
+                    <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.updateColonia.hasError('pattern')">Entidad solo acepta letras. </mat-hint>
                     
                 </div>
              </div>

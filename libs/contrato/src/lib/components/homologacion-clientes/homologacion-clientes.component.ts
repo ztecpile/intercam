@@ -7,6 +7,7 @@ import { DialogBuscarClienteComponent } from "libs/shred-components/src/lib/dial
 import { MatDialog } from '@angular/material/dialog';
 import { DialogBuscaPersonaComponent } from 'libs/shred-components/src/lib/dialog/dialog-busca-persona/dialog-busca-persona.component';
 import Swal from 'sweetalert2';
+import { BuscarEmpleadoComponet } from 'libs/shred-components/src/lib/dialog/dialog-buscar-empleado/dialog-buscar-empleado.component';
 
 @Component({
     selector: 'homologacion-clientes',
@@ -20,6 +21,7 @@ export class HomologacionClientesComponent implements OnInit {
     public funcForm: FormGroup;
     userlog = sessionStorage.getItem('usuUsuario');
     @Output() buscar_cliente = new EventEmitter<any>();
+    @Output() buscar_empleado = new EventEmitter<any>();
     dataMotivo: string[];
     cadenaMail: string[];
     conId: number;
@@ -43,7 +45,7 @@ export class HomologacionClientesComponent implements OnInit {
     tpeclave: string;
     cpeId: number;
     submitted: boolean = false;
-
+    selectedRow: string;
 
     constructor(private homServe: HomologacionClienteService, private dialog: MatDialog, private formbuilder: FormBuilder) {
         this.isChecked = false;
@@ -122,6 +124,7 @@ export class HomologacionClientesComponent implements OnInit {
                     returncliIdCorrecto.push('PERID- ' + data.idVO.perId + ' - ' + data.perfilVO.perfDescripcion + ' - ' + data.personaVO.perNomCorto);
                 }
                 this.contratosFolder = returncliIdCorrecto;
+                this.selectedRow = returncliIdCorrecto[0];
                 this.cpeId = then.contratoVO.cpeId;
                 this.funcForm.get('tipoContrato').setValue(then.contratoVO.tipoContratoVO.tconDescripcion);
                 this.getCategoriaCliente(then.listaRepresentantes[0].personaVO.tipoPersonaVO.tpeClave);
@@ -340,16 +343,29 @@ export class HomologacionClientesComponent implements OnInit {
                     this.obtenerCarpetaContratos(response.data.contratoId);
                     this.obtenerBiometria('');
                 }
+
+            });
+        ;
+    }
+
+    buscaEmpleado(valor: any) {
+        const dialogRef = this.dialog.open(BuscarEmpleadoComponet, {
+            disableClose: true,
+            autoFocus: true
+        }).afterClosed()
+            .subscribe(response => {
+                console.log(response);
                 if (valor == 'usuSol') {
-                    this.funcForm.get('usuSolicitante').setValue(response.data.desEjecutivo);
+                    this.funcForm.get('usuSolicitante').setValue(response.data.nombre_completo);
                 }
                 if (valor == 'coorSucursal') {
-                    this.funcForm.get('coorSucursal').setValue(response.data.desEjecutivo);
+                    this.funcForm.get('coorSucursal').setValue(response.data.nombre_completo);
                 }
 
             });
         ;
     }
+
     mostrarMensaje(mensaje: string, tipoMensaje: any) {
         const _this = this;
         Swal.fire({
