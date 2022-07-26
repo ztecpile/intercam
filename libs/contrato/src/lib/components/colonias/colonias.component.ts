@@ -185,7 +185,9 @@ export class ColoniasComponent implements OnInit {
             this.listaColoniasVo = this.arrColonia;
             break;
           }
+
         }
+        this.btnDeshacerIf=false;
       },
       error => console.error(error)
     )
