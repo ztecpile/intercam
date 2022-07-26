@@ -8,83 +8,83 @@
         <hr class="red" />
         <strong><h5>Bancos</h5></strong>
         <hr class="red" />
-
+        <div class="container">
         <div class="mat-elevation-z8">
-            <table mat-table id="tabla" [dataSource]="dataSource" class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortChange($event)">
                 <ng-container matColumnDef="banid">
-                    <th hidden mat-header-cell *matHeaderCellDef>banid</th>
+                    <th hidden mat-header-cell *matHeaderCellDef  mat-sort-header>banid</th>
                     <td hidden mat-cell *matCellDef="let element">{{ element.banId }}
                     </td>
                 </ng-container>
 
                 <ng-container matColumnDef="nombre">
-                    <th mat-header-cell *matHeaderCellDef>Nombre</th>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Nombre">Nombre</th>
                     <td mat-cell *matCellDef="let element">{{ element.banNombre }}
                     </td>
                 </ng-container>
 
                 <ng-container matColumnDef="estatus">
-                    <th mat-header-cell *matHeaderCellDef>Estatus</th>
-                    <td mat-cell *matCellDef="let element">{{ element.banEstatus }}
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Estatus">Estatus</th>
+                    <td mat-cell *matCellDef="let element">{{ element.banEstatus== 'AC'?'Activo':'Inactivo'}}
                     </td>
                 </ng-container>
 
                 <ng-container matColumnDef="claveBanxico">
-                    <th hidden mat-header-cell *matHeaderCellDef>clave Banxico</th>
+                    <th hidden mat-header-cell *matHeaderCellDef  mat-sort-header>clave Banxico</th>
                     <td hidden mat-cell *matCellDef="let element">{{
                         element.banClaveBanxico }}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="claveSica">
-                    <th hidden mat-header-cell *matHeaderCellDef>clave SICA</th>
+                    <th hidden mat-header-cell *matHeaderCellDef  mat-sort-header>clave SICA</th>
                     <td hidden mat-cell *matCellDef="let element">{{
                         element.banIdSica }}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="claveSabi">
-                    <th hidden mat-header-cell *matHeaderCellDef>clave SABi</th>
+                    <th hidden mat-header-cell *matHeaderCellDef  mat-sort-header>clave SABi</th>
                     <td hidden mat-cell *matCellDef="let element">
                         {{element.banIdFondos }}
                     </td>
                 </ng-container>
 
                 <ng-container matColumnDef="claveSiif">
-                    <th hidden mat-header-cell *matHeaderCellDef>clave SIIF</th>
+                    <th hidden mat-header-cell *matHeaderCellDef  mat-sort-header>clave SIIF</th>
                     <td hidden mat-cell *matCellDef="let element">
                         {{element.banIdCasaBolsa }}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="claveOperaIntercam">
-                    <th hidden mat-header-cell *matHeaderCellDef>clave opera intercam</th>
+                    <th hidden mat-header-cell *matHeaderCellDef  mat-sort-header>clave opera intercam</th>
                     <td hidden mat-cell *matCellDef="let element">{{
                         element.banOperaIntercam }}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="claveOperaTefbv">
-                    <th hidden mat-header-cell *matHeaderCellDef>clave opera tefbv</th>
+                    <th hidden mat-header-cell *matHeaderCellDef  mat-sort-header>clave opera tefbv</th>
                     <td hidden mat-cell *matCellDef="let element">{{
                         element.banOperaTefbv }}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="claveOperaSpeua">
-                    <th hidden mat-header-cell *matHeaderCellDef>clave opera speua</th>
+                    <th hidden mat-header-cell *matHeaderCellDef  mat-sort-header>clave opera speua</th>
                     <td hidden mat-cell *matCellDef="let element">{{
                         element.banOperaTefbv }}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="pais">
-                    <th hidden mat-header-cell *matHeaderCellDef>pais</th>
+                    <th hidden mat-header-cell *matHeaderCellDef  mat-sort-header>pais</th>
                     <td hidden mat-cell *matCellDef="let element">{{ element.paiClave
                         }}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="nombreCorto">
-                    <th hidden mat-header-cell *matHeaderCellDef>pais</th>
+                    <th hidden mat-header-cell *matHeaderCellDef  mat-sort-header>pais</th>
                     <td hidden mat-cell *matCellDef="let element">{{
                         element.banDescCorta }}</td>
                 </ng-container>
 
-                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns "></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns"
                     [ngClass]="{ 'selected': row === selectedRowPintar }" (click)="selectedRow(row)"></tr>
             </table>
@@ -92,6 +92,7 @@
                 <mat-paginator [pageSizeOptions]="[20]" showFirstLastButtons></mat-paginator>
 
             </div>
+        </div>
         </div>
         <div class="container">
             <form [formGroup]="funcForm" class="formulario" (ngSubmit)="onSubmit()" autocomplete="off" idbForm>
@@ -149,11 +150,11 @@
                 <div class="row" id="divOpt" class="col-sm-8">
                     <label appearance="fill" class="formulario_check_label" title="estatus">{{ 'Estatus' | transloco }}</label>
                     &nbsp;
-                        <mat-radio-button class="ml-5" id="optActivo" [checked]="checkActivo" (change)="changeRadioActivo($event);"></mat-radio-button>
+                        <mat-radio-button class="ml-5" id="optActivo" [disabled]="optActivoDisabled" [checked]="checkActivo" (change)="changeRadioActivo($event);"></mat-radio-button>
                       
                     <label class="lbl_datos">{{'Activo'|transloco}}</label>
                     &nbsp;
-                        <mat-radio-button class="ml-5" id="optInactivo" [checked]="checkInactivo" (change)="changeRadioInactivo($event);"></mat-radio-button> 
+                        <mat-radio-button class="ml-5" id="optInactivo" [disabled]="optInactivoDisabled" [checked]="checkInactivo" (change)="changeRadioInactivo($event);"></mat-radio-button> 
                        
                     <label class="lbl_datos">{{'Inactivo'|transloco}}</label>
 
@@ -163,18 +164,18 @@
                     <label class="formulario_check_label">
                         {{'Opera Intercam' | transloco}}
                     </label>&nbsp;
-                        <mat-checkbox id="checkOpInter" class="example-margin" labelPosition="before" [checked]="checkOpInt" (change)="changeCheckInter($event);" ></mat-checkbox>&nbsp;
+                        <mat-checkbox id="checkOpInter" class="example-margin" labelPosition="before" [checked]="checkOpInt"  [disabled]="checkOpIntDisabled" (change)="changeCheckInter($event);" ></mat-checkbox>&nbsp;
                         &nbsp;
 
                     <label class="formulario_check_label">
                         {{'Opera Speua' | transloco}}
                     </label>&nbsp;
-                        <mat-checkbox id="checkOpSpeua" class="example-margin" labelPosition="before" [checked]="checkOpSpe" (change)="changeCheckSpeia($event);" ></mat-checkbox>&nbsp;
+                        <mat-checkbox id="checkOpSpeua" class="example-margin" labelPosition="before" [checked]="checkOpSpe" [disabled]="checkOpSpeDisabled" (change)="changeCheckSpeia($event);" ></mat-checkbox>&nbsp;
 
                     <label class="formulario_check_label">
                         {{'Opera tefbv' | transloco}}
                     </label>&nbsp;
-                        <mat-checkbox id="checkOpTefbv" class="example-margin" labelPosition="before" [checked]="checkOpTef" (change)="changeCheckFbv($event);" ></mat-checkbox>
+                        <mat-checkbox id="checkOpTefbv" class="example-margin" labelPosition="before" [checked]="checkOpTef" [disabled]="checkOpTefDisabled" (change)="changeCheckFbv($event);" ></mat-checkbox>
 
 
                 </div>

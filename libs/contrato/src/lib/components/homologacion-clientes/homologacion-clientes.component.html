@@ -33,7 +33,7 @@
                     <br />
                     <div id="divcboTipo" class="col-sm-12">
                         <div class="caja">
-                            <select  formControlName="comboCliIdIncorrecto" [control]="getCtr('comboCliIdIncorrecto')" (change)="habilitarBotones(); perIdIncorrcto();" idbInput>
+                            <select [(ngModel)]="selectedRow" formControlName="comboCliIdIncorrecto" [control]="getCtr('comboCliIdIncorrecto')" (change)="habilitarBotones(); perIdIncorrcto();" idbInput>
                                 <option *ngFor="let search of contratosFolder" [value]="search">{{search}}</option>
                                 
                             </select>
@@ -89,7 +89,7 @@
                     <div id="divperRfc" class="col-sm-12">
                         <input readonly type="text" class="formulario__input" formControlName="bioCorrecta" [control]="getCtr('bioCorrecta')" idbInput />
                        
-                        <label class="formulario__label">{{ 'Biometría Persona Correcta' | transloco }}</label>
+                        <label class="formulario__label">{{ 'Biometria Persona Correcta' | transloco }}</label>
                     </div>
 
 
@@ -118,7 +118,7 @@
                         </div>
                         <div class="col-2">
                             <div class="centrar_btn" style="margin-top: 10px;">
-                                <button class="btn-img buscar-btn  "  type="button" (click)="buscaCliente('usuSol')">
+                                <button class="btn-img buscar-btn  "  type="button" (click)="buscaEmpleado('usuSol')">
                                     <span class="tooltip">{{ 'Buscar Usuario Solicitante' | transloco }}</span>
                                 </button>
                             </div>
@@ -134,7 +134,7 @@
                         </div>
                         <div class="col-2">
                             <div class="centrar_btn" style="margin-top: 10px;">
-                                <button class="btn-img buscar-btn  " type="button" (click)="buscaCliente('coorSucursal')">
+                                <button class="btn-img buscar-btn  " type="button" (click)="buscaEmpleado('coorSucursal')">
                                     <span class="tooltip">{{ 'Buscar Coordinador' | transloco }}</span>
                                 </button>
                             </div>
