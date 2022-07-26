@@ -117,12 +117,12 @@ export class MonitorOperacionesInterbancariasComponent implements AfterViewInit 
     formatoTransaccion(element) {
         switch (element.operInstrumentoVO.opiEstatus) {
             case 0:
-                return "Operación Generadas Pendiente";
+                return "Operación Generada Pendiente";
             case 1:
-                return " Operación Generadas Completa";
+                return " Operación Generada Completa";
 
             case 2:
-                return "Error al guardar la o peracion en el sistema";
+                return "Error al guardar la operacion en el sistema";
         }
         return element.operInstrumentoVO.opiEstatus;
         //       element.operInstrumentoVO.opiEstatus==0?" Generadas Incompletas":element.operInstrumentoVO.opiEstatus==2?"Error **** ":"Generadas Completas "
