@@ -123,6 +123,9 @@ export class MonitorOperacionesInterbancariasComponent implements AfterViewInit 
 
             case 2:
                 return "Error al guardar la operacion en el sistema";
+            default:
+                return " Operación Generada Completa";
+
         }
         return element.operInstrumentoVO.opiEstatus;
         //       element.operInstrumentoVO.opiEstatus==0?" Generadas Incompletas":element.operInstrumentoVO.opiEstatus==2?"Error **** ":"Generadas Completas "
