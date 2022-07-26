@@ -41,6 +41,7 @@ export class AcctionButtonsComponent {
 
     @Input() modelo: Object = null;
     @Input() formGroup: FormGroup = null;
+    @Input() buscarText:string=null;
 
     validarBtnReset: boolean = false;//this.MODO_FORMULARIO == this.MODO_CONSULTA || this.modeloSelecionado == null || this.modelo.toString() != this.modeloSelecionado.toString()
     validarBtnEliminar: boolean = false;

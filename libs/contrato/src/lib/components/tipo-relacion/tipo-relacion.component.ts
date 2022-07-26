@@ -36,7 +36,9 @@ export class TiposRelacionComponent implements AfterViewInit {
 
     });
     submitted: Boolean = false;
-    constructor(private _tipoRelacionService: TipoRelacionService, private alertasService: AlertasService, private formBuilder: FormBuilder) {  }
+
+    setReadyOnly: boolean = true;
+    constructor(private _tipoRelacionService: TipoRelacionService, private alertasService: AlertasService, private formBuilder: FormBuilder) { }
 
 
 
@@ -49,6 +51,8 @@ export class TiposRelacionComponent implements AfterViewInit {
             this.dataSource = then;
             this.paginatorDataSource = new MatTableDataSource<TipoRelVO>(this.dataSource);
             this.paginatorDataSource.paginator = this.paginator;
+            this.setReadyOnly = false;
+
 
         });
     }
@@ -75,6 +79,7 @@ export class TiposRelacionComponent implements AfterViewInit {
     onModoAltaClick() {
 
         this.tipoRelVO = new TipoRelVO();
+        this.setReadyOnly = false;
     }
 
     onModoEliminarClick() {
@@ -96,8 +101,8 @@ export class TiposRelacionComponent implements AfterViewInit {
         }
 
     }
-    onModoDeshacerClick(){
-        this.tipoRelVO= new TipoRelVO();
+    onModoDeshacerClick() {
+        this.tipoRelVO = new TipoRelVO();
     }
 
     onModoActualizarClick() {

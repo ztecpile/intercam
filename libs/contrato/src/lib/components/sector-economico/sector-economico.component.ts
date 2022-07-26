@@ -41,9 +41,15 @@ export class SectorEconomicoComponent implements AfterViewInit {
         clave: ['', Validators.required],
         obserbaciones: ['', Validators.required],
         clave_cnbv: ['', Validators.required],
-        clave_banxico:['']
+        clave_banxico: ['']
 
     });
+
+    formatoDeInput(e) {
+        let reg = /[a-z]/g;
+        console.log(e.target.value.replace(reg, ""));
+        e.target.value = e.target.value.replace(reg, "");
+    }
 
     constructor(private _sectorEconomicoService: SectorEconomicoService, private alertasService: AlertasService, private formBuilder: FormBuilder) { }
     ngAfterViewInit(): void {

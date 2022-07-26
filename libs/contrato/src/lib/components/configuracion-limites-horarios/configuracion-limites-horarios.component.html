@@ -44,7 +44,7 @@
         <tr mat-footer-row [hidden]="dataSource.filteredData.length" *matFooterRowDef="['disclaimer']">
         </tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"
-          [ngClass]="{ 'selected': row === limiteSolicitudInstrumentoVO }" (click)="getRecord(row)"></tr>
+          [ngClass]="{ 'selected': row === selectedRow }" (click)="getRecord(row)"></tr>
       </table>
 
       <mat-paginator [pageSizeOptions]="[20]" showFirstLastButtons>
@@ -79,8 +79,8 @@
 
         <br />
         <div id="divperRfc" class="col-sm-12">
-          <input (keyup)="hasChenges()" type="text" class="formulario__input" (blur)="transformAmount($event)"
-            [(ngModel)]="limiteSolicitudInstrumentoVO.lsiMontoLim" formControlName="monto" />
+          <input (keyup)="hasChenges()" type="number" class="formulario__input" (blur)="transformAmount($event)"
+            [(ngModel)]="limiteSolicitudInstrumentoVO.lsiMontoLim" formControlName="monto" max="9999999999999" />
           <label class="formulario__label">* {{ 'Monto Maximo' }}</label>
           <mat-hint class="form-warnig" *ngIf="submitted && formGrupo.controls.monto.hasError('required')">El
             campo es obligatorio</mat-hint>

@@ -25,7 +25,14 @@ export class ConfiguracionLimitesHorariosComponent implements AfterViewInit {
     monto = "";
     hora: string = "00";
     min = "00";
-    selectedRow: LimiteSolicitudInstrumentoVO;
+    selectedRow: LimiteSolicitudInstrumentoVO= {
+        "lsiId": null,
+        "lsiMontoLim": null,
+        "lsiHorarioLim": null,
+        "lsiEstatus": null,
+        "lsiMesa": null,
+        "lsiUsuario": null,
+    };
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(AcctionButtonsComponent) _acctionButtonsComponent: AcctionButtonsComponent;
@@ -48,7 +55,7 @@ export class ConfiguracionLimitesHorariosComponent implements AfterViewInit {
     });
     submitted: Boolean = false;
     constructor(private _configuracionLimitesHorariosService: ConfiguracionLimitesHorariosService, private currencyPipe: CurrencyPipe, private formBuilder: FormBuilder) {
-        this.getMesasDivisas();
+       
         this.limiteSolicitudInstrumentoVO["hora"] = "00";
         this.limiteSolicitudInstrumentoVO["min"] = "00";
         this._configuracionLimitesHorariosService.getMesasDivisas().subscribe(then => {
@@ -58,6 +65,7 @@ export class ConfiguracionLimitesHorariosComponent implements AfterViewInit {
     ngAfterViewInit(): void {
         this._acctionButtonsComponent.hiddeBtnConsulta(true);
         this.paginator._intl.itemsPerPageLabel = "Registros por página:";
+        this.getMesasDivisas();
     }
 
     transformAmount(element) {
@@ -85,7 +93,8 @@ export class ConfiguracionLimitesHorariosComponent implements AfterViewInit {
 
     getRecord(row) {
         if (this._acctionButtonsComponent.isModoConsulta()) {
-            this.limiteSolicitudInstrumentoVO = row;
+            this.limiteSolicitudInstrumentoVO = {...row};
+            this.selectedRow = row;
             this._acctionButtonsComponent.setFilaSelecionada(row);
         }
     }

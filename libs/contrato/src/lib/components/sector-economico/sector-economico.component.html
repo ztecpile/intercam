@@ -57,8 +57,8 @@
 
 
                 <div class="col-sm-12">
-                    <input formControlName="clave" type="number" class="formulario__input"
-                        [(ngModel)]="sectorEconomico.secId" max="99999999999999999999" (keyup)="hasChenges();"
+                    <input formControlName="clave" type="text" class="formulario__input"
+                        [(ngModel)]="sectorEconomico.secId" [maxLength]="8" (keyup)="hasChenges();" (keyup)="formatoDeInput($event)"
                         [readonly]="!deshabilitarInputs" />
                     <label class="formulario__label">* Clave</label>
                     <mat-hint class="form-warnig" *ngIf="submitted && formGrupo.controls.clave.hasError('required')">El
@@ -69,7 +69,7 @@
                 </div>
 
                 <div class="col-sm-12">
-                    <input formControlName="obserbaciones" type="text" class="formulario__input" maxlength="50"
+                    <input formControlName="obserbaciones" type="text" class="formulario__input" maxlength="80"
                         [(ngModel)]="sectorEconomico.secDescripcion" (keyup)="hasChenges();"
                         [readonly]="!deshabilitarInputs" />
                     <label class="formulario__label">* Observaciones</label>
@@ -79,8 +79,8 @@
                 </div>
 
                 <div class="col-sm-12">
-                    <input formControlName="clave_cnbv" type="number" class="formulario__input" type="number"
-                        [(ngModel)]="sectorEconomico.secCnbv" ngModel max="99999999" min="00000000"
+                    <input formControlName="clave_cnbv" type="text" class="formulario__input" (keyup)="formatoDeInput($event)"
+                        [(ngModel)]="sectorEconomico.secCnbv" ngModel [maxlength]="10"
                         (keyup)="hasChenges();" [readonly]="!deshabilitarInputs" />
                     <label class="formulario__label">* Clave CNBV</label>
                     <mat-hint class="form-warnig"
@@ -97,7 +97,8 @@
 
                 <div class="col-sm-12">
                     <input formControlName="clave_banxico" type="text" class="formulario__input"
-                        [readonly]="!deshabilitarInputs" [(ngModel)]="sectorEconomico.secBanxico" />
+                        [readonly]="!deshabilitarInputs" [(ngModel)]="sectorEconomico.secBanxico"
+                        (keyup)="formatoDeInput($event)" [maxlength]="10" />
                     <label class="formulario__label">Clave BANXICO</label>
                 </div>
 

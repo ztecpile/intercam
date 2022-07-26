@@ -42,9 +42,9 @@
 
                 <div id="divperRfc" class="col-sm-12">
                     <mat-label>* Observaciones</mat-label>
-                    <textarea formControlName="obserbaciones" (keyup)="hasChenges()"
+                    <textarea [readonly]="setReadyOnly" formControlName="obserbaciones" (keyup)="hasChenges()"
                         [(ngModel)]="tipoRelVO.treDescripcion" type="text" class="formulario__input"
-                        maxlength="50"></textarea>
+                        maxlength="40"></textarea>
                     <mat-hint class="form-warnig"
                         *ngIf="submitted && formGrupo.controls.obserbaciones.hasError('required')">El
                         campo es obligatorio</mat-hint>
@@ -53,9 +53,9 @@
                 <br />
                 <div id="divcboTipo" class="col-sm-12">
                     <div class="caja">
-                        <select formControlName="tipo_valor" (change)="hasChenges()" [(ngModel)]="tipoRelVO.tpeClave">
-                            <option value="F">Física</option>
-                            <option value="M">Moral</option>
+                        <select formControlName="tipo_valor" (change)="hasChenges()" [(ngModel)]="tipoRelVO.tpeClave" >
+                            <option [disabled]="setReadyOnly" value="F">Física</option>
+                            <option [disabled]="setReadyOnly" value="M">Moral</option>
                         </select>
                     </div>
                     <label appearance="fill" class="formulario__label">* Tipo de Clientes</label>
@@ -66,6 +66,7 @@
 
 
                 <acction-buttons-component (onModoConsultaClick)="onModoConsultaClick()"
+                    [buscarText]="'Buscar'"
                     (onModoAltaClick)="onModoAltaClick()" (onModoEliminarClick)="onModoEliminarClick()"
                     (onModoGuardarClick)="onModoGuardarClick()" (onModoActualizarClick)="onModoActualizarClick()"
                     (onModoDeshacerClick)="onModoDeshacerClick()" [modelo]="tipoRelVO" [formGroup]="formGrupo">
