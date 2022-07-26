@@ -64,7 +64,7 @@ export class SectorEconomicoComponent implements AfterViewInit {
     }
 
     getRecord(row) {
-
+        this.deshabilitarInputs = true;
         if (this._acctionButtonsComponent.isModoConsulta()) {
             this.selectedRow = row;
             this.sectorEconomico = { ...row };
