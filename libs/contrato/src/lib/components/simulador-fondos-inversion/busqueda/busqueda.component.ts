@@ -30,7 +30,7 @@ export class BusquedaComponent implements AfterViewInit {
     variableDataSourceBkp: Object[] = [];
 
     fondoDataSource: Object[] = [];// MatTableDataSource<Object>=new MatTableDataSource([]) ;
-    fondoDataSourceBkp:Object[]=[];
+    fondoDataSourceBkp: Object[] = [];
     monto: string = "0";
     tipo_persona: number = 5;
     periodo: number = 1;
@@ -147,24 +147,99 @@ export class BusquedaComponent implements AfterViewInit {
         return true;
     }
 
+    deudaSortData(sort: Sort) {
+        this.deudaDataSource.data = this.deudaDataSource.data.sort((a, b) => {
+            const isAsc = sort.direction === 'asc';
+
+            switch (sort.active) {
+                case 'fondo':
+                    return compare(a["emisionId"], b["emisionId"], isAsc);
+                case 'plazo':
+                    return compare(a["fondoPlazo"], b["fondoPlazo"], isAsc);
+                case 'ano':
+                    return compare(a["plazoTasa"]["anio"], b["plazoTasa"]["anio"], isAsc);
+                case 'mes':
+                    return compare(a["plazoTasa"]["mes"], b["plazoTasa"]["mes"], isAsc);
+                case 'semana':
+                    return compare(a["plazoTasa"]["7"], b["plazoTasa"]["7"], isAsc);
+                case 'mes2':
+                    return compare(a["plazoTasa"]["28"], b["plazoTasa"]["28"], isAsc);
+                case 'ano2':
+                    return compare(a["plazoTasa"]["361"], b["plazoTasa"]["361"], isAsc);
+                default:
+                    return 0;
+            }
+        })
+    }
+
+    coberturaSortData(sort: Sort) {
+        this.coberturaDataSource.data = this.coberturaDataSource.data.sort((a, b) => {
+            const isAsc = sort.direction === 'asc';
+
+            switch (sort.active) {
+                case 'fondo':
+                    return compare(a["emisionId"], b["emisionId"], isAsc);
+                case 'plazo':
+                    return compare(a["fondoPlazo"], b["fondoPlazo"], isAsc);
+                case 'ano':
+                    return compare(a["plazoTasa"]["anio"], b["plazoTasa"]["anio"], isAsc);
+                case 'mes':
+                    return compare(a["plazoTasa"]["mes"], b["plazoTasa"]["mes"], isAsc);
+                case 'semana':
+                    return compare(a["plazoTasa"]["7"], b["plazoTasa"]["7"], isAsc);
+                case 'mes2':
+                    return compare(a["plazoTasa"]["28"], b["plazoTasa"]["28"], isAsc);
+                case 'ano2':
+                    return compare(a["plazoTasa"]["361"], b["plazoTasa"]["361"], isAsc);
+                default:
+                    return 0;
+            }
+        })
+    }
+
+
+    variableSortData(sort: Sort) {
+        this.variableDataSource.data = this.variableDataSource.data.sort((a, b) => {
+            const isAsc = sort.direction === 'asc';
+
+            switch (sort.active) {
+                case 'fondo':
+                    return compare(a["emisionId"], b["emisionId"], isAsc);
+                case 'plazo':
+                    return compare(a["fondoPlazo"], b["fondoPlazo"], isAsc);
+                case 'ano':
+                    return compare(a["plazoTasa"]["anio"], b["plazoTasa"]["anio"], isAsc);
+                case 'mes':
+                    return compare(a["plazoTasa"]["mes"], b["plazoTasa"]["mes"], isAsc);
+                case 'semana':
+                    return compare(a["plazoTasa"]["7"], b["plazoTasa"]["7"], isAsc);
+                case 'mes2':
+                    return compare(a["plazoTasa"]["28"], b["plazoTasa"]["28"], isAsc);
+                case 'ano2':
+                    return compare(a["plazoTasa"]["361"], b["plazoTasa"]["361"], isAsc);
+                default:
+                    return 0;
+            }
+        })
+    }
 
     sortData(sort: Sort) {
-        this.fondoDataSource = this.fondoDataSource.sort((a, b) => {
+        this.fondoDataSourceBkp = [...this.fondoDataSource];
+        this.fondoDataSource = [];
+        this.fondoDataSource = this.fondoDataSourceBkp.sort((a, b) => {
             const isAsc = sort.direction === 'asc';
-            console.log(a["emisionId"],b["emisionId"]);
+
             switch (sort.active) {
                 case 'fondo2':
                     return compare(a["emisionId"], b["emisionId"], isAsc);
                 case 'tipo':
                     return compare(a["tipoFondoId"], b["tipoFondoId"], isAsc);
                 case 'porciento':
-
                     return compare(a["porcentaje"], b["porcentaje"], isAsc);
                 default:
                     return 0;
             }
         });
-
     }
 
 
