@@ -10,7 +10,7 @@
             <div class="row">
                 <div  id="divcboPais" class="col-sm-3">
                     <div class="caja">
-                        <select formControlName="cboPaisOr" [control]="getCtr('cboPaisOr')" (ngModelChange)="obtenerEntidades($event)"idbInput>
+                        <select formControlName="cboPaisOr" (ngModelChange)="obtenerEntidades($event)"idbInput>
                             <option>Seleccione</option>
                             <option *ngFor="let pai of arrPais" [value]="pai.paiClave"> {{pai.paiDescripcion}}
                             </option>

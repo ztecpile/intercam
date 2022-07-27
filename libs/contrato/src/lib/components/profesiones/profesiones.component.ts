@@ -55,7 +55,7 @@ export class ProfesionesComponent implements OnInit {
     this.createFunForm();
     this.funcForm.get("observacion").disable(); 
     this.funcForm.get("proRiesgo").disable(); 
-    this.funcForm.get("proRiesgo").setValue("0")
+    this.funcForm.get("proRiesgo").setValue("0");
     
   }
   onSubmit() {
