@@ -58,7 +58,7 @@
 
                 </div>
                 <div id="nivelRiesgo" disabled="funcForm.invalid" class="col-sm-2">
-                    <input   type="text" [disabled]="funcForm.invalid" class="formulario__input"   pattern="^\d*[0-3]\d*$"  maxlength="1" [control]="getCtr('proRiesgo')" (input)="actualizacionNivel($event)" formControlName="proRiesgo" idbInput>
+                    <input   type="text" [disabled]="funcForm.invalid" class="formulario__input"   pattern="^\d*[0-3]\d*$"  maxlength="1" (input)="actualizacionNivel($event)" [defaultValue]="0"  formControlName="proRiesgo" idbInput>
                     <label class="formulario__label">NIVEL DE RIESGO</label>
                     <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.proRiesgo.hasError('pattern')">El Nivel de Riesgo solo acepta 0,1,2,3. </mat-hint>
                 </div> 

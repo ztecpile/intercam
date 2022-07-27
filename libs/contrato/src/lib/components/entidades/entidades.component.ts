@@ -83,7 +83,6 @@ export class EntidadesComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    console.log("Guardando...");
     this.funcForm.value;
   }
   applyFilter(filterValue: string) {
@@ -134,26 +133,22 @@ export class EntidadesComponent implements OnInit {
   }
 
   resetValidador():void{
-    this.funcForm.reset();
     this.btnGuardarIf=true;
     this.btnBuscarIf=true;
     this.btnEliminarIf=true;
     this.btnDeshacerIf=true;
     this.btnAltaIf=false;
-    this.funcForm.get("pais").clearValidators();
     this.funcForm.get("entidad").setValidators(Validators.required);
     this.funcForm.get("abreviatura").clearValidators();
     this.funcForm.get("claveCNBV").clearValidators();
     this.funcForm.get("codigoBroxel").clearValidators();
     this.funcForm.get("nivelRiesgo").clearValidators();
-    this.funcForm.get("cboPaisOr").clearValidators();
-      
+       
     this.funcForm.get("abreviatura").setValidators(Validators.pattern(/^[a-z\s]*$/i));
     this.funcForm.get("claveCNBV").setValidators(Validators.pattern(/^[0-9]*$/i));
     this.funcForm.get("codigoBroxel").setValidators(Validators.pattern(/^([0-9])*$/));
     this.funcForm.get("nivelRiesgo").setValidators(Validators.pattern(/^([0-3])*$/));
-    this.funcForm.get("cboPaisOr").clearValidators();
-
+ 
     this.funcForm.get("entidad").disable();
     this.funcForm.get("abreviatura").disable();
     this.funcForm.get("claveCNBV").disable();
@@ -199,6 +194,7 @@ export class EntidadesComponent implements OnInit {
           this.btnBuscarIf = true;
   
         });
+        this.resetValidador(); 
      }
     
   }
@@ -233,10 +229,10 @@ export class EntidadesComponent implements OnInit {
   validaDatos(e:any):Boolean{
     if(this._modalidad=="modificacion"){
       this.updateEntidad(this.entidadEdit,this.entidadVO);
-      this.resetValidador(); 
+      
     }else{
     this.guardarEntidades(this.entidadVO);
-    this.resetValidador();   
+    
     }
     return true;
   }
@@ -264,7 +260,7 @@ export class EntidadesComponent implements OnInit {
           this.funcForm.reset();
           
         });
-        
+        this.resetValidador();   
     }
      
    
@@ -382,7 +378,6 @@ export class EntidadesComponent implements OnInit {
   }
   actualizacionRiesgo(event: Event){
     this.submitted = true;
-    let riesgo = event.target as unknown as HTMLInputElement["valueOf"];
     if((this.entidadEdit.entRiesgo!==this.funcForm.get('nivelRiesgo').value) && this.entidadEdit.entRiesgo!== undefined ){
         this._modalidad="modificacion";
     }else{  

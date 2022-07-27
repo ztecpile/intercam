@@ -6,7 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { EntidadVO, ProfesionVO } from '@intercam/model';
 import Swal from 'sweetalert2';
 import { ProfesionService } from '../../services/profesion.service';
-
+import encodeUtf8 from 'encode-utf8'
 @Component({
   selector: 'intercam-profesiones',
   templateUrl: './profesiones.component.html',
@@ -54,7 +54,8 @@ export class ProfesionesComponent implements OnInit {
   ngOnInit(): void {
     this.createFunForm();
     this.funcForm.get("observacion").disable(); 
-    this.funcForm.get("proRiesgo").disable();
+    this.funcForm.get("proRiesgo").disable(); 
+    this.funcForm.get("proRiesgo").setValue("0")
     
   }
   onSubmit() {
@@ -82,6 +83,8 @@ export class ProfesionesComponent implements OnInit {
       this.activeTab= true;
       this.btnGuardarIf=true;
       this._modalidad="alta";
+      this.funcForm.get("observacion").setValidators([Validators.required,Validators.maxLength(50), Validators.pattern(/^[a-z0-9\s]*$/i)]); 
+      this.funcForm.get("proRiesgo").setValidators([Validators.maxLength(50), Validators.pattern(/^[0-3\s]/)]);
 
    }
    /**

@@ -13,6 +13,7 @@ import { MatSort, Sort } from '@angular/material/sort';
 @Component({
     selector: 'abc-parametros-component',
     templateUrl: './abc-parametros.component.html',
+    styleUrls: ['./abc-parametros.scss']
 })
 
 export class ABCParametrosComponent implements OnInit ,AfterViewInit{
