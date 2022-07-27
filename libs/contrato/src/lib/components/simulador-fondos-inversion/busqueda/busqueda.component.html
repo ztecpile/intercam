@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-3" style="z-index: 5;padding-top: 10px;">
-        <input type="text" class="formulario__input" (blur)="transformAmount($event)" [(ngModel)]="monto" style="padding-top: 20px;" />
-        <label class="formulario__label">* {{ 'Monto' | transloco }}</label>
+        <input type="text" class="formulario__input" (blur)="transformAmount($event)" [(ngModel)]="monto" style="padding-top: 20px;" (keydown)="formatoDeInput($event)" />
+        <label style="margin-top: -60px;" class="formulario__label">* {{ 'Monto' | transloco }}</label>
     </div>
     <div class="col-sm-3" style="z-index: 5">
         <div class="caja">
@@ -88,7 +88,7 @@
                         [ngClass]="{ 'selected': row === selectedRow }" (click)="getRecord(row)"></tr>
                 </table>
 
-                <mat-paginator [pageSizeOptions]="[20]" showFirstLastButtons
+                <mat-paginator #deudaPaginator [pageSizeOptions]="[20]" showFirstLastButtons
                     aria-label="Select page of periodic elements">
                 </mat-paginator>
 
@@ -143,7 +143,7 @@
                         [ngClass]="{ 'selected': row === selectedRow }" (click)="getRecord(row)"></tr>
                 </table>
 
-                <mat-paginator [pageSizeOptions]="[ 20]" showFirstLastButtons
+                <mat-paginator #coberturaPaginator [pageSizeOptions]="[ 20]" showFirstLastButtons
                     aria-label="Select page of periodic elements">
                 </mat-paginator>
             </mat-tab>
@@ -196,7 +196,7 @@
                     <tr mat-row *matRowDef="let row; columns: displayedColumns"
                         [ngClass]="{ 'selected': row === selectedRow }" (click)="getRecord(row)"></tr>
                 </table>
-                <mat-paginator [pageSizeOptions]="[20]" showFirstLastButtons
+                <mat-paginator #variablePaginator [pageSizeOptions]="[20]" showFirstLastButtons
                     aria-label="Select page of periodic elements">
                 </mat-paginator>
             </mat-tab>
@@ -219,23 +219,23 @@
     </div>
 
     <div class="mat-elevation-z8 col-sm-3 mr-5 ml-5">
-        <table mat-table [dataSource]="fondoDataSource" class="mat-elevation-z8">
+        <table matSort mat-table [dataSource]="fondoDataSource" class="mat-elevation-z8" (matSortChange)="sortData($event)">
             <ng-container matColumnDef="fondo2">
-                <th mat-header-cell *matHeaderCellDef>Fondo</th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Fondo</th>
                 <td mat-cell *matCellDef="let element">{{ element.emisionId }}</td>
             </ng-container>
 
             <ng-container matColumnDef="tipo">
-                <th mat-header-cell *matHeaderCellDef>Tipo</th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</th>
                 <td mat-cell *matCellDef="let element">{{
                     element.tipoFondoId==5?"Deuda":element.tipoFondoId==10?"Variable":"Cobertura"}}</td>
             </ng-container>
 
             <ng-container matColumnDef="porciento">
-                <th mat-header-cell *matHeaderCellDef>%</th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>%</th>
                 <td mat-cell *matCellDef="let element">
                     <ng-container>
-                        <input class="form-control" (keyup)="hasChenges()" [(ngModel)]="element.porcentaje">
+                        <input (keydown)="formatoDeInput($event)" class="form-control" (keyup)="hasChenges()" [(ngModel)]="element.porcentaje">
                     </ng-container>
                 </td>
             </ng-container>
