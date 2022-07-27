@@ -7,6 +7,7 @@ import { InstrumentoVO, MapeoDivisa, MesasOperacionVO, TipoCambioBitacoraVO, Usu
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ConsultaInfoGralEvent } from '../../util/ConsultaInfoGralEvent';
 import Swal from 'sweetalert2';
+import { MatSort, Sort } from '@angular/material/sort';
 
 
 export class bp {
@@ -50,6 +51,7 @@ export class BitacoraPreciosComponent implements OnInit {
 
   displayedColumns: string[] = ['instrumento', 'compra', 'venta', 'compra2', 'venta2', 'compra3', 'venta3', 'compra4', 'venta4', 'compra5', 'venta5'];
   dataSource = new MatTableDataSource<bp>();
+  dataSourceBkp: bp[] = [];
   // dataSource = ELEMENT_DATA;  
 
   perId: string; //clave de operador 
@@ -73,19 +75,22 @@ export class BitacoraPreciosComponent implements OnInit {
   paginador: boolean;
   listpromo: listPromotor[] = []
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private bPService: BitacoraPreciosService,private formbuilder: FormBuilder) {
+  constructor(private bPService: BitacoraPreciosService, private formbuilder: FormBuilder) {
     this.perId = sessionStorage.getItem('perId');
     this.usuarioVO = JSON.parse(sessionStorage.getItem("usuarioVO")) as UsuarioVO;
     console.log(this.usuarioVO);
-    for (const clavesLegadas of this.usuarioVO.clavesLegadas) {
-      if (clavesLegadas.tconId == 5) {
-        let list = new listPromotor;
-        console.log(clavesLegadas.tconId, clavesLegadas.idVO.clvPro, clavesLegadas.idVO.clvSuc);
-        list.promotor = clavesLegadas.idVO.clvPro;
-        list.sucursal = clavesLegadas.idVO.clvSuc;
-        list.mesa = Number(clavesLegadas.clvMesa);
-        this.listpromo.push(list);
+    if (this.usuarioVO != null) {
+      for (const clavesLegadas of this.usuarioVO.clavesLegadas) {
+        if (clavesLegadas.tconId == 5) {
+          let list = new listPromotor;
+          console.log(clavesLegadas.tconId, clavesLegadas.idVO.clvPro, clavesLegadas.idVO.clvSuc);
+          list.promotor = clavesLegadas.idVO.clvPro;
+          list.sucursal = clavesLegadas.idVO.clvSuc;
+          list.mesa = Number(clavesLegadas.clvMesa);
+          this.listpromo.push(list);
+        }
       }
     }
     console.log(this.listpromo);
@@ -96,7 +101,7 @@ export class BitacoraPreciosComponent implements OnInit {
 
   ngOnInit(): void {
     this.createFunForm();
-document.getElementById('cboMesa').setAttribute('disabled','');
+    document.getElementById('cboMesa').setAttribute('disabled', '');
     if (this.listpromo.length == 0) {
       this.mostrarMensaje('El promotor no tiene clave legada para este negocio', 'error');
     }
@@ -304,6 +309,8 @@ document.getElementById('cboMesa').setAttribute('disabled','');
           dataPro.push(mattab);
 
         }
+        this.dataSourceBkp = dataPro;
+        this.dataSource.sort = this.sort;
         this.dataSource = new MatTableDataSource(dataPro);
         this.paginador = true;
         this.dataSource.paginator = this.paginator;
@@ -384,9 +391,9 @@ document.getElementById('cboMesa').setAttribute('disabled','');
     let unixtime = new Date(String(date + ' ' + hora));
     let unixtimeMax = new Date(this.sumaCinco(unixtime));
     let unixtimeMin = new Date(this.restaCinco(unixtime));
-    console.log('unixtime',unixtime.getTime());
-    console.log('unixtimeMax',unixtimeMax.getTime());
-    console.log('unixtimeMin',unixtimeMin.getTime());
+    console.log('unixtime', unixtime.getTime());
+    console.log('unixtimeMax', unixtimeMax.getTime());
+    console.log('unixtimeMin', unixtimeMin.getTime());
 
     if ((unixtime.getTime() < unixtimeMin.getTime()) || (unixtime.getTime() > unixtimeMax.getTime())) {
       this.obtenerBitacora();
@@ -405,5 +412,45 @@ document.getElementById('cboMesa').setAttribute('disabled','');
   restaCinco(fechahora: Date) {
     return fechahora.getMinutes() + ":" + (fechahora.setMinutes(fechahora.getMinutes() - 5) && fechahora.getMinutes());
   }
+  sortChange(sort: Sort) {
+    console.log(sort);
+    if (!sort.active || sort.direction === '') {
+      this.dataSource.data = this.dataSourceBkp;
+      return;
+    }
 
+    this.dataSource.data = this.dataSource.data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'instrumento':
+          return compare(a.instrumento, b.instrumento, isAsc);
+        case 'compra':
+          return compare(a.compra, b.compra, isAsc);
+        case 'venta':
+          return compare(a.venta, b.venta, isAsc);
+        case 'compra1':
+          return compare(a.compra1, b.compra1, isAsc);
+        case 'venta1':
+          return compare(a.venta1, b.venta1, isAsc);
+        case 'compra2':
+          return compare(a.compra2, b.compra2, isAsc);
+        case 'venta2':
+          return compare(a.venta2, b.venta2, isAsc);
+        case 'compra3':
+          return compare(a.compra3, b.compra3, isAsc);
+        case 'venta3':
+          return compare(a.venta3, b.venta3, isAsc);
+        case 'compra4':
+          return compare(a.compra4, b.compra4, isAsc);
+        case 'venta4':
+          return compare(a.venta4, b.venta4, isAsc);
+        default:
+          return 0;
+      }
+    });
+
+  }
+}
+function compare(a: number | string, b: number | string, isAsc: boolean) {
+  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }

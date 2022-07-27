@@ -159,6 +159,7 @@ onModoGuardarClick() :void{
     parametros.parValor= this.funcForm.get('parValor').value;
     
     if(this.funcForm.valid&& this._modalidad=="alta"){
+      
       this.servicesParametros.saveParametros(parametros).subscribe(then => {
         this.mostrarMensaje("Operacion realizada con exito", 'info');
         this.funcForm.reset();
@@ -166,8 +167,9 @@ onModoGuardarClick() :void{
     });
     }
     else if(this.funcForm.valid&& this._modalidad=="modificacion"){
-      this.servicesParametros.saveParametros(parametros).subscribe(then => {
-        this.mostrarMensaje("Operacion realizada con exito", 'info');
+      parametros.parNombre= this.selectParametrosRow.parNombre;
+      this.servicesParametros.updateParametros(parametros).subscribe(then => {
+        this.mostrarMensaje("Actualización realizada con exito", 'info');
         this.funcForm.reset();
         this.onModoConsultaClick();
     });

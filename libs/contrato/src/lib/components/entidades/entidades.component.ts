@@ -94,12 +94,11 @@ export class EntidadesComponent implements OnInit {
  
   createFunForm() {
     this.funcForm = this.formBuilder.group({
-      pais: new FormControl('', [Validators.required]),
       entidad: new FormControl('', [Validators.required, Validators.pattern(/^[a-z\s]*$/i)]),
       abreviatura: new FormControl('', [Validators.pattern(/^[a-z\s]*$/i)]),
       claveCNBV: new FormControl('',  [Validators.pattern(/^[0-9]*$/i)]),
       codigoBroxel: new FormControl('', [Validators.pattern(/^([0-9])*$/)]),
-      entClave: new FormControl('', ), 
+      entClave: new FormControl(''), 
       nivelRiesgo: new FormControl('', [Validators.pattern(/^([0-3])*$/)], ),
       cboPaisOr:['']
      });
@@ -138,17 +137,19 @@ export class EntidadesComponent implements OnInit {
     this.btnEliminarIf=true;
     this.btnDeshacerIf=true;
     this.btnAltaIf=false;
-    this.funcForm.get("entidad").setValidators(Validators.required);
+     this.funcForm.get("entidad").setValidators(Validators.required);
     this.funcForm.get("abreviatura").clearValidators();
     this.funcForm.get("claveCNBV").clearValidators();
     this.funcForm.get("codigoBroxel").clearValidators();
     this.funcForm.get("nivelRiesgo").clearValidators();
-       
+    this.funcForm.get("cboPaisOr").clearValidators();
+      
     this.funcForm.get("abreviatura").setValidators(Validators.pattern(/^[a-z\s]*$/i));
     this.funcForm.get("claveCNBV").setValidators(Validators.pattern(/^[0-9]*$/i));
     this.funcForm.get("codigoBroxel").setValidators(Validators.pattern(/^([0-9])*$/));
     this.funcForm.get("nivelRiesgo").setValidators(Validators.pattern(/^([0-3])*$/));
- 
+    this.funcForm.get("cboPaisOr").clearValidators();
+
     this.funcForm.get("entidad").disable();
     this.funcForm.get("abreviatura").disable();
     this.funcForm.get("claveCNBV").disable();
@@ -378,6 +379,7 @@ export class EntidadesComponent implements OnInit {
   }
   actualizacionRiesgo(event: Event){
     this.submitted = true;
+    let riesgo = event.target as unknown as HTMLInputElement["valueOf"];
     if((this.entidadEdit.entRiesgo!==this.funcForm.get('nivelRiesgo').value) && this.entidadEdit.entRiesgo!== undefined ){
         this._modalidad="modificacion";
     }else{  

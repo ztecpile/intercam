@@ -14,7 +14,7 @@ import { BancoService } from '../../services/bancos.service';
 })
 
 
-export class BancosComponent implements OnInit,AfterViewInit {
+export class BancosComponent implements OnInit {
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
     displayedColumns: string[] = ['banid', 'nombre', 'estatus', 'claveBanxico', 'claveSica', 'claveSabi', 'claveSiif', 'claveOperaIntercam', 'pais', 'nombreCorto', 'claveOperaTefbv', 'claveOperaSpeua'];
@@ -74,10 +74,6 @@ export class BancosComponent implements OnInit,AfterViewInit {
         this.createFunForm();
        this.deshabilitarCampos();
        this.atributosElemento();
-    }
-    ngAfterViewInit(): void {
-        this.dataSource.sort = this.sort;
-
     }
 
     getCtr(name: string, group = ''): FormControl {
@@ -329,6 +325,11 @@ export class BancosComponent implements OnInit,AfterViewInit {
     changeAltaButton() {
         this.habilitarCampos();
         this._modalidad = "alta";
+        document.getElementById('buscar').setAttribute('disabled','');
+        document.getElementById('add').setAttribute('disabled','');
+       document.getElementById('buscar').setAttribute('class','buscar-btn-des btn-img');
+       document.getElementById('add').setAttribute('class','alta-button-des btn-img');
+       
     }
     cambio(){
         document.getElementById('save').removeAttribute('disabled');
@@ -484,8 +485,14 @@ console.log(banco);
         this.showBtn = true;
         this.showBtn2 = false;
         this.habilitarCampo = true;
+        document.getElementById('buscar').removeAttribute('disabled');
+        document.getElementById('add').removeAttribute('disabled');
+       document.getElementById('buscar').setAttribute('class','buscar-btn btn-img');
+       document.getElementById('add').setAttribute('class','alta-button btn-img');
         document.getElementById('save').setAttribute('disabled','');
         document.getElementById('deshacer').setAttribute('disabled','');
+        document.getElementById('save').setAttribute('class','save-button-des btn-img');
+       document.getElementById('deshacer').setAttribute('class','deshacer-button-des btn-img');
         document.getElementById('delete').setAttribute('disabled','');
         this.funcForm.get("nombre").setValue('');
         this.funcForm.get("claveBanxico").setValue('');
