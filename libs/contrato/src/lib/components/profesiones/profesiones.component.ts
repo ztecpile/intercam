@@ -6,8 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { EntidadVO, ProfesionVO } from '@intercam/model';
 import Swal from 'sweetalert2';
 import { ProfesionService } from '../../services/profesion.service';
-import encodeUtf8 from 'encode-utf8'
-@Component({
+ @Component({
   selector: 'intercam-profesiones',
   templateUrl: './profesiones.component.html',
   styleUrls: ['./profesiones.component.scss']
