@@ -1,228 +1,242 @@
 <!DOCTYPE html>
-<div class="header"></div>
-<div class="posicion"></div>
-<!--Abre contenido-->
-<main class="">
-    <div class="bdcontent">
+<hr class="red" />
+<strong>
+    <h5>Bancos</h5>
+</strong>
+<hr class="red" />
+<div class="container">
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortChange($event)">
+            <ng-container matColumnDef="banid">
+                <th hidden mat-header-cell *matHeaderCellDef>banid</th>
+                <td hidden mat-cell *matCellDef="let element">{{ element.banId }}
+                </td>
+            </ng-container>
 
-        <hr class="red" />
-        <strong><h5>Bancos</h5></strong>
-        <hr class="red" />
-        <div class="container">
-        <div class="mat-elevation-z8">
-            <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortChange($event)">
-                <ng-container matColumnDef="banid">
-                    <th hidden mat-header-cell *matHeaderCellDef  mat-sort-header>banid</th>
-                    <td hidden mat-cell *matCellDef="let element">{{ element.banId }}
-                    </td>
-                </ng-container>
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Nombre">Nombre</th>
+                <td mat-cell *matCellDef="let element">{{ element.banNombre }}
+                </td>
+            </ng-container>
 
-                <ng-container matColumnDef="nombre">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Nombre">Nombre</th>
-                    <td mat-cell *matCellDef="let element">{{ element.banNombre }}
-                    </td>
-                </ng-container>
+            <ng-container matColumnDef="estatus">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Estatus">Estatus
+                </th>
+                <td mat-cell *matCellDef="let element">{{ element.banEstatus== 'AC'?'Activo':'Inactivo'}}
+                </td>
+            </ng-container>
 
-                <ng-container matColumnDef="estatus">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Estatus">Estatus</th>
-                    <td mat-cell *matCellDef="let element">{{ element.banEstatus== 'AC'?'Activo':'Inactivo'}}
-                    </td>
-                </ng-container>
+            <ng-container matColumnDef="claveBanxico">
+                <th hidden mat-header-cell *matHeaderCellDef >clave Banxico</th>
+                <td hidden mat-cell *matCellDef="let element">{{
+                    element.banClaveBanxico }}</td>
+            </ng-container>
 
-                <ng-container matColumnDef="claveBanxico">
-                    <th hidden mat-header-cell *matHeaderCellDef  mat-sort-header>clave Banxico</th>
-                    <td hidden mat-cell *matCellDef="let element">{{
-                        element.banClaveBanxico }}</td>
-                </ng-container>
+            <ng-container matColumnDef="claveSica">
+                <th hidden mat-header-cell *matHeaderCellDef >clave SICA</th>
+                <td hidden mat-cell *matCellDef="let element">{{
+                    element.banIdSica }}</td>
+            </ng-container>
 
-                <ng-container matColumnDef="claveSica">
-                    <th hidden mat-header-cell *matHeaderCellDef  mat-sort-header>clave SICA</th>
-                    <td hidden mat-cell *matCellDef="let element">{{
-                        element.banIdSica }}</td>
-                </ng-container>
+            <ng-container matColumnDef="claveSabi">
+                <th hidden mat-header-cell *matHeaderCellDef >clave SABi</th>
+                <td hidden mat-cell *matCellDef="let element">
+                    {{element.banIdFondos }}
+                </td>
+            </ng-container>
 
-                <ng-container matColumnDef="claveSabi">
-                    <th hidden mat-header-cell *matHeaderCellDef  mat-sort-header>clave SABi</th>
-                    <td hidden mat-cell *matCellDef="let element">
-                        {{element.banIdFondos }}
-                    </td>
-                </ng-container>
+            <ng-container matColumnDef="claveSiif">
+                <th hidden mat-header-cell *matHeaderCellDef >clave SIIF</th>
+                <td hidden mat-cell *matCellDef="let element">
+                    {{element.banIdCasaBolsa }}</td>
+            </ng-container>
 
-                <ng-container matColumnDef="claveSiif">
-                    <th hidden mat-header-cell *matHeaderCellDef  mat-sort-header>clave SIIF</th>
-                    <td hidden mat-cell *matCellDef="let element">
-                        {{element.banIdCasaBolsa }}</td>
-                </ng-container>
+            <ng-container matColumnDef="claveOperaIntercam">
+                <th hidden mat-header-cell *matHeaderCellDef >clave opera intercam</th>
+                <td hidden mat-cell *matCellDef="let element">{{
+                    element.banOperaIntercam }}</td>
+            </ng-container>
 
-                <ng-container matColumnDef="claveOperaIntercam">
-                    <th hidden mat-header-cell *matHeaderCellDef  mat-sort-header>clave opera intercam</th>
-                    <td hidden mat-cell *matCellDef="let element">{{
-                        element.banOperaIntercam }}</td>
-                </ng-container>
+            <ng-container matColumnDef="claveOperaTefbv">
+                <th hidden mat-header-cell *matHeaderCellDef >clave opera tefbv</th>
+                <td hidden mat-cell *matCellDef="let element">{{
+                    element.banOperaTefbv }}</td>
+            </ng-container>
 
-                <ng-container matColumnDef="claveOperaTefbv">
-                    <th hidden mat-header-cell *matHeaderCellDef  mat-sort-header>clave opera tefbv</th>
-                    <td hidden mat-cell *matCellDef="let element">{{
-                        element.banOperaTefbv }}</td>
-                </ng-container>
+            <ng-container matColumnDef="claveOperaSpeua">
+                <th hidden mat-header-cell *matHeaderCellDef >clave opera speua</th>
+                <td hidden mat-cell *matCellDef="let element">{{
+                    element.banOperaTefbv }}</td>
+            </ng-container>
 
-                <ng-container matColumnDef="claveOperaSpeua">
-                    <th hidden mat-header-cell *matHeaderCellDef  mat-sort-header>clave opera speua</th>
-                    <td hidden mat-cell *matCellDef="let element">{{
-                        element.banOperaTefbv }}</td>
-                </ng-container>
+            <ng-container matColumnDef="pais">
+                <th hidden mat-header-cell *matHeaderCellDef >pais</th>
+                <td hidden mat-cell *matCellDef="let element">{{ element.paiClave
+                    }}</td>
+            </ng-container>
 
-                <ng-container matColumnDef="pais">
-                    <th hidden mat-header-cell *matHeaderCellDef  mat-sort-header>pais</th>
-                    <td hidden mat-cell *matCellDef="let element">{{ element.paiClave
-                        }}</td>
-                </ng-container>
+            <ng-container matColumnDef="nombreCorto">
+                <th hidden mat-header-cell *matHeaderCellDef >pais</th>
+                <td hidden mat-cell *matCellDef="let element">{{
+                    element.banDescCorta }}</td>
+            </ng-container>
 
-                <ng-container matColumnDef="nombreCorto">
-                    <th hidden mat-header-cell *matHeaderCellDef  mat-sort-header>pais</th>
-                    <td hidden mat-cell *matCellDef="let element">{{
-                        element.banDescCorta }}</td>
-                </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns "></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"
+                [ngClass]="{ 'selected': row === selectedRowPintar }" (click)="selectedRow(row)"></tr>
+        </table>
+        <div id="paginadorDiv" class="row" hidden>
+            <mat-paginator [pageSizeOptions]="[20]" showFirstLastButtons></mat-paginator>
 
-                <tr mat-header-row *matHeaderRowDef="displayedColumns "></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns"
-                    [ngClass]="{ 'selected': row === selectedRowPintar }" (click)="selectedRow(row)"></tr>
-            </table>
-            <div id="paginadorDiv" class="row" hidden>
-                <mat-paginator [pageSizeOptions]="[20]" showFirstLastButtons></mat-paginator>
+        </div>
+    </div>
+
+    <form [formGroup]="funcForm" class="formulario" (ngSubmit)="onSubmit()" autocomplete="off" idbForm>
+        <div class="row">
+            <div id="divNombre" class="col-sm-8">
+                <input type="textarea" class="formulario__input" [control]="getCtr('nombre')" formControlName="nombre"
+                    (change)="cambio()" idbInput>
+
+                <label class="formulario__label">{{ 'Nombre *' | transloco}}</label>
+                <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.nombre.hasError('maxlength')">El
+                    campo debe tener como m&aacute;ximo 50 caracteres. </mat-hint>
+                <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.nombre.hasError('pattern')">El campo
+                    solo debe de ser alfanum&eacute;rico. </mat-hint>
+                <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.nombre.hasError('required')">El
+                    campo es requerido. </mat-hint>
 
             </div>
+            <div id="divClaveBanxico" class="col-sm-8">
+                <input type="text" class="formulario__input" [control]="getCtr('claveBanxico')"
+                    formControlName="claveBanxico" (change)="cambio()" idbInput>
+
+                <label class="formulario__label">{{ 'Clave BANXICO *' | transloco }}</label>
+                <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveBanxico.hasError('maxlength')">
+                    El campo debe tener como m&aacute;ximo 8 caracteres. </mat-hint>
+                <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveBanxico.hasError('pattern')">El
+                    campo solo debe de ser alfanum&eacute;rico. </mat-hint>
+                <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveBanxico.hasError('required')">
+                    El campo es requerido. </mat-hint>
+
+            </div>
+
+            <div id="divClaveSica" class="col-sm-8">
+                <input type="text" class="formulario__input" [control]="getCtr('claveSica')" formControlName="claveSica"
+                    (change)="cambio()" idbInput>
+
+                <label class="formulario__label">{{ 'Clave SICA' | transloco }}</label>
+                <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveSica.hasError('maxlength')">El
+                    campo debe tener como m&aacute;ximo 20 caracteres. </mat-hint>
+                <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveSica.hasError('pattern')">El
+                    campo solo debe de ser alfanum&eacute;rico. </mat-hint>
+            </div>
+
+            <div id="divClaveSabi" class="col-sm-8">
+                <input type="text" class="formulario__input" [control]="getCtr('claveSabi')" formControlName="claveSabi"
+                    (change)="cambio()" idbInput>
+
+                <label class="formulario__label">{{ 'Clave SABI' | transloco }}</label>
+                <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveSabi.hasError('maxlength')">El
+                    campo debe tener como m&aacute;ximo 20 caracteres. </mat-hint>
+                <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveSabi.hasError('pattern')">El
+                    campo solo debe de ser alfanum&eacute;rico. </mat-hint>
+            </div>
+
+            <div id="divClaveSiif" class="col-sm-8">
+                <input type="text" class="formulario__input" [control]="getCtr('claveSiif')" formControlName="claveSiif"
+                    (change)="cambio()" idbInput>
+
+                <label class="formulario__label">{{ 'Clave SIIF' | transloco }}</label>
+                <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveSiif.hasError('maxlength')">El
+                    campo debe tener como m&aacute;ximo 20 caracteres. </mat-hint>
+                <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveSiif.hasError('pattern')">El
+                    campo solo debe de ser alfanum&eacute;rico. </mat-hint>
+            </div>
         </div>
+        <br>
+
+        <div class="row" id="divOpt" class="col-sm-8">
+            <label appearance="fill" class="formulario_check_label" title="estatus">{{ 'Estatus' | transloco }}</label>
+            &nbsp;
+            <mat-radio-button class="ml-5" id="optActivo" [disabled]="optActivoDisabled" [checked]="checkActivo"
+                (change)="changeRadioActivo($event);"></mat-radio-button>
+
+            <label class="lbl_datos">{{'Activo'|transloco}}</label>
+            &nbsp;
+            <mat-radio-button class="ml-5" id="optInactivo" [disabled]="optInactivoDisabled" [checked]="checkInactivo"
+                (change)="changeRadioInactivo($event);"></mat-radio-button>
+
+            <label class="lbl_datos">{{'Inactivo'|transloco}}</label>
+
         </div>
-        <div class="container">
-            <form [formGroup]="funcForm" class="formulario" (ngSubmit)="onSubmit()" autocomplete="off" idbForm>
-                <div class="row">
-                    <div id="divNombre" class="col-sm-8">
-                        <input type="textarea" class="formulario__input" [control]="getCtr('nombre')"
-                            formControlName="nombre" (change)="cambio()" idbInput>
-                           
-                        <label class="formulario__label">{{ 'Nombre *' | transloco}}</label>
-                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.nombre.hasError('maxlength')">El campo debe tener como m&aacute;ximo 50 caracteres. </mat-hint>
-                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.nombre.hasError('pattern')">El campo solo debe de ser alfanum&eacute;rico. </mat-hint>
-                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.nombre.hasError('required')">El campo es requerido. </mat-hint>
-                        
-                    </div>
-                    <div id="divClaveBanxico" class="col-sm-8">
-                        <input type="text" class="formulario__input" [control]="getCtr('claveBanxico')"
-                            formControlName="claveBanxico" (change)="cambio()" idbInput>
-                          
-                        <label class="formulario__label">{{ 'Clave BANXICO *' | transloco }}</label>
-                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveBanxico.hasError('maxlength')">El campo debe tener como m&aacute;ximo 8 caracteres. </mat-hint>
-                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveBanxico.hasError('pattern')">El campo solo debe de ser alfanum&eacute;rico. </mat-hint>
-                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveBanxico.hasError('required')">El campo es requerido. </mat-hint>
-                        
-                    </div>
+        <br>
+        <div class="row" id="divCheckOp" class="col-sm-8">
+            <label class="formulario_check_label">
+                {{'Opera Intercam' | transloco}}
+            </label>&nbsp;
+            <mat-checkbox id="checkOpInter" class="example-margin" labelPosition="before" [checked]="checkOpInt"
+                [disabled]="checkOpIntDisabled" (change)="changeCheckInter($event);"></mat-checkbox>&nbsp;
+            &nbsp;
 
-                    <div id="divClaveSica" class="col-sm-8">
-                        <input type="text" class="formulario__input" [control]="getCtr('claveSica')"
-                            formControlName="claveSica" (change)="cambio()" idbInput>
-                         
-                        <label class="formulario__label">{{ 'Clave SICA' | transloco }}</label>
-                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveSica.hasError('maxlength')">El campo debe tener como m&aacute;ximo 20 caracteres. </mat-hint>
-                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveSica.hasError('pattern')">El campo solo debe de ser alfanum&eacute;rico. </mat-hint>
-                    </div>
+            <label class="formulario_check_label">
+                {{'Opera Speua' | transloco}}
+            </label>&nbsp;
+            <mat-checkbox id="checkOpSpeua" class="example-margin" labelPosition="before" [checked]="checkOpSpe"
+                [disabled]="checkOpSpeDisabled" (change)="changeCheckSpeia($event);"></mat-checkbox>&nbsp;
 
-                    <div id="divClaveSabi" class="col-sm-8">
-                        <input type="text" class="formulario__input" [control]="getCtr('claveSabi')"
-                            formControlName="claveSabi" (change)="cambio()" idbInput>
-                            
-                        <label class="formulario__label">{{ 'Clave SABI' | transloco }}</label>
-                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveSabi.hasError('maxlength')">El campo debe tener como m&aacute;ximo 20 caracteres. </mat-hint>
-                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveSabi.hasError('pattern')">El campo solo debe de ser alfanum&eacute;rico. </mat-hint>
-                    </div>
-
-                    <div id="divClaveSiif" class="col-sm-8">
-                        <input type="text" class="formulario__input" [control]="getCtr('claveSiif')"
-                            formControlName="claveSiif" (change)="cambio()" idbInput>
-                         
-                        <label class="formulario__label">{{ 'Clave SIIF' | transloco }}</label>
-                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveSiif.hasError('maxlength')">El campo debe tener como m&aacute;ximo 20 caracteres. </mat-hint>
-                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.claveSiif.hasError('pattern')">El campo solo debe de ser alfanum&eacute;rico. </mat-hint>
-                    </div>
-                </div>
-                <br>
-
-                <div class="row" id="divOpt" class="col-sm-8">
-                    <label appearance="fill" class="formulario_check_label" title="estatus">{{ 'Estatus' | transloco }}</label>
-                    &nbsp;
-                        <mat-radio-button class="ml-5" id="optActivo" [disabled]="optActivoDisabled" [checked]="checkActivo" (change)="changeRadioActivo($event);"></mat-radio-button>
-                      
-                    <label class="lbl_datos">{{'Activo'|transloco}}</label>
-                    &nbsp;
-                        <mat-radio-button class="ml-5" id="optInactivo" [disabled]="optInactivoDisabled" [checked]="checkInactivo" (change)="changeRadioInactivo($event);"></mat-radio-button> 
-                       
-                    <label class="lbl_datos">{{'Inactivo'|transloco}}</label>
-
-                </div>
-                <br>
-                <div class="row" id="divCheckOp" class="col-sm-8">
-                    <label class="formulario_check_label">
-                        {{'Opera Intercam' | transloco}}
-                    </label>&nbsp;
-                        <mat-checkbox id="checkOpInter" class="example-margin" labelPosition="before" [checked]="checkOpInt"  [disabled]="checkOpIntDisabled" (change)="changeCheckInter($event);" ></mat-checkbox>&nbsp;
-                        &nbsp;
-
-                    <label class="formulario_check_label">
-                        {{'Opera Speua' | transloco}}
-                    </label>&nbsp;
-                        <mat-checkbox id="checkOpSpeua" class="example-margin" labelPosition="before" [checked]="checkOpSpe" [disabled]="checkOpSpeDisabled" (change)="changeCheckSpeia($event);" ></mat-checkbox>&nbsp;
-
-                    <label class="formulario_check_label">
-                        {{'Opera tefbv' | transloco}}
-                    </label>&nbsp;
-                        <mat-checkbox id="checkOpTefbv" class="example-margin" labelPosition="before" [checked]="checkOpTef" [disabled]="checkOpTefDisabled" (change)="changeCheckFbv($event);" ></mat-checkbox>
+            <label class="formulario_check_label">
+                {{'Opera tefbv' | transloco}}
+            </label>&nbsp;
+            <mat-checkbox id="checkOpTefbv" class="example-margin" labelPosition="before" [checked]="checkOpTef"
+                [disabled]="checkOpTefDisabled" (change)="changeCheckFbv($event);"></mat-checkbox>
 
 
-                </div>
-                <div class="row">
-                    <div id="divComPais" class="col-sm-8">
-                        <div class="caja">
-                            <select formControlName="combPais" [control]="getCtr('combPais')" (change)="cambio()"
-                                idbInput>
-                                <option *ngFor="let search of datapaises" [value]="search.paiClave">
-                                    {{search.paiDescripcion}}</option>
-                            </select>
-                        </div>
-                        
-                        <label class="formulario__label">{{ 'Pais' | transloco }}</label>
-                    </div>
-                    <div id="divNombreCorto" class="col-sm-8">
-                        <input type="text" class="formulario__input" [control]="getCtr('nombreCorto')"
-                            formControlName="nombreCorto" (change)="cambio()" idbInput>
-                           
-                        <label class="formulario__label">{{ 'Nombre corto' | transloco }}</label>
-                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.nombreCorto.hasError('maxlength')">El campo debe tener como m&aacute;ximo 10 caracteres. </mat-hint>
-                        <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.nombreCorto.hasError('pattern')">El campo solo debe de ser alfab&eacute;tico. </mat-hint>
-                    </div>
-                    
-                </div>
-            </form>
         </div>
-        <div class="centrar_btn">
-            <button class="btn-img buscar-btn" id="buscar" type="button" (click)="consulta()">
-                <span class="tooltip">{{ 'Buscar' | transloco }}</span>
-            </button>
-            <button id="add" class="btn-img alta-button" type="button" (click)="changeAltaButton()">
-                <span class="tooltip">{{ 'Alta' | transloco }}</span>
-            </button>
+        <div class="row">
+            <div id="divComPais" class="col-sm-8">
+                <div class="caja">
+                    <select formControlName="combPais" [control]="getCtr('combPais')" (change)="cambio()" idbInput>
+                        <option *ngFor="let search of datapaises" [value]="search.paiClave">
+                            {{search.paiDescripcion}}</option>
+                    </select>
+                </div>
 
-            <button id="save" class="btn-img save-button" (click)="validarModalidad($event)" type="button">
-                <span class="tooltip">{{ 'Guardar' | transloco }}</span>
-            </button>
+                <label class="formulario__label">{{ 'Pais' | transloco }}</label>
+            </div>
+            <div id="divNombreCorto" class="col-sm-8">
+                <input type="text" class="formulario__input" [control]="getCtr('nombreCorto')"
+                    formControlName="nombreCorto" (change)="cambio()" idbInput>
 
-            <button id="delete" class="btn-img eliminar-btn" type="button" (click)="eliminar($event)">
-                <span class="tooltip">{{ 'Eliminar' | transloco }}</span>
-            </button>
+                <label class="formulario__label">{{ 'Nombre corto' | transloco }}</label>
+                <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.nombreCorto.hasError('maxlength')">
+                    El campo debe tener como m&aacute;ximo 10 caracteres. </mat-hint>
+                <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.nombreCorto.hasError('pattern')">El
+                    campo solo debe de ser alfab&eacute;tico. </mat-hint>
+            </div>
 
-            <button id="deshacer" class="btn-img deshacer-button" (click)="limpiarCampos()" type="button">
-                <span class="tooltip">{{ 'Deshacer' | transloco }}</span>
-            </button>
         </div>
-        <hr class="red" />
-    </div>
-</main>
+    </form>
+</div>
+<div class="centrar_btn">
+    <button class="btn-img buscar-btn" id="buscar" type="button" (click)="consulta()">
+        <span class="tooltip">{{ 'Buscar' | transloco }}</span>
+    </button>
+    <button id="add" class="btn-img alta-button" type="button" (click)="changeAltaButton()">
+        <span class="tooltip">{{ 'Alta' | transloco }}</span>
+    </button>
+
+    <button id="save" class="btn-img save-button" (click)="validarModalidad($event)" type="button">
+        <span class="tooltip">{{ 'Guardar' | transloco }}</span>
+    </button>
+
+    <button id="delete" class="btn-img eliminar-btn" type="button" (click)="eliminar($event)">
+        <span class="tooltip">{{ 'Eliminar' | transloco }}</span>
+    </button>
+
+    <button id="deshacer" class="btn-img deshacer-button" (click)="limpiarCampos()" type="button">
+        <span class="tooltip">{{ 'Deshacer' | transloco }}</span>
+    </button>
+</div>
+<hr class="red" />
+<!-- </div>
+</main> -->

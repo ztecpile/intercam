@@ -235,6 +235,7 @@ export class HomologacionClientesComponent implements OnInit {
                 for (const data of then){
                     console.log(data);
                 if(this.cpeId == data.cpeId){
+                    
                     this.funcForm.get('catTitular').setValue(data.cpeDescripcion);
                 }
             }
@@ -340,7 +341,6 @@ export class HomologacionClientesComponent implements OnInit {
                     this.perIdNew = response.data.perId;
                     this.pernomCortonew = response.data.nombreCorto;
                     this.funcForm.get('cliIdCorrecto').setValue('PERID- ' + response.data.perId + ' - ' + response.data.nombreCorto);
-                    this.obtenerCarpetaContratos(response.data.contratoId);
                     this.obtenerBiometria('');
                 }
 

@@ -54,7 +54,12 @@ export class AdministracionCierreExcepcionComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.clave = this.sessionData.usuClave;
+    if(this.sessionData != null){
+      this.clave = this.sessionData.usuClave;
+    }else{
+      this.clave = '';
+    }
+    
     console.log(this.clave);
     this.createFunForm();
     this.deshabilitarCampos();
