@@ -74,7 +74,7 @@ export class ColoniasComponent implements OnInit {
 
   ngOnInit(): void {
     this.createFunForm();
-     this.funcForm.get("updateColonia").disable();
+     //this.funcForm.get("updateColonia").disable();
      this.funcForm.get("entidad").disable();
      this.funcForm.get("alcMun").disable();
      this.funcForm.get("ciudad").disable();
@@ -89,11 +89,11 @@ export class ColoniasComponent implements OnInit {
 }
   createFunForm() {
     this.funcForm = this.formBuilder.group({
-      codigoPostal: new FormControl('', [Validators.required,Validators.pattern(/^[a-z\s]*$/i)]),
+      codigoPostal: new FormControl('', [Validators.required,Validators.pattern(/^\d*[0-9]\d*$/i)]),
       entidad: new FormControl(''),
       alcMun: new FormControl(''),
       ciudad: new FormControl(''),
-      updateColonia: new FormControl('', [Validators.required]),
+      updateColonia: new FormControl('', [Validators.required,Validators.pattern(/^[a-z0-9\s]*$/i)]),
       cp: [''],
       cboColonia:['']
      });
@@ -185,7 +185,9 @@ export class ColoniasComponent implements OnInit {
             this.listaColoniasVo = this.arrColonia;
             break;
           }
+
         }
+        this.btnDeshacerIf=false;
       },
       error => console.error(error)
     )

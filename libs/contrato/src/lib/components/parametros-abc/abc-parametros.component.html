@@ -108,26 +108,48 @@
         <br>
 
         <div id="divBotones" class="col-sm-12">
+            <div class="row">
+                <div class="column1"  >
+                    <label class="ctro_label" text-align: center>{{'Reiniciar Información de Fecha Hábil' }} </label>
+                </div>
+                <div class="column2"  >
+                    <button class="btn-img deshacer-button" type="button" (click)="reiniciaInfo()" ></button>                          
+                </div>
+             </div>
             
-            <label class="ctro_label">{{'Reiniciar Información de Fecha Hábil' }}
-                <button class="btn-img deshacer-button" type="button" (click)="reiniciaInfo()" ></button>
+             <div class="row">
+                <div class="column"  >
+                    <label class="ctro_label">{{'Generar Motivos Linea de Operación' }}
+                    </label>
+                </div>
+                <div class="column2"  >
+                    <button class="btn-img deshacer-button" type="button"  (click)="generaMotivos()" ></button>                        
+                </div>
+             </div>
+             <div class="row">
+                <div class="column"  >
+                    <label class="ctro_label">{{'Ejecutar proceso de Cancelación de Solicitud Reverso' }}
+                            </label>
+                </div>
+                <div class="column2"  >
+                    <button class="btn-img proceso-button" type="button"  (click)="ejecutaProceso()"></button>
 
-            </label>
-            <br>
-            <label class="ctro_label">{{'Generar Motivos Linea de Operación' }}
-                <button class="btn-img deshacer-button" type="button"  (click)="generaMotivos()" ></button>
+				</div>
+             </div>
 
-            </label>
-            <br>
-            <label class="ctro_label">{{'Ejecutar proceso de Cancelación de Solicitud Reverso' }}
-                <button class="btn-img proceso-button" type="button"  (click)="ejecutaProceso()"></button>
+             <div class="row">
+                <div class="column"  >
+                    <label class="ctro_label">{{'Envio de SPID de operaciones Fecha Valor' }}
+                    </label>
 
-            </label>
-            <br>
-            <label class="ctro_label">{{'Envio de SPID de operaciones Fecha Valor' }}
+                </div>
+                <div class="column2"  >
                 <button class="btn-img btn-pagos" type="button"  (click)="envioSPID()"></button>
 
-            </label>
+				</div>
+             </div>
+            <br>
+        
 
         </div>
         </form>
