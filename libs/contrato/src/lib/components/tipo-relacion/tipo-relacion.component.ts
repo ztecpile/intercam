@@ -77,7 +77,7 @@ export class TiposRelacionComponent implements AfterViewInit {
     }
 
     onModoAltaClick() {
-
+        this.acctionButtonsComponent.validarBtnReset=true;
         this.tipoRelVO = new TipoRelVO();
         this.setReadyOnly = false;
     }
@@ -102,6 +102,7 @@ export class TiposRelacionComponent implements AfterViewInit {
 
     }
     onModoDeshacerClick() {
+        this.setReadyOnly=true;
         this.tipoRelVO = new TipoRelVO();
     }
 
