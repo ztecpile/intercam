@@ -148,8 +148,7 @@ export class EntidadesComponent implements OnInit {
     this.funcForm.get("claveCNBV").setValidators(Validators.pattern(/^[0-9]*$/i));
     this.funcForm.get("codigoBroxel").setValidators(Validators.pattern(/^([0-9])*$/));
     this.funcForm.get("nivelRiesgo").setValidators(Validators.pattern(/^([0-3])*$/));
-    this.funcForm.get("cboPaisOr").clearValidators();
-
+ 
     this.funcForm.get("entidad").disable();
     this.funcForm.get("abreviatura").disable();
     this.funcForm.get("claveCNBV").disable();
@@ -159,6 +158,7 @@ export class EntidadesComponent implements OnInit {
      this.selectedEnt ="";
      this.funcForm.reset();
      this.submitted = true;
+     this.cargaCatalogos();
    
   }
 
@@ -343,8 +343,11 @@ export class EntidadesComponent implements OnInit {
     this.funcForm.get('claveCNBV').enable();
     this.funcForm.get('codigoBroxel').enable();
     this.funcForm.get('nivelRiesgo').enable();
+    this.funcForm.get('nivelRiesgo').setValue("0");
     this._modalidad="alta";
     this.tableEnt=true;
+    this.btnAltaIf=true;
+    this.btnDeshacerIf=false;
     var table =document.getElementById('tablaEntidad');
     table.setAttribute("style","disable: true");
     this.submitted= true;
