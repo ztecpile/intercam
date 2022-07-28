@@ -134,7 +134,6 @@ export class AdministracionCierreExcepcionComponent implements OnInit {
       this.funcForm.get('optSi').setValue(false);
       this.cceCierreexcep = '';
     }
-    this.funcForm.get("perNom").enable();
     this.funcForm.get("optNo").enable();
     this.funcForm.get("optSi").enable();
     this.optNoDisabled = false;
