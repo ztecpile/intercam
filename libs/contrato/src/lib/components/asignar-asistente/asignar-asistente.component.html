@@ -14,6 +14,7 @@
             <div class="col-sm-3" style="z-index: 5">
                 <div class="caja">
                     <select [(ngModel)]="tipoAsistente" (change)="cambiarTipoAsistente($event)">
+                        <option value="-1">Seleccione</option>
                         <option value="P">Asistente Opera POS</option>
                         <option value="M">Asistente Opera Mobility</option>
                     </select>

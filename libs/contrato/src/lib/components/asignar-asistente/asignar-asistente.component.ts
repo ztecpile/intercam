@@ -22,7 +22,7 @@ export class AsignarAsistenteComponent implements AfterViewInit {
     @ViewChild(MatSort) sort: MatSort;
 
     ejecutivo: UsuarioVO;
-    tipoAsistente: String = "P";
+    tipoAsistente: String = "-1";
     displayedColumns = ["nombre", "sucursal", "estatus"];
     dataSource: MatTableDataSource<EjecutivoAsistenteVO> = new MatTableDataSource();
     dataSourceBkp: EjecutivoAsistenteVO[] = [];
@@ -31,7 +31,6 @@ export class AsignarAsistenteComponent implements AfterViewInit {
 
     constructor(private _asignarAsistenteServices: AsignarAsistenteServices, private dialog: MatDialog) {
         this.ejecutivo = JSON.parse(sessionStorage.getItem("usuarioVO")) as UsuarioVO;
-        this.findPerAsistente(this.ejecutivo.usuId);
         console.log(this.ejecutivo.usuId);
     }
 
@@ -53,6 +52,7 @@ export class AsignarAsistenteComponent implements AfterViewInit {
     }
 
     cambiarTipoAsistente(e) {
+        this.findPerAsistente(this.ejecutivo.usuId);
         this.dataSource = new MatTableDataSource(this.dataSourceBkp.filter(item => item.idVO["tipoAsistente"] == this.tipoAsistente));
         this.dataSource.paginator = this.paginator;
     }
