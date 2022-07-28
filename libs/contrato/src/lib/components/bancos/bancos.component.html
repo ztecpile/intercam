@@ -6,7 +6,7 @@
 <hr class="red" />
 <div class="container">
     <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortChange($event)">
+        <table mat-table id='tabla' [dataSource]="dataSource" matSort (matSortChange)="sortChange($event)">
             <ng-container matColumnDef="banid">
                 <th hidden mat-header-cell *matHeaderCellDef>banid</th>
                 <td hidden mat-cell *matCellDef="let element">{{ element.banId }}
@@ -205,7 +205,7 @@
             </div>
             <div id="divNombreCorto" class="col-sm-8">
                 <input type="text" class="formulario__input" [control]="getCtr('nombreCorto')"
-                    formControlName="nombreCorto" (change)="cambio()" idbInput>
+                    formControlName="nombreCorto" (change)="cambio()" (keypress)="cambio()" idbInput>
 
                 <label class="formulario__label">{{ 'Nombre corto' | transloco }}</label>
                 <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.nombreCorto.hasError('maxlength')">

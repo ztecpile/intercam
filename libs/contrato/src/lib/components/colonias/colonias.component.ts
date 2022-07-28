@@ -188,6 +188,7 @@ export class ColoniasComponent implements OnInit {
 
         }
         this.btnDeshacerIf=false;
+        this.funcForm.get("updateColonia").disable();
       },
       error => console.error(error)
     )
@@ -303,6 +304,7 @@ export class ColoniasComponent implements OnInit {
       this.funcForm.get("updateColonia").disable();
       this.btnGuardarIf=true;
       this.btnDeshacerIf=true;
+      this.btnAltaIf=true;
      
 }
 actualizacion(event: Event){

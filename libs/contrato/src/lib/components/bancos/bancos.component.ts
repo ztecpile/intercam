@@ -214,6 +214,7 @@ export class BancosComponent implements OnInit {
         this.showBtn2 = true;
         this.habilitarCampos();
         document.getElementById('delete').removeAttribute('disabled');
+        document.getElementById('tabla').setAttribute('disabled','');
         this.banid = contratoSelec.banId;
         this.funcForm.get("nombre").setValue(contratoSelec.banNombre);
         this.funcForm.get("claveBanxico").setValue(contratoSelec.banClaveBanxico);
@@ -226,7 +227,7 @@ export class BancosComponent implements OnInit {
         this.funcForm.get("combPais").setValue(contratoSelec.paiClave);
         this.funcForm.get("nombreCorto").setValue(contratoSelec.banDescCorta);
         document.getElementById('save').setAttribute('disabled','');
-        document.getElementById('deshacer').setAttribute('disabled','');
+        document.getElementById('deshacer').removeAttribute('disabled');
 
         if (contratoSelec.banEstatus == 'AC') {
             this.checkActivo = true;
@@ -485,6 +486,7 @@ console.log(banco);
         this.showBtn = true;
         this.showBtn2 = false;
         this.habilitarCampo = true;
+        document.getElementById('tabla').removeAttribute('disabled');
         document.getElementById('buscar').removeAttribute('disabled');
         document.getElementById('add').removeAttribute('disabled');
        document.getElementById('buscar').setAttribute('class','buscar-btn btn-img');
