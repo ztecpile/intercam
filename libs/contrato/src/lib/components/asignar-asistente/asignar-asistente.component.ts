@@ -31,7 +31,7 @@ export class AsignarAsistenteComponent implements AfterViewInit {
 
     constructor(private _asignarAsistenteServices: AsignarAsistenteServices, private dialog: MatDialog) {
         this.ejecutivo = JSON.parse(sessionStorage.getItem("usuarioVO")) as UsuarioVO;
-        console.log(this.ejecutivo.usuId);
+        console.log(this.ejecutivo.idPersona);
     }
 
     MODO_ALTA: boolean = false;
@@ -52,7 +52,8 @@ export class AsignarAsistenteComponent implements AfterViewInit {
     }
 
     cambiarTipoAsistente(e) {
-        this.findPerAsistente(this.ejecutivo.usuId);
+        console.log(this.ejecutivo);
+        this.findPerAsistente(this.ejecutivo.idPersona);
         this.dataSource = new MatTableDataSource(this.dataSourceBkp.filter(item => item.idVO["tipoAsistente"] == this.tipoAsistente));
         this.dataSource.paginator = this.paginator;
     }
@@ -64,11 +65,11 @@ export class AsignarAsistenteComponent implements AfterViewInit {
                 this.selectedRow = new EjecutivoAsistenteVO();
                 this.selectedRow.idVO = new EjecutivoAsistenteIdVO();
                 this.selectedRow.idVO.asistenteId = result['data'].perIdEjecutivo;
-                this.selectedRow.idVO.ejecutivoId = this.ejecutivo.usuId;
+                this.selectedRow.idVO.ejecutivoId = this.ejecutivo.idPersona;
                 this.selectedRow.idVO.nombreEjecutivo = result['data'].nomEjecutivo;
                 this.selectedRow.idVO["tipoAsistente"] = "P";
                 this.selectedRow.asistenteId = result['data'].perIdEjecutivo;
-                this.selectedRow.ejecutivoId = this.ejecutivo.usuId;
+                this.selectedRow.ejecutivoId = this.ejecutivo.idPersona;
                 this.selectedRow.nombreEjecutivo = result['data'].nomEjecutivo;
                 this.selectedRow.sucursal = result['data'].sucDescripcion;
                 this.selectedRow.estatus = false;
@@ -96,18 +97,18 @@ export class AsignarAsistenteComponent implements AfterViewInit {
     }
     onModoEliminarClick() {
         this._asignarAsistenteServices.eliminarPerAsistente(this.selectedRow).subscribe(then => {
-            this.findPerAsistente(this.ejecutivo.usuId);
+            this.findPerAsistente(this.ejecutivo.idPersona);
         })
     }
     onModoGuardarClick() {
         this._asignarAsistenteServices.crearPerAsistente(this.selectedRow).subscribe(then => {
-            this.findPerAsistente(this.ejecutivo.usuId);
+            this.findPerAsistente(this.ejecutivo.idPersona);
             this.selectedRow = new EjecutivoAsistenteVO;
         });
     }
     onModoActualizarClick() {
         this._asignarAsistenteServices.crearPerAsistente(this.selectedRow).subscribe(then => {
-            this.findPerAsistente(this.ejecutivo.usuId);
+            this.findPerAsistente(this.ejecutivo.idPersona);
             this.selectedRow = new EjecutivoAsistenteVO;
         });
     }
