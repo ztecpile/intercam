@@ -46,6 +46,7 @@ export class AcctionButtonsComponent {
     validarBtnReset: boolean = false;//this.MODO_FORMULARIO == this.MODO_CONSULTA || this.modeloSelecionado == null || this.modelo.toString() != this.modeloSelecionado.toString()
     validarBtnEliminar: boolean = false;
     validarBtnGuardar: boolean = false;
+    validarBtnAlta:boolean=false;
 
     hasChenges() {
         if (this.MODO_FORMULARIO != this.MODO_ALTA) this.MODO_FORMULARIO = this.MODO_EDITAR;
@@ -64,6 +65,7 @@ export class AcctionButtonsComponent {
         this.validarEliminarBtn();
         this.validarGuardarBtn();
         this.validarBtnReset = false;
+        this.validarBtnAlta=false;
     }
 
     isModoConsulta() {
@@ -87,6 +89,7 @@ export class AcctionButtonsComponent {
         this.validarBtnReset = true;
         this.validarBtnEliminar = false;
         this.validarBtnReset=false;
+        this.validarBtnAlta=true;
         this.onModoAltaClick.emit();
     }
     modoGuardarClick() {

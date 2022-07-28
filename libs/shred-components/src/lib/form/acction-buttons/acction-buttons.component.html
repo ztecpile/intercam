@@ -2,7 +2,7 @@
     <button [hidden]="BTN_CONSULTA_OCULTO" class="btn-img buscar-btn" (click)="modoConsultaClick()">
         <span class="tooltip">{{buscarText||"Consultar"}}</span>
     </button>
-    <button [hidden]="BTN_ALTA_OCULTO" class="btn-img alta-button" type="submit" (click)="modoAltaClick()">
+    <button [hidden]="BTN_ALTA_OCULTO" class="btn-img alta-button" [disabled]="validarBtnAlta" type="submit" (click)="modoAltaClick()">
         <span class="tooltip">Alta</span>
     </button>
 

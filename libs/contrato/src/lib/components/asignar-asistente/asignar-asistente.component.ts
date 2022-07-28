@@ -90,6 +90,7 @@ export class AsignarAsistenteComponent implements AfterViewInit {
 
     }
     onModoAltaClick() {
+        this._acctionButtonsComponent.validarBtnReset=true;
         this.MODO_ALTA = true;
         this.selectedRow = new EjecutivoAsistenteVO();
     }
