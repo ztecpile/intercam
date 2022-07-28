@@ -187,24 +187,27 @@ export class ProfesionesComponent implements OnInit {
     profesionNew.proRiesgo=this.funcForm.get('proRiesgo').value;
     profesionNew.proNumeroClProfes=null;
 
-    this.serviceProfesion.updateProfesion(profesionNew).subscribe(
-      then =>{
-        let prof = new ProfesionVO;
-        //prof = then;
-        this.mostrarMensaje('Actualización Exitosa','info');
-        this.resetValidador();
-        this.obtenerProfesiones();
-      },
-      error => {
-        console.error(error);
-        //this.mostrarMensaje(Const.errorRegistroProspecto, 'error');
-        this.btnBuscarIf = true;
-        this.btnBuscarIf = true;
-        this.btnBuscarIf = true;
-        this.btnBuscarIf = true;
-        document.getElementById('tabla').removeAttribute('selected');
-
-      });
+    if(this.funcForm.valid){
+      this.serviceProfesion.updateProfesion(profesionNew).subscribe(
+        then =>{
+          let prof = new ProfesionVO;
+          //prof = then;
+          this.mostrarMensaje('Actualización Exitosa','info');
+          this.resetValidador();
+          this.obtenerProfesiones();
+        },
+        error => {
+          console.error(error);
+          //this.mostrarMensaje(Const.errorRegistroProspecto, 'error');
+          this.btnBuscarIf = true;
+          this.btnBuscarIf = true;
+          this.btnBuscarIf = true;
+          this.btnBuscarIf = true;
+          document.getElementById('tabla').removeAttribute('selected');
+  
+        });
+    }
+    
   }
 
   /**mETODO QUE OBTIENE EL REGISTRO DE LA TABLA  */
