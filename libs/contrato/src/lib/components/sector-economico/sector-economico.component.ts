@@ -67,6 +67,14 @@ export class SectorEconomicoComponent implements AfterViewInit {
             //             
             this._acctionButtonsComponent.hasChenges();
         }
+        
+        if (this.sectorEconomico.secId > 0 && this.sectorEconomico.secDescripcion?.length >0 && this.sectorEconomico.secCnbv?.length >0 ) {
+            this._acctionButtonsComponent.validarBtnGuardar = true;
+        }
+        else {
+            console.log(this.sectorEconomico.secId > 0);
+            this._acctionButtonsComponent.validarBtnGuardar = false;
+        }
     }
 
     getRecord(row) {
@@ -86,6 +94,7 @@ export class SectorEconomicoComponent implements AfterViewInit {
     modoAltaClick() {
         this.sectorEconomico = new SectorEconomicoVO();
         this.deshabilitarInputs = true;
+        this._acctionButtonsComponent.validarBtnGuardar = false;
     }
 
     modoGuardarClick() {
