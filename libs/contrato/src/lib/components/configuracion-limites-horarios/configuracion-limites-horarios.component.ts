@@ -52,8 +52,10 @@ export class ConfiguracionLimitesHorariosComponent implements AfterViewInit {
         estatus: ['', Validators.required],
         monto: ['', Validators.required],
         horario: ['', Validators.required],
+        min: ['',Validators.required]
     });
     submitted: Boolean = false;
+    setReadyOnly:boolean=true;
     constructor(private _configuracionLimitesHorariosService: ConfiguracionLimitesHorariosService, private currencyPipe: CurrencyPipe, private formBuilder: FormBuilder) {
        
         this.limiteSolicitudInstrumentoVO["hora"] = "00";
@@ -92,6 +94,7 @@ export class ConfiguracionLimitesHorariosComponent implements AfterViewInit {
     }
 
     getRecord(row) {
+        this.setReadyOnly=false;
         if (this._acctionButtonsComponent.isModoConsulta()) {
             this.limiteSolicitudInstrumentoVO = {...row};
             this.selectedRow = row;
@@ -124,6 +127,7 @@ export class ConfiguracionLimitesHorariosComponent implements AfterViewInit {
     }
 
     onModoAltaClick() {
+        this.setReadyOnly=false;
         this.limiteSolicitudInstrumentoVO = {
             "lsiId": null,
             "lsiMontoLim": null,
@@ -211,6 +215,18 @@ export class ConfiguracionLimitesHorariosComponent implements AfterViewInit {
     hasChenges() {
 
         this._acctionButtonsComponent.hasChenges();
+    }
+
+    formatoDeInput(e) {
+        console.log(e.key);
+        let reg = /[^\d]/g;
+        let texto = e.key.replace(reg, "");
+        if (texto == "" && e.key.length == 1) {
+            return false;
+        }
+
+
+        return true;
     }
 
 }

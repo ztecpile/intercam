@@ -55,9 +55,10 @@
       <div class="col-6">
         <div id="divcboTipo" class="col-sm-12">
           <div class="caja">
-            <select [(ngModel)]="limiteSolicitudInstrumentoVO.lsiMesa" (change)="hasChenges()" formControlName="mesa">
-              <option *ngFor="let tipo of mesas " [value]="tipo.cveMesa">{{tipo.moDescripcion}}</option>
-            </select>
+            <mat-select [disabled]="setReadyOnly" [(ngModel)]="limiteSolicitudInstrumentoVO.lsiMesa" (change)="hasChenges()" formControlName="mesa">
+             
+              <mat-option *ngFor="let tipo of mesas " [value]="tipo.cveMesa">{{tipo.moDescripcion}}</mat-option>
+            </mat-select>
           </div>
           <label appearance="fill" class="formulario__label">* Mesa</label>
           <mat-hint class="form-warnig" *ngIf="submitted && formGrupo.controls.mesa.hasError('required')">El
@@ -79,7 +80,7 @@
 
         <br />
         <div id="divperRfc" class="col-sm-12">
-          <input (keyup)="hasChenges()" type="number" class="formulario__input" (blur)="transformAmount($event)"
+          <input (keydown)="formatoDeInput($event)" (keyup)="hasChenges()" type="text" class="formulario__input" (blur)="transformAmount($event)"
             [(ngModel)]="limiteSolicitudInstrumentoVO.lsiMontoLim" formControlName="monto" max="9999999999999" />
           <label class="formulario__label">* {{ 'Monto Maximo' }}</label>
           <mat-hint class="form-warnig" *ngIf="submitted && formGrupo.controls.monto.hasError('required')">El
@@ -92,8 +93,8 @@
           <div class="timer-content formulario__input">
             <input (change)="timeFormat($event)" type="number" min="0" max="23"
               [(ngModel)]="limiteSolicitudInstrumentoVO['hora']" onkeydown="return false" formControlName="horario">:
-            <input (change)="timeFormat($event)" type="number" min="0" max="59"
-              [(ngModel)]="limiteSolicitudInstrumentoVO['min']" onkeydown="return false" formControlName="horario">
+            <input type="number" min="0" max="59"
+              [(ngModel)]="limiteSolicitudInstrumentoVO['min']" onkeydown="return false" formControlName="min">
           </div>
 
 

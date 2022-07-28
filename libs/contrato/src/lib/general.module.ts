@@ -57,6 +57,7 @@ import { ReutersAdministracionPerfilesComponent } from './components/reuters-adm
 import { BitacoraPreciosComponent } from './components/bitacora-precios/bitacora-precios.component';
 import { CustomPaginator } from './util/ConfiguracionPaginador';
 import {MatSortModule} from '@angular/material/sort';
+import {MatSelectModule} from '@angular/material/select';
 const routes: Routes = [
   {
     path: '',
@@ -290,7 +291,8 @@ providers: [
     MatExpansionModule,
     NgChartsModule,
     EnvioMasivoFacturasModule,
-    MatSortModule
+    MatSortModule,
+    MatSelectModule
 
 
   ],
