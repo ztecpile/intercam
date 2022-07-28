@@ -57,9 +57,8 @@ export class ParametrosService {
     return;
   }
 
-  reiniciaInfo()
-{
-  const urlStr = 'operacion-cambios/remote/enviarMsgGenerarMovtoLineaOpe';
+  reiniciaInfo(): Observable<any>{
+  const urlStr = 'operacion-cambios/remote/resetInfoFechaHabil';
   return this.http.get<InfoFechaHabilVO>(urlStr, {});
 
 }
