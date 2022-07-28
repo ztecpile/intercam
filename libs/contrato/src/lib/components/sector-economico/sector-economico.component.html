@@ -58,7 +58,7 @@
 
                 <div class="col-sm-12">
                     <input formControlName="clave" type="text" class="formulario__input"
-                        [(ngModel)]="sectorEconomico.secId" [maxLength]="8" (keyup)="hasChenges();" (keyup)="formatoDeInput($event)"
+                        [(ngModel)]="sectorEconomico.secId" [maxLength]="8" (keyup)="hasChenges();" (keydown)="formatoDeInput($event)" 
                         [readonly]="!deshabilitarInputs" />
                     <label class="formulario__label">* Clave</label>
                     <mat-hint class="form-warnig" *ngIf="submitted && formGrupo.controls.clave.hasError('required')">El
@@ -79,7 +79,7 @@
                 </div>
 
                 <div class="col-sm-12">
-                    <input formControlName="clave_cnbv" type="text" class="formulario__input" (keyup)="formatoDeInput($event)"
+                    <input formControlName="clave_cnbv" type="text" class="formulario__input" (keydown)="formatoDeInput($event)"
                         [(ngModel)]="sectorEconomico.secCnbv" ngModel [maxlength]="10"
                         (keyup)="hasChenges();" [readonly]="!deshabilitarInputs" />
                     <label class="formulario__label">* Clave CNBV</label>
@@ -98,7 +98,7 @@
                 <div class="col-sm-12">
                     <input formControlName="clave_banxico" type="text" class="formulario__input"
                         [readonly]="!deshabilitarInputs" [(ngModel)]="sectorEconomico.secBanxico"
-                        (keyup)="formatoDeInput($event)" [maxlength]="10" />
+                        (keydown)="formatoDeInput($event)" [maxlength]="10" />
                     <label class="formulario__label">Clave BANXICO</label>
                 </div>
 

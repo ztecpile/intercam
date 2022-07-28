@@ -46,9 +46,15 @@ export class SectorEconomicoComponent implements AfterViewInit {
     });
 
     formatoDeInput(e) {
-        let reg = /[a-z]/g;
-        console.log(e.target.value.replace(reg, ""));
-        e.target.value = e.target.value.replace(reg, "");
+        console.log(e.key);
+        let reg = /[^\d]/g;
+        let texto = e.key.replace(reg, "");
+        if (texto == "" && e.key.length == 1) {
+            return false;
+        }
+
+
+        return true;
     }
 
     constructor(private _sectorEconomicoService: SectorEconomicoService, private alertasService: AlertasService, private formBuilder: FormBuilder) { }
