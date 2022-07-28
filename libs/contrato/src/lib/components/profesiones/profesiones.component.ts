@@ -79,8 +79,13 @@ export class ProfesionesComponent implements OnInit {
       this.btnGuardarIf= false;
       this.funcForm.get("observacion").enable(); 
       this.funcForm.get("proRiesgo").enable();
+      this.funcForm.get("proRiesgo").setValue("0");
       this.activeTab= true;
       this.btnGuardarIf=true;
+      this.btnAltaIf= true;
+      this.btnBuscarIf=true;
+      this.btnDeshacerIf=false;
+
       this._modalidad="alta";
       this.funcForm.get("observacion").setValidators([Validators.required,Validators.maxLength(50), Validators.pattern(/^[a-z0-9\s]*$/i)]); 
       this.funcForm.get("proRiesgo").setValidators([Validators.maxLength(50), Validators.pattern(/^[0-3\s]/)]);
