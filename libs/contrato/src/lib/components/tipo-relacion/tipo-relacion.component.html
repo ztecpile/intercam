@@ -44,7 +44,7 @@
                     <mat-label>* Observaciones</mat-label>
                     <textarea [readonly]="setReadyOnly" formControlName="obserbaciones" (keyup)="hasChenges()"
                         [(ngModel)]="tipoRelVO.treDescripcion" type="text" class="formulario__input"
-                        maxlength="40"></textarea>
+                        maxlength="40" (ngModelChange)="tipoRelVO.treDescripcion = $event.toUpperCase()"></textarea>
                     <mat-hint class="form-warnig"
                         *ngIf="submitted && formGrupo.controls.obserbaciones.hasError('required')">El
                         campo es obligatorio</mat-hint>
