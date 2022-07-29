@@ -43,18 +43,18 @@
 
         <div class="col-6">
             <div id="divperRfc" class="col-sm-12">
-                <input type="text" class="formulario__input" [value]="monto_superior" />
+                <input (keydown)="formatoDeInput($event)" type="text" class="formulario__input" [value]="monto_superior" />
                 <label class="formulario__label">Monto</label>
             </div>
 
             <div id="divperRfc" class="col-sm-12">
-                <input type="number" class="formulario__input" [(ngModel)]="dias"  [step]="1" (keyup)="validarDias()" />
+                <input (keydown)="formatoDeInput($event)" type="text" class="formulario__input" [(ngModel)]="dias"  [step]="1" (keyup)="validarDias()" />
                 <label class="formulario__label">Dias</label>
             </div>
 
             <div id="divperRfc" class="row">
                 <div class="col-10">
-                    <input type="number" class="formulario__input" [(ngModel)]="claveCliente" readonly />
+                    <input type="text" class="formulario__input" [(ngModel)]="claveCliente" readonly />
                     <label class="formulario__label">* Cliente</label>
                 </div>
                 <div class="col-2">
@@ -67,12 +67,12 @@
             </div>
 
             <div id="divperRfc" class="col-sm-12">
-                <input type="text" class="formulario__input" [(ngModel)]="nombreCliente" />
+                <input (keydown)="textFormatoDeInput($event)" type="text" class="formulario__input" [(ngModel)]="nombreCliente" />
                 <label class="formulario__label">Nombre</label>
             </div>
 
             <div id="divperRfc" class="col-sm-12">
-                <input type="number" class="formulario__input" [(ngModel)]="saldoInicial" />
+                <input (keydown)="formatoDeInput($event)" type="text" class="formulario__input" [(ngModel)]="saldoInicial" />
                 <label class="formulario__label">
                     Saldo Inicial</label>
             </div>
