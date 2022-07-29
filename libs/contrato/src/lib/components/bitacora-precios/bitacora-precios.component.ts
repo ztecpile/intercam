@@ -168,6 +168,7 @@ export class BitacoraPreciosComponent implements OnInit {
       then => {
         console.log(then);
         const splitfechaActual = then.split(' ');
+        console.log(splitfechaActual);
         this.fechaActual = new Date(splitfechaActual[0]);
         this.horaActual = splitfechaActual[1];
         this.funcForm.get('hora').setValue(this.horaActual);
@@ -304,6 +305,7 @@ export class BitacoraPreciosComponent implements OnInit {
               mattab.compra4 = String(element.tcCompra);
               mattab.venta4 = String(element.tcVenta);
             }
+          
             mattab.unix = element.tcFechaLong;
           }
           dataPro.push(mattab);
@@ -354,18 +356,24 @@ export class BitacoraPreciosComponent implements OnInit {
     this.separarHora();
     this.dir = 'back'
     if (this.seg == '59') {
-      this.seg = '0';
+      this.seg = Number(this.seg) - 1;
       if (this.min == '59') {
-        this.min = '0';
+        this.min = Number(this.min)-1;
         if (this.hora == '00') {
-          this.hora = '1';
+          this.hora = '23';
         } else {
           this.hora = Number(this.hora) - 1;
         }
-      } else {
+      } else if(this.min == '0'){
+        this.hora = Number(this.hora)-1;
+      this.min = '59';
+      }else {
         this.min = Number(this.min) - 1;
       }
-    } else {
+    } else if(this.seg == '0'){
+      this.min = Number(this.min)-1;
+      this.seg = '59';
+    }else{
       this.seg = Number(this.seg) - 1;
     }
     this.funcForm.get('hora').setValue(this.hora + ':' + this.min + ':' + this.seg);

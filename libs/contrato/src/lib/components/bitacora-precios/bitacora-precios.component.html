@@ -27,7 +27,7 @@
                 <label appearance="fill" class="formulario__label">{{ 'Divisa' | transloco }}</label>
             </div>
             <div class="col-sm-4">
-                <idb-calendario id="fecha" etiqueta="Fecha" lenguaje="es" max="0-0-0" [control]="getCtr('fecha')"
+                <idb-calendario id="fecha" etiqueta="Fecha" lenguaje="es" min="0-0-0" max="0-0-0" [control]="getCtr('fecha')"
                     [fecha]="fechaActual" (fechaSeleccionada)="obtenerBitacora()" idbInput></idb-calendario>
             </div>
             <div class="col-sm-2">

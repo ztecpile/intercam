@@ -97,18 +97,18 @@ export class BancosComponent implements OnInit {
     }
     changeRadioInactivo(e: any) {
         this.cambio();
-        this.selectedRadio('IN');
+        this.selectedRadio('SU');
         console.log(e);
         if (e) {
             this.checkInactivo = true;
-            this.valueEstatus = 'IN';
+            this.valueEstatus = 'SU';
         }
     }
     selectedRadio(id:string): void{
         if(id === 'AC'){
           this.checkInactivo = false;
         }
-        if(id === 'IN'){
+        if(id === 'SU'){
           this.checkActivo = false;
         }
       }
@@ -160,15 +160,15 @@ export class BancosComponent implements OnInit {
         this.funcForm = this.formbuilder.group({
         // this.funcForm = new FormGroup({
             nombre: new FormControl('', [Validators.required,Validators.maxLength(80), Validators.pattern(/^[a-z0-9\s]*$/i)]),
-            claveBanxico: new FormControl('', [Validators.required,Validators.maxLength(8), Validators.pattern(/^[a-z0-9\s]*$/i)]),
-            claveSica: new FormControl('',[Validators.maxLength(20), Validators.pattern(/^[a-z0-9\s]*$/i)]),
-            claveSabi: new FormControl('',[Validators.maxLength(20), Validators.pattern(/^[a-z0-9\s]*$/i)]),
-            claveSiif: new FormControl('',[Validators.maxLength(20), Validators.pattern(/^[a-z0-9\s]*$/i)]),
-            optActivo: new FormControl(''),
-            optInactivo: new FormControl(''),
-            checkOpInter: new FormControl(''),
-            checkOpSpeua: new FormControl(''),
-            checkOpTefbv: new FormControl(''),
+            claveBanxico: new FormControl('', [Validators.required,Validators.maxLength(8), Validators.pattern(/^[0-9]*$/)]),
+            claveSica: new FormControl('',[Validators.maxLength(20), Validators.pattern(/^[0-9]*$/)]),
+            claveSabi: new FormControl('',[Validators.maxLength(20), Validators.pattern(/^[0-9]*$/)]),
+            claveSiif: new FormControl('',[Validators.maxLength(20), Validators.pattern(/^[0-9]*$/)]),
+            optActivo: new FormControl(false),
+            optInactivo: new FormControl(false),
+            checkOpInter: new FormControl(false),
+            checkOpSpeua: new FormControl(false),
+            checkOpTefbv: new FormControl(false),
             combPais: new FormControl(''),
             nombreCorto: new FormControl('',[Validators.maxLength(10), Validators.pattern(/^[a-z\s]*$/i)])
 
@@ -216,6 +216,7 @@ export class BancosComponent implements OnInit {
         document.getElementById('delete').removeAttribute('disabled');
         document.getElementById('tabla').setAttribute('disabled','');
         this.banid = contratoSelec.banId;
+        this.createFunForm();
         this.funcForm.get("nombre").setValue(contratoSelec.banNombre);
         this.funcForm.get("claveBanxico").setValue(contratoSelec.banClaveBanxico);
         this.funcForm.get("claveSica").setValue(contratoSelec.banIdSica);
@@ -228,43 +229,57 @@ export class BancosComponent implements OnInit {
         this.funcForm.get("nombreCorto").setValue(contratoSelec.banDescCorta);
         document.getElementById('save').setAttribute('disabled','');
         document.getElementById('deshacer').removeAttribute('disabled');
+        document.getElementById('deshacer').setAttribute('class','deshacer-button btn-img');
 
         if (contratoSelec.banEstatus == 'AC') {
             this.checkActivo = true;
+            document.getElementById("optActivo").setAttribute('class','mat-radio-button ml-5 mat-accent mat-radio-checked'); 
             this.funcForm.get("optActivo").setValue(true);
             this.checkInactivo = false;
             this.valueEstatus = 'AC';
-        } else {
+        } else if (contratoSelec.banEstatus == 'SU'){
             this.checkActivo = false;
+            document.getElementById("optInactivo").setAttribute('class','mat-radio-button ml-5 mat-accent mat-radio-checked');
+           
             this.funcForm.get("optInactivo").setValue(true);
             this.checkInactivo = true;
-            this.valueEstatus = 'IN';
+            this.valueEstatus = 'SU';
         }
         if (contratoSelec.banOperaIntercam == 'V') {
             this.checkOpInt = true;
             this.valueCheckOpInt = 'V';
+    document.getElementById("checkOpInter").setAttribute('class','mat-checkbox example-margin mat-accent mat-checkbox-label-before mat-checkbox-checked');
+   
             this.funcForm.get("checkOpInter").setValue(true);
-        } else {
+        } else if(contratoSelec.banOperaIntercam == 'F'){
             this.checkOpInt = false;
             this.valueCheckOpInt = 'F';
+            document.getElementById('checkOpInter').removeAttribute('mat-checkbox-checked');
+           
             this.funcForm.get("checkOpInter").setValue(false);
         }
         if (contratoSelec.banOperaSpeua == 'V') {
             this.checkOpSpe = true;
             this.valueCheckOpSpe = 'V';
+            document.getElementById("checkOpSpeua").setAttribute('class','mat-checkbox example-margin mat-accent mat-checkbox-label-before mat-checkbox-checked');
+
             this.funcForm.get("checkOpSpeua").setValue(true);
-        } else {
+        } else if (contratoSelec.banOperaSpeua == 'F'){
             this.checkOpSpe = false;
             this.valueCheckOpSpe = 'F';
+            document.getElementById('checkOpSpeua').removeAttribute('mat-checkbox-checked');
             this.funcForm.get("checkOpSpeua").setValue(false);
         }
         if (contratoSelec.banOperaTefbv == 'V') {
             this.checkOpTef = true;
             this.valueCheckOpTef = 'V';
+         document.getElementById("checkOpTefbv").setAttribute('class','mat-checkbox example-margin mat-accent mat-checkbox-label-before mat-checkbox-checked');
+      
             this.funcForm.get("checkOpTefbv").setValue(true);
-        } else {
+        } else if (contratoSelec.banOperaTefbv == 'F') {
             this.checkOpTef = false;
             this.valueCheckOpTef = 'F';
+            document.getElementById('checkOpTefbv').removeAttribute('mat-checkbox-checked');
             this.funcForm.get("checkOpTefbv").setValue(false);
         }
 
