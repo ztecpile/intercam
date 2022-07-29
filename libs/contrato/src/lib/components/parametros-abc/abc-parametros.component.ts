@@ -67,12 +67,12 @@ export class ABCParametrosComponent implements OnInit ,AfterViewInit{
   /***Metdo para crear el formulario del form */
   createFunForm() {
     this.funcForm = this.formBuilder.group({
-      parNombre: new FormControl('', [Validators.required,Validators.pattern(/^[a-z0-9\s]*$/i)]), 
-      parDescripcion: new FormControl('', [Validators.required,Validators.pattern(/^[a-z0-9\s]*$/i)]),
-      parValTipo: new FormControl(''),
-      parValor: new FormControl('', [Validators.required,Validators.pattern(/^[a-z0-9\s]*$/i)]), 
-      parCaducidad: new FormControl(''),
-      parCaducidadStr: new FormControl(''),
+      parNombre: new FormControl(' ', [Validators.required,Validators.pattern(/^[a-z0-9\s]*$/i)]), 
+      parDescripcion: new FormControl(' ', [Validators.required,Validators.pattern(/^[a-z0-9\s]*$/i)]),
+      parValTipo: new FormControl(' '),
+      parValor: new FormControl(' ', [Validators.required,Validators.pattern(/^[a-z0-9\s]*$/i)]), 
+      parCaducidad: new FormControl(' '),
+      parCaducidadStr: new FormControl(' '),
       tipoValorCbo:['',[Validators.required]]
       });
     }

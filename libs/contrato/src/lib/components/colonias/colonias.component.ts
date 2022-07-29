@@ -1,8 +1,10 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { ColoniaVO, Const, EntidadVO, MunicipVO, PaisVO } from '@intercam/model';
+import { AlertasService } from 'libs/shred-components/src/lib/alertas/alertas.service';
 import Swal from 'sweetalert2';
 import { ColoniasServices } from '../../services/colonias.services';
 import { PersonaService } from '../../services/persona.service';
@@ -61,7 +63,9 @@ export class ColoniasComponent implements OnInit {
   entidadDialog:string;
   ciudadDialog:string;
   submitted: boolean=false;
-  constructor(private dialog: MatDialog,private coloniaServices :ColoniasServices,
+  confirmacion:boolean=false;
+  btnCP:boolean=false;
+  constructor(private alertasService:AlertasService,private dialog: MatDialog,private coloniaServices :ColoniasServices,
     private _personaService: PersonaService,private formBuilder: FormBuilder
   ) {
     this.btnGuardarIf=true;
@@ -78,6 +82,11 @@ export class ColoniasComponent implements OnInit {
      this.funcForm.get("entidad").disable();
      this.funcForm.get("alcMun").disable();
      this.funcForm.get("ciudad").disable();
+     this.btnGuardarIf=true;
+    this.btnBuscarIf=true;
+    this.btnEliminarIf=true;
+    this.btnDeshacerIf=true;
+    this.btnAltaIf=true;
   }
  buscarCodigoCP(e:any){
    this.showGetCP();
@@ -89,8 +98,7 @@ export class ColoniasComponent implements OnInit {
 }
   createFunForm() {
     this.funcForm = this.formBuilder.group({
-      codigoPostal: new FormControl('', [Validators.required,Validators.pattern(/^\d*[0-9]\d*$/i)]),
-      entidad: new FormControl(''),
+       entidad: new FormControl(''),
       alcMun: new FormControl(''),
       ciudad: new FormControl(''),
       updateColonia: new FormControl('', [Validators.required,Validators.pattern(/^[a-z0-9\s]*$/i)]),
@@ -132,13 +140,14 @@ export class ColoniasComponent implements OnInit {
     saveColonia.colCPostal=this.funcForm.get("cp").value;
     saveColonia.colAsentami="Colonia";
     saveColonia.colCiudad=this.funcForm.get("ciudad").value;
- 
+    //this.msjConfirmacionColonia();
     if(this.funcForm.valid){
       this.coloniaServices.saveColonia(saveColonia).subscribe(
         then => {
           this.colonias = then;
           this.confirmacionColonia = true;
           this.mostrarMensaje('Registro Exitos', 'info');
+          this.confirmacion=false;
         },
         error => {
           console.error(error);
@@ -149,9 +158,17 @@ export class ColoniasComponent implements OnInit {
     
   
 }
+ msjConfirmacionColonia(){
+  const  aceptar   =  this.alertasService.confirmAlert("Desea guardar la Colonia", "info", '','Si','No');
+ if(aceptar){
+   this.confirmacion=true;
+ }else{
+   this.confirmacion=true;
+ }
+}
   buscarCP(event: Event) {
-    this.submitted=true;
-    if((this._paisClaveDir == Const.PAIS_CLAVE_MEXICO || 
+    this.submitted=true;   
+   if((this._paisClaveDir == Const.PAIS_CLAVE_MEXICO || 
       isNaN(this._paisClaveDir)) && (event.target as HTMLInputElement).value.length == 5){
         //this.obtenerColoniasHard();
      this.obtenerColonias(this.funcForm.get("cp").value);
@@ -167,6 +184,7 @@ export class ColoniasComponent implements OnInit {
     }
     this.btnAltaIf=false;
     this.btnDeshacerIf=false;
+    this.btnCP=true;
   }
  /** Obtienen colonias por codigo postal */
   obtenerColonias(cp){
@@ -189,6 +207,8 @@ export class ColoniasComponent implements OnInit {
         }
         this.btnDeshacerIf=false;
         this.funcForm.get("updateColonia").disable();
+        this.funcForm.get("cp").disable();
+        this.btnCP=true;
       },
       error => console.error(error)
     )
@@ -296,6 +316,7 @@ export class ColoniasComponent implements OnInit {
   
   limpiaCampos(e:any){
        this.funcForm.get("cp").setValue('');
+      this.funcForm.get("cp").enable();
       this.funcForm.get("entidad").setValue('');
       this.funcForm.get("alcMun").setValue('');
       this.funcForm.get("ciudad").setValue('');
@@ -305,6 +326,7 @@ export class ColoniasComponent implements OnInit {
       this.btnGuardarIf=true;
       this.btnDeshacerIf=true;
       this.btnAltaIf=true;
+      this.btnCP=false;
      
 }
 actualizacion(event: Event){

@@ -10,14 +10,14 @@
         <div id="coloniasFormDiv">
             <div class="row">
                 <div id="divcp" class="col-sm-3">
-                    <input type="text" class="formulario__input" [control]="getCtr('cp')"  required="true" maxlength="5" (input)="buscarCP($event)" formControlName="cp" pattern="^\d*[0-9]\d*$" idbInput>
+                    <input type="text" class="formulario__input " [control]="getCtr('cp')"  required="true" maxlength="5" (input)="buscarCP($event)" formControlName="cp" pattern="^\d*[0-9]\d*$" idbInput>
                     <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.cp.hasError('pattern')">Codigo Postal Invalido. </mat-hint>
  
-                    <label class="formulario__label">{{'  C.P. *' }}</label>
+                    <label class="formulario__label">{{' * C.P. ' }}</label>
                 </div>
     
                 <div class="element-btn"  id="divBtnBuscarCP" class="col-sm-3">
-                    <button class="btn-img buscar-btn" type="button" (click)="buscarCodigoCP($event)"><span class="tooltip">Buscar</span></button>
+                    <button class="btn-img buscar-btn" [disabled]="btnCP"  type="button" (click)="buscarCodigoCP($event)"><span class="tooltip">Buscar</span></button>
                 </div>
             </div>
             <div class="row">
@@ -48,7 +48,7 @@
              <div class="row">
 
                 <div id="updateColonia" class="col-sm-3">
-                    <input [disabled]="disabledCol" type="text" class="formulario__input"  maxlength="50" required="true"  (input)="actualizacion($event)" formControlName="updateColonia" idbInput>
+                    <input [disabled]="disabledCol" type="text" class="formulario__input"  maxlength="50" required="true" [control]="getCtr('updateColonia')"  (input)="actualizacion($event)" formControlName="updateColonia" idbInput>
                     <label class="formulario__label">* Colonia </label>
                     <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.updateColonia.hasError('required')">El campo es requerido. </mat-hint>
                     <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.updateColonia.hasError('pattern')">Entidad solo acepta letras. </mat-hint>
