@@ -19,3 +19,38 @@
   .lable-rigth{
     text-align: right;
   }
+  .caja-select {
+    margin: 10px auto 2px auto;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    padding: 2px 6px 5px 2px;
+    background-color: rgba(236, 236, 236, 0.2);
+    border: none;
+    border-bottom: 1px solid #658d3d;
+    font-family: 'Museo Sans 500';
+    font-size: 12px;
+    border-top: solid 1px #e6e6e6;
+    border-left: solid 1px #e6e6e6;
+    border-right: solid 1px #e6e6e6;
+}
+
+.caja-select::after {
+    content: '';
+    background-image: url(../../../../../../apps/ismart-pos/src/assets/img/down-arrow_dos.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 43%;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    padding-top: 25px;
+    text-align: center;
+    width: 20px;
+    height: 0px;
+    position: absolute;
+    top: 2px;
+    right: 5px;
+    pointer-events: none;
+    background-color: #b8c7a8;
+}
