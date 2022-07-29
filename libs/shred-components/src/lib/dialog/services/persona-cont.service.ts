@@ -10,7 +10,7 @@ export class PersonaContService {
   constructor(public http: HttpClient) { }
 
   fill(fillParameters:any[]): Observable<any[]> {
-    const urlStr = 'personaCont/fill';
+    const urlStr = 'operacion-cambios/remote/findPersonaContrato';
     return this.http.post<any[]>(urlStr, fillParameters);
   }
 }

@@ -39,22 +39,22 @@ export class PrlvsInversionesComponent {
   nombreCliente: string = "";
   saldoInicial: string = "";
   claveCliente: string = "";
-  fecha:string="";
+  fecha: string = "";
   constructor(private _cierreBancoInversiones: CierreBancoInversionesServices, private dialog: MatDialog, private _clienteService: ClienteService) {
     this.findTipoInversionVO();
     this.findFecha();
 
   }
-  findFecha(){
+  findFecha() {
     this._cierreBancoInversiones.findFechaAperturaPorSucursal().subscribe(
-      then=>{
-        this.fecha=then.substring(0,10);
+      then => {
+        this.fecha = then.substring(0, 10);
       },
       error => console.error(error)
     );
   }
-  validarDias(){
-    this.dias=(this.dias+"").replace(".","");
+  validarDias() {
+    this.dias = (this.dias + "").replace(".", "");
   }
 
   findTipoInversionVO() {
@@ -68,11 +68,13 @@ export class PrlvsInversionesComponent {
   }
 
   findConsultaMatrizTasasVO() {
-    this._cierreBancoInversiones.findConsultaMatrizTasasVO(this.tipo_persona,this.moneda,this.tipo_inversion).subscribe(
+    this.monto_superior = "0.00";
+    this.dias = "0";
+    this._cierreBancoInversiones.findConsultaMatrizTasasVO(this.tipo_persona, this.moneda, this.tipo_inversion).subscribe(
       then => {
         //this.dataSource = then;
         let dataSourc = {};
-        let dataSource2=[];
+        let dataSource2 = [];
         for (let item of then) {
 
 
@@ -83,8 +85,8 @@ export class PrlvsInversionesComponent {
             dataSourc[rangoInferior] = {};
           dataSourc[rangoInferior]["rangoInferior"] = item["monto"].rangoInferior;
           dataSourc[rangoInferior]["rangoSuperior"] = item["monto"].rangoSuperior;
-          dataSourc[rangoInferior]["plazoInferior" + item["plazo"].plazoInferior] = (item["tasa"].tasa)+"00";
-          dataSourc[rangoInferior]["numPlazo"]=item["tasa"].numPlazo;
+          dataSourc[rangoInferior]["plazoInferior" + item["plazo"].plazoInferior] = (item["tasa"].tasa) + "00";
+          dataSourc[rangoInferior]["numPlazo"] = item["tasa"].numPlazo;
 
 
 
@@ -93,7 +95,7 @@ export class PrlvsInversionesComponent {
         for (let i in dataSourc) {
           dataSource2.push(dataSourc[i]);
         }
-        this.dataSource=dataSource2;
+        this.dataSource = dataSource2;
         console.log(this.dataSource);
 
       },
@@ -107,8 +109,8 @@ export class PrlvsInversionesComponent {
       autoFocus: true
     }).afterClosed()
       .subscribe(response => {
-        if (response != null) {
-
+        if (response != null&&response?.tmpCveLegada!=null) {
+          console.log(response.tmpCveLegada);
           this.consultarSaldo(response);
         }
 
@@ -118,7 +120,7 @@ export class PrlvsInversionesComponent {
     ;
   }
   consultarSaldo(personaContratoVO: PersonaContratoVO) {
-    
+
     this.claveCliente = personaContratoVO.contratoId + "";
     this.nombreCliente = personaContratoVO.nombreCorto + "";
     let usuarioVO = JSON.parse(sessionStorage.getItem("usuarioVO")) as UsuarioVO;
@@ -132,7 +134,29 @@ export class PrlvsInversionesComponent {
     this.monto_superior = row.rangoSuperior;
     this.dias = row.numPlazo;
   }
+  formatoDeInput(e) {
+    console.log(e.key);
+    let reg = /[^\d]/g;
+    let texto = e.key.replace(reg, "");
+    if (texto == "" && e.key.length == 1) {
+      return false;
+    }
 
+
+    return true;
+  }
+
+  textFormatoDeInput(e) {
+    console.log(e.key);
+    let reg = /[^A-Za-z0-9\ ]/g;
+    let texto = e.key.replace(reg, "");
+    if (texto == "" && e.key.length == 1) {
+      return false;
+    }
+
+
+    return true;
+  }
 
 
 

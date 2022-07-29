@@ -24,7 +24,7 @@ export class CedesInversionesComponent {
     nombreCliente: string = "";
     saldoInicial: string = "";
 
-    constructor(private _cierreBancoInversiones: CierreBancoInversionesServices, private dialog: MatDialog,private _clienteService: ClienteService) {
+    constructor(private _cierreBancoInversiones: CierreBancoInversionesServices, private dialog: MatDialog, private _clienteService: ClienteService) {
         this.findFecha();
     }
     getRecord(row) {
@@ -45,8 +45,8 @@ export class CedesInversionesComponent {
                 if (response != null) {
 
                     this.consultarSaldoCedes(response);
-                  }
-          
+                }
+
             });
         ;
     }
@@ -61,16 +61,18 @@ export class CedesInversionesComponent {
     }
 
     consultarSaldoCedes(personaContratoVO: PersonaContratoVO) {
-    
-        this.claveCliente = personaContratoVO.contratoId + "";
+        console.log(personaContratoVO);
+        this.claveCliente = personaContratoVO.tmpCveLegada + "";
         this.nombreCliente = personaContratoVO.nombreCorto + "";
         let usuarioVO = JSON.parse(sessionStorage.getItem("usuarioVO")) as UsuarioVO;
         this._clienteService.findConsultaSaldoVO(personaContratoVO.tmpCveLegada, usuarioVO.usuClave).subscribe(then => {
-          this.saldoInicial = then.saldo + "";
+            this.saldoInicial = then.saldo + "";
         });
-      }
+    }
 
     findTasasCedes() {
+        this.monto_superior="0.00";
+        this.plazo="0";
         this._cierreBancoInversiones.findTasasCedes(this.formula_tasa, this.producto).subscribe(then => {
             //this.dataSource = then;
             let dataSourc = {};
@@ -93,9 +95,9 @@ export class CedesInversionesComponent {
                 dataSource2.push(dataSourc[i]);
             }
             this.dataSource = dataSource2.sort(function (a, b) {
-                let val1=Number(a.rangoInferior.replaceAll(",",""));
-                let val2=Number(b.rangoInferior.replaceAll(",",""));
-                console.log(val1,val2);
+                let val1 = Number(a.rangoInferior.replaceAll(",", ""));
+                let val2 = Number(b.rangoInferior.replaceAll(",", ""));
+                console.log(val1, val2);
                 if (val1 > val2) {
                     return 1;
                 }
@@ -106,4 +108,28 @@ export class CedesInversionesComponent {
             });
         });
     }
+
+    formatoDeInput(e) {
+        console.log(e.key);
+        let reg = /[^\d]/g;
+        let texto = e.key.replace(reg, "");
+        if (texto == "" && e.key.length == 1) {
+            return false;
+        }
+
+
+        return true;
+    }
+
+    textFormatoDeInput(e) {
+        console.log(e.key);
+        let reg = /[^A-Za-z0-9\ ]/g;
+        let texto = e.key.replace(reg, "");
+        if (texto == "" && e.key.length == 1) {
+          return false;
+        }
+    
+    
+        return true;
+      }
 }
