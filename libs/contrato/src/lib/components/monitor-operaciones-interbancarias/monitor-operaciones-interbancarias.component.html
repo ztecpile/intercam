@@ -40,7 +40,7 @@
                 <label appearance="fill" class="formulario__label">Filtro</label>
             </div>
             <div class="col-sm-3">
-                <mat-radio-group [(ngModel)]="FILTRO_RADIO" aria-label="Select an option">
+                <mat-radio-group (change)="cambioDeFiltro()" [(ngModel)]="FILTRO_RADIO" aria-label="Select an option">
                     <mat-radio-button class="mt-2 pr-5" value="1">Deal</mat-radio-button>
                     <mat-radio-button class="pl-5 mr-1" value="2">Ticket</mat-radio-button>
                     <mat-radio-button value="3">Sin Deal</mat-radio-button>
@@ -60,12 +60,12 @@
 
                     <ng-container matColumnDef="deal">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Deal</th>
-                        <td mat-cell *matCellDef="let element">{{ element.operInstrumentoVO.tmpDealsica }}</td>
+                        <td mat-cell *matCellDef="let element">{{ element.operInstrumentoVO.tmpDealsica||'0' }}</td>
                     </ng-container>
 
                     <ng-container matColumnDef="tipo">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</th>
-                        <td mat-cell *matCellDef="let element">{{ element.opiTipo }}</td>
+                        <td mat-cell *matCellDef="let element">{{ element.operInstrumentoVO.opiTipo }}</td>
                     </ng-container>
 
                     <ng-container matColumnDef="promotor">
@@ -87,7 +87,7 @@
 
                     <ng-container matColumnDef="pos">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Estatus Pos</th>
-                        <td mat-cell *matCellDef="let element">{{ element.tdtEstatus }}</td>
+                        <td mat-cell *matCellDef="let element">{{ element.operInstrumentoVO.opiEstatus }}</td>
                     </ng-container>
 
                     <ng-container matColumnDef="transaccion">

@@ -29,10 +29,10 @@ export class MonitorOperacionesInterbancariasComponent implements AfterViewInit 
         "Mar": "03",
         "Apr": "04",
         "May": "05",
-        "June": "06",
-        "July": "07",
+        "Jun": "06",
+        "Jul": "07",
         "Aug": "08",
-        "Sept": "09",
+        "Sep": "09",
         "Oct": "10",
         "Nov": "11",
         "Dec": "12",
@@ -96,6 +96,10 @@ export class MonitorOperacionesInterbancariasComponent implements AfterViewInit 
             this.dataSource = new MatTableDataSource(this.dataSourceFilter.filter(item => item.tdtTicket.includes(this.FILTRO_TEXT)));
             this.dataSource.paginator = this.paginator;
         }
+        if (this.FILTRO_RADIO === "3") {
+            this.dataSource = new MatTableDataSource(this.dataSourceFilter.filter(item => item.operInstrumentoVO.tmpDealsica==null));
+            this.dataSource.paginator = this.paginator;
+        }
     }
 
     verOperacion() {
@@ -107,7 +111,14 @@ export class MonitorOperacionesInterbancariasComponent implements AfterViewInit 
 
     formatoHora(e) {
         let hora = e.split(",")[1];
-        return String(hora).replace("1700", "");
+        hora = String(hora).replace("1700", "")
+        let ampm = hora.includes("AM");
+        let min = hora.split(":")[1];
+        hora = hora.split(":")[0];
+        hora = hora.replace(/[^\d]/g, "");
+
+        //Si  e no tiene la palabra AM se le suman 12 horas a la hora para formato 24
+        return (ampm == true ? hora : (12 + (hora * 1))) + " : " + min;
     }
     formatoFecha(e) {
         let date = (e + "").split(" ");
@@ -123,12 +134,19 @@ export class MonitorOperacionesInterbancariasComponent implements AfterViewInit 
 
             case 2:
                 return "Error al guardar la operacion en el sistema";
-            default:
+
+            case 4:
                 return " Operación Generada Completa";
+            default:
+                return "Error al guardar la operacion en el sistema";
 
         }
-        return element.operInstrumentoVO.opiEstatus;
         //       element.operInstrumentoVO.opiEstatus==0?" Generadas Incompletas":element.operInstrumentoVO.opiEstatus==2?"Error **** ":"Generadas Completas "
+    }
+
+    cambioDeFiltro(){
+        this.FILTRO_TEXT="";
+        this.filtroTabla();
     }
 
 
