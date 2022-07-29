@@ -47,17 +47,17 @@
 
         <div class="row">
             <div id="divNombre" class="col-sm-3">
-                <input type="text"  class="formulario__input"  maxlength="60" (ngModel)="parametro.parNombre"  formControlName="parNombre" (input)="actualizacionParNombre($event)"  idbInput>
+                 <input type="text"  class="formulario__input"  maxlength="60" (ngModel)="parametro.parNombre"  formControlName="parNombre" (input)="actualizacionParNombre($event)"  idbInput>
                 <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.parNombre.hasError('pattern')">Nombre solo acepta letras  y numeros. </mat-hint>
                 <mat-hint class="form-warnig" *ngIf="submitted && funcForm.controls.parNombre.hasError('required')">El campo es obligatorio. </mat-hint>
                 <label class="formulario__label">{{'Nombre *' }}</label>
-            </div>
+             </div>
            
+            <br>
             <div class="row">
                 <div id="divtipoPersona" class="col-sm-3">
-                    <div class="caja">
+                    <div class="caja-select">
                         <select formControlName="tipoValorCbo"   (ngModel)="parametro.parValTipo" (input)="actualizacionTipoValorCbo($event)" idbInput>
-                            <option>Seleccione Valor</option>
                             <option value="A">Alfebetico</option>
                             <option value="C">Caracter</option>
                             <option value="I">Entero</option>
