@@ -112,6 +112,7 @@ export class HomologacionClientesComponent implements OnInit {
     }
 
     obtenerCarpetaContratos(conId: any) {
+        this.submitted = true;
         console.log(conId);
         if(conId == ''){
             conId = this.funcForm.get('contrato').value;
@@ -125,7 +126,7 @@ export class HomologacionClientesComponent implements OnInit {
                 }
                 this.contratosFolder = returncliIdCorrecto;
                 this.selectedRow = returncliIdCorrecto[0];
-                this.cpeId = then.contratoVO.cpeId;
+                this.cpeId = then.listaRepresentantes[0].personaVO.cpeId;
                 this.funcForm.get('tipoContrato').setValue(then.contratoVO.tipoContratoVO.tconDescripcion);
                 this.getCategoriaCliente(then.listaRepresentantes[0].personaVO.tipoPersonaVO.tpeClave);
                 this.obtenerBiometria('busquedaIncorrecta');
@@ -300,20 +301,20 @@ export class HomologacionClientesComponent implements OnInit {
     createFunForm() {
 
         this.funcForm = this.formbuilder.group({
-            contrato: new FormControl(0),
-            catTitular: new FormControl(''),
-            tipoContrato: new FormControl(''),
-            sucursal: new FormControl(''),
-            cliIdCorrecto: new FormControl(''),
-            usuSolicitante: new FormControl('', [Validators.required]),
-            coorSucursal: new FormControl('', [Validators.required]),
+            contrato: new FormControl(0,[Validators.pattern(/^[0-9]*$/)]),
+            catTitular: new FormControl(' '),
+            tipoContrato: new FormControl(' '),
+            sucursal: new FormControl(' '),
+            cliIdCorrecto: new FormControl(' '),
+            usuSolicitante: new FormControl(' ', [Validators.required]),
+            coorSucursal: new FormControl(' ', [Validators.required]),
             combMotivo: new FormControl('', [Validators.required]),
             comboCliIdIncorrecto: new FormControl(''),
-            otro: new FormControl(''),
-            observacion: new FormControl(''),
+            otro: new FormControl(' '),
+            observacion: new FormControl(' '),
             homoDatos: new FormControl(false),
-            bioIncorrecta: new FormControl(''),
-            bioCorrecta: new FormControl('')
+            bioIncorrecta: new FormControl(' '),
+            bioCorrecta: new FormControl(' ')
 
         });
     }
@@ -356,10 +357,10 @@ export class HomologacionClientesComponent implements OnInit {
             .subscribe(response => {
                 console.log(response);
                 if (valor == 'usuSol') {
-                    this.funcForm.get('usuSolicitante').setValue(response.data.nombre_completo);
+                    this.funcForm.get('usuSolicitante').setValue(response.data.nomEjecutivo);
                 }
                 if (valor == 'coorSucursal') {
-                    this.funcForm.get('coorSucursal').setValue(response.data.nombre_completo);
+                    this.funcForm.get('coorSucursal').setValue(response.data.nomEjecutivo);
                 }
 
             });
@@ -394,29 +395,38 @@ export class HomologacionClientesComponent implements OnInit {
     limpiarCampos() {
         this.funcForm.get('contrato').setValue(0);
         this.funcForm.get('comboCliIdIncorrecto').setValue('');
-        this.funcForm.get('catTitular').setValue('');
-        this.funcForm.get('bioIncorrecta').setValue('');
-        this.funcForm.get('tipoContrato').setValue('');
-        this.funcForm.get('sucursal').setValue('');
-        this.funcForm.get('cliIdCorrecto').setValue('');
-        this.funcForm.get('bioCorrecta').setValue('');
+        this.funcForm.get('catTitular').setValue(' ');
+        this.funcForm.get('bioIncorrecta').setValue(' ');
+        this.funcForm.get('tipoContrato').setValue(' ');
+        this.funcForm.get('sucursal').setValue(' ');
+        this.funcForm.get('cliIdCorrecto').setValue(' ');
+        this.funcForm.get('bioCorrecta').setValue(' ');
         this.isChecked = false;
         this.funcForm.get('homoDatos').setValue(false);
         document.getElementById('checkHomo').removeAttribute('mat-checkbox-checked');
-        this.funcForm.get('usuSolicitante').setValue('');
-        this.funcForm.get('coorSucursal').setValue('');
+        this.funcForm.get('usuSolicitante').setValue(' ');
+        this.funcForm.get('coorSucursal').setValue(' ');
         this.funcForm.get('combMotivo').setValue('');
         document.getElementById('inputOtro').setAttribute('disabled', '');
-        this.funcForm.get('otro').setValue('');
-        this.funcForm.get('observacion').setValue('');
+        this.funcForm.get('otro').setValue(' ');
+        this.funcForm.get('observacion').setValue(' ');
         this.deshabilitarBotones();
+    }
+    deshabilitarCampos(){
+        document.getElementById('inputOtro').setAttribute('disabled', '');
+        this.funcForm.get('catTitular').disable();
+        this.funcForm.get('bioIncorrecta').disable();
+        this.funcForm.get('tipoContrato').disable();
+        this.funcForm.get('sucursal').disable();
+        this.funcForm.get('cliIdCorrecto').disable();
+        this.funcForm.get('bioCorrecta').disable();
     }
     ngOnInit(): void {
         this.recuperarMotivosHomologacion();
         this.createFunForm();
         this.deshabilitarBotones();
         this.recuperarCadenaCorreo();
-        document.getElementById('inputOtro').setAttribute('disabled', '');
+        this.deshabilitarCampos();
 
     }
 }
